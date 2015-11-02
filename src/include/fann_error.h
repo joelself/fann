@@ -23,6 +23,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <stdio.h>
 
 #define FANN_ERRSTR_MAX 128
+
+#ifdef SWIG
+#define FANN_EXTERNAL /**/
+#define FANN_API /**/
+#endif
+
 struct fann_error;
 
 /* Section: FANN Error Handling
