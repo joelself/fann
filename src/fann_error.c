@@ -1,6 +1,6 @@
 /*
   Fast Artificial Neural Network Library (fann)
-  Copyright (C) 2003-2012 Steffen Nissen (sn@leenissen.dk)
+  Copyright (C) 2003-2016 Steffen Nissen (steffen.fann@gmail.com)
   
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -43,7 +43,7 @@
 #endif
 #endif
 
-FANN_EXTERNAL extern FILE * FANN_API fann_default_error_log = (FILE *)-1;
+FANN_EXTERNAL FILE * FANN_API fann_default_error_log = (FILE *)-1;
 
 /* resets the last error number
  */
