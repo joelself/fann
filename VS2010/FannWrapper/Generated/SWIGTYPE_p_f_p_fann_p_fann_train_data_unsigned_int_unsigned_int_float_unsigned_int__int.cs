@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace FannWrap {
 
 public class SWIGTYPE_p_f_p_fann_p_fann_train_data_unsigned_int_unsigned_int_float_unsigned_int__int {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -23,4 +24,6 @@ public class SWIGTYPE_p_f_p_fann_p_fann_train_data_unsigned_int_unsigned_int_flo
   internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_f_p_fann_p_fann_train_data_unsigned_int_unsigned_int_float_unsigned_int__int obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
+}
+
 }

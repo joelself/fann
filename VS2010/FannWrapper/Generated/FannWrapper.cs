@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace FannWrap {
 
 public class FannWrapper {
   public static void fann_set_error_log(fann_error errdat, SWIGTYPE_p_FILE log_file) {
@@ -127,4 +128,6 @@ public class FannWrapper {
   }
 
   public static readonly int FANN_ERRSTR_MAX = FannWrapperPINVOKE.FANN_ERRSTR_MAX_get();
+}
+
 }

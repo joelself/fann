@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace FannWrap {
 
 public class training_data : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -104,6 +105,18 @@ public class training_data : global::System.IDisposable {
     return ret;
   }
 
+  public SWIGTYPE_p_float get_train_input(uint position) {
+    global::System.IntPtr cPtr = FannWrapperPINVOKE.training_data_get_train_input(swigCPtr, position);
+    SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
+    return ret;
+  }
+
+  public SWIGTYPE_p_float get_train_output(uint position) {
+    global::System.IntPtr cPtr = FannWrapperPINVOKE.training_data_get_train_output(swigCPtr, position);
+    SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
+    return ret;
+  }
+
   public void set_train_data(uint num_data, uint num_input, SWIGTYPE_p_p_float input, uint num_output, SWIGTYPE_p_p_float output) {
     FannWrapperPINVOKE.training_data_set_train_data__SWIG_0(swigCPtr, num_data, num_input, SWIGTYPE_p_p_float.getCPtr(input), num_output, SWIGTYPE_p_p_float.getCPtr(output));
   }
@@ -114,6 +127,26 @@ public class training_data : global::System.IDisposable {
 
   public void create_train_from_callback(uint num_data, uint num_input, uint num_output, SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_float_p_float__void user_function) {
     FannWrapperPINVOKE.training_data_create_train_from_callback(swigCPtr, num_data, num_input, num_output, SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_float_p_float__void.getCPtr(user_function));
+  }
+
+  public float get_min_input() {
+    float ret = FannWrapperPINVOKE.training_data_get_min_input(swigCPtr);
+    return ret;
+  }
+
+  public float get_max_input() {
+    float ret = FannWrapperPINVOKE.training_data_get_max_input(swigCPtr);
+    return ret;
+  }
+
+  public float get_min_output() {
+    float ret = FannWrapperPINVOKE.training_data_get_min_output(swigCPtr);
+    return ret;
+  }
+
+  public float get_max_output() {
+    float ret = FannWrapperPINVOKE.training_data_get_max_output(swigCPtr);
+    return ret;
   }
 
   public void scale_input_train_data(float new_min, float new_max) {
@@ -131,5 +164,7 @@ public class training_data : global::System.IDisposable {
   public void subset_train_data(uint pos, uint length) {
     FannWrapperPINVOKE.training_data_subset_train_data(swigCPtr, pos, length);
   }
+
+}
 
 }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.Build.Evaluation;
+using System.Threading;
 
 namespace CleanUpForSwig
 {
@@ -13,7 +14,7 @@ namespace CleanUpForSwig
     {
         static int Main(string[] args)
         {
-            if (args.Length < 1)
+            if (args.Length < 2)
             {
                 Console.Error.WriteLine("You must specify a swig generated file and generated file path to fix-up");
                 Console.Error.WriteLine("Usage: CleanUpForSwig [FILEPATH] [PATH_TO_GENERATED_FILES]");
@@ -54,10 +55,29 @@ namespace CleanUpForSwig
             text = text.Replace("FANN_LINEAR", "fann_activationfunc_enum.FANN_LINEAR");
             File.WriteAllText(folder + "activation_function_enum.cs", text);
 
-            Console.WriteLine("Fixing text in " + folder + "FannWrapperPINVOKE.cs");
-            text = File.ReadAllText(folder + "FannWrapperPINVOKE.cs");
-            text = text.Replace("\"FannWrapper\"", "\"SwigFann\"");
-            File.WriteAllText(folder + "FannWrapperPINVOKE.cs", text);
+            Console.WriteLine("Fixing code in " + folder + "FannWrapperPINVOKE.cs");
+            string code;
+            try
+            {
+                code = File.ReadAllText(folder + "FannWrapperPINVOKE.cs");
+            }
+            catch
+            {
+                // Might not be there yet, try again in half a second
+                Thread.Sleep(500);
+                code = File.ReadAllText(folder + "FannWrapperPINVOKE.cs");
+            }
+            code = code.Replace("\"FannWrapper\"", "\"SwigFann\"");
+            try
+            {
+                File.WriteAllText(folder + "FannWrapperPINVOKE.cs", code);
+            }
+            catch (System.IO.IOException ex)
+            {
+                // Might still be in use, try again in half a second
+                Thread.Sleep(500);
+                File.WriteAllText(folder + "FannWrapperPINVOKE.cs", code);
+            }
             return 0;
         }
 
@@ -70,7 +90,33 @@ namespace CleanUpForSwig
             }
             string text = File.ReadAllText(path);
             Console.WriteLine("Fixing code in " + path);
+            Regex callbackRegex = new Regex(@"([a-zA-Z0-9\-_:]*?((callback_type)|(training_algorithm_enum)|(activation_function_enum)|(error_function_enum)|(network_type_enum)|(stop_function_enum)|(connection)))( |\()");
+            MatchCollection matches = callbackRegex.Matches(text);
+            int offset = 0;
+            foreach (Match match in matches)
+            {
+                if (match.Groups[1].Value == "callback_type" || match.Groups[1].Value == "training_algorithm_enum" ||
+                    match.Groups[1].Value == "activation_function_enum" || match.Groups[1].Value == "error_function_enum" ||
+                    match.Groups[1].Value == "network_type_enum" || match.Groups[1].Value == "stop_function_enum" ||
+                    match.Groups[1].Value == "connection")
+                {
+                    text = text.Insert(match.Groups[1].Index + offset, "FANN::");
+                    offset += 6;
+                }
+            }
             text = text.Replace("fann_error ", "struct fann_error ").Replace(" fann_error()", " struct fann_error()");
+            text = text.Replace("FANN::struct", "");
+            Regex trainingDataRegex = new Regex(@"((FANN::)|(CSharp_.*?))?training_data(_cpp)?");
+            matches = trainingDataRegex.Matches(text);
+            offset = 0;
+            foreach (Match match in matches)
+            {
+                if (match.Value == "training_data")
+                {
+                    text = text.Insert(match.Index + offset, "FANN::");
+                    offset += 6;
+                }
+            }
             text = text.Replace("void (*arg5)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *) = (void (*)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *)) 0 ;",
                                 "void (__stdcall *arg5)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *) = (void (__stdcall *)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *)) 0 ;");
             text = text.Replace("arg5 = (void (*)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *))jarg5;",

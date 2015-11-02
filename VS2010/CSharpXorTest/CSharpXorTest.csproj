@@ -53,8 +53,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FannWrapper">
-      <HintPath>..\..\bin\x64\FannWrapper.dll</HintPath>
+    <Reference Include="FannWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\x86\FannWrapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -75,21 +76,23 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(Platform) == x86 (
-copy $(SolutionDir)..\bin\Win32\fannfloat.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\
-) else (
-copy $(SolutionDir)..\bin\$(Platform)\fannfloat.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\
+    <PostBuildEvent>if x86==x86 (
+    if Debug==Debug (
+		copy E:\Users\Joel\Projects\fann\VS2010\..\bin\Win32\fannfloatd.dll E:\Users\Joel\Projects\fann\VS2010\..\bin\x86\fannfloatd.dll
+		copy E:\Users\Joel\Projects\fann\VS2010\..\bin\Win32\fanndoubled.dll E:\Users\Joel\Projects\fann\VS2010\..\bin\x86\fanndouble.dll
+		copy E:\Users\Joel\Projects\fann\VS2010\..\bin\Win32\fannfixedd.dll E:\Users\Joel\Projects\fann\VS2010\..\bin\x86\fannfixed.dll
+	) else (
+		copy E:\Users\Joel\Projects\fann\VS2010\..\bin\Win32\fannfloat.dll E:\Users\Joel\Projects\fann\VS2010\..\bin\x86\
+		copy E:\Users\Joel\Projects\fann\VS2010\..\bin\Win32\fanndouble.dll E:\Users\Joel\Projects\fann\VS2010\..\bin\x86\
+		copy E:\Users\Joel\Projects\fann\VS2010\..\bin\Win32\fannfixed.dll E:\Users\Joel\Projects\fann\VS2010\..\bin\x86\
+	)
+    copy E:\Users\Joel\Projects\fann\VS2010\..\bin\Win32\SwigFann.dll E:\Users\Joel\Projects\fann\VS2010\..\bin\x86\
 )
-if $(Platform) == x86 (
-copy  $(SolutionDir)..\bin\Win32\fanndouble.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\
-) else  (
-copy  $(SolutionDir)..\bin\$(Platform)\fanndouble.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\
-)
-if $(Platform) == x86 (
-copy $(SolutionDir)..\bin\Win32\fannfixed.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\
-) else (
-copy $(SolutionDir)..\bin\$(Platform)\fannfixed.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\
-)</PostBuildEvent>
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

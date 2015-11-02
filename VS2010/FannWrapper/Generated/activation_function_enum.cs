@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace FannWrap {
 
 public enum activation_function_enum {
   LINEAR = fann_activationfunc_enum.FANN_LINEAR,
@@ -26,4 +27,6 @@ public enum activation_function_enum {
   LINEAR_PIECE_SYMMETRIC,
   SIN_SYMMETRIC,
   COS_SYMMETRIC
+}
+
 }

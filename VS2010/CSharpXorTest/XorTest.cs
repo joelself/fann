@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using FannWrap;
 
 namespace CSharpXorTest
 {
@@ -12,7 +12,7 @@ namespace CSharpXorTest
         static int Main(string[] args)
         {
             neural_net net = new neural_net();
-            if (!net.create_from_file("..\\..\\..\\..\\..\\examples\\xor_float.net"))
+            if (!net.create_from_file("..\\..\\examples\\xor_float.net"))
             {
                 Console.WriteLine("Error creating ann --- ABORTING.\n");
                 return -1;
@@ -24,7 +24,11 @@ namespace CSharpXorTest
             Console.WriteLine("Testing network.");
 
             training_data data = new training_data();
-            data.read_train_from_file("..\\..\\..\\..\\..\\examples\\xor.data");
+            if(!data.read_train_from_file("..\\..\\examples\\xor.data"))
+            {
+                Console.WriteLine("Error reading training data --- ABORTING.\n");
+                return -1;
+            }
             SWIGTYPE_p_p_float inputs = data.get_input();
             SWIGTYPE_p_p_float outputs = data.get_output();
             for (int i = 0; i < data.length_train_data(); i++)
@@ -44,6 +48,7 @@ namespace CSharpXorTest
 
             data.Dispose();
             net.Dispose();
+            Console.ReadKey();
             return 0;
         }
         static float fann_abs(float value)

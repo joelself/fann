@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace FannWrap {
 
 public enum fann_errno_enum {
   FANN_E_NO_ERROR = 0,
@@ -32,4 +33,6 @@ public enum fann_errno_enum {
   FANN_E_INPUT_NO_MATCH,
   FANN_E_OUTPUT_NO_MATCH,
   FANN_E_WRONG_PARAMETERS_FOR_CREATE
+}
+
 }

@@ -295,7 +295,7 @@ namespace FANN {
 	    See also:
 		    <neural_net::set_callback>, <fann_callback_type>
      */
-    typedef int (*callback_type)(neural_net &net, training_data &train,
+    typedef FANN_EXTERNAL int (FANN_API *callback_type)(neural_net &net, training_data &train,
                                  unsigned int max_epochs, unsigned int epochs_between_reports,
                                  float desired_error, unsigned int epochs, void *user_data);
 }

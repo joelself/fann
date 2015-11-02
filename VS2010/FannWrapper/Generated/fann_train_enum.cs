@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace FannWrap {
 
 public enum fann_train_enum {
   FANN_TRAIN_INCREMENTAL = 0,
@@ -15,4 +16,6 @@ public enum fann_train_enum {
   FANN_TRAIN_RPROP,
   FANN_TRAIN_QUICKPROP,
   FANN_TRAIN_SARPROP
+}
+
 }

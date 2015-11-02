@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace FannWrap {
 
 public class SWIGTYPE_p_fann_activationfunc_enum {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -23,4 +24,6 @@ public class SWIGTYPE_p_fann_activationfunc_enum {
   internal static global::System.Runtime.InteropServices.HandleRef getCPtr(SWIGTYPE_p_fann_activationfunc_enum obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
+}
+
 }

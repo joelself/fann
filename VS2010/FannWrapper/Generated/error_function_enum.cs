@@ -8,8 +8,11 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace FannWrap {
 
 public enum error_function_enum {
   ERRORFUNC_LINEAR = fann_errorfunc_enum.FANN_ERRORFUNC_LINEAR,
   ERRORFUNC_TANH
+}
+
 }

@@ -8,8 +8,11 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace FannWrap {
 
 public enum fann_stopfunc_enum {
   FANN_STOPFUNC_MSE = 0,
   FANN_STOPFUNC_BIT
+}
+
 }

@@ -8,8 +8,11 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace FannWrap {
 
 public enum fann_nettype_enum {
   FANN_NETTYPE_LAYER = 0,
   FANN_NETTYPE_SHORTCUT
+}
+
 }

@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace FannWrap {
 
 public class fann_error : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -72,5 +73,7 @@ public class fann_error : global::System.IDisposable {
 
   public fann_error() : this(FannWrapperPINVOKE.new_fann_error(), true) {
   }
+
+}
 
 }

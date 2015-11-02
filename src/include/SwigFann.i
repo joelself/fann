@@ -5,6 +5,8 @@
 #include "fann_cpp.h"
 #include "fann_error.h"
 #include "fann_data.h"
+#include "fann_data_cpp.h"
+#include "fann_training_data_cpp.h"
 %}
 %include typemaps.i
 %include "carrays.i"
@@ -14,6 +16,8 @@
 %include "fann_error.h"
 %include "fann_data.h"
 %include "fann_cpp.h"
+%include "fann_data_cpp.h"
+%include "fann_training_data_cpp.h"
 
 
 %pointer_class(fann_type, fann_type_p)

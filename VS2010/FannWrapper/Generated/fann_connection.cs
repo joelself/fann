@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace FannWrap {
 
 public class fann_connection : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -71,5 +72,7 @@ public class fann_connection : global::System.IDisposable {
 
   public fann_connection() : this(FannWrapperPINVOKE.new_fann_connection(), true) {
   }
+
+}
 
 }

@@ -297,6 +297,8 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_FannWrapper(SWIG_CSharpSt
 #include "fann_cpp.h"
 #include "fann_error.h"
 #include "fann_data.h"
+#include "fann_data_cpp.h"
+#include "fann_training_data_cpp.h"
 
 
 #include <string>
@@ -2451,289 +2453,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_fann_connection(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_training_data__SWIG_0() {
-  void * jresult ;
-  FANN::training_data *result = 0 ;
-  
-  result = (FANN::training_data *)new FANN::training_data();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_training_data__SWIG_1(void * jarg1) {
-  void * jresult ;
-  FANN::training_data *arg1 = 0 ;
-  FANN::training_data *result = 0 ;
-  
-  arg1 = (FANN::training_data *)jarg1;
-  if (!arg1) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "FANN::training_data const & type is null", 0);
-    return 0;
-  } 
-  result = (FANN::training_data *)new FANN::training_data((FANN::training_data const &)*arg1);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_training_data(void * jarg1) {
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_training_data_destroy_train(void * jarg1) {
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  (arg1)->destroy_train();
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_training_data_read_train_from_file(void * jarg1, char * jarg2) {
-  unsigned int jresult ;
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  std::string *arg2 = 0 ;
-  bool result;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  if (!jarg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
-    return 0;
-  }
-  std::string arg2_str(jarg2);
-  arg2 = &arg2_str; 
-  result = (bool)(arg1)->read_train_from_file((std::string const &)*arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_training_data_save_train(void * jarg1, char * jarg2) {
-  unsigned int jresult ;
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  std::string *arg2 = 0 ;
-  bool result;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  if (!jarg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
-    return 0;
-  }
-  std::string arg2_str(jarg2);
-  arg2 = &arg2_str; 
-  result = (bool)(arg1)->save_train((std::string const &)*arg2);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_training_data_save_train_to_fixed(void * jarg1, char * jarg2, unsigned int jarg3) {
-  unsigned int jresult ;
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  std::string *arg2 = 0 ;
-  unsigned int arg3 ;
-  bool result;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  if (!jarg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
-    return 0;
-  }
-  std::string arg2_str(jarg2);
-  arg2 = &arg2_str; 
-  arg3 = (unsigned int)jarg3; 
-  result = (bool)(arg1)->save_train_to_fixed((std::string const &)*arg2,arg3);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_training_data_shuffle_train_data(void * jarg1) {
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  (arg1)->shuffle_train_data();
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_training_data_merge_train_data(void * jarg1, void * jarg2) {
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  FANN::training_data *arg2 = 0 ;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  arg2 = (FANN::training_data *)jarg2;
-  if (!arg2) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "FANN::training_data const & type is null", 0);
-    return ;
-  } 
-  (arg1)->merge_train_data((FANN::training_data const &)*arg2);
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_training_data_length_train_data(void * jarg1) {
-  unsigned int jresult ;
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  unsigned int result;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  result = (unsigned int)(arg1)->length_train_data();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_training_data_num_input_train_data(void * jarg1) {
-  unsigned int jresult ;
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  unsigned int result;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  result = (unsigned int)(arg1)->num_input_train_data();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_training_data_num_output_train_data(void * jarg1) {
-  unsigned int jresult ;
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  unsigned int result;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  result = (unsigned int)(arg1)->num_output_train_data();
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_training_data_get_input(void * jarg1) {
-  void * jresult ;
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  fann_type **result = 0 ;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  result = (fann_type **)(arg1)->get_input();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_training_data_get_output(void * jarg1) {
-  void * jresult ;
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  fann_type **result = 0 ;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  result = (fann_type **)(arg1)->get_output();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_training_data_set_train_data__SWIG_0(void * jarg1, unsigned int jarg2, unsigned int jarg3, void * jarg4, unsigned int jarg5, void * jarg6) {
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  unsigned int arg2 ;
-  unsigned int arg3 ;
-  fann_type **arg4 = (fann_type **) 0 ;
-  unsigned int arg5 ;
-  fann_type **arg6 = (fann_type **) 0 ;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  arg2 = (unsigned int)jarg2; 
-  arg3 = (unsigned int)jarg3; 
-  arg4 = (fann_type **)jarg4; 
-  arg5 = (unsigned int)jarg5; 
-  arg6 = (fann_type **)jarg6; 
-  (arg1)->set_train_data(arg2,arg3,arg4,arg5,arg6);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_training_data_set_train_data__SWIG_1(void * jarg1, unsigned int jarg2, unsigned int jarg3, void * jarg4, unsigned int jarg5, void * jarg6) {
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  unsigned int arg2 ;
-  unsigned int arg3 ;
-  fann_type *arg4 = (fann_type *) 0 ;
-  unsigned int arg5 ;
-  fann_type *arg6 = (fann_type *) 0 ;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  arg2 = (unsigned int)jarg2; 
-  arg3 = (unsigned int)jarg3; 
-  arg4 = (fann_type *)jarg4; 
-  arg5 = (unsigned int)jarg5; 
-  arg6 = (fann_type *)jarg6; 
-  (arg1)->set_train_data(arg2,arg3,arg4,arg5,arg6);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_training_data_create_train_from_callback(void * jarg1, unsigned int jarg2, unsigned int jarg3, unsigned int jarg4, void * jarg5) {
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  unsigned int arg2 ;
-  unsigned int arg3 ;
-  unsigned int arg4 ;
-  void (__stdcall *arg5)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *) = (void (__stdcall *)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *)) 0 ;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  arg2 = (unsigned int)jarg2; 
-  arg3 = (unsigned int)jarg3; 
-  arg4 = (unsigned int)jarg4; 
-  arg5 = (void (__stdcall *)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *))jarg5; 
-  (arg1)->create_train_from_callback(arg2,arg3,arg4,arg5);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_training_data_scale_input_train_data(void * jarg1, float jarg2, float jarg3) {
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  fann_type arg2 ;
-  fann_type arg3 ;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  arg2 = (fann_type)jarg2; 
-  arg3 = (fann_type)jarg3; 
-  (arg1)->scale_input_train_data(arg2,arg3);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_training_data_scale_output_train_data(void * jarg1, float jarg2, float jarg3) {
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  fann_type arg2 ;
-  fann_type arg3 ;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  arg2 = (fann_type)jarg2; 
-  arg3 = (fann_type)jarg3; 
-  (arg1)->scale_output_train_data(arg2,arg3);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_training_data_scale_train_data(void * jarg1, float jarg2, float jarg3) {
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  fann_type arg2 ;
-  fann_type arg3 ;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  arg2 = (fann_type)jarg2; 
-  arg3 = (fann_type)jarg3; 
-  (arg1)->scale_train_data(arg2,arg3);
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_training_data_subset_train_data(void * jarg1, unsigned int jarg2, unsigned int jarg3) {
-  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
-  unsigned int arg2 ;
-  unsigned int arg3 ;
-  
-  arg1 = (FANN::training_data *)jarg1; 
-  arg2 = (unsigned int)jarg2; 
-  arg3 = (unsigned int)jarg3; 
-  (arg1)->subset_train_data(arg2,arg3);
-}
-
-
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_neural_net__SWIG_0() {
   void * jresult ;
   FANN::neural_net *result = 0 ;
@@ -3127,11 +2846,17 @@ SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_reset_MSE(void * jarg1) {
 
 SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_callback(void * jarg1, void * jarg2, void * jarg3) {
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
-  FANN::callback_type arg2 = (FANN::callback_type) 0 ;
+  FANN::callback_type arg2 ;
   void *arg3 = (void *) 0 ;
+  FANN::callback_type *argp2 ;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  arg2 = (FANN::callback_type)jarg2; 
+  argp2 = (FANN::callback_type *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null callback_type", 0);
+    return ;
+  }
+  arg2 = *argp2; 
   arg3 = (void *)jarg3; 
   (arg1)->set_callback(arg2,arg3);
 }
@@ -3145,24 +2870,30 @@ SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_print_parameters(void * jarg1) {
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_neural_net_get_training_algorithm(void * jarg1) {
-  int jresult ;
+SWIGEXPORT void * SWIGSTDCALL CSharp_neural_net_get_training_algorithm(void * jarg1) {
+  void * jresult ;
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   FANN::training_algorithm_enum result;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  result = (FANN::training_algorithm_enum)(arg1)->get_training_algorithm();
-  jresult = (int)result; 
+  result = (arg1)->get_training_algorithm();
+  jresult = new FANN::training_algorithm_enum((const FANN::training_algorithm_enum &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_training_algorithm(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_training_algorithm(void * jarg1, void * jarg2) {
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   FANN::training_algorithm_enum arg2 ;
+  FANN::training_algorithm_enum *argp2 ;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  arg2 = (FANN::training_algorithm_enum)jarg2; 
+  argp2 = (FANN::training_algorithm_enum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null training_algorithm_enum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
   (arg1)->set_training_algorithm(arg2);
 }
 
@@ -3189,8 +2920,8 @@ SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_learning_rate(void * jarg1, fl
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_neural_net_get_activation_function(void * jarg1, int jarg2, int jarg3) {
-  int jresult ;
+SWIGEXPORT void * SWIGSTDCALL CSharp_neural_net_get_activation_function(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -3199,54 +2930,78 @@ SWIGEXPORT int SWIGSTDCALL CSharp_neural_net_get_activation_function(void * jarg
   arg1 = (FANN::neural_net *)jarg1; 
   arg2 = (int)jarg2; 
   arg3 = (int)jarg3; 
-  result = (FANN::activation_function_enum)(arg1)->get_activation_function(arg2,arg3);
-  jresult = (int)result; 
+  result = (arg1)->get_activation_function(arg2,arg3);
+  jresult = new FANN::activation_function_enum((const FANN::activation_function_enum &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_activation_function(void * jarg1, int jarg2, int jarg3, int jarg4) {
+SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_activation_function(void * jarg1, void * jarg2, int jarg3, int jarg4) {
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   FANN::activation_function_enum arg2 ;
   int arg3 ;
   int arg4 ;
+  FANN::activation_function_enum *argp2 ;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  arg2 = (FANN::activation_function_enum)jarg2; 
+  argp2 = (FANN::activation_function_enum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null activation_function_enum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
   arg3 = (int)jarg3; 
   arg4 = (int)jarg4; 
   (arg1)->set_activation_function(arg2,arg3,arg4);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_activation_function_layer(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_activation_function_layer(void * jarg1, void * jarg2, int jarg3) {
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   FANN::activation_function_enum arg2 ;
   int arg3 ;
+  FANN::activation_function_enum *argp2 ;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  arg2 = (FANN::activation_function_enum)jarg2; 
+  argp2 = (FANN::activation_function_enum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null activation_function_enum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
   arg3 = (int)jarg3; 
   (arg1)->set_activation_function_layer(arg2,arg3);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_activation_function_hidden(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_activation_function_hidden(void * jarg1, void * jarg2) {
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   FANN::activation_function_enum arg2 ;
+  FANN::activation_function_enum *argp2 ;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  arg2 = (FANN::activation_function_enum)jarg2; 
+  argp2 = (FANN::activation_function_enum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null activation_function_enum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
   (arg1)->set_activation_function_hidden(arg2);
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_activation_function_output(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_activation_function_output(void * jarg1, void * jarg2) {
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   FANN::activation_function_enum arg2 ;
+  FANN::activation_function_enum *argp2 ;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  arg2 = (FANN::activation_function_enum)jarg2; 
+  argp2 = (FANN::activation_function_enum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null activation_function_enum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
   (arg1)->set_activation_function_output(arg2);
 }
 
@@ -3313,24 +3068,30 @@ SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_activation_steepness_output(vo
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_neural_net_get_train_error_function(void * jarg1) {
-  int jresult ;
+SWIGEXPORT void * SWIGSTDCALL CSharp_neural_net_get_train_error_function(void * jarg1) {
+  void * jresult ;
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   FANN::error_function_enum result;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  result = (FANN::error_function_enum)(arg1)->get_train_error_function();
-  jresult = (int)result; 
+  result = (arg1)->get_train_error_function();
+  jresult = new FANN::error_function_enum((const FANN::error_function_enum &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_train_error_function(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_train_error_function(void * jarg1, void * jarg2) {
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   FANN::error_function_enum arg2 ;
+  FANN::error_function_enum *argp2 ;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  arg2 = (FANN::error_function_enum)jarg2; 
+  argp2 = (FANN::error_function_enum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null error_function_enum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
   (arg1)->set_train_error_function(arg2);
 }
 
@@ -3625,14 +3386,14 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_neural_net_get_total_connections(void
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_neural_net_get_network_type(void * jarg1) {
-  int jresult ;
+SWIGEXPORT void * SWIGSTDCALL CSharp_neural_net_get_network_type(void * jarg1) {
+  void * jresult ;
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   FANN::network_type_enum result;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  result = (FANN::network_type_enum)(arg1)->get_network_type();
-  jresult = (int)result; 
+  result = (arg1)->get_network_type();
+  jresult = new FANN::network_type_enum((const FANN::network_type_enum &)result); 
   return jresult;
 }
 
@@ -3739,24 +3500,30 @@ SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_learning_momentum(void * jarg1
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_neural_net_get_train_stop_function(void * jarg1) {
-  int jresult ;
+SWIGEXPORT void * SWIGSTDCALL CSharp_neural_net_get_train_stop_function(void * jarg1) {
+  void * jresult ;
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   FANN::stop_function_enum result;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  result = (FANN::stop_function_enum)(arg1)->get_train_stop_function();
-  jresult = (int)result; 
+  result = (arg1)->get_train_stop_function();
+  jresult = new FANN::stop_function_enum((const FANN::stop_function_enum &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_train_stop_function(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_train_stop_function(void * jarg1, void * jarg2) {
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   FANN::stop_function_enum arg2 ;
+  FANN::stop_function_enum *argp2 ;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  arg2 = (FANN::stop_function_enum)jarg2; 
+  argp2 = (FANN::stop_function_enum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null stop_function_enum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
   (arg1)->set_train_stop_function(arg2);
 }
 
@@ -4339,6 +4106,365 @@ SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_enable_seed_rand(void * jarg1) {
   
   arg1 = (FANN::neural_net *)jarg1; 
   (arg1)->enable_seed_rand();
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_training_data__SWIG_0() {
+  void * jresult ;
+  FANN::training_data *result = 0 ;
+  
+  result = (FANN::training_data *)new FANN::training_data();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_training_data__SWIG_1(void * jarg1) {
+  void * jresult ;
+  FANN::training_data *arg1 = 0 ;
+  FANN::training_data *result = 0 ;
+  
+  arg1 = (FANN::training_data *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "FANN::training_data const & type is null", 0);
+    return 0;
+  } 
+  result = (FANN::training_data *)new FANN::training_data((FANN::training_data const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_training_data(void * jarg1) {
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_training_data_destroy_train(void * jarg1) {
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  (arg1)->destroy_train();
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_training_data_read_train_from_file(void * jarg1, char * jarg2) {
+  unsigned int jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  std::string *arg2 = 0 ;
+  bool result;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  result = (bool)(arg1)->read_train_from_file((std::string const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_training_data_save_train(void * jarg1, char * jarg2) {
+  unsigned int jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  std::string *arg2 = 0 ;
+  bool result;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  result = (bool)(arg1)->save_train((std::string const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_training_data_save_train_to_fixed(void * jarg1, char * jarg2, unsigned int jarg3) {
+  unsigned int jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  std::string *arg2 = 0 ;
+  unsigned int arg3 ;
+  bool result;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  if (!jarg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg2_str(jarg2);
+  arg2 = &arg2_str; 
+  arg3 = (unsigned int)jarg3; 
+  result = (bool)(arg1)->save_train_to_fixed((std::string const &)*arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_training_data_shuffle_train_data(void * jarg1) {
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  (arg1)->shuffle_train_data();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_training_data_merge_train_data(void * jarg1, void * jarg2) {
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  FANN::training_data *arg2 = 0 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  arg2 = (FANN::training_data *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "FANN::training_data const & type is null", 0);
+    return ;
+  } 
+  (arg1)->merge_train_data((FANN::training_data const &)*arg2);
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_training_data_length_train_data(void * jarg1) {
+  unsigned int jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  unsigned int result;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  result = (unsigned int)(arg1)->length_train_data();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_training_data_num_input_train_data(void * jarg1) {
+  unsigned int jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  unsigned int result;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  result = (unsigned int)(arg1)->num_input_train_data();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_training_data_num_output_train_data(void * jarg1) {
+  unsigned int jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  unsigned int result;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  result = (unsigned int)(arg1)->num_output_train_data();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_training_data_get_input(void * jarg1) {
+  void * jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  fann_type **result = 0 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  result = (fann_type **)(arg1)->get_input();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_training_data_get_output(void * jarg1) {
+  void * jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  fann_type **result = 0 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  result = (fann_type **)(arg1)->get_output();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_training_data_get_train_input(void * jarg1, unsigned int jarg2) {
+  void * jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  unsigned int arg2 ;
+  fann_type *result = 0 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  result = (fann_type *)(arg1)->get_train_input(arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_training_data_get_train_output(void * jarg1, unsigned int jarg2) {
+  void * jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  unsigned int arg2 ;
+  fann_type *result = 0 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  result = (fann_type *)(arg1)->get_train_output(arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_training_data_set_train_data__SWIG_0(void * jarg1, unsigned int jarg2, unsigned int jarg3, void * jarg4, unsigned int jarg5, void * jarg6) {
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  fann_type **arg4 = (fann_type **) 0 ;
+  unsigned int arg5 ;
+  fann_type **arg6 = (fann_type **) 0 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  arg4 = (fann_type **)jarg4; 
+  arg5 = (unsigned int)jarg5; 
+  arg6 = (fann_type **)jarg6; 
+  (arg1)->set_train_data(arg2,arg3,arg4,arg5,arg6);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_training_data_set_train_data__SWIG_1(void * jarg1, unsigned int jarg2, unsigned int jarg3, void * jarg4, unsigned int jarg5, void * jarg6) {
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  fann_type *arg4 = (fann_type *) 0 ;
+  unsigned int arg5 ;
+  fann_type *arg6 = (fann_type *) 0 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  arg4 = (fann_type *)jarg4; 
+  arg5 = (unsigned int)jarg5; 
+  arg6 = (fann_type *)jarg6; 
+  (arg1)->set_train_data(arg2,arg3,arg4,arg5,arg6);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_training_data_create_train_from_callback(void * jarg1, unsigned int jarg2, unsigned int jarg3, unsigned int jarg4, void * jarg5) {
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  void (__stdcall *arg5)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *) = (void (__stdcall *)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *)) 0 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  arg4 = (unsigned int)jarg4; 
+  arg5 = (void (__stdcall *)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *))jarg5; 
+  (arg1)->create_train_from_callback(arg2,arg3,arg4,arg5);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_training_data_get_min_input(void * jarg1) {
+  float jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  fann_type result;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  result = (fann_type)(arg1)->get_min_input();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_training_data_get_max_input(void * jarg1) {
+  float jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  fann_type result;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  result = (fann_type)(arg1)->get_max_input();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_training_data_get_min_output(void * jarg1) {
+  float jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  fann_type result;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  result = (fann_type)(arg1)->get_min_output();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_training_data_get_max_output(void * jarg1) {
+  float jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  fann_type result;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  result = (fann_type)(arg1)->get_max_output();
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_training_data_scale_input_train_data(void * jarg1, float jarg2, float jarg3) {
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  fann_type arg2 ;
+  fann_type arg3 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  arg2 = (fann_type)jarg2; 
+  arg3 = (fann_type)jarg3; 
+  (arg1)->scale_input_train_data(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_training_data_scale_output_train_data(void * jarg1, float jarg2, float jarg3) {
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  fann_type arg2 ;
+  fann_type arg3 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  arg2 = (fann_type)jarg2; 
+  arg3 = (fann_type)jarg3; 
+  (arg1)->scale_output_train_data(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_training_data_scale_train_data(void * jarg1, float jarg2, float jarg3) {
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  fann_type arg2 ;
+  fann_type arg3 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  arg2 = (fann_type)jarg2; 
+  arg3 = (fann_type)jarg3; 
+  (arg1)->scale_train_data(arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_training_data_subset_train_data(void * jarg1, unsigned int jarg2, unsigned int jarg3) {
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  (arg1)->subset_train_data(arg2,arg3);
 }
 
 

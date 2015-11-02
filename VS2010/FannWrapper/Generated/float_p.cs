@@ -8,6 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
+namespace FannWrap {
 
 public class float_p : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
@@ -62,5 +63,7 @@ public class float_p : global::System.IDisposable {
     float_p ret = (cPtr == global::System.IntPtr.Zero) ? null : new float_p(cPtr, false);
     return ret;
   }
+
+}
 
 }
