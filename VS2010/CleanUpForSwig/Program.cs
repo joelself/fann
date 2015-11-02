@@ -77,13 +77,6 @@ namespace CleanUpForSwig
                                 "arg5 = (void (__stdcall *)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *))jarg5;");
             File.Delete(path);
             File.WriteAllText(path, text);
-
-            string dir = Path.GetDirectoryName(path);
-            DirectoryInfo dirInfo = Directory.GetParent(dir);
-            Project project = new Microsoft.Build.Evaluation.Project(dirInfo.FullName + "\\SwigFann.vcxproj");
-            project.AddItem("Folder", dirInfo.FullName + "\\src\\");
-            project.AddItem("Compile", path);
-            project.Save();
             return 0;
         }
     }

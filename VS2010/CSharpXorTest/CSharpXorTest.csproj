@@ -14,7 +14,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
+    <OutputPath>$(SolutionDir)..\bin\$(Platform)\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -23,7 +23,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
+    <OutputPath>$(SolutionDir)..\bin\$(Platform)\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -34,7 +34,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
+    <OutputPath>$(SolutionDir)..\bin\$(Platform)\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -43,7 +43,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
+    <OutputPath>$(SolutionDir)..\bin\$(Platform)\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -75,9 +75,21 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy $(SolutionDir)..\bin\$(Platform)\fannfloat.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\
+    <PostBuildEvent>if $(Platform) == x86 (
+copy $(SolutionDir)..\bin\Win32\fannfloat.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\
+) else (
+copy $(SolutionDir)..\bin\$(Platform)\fannfloat.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\
+)
+if $(Platform) == x86 (
+copy  $(SolutionDir)..\bin\Win32\fanndouble.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\
+) else  (
 copy  $(SolutionDir)..\bin\$(Platform)\fanndouble.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\
-copy $(SolutionDir)..\bin\$(Platform)\fannfixed.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\</PostBuildEvent>
+)
+if $(Platform) == x86 (
+copy $(SolutionDir)..\bin\Win32\fannfixed.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\
+) else (
+copy $(SolutionDir)..\bin\$(Platform)\fannfixed.dll $(SolutionDir)$(ProjectName)\bin\$(Platform)\$(Configuration)\
+)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
