@@ -32,7 +32,7 @@ public class fann_error : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          FannWrapperPINVOKE.delete_fann_error(swigCPtr);
+          SwigFannPINVOKE.delete_fann_error(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -42,20 +42,20 @@ public class fann_error : global::System.IDisposable {
 
   public fann_errno_enum errno_f {
     set {
-      FannWrapperPINVOKE.fann_error_errno_f_set(swigCPtr, (int)value);
+      SwigFannPINVOKE.fann_error_errno_f_set(swigCPtr, (int)value);
     } 
     get {
-      fann_errno_enum ret = (fann_errno_enum)FannWrapperPINVOKE.fann_error_errno_f_get(swigCPtr);
+      fann_errno_enum ret = (fann_errno_enum)SwigFannPINVOKE.fann_error_errno_f_get(swigCPtr);
       return ret;
     } 
   }
 
   public SWIGTYPE_p_FILE error_log {
     set {
-      FannWrapperPINVOKE.fann_error_error_log_set(swigCPtr, SWIGTYPE_p_FILE.getCPtr(value));
+      SwigFannPINVOKE.fann_error_error_log_set(swigCPtr, SWIGTYPE_p_FILE.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = FannWrapperPINVOKE.fann_error_error_log_get(swigCPtr);
+      global::System.IntPtr cPtr = SwigFannPINVOKE.fann_error_error_log_get(swigCPtr);
       SWIGTYPE_p_FILE ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_FILE(cPtr, false);
       return ret;
     } 
@@ -63,15 +63,15 @@ public class fann_error : global::System.IDisposable {
 
   public string errstr {
     set {
-      FannWrapperPINVOKE.fann_error_errstr_set(swigCPtr, value);
+      SwigFannPINVOKE.fann_error_errstr_set(swigCPtr, value);
     } 
     get {
-      string ret = FannWrapperPINVOKE.fann_error_errstr_get(swigCPtr);
+      string ret = SwigFannPINVOKE.fann_error_errstr_get(swigCPtr);
       return ret;
     } 
   }
 
-  public fann_error() : this(FannWrapperPINVOKE.new_fann_error(), true) {
+  public fann_error() : this(SwigFannPINVOKE.new_fann_error(), true) {
   }
 
 }

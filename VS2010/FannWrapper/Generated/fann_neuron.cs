@@ -32,7 +32,7 @@ public class fann_neuron : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          FannWrapperPINVOKE.delete_fann_neuron(swigCPtr);
+          SwigFannPINVOKE.delete_fann_neuron(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -42,65 +42,65 @@ public class fann_neuron : global::System.IDisposable {
 
   public uint first_con {
     set {
-      FannWrapperPINVOKE.fann_neuron_first_con_set(swigCPtr, value);
+      SwigFannPINVOKE.fann_neuron_first_con_set(swigCPtr, value);
     } 
     get {
-      uint ret = FannWrapperPINVOKE.fann_neuron_first_con_get(swigCPtr);
+      uint ret = SwigFannPINVOKE.fann_neuron_first_con_get(swigCPtr);
       return ret;
     } 
   }
 
   public uint last_con {
     set {
-      FannWrapperPINVOKE.fann_neuron_last_con_set(swigCPtr, value);
+      SwigFannPINVOKE.fann_neuron_last_con_set(swigCPtr, value);
     } 
     get {
-      uint ret = FannWrapperPINVOKE.fann_neuron_last_con_get(swigCPtr);
+      uint ret = SwigFannPINVOKE.fann_neuron_last_con_get(swigCPtr);
       return ret;
     } 
   }
 
   public float sum {
     set {
-      FannWrapperPINVOKE.fann_neuron_sum_set(swigCPtr, value);
+      SwigFannPINVOKE.fann_neuron_sum_set(swigCPtr, value);
     } 
     get {
-      float ret = FannWrapperPINVOKE.fann_neuron_sum_get(swigCPtr);
+      float ret = SwigFannPINVOKE.fann_neuron_sum_get(swigCPtr);
       return ret;
     } 
   }
 
   public float value {
     set {
-      FannWrapperPINVOKE.fann_neuron_value_set(swigCPtr, value);
+      SwigFannPINVOKE.fann_neuron_value_set(swigCPtr, value);
     } 
     get {
-      float ret = FannWrapperPINVOKE.fann_neuron_value_get(swigCPtr);
+      float ret = SwigFannPINVOKE.fann_neuron_value_get(swigCPtr);
       return ret;
     } 
   }
 
   public float activation_steepness {
     set {
-      FannWrapperPINVOKE.fann_neuron_activation_steepness_set(swigCPtr, value);
+      SwigFannPINVOKE.fann_neuron_activation_steepness_set(swigCPtr, value);
     } 
     get {
-      float ret = FannWrapperPINVOKE.fann_neuron_activation_steepness_get(swigCPtr);
+      float ret = SwigFannPINVOKE.fann_neuron_activation_steepness_get(swigCPtr);
       return ret;
     } 
   }
 
   public fann_activationfunc_enum activation_function {
     set {
-      FannWrapperPINVOKE.fann_neuron_activation_function_set(swigCPtr, (int)value);
+      SwigFannPINVOKE.fann_neuron_activation_function_set(swigCPtr, (int)value);
     } 
     get {
-      fann_activationfunc_enum ret = (fann_activationfunc_enum)FannWrapperPINVOKE.fann_neuron_activation_function_get(swigCPtr);
+      fann_activationfunc_enum ret = (fann_activationfunc_enum)SwigFannPINVOKE.fann_neuron_activation_function_get(swigCPtr);
       return ret;
     } 
   }
 
-  public fann_neuron() : this(FannWrapperPINVOKE.new_fann_neuron(), true) {
+  public fann_neuron() : this(SwigFannPINVOKE.new_fann_neuron(), true) {
   }
 
 }

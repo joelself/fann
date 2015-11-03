@@ -32,7 +32,7 @@ public class fann_layer : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          FannWrapperPINVOKE.delete_fann_layer(swigCPtr);
+          SwigFannPINVOKE.delete_fann_layer(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -42,10 +42,10 @@ public class fann_layer : global::System.IDisposable {
 
   public fann_neuron first_neuron {
     set {
-      FannWrapperPINVOKE.fann_layer_first_neuron_set(swigCPtr, fann_neuron.getCPtr(value));
+      SwigFannPINVOKE.fann_layer_first_neuron_set(swigCPtr, fann_neuron.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = FannWrapperPINVOKE.fann_layer_first_neuron_get(swigCPtr);
+      global::System.IntPtr cPtr = SwigFannPINVOKE.fann_layer_first_neuron_get(swigCPtr);
       fann_neuron ret = (cPtr == global::System.IntPtr.Zero) ? null : new fann_neuron(cPtr, false);
       return ret;
     } 
@@ -53,16 +53,16 @@ public class fann_layer : global::System.IDisposable {
 
   public fann_neuron last_neuron {
     set {
-      FannWrapperPINVOKE.fann_layer_last_neuron_set(swigCPtr, fann_neuron.getCPtr(value));
+      SwigFannPINVOKE.fann_layer_last_neuron_set(swigCPtr, fann_neuron.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = FannWrapperPINVOKE.fann_layer_last_neuron_get(swigCPtr);
+      global::System.IntPtr cPtr = SwigFannPINVOKE.fann_layer_last_neuron_get(swigCPtr);
       fann_neuron ret = (cPtr == global::System.IntPtr.Zero) ? null : new fann_neuron(cPtr, false);
       return ret;
     } 
   }
 
-  public fann_layer() : this(FannWrapperPINVOKE.new_fann_layer(), true) {
+  public fann_layer() : this(SwigFannPINVOKE.new_fann_layer(), true) {
   }
 
 }

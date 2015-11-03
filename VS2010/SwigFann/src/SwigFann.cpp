@@ -237,7 +237,7 @@ static void SWIGUNUSED SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpExcepti
 #ifdef __cplusplus
 extern "C" 
 #endif
-SWIGEXPORT void SWIGSTDCALL SWIGRegisterExceptionCallbacks_FannWrapper(
+SWIGEXPORT void SWIGSTDCALL SWIGRegisterExceptionCallbacks_SwigFann(
                                                 SWIG_CSharpExceptionCallback_t applicationCallback,
                                                 SWIG_CSharpExceptionCallback_t arithmeticCallback,
                                                 SWIG_CSharpExceptionCallback_t divideByZeroCallback, 
@@ -265,7 +265,7 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterExceptionCallbacks_FannWrapper(
 #ifdef __cplusplus
 extern "C" 
 #endif
-SWIGEXPORT void SWIGSTDCALL SWIGRegisterExceptionArgumentCallbacks_FannWrapper(
+SWIGEXPORT void SWIGSTDCALL SWIGRegisterExceptionArgumentCallbacks_SwigFann(
                                                 SWIG_CSharpExceptionArgumentCallback_t argumentCallback,
                                                 SWIG_CSharpExceptionArgumentCallback_t argumentNullCallback,
                                                 SWIG_CSharpExceptionArgumentCallback_t argumentOutOfRangeCallback) {
@@ -283,7 +283,7 @@ static SWIG_CSharpStringHelperCallback SWIG_csharp_string_callback = NULL;
 #ifdef __cplusplus
 extern "C" 
 #endif
-SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_FannWrapper(SWIG_CSharpStringHelperCallback callback) {
+SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_SwigFann(SWIG_CSharpStringHelperCallback callback) {
   SWIG_csharp_string_callback = callback;
 }
 
@@ -299,6 +299,7 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_FannWrapper(SWIG_CSharpSt
 #include "fann_data.h"
 #include "fann_data_cpp.h"
 #include "fann_training_data_cpp.h"
+#include "stdio.h"
 
 
 #include <string>
@@ -346,6 +347,111 @@ SWIGINTERN float_p *float_p_frompointer(float *t){
   return (float_p *) t;
 }
 
+typedef FANN::training_algorithm_enum training_algorithm_enum_p;
+
+SWIGINTERN training_algorithm_enum_p *new_training_algorithm_enum_p(){
+  return new FANN::training_algorithm_enum();
+}
+SWIGINTERN void delete_training_algorithm_enum_p(training_algorithm_enum_p *self){
+  if (self) delete self;
+}
+SWIGINTERN void training_algorithm_enum_p_assign(training_algorithm_enum_p *self,FANN::training_algorithm_enum value){
+  *self = value;
+}
+SWIGINTERN FANN::training_algorithm_enum training_algorithm_enum_p_value(training_algorithm_enum_p *self){
+  return *self;
+}
+SWIGINTERN FANN::training_algorithm_enum *training_algorithm_enum_p_cast(training_algorithm_enum_p *self){
+  return self;
+}
+SWIGINTERN training_algorithm_enum_p *training_algorithm_enum_p_frompointer(FANN::training_algorithm_enum *t){
+  return (training_algorithm_enum_p *) t;
+}
+
+typedef FANN::activation_function_enum activation_function_enum_p;
+
+SWIGINTERN activation_function_enum_p *new_activation_function_enum_p(){
+  return new FANN::activation_function_enum();
+}
+SWIGINTERN void delete_activation_function_enum_p(activation_function_enum_p *self){
+  if (self) delete self;
+}
+SWIGINTERN void activation_function_enum_p_assign(activation_function_enum_p *self,FANN::activation_function_enum value){
+  *self = value;
+}
+SWIGINTERN FANN::activation_function_enum activation_function_enum_p_value(activation_function_enum_p *self){
+  return *self;
+}
+SWIGINTERN FANN::activation_function_enum *activation_function_enum_p_cast(activation_function_enum_p *self){
+  return self;
+}
+SWIGINTERN activation_function_enum_p *activation_function_enum_p_frompointer(FANN::activation_function_enum *t){
+  return (activation_function_enum_p *) t;
+}
+
+typedef FANN::error_function_enum error_function_enum_p;
+
+SWIGINTERN error_function_enum_p *new_error_function_enum_p(){
+  return new FANN::error_function_enum();
+}
+SWIGINTERN void delete_error_function_enum_p(error_function_enum_p *self){
+  if (self) delete self;
+}
+SWIGINTERN void error_function_enum_p_assign(error_function_enum_p *self,FANN::error_function_enum value){
+  *self = value;
+}
+SWIGINTERN FANN::error_function_enum error_function_enum_p_value(error_function_enum_p *self){
+  return *self;
+}
+SWIGINTERN FANN::error_function_enum *error_function_enum_p_cast(error_function_enum_p *self){
+  return self;
+}
+SWIGINTERN error_function_enum_p *error_function_enum_p_frompointer(FANN::error_function_enum *t){
+  return (error_function_enum_p *) t;
+}
+
+typedef FANN::network_type_enum network_type_enum_p;
+
+SWIGINTERN network_type_enum_p *new_network_type_enum_p(){
+  return new FANN::network_type_enum();
+}
+SWIGINTERN void delete_network_type_enum_p(network_type_enum_p *self){
+  if (self) delete self;
+}
+SWIGINTERN void network_type_enum_p_assign(network_type_enum_p *self,FANN::network_type_enum value){
+  *self = value;
+}
+SWIGINTERN FANN::network_type_enum network_type_enum_p_value(network_type_enum_p *self){
+  return *self;
+}
+SWIGINTERN FANN::network_type_enum *network_type_enum_p_cast(network_type_enum_p *self){
+  return self;
+}
+SWIGINTERN network_type_enum_p *network_type_enum_p_frompointer(FANN::network_type_enum *t){
+  return (network_type_enum_p *) t;
+}
+
+typedef FANN::stop_function_enum stop_function_enum_p;
+
+SWIGINTERN stop_function_enum_p *new_stop_function_enum_p(){
+  return new FANN::stop_function_enum();
+}
+SWIGINTERN void delete_stop_function_enum_p(stop_function_enum_p *self){
+  if (self) delete self;
+}
+SWIGINTERN void stop_function_enum_p_assign(stop_function_enum_p *self,FANN::stop_function_enum value){
+  *self = value;
+}
+SWIGINTERN FANN::stop_function_enum stop_function_enum_p_value(stop_function_enum_p *self){
+  return *self;
+}
+SWIGINTERN FANN::stop_function_enum *stop_function_enum_p_cast(stop_function_enum_p *self){
+  return self;
+}
+SWIGINTERN stop_function_enum_p *stop_function_enum_p_frompointer(FANN::stop_function_enum *t){
+  return (stop_function_enum_p *) t;
+}
+
 static float* *new_float_p_array(int nelements) { 
   return new float*[nelements](); 
 }
@@ -374,6 +480,38 @@ static float float_array_getitem(float *ary, int index) {
     return ary[index];
 }
 static void float_array_setitem(float *ary, int index, float value) {
+    ary[index] = value;
+}
+
+
+static unsigned int *new_uint_array(int nelements) { 
+  return new unsigned int[nelements](); 
+}
+
+static void delete_uint_array(unsigned int *ary) { 
+  delete [] ary; 
+}
+
+static unsigned int uint_array_getitem(unsigned int *ary, int index) {
+    return ary[index];
+}
+static void uint_array_setitem(unsigned int *ary, int index, unsigned int value) {
+    ary[index] = value;
+}
+
+
+static FANN::connection *new_connection_array(int nelements) { 
+  return new connection[nelements](); 
+}
+
+static void delete_connection_array(FANN::connection *ary) { 
+  delete [] ary; 
+}
+
+static FANN::connection connection_array_getitem(FANN::connection *ary, int index) {
+    return ary[index];
+}
+static void connection_array_setitem(FANN::connection *ary, int index, FANN::connection value) {
     ary[index] = value;
 }
 
@@ -4468,6 +4606,20 @@ SWIGEXPORT void SWIGSTDCALL CSharp_training_data_subset_train_data(void * jarg1,
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_fopen(char * jarg1, char * jarg2) {
+  void * jresult ;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  FILE *result = 0 ;
+  
+  arg1 = (char *)jarg1; 
+  arg2 = (char *)jarg2; 
+  result = (FILE *)fopen((char const *)arg1,(char const *)arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_fann_type_p() {
   void * jresult ;
   fann_type_p *result = 0 ;
@@ -4596,6 +4748,356 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_float_p_frompointer(void * jarg1) {
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_training_algorithm_enum_p() {
+  void * jresult ;
+  training_algorithm_enum_p *result = 0 ;
+  
+  result = (training_algorithm_enum_p *)new_training_algorithm_enum_p();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_training_algorithm_enum_p(void * jarg1) {
+  training_algorithm_enum_p *arg1 = (training_algorithm_enum_p *) 0 ;
+  
+  arg1 = (training_algorithm_enum_p *)jarg1; 
+  delete_training_algorithm_enum_p(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_training_algorithm_enum_p_assign(void * jarg1, void * jarg2) {
+  training_algorithm_enum_p *arg1 = (training_algorithm_enum_p *) 0 ;
+  FANN::training_algorithm_enum arg2 ;
+  FANN::training_algorithm_enum *argp2 ;
+  
+  arg1 = (training_algorithm_enum_p *)jarg1; 
+  argp2 = (FANN::training_algorithm_enum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null training_algorithm_enum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  training_algorithm_enum_p_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_training_algorithm_enum_p_value(void * jarg1) {
+  void * jresult ;
+  training_algorithm_enum_p *arg1 = (training_algorithm_enum_p *) 0 ;
+  FANN::training_algorithm_enum result;
+  
+  arg1 = (training_algorithm_enum_p *)jarg1; 
+  result = training_algorithm_enum_p_value(arg1);
+  jresult = new FANN::training_algorithm_enum((const FANN::training_algorithm_enum &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_training_algorithm_enum_p_cast(void * jarg1) {
+  void * jresult ;
+  training_algorithm_enum_p *arg1 = (training_algorithm_enum_p *) 0 ;
+  FANN::training_algorithm_enum *result = 0 ;
+  
+  arg1 = (training_algorithm_enum_p *)jarg1; 
+  result = (FANN::training_algorithm_enum *)training_algorithm_enum_p_cast(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_training_algorithm_enum_p_frompointer(void * jarg1) {
+  void * jresult ;
+  FANN::training_algorithm_enum *arg1 = (FANN::training_algorithm_enum *) 0 ;
+  training_algorithm_enum_p *result = 0 ;
+  
+  arg1 = (FANN::training_algorithm_enum *)jarg1; 
+  result = (training_algorithm_enum_p *)training_algorithm_enum_p_frompointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_activation_function_enum_p() {
+  void * jresult ;
+  activation_function_enum_p *result = 0 ;
+  
+  result = (activation_function_enum_p *)new_activation_function_enum_p();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_activation_function_enum_p(void * jarg1) {
+  activation_function_enum_p *arg1 = (activation_function_enum_p *) 0 ;
+  
+  arg1 = (activation_function_enum_p *)jarg1; 
+  delete_activation_function_enum_p(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_activation_function_enum_p_assign(void * jarg1, void * jarg2) {
+  activation_function_enum_p *arg1 = (activation_function_enum_p *) 0 ;
+  FANN::activation_function_enum arg2 ;
+  FANN::activation_function_enum *argp2 ;
+  
+  arg1 = (activation_function_enum_p *)jarg1; 
+  argp2 = (FANN::activation_function_enum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null activation_function_enum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  activation_function_enum_p_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_activation_function_enum_p_value(void * jarg1) {
+  void * jresult ;
+  activation_function_enum_p *arg1 = (activation_function_enum_p *) 0 ;
+  FANN::activation_function_enum result;
+  
+  arg1 = (activation_function_enum_p *)jarg1; 
+  result = activation_function_enum_p_value(arg1);
+  jresult = new FANN::activation_function_enum((const FANN::activation_function_enum &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_activation_function_enum_p_cast(void * jarg1) {
+  void * jresult ;
+  activation_function_enum_p *arg1 = (activation_function_enum_p *) 0 ;
+  FANN::activation_function_enum *result = 0 ;
+  
+  arg1 = (activation_function_enum_p *)jarg1; 
+  result = (FANN::activation_function_enum *)activation_function_enum_p_cast(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_activation_function_enum_p_frompointer(void * jarg1) {
+  void * jresult ;
+  FANN::activation_function_enum *arg1 = (FANN::activation_function_enum *) 0 ;
+  activation_function_enum_p *result = 0 ;
+  
+  arg1 = (FANN::activation_function_enum *)jarg1; 
+  result = (activation_function_enum_p *)activation_function_enum_p_frompointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_error_function_enum_p() {
+  void * jresult ;
+  error_function_enum_p *result = 0 ;
+  
+  result = (error_function_enum_p *)new_error_function_enum_p();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_error_function_enum_p(void * jarg1) {
+  error_function_enum_p *arg1 = (error_function_enum_p *) 0 ;
+  
+  arg1 = (error_function_enum_p *)jarg1; 
+  delete_error_function_enum_p(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_error_function_enum_p_assign(void * jarg1, void * jarg2) {
+  error_function_enum_p *arg1 = (error_function_enum_p *) 0 ;
+  FANN::error_function_enum arg2 ;
+  FANN::error_function_enum *argp2 ;
+  
+  arg1 = (error_function_enum_p *)jarg1; 
+  argp2 = (FANN::error_function_enum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null error_function_enum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  error_function_enum_p_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_error_function_enum_p_value(void * jarg1) {
+  void * jresult ;
+  error_function_enum_p *arg1 = (error_function_enum_p *) 0 ;
+  FANN::error_function_enum result;
+  
+  arg1 = (error_function_enum_p *)jarg1; 
+  result = error_function_enum_p_value(arg1);
+  jresult = new FANN::error_function_enum((const FANN::error_function_enum &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_error_function_enum_p_cast(void * jarg1) {
+  void * jresult ;
+  error_function_enum_p *arg1 = (error_function_enum_p *) 0 ;
+  FANN::error_function_enum *result = 0 ;
+  
+  arg1 = (error_function_enum_p *)jarg1; 
+  result = (FANN::error_function_enum *)error_function_enum_p_cast(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_error_function_enum_p_frompointer(void * jarg1) {
+  void * jresult ;
+  FANN::error_function_enum *arg1 = (FANN::error_function_enum *) 0 ;
+  error_function_enum_p *result = 0 ;
+  
+  arg1 = (FANN::error_function_enum *)jarg1; 
+  result = (error_function_enum_p *)error_function_enum_p_frompointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_network_type_enum_p() {
+  void * jresult ;
+  network_type_enum_p *result = 0 ;
+  
+  result = (network_type_enum_p *)new_network_type_enum_p();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_network_type_enum_p(void * jarg1) {
+  network_type_enum_p *arg1 = (network_type_enum_p *) 0 ;
+  
+  arg1 = (network_type_enum_p *)jarg1; 
+  delete_network_type_enum_p(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_network_type_enum_p_assign(void * jarg1, void * jarg2) {
+  network_type_enum_p *arg1 = (network_type_enum_p *) 0 ;
+  FANN::network_type_enum arg2 ;
+  FANN::network_type_enum *argp2 ;
+  
+  arg1 = (network_type_enum_p *)jarg1; 
+  argp2 = (FANN::network_type_enum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null network_type_enum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  network_type_enum_p_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_network_type_enum_p_value(void * jarg1) {
+  void * jresult ;
+  network_type_enum_p *arg1 = (network_type_enum_p *) 0 ;
+  FANN::network_type_enum result;
+  
+  arg1 = (network_type_enum_p *)jarg1; 
+  result = network_type_enum_p_value(arg1);
+  jresult = new FANN::network_type_enum((const FANN::network_type_enum &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_network_type_enum_p_cast(void * jarg1) {
+  void * jresult ;
+  network_type_enum_p *arg1 = (network_type_enum_p *) 0 ;
+  FANN::network_type_enum *result = 0 ;
+  
+  arg1 = (network_type_enum_p *)jarg1; 
+  result = (FANN::network_type_enum *)network_type_enum_p_cast(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_network_type_enum_p_frompointer(void * jarg1) {
+  void * jresult ;
+  FANN::network_type_enum *arg1 = (FANN::network_type_enum *) 0 ;
+  network_type_enum_p *result = 0 ;
+  
+  arg1 = (FANN::network_type_enum *)jarg1; 
+  result = (network_type_enum_p *)network_type_enum_p_frompointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_stop_function_enum_p() {
+  void * jresult ;
+  stop_function_enum_p *result = 0 ;
+  
+  result = (stop_function_enum_p *)new_stop_function_enum_p();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_stop_function_enum_p(void * jarg1) {
+  stop_function_enum_p *arg1 = (stop_function_enum_p *) 0 ;
+  
+  arg1 = (stop_function_enum_p *)jarg1; 
+  delete_stop_function_enum_p(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_stop_function_enum_p_assign(void * jarg1, void * jarg2) {
+  stop_function_enum_p *arg1 = (stop_function_enum_p *) 0 ;
+  FANN::stop_function_enum arg2 ;
+  FANN::stop_function_enum *argp2 ;
+  
+  arg1 = (stop_function_enum_p *)jarg1; 
+  argp2 = (FANN::stop_function_enum *)jarg2; 
+  if (!argp2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null stop_function_enum", 0);
+    return ;
+  }
+  arg2 = *argp2; 
+  stop_function_enum_p_assign(arg1,arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_stop_function_enum_p_value(void * jarg1) {
+  void * jresult ;
+  stop_function_enum_p *arg1 = (stop_function_enum_p *) 0 ;
+  FANN::stop_function_enum result;
+  
+  arg1 = (stop_function_enum_p *)jarg1; 
+  result = stop_function_enum_p_value(arg1);
+  jresult = new FANN::stop_function_enum((const FANN::stop_function_enum &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_stop_function_enum_p_cast(void * jarg1) {
+  void * jresult ;
+  stop_function_enum_p *arg1 = (stop_function_enum_p *) 0 ;
+  FANN::stop_function_enum *result = 0 ;
+  
+  arg1 = (stop_function_enum_p *)jarg1; 
+  result = (FANN::stop_function_enum *)stop_function_enum_p_cast(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_stop_function_enum_p_frompointer(void * jarg1) {
+  void * jresult ;
+  FANN::stop_function_enum *arg1 = (FANN::stop_function_enum *) 0 ;
+  stop_function_enum_p *result = 0 ;
+  
+  arg1 = (FANN::stop_function_enum *)jarg1; 
+  result = (stop_function_enum_p *)stop_function_enum_p_frompointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_float_p_array(int jarg1) {
   void * jresult ;
   int arg1 ;
@@ -4685,6 +5187,104 @@ SWIGEXPORT void SWIGSTDCALL CSharp_float_array_setitem(void * jarg1, int jarg2, 
   arg2 = (int)jarg2; 
   arg3 = (float)jarg3; 
   float_array_setitem(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_uint_array(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  unsigned int *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  result = (unsigned int *)new_uint_array(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_uint_array(void * jarg1) {
+  unsigned int *arg1 = (unsigned int *) 0 ;
+  
+  arg1 = (unsigned int *)jarg1; 
+  delete_uint_array(arg1);
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_uint_array_getitem(void * jarg1, int jarg2) {
+  unsigned int jresult ;
+  unsigned int *arg1 = (unsigned int *) 0 ;
+  int arg2 ;
+  unsigned int result;
+  
+  arg1 = (unsigned int *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (unsigned int)uint_array_getitem(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_uint_array_setitem(void * jarg1, int jarg2, unsigned int jarg3) {
+  unsigned int *arg1 = (unsigned int *) 0 ;
+  int arg2 ;
+  unsigned int arg3 ;
+  
+  arg1 = (unsigned int *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  uint_array_setitem(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_connection_array(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  FANN::connection *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  result = (FANN::connection *)new_connection_array(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_connection_array(void * jarg1) {
+  FANN::connection *arg1 = (FANN::connection *) 0 ;
+  
+  arg1 = (FANN::connection *)jarg1; 
+  delete_connection_array(arg1);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_connection_array_getitem(void * jarg1, int jarg2) {
+  void * jresult ;
+  FANN::connection *arg1 = (FANN::connection *) 0 ;
+  int arg2 ;
+  FANN::connection result;
+  
+  arg1 = (FANN::connection *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = connection_array_getitem(arg1,arg2);
+  jresult = new FANN::connection((const FANN::connection &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_connection_array_setitem(void * jarg1, int jarg2, void * jarg3) {
+  FANN::connection *arg1 = (FANN::connection *) 0 ;
+  int arg2 ;
+  FANN::connection arg3 ;
+  FANN::connection *argp3 ;
+  
+  arg1 = (FANN::connection *)jarg1; 
+  arg2 = (int)jarg2; 
+  argp3 = (FANN::connection *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null connection", 0);
+    return ;
+  }
+  arg3 = *argp3; 
+  connection_array_setitem(arg1,arg2,arg3);
 }
 
 

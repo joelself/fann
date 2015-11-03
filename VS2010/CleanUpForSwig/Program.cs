@@ -54,30 +54,6 @@ namespace CleanUpForSwig
             text = File.ReadAllText(folder + "activation_function_enum.cs");
             text = text.Replace("FANN_LINEAR", "fann_activationfunc_enum.FANN_LINEAR");
             File.WriteAllText(folder + "activation_function_enum.cs", text);
-
-            Console.WriteLine("Fixing code in " + folder + "FannWrapperPINVOKE.cs");
-            string code;
-            try
-            {
-                code = File.ReadAllText(folder + "FannWrapperPINVOKE.cs");
-            }
-            catch
-            {
-                // Might not be there yet, try again in half a second
-                Thread.Sleep(500);
-                code = File.ReadAllText(folder + "FannWrapperPINVOKE.cs");
-            }
-            code = code.Replace("\"FannWrapper\"", "\"SwigFann\"");
-            try
-            {
-                File.WriteAllText(folder + "FannWrapperPINVOKE.cs", code);
-            }
-            catch (System.IO.IOException ex)
-            {
-                // Might still be in use, try again in half a second
-                Thread.Sleep(500);
-                File.WriteAllText(folder + "FannWrapperPINVOKE.cs", code);
-            }
             return 0;
         }
 

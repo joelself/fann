@@ -32,7 +32,7 @@ public class float_p : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          FannWrapperPINVOKE.delete_float_p(swigCPtr);
+          SwigFannPINVOKE.delete_float_p(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -40,26 +40,26 @@ public class float_p : global::System.IDisposable {
     }
   }
 
-  public float_p() : this(FannWrapperPINVOKE.new_float_p(), true) {
+  public float_p() : this(SwigFannPINVOKE.new_float_p(), true) {
   }
 
   public void assign(float value) {
-    FannWrapperPINVOKE.float_p_assign(swigCPtr, value);
+    SwigFannPINVOKE.float_p_assign(swigCPtr, value);
   }
 
   public float value() {
-    float ret = FannWrapperPINVOKE.float_p_value(swigCPtr);
+    float ret = SwigFannPINVOKE.float_p_value(swigCPtr);
     return ret;
   }
 
   public SWIGTYPE_p_float cast() {
-    global::System.IntPtr cPtr = FannWrapperPINVOKE.float_p_cast(swigCPtr);
+    global::System.IntPtr cPtr = SwigFannPINVOKE.float_p_cast(swigCPtr);
     SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
     return ret;
   }
 
   public static float_p frompointer(SWIGTYPE_p_float t) {
-    global::System.IntPtr cPtr = FannWrapperPINVOKE.float_p_frompointer(SWIGTYPE_p_float.getCPtr(t));
+    global::System.IntPtr cPtr = SwigFannPINVOKE.float_p_frompointer(SWIGTYPE_p_float.getCPtr(t));
     float_p ret = (cPtr == global::System.IntPtr.Zero) ? null : new float_p(cPtr, false);
     return ret;
   }

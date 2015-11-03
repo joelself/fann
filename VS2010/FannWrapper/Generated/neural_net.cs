@@ -32,7 +32,7 @@ public class neural_net : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          FannWrapperPINVOKE.delete_neural_net(swigCPtr);
+          SwigFannPINVOKE.delete_neural_net(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -40,610 +40,610 @@ public class neural_net : global::System.IDisposable {
     }
   }
 
-  public neural_net() : this(FannWrapperPINVOKE.new_neural_net__SWIG_0(), true) {
+  public neural_net() : this(SwigFannPINVOKE.new_neural_net__SWIG_0(), true) {
   }
 
-  public neural_net(neural_net other) : this(FannWrapperPINVOKE.new_neural_net__SWIG_1(neural_net.getCPtr(other)), true) {
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+  public neural_net(neural_net other) : this(SwigFannPINVOKE.new_neural_net__SWIG_1(neural_net.getCPtr(other)), true) {
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public neural_net(fann other) : this(FannWrapperPINVOKE.new_neural_net__SWIG_2(fann.getCPtr(other)), true) {
+  public neural_net(fann other) : this(SwigFannPINVOKE.new_neural_net__SWIG_2(fann.getCPtr(other)), true) {
   }
 
   public void copy_from_struct_fann(fann other) {
-    FannWrapperPINVOKE.neural_net_copy_from_struct_fann(swigCPtr, fann.getCPtr(other));
+    SwigFannPINVOKE.neural_net_copy_from_struct_fann(swigCPtr, fann.getCPtr(other));
   }
 
   public void destroy() {
-    FannWrapperPINVOKE.neural_net_destroy(swigCPtr);
+    SwigFannPINVOKE.neural_net_destroy(swigCPtr);
   }
 
   public bool create_standard(uint num_layers) {
-    bool ret = FannWrapperPINVOKE.neural_net_create_standard(swigCPtr, num_layers);
+    bool ret = SwigFannPINVOKE.neural_net_create_standard(swigCPtr, num_layers);
     return ret;
   }
 
   public bool create_standard_array(uint num_layers, SWIGTYPE_p_unsigned_int layers) {
-    bool ret = FannWrapperPINVOKE.neural_net_create_standard_array(swigCPtr, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers));
+    bool ret = SwigFannPINVOKE.neural_net_create_standard_array(swigCPtr, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers));
     return ret;
   }
 
   public bool create_sparse(float connection_rate, uint num_layers) {
-    bool ret = FannWrapperPINVOKE.neural_net_create_sparse(swigCPtr, connection_rate, num_layers);
+    bool ret = SwigFannPINVOKE.neural_net_create_sparse(swigCPtr, connection_rate, num_layers);
     return ret;
   }
 
   public bool create_sparse_array(float connection_rate, uint num_layers, SWIGTYPE_p_unsigned_int layers) {
-    bool ret = FannWrapperPINVOKE.neural_net_create_sparse_array(swigCPtr, connection_rate, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers));
+    bool ret = SwigFannPINVOKE.neural_net_create_sparse_array(swigCPtr, connection_rate, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers));
     return ret;
   }
 
   public bool create_shortcut(uint num_layers) {
-    bool ret = FannWrapperPINVOKE.neural_net_create_shortcut(swigCPtr, num_layers);
+    bool ret = SwigFannPINVOKE.neural_net_create_shortcut(swigCPtr, num_layers);
     return ret;
   }
 
   public bool create_shortcut_array(uint num_layers, SWIGTYPE_p_unsigned_int layers) {
-    bool ret = FannWrapperPINVOKE.neural_net_create_shortcut_array(swigCPtr, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers));
+    bool ret = SwigFannPINVOKE.neural_net_create_shortcut_array(swigCPtr, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers));
     return ret;
   }
 
   public SWIGTYPE_p_float run(SWIGTYPE_p_float input) {
-    global::System.IntPtr cPtr = FannWrapperPINVOKE.neural_net_run(swigCPtr, SWIGTYPE_p_float.getCPtr(input));
+    global::System.IntPtr cPtr = SwigFannPINVOKE.neural_net_run(swigCPtr, SWIGTYPE_p_float.getCPtr(input));
     SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
     return ret;
   }
 
   public void randomize_weights(float min_weight, float max_weight) {
-    FannWrapperPINVOKE.neural_net_randomize_weights(swigCPtr, min_weight, max_weight);
+    SwigFannPINVOKE.neural_net_randomize_weights(swigCPtr, min_weight, max_weight);
   }
 
   public void init_weights(SWIGTYPE_p_training_data data) {
-    FannWrapperPINVOKE.neural_net_init_weights(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_init_weights(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void print_connections() {
-    FannWrapperPINVOKE.neural_net_print_connections(swigCPtr);
+    SwigFannPINVOKE.neural_net_print_connections(swigCPtr);
   }
 
   public bool create_from_file(string configuration_file) {
-    bool ret = FannWrapperPINVOKE.neural_net_create_from_file(swigCPtr, configuration_file);
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    bool ret = SwigFannPINVOKE.neural_net_create_from_file(swigCPtr, configuration_file);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool save(string configuration_file) {
-    bool ret = FannWrapperPINVOKE.neural_net_save(swigCPtr, configuration_file);
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    bool ret = SwigFannPINVOKE.neural_net_save(swigCPtr, configuration_file);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public int save_to_fixed(string configuration_file) {
-    int ret = FannWrapperPINVOKE.neural_net_save_to_fixed(swigCPtr, configuration_file);
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    int ret = SwigFannPINVOKE.neural_net_save_to_fixed(swigCPtr, configuration_file);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void train(SWIGTYPE_p_float input, SWIGTYPE_p_float desired_output) {
-    FannWrapperPINVOKE.neural_net_train(swigCPtr, SWIGTYPE_p_float.getCPtr(input), SWIGTYPE_p_float.getCPtr(desired_output));
+    SwigFannPINVOKE.neural_net_train(swigCPtr, SWIGTYPE_p_float.getCPtr(input), SWIGTYPE_p_float.getCPtr(desired_output));
   }
 
   public float train_epoch(SWIGTYPE_p_training_data data) {
-    float ret = FannWrapperPINVOKE.neural_net_train_epoch(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    float ret = SwigFannPINVOKE.neural_net_train_epoch(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void train_on_data(SWIGTYPE_p_training_data data, uint max_epochs, uint epochs_between_reports, float desired_error) {
-    FannWrapperPINVOKE.neural_net_train_on_data(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), max_epochs, epochs_between_reports, desired_error);
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_train_on_data(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), max_epochs, epochs_between_reports, desired_error);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void train_on_file(string filename, uint max_epochs, uint epochs_between_reports, float desired_error) {
-    FannWrapperPINVOKE.neural_net_train_on_file(swigCPtr, filename, max_epochs, epochs_between_reports, desired_error);
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_train_on_file(swigCPtr, filename, max_epochs, epochs_between_reports, desired_error);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public SWIGTYPE_p_float test(SWIGTYPE_p_float input, SWIGTYPE_p_float desired_output) {
-    global::System.IntPtr cPtr = FannWrapperPINVOKE.neural_net_test(swigCPtr, SWIGTYPE_p_float.getCPtr(input), SWIGTYPE_p_float.getCPtr(desired_output));
+    global::System.IntPtr cPtr = SwigFannPINVOKE.neural_net_test(swigCPtr, SWIGTYPE_p_float.getCPtr(input), SWIGTYPE_p_float.getCPtr(desired_output));
     SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
     return ret;
   }
 
   public float test_data(SWIGTYPE_p_training_data data) {
-    float ret = FannWrapperPINVOKE.neural_net_test_data(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    float ret = SwigFannPINVOKE.neural_net_test_data(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public float get_MSE() {
-    float ret = FannWrapperPINVOKE.neural_net_get_MSE(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_MSE(swigCPtr);
     return ret;
   }
 
   public void reset_MSE() {
-    FannWrapperPINVOKE.neural_net_reset_MSE(swigCPtr);
+    SwigFannPINVOKE.neural_net_reset_MSE(swigCPtr);
   }
 
   public void set_callback(SWIGTYPE_p_callback_type callback, SWIGTYPE_p_void user_data) {
-    FannWrapperPINVOKE.neural_net_set_callback(swigCPtr, SWIGTYPE_p_callback_type.getCPtr(callback), SWIGTYPE_p_void.getCPtr(user_data));
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_set_callback(swigCPtr, SWIGTYPE_p_callback_type.getCPtr(callback), SWIGTYPE_p_void.getCPtr(user_data));
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void print_parameters() {
-    FannWrapperPINVOKE.neural_net_print_parameters(swigCPtr);
+    SwigFannPINVOKE.neural_net_print_parameters(swigCPtr);
   }
 
   public SWIGTYPE_p_training_algorithm_enum get_training_algorithm() {
-    SWIGTYPE_p_training_algorithm_enum ret = new SWIGTYPE_p_training_algorithm_enum(FannWrapperPINVOKE.neural_net_get_training_algorithm(swigCPtr), true);
+    SWIGTYPE_p_training_algorithm_enum ret = new SWIGTYPE_p_training_algorithm_enum(SwigFannPINVOKE.neural_net_get_training_algorithm(swigCPtr), true);
     return ret;
   }
 
   public void set_training_algorithm(SWIGTYPE_p_training_algorithm_enum training_algorithm) {
-    FannWrapperPINVOKE.neural_net_set_training_algorithm(swigCPtr, SWIGTYPE_p_training_algorithm_enum.getCPtr(training_algorithm));
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_set_training_algorithm(swigCPtr, SWIGTYPE_p_training_algorithm_enum.getCPtr(training_algorithm));
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public float get_learning_rate() {
-    float ret = FannWrapperPINVOKE.neural_net_get_learning_rate(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_learning_rate(swigCPtr);
     return ret;
   }
 
   public void set_learning_rate(float learning_rate) {
-    FannWrapperPINVOKE.neural_net_set_learning_rate(swigCPtr, learning_rate);
+    SwigFannPINVOKE.neural_net_set_learning_rate(swigCPtr, learning_rate);
   }
 
   public SWIGTYPE_p_activation_function_enum get_activation_function(int layer, int neuron) {
-    SWIGTYPE_p_activation_function_enum ret = new SWIGTYPE_p_activation_function_enum(FannWrapperPINVOKE.neural_net_get_activation_function(swigCPtr, layer, neuron), true);
+    SWIGTYPE_p_activation_function_enum ret = new SWIGTYPE_p_activation_function_enum(SwigFannPINVOKE.neural_net_get_activation_function(swigCPtr, layer, neuron), true);
     return ret;
   }
 
   public void set_activation_function(SWIGTYPE_p_activation_function_enum activation_function, int layer, int neuron) {
-    FannWrapperPINVOKE.neural_net_set_activation_function(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(activation_function), layer, neuron);
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_set_activation_function(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(activation_function), layer, neuron);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void set_activation_function_layer(SWIGTYPE_p_activation_function_enum activation_function, int layer) {
-    FannWrapperPINVOKE.neural_net_set_activation_function_layer(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(activation_function), layer);
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_set_activation_function_layer(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(activation_function), layer);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void set_activation_function_hidden(SWIGTYPE_p_activation_function_enum activation_function) {
-    FannWrapperPINVOKE.neural_net_set_activation_function_hidden(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(activation_function));
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_set_activation_function_hidden(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(activation_function));
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void set_activation_function_output(SWIGTYPE_p_activation_function_enum activation_function) {
-    FannWrapperPINVOKE.neural_net_set_activation_function_output(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(activation_function));
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_set_activation_function_output(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(activation_function));
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public float get_activation_steepness(int layer, int neuron) {
-    float ret = FannWrapperPINVOKE.neural_net_get_activation_steepness(swigCPtr, layer, neuron);
+    float ret = SwigFannPINVOKE.neural_net_get_activation_steepness(swigCPtr, layer, neuron);
     return ret;
   }
 
   public void set_activation_steepness(float steepness, int layer, int neuron) {
-    FannWrapperPINVOKE.neural_net_set_activation_steepness(swigCPtr, steepness, layer, neuron);
+    SwigFannPINVOKE.neural_net_set_activation_steepness(swigCPtr, steepness, layer, neuron);
   }
 
   public void set_activation_steepness_layer(float steepness, int layer) {
-    FannWrapperPINVOKE.neural_net_set_activation_steepness_layer(swigCPtr, steepness, layer);
+    SwigFannPINVOKE.neural_net_set_activation_steepness_layer(swigCPtr, steepness, layer);
   }
 
   public void set_activation_steepness_hidden(float steepness) {
-    FannWrapperPINVOKE.neural_net_set_activation_steepness_hidden(swigCPtr, steepness);
+    SwigFannPINVOKE.neural_net_set_activation_steepness_hidden(swigCPtr, steepness);
   }
 
   public void set_activation_steepness_output(float steepness) {
-    FannWrapperPINVOKE.neural_net_set_activation_steepness_output(swigCPtr, steepness);
+    SwigFannPINVOKE.neural_net_set_activation_steepness_output(swigCPtr, steepness);
   }
 
   public SWIGTYPE_p_error_function_enum get_train_error_function() {
-    SWIGTYPE_p_error_function_enum ret = new SWIGTYPE_p_error_function_enum(FannWrapperPINVOKE.neural_net_get_train_error_function(swigCPtr), true);
+    SWIGTYPE_p_error_function_enum ret = new SWIGTYPE_p_error_function_enum(SwigFannPINVOKE.neural_net_get_train_error_function(swigCPtr), true);
     return ret;
   }
 
   public void set_train_error_function(SWIGTYPE_p_error_function_enum train_error_function) {
-    FannWrapperPINVOKE.neural_net_set_train_error_function(swigCPtr, SWIGTYPE_p_error_function_enum.getCPtr(train_error_function));
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_set_train_error_function(swigCPtr, SWIGTYPE_p_error_function_enum.getCPtr(train_error_function));
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public float get_quickprop_decay() {
-    float ret = FannWrapperPINVOKE.neural_net_get_quickprop_decay(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_quickprop_decay(swigCPtr);
     return ret;
   }
 
   public void set_quickprop_decay(float quickprop_decay) {
-    FannWrapperPINVOKE.neural_net_set_quickprop_decay(swigCPtr, quickprop_decay);
+    SwigFannPINVOKE.neural_net_set_quickprop_decay(swigCPtr, quickprop_decay);
   }
 
   public float get_quickprop_mu() {
-    float ret = FannWrapperPINVOKE.neural_net_get_quickprop_mu(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_quickprop_mu(swigCPtr);
     return ret;
   }
 
   public void set_quickprop_mu(float quickprop_mu) {
-    FannWrapperPINVOKE.neural_net_set_quickprop_mu(swigCPtr, quickprop_mu);
+    SwigFannPINVOKE.neural_net_set_quickprop_mu(swigCPtr, quickprop_mu);
   }
 
   public float get_rprop_increase_factor() {
-    float ret = FannWrapperPINVOKE.neural_net_get_rprop_increase_factor(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_rprop_increase_factor(swigCPtr);
     return ret;
   }
 
   public void set_rprop_increase_factor(float rprop_increase_factor) {
-    FannWrapperPINVOKE.neural_net_set_rprop_increase_factor(swigCPtr, rprop_increase_factor);
+    SwigFannPINVOKE.neural_net_set_rprop_increase_factor(swigCPtr, rprop_increase_factor);
   }
 
   public float get_rprop_decrease_factor() {
-    float ret = FannWrapperPINVOKE.neural_net_get_rprop_decrease_factor(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_rprop_decrease_factor(swigCPtr);
     return ret;
   }
 
   public void set_rprop_decrease_factor(float rprop_decrease_factor) {
-    FannWrapperPINVOKE.neural_net_set_rprop_decrease_factor(swigCPtr, rprop_decrease_factor);
+    SwigFannPINVOKE.neural_net_set_rprop_decrease_factor(swigCPtr, rprop_decrease_factor);
   }
 
   public float get_rprop_delta_zero() {
-    float ret = FannWrapperPINVOKE.neural_net_get_rprop_delta_zero(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_rprop_delta_zero(swigCPtr);
     return ret;
   }
 
   public void set_rprop_delta_zero(float rprop_delta_zero) {
-    FannWrapperPINVOKE.neural_net_set_rprop_delta_zero(swigCPtr, rprop_delta_zero);
+    SwigFannPINVOKE.neural_net_set_rprop_delta_zero(swigCPtr, rprop_delta_zero);
   }
 
   public float get_rprop_delta_min() {
-    float ret = FannWrapperPINVOKE.neural_net_get_rprop_delta_min(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_rprop_delta_min(swigCPtr);
     return ret;
   }
 
   public void set_rprop_delta_min(float rprop_delta_min) {
-    FannWrapperPINVOKE.neural_net_set_rprop_delta_min(swigCPtr, rprop_delta_min);
+    SwigFannPINVOKE.neural_net_set_rprop_delta_min(swigCPtr, rprop_delta_min);
   }
 
   public float get_rprop_delta_max() {
-    float ret = FannWrapperPINVOKE.neural_net_get_rprop_delta_max(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_rprop_delta_max(swigCPtr);
     return ret;
   }
 
   public void set_rprop_delta_max(float rprop_delta_max) {
-    FannWrapperPINVOKE.neural_net_set_rprop_delta_max(swigCPtr, rprop_delta_max);
+    SwigFannPINVOKE.neural_net_set_rprop_delta_max(swigCPtr, rprop_delta_max);
   }
 
   public float get_sarprop_weight_decay_shift() {
-    float ret = FannWrapperPINVOKE.neural_net_get_sarprop_weight_decay_shift(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_sarprop_weight_decay_shift(swigCPtr);
     return ret;
   }
 
   public void set_sarprop_weight_decay_shift(float sarprop_weight_decay_shift) {
-    FannWrapperPINVOKE.neural_net_set_sarprop_weight_decay_shift(swigCPtr, sarprop_weight_decay_shift);
+    SwigFannPINVOKE.neural_net_set_sarprop_weight_decay_shift(swigCPtr, sarprop_weight_decay_shift);
   }
 
   public float get_sarprop_step_error_threshold_factor() {
-    float ret = FannWrapperPINVOKE.neural_net_get_sarprop_step_error_threshold_factor(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_sarprop_step_error_threshold_factor(swigCPtr);
     return ret;
   }
 
   public void set_sarprop_step_error_threshold_factor(float sarprop_step_error_threshold_factor) {
-    FannWrapperPINVOKE.neural_net_set_sarprop_step_error_threshold_factor(swigCPtr, sarprop_step_error_threshold_factor);
+    SwigFannPINVOKE.neural_net_set_sarprop_step_error_threshold_factor(swigCPtr, sarprop_step_error_threshold_factor);
   }
 
   public float get_sarprop_step_error_shift() {
-    float ret = FannWrapperPINVOKE.neural_net_get_sarprop_step_error_shift(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_sarprop_step_error_shift(swigCPtr);
     return ret;
   }
 
   public void set_sarprop_step_error_shift(float sarprop_step_error_shift) {
-    FannWrapperPINVOKE.neural_net_set_sarprop_step_error_shift(swigCPtr, sarprop_step_error_shift);
+    SwigFannPINVOKE.neural_net_set_sarprop_step_error_shift(swigCPtr, sarprop_step_error_shift);
   }
 
   public float get_sarprop_temperature() {
-    float ret = FannWrapperPINVOKE.neural_net_get_sarprop_temperature(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_sarprop_temperature(swigCPtr);
     return ret;
   }
 
   public void set_sarprop_temperature(float sarprop_temperature) {
-    FannWrapperPINVOKE.neural_net_set_sarprop_temperature(swigCPtr, sarprop_temperature);
+    SwigFannPINVOKE.neural_net_set_sarprop_temperature(swigCPtr, sarprop_temperature);
   }
 
   public uint get_num_input() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_num_input(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_num_input(swigCPtr);
     return ret;
   }
 
   public uint get_num_output() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_num_output(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_num_output(swigCPtr);
     return ret;
   }
 
   public uint get_total_neurons() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_total_neurons(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_total_neurons(swigCPtr);
     return ret;
   }
 
   public uint get_total_connections() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_total_connections(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_total_connections(swigCPtr);
     return ret;
   }
 
   public SWIGTYPE_p_network_type_enum get_network_type() {
-    SWIGTYPE_p_network_type_enum ret = new SWIGTYPE_p_network_type_enum(FannWrapperPINVOKE.neural_net_get_network_type(swigCPtr), true);
+    SWIGTYPE_p_network_type_enum ret = new SWIGTYPE_p_network_type_enum(SwigFannPINVOKE.neural_net_get_network_type(swigCPtr), true);
     return ret;
   }
 
   public float get_connection_rate() {
-    float ret = FannWrapperPINVOKE.neural_net_get_connection_rate(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_connection_rate(swigCPtr);
     return ret;
   }
 
   public uint get_num_layers() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_num_layers(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_num_layers(swigCPtr);
     return ret;
   }
 
   public void get_layer_array(SWIGTYPE_p_unsigned_int layers) {
-    FannWrapperPINVOKE.neural_net_get_layer_array(swigCPtr, SWIGTYPE_p_unsigned_int.getCPtr(layers));
+    SwigFannPINVOKE.neural_net_get_layer_array(swigCPtr, SWIGTYPE_p_unsigned_int.getCPtr(layers));
   }
 
   public void get_bias_array(SWIGTYPE_p_unsigned_int bias) {
-    FannWrapperPINVOKE.neural_net_get_bias_array(swigCPtr, SWIGTYPE_p_unsigned_int.getCPtr(bias));
+    SwigFannPINVOKE.neural_net_get_bias_array(swigCPtr, SWIGTYPE_p_unsigned_int.getCPtr(bias));
   }
 
   public void get_connection_array(SWIGTYPE_p_connection connections) {
-    FannWrapperPINVOKE.neural_net_get_connection_array(swigCPtr, SWIGTYPE_p_connection.getCPtr(connections));
+    SwigFannPINVOKE.neural_net_get_connection_array(swigCPtr, SWIGTYPE_p_connection.getCPtr(connections));
   }
 
   public void set_weight_array(SWIGTYPE_p_connection connections, uint num_connections) {
-    FannWrapperPINVOKE.neural_net_set_weight_array(swigCPtr, SWIGTYPE_p_connection.getCPtr(connections), num_connections);
+    SwigFannPINVOKE.neural_net_set_weight_array(swigCPtr, SWIGTYPE_p_connection.getCPtr(connections), num_connections);
   }
 
   public void set_weight(uint from_neuron, uint to_neuron, float weight) {
-    FannWrapperPINVOKE.neural_net_set_weight(swigCPtr, from_neuron, to_neuron, weight);
+    SwigFannPINVOKE.neural_net_set_weight(swigCPtr, from_neuron, to_neuron, weight);
   }
 
   public float get_learning_momentum() {
-    float ret = FannWrapperPINVOKE.neural_net_get_learning_momentum(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_learning_momentum(swigCPtr);
     return ret;
   }
 
   public void set_learning_momentum(float learning_momentum) {
-    FannWrapperPINVOKE.neural_net_set_learning_momentum(swigCPtr, learning_momentum);
+    SwigFannPINVOKE.neural_net_set_learning_momentum(swigCPtr, learning_momentum);
   }
 
   public SWIGTYPE_p_stop_function_enum get_train_stop_function() {
-    SWIGTYPE_p_stop_function_enum ret = new SWIGTYPE_p_stop_function_enum(FannWrapperPINVOKE.neural_net_get_train_stop_function(swigCPtr), true);
+    SWIGTYPE_p_stop_function_enum ret = new SWIGTYPE_p_stop_function_enum(SwigFannPINVOKE.neural_net_get_train_stop_function(swigCPtr), true);
     return ret;
   }
 
   public void set_train_stop_function(SWIGTYPE_p_stop_function_enum train_stop_function) {
-    FannWrapperPINVOKE.neural_net_set_train_stop_function(swigCPtr, SWIGTYPE_p_stop_function_enum.getCPtr(train_stop_function));
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_set_train_stop_function(swigCPtr, SWIGTYPE_p_stop_function_enum.getCPtr(train_stop_function));
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public float get_bit_fail_limit() {
-    float ret = FannWrapperPINVOKE.neural_net_get_bit_fail_limit(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_bit_fail_limit(swigCPtr);
     return ret;
   }
 
   public void set_bit_fail_limit(float bit_fail_limit) {
-    FannWrapperPINVOKE.neural_net_set_bit_fail_limit(swigCPtr, bit_fail_limit);
+    SwigFannPINVOKE.neural_net_set_bit_fail_limit(swigCPtr, bit_fail_limit);
   }
 
   public uint get_bit_fail() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_bit_fail(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_bit_fail(swigCPtr);
     return ret;
   }
 
   public void cascadetrain_on_data(SWIGTYPE_p_training_data data, uint max_neurons, uint neurons_between_reports, float desired_error) {
-    FannWrapperPINVOKE.neural_net_cascadetrain_on_data(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), max_neurons, neurons_between_reports, desired_error);
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_cascadetrain_on_data(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), max_neurons, neurons_between_reports, desired_error);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void cascadetrain_on_file(string filename, uint max_neurons, uint neurons_between_reports, float desired_error) {
-    FannWrapperPINVOKE.neural_net_cascadetrain_on_file(swigCPtr, filename, max_neurons, neurons_between_reports, desired_error);
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_cascadetrain_on_file(swigCPtr, filename, max_neurons, neurons_between_reports, desired_error);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public float get_cascade_output_change_fraction() {
-    float ret = FannWrapperPINVOKE.neural_net_get_cascade_output_change_fraction(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_cascade_output_change_fraction(swigCPtr);
     return ret;
   }
 
   public void set_cascade_output_change_fraction(float cascade_output_change_fraction) {
-    FannWrapperPINVOKE.neural_net_set_cascade_output_change_fraction(swigCPtr, cascade_output_change_fraction);
+    SwigFannPINVOKE.neural_net_set_cascade_output_change_fraction(swigCPtr, cascade_output_change_fraction);
   }
 
   public uint get_cascade_output_stagnation_epochs() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_cascade_output_stagnation_epochs(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_cascade_output_stagnation_epochs(swigCPtr);
     return ret;
   }
 
   public void set_cascade_output_stagnation_epochs(uint cascade_output_stagnation_epochs) {
-    FannWrapperPINVOKE.neural_net_set_cascade_output_stagnation_epochs(swigCPtr, cascade_output_stagnation_epochs);
+    SwigFannPINVOKE.neural_net_set_cascade_output_stagnation_epochs(swigCPtr, cascade_output_stagnation_epochs);
   }
 
   public float get_cascade_candidate_change_fraction() {
-    float ret = FannWrapperPINVOKE.neural_net_get_cascade_candidate_change_fraction(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_cascade_candidate_change_fraction(swigCPtr);
     return ret;
   }
 
   public void set_cascade_candidate_change_fraction(float cascade_candidate_change_fraction) {
-    FannWrapperPINVOKE.neural_net_set_cascade_candidate_change_fraction(swigCPtr, cascade_candidate_change_fraction);
+    SwigFannPINVOKE.neural_net_set_cascade_candidate_change_fraction(swigCPtr, cascade_candidate_change_fraction);
   }
 
   public uint get_cascade_candidate_stagnation_epochs() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_cascade_candidate_stagnation_epochs(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_cascade_candidate_stagnation_epochs(swigCPtr);
     return ret;
   }
 
   public void set_cascade_candidate_stagnation_epochs(uint cascade_candidate_stagnation_epochs) {
-    FannWrapperPINVOKE.neural_net_set_cascade_candidate_stagnation_epochs(swigCPtr, cascade_candidate_stagnation_epochs);
+    SwigFannPINVOKE.neural_net_set_cascade_candidate_stagnation_epochs(swigCPtr, cascade_candidate_stagnation_epochs);
   }
 
   public float get_cascade_weight_multiplier() {
-    float ret = FannWrapperPINVOKE.neural_net_get_cascade_weight_multiplier(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_cascade_weight_multiplier(swigCPtr);
     return ret;
   }
 
   public void set_cascade_weight_multiplier(float cascade_weight_multiplier) {
-    FannWrapperPINVOKE.neural_net_set_cascade_weight_multiplier(swigCPtr, cascade_weight_multiplier);
+    SwigFannPINVOKE.neural_net_set_cascade_weight_multiplier(swigCPtr, cascade_weight_multiplier);
   }
 
   public float get_cascade_candidate_limit() {
-    float ret = FannWrapperPINVOKE.neural_net_get_cascade_candidate_limit(swigCPtr);
+    float ret = SwigFannPINVOKE.neural_net_get_cascade_candidate_limit(swigCPtr);
     return ret;
   }
 
   public void set_cascade_candidate_limit(float cascade_candidate_limit) {
-    FannWrapperPINVOKE.neural_net_set_cascade_candidate_limit(swigCPtr, cascade_candidate_limit);
+    SwigFannPINVOKE.neural_net_set_cascade_candidate_limit(swigCPtr, cascade_candidate_limit);
   }
 
   public uint get_cascade_max_out_epochs() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_cascade_max_out_epochs(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_cascade_max_out_epochs(swigCPtr);
     return ret;
   }
 
   public void set_cascade_max_out_epochs(uint cascade_max_out_epochs) {
-    FannWrapperPINVOKE.neural_net_set_cascade_max_out_epochs(swigCPtr, cascade_max_out_epochs);
+    SwigFannPINVOKE.neural_net_set_cascade_max_out_epochs(swigCPtr, cascade_max_out_epochs);
   }
 
   public uint get_cascade_max_cand_epochs() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_cascade_max_cand_epochs(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_cascade_max_cand_epochs(swigCPtr);
     return ret;
   }
 
   public void set_cascade_max_cand_epochs(uint cascade_max_cand_epochs) {
-    FannWrapperPINVOKE.neural_net_set_cascade_max_cand_epochs(swigCPtr, cascade_max_cand_epochs);
+    SwigFannPINVOKE.neural_net_set_cascade_max_cand_epochs(swigCPtr, cascade_max_cand_epochs);
   }
 
   public uint get_cascade_num_candidates() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_cascade_num_candidates(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_cascade_num_candidates(swigCPtr);
     return ret;
   }
 
   public uint get_cascade_activation_functions_count() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_cascade_activation_functions_count(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_cascade_activation_functions_count(swigCPtr);
     return ret;
   }
 
   public SWIGTYPE_p_activation_function_enum get_cascade_activation_functions() {
-    global::System.IntPtr cPtr = FannWrapperPINVOKE.neural_net_get_cascade_activation_functions(swigCPtr);
+    global::System.IntPtr cPtr = SwigFannPINVOKE.neural_net_get_cascade_activation_functions(swigCPtr);
     SWIGTYPE_p_activation_function_enum ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_activation_function_enum(cPtr, false);
     return ret;
   }
 
   public void set_cascade_activation_functions(SWIGTYPE_p_activation_function_enum cascade_activation_functions, uint cascade_activation_functions_count) {
-    FannWrapperPINVOKE.neural_net_set_cascade_activation_functions(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(cascade_activation_functions), cascade_activation_functions_count);
+    SwigFannPINVOKE.neural_net_set_cascade_activation_functions(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(cascade_activation_functions), cascade_activation_functions_count);
   }
 
   public uint get_cascade_activation_steepnesses_count() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_cascade_activation_steepnesses_count(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_cascade_activation_steepnesses_count(swigCPtr);
     return ret;
   }
 
   public SWIGTYPE_p_float get_cascade_activation_steepnesses() {
-    global::System.IntPtr cPtr = FannWrapperPINVOKE.neural_net_get_cascade_activation_steepnesses(swigCPtr);
+    global::System.IntPtr cPtr = SwigFannPINVOKE.neural_net_get_cascade_activation_steepnesses(swigCPtr);
     SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
     return ret;
   }
 
   public void set_cascade_activation_steepnesses(SWIGTYPE_p_float cascade_activation_steepnesses, uint cascade_activation_steepnesses_count) {
-    FannWrapperPINVOKE.neural_net_set_cascade_activation_steepnesses(swigCPtr, SWIGTYPE_p_float.getCPtr(cascade_activation_steepnesses), cascade_activation_steepnesses_count);
+    SwigFannPINVOKE.neural_net_set_cascade_activation_steepnesses(swigCPtr, SWIGTYPE_p_float.getCPtr(cascade_activation_steepnesses), cascade_activation_steepnesses_count);
   }
 
   public uint get_cascade_num_candidate_groups() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_cascade_num_candidate_groups(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_cascade_num_candidate_groups(swigCPtr);
     return ret;
   }
 
   public void set_cascade_num_candidate_groups(uint cascade_num_candidate_groups) {
-    FannWrapperPINVOKE.neural_net_set_cascade_num_candidate_groups(swigCPtr, cascade_num_candidate_groups);
+    SwigFannPINVOKE.neural_net_set_cascade_num_candidate_groups(swigCPtr, cascade_num_candidate_groups);
   }
 
   public void scale_train(SWIGTYPE_p_training_data data) {
-    FannWrapperPINVOKE.neural_net_scale_train(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_scale_train(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void descale_train(SWIGTYPE_p_training_data data) {
-    FannWrapperPINVOKE.neural_net_descale_train(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    SwigFannPINVOKE.neural_net_descale_train(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public bool set_input_scaling_params(SWIGTYPE_p_training_data data, float new_input_min, float new_input_max) {
-    bool ret = FannWrapperPINVOKE.neural_net_set_input_scaling_params(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), new_input_min, new_input_max);
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    bool ret = SwigFannPINVOKE.neural_net_set_input_scaling_params(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), new_input_min, new_input_max);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool set_output_scaling_params(SWIGTYPE_p_training_data data, float new_output_min, float new_output_max) {
-    bool ret = FannWrapperPINVOKE.neural_net_set_output_scaling_params(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), new_output_min, new_output_max);
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    bool ret = SwigFannPINVOKE.neural_net_set_output_scaling_params(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), new_output_min, new_output_max);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool set_scaling_params(SWIGTYPE_p_training_data data, float new_input_min, float new_input_max, float new_output_min, float new_output_max) {
-    bool ret = FannWrapperPINVOKE.neural_net_set_scaling_params(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), new_input_min, new_input_max, new_output_min, new_output_max);
-    if (FannWrapperPINVOKE.SWIGPendingException.Pending) throw FannWrapperPINVOKE.SWIGPendingException.Retrieve();
+    bool ret = SwigFannPINVOKE.neural_net_set_scaling_params(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), new_input_min, new_input_max, new_output_min, new_output_max);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public bool clear_scaling_params() {
-    bool ret = FannWrapperPINVOKE.neural_net_clear_scaling_params(swigCPtr);
+    bool ret = SwigFannPINVOKE.neural_net_clear_scaling_params(swigCPtr);
     return ret;
   }
 
   public void scale_input(SWIGTYPE_p_float input_vector) {
-    FannWrapperPINVOKE.neural_net_scale_input(swigCPtr, SWIGTYPE_p_float.getCPtr(input_vector));
+    SwigFannPINVOKE.neural_net_scale_input(swigCPtr, SWIGTYPE_p_float.getCPtr(input_vector));
   }
 
   public void scale_output(SWIGTYPE_p_float output_vector) {
-    FannWrapperPINVOKE.neural_net_scale_output(swigCPtr, SWIGTYPE_p_float.getCPtr(output_vector));
+    SwigFannPINVOKE.neural_net_scale_output(swigCPtr, SWIGTYPE_p_float.getCPtr(output_vector));
   }
 
   public void descale_input(SWIGTYPE_p_float input_vector) {
-    FannWrapperPINVOKE.neural_net_descale_input(swigCPtr, SWIGTYPE_p_float.getCPtr(input_vector));
+    SwigFannPINVOKE.neural_net_descale_input(swigCPtr, SWIGTYPE_p_float.getCPtr(input_vector));
   }
 
   public void descale_output(SWIGTYPE_p_float output_vector) {
-    FannWrapperPINVOKE.neural_net_descale_output(swigCPtr, SWIGTYPE_p_float.getCPtr(output_vector));
+    SwigFannPINVOKE.neural_net_descale_output(swigCPtr, SWIGTYPE_p_float.getCPtr(output_vector));
   }
 
   public void set_error_log(SWIGTYPE_p_FILE log_file) {
-    FannWrapperPINVOKE.neural_net_set_error_log(swigCPtr, SWIGTYPE_p_FILE.getCPtr(log_file));
+    SwigFannPINVOKE.neural_net_set_error_log(swigCPtr, SWIGTYPE_p_FILE.getCPtr(log_file));
   }
 
   public uint get_errno() {
-    uint ret = FannWrapperPINVOKE.neural_net_get_errno(swigCPtr);
+    uint ret = SwigFannPINVOKE.neural_net_get_errno(swigCPtr);
     return ret;
   }
 
   public void reset_errno() {
-    FannWrapperPINVOKE.neural_net_reset_errno(swigCPtr);
+    SwigFannPINVOKE.neural_net_reset_errno(swigCPtr);
   }
 
   public void reset_errstr() {
-    FannWrapperPINVOKE.neural_net_reset_errstr(swigCPtr);
+    SwigFannPINVOKE.neural_net_reset_errstr(swigCPtr);
   }
 
   public string get_errstr() {
-    string ret = FannWrapperPINVOKE.neural_net_get_errstr(swigCPtr);
+    string ret = SwigFannPINVOKE.neural_net_get_errstr(swigCPtr);
     return ret;
   }
 
   public void print_error() {
-    FannWrapperPINVOKE.neural_net_print_error(swigCPtr);
+    SwigFannPINVOKE.neural_net_print_error(swigCPtr);
   }
 
   public void disable_seed_rand() {
-    FannWrapperPINVOKE.neural_net_disable_seed_rand(swigCPtr);
+    SwigFannPINVOKE.neural_net_disable_seed_rand(swigCPtr);
   }
 
   public void enable_seed_rand() {
-    FannWrapperPINVOKE.neural_net_enable_seed_rand(swigCPtr);
+    SwigFannPINVOKE.neural_net_enable_seed_rand(swigCPtr);
   }
 
 }

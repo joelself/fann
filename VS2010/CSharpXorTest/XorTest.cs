@@ -34,14 +34,14 @@ namespace CSharpXorTest
             for (int i = 0; i < data.length_train_data(); i++)
             {
                 net.reset_MSE();
-                SWIGTYPE_p_float calc_out = net.test(FannWrapper.float_p_array_getitem(inputs, i), FannWrapper.float_p_array_getitem(inputs, i));
+                SWIGTYPE_p_float calc_out = net.test(SwigFann.float_p_array_getitem(inputs, i), SwigFann.float_p_array_getitem(inputs, i));
 
                 Console.WriteLine("XOR test ({0}, {1}) -> {2}, should be {3}, difference={4}",
-                    FannWrapper.float_array_getitem(FannWrapper.float_p_array_getitem(inputs, i), 0),
-                    FannWrapper.float_array_getitem(FannWrapper.float_p_array_getitem(inputs, i), 1),
-                    FannWrapper.float_array_getitem(calc_out, 0), 
-                    FannWrapper.float_array_getitem(FannWrapper.float_p_array_getitem(outputs, i), 0),
-                    FannWrapper.float_array_getitem(calc_out, 0) - FannWrapper.float_array_getitem(FannWrapper.float_p_array_getitem(outputs, i), 0));
+                    SwigFann.float_array_getitem(SwigFann.float_p_array_getitem(inputs, i), 0),
+                    SwigFann.float_array_getitem(SwigFann.float_p_array_getitem(inputs, i), 1),
+                    SwigFann.float_array_getitem(calc_out, 0), 
+                    SwigFann.float_array_getitem(SwigFann.float_p_array_getitem(outputs, i), 0),
+                    SwigFann.float_array_getitem(calc_out, 0) - SwigFann.float_array_getitem(SwigFann.float_p_array_getitem(outputs, i), 0));
             }
 
             Console.WriteLine("Cleaning up.");

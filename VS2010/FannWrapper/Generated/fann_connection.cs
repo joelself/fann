@@ -32,7 +32,7 @@ public class fann_connection : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          FannWrapperPINVOKE.delete_fann_connection(swigCPtr);
+          SwigFannPINVOKE.delete_fann_connection(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -42,35 +42,35 @@ public class fann_connection : global::System.IDisposable {
 
   public uint from_neuron {
     set {
-      FannWrapperPINVOKE.fann_connection_from_neuron_set(swigCPtr, value);
+      SwigFannPINVOKE.fann_connection_from_neuron_set(swigCPtr, value);
     } 
     get {
-      uint ret = FannWrapperPINVOKE.fann_connection_from_neuron_get(swigCPtr);
+      uint ret = SwigFannPINVOKE.fann_connection_from_neuron_get(swigCPtr);
       return ret;
     } 
   }
 
   public uint to_neuron {
     set {
-      FannWrapperPINVOKE.fann_connection_to_neuron_set(swigCPtr, value);
+      SwigFannPINVOKE.fann_connection_to_neuron_set(swigCPtr, value);
     } 
     get {
-      uint ret = FannWrapperPINVOKE.fann_connection_to_neuron_get(swigCPtr);
+      uint ret = SwigFannPINVOKE.fann_connection_to_neuron_get(swigCPtr);
       return ret;
     } 
   }
 
   public float weight {
     set {
-      FannWrapperPINVOKE.fann_connection_weight_set(swigCPtr, value);
+      SwigFannPINVOKE.fann_connection_weight_set(swigCPtr, value);
     } 
     get {
-      float ret = FannWrapperPINVOKE.fann_connection_weight_get(swigCPtr);
+      float ret = SwigFannPINVOKE.fann_connection_weight_get(swigCPtr);
       return ret;
     } 
   }
 
-  public fann_connection() : this(FannWrapperPINVOKE.new_fann_connection(), true) {
+  public fann_connection() : this(SwigFannPINVOKE.new_fann_connection(), true) {
   }
 
 }
