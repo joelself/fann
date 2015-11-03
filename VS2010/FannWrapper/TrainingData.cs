@@ -7,12 +7,17 @@ using FannWrap;
 
 namespace FannWrapper
 {
-    public class TrainingData
+    public class TrainingData : IDisposable
     {
-        public TrainingData() {
-
+        public TrainingData(training_data data) {
+            InternalData = data;
         }
 
         internal  training_data InternalData { get; set; }
+
+        public void Dispose()
+        {
+            InternalData.Dispose();
+        }
     }
 }

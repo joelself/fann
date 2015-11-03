@@ -40,12 +40,12 @@ public class fann : global::System.IDisposable {
     }
   }
 
-  public fann_errno_enum errno_f {
+  public SWIGTYPE_fann_errno_enum errno_f {
     set {
       SwigFannPINVOKE.fann_errno_f_set(swigCPtr, (int)value);
     } 
     get {
-      fann_errno_enum ret = (fann_errno_enum)SwigFannPINVOKE.fann_errno_f_get(swigCPtr);
+      SWIGTYPE_fann_errno_enum ret = (SWIGTYPE_fann_errno_enum)SwigFannPINVOKE.fann_errno_f_get(swigCPtr);
       return ret;
     } 
   }

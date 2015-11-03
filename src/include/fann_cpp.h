@@ -65,7 +65,10 @@
 #include <string>
 #include "fann_data_cpp.h"
 #include "fann_training_data_cpp.h"
-
+#ifdef SWIG
+#define FANN_EXTERNAL /**/
+#define FANN_API /**/
+#endif
 /* Namespace: FANN
     The FANN namespace groups the C++ wrapper definitions */
 namespace FANN {

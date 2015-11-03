@@ -386,12 +386,12 @@ public class neural_net : global::System.IDisposable {
     SwigFannPINVOKE.neural_net_get_bias_array(swigCPtr, SWIGTYPE_p_unsigned_int.getCPtr(bias));
   }
 
-  public void get_connection_array(SWIGTYPE_p_connection connections) {
-    SwigFannPINVOKE.neural_net_get_connection_array(swigCPtr, SWIGTYPE_p_connection.getCPtr(connections));
+  public void get_connection_array(fann_connection connections) {
+    SwigFannPINVOKE.neural_net_get_connection_array(swigCPtr, fann_connection.getCPtr(connections));
   }
 
-  public void set_weight_array(SWIGTYPE_p_connection connections, uint num_connections) {
-    SwigFannPINVOKE.neural_net_set_weight_array(swigCPtr, SWIGTYPE_p_connection.getCPtr(connections), num_connections);
+  public void set_weight_array(fann_connection connections, uint num_connections) {
+    SwigFannPINVOKE.neural_net_set_weight_array(swigCPtr, fann_connection.getCPtr(connections), num_connections);
   }
 
   public void set_weight(uint from_neuron, uint to_neuron, float weight) {
