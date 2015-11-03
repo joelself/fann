@@ -1226,6 +1226,24 @@ class SwigFannPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_fopen")]
   public static extern global::System.IntPtr fopen(string jarg1, string jarg2);
 
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_floatArrayArray")]
+  public static extern global::System.IntPtr new_floatArrayArray(int jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_floatArrayArray")]
+  public static extern void delete_floatArrayArray(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_floatArrayArray_getitem")]
+  public static extern global::System.IntPtr floatArrayArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_floatArrayArray_setitem")]
+  public static extern void floatArrayArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_floatArrayArray_cast")]
+  public static extern global::System.IntPtr floatArrayArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_floatArrayArray_frompointer")]
+  public static extern global::System.IntPtr floatArrayArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_floatArray")]
   public static extern global::System.IntPtr new_floatArray(int jarg1);
 

@@ -326,6 +326,37 @@ SWIGINTERN connectionArray *connectionArray_frompointer(FANN::connection *t){
   return (connectionArray *) t;
 }
 
+	typedef float* float_ptr;
+    typedef float fann_type;
+	typedef fann_connection connection;
+	typedef FANN::training_algorithm_enum training_algorithm_enum;
+	typedef FANN::activation_function_enum activation_function_enum;
+	typedef FANN::error_function_enum error_function_enum;
+	typedef FANN::network_type_enum network_type_enum;
+	typedef FANN::stop_function_enum stop_function_enum;
+
+
+typedef float_ptr floatArrayArray;
+
+SWIGINTERN floatArrayArray *new_floatArrayArray(int nelements){
+  return new float_ptr[nelements]();
+}
+SWIGINTERN void delete_floatArrayArray(floatArrayArray *self){
+  delete [] self;
+}
+SWIGINTERN float_ptr floatArrayArray_getitem(floatArrayArray *self,int index){
+  return self[index];
+}
+SWIGINTERN void floatArrayArray_setitem(floatArrayArray *self,int index,float_ptr value){
+  self[index] = value;
+}
+SWIGINTERN float_ptr *floatArrayArray_cast(floatArrayArray *self){
+  return self;
+}
+SWIGINTERN floatArrayArray *floatArrayArray_frompointer(float_ptr *t){
+  return (floatArrayArray *) t;
+}
+
 typedef float floatArray;
 
 SWIGINTERN floatArray *new_floatArray(int nelements){
@@ -388,15 +419,6 @@ SWIGINTERN FANN::activation_function_enum *activationFunctionEnumArray_cast(acti
 SWIGINTERN activationFunctionEnumArray *activationFunctionEnumArray_frompointer(FANN::activation_function_enum *t){
   return (activationFunctionEnumArray *) t;
 }
-
-    typedef float fann_type;
-	typedef fann_connection connection;
-	typedef FANN::training_algorithm_enum training_algorithm_enum;
-	typedef FANN::activation_function_enum activation_function_enum;
-	typedef FANN::error_function_enum error_function_enum;
-	typedef FANN::network_type_enum network_type_enum;
-	typedef FANN::stop_function_enum stop_function_enum;
-
 
 #ifdef __cplusplus
 extern "C" {
@@ -4442,6 +4464,76 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_fopen(char * jarg1, char * jarg2) {
   arg1 = (char *)jarg1; 
   arg2 = (char *)jarg2; 
   result = (FILE *)fopen((char const *)arg1,(char const *)arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_floatArrayArray(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  floatArrayArray *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  result = (floatArrayArray *)new_floatArrayArray(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_floatArrayArray(void * jarg1) {
+  floatArrayArray *arg1 = (floatArrayArray *) 0 ;
+  
+  arg1 = (floatArrayArray *)jarg1; 
+  delete_floatArrayArray(arg1);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_floatArrayArray_getitem(void * jarg1, int jarg2) {
+  void * jresult ;
+  floatArrayArray *arg1 = (floatArrayArray *) 0 ;
+  int arg2 ;
+  float_ptr result;
+  
+  arg1 = (floatArrayArray *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (float_ptr)floatArrayArray_getitem(arg1,arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_floatArrayArray_setitem(void * jarg1, int jarg2, void * jarg3) {
+  floatArrayArray *arg1 = (floatArrayArray *) 0 ;
+  int arg2 ;
+  float_ptr arg3 = (float_ptr) 0 ;
+  
+  arg1 = (floatArrayArray *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (float_ptr)jarg3; 
+  floatArrayArray_setitem(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_floatArrayArray_cast(void * jarg1) {
+  void * jresult ;
+  floatArrayArray *arg1 = (floatArrayArray *) 0 ;
+  float_ptr *result = 0 ;
+  
+  arg1 = (floatArrayArray *)jarg1; 
+  result = (float_ptr *)floatArrayArray_cast(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_floatArrayArray_frompointer(void * jarg1) {
+  void * jresult ;
+  float_ptr *arg1 = (float_ptr *) 0 ;
+  floatArrayArray *result = 0 ;
+  
+  arg1 = (float_ptr *)jarg1; 
+  result = (floatArrayArray *)floatArrayArray_frompointer(arg1);
   jresult = (void *)result; 
   return jresult;
 }

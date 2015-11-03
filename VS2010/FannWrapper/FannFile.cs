@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FannWrap;
 namespace FannWrapper
 {
-    class FannFile : IDisposable
+    public class FannFile
     {
         public FannFile(SWIGTYPE_p_FILE file)
         {

@@ -85,47 +85,115 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FannFile.cs" />
-    <Compile Include="Generated\activationFunctionEnumArray.cs" />
-    <Compile Include="Generated\activation_function_enum.cs" />
-    <Compile Include="Generated\connectionArray.cs" />
-    <Compile Include="Generated\error_function_enum.cs" />
-    <Compile Include="Generated\fann.cs" />
-    <Compile Include="Generated\fann_activationfunc_enum.cs" />
-    <Compile Include="Generated\fann_connection.cs" />
-    <Compile Include="Generated\fann_error.cs" />
-    <Compile Include="Generated\fann_errorfunc_enum.cs" />
-    <Compile Include="Generated\fann_layer.cs" />
-    <Compile Include="Generated\fann_nettype_enum.cs" />
-    <Compile Include="Generated\fann_neuron.cs" />
-    <Compile Include="Generated\fann_stopfunc_enum.cs" />
-    <Compile Include="Generated\fann_train_enum.cs" />
-    <Compile Include="Generated\fann_type_p.cs" />
-    <Compile Include="Generated\floatArray.cs" />
-    <Compile Include="Generated\float_p.cs" />
-    <Compile Include="Generated\network_type_enum.cs" />
-    <Compile Include="Generated\neural_net.cs" />
-    <Compile Include="Generated\stop_function_enum.cs" />
-    <Compile Include="Generated\SwigFann.cs" />
-    <Compile Include="Generated\SwigFannPINVOKE.cs" />
-    <Compile Include="Generated\SWIGTYPE_fann_errno_enum.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_callback_type.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_fann.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_fann_activationfunc_enum.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_FANN__activation_function_enum.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_FILE.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_float.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_f_p_FANN_API__f_unsigned_int_unsigned_int_unsigned_int_p_float_p_float__void.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_f_p_fann_p_fann_train_data_unsigned_int_unsigned_int_float_unsigned_int__int.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_float_p_float__void.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_p_char.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_p_fann_neuron.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_p_float.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_unsigned_int.cs" />
-    <Compile Include="Generated\SWIGTYPE_p_void.cs" />
-    <Compile Include="Generated\training_algorithm_enum.cs" />
-    <Compile Include="Generated\training_data.cs" />
-    <Compile Include="Generated\training_data_p.cs" />
-    <Compile Include="Generated\uintArray.cs" />
+    <Compile Include="Generated\activationFunctionEnumArray.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\activation_function_enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\connectionArray.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\error_function_enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\fann.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\fann_activationfunc_enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\fann_connection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\fann_error.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\fann_errorfunc_enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\fann_layer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\fann_nettype_enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\fann_neuron.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\fann_stopfunc_enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\fann_train_enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\floatArray.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\floatArrayArray.cs" />
+    <Compile Include="Generated\network_type_enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\neural_net.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\stop_function_enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SwigFann.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SwigFannPINVOKE.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SWIGTYPE_fann_errno_enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SWIGTYPE_p_callback_type.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SWIGTYPE_p_fann_activationfunc_enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SWIGTYPE_p_FANN__activation_function_enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SWIGTYPE_p_FILE.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SWIGTYPE_p_float.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SWIGTYPE_p_f_p_fann_p_fann_train_data_unsigned_int_unsigned_int_float_unsigned_int__int.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_float_p_float__void.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SWIGTYPE_p_p_char.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SWIGTYPE_p_p_fann_neuron.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SWIGTYPE_p_p_float.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SWIGTYPE_p_unsigned_int.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\SWIGTYPE_p_void.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\training_algorithm_enum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\training_data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generated\uintArray.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="NeuralNet.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />

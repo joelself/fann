@@ -13,6 +13,7 @@
 #define FANN_API /**/
 %include typemaps.i
 %include "carrays.i"
+%include "arrays_csharp.i"
 %include "cpointer.i"
 %include "std_string.i"
 %include "fann_data.h"
@@ -30,11 +31,8 @@ struct fann_connection
     /* The numerical value of the weight */
     fann_type weight;
 };
-
-%array_class(float, floatArray);
-%array_class(unsigned int, uintArray);
-%array_class(activation_function_enum, activationFunctionEnumArray);
 %inline %{
+	typedef float* float_ptr;
     typedef float fann_type;
 	typedef fann_connection connection;
 	typedef FANN::training_algorithm_enum training_algorithm_enum;
@@ -43,5 +41,9 @@ struct fann_connection
 	typedef FANN::network_type_enum network_type_enum;
 	typedef FANN::stop_function_enum stop_function_enum;
 %}
+%array_class(float_ptr, floatArrayArray);
+%array_class(float, floatArray);
+%array_class(unsigned int, uintArray);
+%array_class(activation_function_enum, activationFunctionEnumArray);
 
 

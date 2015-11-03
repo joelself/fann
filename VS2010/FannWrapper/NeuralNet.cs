@@ -8,7 +8,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 namespace FannWrapper
 {
-    public class NeuralNet<T> : IDisposable
+    public class NeuralNet : IDisposable
     {
         neural_net net = null;
         public NeuralNet()
@@ -16,7 +16,7 @@ namespace FannWrapper
             net = new neural_net();
         }
 
-        public NeuralNet(NeuralNet<T> other)
+        public NeuralNet(NeuralNet other)
         {
             net = new neural_net(other.InternalNet);
         }
@@ -127,7 +127,7 @@ namespace FannWrapper
                 float[] result = new float[Outputs];
                 for (int i = 0; i < Outputs; i++)
                 {
-                    result[i] = SwigFann.float_array_getitem(outputs, i);
+                    result[i] = floats.getitem(i);
                 }
                 return result;
             }
@@ -195,7 +195,7 @@ namespace FannWrapper
             net.train_on_file(filename, maxEpochs, epochsBetweenReports, desiredError);
         }
 
-        float[] Test(float[] input, float[] desiredOutput)
+        public float[] Test(float[] input, float[] desiredOutput)
         {
             using (floatArray floatsIn = new floatArray(input.Length))
             {
