@@ -94,6 +94,33 @@ public class SwigFann {
     return ret;
   }
 
+  public static training_data new_training_data_pointer() {
+    global::System.IntPtr cPtr = SwigFannPINVOKE.new_training_data_pointer();
+    training_data ret = (cPtr == global::System.IntPtr.Zero) ? null : new training_data(cPtr, false);
+    return ret;
+  }
+
+  public static training_data copy_training_data_pointer(training_data value) {
+    global::System.IntPtr cPtr = SwigFannPINVOKE.copy_training_data_pointer(training_data.getCPtr(value));
+    training_data ret = (cPtr == global::System.IntPtr.Zero) ? null : new training_data(cPtr, false);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public static void delete_training_data_pointer(training_data obj) {
+    SwigFannPINVOKE.delete_training_data_pointer(training_data.getCPtr(obj));
+  }
+
+  public static void training_data_pointer_assign(training_data obj, training_data value) {
+    SwigFannPINVOKE.training_data_pointer_assign(training_data.getCPtr(obj), training_data.getCPtr(value));
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public static training_data training_data_pointer_value(training_data obj) {
+    training_data ret = new training_data(SwigFannPINVOKE.training_data_pointer_value(training_data.getCPtr(obj)), true);
+    return ret;
+  }
+
   public static SWIGTYPE_p_p_float new_float_p_array(int nelements) {
     global::System.IntPtr cPtr = SwigFannPINVOKE.new_float_p_array(nelements);
     SWIGTYPE_p_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_p_float(cPtr, false);

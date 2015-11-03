@@ -98,8 +98,8 @@ public class neural_net : global::System.IDisposable {
     SwigFannPINVOKE.neural_net_randomize_weights(swigCPtr, min_weight, max_weight);
   }
 
-  public void init_weights(SWIGTYPE_p_training_data data) {
-    SwigFannPINVOKE.neural_net_init_weights(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
+  public void init_weights(training_data data) {
+    SwigFannPINVOKE.neural_net_init_weights(swigCPtr, training_data.getCPtr(data));
     if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
@@ -129,14 +129,14 @@ public class neural_net : global::System.IDisposable {
     SwigFannPINVOKE.neural_net_train(swigCPtr, SWIGTYPE_p_float.getCPtr(input), SWIGTYPE_p_float.getCPtr(desired_output));
   }
 
-  public float train_epoch(SWIGTYPE_p_training_data data) {
-    float ret = SwigFannPINVOKE.neural_net_train_epoch(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
+  public float train_epoch(training_data data) {
+    float ret = SwigFannPINVOKE.neural_net_train_epoch(swigCPtr, training_data.getCPtr(data));
     if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public void train_on_data(SWIGTYPE_p_training_data data, uint max_epochs, uint epochs_between_reports, float desired_error) {
-    SwigFannPINVOKE.neural_net_train_on_data(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), max_epochs, epochs_between_reports, desired_error);
+  public void train_on_data(training_data data, uint max_epochs, uint epochs_between_reports, float desired_error) {
+    SwigFannPINVOKE.neural_net_train_on_data(swigCPtr, training_data.getCPtr(data), max_epochs, epochs_between_reports, desired_error);
     if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
@@ -151,8 +151,8 @@ public class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public float test_data(SWIGTYPE_p_training_data data) {
-    float ret = SwigFannPINVOKE.neural_net_test_data(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
+  public float test_data(training_data data) {
+    float ret = SwigFannPINVOKE.neural_net_test_data(swigCPtr, training_data.getCPtr(data));
     if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
@@ -175,14 +175,13 @@ public class neural_net : global::System.IDisposable {
     SwigFannPINVOKE.neural_net_print_parameters(swigCPtr);
   }
 
-  public SWIGTYPE_p_training_algorithm_enum get_training_algorithm() {
-    SWIGTYPE_p_training_algorithm_enum ret = new SWIGTYPE_p_training_algorithm_enum(SwigFannPINVOKE.neural_net_get_training_algorithm(swigCPtr), true);
+  public training_algorithm_enum get_training_algorithm() {
+    training_algorithm_enum ret = (training_algorithm_enum)SwigFannPINVOKE.neural_net_get_training_algorithm(swigCPtr);
     return ret;
   }
 
-  public void set_training_algorithm(SWIGTYPE_p_training_algorithm_enum training_algorithm) {
-    SwigFannPINVOKE.neural_net_set_training_algorithm(swigCPtr, SWIGTYPE_p_training_algorithm_enum.getCPtr(training_algorithm));
-    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
+  public void set_training_algorithm(training_algorithm_enum training_algorithm) {
+    SwigFannPINVOKE.neural_net_set_training_algorithm(swigCPtr, (int)training_algorithm);
   }
 
   public float get_learning_rate() {
@@ -194,29 +193,25 @@ public class neural_net : global::System.IDisposable {
     SwigFannPINVOKE.neural_net_set_learning_rate(swigCPtr, learning_rate);
   }
 
-  public SWIGTYPE_p_activation_function_enum get_activation_function(int layer, int neuron) {
-    SWIGTYPE_p_activation_function_enum ret = new SWIGTYPE_p_activation_function_enum(SwigFannPINVOKE.neural_net_get_activation_function(swigCPtr, layer, neuron), true);
+  public activation_function_enum get_activation_function(int layer, int neuron) {
+    activation_function_enum ret = (activation_function_enum)SwigFannPINVOKE.neural_net_get_activation_function(swigCPtr, layer, neuron);
     return ret;
   }
 
-  public void set_activation_function(SWIGTYPE_p_activation_function_enum activation_function, int layer, int neuron) {
-    SwigFannPINVOKE.neural_net_set_activation_function(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(activation_function), layer, neuron);
-    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
+  public void set_activation_function(activation_function_enum activation_function, int layer, int neuron) {
+    SwigFannPINVOKE.neural_net_set_activation_function(swigCPtr, (int)activation_function, layer, neuron);
   }
 
-  public void set_activation_function_layer(SWIGTYPE_p_activation_function_enum activation_function, int layer) {
-    SwigFannPINVOKE.neural_net_set_activation_function_layer(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(activation_function), layer);
-    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
+  public void set_activation_function_layer(activation_function_enum activation_function, int layer) {
+    SwigFannPINVOKE.neural_net_set_activation_function_layer(swigCPtr, (int)activation_function, layer);
   }
 
-  public void set_activation_function_hidden(SWIGTYPE_p_activation_function_enum activation_function) {
-    SwigFannPINVOKE.neural_net_set_activation_function_hidden(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(activation_function));
-    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
+  public void set_activation_function_hidden(activation_function_enum activation_function) {
+    SwigFannPINVOKE.neural_net_set_activation_function_hidden(swigCPtr, (int)activation_function);
   }
 
-  public void set_activation_function_output(SWIGTYPE_p_activation_function_enum activation_function) {
-    SwigFannPINVOKE.neural_net_set_activation_function_output(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(activation_function));
-    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
+  public void set_activation_function_output(activation_function_enum activation_function) {
+    SwigFannPINVOKE.neural_net_set_activation_function_output(swigCPtr, (int)activation_function);
   }
 
   public float get_activation_steepness(int layer, int neuron) {
@@ -240,14 +235,13 @@ public class neural_net : global::System.IDisposable {
     SwigFannPINVOKE.neural_net_set_activation_steepness_output(swigCPtr, steepness);
   }
 
-  public SWIGTYPE_p_error_function_enum get_train_error_function() {
-    SWIGTYPE_p_error_function_enum ret = new SWIGTYPE_p_error_function_enum(SwigFannPINVOKE.neural_net_get_train_error_function(swigCPtr), true);
+  public error_function_enum get_train_error_function() {
+    error_function_enum ret = (error_function_enum)SwigFannPINVOKE.neural_net_get_train_error_function(swigCPtr);
     return ret;
   }
 
-  public void set_train_error_function(SWIGTYPE_p_error_function_enum train_error_function) {
-    SwigFannPINVOKE.neural_net_set_train_error_function(swigCPtr, SWIGTYPE_p_error_function_enum.getCPtr(train_error_function));
-    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
+  public void set_train_error_function(error_function_enum train_error_function) {
+    SwigFannPINVOKE.neural_net_set_train_error_function(swigCPtr, (int)train_error_function);
   }
 
   public float get_quickprop_decay() {
@@ -369,8 +363,8 @@ public class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public SWIGTYPE_p_network_type_enum get_network_type() {
-    SWIGTYPE_p_network_type_enum ret = new SWIGTYPE_p_network_type_enum(SwigFannPINVOKE.neural_net_get_network_type(swigCPtr), true);
+  public network_type_enum get_network_type() {
+    network_type_enum ret = (network_type_enum)SwigFannPINVOKE.neural_net_get_network_type(swigCPtr);
     return ret;
   }
 
@@ -413,14 +407,13 @@ public class neural_net : global::System.IDisposable {
     SwigFannPINVOKE.neural_net_set_learning_momentum(swigCPtr, learning_momentum);
   }
 
-  public SWIGTYPE_p_stop_function_enum get_train_stop_function() {
-    SWIGTYPE_p_stop_function_enum ret = new SWIGTYPE_p_stop_function_enum(SwigFannPINVOKE.neural_net_get_train_stop_function(swigCPtr), true);
+  public stop_function_enum get_train_stop_function() {
+    stop_function_enum ret = (stop_function_enum)SwigFannPINVOKE.neural_net_get_train_stop_function(swigCPtr);
     return ret;
   }
 
-  public void set_train_stop_function(SWIGTYPE_p_stop_function_enum train_stop_function) {
-    SwigFannPINVOKE.neural_net_set_train_stop_function(swigCPtr, SWIGTYPE_p_stop_function_enum.getCPtr(train_stop_function));
-    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
+  public void set_train_stop_function(stop_function_enum train_stop_function) {
+    SwigFannPINVOKE.neural_net_set_train_stop_function(swigCPtr, (int)train_stop_function);
   }
 
   public float get_bit_fail_limit() {
@@ -437,8 +430,8 @@ public class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public void cascadetrain_on_data(SWIGTYPE_p_training_data data, uint max_neurons, uint neurons_between_reports, float desired_error) {
-    SwigFannPINVOKE.neural_net_cascadetrain_on_data(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), max_neurons, neurons_between_reports, desired_error);
+  public void cascadetrain_on_data(training_data data, uint max_neurons, uint neurons_between_reports, float desired_error) {
+    SwigFannPINVOKE.neural_net_cascadetrain_on_data(swigCPtr, training_data.getCPtr(data), max_neurons, neurons_between_reports, desired_error);
     if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
@@ -529,14 +522,14 @@ public class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public SWIGTYPE_p_activation_function_enum get_cascade_activation_functions() {
+  public SWIGTYPE_p_FANN__activation_function_enum get_cascade_activation_functions() {
     global::System.IntPtr cPtr = SwigFannPINVOKE.neural_net_get_cascade_activation_functions(swigCPtr);
-    SWIGTYPE_p_activation_function_enum ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_activation_function_enum(cPtr, false);
+    SWIGTYPE_p_FANN__activation_function_enum ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_FANN__activation_function_enum(cPtr, false);
     return ret;
   }
 
-  public void set_cascade_activation_functions(SWIGTYPE_p_activation_function_enum cascade_activation_functions, uint cascade_activation_functions_count) {
-    SwigFannPINVOKE.neural_net_set_cascade_activation_functions(swigCPtr, SWIGTYPE_p_activation_function_enum.getCPtr(cascade_activation_functions), cascade_activation_functions_count);
+  public void set_cascade_activation_functions(SWIGTYPE_p_FANN__activation_function_enum cascade_activation_functions, uint cascade_activation_functions_count) {
+    SwigFannPINVOKE.neural_net_set_cascade_activation_functions(swigCPtr, SWIGTYPE_p_FANN__activation_function_enum.getCPtr(cascade_activation_functions), cascade_activation_functions_count);
   }
 
   public uint get_cascade_activation_steepnesses_count() {
@@ -563,30 +556,30 @@ public class neural_net : global::System.IDisposable {
     SwigFannPINVOKE.neural_net_set_cascade_num_candidate_groups(swigCPtr, cascade_num_candidate_groups);
   }
 
-  public void scale_train(SWIGTYPE_p_training_data data) {
-    SwigFannPINVOKE.neural_net_scale_train(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
+  public void scale_train(training_data data) {
+    SwigFannPINVOKE.neural_net_scale_train(swigCPtr, training_data.getCPtr(data));
     if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public void descale_train(SWIGTYPE_p_training_data data) {
-    SwigFannPINVOKE.neural_net_descale_train(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data));
+  public void descale_train(training_data data) {
+    SwigFannPINVOKE.neural_net_descale_train(swigCPtr, training_data.getCPtr(data));
     if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public bool set_input_scaling_params(SWIGTYPE_p_training_data data, float new_input_min, float new_input_max) {
-    bool ret = SwigFannPINVOKE.neural_net_set_input_scaling_params(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), new_input_min, new_input_max);
-    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  public bool set_output_scaling_params(SWIGTYPE_p_training_data data, float new_output_min, float new_output_max) {
-    bool ret = SwigFannPINVOKE.neural_net_set_output_scaling_params(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), new_output_min, new_output_max);
+  public bool set_input_scaling_params(training_data data, float new_input_min, float new_input_max) {
+    bool ret = SwigFannPINVOKE.neural_net_set_input_scaling_params(swigCPtr, training_data.getCPtr(data), new_input_min, new_input_max);
     if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public bool set_scaling_params(SWIGTYPE_p_training_data data, float new_input_min, float new_input_max, float new_output_min, float new_output_max) {
-    bool ret = SwigFannPINVOKE.neural_net_set_scaling_params(swigCPtr, SWIGTYPE_p_training_data.getCPtr(data), new_input_min, new_input_max, new_output_min, new_output_max);
+  public bool set_output_scaling_params(training_data data, float new_output_min, float new_output_max) {
+    bool ret = SwigFannPINVOKE.neural_net_set_output_scaling_params(swigCPtr, training_data.getCPtr(data), new_output_min, new_output_max);
+    if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public bool set_scaling_params(training_data data, float new_input_min, float new_input_max, float new_output_min, float new_output_max) {
+    bool ret = SwigFannPINVOKE.neural_net_set_scaling_params(swigCPtr, training_data.getCPtr(data), new_input_min, new_input_max, new_output_min, new_output_max);
     if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }

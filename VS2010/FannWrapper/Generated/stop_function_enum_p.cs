@@ -10,20 +10,20 @@
 
 namespace FannWrap {
 
-public class stop_function_enum_p : global::System.IDisposable {
+public class training_data_p : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal stop_function_enum_p(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal training_data_p(global::System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(stop_function_enum_p obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(training_data_p obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 
-  ~stop_function_enum_p() {
+  ~training_data_p() {
     Dispose();
   }
 
@@ -32,7 +32,7 @@ public class stop_function_enum_p : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          SwigFannPINVOKE.delete_stop_function_enum_p(swigCPtr);
+          SwigFannPINVOKE.delete_training_data_p(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -40,28 +40,28 @@ public class stop_function_enum_p : global::System.IDisposable {
     }
   }
 
-  public stop_function_enum_p() : this(SwigFannPINVOKE.new_stop_function_enum_p(), true) {
+  public training_data_p() : this(SwigFannPINVOKE.new_training_data_p(), true) {
   }
 
-  public void assign(SWIGTYPE_p_stop_function_enum value) {
-    SwigFannPINVOKE.stop_function_enum_p_assign(swigCPtr, SWIGTYPE_p_stop_function_enum.getCPtr(value));
+  public void assign(training_data value) {
+    SwigFannPINVOKE.training_data_p_assign(swigCPtr, training_data.getCPtr(value));
     if (SwigFannPINVOKE.SWIGPendingException.Pending) throw SwigFannPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public SWIGTYPE_p_stop_function_enum value() {
-    SWIGTYPE_p_stop_function_enum ret = new SWIGTYPE_p_stop_function_enum(SwigFannPINVOKE.stop_function_enum_p_value(swigCPtr), true);
+  public training_data value() {
+    training_data ret = new training_data(SwigFannPINVOKE.training_data_p_value(swigCPtr), true);
     return ret;
   }
 
-  public SWIGTYPE_p_stop_function_enum cast() {
-    global::System.IntPtr cPtr = SwigFannPINVOKE.stop_function_enum_p_cast(swigCPtr);
-    SWIGTYPE_p_stop_function_enum ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_stop_function_enum(cPtr, false);
+  public training_data cast() {
+    global::System.IntPtr cPtr = SwigFannPINVOKE.training_data_p_cast(swigCPtr);
+    training_data ret = (cPtr == global::System.IntPtr.Zero) ? null : new training_data(cPtr, false);
     return ret;
   }
 
-  public static stop_function_enum_p frompointer(SWIGTYPE_p_stop_function_enum t) {
-    global::System.IntPtr cPtr = SwigFannPINVOKE.stop_function_enum_p_frompointer(SWIGTYPE_p_stop_function_enum.getCPtr(t));
-    stop_function_enum_p ret = (cPtr == global::System.IntPtr.Zero) ? null : new stop_function_enum_p(cPtr, false);
+  public static training_data_p frompointer(training_data t) {
+    global::System.IntPtr cPtr = SwigFannPINVOKE.training_data_p_frompointer(training_data.getCPtr(t));
+    training_data_p ret = (cPtr == global::System.IntPtr.Zero) ? null : new training_data_p(cPtr, false);
     return ret;
   }
 

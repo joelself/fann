@@ -758,6 +758,123 @@ class SwigFannPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_fann_connection")]
   public static extern void delete_fann_connection(global::System.Runtime.InteropServices.HandleRef jarg1);
 
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_training_data__SWIG_0")]
+  public static extern global::System.IntPtr new_training_data__SWIG_0();
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_training_data__SWIG_1")]
+  public static extern global::System.IntPtr new_training_data__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_training_data")]
+  public static extern void delete_training_data(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_destroy_train")]
+  public static extern void training_data_destroy_train(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_read_train_from_file")]
+  public static extern bool training_data_read_train_from_file(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_save_train")]
+  public static extern bool training_data_save_train(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_save_train_to_fixed")]
+  public static extern bool training_data_save_train_to_fixed(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, uint jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_shuffle_train_data")]
+  public static extern void training_data_shuffle_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_merge_train_data")]
+  public static extern void training_data_merge_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_length_train_data")]
+  public static extern uint training_data_length_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_num_input_train_data")]
+  public static extern uint training_data_num_input_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_num_output_train_data")]
+  public static extern uint training_data_num_output_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_input")]
+  public static extern global::System.IntPtr training_data_get_input(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_output")]
+  public static extern global::System.IntPtr training_data_get_output(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_train_input")]
+  public static extern global::System.IntPtr training_data_get_train_input(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_train_output")]
+  public static extern global::System.IntPtr training_data_get_train_output(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_set_train_data__SWIG_0")]
+  public static extern void training_data_set_train_data__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, uint jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_set_train_data__SWIG_1")]
+  public static extern void training_data_set_train_data__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, uint jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_create_train_from_callback")]
+  public static extern void training_data_create_train_from_callback(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, uint jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_min_input")]
+  public static extern float training_data_get_min_input(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_max_input")]
+  public static extern float training_data_get_max_input(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_min_output")]
+  public static extern float training_data_get_min_output(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_max_output")]
+  public static extern float training_data_get_max_output(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_scale_input_train_data")]
+  public static extern void training_data_scale_input_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_scale_output_train_data")]
+  public static extern void training_data_scale_output_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_scale_train_data")]
+  public static extern void training_data_scale_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_subset_train_data")]
+  public static extern void training_data_subset_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_fann_type_p")]
+  public static extern global::System.IntPtr new_fann_type_p();
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_fann_type_p")]
+  public static extern void delete_fann_type_p(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_fann_type_p_assign")]
+  public static extern void fann_type_p_assign(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_fann_type_p_value")]
+  public static extern float fann_type_p_value(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_fann_type_p_cast")]
+  public static extern global::System.IntPtr fann_type_p_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_fann_type_p_frompointer")]
+  public static extern global::System.IntPtr fann_type_p_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_float_p")]
+  public static extern global::System.IntPtr new_float_p();
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_float_p")]
+  public static extern void delete_float_p(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_float_p_assign")]
+  public static extern void float_p_assign(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_float_p_value")]
+  public static extern float float_p_value(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_float_p_cast")]
+  public static extern global::System.IntPtr float_p_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_float_p_frompointer")]
+  public static extern global::System.IntPtr float_p_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_neural_net__SWIG_0")]
   public static extern global::System.IntPtr new_neural_net__SWIG_0();
 
@@ -846,10 +963,10 @@ class SwigFannPINVOKE {
   public static extern void neural_net_print_parameters(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_get_training_algorithm")]
-  public static extern global::System.IntPtr neural_net_get_training_algorithm(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern int neural_net_get_training_algorithm(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_set_training_algorithm")]
-  public static extern void neural_net_set_training_algorithm(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_set_training_algorithm(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_get_learning_rate")]
   public static extern float neural_net_get_learning_rate(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -858,19 +975,19 @@ class SwigFannPINVOKE {
   public static extern void neural_net_set_learning_rate(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_get_activation_function")]
-  public static extern global::System.IntPtr neural_net_get_activation_function(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+  public static extern int neural_net_get_activation_function(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_set_activation_function")]
-  public static extern void neural_net_set_activation_function(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, int jarg3, int jarg4);
+  public static extern void neural_net_set_activation_function(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3, int jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_set_activation_function_layer")]
-  public static extern void neural_net_set_activation_function_layer(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, int jarg3);
+  public static extern void neural_net_set_activation_function_layer(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_set_activation_function_hidden")]
-  public static extern void neural_net_set_activation_function_hidden(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_set_activation_function_hidden(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_set_activation_function_output")]
-  public static extern void neural_net_set_activation_function_output(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_set_activation_function_output(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_get_activation_steepness")]
   public static extern float neural_net_get_activation_steepness(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
@@ -888,10 +1005,10 @@ class SwigFannPINVOKE {
   public static extern void neural_net_set_activation_steepness_output(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_get_train_error_function")]
-  public static extern global::System.IntPtr neural_net_get_train_error_function(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern int neural_net_get_train_error_function(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_set_train_error_function")]
-  public static extern void neural_net_set_train_error_function(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_set_train_error_function(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_get_quickprop_decay")]
   public static extern float neural_net_get_quickprop_decay(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -972,7 +1089,7 @@ class SwigFannPINVOKE {
   public static extern uint neural_net_get_total_connections(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_get_network_type")]
-  public static extern global::System.IntPtr neural_net_get_network_type(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern int neural_net_get_network_type(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_get_connection_rate")]
   public static extern float neural_net_get_connection_rate(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -1002,10 +1119,10 @@ class SwigFannPINVOKE {
   public static extern void neural_net_set_learning_momentum(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_get_train_stop_function")]
-  public static extern global::System.IntPtr neural_net_get_train_stop_function(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern int neural_net_get_train_stop_function(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_set_train_stop_function")]
-  public static extern void neural_net_set_train_stop_function(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_set_train_stop_function(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_get_bit_fail_limit")]
   public static extern float neural_net_get_bit_fail_limit(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -1151,215 +1268,41 @@ class SwigFannPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_neural_net_enable_seed_rand")]
   public static extern void neural_net_enable_seed_rand(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_training_data__SWIG_0")]
-  public static extern global::System.IntPtr new_training_data__SWIG_0();
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_training_data__SWIG_1")]
-  public static extern global::System.IntPtr new_training_data__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_training_data")]
-  public static extern void delete_training_data(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_destroy_train")]
-  public static extern void training_data_destroy_train(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_read_train_from_file")]
-  public static extern bool training_data_read_train_from_file(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_save_train")]
-  public static extern bool training_data_save_train(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_save_train_to_fixed")]
-  public static extern bool training_data_save_train_to_fixed(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, uint jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_shuffle_train_data")]
-  public static extern void training_data_shuffle_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_merge_train_data")]
-  public static extern void training_data_merge_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_length_train_data")]
-  public static extern uint training_data_length_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_num_input_train_data")]
-  public static extern uint training_data_num_input_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_num_output_train_data")]
-  public static extern uint training_data_num_output_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_input")]
-  public static extern global::System.IntPtr training_data_get_input(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_output")]
-  public static extern global::System.IntPtr training_data_get_output(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_train_input")]
-  public static extern global::System.IntPtr training_data_get_train_input(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_train_output")]
-  public static extern global::System.IntPtr training_data_get_train_output(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_set_train_data__SWIG_0")]
-  public static extern void training_data_set_train_data__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, uint jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_set_train_data__SWIG_1")]
-  public static extern void training_data_set_train_data__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, uint jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_create_train_from_callback")]
-  public static extern void training_data_create_train_from_callback(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, uint jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_min_input")]
-  public static extern float training_data_get_min_input(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_max_input")]
-  public static extern float training_data_get_max_input(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_min_output")]
-  public static extern float training_data_get_min_output(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_get_max_output")]
-  public static extern float training_data_get_max_output(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_scale_input_train_data")]
-  public static extern void training_data_scale_input_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_scale_output_train_data")]
-  public static extern void training_data_scale_output_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_scale_train_data")]
-  public static extern void training_data_scale_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_subset_train_data")]
-  public static extern void training_data_subset_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3);
-
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_fopen")]
   public static extern global::System.IntPtr fopen(string jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_fann_type_p")]
-  public static extern global::System.IntPtr new_fann_type_p();
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_training_data_p")]
+  public static extern global::System.IntPtr new_training_data_p();
 
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_fann_type_p")]
-  public static extern void delete_fann_type_p(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_training_data_p")]
+  public static extern void delete_training_data_p(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_fann_type_p_assign")]
-  public static extern void fann_type_p_assign(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_p_assign")]
+  public static extern void training_data_p_assign(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_fann_type_p_value")]
-  public static extern float fann_type_p_value(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_p_value")]
+  public static extern global::System.IntPtr training_data_p_value(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_fann_type_p_cast")]
-  public static extern global::System.IntPtr fann_type_p_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_p_cast")]
+  public static extern global::System.IntPtr training_data_p_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_fann_type_p_frompointer")]
-  public static extern global::System.IntPtr fann_type_p_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_p_frompointer")]
+  public static extern global::System.IntPtr training_data_p_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_float_p")]
-  public static extern global::System.IntPtr new_float_p();
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_training_data_pointer")]
+  public static extern global::System.IntPtr new_training_data_pointer();
 
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_float_p")]
-  public static extern void delete_float_p(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_copy_training_data_pointer")]
+  public static extern global::System.IntPtr copy_training_data_pointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_float_p_assign")]
-  public static extern void float_p_assign(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_training_data_pointer")]
+  public static extern void delete_training_data_pointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_float_p_value")]
-  public static extern float float_p_value(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_pointer_assign")]
+  public static extern void training_data_pointer_assign(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_float_p_cast")]
-  public static extern global::System.IntPtr float_p_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_float_p_frompointer")]
-  public static extern global::System.IntPtr float_p_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_training_algorithm_enum_p")]
-  public static extern global::System.IntPtr new_training_algorithm_enum_p();
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_training_algorithm_enum_p")]
-  public static extern void delete_training_algorithm_enum_p(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_algorithm_enum_p_assign")]
-  public static extern void training_algorithm_enum_p_assign(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_algorithm_enum_p_value")]
-  public static extern global::System.IntPtr training_algorithm_enum_p_value(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_algorithm_enum_p_cast")]
-  public static extern global::System.IntPtr training_algorithm_enum_p_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_algorithm_enum_p_frompointer")]
-  public static extern global::System.IntPtr training_algorithm_enum_p_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_activation_function_enum_p")]
-  public static extern global::System.IntPtr new_activation_function_enum_p();
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_activation_function_enum_p")]
-  public static extern void delete_activation_function_enum_p(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_activation_function_enum_p_assign")]
-  public static extern void activation_function_enum_p_assign(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_activation_function_enum_p_value")]
-  public static extern global::System.IntPtr activation_function_enum_p_value(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_activation_function_enum_p_cast")]
-  public static extern global::System.IntPtr activation_function_enum_p_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_activation_function_enum_p_frompointer")]
-  public static extern global::System.IntPtr activation_function_enum_p_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_error_function_enum_p")]
-  public static extern global::System.IntPtr new_error_function_enum_p();
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_error_function_enum_p")]
-  public static extern void delete_error_function_enum_p(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_error_function_enum_p_assign")]
-  public static extern void error_function_enum_p_assign(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_error_function_enum_p_value")]
-  public static extern global::System.IntPtr error_function_enum_p_value(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_error_function_enum_p_cast")]
-  public static extern global::System.IntPtr error_function_enum_p_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_error_function_enum_p_frompointer")]
-  public static extern global::System.IntPtr error_function_enum_p_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_network_type_enum_p")]
-  public static extern global::System.IntPtr new_network_type_enum_p();
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_network_type_enum_p")]
-  public static extern void delete_network_type_enum_p(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_network_type_enum_p_assign")]
-  public static extern void network_type_enum_p_assign(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_network_type_enum_p_value")]
-  public static extern global::System.IntPtr network_type_enum_p_value(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_network_type_enum_p_cast")]
-  public static extern global::System.IntPtr network_type_enum_p_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_network_type_enum_p_frompointer")]
-  public static extern global::System.IntPtr network_type_enum_p_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_stop_function_enum_p")]
-  public static extern global::System.IntPtr new_stop_function_enum_p();
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_stop_function_enum_p")]
-  public static extern void delete_stop_function_enum_p(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_stop_function_enum_p_assign")]
-  public static extern void stop_function_enum_p_assign(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_stop_function_enum_p_value")]
-  public static extern global::System.IntPtr stop_function_enum_p_value(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_stop_function_enum_p_cast")]
-  public static extern global::System.IntPtr stop_function_enum_p_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_stop_function_enum_p_frompointer")]
-  public static extern global::System.IntPtr stop_function_enum_p_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_training_data_pointer_value")]
+  public static extern global::System.IntPtr training_data_pointer_value(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_float_p_array")]
   public static extern global::System.IntPtr new_float_p_array(int jarg1);
@@ -1408,6 +1351,42 @@ class SwigFannPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_connection_array_setitem")]
   public static extern void connection_array_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_floatArray")]
+  public static extern global::System.IntPtr new_floatArray(int jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_floatArray")]
+  public static extern void delete_floatArray(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_floatArray_getitem")]
+  public static extern float floatArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_floatArray_setitem")]
+  public static extern void floatArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, float jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_floatArray_cast")]
+  public static extern global::System.IntPtr floatArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_floatArray_frompointer")]
+  public static extern global::System.IntPtr floatArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_new_uintArray")]
+  public static extern global::System.IntPtr new_uintArray(int jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_delete_uintArray")]
+  public static extern void delete_uintArray(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_uintArray_getitem")]
+  public static extern uint uintArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_uintArray_setitem")]
+  public static extern void uintArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, uint jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_uintArray_cast")]
+  public static extern global::System.IntPtr uintArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("SwigFann", EntryPoint="CSharp_uintArray_frompointer")]
+  public static extern global::System.IntPtr uintArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 }
 
 }
