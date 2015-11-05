@@ -1862,7 +1862,7 @@ namespace FANN {
             }
             return bit_fail;
         }
-
+#ifndef FIXEDFANN
         /*********************************************************************/
 
         /* Method: cascadetrain_on_data
@@ -1918,7 +1918,7 @@ namespace FANN {
                                           max_neurons, neurons_between_reports, desired_error);
             }
         }
-
+#endif
         /* Method: get_cascade_output_change_fraction
 
            The cascade output change fraction is a number between 0 and 1 determining how large a fraction
