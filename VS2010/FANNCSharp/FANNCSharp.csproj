@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1B1EECB8-FEB0-418F-9EC1-316BC4ACB517}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FANNCSharp</RootNamespace>
+    <AssemblyName>FANNCSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\x64\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\bin\x64\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\x86\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\..\bin\x86\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FannFile.cs" />
+    <Compile Include="FannWrapperDouble\activationFunctionEnumArray.cs" />
+    <Compile Include="FannWrapperDouble\connectionArray.cs" />
+    <Compile Include="FannWrapperDouble\doubleArray.cs" />
+    <Compile Include="FannWrapperDouble\doubleArrayArray.cs" />
+    <Compile Include="FannWrapperDouble\fann.cs" />
+    <Compile Include="FannWrapperDouble\fann_connection.cs" />
+    <Compile Include="FannWrapperDouble\fann_error.cs" />
+    <Compile Include="FannWrapperDouble\fann_layer.cs" />
+    <Compile Include="FannWrapperDouble\fann_neuron.cs" />
+    <Compile Include="FannWrapperDouble\neural_net.cs" />
+    <Compile Include="FannWrapperDouble\SwigFannDouble.cs" />
+    <Compile Include="FannWrapperDouble\SwigFannDoublePINVOKE.cs" />
+    <Compile Include="FannWrapperDouble\SWIGTYPE_p_callback_type.cs" />
+    <Compile Include="FannWrapperDouble\SWIGTYPE_p_double.cs" />
+    <Compile Include="FannWrapperDouble\SWIGTYPE_p_float.cs" />
+    <Compile Include="FannWrapperDouble\SWIGTYPE_p_f_p_fann_p_fann_train_data_unsigned_int_unsigned_int_float_unsigned_int__int.cs" />
+    <Compile Include="FannWrapperDouble\SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_double_p_double__void.cs" />
+    <Compile Include="FannWrapperDouble\SWIGTYPE_p_p_double.cs" />
+    <Compile Include="FannWrapperDouble\SWIGTYPE_p_p_fann_neuron.cs" />
+    <Compile Include="FannWrapperDouble\training_data.cs" />
+    <Compile Include="FannWrapperFixed\activationFunctionEnumArray.cs" />
+    <Compile Include="FannWrapperFixed\connectionArray.cs" />
+    <Compile Include="FannWrapperFixed\fann.cs" />
+    <Compile Include="FannWrapperFixed\fann_connection.cs" />
+    <Compile Include="FannWrapperFixed\fann_error.cs" />
+    <Compile Include="FannWrapperFixed\fann_layer.cs" />
+    <Compile Include="FannWrapperFixed\fann_neuron.cs" />
+    <Compile Include="FannWrapperFixed\intArray.cs" />
+    <Compile Include="FannWrapperFixed\intArrayArray.cs" />
+    <Compile Include="FannWrapperFixed\neural_net.cs" />
+    <Compile Include="FannWrapperFixed\SwigFannFixed.cs" />
+    <Compile Include="FannWrapperFixed\SwigFannFixedPINVOKE.cs" />
+    <Compile Include="FannWrapperFixed\SWIGTYPE_p_callback_type.cs" />
+    <Compile Include="FannWrapperFixed\SWIGTYPE_p_f_p_fann_p_fann_train_data_unsigned_int_unsigned_int_float_unsigned_int__int.cs" />
+    <Compile Include="FannWrapperFixed\SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_int_p_int__void.cs" />
+    <Compile Include="FannWrapperFixed\SWIGTYPE_p_int.cs" />
+    <Compile Include="FannWrapperFixed\SWIGTYPE_p_p_fann_neuron.cs" />
+    <Compile Include="FannWrapperFixed\SWIGTYPE_p_p_int.cs" />
+    <Compile Include="FannWrapperFixed\training_data.cs" />
+    <Compile Include="FannWrapperFloat\activationFunctionEnumArray.cs" />
+    <Compile Include="FannWrapperFloat\connectionArray.cs" />
+    <Compile Include="FannWrapperFloat\fann.cs" />
+    <Compile Include="FannWrapperFloat\fann_connection.cs" />
+    <Compile Include="FannWrapperFloat\fann_error.cs" />
+    <Compile Include="FannWrapperFloat\fann_layer.cs" />
+    <Compile Include="FannWrapperFloat\fann_neuron.cs" />
+    <Compile Include="FannWrapperFloat\floatArray.cs" />
+    <Compile Include="FannWrapperFloat\floatArrayArray.cs" />
+    <Compile Include="FannWrapperFloat\neural_net.cs" />
+    <Compile Include="FannWrapperFloat\SwigFannFloat.cs" />
+    <Compile Include="FannWrapperFloat\SwigFannFloatPINVOKE.cs" />
+    <Compile Include="FannWrapperFloat\SWIGTYPE_p_callback_type.cs" />
+    <Compile Include="FannWrapperFloat\SWIGTYPE_p_float.cs" />
+    <Compile Include="FannWrapperFloat\SWIGTYPE_p_f_p_fann_p_fann_train_data_unsigned_int_unsigned_int_float_unsigned_int__int.cs" />
+    <Compile Include="FannWrapperFloat\SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_float_p_float__void.cs" />
+    <Compile Include="FannWrapperFloat\SWIGTYPE_p_p_fann_neuron.cs" />
+    <Compile Include="FannWrapperFloat\SWIGTYPE_p_p_float.cs" />
+    <Compile Include="FannWrapperFloat\training_data.cs" />
+    <Compile Include="FannWrapper\activation_function_enum.cs" />
+    <Compile Include="FannWrapper\error_function_enum.cs" />
+    <Compile Include="FannWrapper\fann_activationfunc_enum.cs" />
+    <Compile Include="FannWrapper\fann_errorfunc_enum.cs" />
+    <Compile Include="FannWrapper\fann_nettype_enum.cs" />
+    <Compile Include="FannWrapper\fann_stopfunc_enum.cs" />
+    <Compile Include="FannWrapper\fann_train_enum.cs" />
+    <Compile Include="FannWrapper\network_type_enum.cs" />
+    <Compile Include="FannWrapper\stop_function_enum.cs" />
+    <Compile Include="FannWrapper\SWIGTYPE_fann_errno_enum.cs" />
+    <Compile Include="FannWrapper\SWIGTYPE_p_fann_activationfunc_enum.cs" />
+    <Compile Include="FannWrapper\SWIGTYPE_p_FANN__activation_function_enum.cs" />
+    <Compile Include="FannWrapper\SWIGTYPE_p_FILE.cs" />
+    <Compile Include="FannWrapper\SWIGTYPE_p_p_char.cs" />
+    <Compile Include="FannWrapper\SWIGTYPE_p_unsigned_int.cs" />
+    <Compile Include="FannWrapper\SWIGTYPE_p_void.cs" />
+    <Compile Include="FannWrapper\training_algorithm_enum.cs" />
+    <Compile Include="FannWrapper\uintArray.cs" />
+    <Compile Include="NeuralNetFloat.cs" />
+    <Compile Include="NeuralNetDouble.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrainingDataFloat.cs" />
+    <Compile Include="TrainingDataDouble.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

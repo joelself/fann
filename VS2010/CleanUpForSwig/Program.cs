@@ -12,12 +12,31 @@ namespace CleanUpForSwig
 {
     class Program
     {
+        private static string [] filesToCopy = {"activation_function_enum.cs",
+                                                "fann_activationfunc_enum.cs",
+                                                 "error_function_enum.cs",
+                                                 "fann_activationfunc_enum.cs",
+                                                 "fann_errorfunc_enum.cs",
+                                                 "fann_stopfunc_enum.cs",
+                                                 "fann_train_enum.cs",
+                                                 "fann_nettype_enum.cs",
+                                                 "network_type_enum.cs",
+                                                 "SWIGTYPE_fann_errno_enum.cs",
+                                                 "SWIGTYPE_p_FANN__activation_function_enum.cs",
+                                                 "SWIGTYPE_p_fann_activationfunc_enum.cs",
+                                                 "SWIGTYPE_p_FILE.cs",
+                                                 "SWIGTYPE_p_p_char.cs",
+                                                 "SWIGTYPE_p_unsigned_int.cs",
+                                                 "SWIGTYPE_p_void.cs",
+                                                 "training_algorithm_enum.cs",
+                                                 "uintArray.cs",
+                                                 "stop_function_enum.cs"};
         static int Main(string[] args)
         {
-            if (args.Length < 2)
+            if (args.Length < 4)
             {
                 Console.Error.WriteLine("You must specify a swig generated file and generated file path to fix-up");
-                Console.Error.WriteLine("Usage: CleanUpForSwig [FILEPATH] [PATH_TO_GENERATED_FILES]");
+                Console.Error.WriteLine("Usage: CleanUpForSwig [FILEPATH] [PATH_TO_GENERATED_FILES] [delete|copy]");
                 return -1;
             }
             Console.WriteLine("Arguments: " + args[0] + ", " + args[1]);
@@ -25,6 +44,79 @@ namespace CleanUpForSwig
                 return -1;
             if (fixCSharp(args[1]) < 0)
                 return -1;
+            if (args[2] == "copy" && copyFiles(args[1]) < 0)
+                return -1;
+            if (deleteFiles(args[1]) < 0)
+                return -1;
+            if (addNamespace(args[1]) < 0)
+                return -1;
+            if (args[2] == "copy" && addNamespaceFile(args[1], "uintArray.cs") < 0)
+                return -1;
+            //if (addInheritance(args[1], args[3]) < 0)
+            //    return -1;
+            return 0;
+        }
+
+        static int addNamespaceFile(string folder, string file)
+        {
+            DirectoryInfo info = new DirectoryInfo(folder).Parent;
+            string text = File.ReadAllText(info.FullName + "\\FannWrapper\\" + file);
+            Match match = Regex.Match(text, "^.*?namespace.*?FannWrap[a-zA-z0-9]*.*?{.*$", RegexOptions.Multiline);
+            text = text.Insert(match.Index, "using FannWrapperFloat;\n");
+            File.WriteAllText(info.FullName + "\\FannWrapper\\" + file, text);
+            return 0;
+        }
+
+        static int addNamespace(string folder)
+        {
+            DirectoryInfo info = new DirectoryInfo(folder);
+            foreach(FileInfo file in info.EnumerateFiles("*.cs"))
+            {
+                string text = File.ReadAllText(file.FullName);
+                Match match = Regex.Match(text, "^.*?namespace.*?FannWrap[a-zA-z0-9]*.*?{.*$", RegexOptions.Multiline);
+                text = text.Insert(match.Index, "using FannWrapper;\n");
+                try
+                {
+                    File.WriteAllText(file.FullName, text);
+                } catch(System.IO.IOException)
+                {
+                    Thread.Sleep(500);
+                    File.WriteAllText(file.FullName, text);
+                }
+            }
+            return 0;
+        }
+
+        static int deleteFiles(string folder)
+        {
+            foreach (string file in filesToCopy)
+            {
+                File.Delete(folder + file);
+            }
+            return 0;
+        }
+
+        static int copyFiles(string fromFolder)
+        {
+            DirectoryInfo info = Directory.GetParent(fromFolder).Parent;
+            Regex regex = new Regex("(.*?namespace.*?FannWrapper)([a-zA-z0-9]*)(.*?{.*)");
+            string toFolder = info.FullName + "\\FannWrapper\\";
+            string[] lines = null;
+            foreach (string file in filesToCopy)
+            {
+                Console.WriteLine("Copying \"" + fromFolder + file + "\" to \"" + toFolder + "\"");
+                lines = File.ReadAllLines(fromFolder + file);
+                for(int i = 0; i < lines.Length; i++)
+                {
+                    MatchCollection matches = regex.Matches(lines[i]);
+                    if(matches.Count > 0)
+                    {
+                        lines[i] = matches[0].Groups[1].Value + matches[0].Groups[3].Value;
+                        break;
+                    }
+                }
+                File.WriteAllLines(toFolder + file, lines);
+            }
             return 0;
         }
 
@@ -61,7 +153,7 @@ namespace CleanUpForSwig
         {
             if (!File.Exists(path))
             {
-                Console.Error.WriteLine("CPP File does not exist: " + path);
+                Console.WriteLine("CPP File does not exist: " + path);
                 return -1;
             }
             string text = File.ReadAllText(path);

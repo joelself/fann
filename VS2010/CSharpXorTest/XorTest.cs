@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FannWrapper;
+using FANNCSharp;
 
 namespace CSharpXorTest
 {
@@ -11,7 +7,7 @@ namespace CSharpXorTest
     {
         static int Main(string[] args)
         {
-            using (NeuralNet net = new NeuralNet())
+            using (NeuralNetFloat net = new NeuralNetFloat())
             {
                 if (!net.CreateFromFile("..\\..\\examples\\xor_float.net"))
                 {
@@ -24,7 +20,7 @@ namespace CSharpXorTest
 
                 Console.WriteLine("Testing network.");
 
-                using (TrainingData data = new TrainingData())
+                using (TrainingDataFloat data = new TrainingDataFloat())
                 {
                     if (!data.ReadTrainFromFile("..\\..\\examples\\xor.data"))
                     {
