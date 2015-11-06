@@ -130,26 +130,6 @@ public class training_data : global::System.IDisposable {
     SwigFannFixedPINVOKE.training_data_create_train_from_callback(swigCPtr, num_data, num_input, num_output, SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_int_p_int__void.getCPtr(user_function));
   }
 
-  public int get_min_input() {
-    int ret = SwigFannFixedPINVOKE.training_data_get_min_input(swigCPtr);
-    return ret;
-  }
-
-  public int get_max_input() {
-    int ret = SwigFannFixedPINVOKE.training_data_get_max_input(swigCPtr);
-    return ret;
-  }
-
-  public int get_min_output() {
-    int ret = SwigFannFixedPINVOKE.training_data_get_min_output(swigCPtr);
-    return ret;
-  }
-
-  public int get_max_output() {
-    int ret = SwigFannFixedPINVOKE.training_data_get_max_output(swigCPtr);
-    return ret;
-  }
-
   public void scale_input_train_data(int new_min, int new_max) {
     SwigFannFixedPINVOKE.training_data_scale_input_train_data(swigCPtr, new_min, new_max);
   }

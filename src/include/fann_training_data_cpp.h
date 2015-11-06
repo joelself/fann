@@ -408,6 +408,7 @@ namespace FANN {
             destroy_train();
             train_data = fann_create_train_from_callback(num_data, num_input, num_output, user_function);
         }
+
 #ifndef FIXEDFANN
         /* Function: get_min_input
 
@@ -448,8 +449,8 @@ namespace FANN {
         fann_type get_max_output() {
             return fann_get_max_train_output(train_data);
         }
-#endif
 
+#endif /* FIXEDFANN */
         /* Method: scale_input_train_data
 
            Scales the inputs in the training data to the specified range.

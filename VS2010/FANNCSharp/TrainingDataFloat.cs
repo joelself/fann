@@ -60,6 +60,10 @@ namespace FANNCSharp
                 return result;
             }
         }
+        public bool SaveTrainToFixed(string filename, uint decimalPoint)
+        {
+            return InternalData.save_train_to_fixed(filename, decimalPoint);
+        }
 
         public uint LengthTrainData()
         {

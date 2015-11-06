@@ -1862,6 +1862,7 @@ namespace FANN {
             }
             return bit_fail;
         }
+
 #ifndef FIXEDFANN
         /*********************************************************************/
 
@@ -2438,7 +2439,6 @@ namespace FANN {
 
         /*********************************************************************/
 
-#ifndef FIXEDFANN
 
         /* Method: scale_train
 

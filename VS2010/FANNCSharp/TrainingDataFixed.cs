@@ -1,16 +1,16 @@
 ﻿using System;
-using FannWrapperDouble;
+using FannWrapperFixed;
 
 namespace FANNCSharp
 {
-    public class TrainingDataDouble : IDisposable
+    public class TrainingDataFixed : IDisposable
     {
-        public TrainingDataDouble()
+        public TrainingDataFixed()
         {
-            InternalData = new FannWrapperDouble.training_data();
+            InternalData = new FannWrapperFixed.training_data();
         }
-        public TrainingDataDouble(FannWrapperDouble.training_data data) {
-            InternalData = new FannWrapperDouble.training_data(data);
+        public TrainingDataFixed(FannWrapperFixed.training_data data) {
+            InternalData = new FannWrapperFixed.training_data(data);
         }
 
         public bool ReadTrainFromFile(string filename)
@@ -18,17 +18,17 @@ namespace FANNCSharp
             return InternalData.read_train_from_file(filename);
         }
 
-        public double[][] GetOutput()
+        public int[][] GetOutput()
         {
-            using (doubleArrayArray output = doubleArrayArray.frompointer(InternalData.get_output()))
+            using (intArrayArray output = intArrayArray.frompointer(InternalData.get_output()))
             {
                 int length = (int)InternalData.length_train_data();
                 int count = (int)InternalData.num_output_train_data();
-                double[][] result = new double[length][];
+                int[][] result = new int[length][];
                 for (int i = 0; i < length; i++)
                 {
-                    result[i] = new double[count];
-                    using (doubleArray inputArray = doubleArray.frompointer(output.getitem(i)))
+                    result[i] = new int[count];
+                    using (intArray inputArray = intArray.frompointer(output.getitem(i)))
                     {
                         for (int j = 0; j < count; j++)
                         {
@@ -39,17 +39,17 @@ namespace FANNCSharp
                 return result;
             }
         }
-        public double[][] GetInput()
+        public int[][] GetInput()
         {
-            using (doubleArrayArray input = doubleArrayArray.frompointer(InternalData.get_input()))
+            using (intArrayArray input = intArrayArray.frompointer(InternalData.get_input()))
             {
                 int length = (int)InternalData.length_train_data();
                 int count = (int)InternalData.num_input_train_data();
-                double[][] result = new double[length][];
+                int[][] result = new int[length][];
                 for (int i = 0; i < length; i++)
                 {
-                    result[i] = new double[count];
-                    using (doubleArray inputArray = doubleArray.frompointer(input.getitem(i)))
+                    result[i] = new int[count];
+                    using (intArray inputArray = intArray.frompointer(input.getitem(i)))
                     {
                         for (int j = 0; j < count; j++)
                         {
@@ -60,7 +60,6 @@ namespace FANNCSharp
                 return result;
             }
         }
-
         public bool SaveTrainToFixed(string filename, uint decimalPoint)
         {
             return InternalData.save_train_to_fixed(filename, decimalPoint);
@@ -74,6 +73,6 @@ namespace FANNCSharp
         {
             InternalData.Dispose();
         }
-        internal FannWrapperDouble.training_data InternalData { get; set; }
+        internal FannWrapperFixed.training_data InternalData { get; set; }
     }
 }

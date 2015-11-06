@@ -35,11 +35,11 @@
     <ClCompile Include="..\..\src\parallel_fann_cpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SwigFann\SwigFannDouble.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\include\compat_time.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\include\config.h">
       <Filter>Header Files</Filter>
     </ClInclude>

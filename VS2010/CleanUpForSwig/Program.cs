@@ -36,13 +36,13 @@ namespace CleanUpForSwig
             if (args.Length < 4)
             {
                 Console.Error.WriteLine("You must specify a swig generated file and generated file path to fix-up");
-                Console.Error.WriteLine("Usage: CleanUpForSwig [FILEPATH] [PATH_TO_GENERATED_FILES] [delete|copy]");
+                Console.Error.WriteLine("Usage: CleanUpForSwig [FILEPATH] [PATH_TO_GENERATED_FILES] [delete|copy] [float|double|int]");
                 return -1;
             }
             Console.WriteLine("Arguments: " + args[0] + ", " + args[1]);
             if (fixCpp(args[0]) < 0)
                 return -1;
-            if (fixCSharp(args[1]) < 0)
+            if (fixCSharp(args[1], args[3]) < 0)
                 return -1;
             if (args[2] == "copy" && copyFiles(args[1]) < 0)
                 return -1;
@@ -120,7 +120,7 @@ namespace CleanUpForSwig
             return 0;
         }
 
-        static int fixCSharp(string folder)
+        static int fixCSharp(string folder, string type)
         {
             Console.WriteLine("Fixing text in " + folder + "training_algorithm_enum.cs");
             string text = File.ReadAllText(folder + "training_algorithm_enum.cs");
@@ -146,6 +146,32 @@ namespace CleanUpForSwig
             text = File.ReadAllText(folder + "activation_function_enum.cs");
             text = text.Replace("FANN_LINEAR", "fann_activationfunc_enum.FANN_LINEAR");
             File.WriteAllText(folder + "activation_function_enum.cs", text);
+            string fileName = string.Empty;
+            string toReplace = string.Empty;
+            string replaceWith = string.Empty;
+            if(type == "float")
+            {
+                fileName = "SwigFannFloatPINVOKE.cs";
+                toReplace = "\"SwigFannFloat\"";
+                replaceWith = "\"fannfloat\"";
+            }
+            else if (type == "double")
+            {
+                fileName = "SwigFannDoublePINVOKE.cs";
+                toReplace = "\"SwigFannDouble\"";
+                replaceWith = "\"fanndouble\"";
+            }
+            else
+            {
+                fileName = "SwigFannFixedPINVOKE.cs";
+                toReplace = "\"SwigFannFixed\"";
+                replaceWith = "\"fannfixed\"";
+            }
+            Console.WriteLine("Fixing text in " + folder + fileName);
+            text = File.ReadAllText(folder + fileName);
+            text = text.Replace(toReplace, replaceWith);
+            File.WriteAllText(folder + fileName, text);
+
             return 0;
         }
 
