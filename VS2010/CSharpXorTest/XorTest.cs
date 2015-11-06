@@ -15,7 +15,7 @@ using TrainingData = FANNCSharp.TrainingDataFloat;
 using DataType = System.Single;
 #endif
 
-namespace CSharpXorTest
+namespace Example
 {
     class XorTest
     {

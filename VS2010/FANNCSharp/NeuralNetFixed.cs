@@ -174,15 +174,15 @@ namespace FANNCSharp
         public int[] Test(int[] input, int[] desiredOutput)
         {
             using (intArray intsIn = new intArray(input.Length))
+            using (intArray intsOut = new intArray(desiredOutput.Length))
             {
                 for (int i = 0; i < input.Length; i++)
                 {
                     intsIn.setitem(i, input[i]);
                 }
-                intArray intsOut = new intArray(desiredOutput.Length);
-                for (int i = 0; i < input.Length; i++)
+                for (int i = 0; i < desiredOutput.Length; i++)
                 {
-                    intsOut.setitem(i, input[i]);
+                    intsOut.setitem(i, desiredOutput[i]);
                 }
                 intArray result = intArray.frompointer(net.test(intsIn.cast(), intsOut.cast()));
                 int[] arrayResult = new int[Outputs];

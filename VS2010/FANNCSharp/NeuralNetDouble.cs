@@ -196,15 +196,15 @@ namespace FANNCSharp
         public double[] Test(double[] input, double[] desiredOutput)
         {
             using (doubleArray doublesIn = new doubleArray(input.Length))
+            using (doubleArray doublesOut = new doubleArray(desiredOutput.Length))
             {
                 for (int i = 0; i < input.Length; i++)
                 {
                     doublesIn.setitem(i, input[i]);
                 }
-                doubleArray doublesOut = new doubleArray(desiredOutput.Length);
-                for (int i = 0; i < input.Length; i++)
+                for (int i = 0; i < desiredOutput.Length; i++)
                 {
-                    doublesOut.setitem(i, input[i]);
+                    doublesOut.setitem(i, desiredOutput[i]);
                 }
                 doubleArray result = doubleArray.frompointer(net.test(doublesIn.cast(), doublesOut.cast()));
                 double[] arrayResult = new double[Outputs];

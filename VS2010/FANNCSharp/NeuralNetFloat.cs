@@ -196,15 +196,15 @@ namespace FANNCSharp
         public float[] Test(float[] input, float[] desiredOutput)
         {
             using (floatArray floatsIn = new floatArray(input.Length))
+            using (floatArray floatsOut = new floatArray(desiredOutput.Length))
             {
                 for (int i = 0; i < input.Length; i++)
                 {
                     floatsIn.setitem(i, input[i]);
                 }
-                floatArray floatsOut = new floatArray(desiredOutput.Length);
-                for (int i = 0; i < input.Length; i++)
+                for (int i = 0; i < desiredOutput.Length; i++)
                 {
-                    floatsOut.setitem(i, input[i]);
+                    floatsOut.setitem(i, desiredOutput[i]);
                 }
                 floatArray result = floatArray.frompointer(net.test(floatsIn.cast(), floatsOut.cast()));
                 float[] arrayResult = new float[Outputs];

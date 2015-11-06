@@ -61,6 +61,16 @@ namespace FANNCSharp
             }
         }
 
+        public uint NumInput()
+        {
+            return InternalData.num_input_train_data();
+        }
+
+        public uint NumOutput()
+        {
+            return InternalData.num_output_train_data();
+        }
+
         public bool SaveTrainToFixed(string filename, uint decimalPoint)
         {
             return InternalData.save_train_to_fixed(filename, decimalPoint);

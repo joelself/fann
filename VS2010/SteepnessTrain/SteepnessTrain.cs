@@ -14,7 +14,7 @@ using NeuralNet = FANNCSharp.NeuralNetFloat;
 using TrainingData = FANNCSharp.TrainingDataFloat;
 using DataType = System.Single;
 #endif
-namespace XorTrain
+namespace Example
 {
     class SteepnessTrain
     {
