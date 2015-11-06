@@ -1,30 +1,40 @@
 ﻿using System;
-using FannWrapperDouble;
+using FannWrapperFixed;
 using FannWrapper;
 
 namespace FANNCSharp
 {
-    public class NeuralNetDouble : IDisposable
+    public class NeuralNetFixed : IDisposable
     {
         neural_net net = null;
-        public NeuralNetDouble()
+        public NeuralNetFixed()
         {
            net = new neural_net();
         }
 
-        public NeuralNetDouble(NeuralNetDouble other)
+        public NeuralNetFixed(NeuralNetFixed other)
         {
            net = new neural_net(other.InternalFloatNet);
         }
 
-        public NeuralNetDouble(fann other)
+        public NeuralNetFixed(fann other)
         {
-            net = new neural_net(other);
+           net = new neural_net(other);
         }
 
         public void CopyFromFann(fann other)
         {
             net.copy_from_struct_fann(other);
+        }
+
+        public uint GetDecimalPoint()
+        {
+            return net.get_decimal_point();
+        }
+
+        public uint GetMultiplier()
+        {
+            return net.get_multiplier();
         }
 
         public void Dispose()
@@ -110,17 +120,17 @@ namespace FANNCSharp
             }
         }
 
-        public double[] Run(double[] input)
+        public int[] Run(int[] input)
         {
-            using (doubleArray doubles = new doubleArray(input.Length))
+            using (intArray ints = new intArray(input.Length))
             {
                 for (int i = 0; i < input.Length; i++)
                 {
-                    doubles.setitem(i, input[i]);
+                    ints.setitem(i, input[i]);
                 }
-                using (doubleArray outputs = doubleArray.frompointer(net.run(doubles.cast())))
+                using (intArray outputs = intArray.frompointer(net.run(ints.cast())))
                 {
-                    double[] result = new double[Outputs];
+                    int[] result = new int[Outputs];
                     for (int i = 0; i < Outputs; i++)
                     {
                         result[i] = outputs.getitem(i);
@@ -130,11 +140,11 @@ namespace FANNCSharp
             }
         }
 
-        public void RandomizeWeights(double minWeight, double maxWeight)
+        public void RandomizeWeights(int minWeight, int maxWeight)
         {
            net.randomize_weights(minWeight, maxWeight);
         }
-        public void InitWeights(TrainingDataDouble data)
+        public void InitWeights(TrainingDataFixed data)
         {
            net.init_weights(data.InternalData);
         }
@@ -161,53 +171,21 @@ namespace FANNCSharp
             return net.save_to_fixed(file);
         }
 
-        public void Train(double[] input, double[] desiredOutput)
+        public int[] Test(int[] input, int[] desiredOutput)
         {
-            using (doubleArray doublesIn = new doubleArray(input.Length))
+            using (intArray intsIn = new intArray(input.Length))
             {
                 for (int i = 0; i < input.Length; i++)
                 {
-                    doublesIn.setitem(i, input[i]);
+                    intsIn.setitem(i, input[i]);
                 }
-                doubleArray doublesOut = new doubleArray(desiredOutput.Length);
+                intArray intsOut = new intArray(desiredOutput.Length);
                 for (int i = 0; i < input.Length; i++)
                 {
-                    doublesOut.setitem(i, input[i]);
+                    intsOut.setitem(i, input[i]);
                 }
-               net.train(doublesIn.cast(), doublesOut.cast());
-            }
-        }
-
-        public float TrainEpoch(TrainingDataDouble data)
-        {
-            return net.train_epoch(data.InternalData);
-        }
-
-        public void TrainOnData(TrainingDataDouble data, uint maxEpochs, uint epochsBetweenReports, float desiredError)
-        {
-           net.train_on_data(data.InternalData, maxEpochs, epochsBetweenReports, desiredError);
-        }
-
-        public void TrainOnFile(string filename, uint maxEpochs, uint epochsBetweenReports, float desiredError)
-        {
-           net.train_on_file(filename, maxEpochs, epochsBetweenReports, desiredError);
-        }
-
-        public double[] Test(double[] input, double[] desiredOutput)
-        {
-            using (doubleArray doublesIn = new doubleArray(input.Length))
-            {
-                for (int i = 0; i < input.Length; i++)
-                {
-                    doublesIn.setitem(i, input[i]);
-                }
-                doubleArray doublesOut = new doubleArray(desiredOutput.Length);
-                for (int i = 0; i < input.Length; i++)
-                {
-                    doublesOut.setitem(i, input[i]);
-                }
-                doubleArray result = doubleArray.frompointer(net.test(doublesIn.cast(), doublesOut.cast()));
-                double[] arrayResult = new double[Outputs];
+                intArray result = intArray.frompointer(net.test(intsIn.cast(), intsOut.cast()));
+                int[] arrayResult = new int[Outputs];
                 for (int i = 0; i < Outputs; i++)
                 {
                     arrayResult[i] = result.getitem(i);
@@ -216,7 +194,7 @@ namespace FANNCSharp
             }
         }
 
-        public float TestData(TrainingDataDouble data)
+        public float TestData(TrainingDataFixed data)
         {
             return net.test_data(data.InternalData);
         }
@@ -281,27 +259,27 @@ namespace FANNCSharp
            net.set_activation_function_output(function);
         }
 
-        public double GetActivationSteepness(int layer, int neuron)
+        public int GetActivationSteepness(int layer, int neuron)
         {
             return net.get_activation_steepness(layer, neuron);
         }
 
-        public void SetActivationSteepness(double steepness, int layer, int neuron)
+        public void SetActivationSteepness(int steepness, int layer, int neuron)
         {
            net.set_activation_steepness(steepness, layer, neuron);
         }
 
-        public void SetActivationSteepnessLayer(double steepness, int layer)
+        public void SetActivationSteepnessLayer(int steepness, int layer)
         {
            net.set_activation_steepness_layer(steepness, layer);
         }
 
-        public void SetActivationSteepnessHidden(double steepness)
+        public void SetActivationSteepnessHidden(int steepness)
         {
            net.set_activation_steepness_hidden(steepness);
         }
 
-        public void SetActivationSteepnessOutput(double steepness)
+        public void SetActivationSteepnessOutput(int steepness)
         {
            net.set_activation_steepness_output(steepness);
         }
@@ -483,7 +461,7 @@ namespace FANNCSharp
                net.set_weight_array(input.cast(), (uint)connections.Length);
             }
         }
-        public void SetWeight(uint from_neuron, uint to_neuron, double weight)
+        public void SetWeight(uint from_neuron, uint to_neuron, int weight)
         {
            net.set_weight(from_neuron, to_neuron, weight);
         }
@@ -503,11 +481,11 @@ namespace FANNCSharp
         {
            net.set_train_stop_function(train_stop_function);
         }
-        public double GetBitFailLimit()
+        public int GetBitFailLimit()
         {
             return net.get_bit_fail_limit();
         }
-        public void SetBitFailLimit(double bit_fail_limit)
+        public void SetBitFailLimit(int bit_fail_limit)
         {
            net.set_bit_fail_limit(bit_fail_limit);
         }
@@ -515,214 +493,7 @@ namespace FANNCSharp
         {
             return net.get_bit_fail();
         }
-        public void CascadetrainOnData(TrainingDataDouble data, uint max_neurons, uint neurons_between_reports, float desired_error)
-        {
-           net.cascadetrain_on_data(data.InternalData, max_neurons, neurons_between_reports, desired_error);
-        }
-        public void CascadetrainOnFile(string filename, uint max_neurons, uint neurons_between_reports, float desired_error)
-        {
-           net.cascadetrain_on_file(filename, max_neurons, neurons_between_reports, desired_error);
-        }
-        public float GetCascadeOutputChangeFraction()
-        {
-            return net.get_cascade_output_change_fraction();
-        }
-        public void SetCascadeOutputChangeFraction(float cascade_output_change_fraction)
-        {
-           net.set_cascade_output_change_fraction(cascade_output_change_fraction);
-        }
-        public uint GetCascadeOutputStagnationEpochs()
-        {
-            return net.get_cascade_output_stagnation_epochs();
-        }
-        public void SetCascadeOutputStagnationEpochs(uint cascade_output_stagnation_epochs)
-        {
-           net.set_cascade_output_stagnation_epochs(cascade_output_stagnation_epochs);
-        }
-        public float GetCascadeCandidateChangeFraction()
-        {
-            return net.get_cascade_candidate_change_fraction();
-        }
-        public void SetCascadeCandidateChangeFraction(float cascade_candidate_change_fraction)
-        {
-           net.set_cascade_output_change_fraction(cascade_candidate_change_fraction);
-        }
-        public uint GetCascadeCandidateStagnationEpochs()
-        {
-            return net.get_cascade_candidate_stagnation_epochs();
-        }
-        public void SetCascadeCandidateStagnationEpochs(uint cascade_candidate_stagnation_epochs)
-        {
-           net.set_cascade_candidate_stagnation_epochs(cascade_candidate_stagnation_epochs);
-        }
-        public double GetCascadeWeightMultiplier()
-        {
-            return net.get_cascade_weight_multiplier();
-        }
-        public void SetCascadeWeightMultiplier(double cascade_weight_multiplier)
-        {
-           net.set_cascade_weight_multiplier(cascade_weight_multiplier);
-        }
-        public double GetCascadeCandidateLimit()
-        {
-            return net.get_cascade_candidate_limit();
-        }
-        public void SetCascadeCandidateLimit(double cascade_candidate_limit)
-        {
-           net.set_cascade_candidate_limit(cascade_candidate_limit);
-        }
-        public uint GetCascadeMaxOutEpochs()
-        {
-            return net.get_cascade_max_out_epochs();
-        }
-        public void SetCascadeMaxOutEpochs(uint cascade_max_out_epochs)
-        {
-           net.set_cascade_max_out_epochs(cascade_max_out_epochs);
-        }
-        public uint GetCascadeMaxCandEpochs()
-        {
-            return net.get_cascade_max_cand_epochs();
-        }
-        public void SetCascadeMaxCandEpochs(uint cascade_max_cand_epochs)
-        {
-           net.set_cascade_max_cand_epochs(cascade_max_cand_epochs);
-        }
-        public uint GetCascadeNumCandidates()
-        {
-            return net.get_cascade_num_candidates();
-        }
-        public uint GetCascadeActivationFunctionsCount()
-        {
-            return net.get_cascade_activation_functions_count();
-        }
-        public activation_function_enum[] GetCascadeActivationFunctions()
-        {
-            int count = (int)net.get_cascade_activation_functions_count();
-            using (activationFunctionEnumArray result = activationFunctionEnumArray.frompointer(net.get_cascade_activation_functions()))
-            {
-                activation_function_enum[] arrayResult = new activation_function_enum[net.get_cascade_activation_functions_count()];
-                for (int i = 0; i < count; i++)
-                {
-                    arrayResult[i] = result.getitem(i);
-                }
-                return arrayResult;
-            }
-        }
-        public void SetCascadeActivationFunctions(activation_function_enum[] cascade_activation_functions)
-        {
-            using (activationFunctionEnumArray input = new activationFunctionEnumArray(cascade_activation_functions.Length))
-            {
-                for (int i = 0; i < cascade_activation_functions.Length; i++)
-                {
-                    input.setitem(i, cascade_activation_functions[i]);
-                }
-               net.set_cascade_activation_functions(input.cast(), (uint)cascade_activation_functions.Length);
-            }
-        }
-        public uint GetCascadeActivationSteepnessesCount()
-        {
-            return net.get_cascade_activation_steepnesses_count();
-        }
-        public double[] GetCascadeActivationSteepnesses()
-        {
-            using (doubleArray result = doubleArray.frompointer(net.get_cascade_activation_steepnesses()))
-            {
-                uint count = net.get_cascade_activation_steepnesses_count();
-                double[] resultArray = new double[net.get_cascade_activation_steepnesses_count()];
-                for (int i = 0; i < count; i++)
-                {
-                    resultArray[i] = result.getitem(i);
-                }
-                return resultArray;
-            }
-        }
-        public void SetCascadeActivationSteepnesses(double[] cascade_activation_steepnesses)
-        {
-            using (doubleArray input = new doubleArray(cascade_activation_steepnesses.Length))
-            {
-                for (int i = 0; i < cascade_activation_steepnesses.Length; i++)
-                {
-                    input.setitem(i, cascade_activation_steepnesses[i]);
-                }
-               net.set_cascade_activation_steepnesses(input.cast(), (uint)cascade_activation_steepnesses.Length);
-            }
-        }
-        public uint GetCascadeNumCandidateGroups()
-        {
-            return net.get_cascade_num_candidate_groups();
-        }
-        public void SetCascadeNumCandidateGroups(uint cascade_num_candidate_groups)
-        {
-           net.set_cascade_num_candidate_groups(cascade_num_candidate_groups);
-        }
-        public void ScaleTrain(TrainingDataDouble data)
-        {
-           net.scale_train(data.InternalData);
-        }
-        public void DescaleTrain(TrainingDataDouble data)
-        {
-           net.descale_train(data.InternalData);
-        }
-        public bool SetInputScalingParams(TrainingDataDouble data, float new_input_min, float new_input_max)
-        {
-            return net.set_input_scaling_params(data.InternalData, new_input_min, new_input_max);
-        }
-        public bool SetOutputScalingParams(TrainingDataDouble data, float new_output_min, float new_output_max)
-        {
-            return net.set_output_scaling_params(data.InternalData, new_output_min, new_output_max);
-        }
-        public bool SetScalingParams(TrainingDataDouble data, float new_input_min, float new_input_max, float new_output_min, float new_output_max)
-        {
-            return net.set_scaling_params(data.InternalData, new_input_min, new_input_max, new_output_min, new_output_max);
-        }
-        public bool ClearScalingParams()
-        {
-            return net.clear_scaling_params();
-        }
-        public void ScaleInput(double[] input_vector)
-        {
-            using (doubleArray inputs = new doubleArray(input_vector.Length))
-            {
-                for (int i = 0; i < input_vector.Length; i++)
-                {
-                    inputs.setitem(i, input_vector[i]);
-                }
-               net.scale_input(inputs.cast());
-            }
-        }
-        public void ScaleOutput(double[] output_vector)
-        {
-            using (doubleArray inputs = new doubleArray(output_vector.Length))
-            {
-                for (int i = 0; i < output_vector.Length; i++)
-                {
-                    inputs.setitem(i, output_vector[i]);
-                }
-               net.scale_output(inputs.cast());
-            }
-        }
-        public void DescaleInput(double[] input_vector)
-        {
-            using (doubleArray inputs = new doubleArray(input_vector.Length))
-            {
-                for (int i = 0; i < input_vector.Length; i++)
-                {
-                    inputs.setitem(i, input_vector[i]);
-                }
-               net.descale_input(inputs.cast());
-            }
-        }
-        public void DescaleOutput(double[] output_vector)
-        {
-            using (doubleArray inputs = new doubleArray(output_vector.Length))
-            {
-                for (int i = 0; i < output_vector.Length; i++)
-                {
-                    inputs.setitem(i, output_vector[i]);
-                }
-               net.descale_output(inputs.cast());
-            }
-        }
+
         public void SetErrorLog(FannFile log_file)
         {
            net.set_error_log(log_file.InternalFile);
@@ -757,7 +528,7 @@ namespace FANNCSharp
         }
         public FannFile OpenFile(string filename, string mode)
         {
-            SWIGTYPE_p_FILE file = SwigFannDouble.fopen(filename, mode);
+            SWIGTYPE_p_FILE file = SwigFannFixed.fopen(filename, mode);
             FannFile result = new FannFile(file);
             return result;
         }

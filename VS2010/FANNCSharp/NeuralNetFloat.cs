@@ -24,7 +24,7 @@ namespace FANNCSharp
 
         public void CopyFromFann(fann other)
         {
-           net = new neural_net(other);
+            net.copy_from_struct_fann(other);
         }
 
         public void Dispose()
@@ -110,7 +110,7 @@ namespace FANNCSharp
             }
         }
 
-        float[] Run(float[] input)
+        public float[] Run(float[] input)
         {
             using (floatArray floats = new floatArray(input.Length))
             {
@@ -118,16 +118,18 @@ namespace FANNCSharp
                 {
                     floats.setitem(i, input[i]);
                 }
-                SWIGTYPE_p_float outputs = net.run(floats.cast());
-                floats.Dispose();
-                float[] result = new float[Outputs];
-                for (int i = 0; i < Outputs; i++)
+                using (floatArray outputs = floatArray.frompointer(net.run(floats.cast())))
                 {
-                    result[i] = floats.getitem(i);
+                    float[] result = new float[Outputs];
+                    for (int i = 0; i < Outputs; i++)
+                    {
+                        result[i] = outputs.getitem(i);
+                    }
+                    return result;
                 }
-                return result;
             }
         }
+
         public void RandomizeWeights(float minWeight, float maxWeight)
         {
            net.randomize_weights(minWeight, maxWeight);

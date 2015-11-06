@@ -70,7 +70,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.dll</TargetExt>
-    <TargetName>$(ProjectName)d</TargetName>
+    <TargetName>$(ProjectName)</TargetName>
     <OutDir>$(SolutionDir)..\bin\$(Platform)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
@@ -78,8 +78,8 @@
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.dll</TargetExt>
-    <TargetName>$(ProjectName)d</TargetName>
-    <OutDir>$(SolutionDir)..\bin\$(Platform)\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+    <OutDir>$(SolutionDir)..\bin\x86\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -89,7 +89,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)..\bin\$(Platform)\</OutDir>
+    <OutDir>$(SolutionDir)..\bin\x86\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -208,9 +208,9 @@ $(SolutionDir)CleanUpForSwig\bin\CleanUpForSwig.exe $(SolutionDir)fanndouble\Swi
     <ClCompile Include="..\..\src\fann_train_data.c" />
     <ClCompile Include="..\..\src\parallel_fann.c" />
     <ClCompile Include="..\..\src\parallel_fann_cpp.cpp" />
+    <ClCompile Include="SwigFann\SwigFannDouble.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\include\compat_time.h" />
     <ClInclude Include="..\..\src\include\config.h" />
     <ClInclude Include="..\..\src\include\fann.h" />
     <ClInclude Include="..\..\src\include\fann_activation.h" />
