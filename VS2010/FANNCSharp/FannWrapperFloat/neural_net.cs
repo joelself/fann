@@ -640,6 +640,12 @@ public class neural_net : global::System.IDisposable {
     SwigFannFloatPINVOKE.neural_net_enable_seed_rand(swigCPtr);
   }
 
+  public fann to_fann() {
+    global::System.IntPtr cPtr = SwigFannFloatPINVOKE.neural_net_to_fann(swigCPtr);
+    fann ret = (cPtr == global::System.IntPtr.Zero) ? null : new fann(cPtr, false);
+    return ret;
+  }
+
 }
 
 }

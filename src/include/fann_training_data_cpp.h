@@ -545,6 +545,10 @@ namespace FANN {
                 train_data = temp;
             }
         }
+		
+		operator struct fann_train_data*() {
+			return train_data;
+		}
 
         /*********************************************************************/
 

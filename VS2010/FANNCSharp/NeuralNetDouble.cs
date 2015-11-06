@@ -1,6 +1,7 @@
 ﻿using System;
 using FannWrapperDouble;
 using FannWrapper;
+using System.Collections.Generic;
 
 namespace FANNCSharp
 {
@@ -760,6 +761,131 @@ namespace FANNCSharp
             SWIGTYPE_p_FILE file = SwigFannDouble.fopen(filename, mode);
             FannFile result = new FannFile(file);
             return result;
+        }
+        public float train_epoch_batch_parallel(TrainingDataDouble data, uint threadnumb)
+        {
+            return SwigFannDouble.train_epoch_batch_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb);
+        }
+
+        public float train_epoch_irpropm_parallel(TrainingDataDouble data, uint threadnumb)
+        {
+            return SwigFannDouble.train_epoch_irpropm_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb);
+        }
+
+        public float train_epoch_quickprop_parallel(TrainingDataDouble data, uint threadnumb)
+        {
+            return SwigFannDouble.train_epoch_quickprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb);
+        }
+
+        public float train_epoch_sarprop_parallel(TrainingDataDouble data, uint threadnumb)
+        {
+            return SwigFannDouble.train_epoch_sarprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb);
+        }
+
+        public float TrainEpochIncrementalMod(TrainingDataDouble data)
+        {
+            return SwigFannDouble.train_epoch_incremental_mod(net.to_fann(), data.InternalData.to_fann_train_data());
+        }
+
+        public float TrainEpochBatchParallel(TrainingDataDouble data, uint threadnumb, List<List<double>> predicted_outputs)
+        {
+            using (DoubleVectorVector predicted_out = new DoubleVectorVector(predicted_outputs.Count))
+            {
+                for (int i = 0; i < predicted_outputs.Count; i++)
+                {
+                    predicted_out[i] = new DoubleVector(predicted_outputs[i].Count);
+                    for (int j = 0; j < predicted_outputs[i].Count; j++)
+                    {
+                        predicted_out[i][j] = predicted_outputs[i][j];
+                    }
+                }
+                return SwigFannDouble.train_epoch_batch_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+            }
+        }
+
+        public float TrainEpochIrpropmParallel(TrainingDataDouble data, uint threadnumb, List<List<double>> predicted_outputs)
+        {
+            using (DoubleVectorVector predicted_out = new DoubleVectorVector(predicted_outputs.Count))
+            {
+                for (int i = 0; i < predicted_outputs.Count; i++)
+                {
+                    predicted_out[i] = new DoubleVector(predicted_outputs[i].Count);
+                    for (int j = 0; j < predicted_outputs[i].Count; j++)
+                    {
+                        predicted_out[i][j] = predicted_outputs[i][j];
+                    }
+                }
+                return SwigFannDouble.train_epoch_irpropm_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+            }
+        }
+
+        public float TrainEpochQuickpropParallel(TrainingDataDouble data, uint threadnumb, List<List<double>> predicted_outputs)
+        {
+            using (DoubleVectorVector predicted_out = new DoubleVectorVector(predicted_outputs.Count))
+            {
+                for (int i = 0; i < predicted_outputs.Count; i++)
+                {
+                    predicted_out[i] = new DoubleVector(predicted_outputs[i].Count);
+                    for (int j = 0; j < predicted_outputs[i].Count; j++)
+                    {
+                        predicted_out[i][j] = predicted_outputs[i][j];
+                    }
+                }
+                return SwigFannDouble.train_epoch_quickprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+            }
+        }
+
+        public float TrainEpochSarpropParallel(TrainingDataDouble data, uint threadnumb, List<List<double>> predicted_outputs)
+        {
+            using (DoubleVectorVector predicted_out = new DoubleVectorVector(predicted_outputs.Count))
+            {
+                for (int i = 0; i < predicted_outputs.Count; i++)
+                {
+                    predicted_out[i] = new DoubleVector(predicted_outputs[i].Count);
+                    for (int j = 0; j < predicted_outputs[i].Count; j++)
+                    {
+                        predicted_out[i][j] = predicted_outputs[i][j];
+                    }
+                }
+                return SwigFannDouble.train_epoch_sarprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+            }
+        }
+
+        public float TrainEpochIncrementalMod(TrainingDataDouble data, List<List<double>> predicted_outputs)
+        {
+            using (DoubleVectorVector predicted_out = new DoubleVectorVector(predicted_outputs.Count))
+            {
+                for (int i = 0; i < predicted_outputs.Count; i++)
+                {
+                    predicted_out[i] = new DoubleVector(predicted_outputs[i].Count);
+                    for (int j = 0; j < predicted_outputs[i].Count; j++)
+                    {
+                        predicted_out[i][j] = predicted_outputs[i][j];
+                    }
+                }
+                return SwigFannDouble.train_epoch_incremental_mod(net.to_fann(), data.InternalData.to_fann_train_data(), predicted_out);
+            }
+        }
+
+        public float TestDataParallel(TrainingDataDouble data, uint threadnumb)
+        {
+            return SwigFannDouble.test_data_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb);
+        }
+
+        public float TestDataParallel(TrainingDataDouble data, uint threadnumb, List<List<double>> predicted_outputs)
+        {
+            using (DoubleVectorVector predicted_out = new DoubleVectorVector(predicted_outputs.Count))
+            {
+                for (int i = 0; i < predicted_outputs.Count; i++)
+                {
+                    predicted_out[i] = new DoubleVector(predicted_outputs[i].Count);
+                    for (int j = 0; j < predicted_outputs[i].Count; j++)
+                    {
+                        predicted_out[i][j] = predicted_outputs[i][j];
+                    }
+                }
+                return SwigFannDouble.test_data_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+            }
         }
 
 #region Properties

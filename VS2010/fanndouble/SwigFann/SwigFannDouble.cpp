@@ -297,12 +297,22 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_SwigFannDouble(SWIG_CShar
 #include "fann_cpp.h"
 #include "fann_error.h"
 #include "fann_data.h"
+#include "fann_train.h"
 #include "fann_data_cpp.h"
 #include "fann_training_data_cpp.h"
+#include "parallel_fann.hpp"
 #include "stdio.h"
 
 
 #include <string>
+
+
+#include <stdexcept>
+
+
+#include <vector>
+#include <algorithm>
+#include <stdexcept>
 
 
 typedef FANN::connection connectionArray;
@@ -325,6 +335,213 @@ SWIGINTERN FANN::connection *connectionArray_cast(connectionArray *self){
 SWIGINTERN connectionArray *connectionArray_frompointer(FANN::connection *t){
   return (connectionArray *) t;
 }
+SWIGINTERN std::vector< std::vector< double > > *new_std_vector_Sl_std_vector_Sl_double_Sg__Sg___SWIG_2(int capacity){
+        std::vector< std::vector< double > >* pv = 0;
+        if (capacity >= 0) {
+          pv = new std::vector< std::vector< double > >();
+          pv->reserve(capacity);
+       } else {
+          throw std::out_of_range("capacity");
+       }
+       return pv;
+      }
+SWIGINTERN std::vector< double > std_vector_Sl_std_vector_Sl_double_Sg__Sg__getitemcopy(std::vector< std::vector< double > > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN std::vector< double > const &std_vector_Sl_std_vector_Sl_double_Sg__Sg__getitem(std::vector< std::vector< double > > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_std_vector_Sl_double_Sg__Sg__setitem(std::vector< std::vector< double > > *self,int index,std::vector< double > const &val){
+        if (index>=0 && index<(int)self->size())
+          (*self)[index] = val;
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_std_vector_Sl_double_Sg__Sg__AddRange(std::vector< std::vector< double > > *self,std::vector< std::vector< double > > const &values){
+        self->insert(self->end(), values.begin(), values.end());
+      }
+SWIGINTERN std::vector< std::vector< double > > *std_vector_Sl_std_vector_Sl_double_Sg__Sg__GetRange(std::vector< std::vector< double > > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        return new std::vector< std::vector< double > >(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_std_vector_Sl_double_Sg__Sg__Insert(std::vector< std::vector< double > > *self,int index,std::vector< double > const &x){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, x);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_std_vector_Sl_double_Sg__Sg__InsertRange(std::vector< std::vector< double > > *self,int index,std::vector< std::vector< double > > const &values){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, values.begin(), values.end());
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_std_vector_Sl_double_Sg__Sg__RemoveAt(std::vector< std::vector< double > > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          self->erase(self->begin() + index);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_std_vector_Sl_double_Sg__Sg__RemoveRange(std::vector< std::vector< double > > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        self->erase(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN std::vector< std::vector< double > > *std_vector_Sl_std_vector_Sl_double_Sg__Sg__Repeat(std::vector< double > const &value,int count){
+        if (count < 0)
+          throw std::out_of_range("count");
+        return new std::vector< std::vector< double > >(count, value);
+      }
+SWIGINTERN void std_vector_Sl_std_vector_Sl_double_Sg__Sg__Reverse__SWIG_0(std::vector< std::vector< double > > *self){
+        std::reverse(self->begin(), self->end());
+      }
+SWIGINTERN void std_vector_Sl_std_vector_Sl_double_Sg__Sg__Reverse__SWIG_1(std::vector< std::vector< double > > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        std::reverse(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_std_vector_Sl_double_Sg__Sg__SetRange(std::vector< std::vector< double > > *self,int index,std::vector< std::vector< double > > const &values){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (index+values.size() > self->size())
+          throw std::out_of_range("index");
+        std::copy(values.begin(), values.end(), self->begin()+index);
+      }
+SWIGINTERN std::vector< double > *new_std_vector_Sl_double_Sg___SWIG_2(int capacity){
+        std::vector< double >* pv = 0;
+        if (capacity >= 0) {
+          pv = new std::vector< double >();
+          pv->reserve(capacity);
+       } else {
+          throw std::out_of_range("capacity");
+       }
+       return pv;
+      }
+SWIGINTERN double std_vector_Sl_double_Sg__getitemcopy(std::vector< double > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN double const &std_vector_Sl_double_Sg__getitem(std::vector< double > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          return (*self)[index];
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_double_Sg__setitem(std::vector< double > *self,int index,double const &val){
+        if (index>=0 && index<(int)self->size())
+          (*self)[index] = val;
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_double_Sg__AddRange(std::vector< double > *self,std::vector< double > const &values){
+        self->insert(self->end(), values.begin(), values.end());
+      }
+SWIGINTERN std::vector< double > *std_vector_Sl_double_Sg__GetRange(std::vector< double > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        return new std::vector< double >(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_double_Sg__Insert(std::vector< double > *self,int index,double const &x){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, x);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_double_Sg__InsertRange(std::vector< double > *self,int index,std::vector< double > const &values){
+        if (index>=0 && index<(int)self->size()+1)
+          self->insert(self->begin()+index, values.begin(), values.end());
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_double_Sg__RemoveAt(std::vector< double > *self,int index){
+        if (index>=0 && index<(int)self->size())
+          self->erase(self->begin() + index);
+        else
+          throw std::out_of_range("index");
+      }
+SWIGINTERN void std_vector_Sl_double_Sg__RemoveRange(std::vector< double > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        self->erase(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN std::vector< double > *std_vector_Sl_double_Sg__Repeat(double const &value,int count){
+        if (count < 0)
+          throw std::out_of_range("count");
+        return new std::vector< double >(count, value);
+      }
+SWIGINTERN void std_vector_Sl_double_Sg__Reverse__SWIG_0(std::vector< double > *self){
+        std::reverse(self->begin(), self->end());
+      }
+SWIGINTERN void std_vector_Sl_double_Sg__Reverse__SWIG_1(std::vector< double > *self,int index,int count){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (count < 0)
+          throw std::out_of_range("count");
+        if (index >= (int)self->size()+1 || index+count > (int)self->size())
+          throw std::invalid_argument("invalid range");
+        std::reverse(self->begin()+index, self->begin()+index+count);
+      }
+SWIGINTERN void std_vector_Sl_double_Sg__SetRange(std::vector< double > *self,int index,std::vector< double > const &values){
+        if (index < 0)
+          throw std::out_of_range("index");
+        if (index+values.size() > self->size())
+          throw std::out_of_range("index");
+        std::copy(values.begin(), values.end(), self->begin()+index);
+      }
+SWIGINTERN bool std_vector_Sl_double_Sg__Contains(std::vector< double > *self,double const &value){
+        return std::find(self->begin(), self->end(), value) != self->end();
+      }
+SWIGINTERN int std_vector_Sl_double_Sg__IndexOf(std::vector< double > *self,double const &value){
+        int index = -1;
+        std::vector< double >::iterator it = std::find(self->begin(), self->end(), value);
+        if (it != self->end())
+          index = (int)(it - self->begin());
+        return index;
+      }
+SWIGINTERN int std_vector_Sl_double_Sg__LastIndexOf(std::vector< double > *self,double const &value){
+        int index = -1;
+        std::vector< double >::reverse_iterator rit = std::find(self->rbegin(), self->rend(), value);
+        if (rit != self->rend())
+          index = (int)(self->rend() - 1 - rit);
+        return index;
+      }
+SWIGINTERN bool std_vector_Sl_double_Sg__Remove(std::vector< double > *self,double const &value){
+        std::vector< double >::iterator it = std::find(self->begin(), self->end(), value);
+        if (it != self->end()) {
+          self->erase(it);
+	  return true;
+        }
+        return false;
+      }
 
 	typedef double* double_ptr;
     typedef double fann_type;
@@ -2426,6 +2643,1288 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_fann_connection(void * jarg1) {
 }
 
 
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_errno_f_set(void * jarg1, int jarg2) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  enum fann_errno_enum arg2 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (enum fann_errno_enum)jarg2; 
+  if (arg1) (arg1)->errno_f = arg2;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_fann_train_data_errno_f_get(void * jarg1) {
+  int jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  enum fann_errno_enum result;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (enum fann_errno_enum) ((arg1)->errno_f);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_error_log_set(void * jarg1, void * jarg2) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  FILE *arg2 = (FILE *) 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (FILE *)jarg2; 
+  if (arg1) (arg1)->error_log = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_train_data_error_log_get(void * jarg1) {
+  void * jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  FILE *result = 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (FILE *) ((arg1)->error_log);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_errstr_set(void * jarg1, char * jarg2) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (char *)jarg2; 
+  {
+    delete [] arg1->errstr;
+    if (arg2) {
+      arg1->errstr = (char *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->errstr, (const char *)arg2);
+    } else {
+      arg1->errstr = 0;
+    }
+  }
+}
+
+
+SWIGEXPORT char * SWIGSTDCALL CSharp_fann_train_data_errstr_get(void * jarg1) {
+  char * jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  char *result = 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (char *) ((arg1)->errstr);
+  jresult = SWIG_csharp_string_callback((const char *)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_num_data_set(void * jarg1, unsigned int jarg2) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  unsigned int arg2 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  if (arg1) (arg1)->num_data = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_fann_train_data_num_data_get(void * jarg1) {
+  unsigned int jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  unsigned int result;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (unsigned int) ((arg1)->num_data);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_num_input_set(void * jarg1, unsigned int jarg2) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  unsigned int arg2 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  if (arg1) (arg1)->num_input = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_fann_train_data_num_input_get(void * jarg1) {
+  unsigned int jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  unsigned int result;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (unsigned int) ((arg1)->num_input);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_num_output_set(void * jarg1, unsigned int jarg2) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  unsigned int arg2 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  if (arg1) (arg1)->num_output = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_fann_train_data_num_output_get(void * jarg1) {
+  unsigned int jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  unsigned int result;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (unsigned int) ((arg1)->num_output);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_input_set(void * jarg1, void * jarg2) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  fann_type **arg2 = (fann_type **) 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (fann_type **)jarg2; 
+  if (arg1) (arg1)->input = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_train_data_input_get(void * jarg1) {
+  void * jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  fann_type **result = 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (fann_type **) ((arg1)->input);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_output_set(void * jarg1, void * jarg2) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  fann_type **arg2 = (fann_type **) 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (fann_type **)jarg2; 
+  if (arg1) (arg1)->output = arg2;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_train_data_output_get(void * jarg1) {
+  void * jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  fann_type **result = 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (fann_type **) ((arg1)->output);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_fann_train_data() {
+  void * jresult ;
+  fann_train_data *result = 0 ;
+  
+  result = (fann_train_data *)new fann_train_data();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_fann_train_data(void * jarg1) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_train(void * jarg1, void * jarg2, void * jarg3) {
+  fann *arg1 = (fann *) 0 ;
+  fann_type *arg2 = (fann_type *) 0 ;
+  fann_type *arg3 = (fann_type *) 0 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_type *)jarg2; 
+  arg3 = (fann_type *)jarg3; 
+  fann_train(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_test(void * jarg1, void * jarg2, void * jarg3) {
+  void * jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_type *arg2 = (fann_type *) 0 ;
+  fann_type *arg3 = (fann_type *) 0 ;
+  fann_type *result = 0 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_type *)jarg2; 
+  arg3 = (fann_type *)jarg3; 
+  result = (fann_type *)fann_test(arg1,arg2,arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_MSE(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_MSE(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_fann_get_bit_fail(void * jarg1) {
+  unsigned int jresult ;
+  fann *arg1 = (fann *) 0 ;
+  unsigned int result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (unsigned int)fann_get_bit_fail(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_reset_MSE(void * jarg1) {
+  fann *arg1 = (fann *) 0 ;
+  
+  arg1 = (fann *)jarg1; 
+  fann_reset_MSE(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_on_data(void * jarg1, void * jarg2, unsigned int jarg3, unsigned int jarg4, float jarg5) {
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  float arg5 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  arg4 = (unsigned int)jarg4; 
+  arg5 = (float)jarg5; 
+  fann_train_on_data(arg1,arg2,arg3,arg4,arg5);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_on_file(void * jarg1, char * jarg2, unsigned int jarg3, unsigned int jarg4, float jarg5) {
+  fann *arg1 = (fann *) 0 ;
+  char *arg2 = (char *) 0 ;
+  unsigned int arg3 ;
+  unsigned int arg4 ;
+  float arg5 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (char *)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  arg4 = (unsigned int)jarg4; 
+  arg5 = (float)jarg5; 
+  fann_train_on_file(arg1,(char const *)arg2,arg3,arg4,arg5);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_train_epoch(void * jarg1, void * jarg2) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  result = (float)fann_train_epoch(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_test_data(void * jarg1, void * jarg2) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  result = (float)fann_test_data(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_read_train_from_file(char * jarg1) {
+  void * jresult ;
+  char *arg1 = (char *) 0 ;
+  fann_train_data *result = 0 ;
+  
+  arg1 = (char *)jarg1; 
+  result = (fann_train_data *)fann_read_train_from_file((char const *)arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_create_train(unsigned int jarg1, unsigned int jarg2, unsigned int jarg3) {
+  void * jresult ;
+  unsigned int arg1 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  fann_train_data *result = 0 ;
+  
+  arg1 = (unsigned int)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  result = (fann_train_data *)fann_create_train(arg1,arg2,arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_create_train_pointer_array(unsigned int jarg1, unsigned int jarg2, void * jarg3, unsigned int jarg4, void * jarg5) {
+  void * jresult ;
+  unsigned int arg1 ;
+  unsigned int arg2 ;
+  fann_type **arg3 = (fann_type **) 0 ;
+  unsigned int arg4 ;
+  fann_type **arg5 = (fann_type **) 0 ;
+  fann_train_data *result = 0 ;
+  
+  arg1 = (unsigned int)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (fann_type **)jarg3; 
+  arg4 = (unsigned int)jarg4; 
+  arg5 = (fann_type **)jarg5; 
+  result = (fann_train_data *)fann_create_train_pointer_array(arg1,arg2,arg3,arg4,arg5);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_create_train_array(unsigned int jarg1, unsigned int jarg2, void * jarg3, unsigned int jarg4, void * jarg5) {
+  void * jresult ;
+  unsigned int arg1 ;
+  unsigned int arg2 ;
+  fann_type *arg3 = (fann_type *) 0 ;
+  unsigned int arg4 ;
+  fann_type *arg5 = (fann_type *) 0 ;
+  fann_train_data *result = 0 ;
+  
+  arg1 = (unsigned int)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (fann_type *)jarg3; 
+  arg4 = (unsigned int)jarg4; 
+  arg5 = (fann_type *)jarg5; 
+  result = (fann_train_data *)fann_create_train_array(arg1,arg2,arg3,arg4,arg5);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_create_train_from_callback(unsigned int jarg1, unsigned int jarg2, unsigned int jarg3, void * jarg4) {
+  void * jresult ;
+  unsigned int arg1 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  void (__stdcall *arg4)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *) = (void (__stdcall *)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *)) 0 ;
+  fann_train_data *result = 0 ;
+  
+  arg1 = (unsigned int)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  arg4 = (void (__stdcall *)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *))jarg4; 
+  result = (fann_train_data *)fann_create_train_from_callback(arg1,arg2,arg3,arg4);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_destroy_train(void * jarg1) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  fann_destroy_train(arg1);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_get_train_input(void * jarg1, unsigned int jarg2) {
+  void * jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  unsigned int arg2 ;
+  fann_type *result = 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  result = (fann_type *)fann_get_train_input(arg1,arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_get_train_output(void * jarg1, unsigned int jarg2) {
+  void * jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  unsigned int arg2 ;
+  fann_type *result = 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  result = (fann_type *)fann_get_train_output(arg1,arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_shuffle_train_data(void * jarg1) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  fann_shuffle_train_data(arg1);
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_fann_get_min_train_input(void * jarg1) {
+  double jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  fann_type result;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (fann_type)fann_get_min_train_input(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_fann_get_max_train_input(void * jarg1) {
+  double jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  fann_type result;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (fann_type)fann_get_max_train_input(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_fann_get_min_train_output(void * jarg1) {
+  double jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  fann_type result;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (fann_type)fann_get_min_train_output(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_fann_get_max_train_output(void * jarg1) {
+  double jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  fann_type result;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (fann_type)fann_get_max_train_output(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_scale_train(void * jarg1, void * jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  fann_scale_train(arg1,arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_descale_train(void * jarg1, void * jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  fann_descale_train(arg1,arg2);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_fann_set_input_scaling_params(void * jarg1, void * jarg2, float jarg3, float jarg4) {
+  int jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  float arg3 ;
+  float arg4 ;
+  int result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (float)jarg3; 
+  arg4 = (float)jarg4; 
+  result = (int)fann_set_input_scaling_params(arg1,(fann_train_data const *)arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_fann_set_output_scaling_params(void * jarg1, void * jarg2, float jarg3, float jarg4) {
+  int jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  float arg3 ;
+  float arg4 ;
+  int result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (float)jarg3; 
+  arg4 = (float)jarg4; 
+  result = (int)fann_set_output_scaling_params(arg1,(fann_train_data const *)arg2,arg3,arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_fann_set_scaling_params(void * jarg1, void * jarg2, float jarg3, float jarg4, float jarg5, float jarg6) {
+  int jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  float arg3 ;
+  float arg4 ;
+  float arg5 ;
+  float arg6 ;
+  int result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (float)jarg3; 
+  arg4 = (float)jarg4; 
+  arg5 = (float)jarg5; 
+  arg6 = (float)jarg6; 
+  result = (int)fann_set_scaling_params(arg1,(fann_train_data const *)arg2,arg3,arg4,arg5,arg6);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_fann_clear_scaling_params(void * jarg1) {
+  int jresult ;
+  fann *arg1 = (fann *) 0 ;
+  int result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (int)fann_clear_scaling_params(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_scale_input(void * jarg1, void * jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  fann_type *arg2 = (fann_type *) 0 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_type *)jarg2; 
+  fann_scale_input(arg1,arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_scale_output(void * jarg1, void * jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  fann_type *arg2 = (fann_type *) 0 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_type *)jarg2; 
+  fann_scale_output(arg1,arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_descale_input(void * jarg1, void * jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  fann_type *arg2 = (fann_type *) 0 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_type *)jarg2; 
+  fann_descale_input(arg1,arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_descale_output(void * jarg1, void * jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  fann_type *arg2 = (fann_type *) 0 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_type *)jarg2; 
+  fann_descale_output(arg1,arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_scale_input_train_data(void * jarg1, double jarg2, double jarg3) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  fann_type arg2 ;
+  fann_type arg3 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (fann_type)jarg2; 
+  arg3 = (fann_type)jarg3; 
+  fann_scale_input_train_data(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_scale_output_train_data(void * jarg1, double jarg2, double jarg3) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  fann_type arg2 ;
+  fann_type arg3 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (fann_type)jarg2; 
+  arg3 = (fann_type)jarg3; 
+  fann_scale_output_train_data(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_scale_train_data(void * jarg1, double jarg2, double jarg3) {
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  fann_type arg2 ;
+  fann_type arg3 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (fann_type)jarg2; 
+  arg3 = (fann_type)jarg3; 
+  fann_scale_train_data(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_merge_train_data(void * jarg1, void * jarg2) {
+  void * jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  fann_train_data *result = 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  result = (fann_train_data *)fann_merge_train_data(arg1,arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_duplicate_train_data(void * jarg1) {
+  void * jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  fann_train_data *result = 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (fann_train_data *)fann_duplicate_train_data(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_fann_subset_train_data(void * jarg1, unsigned int jarg2, unsigned int jarg3) {
+  void * jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  unsigned int arg2 ;
+  unsigned int arg3 ;
+  fann_train_data *result = 0 ;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  result = (fann_train_data *)fann_subset_train_data(arg1,arg2,arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_fann_length_train_data(void * jarg1) {
+  unsigned int jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  unsigned int result;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (unsigned int)fann_length_train_data(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_fann_num_input_train_data(void * jarg1) {
+  unsigned int jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  unsigned int result;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (unsigned int)fann_num_input_train_data(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_fann_num_output_train_data(void * jarg1) {
+  unsigned int jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  unsigned int result;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  result = (unsigned int)fann_num_output_train_data(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_fann_save_train(void * jarg1, char * jarg2) {
+  int jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (char *)jarg2; 
+  result = (int)fann_save_train(arg1,(char const *)arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_fann_save_train_to_fixed(void * jarg1, char * jarg2, unsigned int jarg3) {
+  int jresult ;
+  fann_train_data *arg1 = (fann_train_data *) 0 ;
+  char *arg2 = (char *) 0 ;
+  unsigned int arg3 ;
+  int result;
+  
+  arg1 = (fann_train_data *)jarg1; 
+  arg2 = (char *)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  result = (int)fann_save_train_to_fixed(arg1,(char const *)arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_fann_get_training_algorithm(void * jarg1) {
+  int jresult ;
+  fann *arg1 = (fann *) 0 ;
+  enum fann_train_enum result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (enum fann_train_enum)fann_get_training_algorithm(arg1);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_training_algorithm(void * jarg1, int jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  enum fann_train_enum arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (enum fann_train_enum)jarg2; 
+  fann_set_training_algorithm(arg1,arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_learning_rate(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_learning_rate(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_learning_rate(void * jarg1, float jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  float arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (float)jarg2; 
+  fann_set_learning_rate(arg1,arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_learning_momentum(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_learning_momentum(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_learning_momentum(void * jarg1, float jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  float arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (float)jarg2; 
+  fann_set_learning_momentum(arg1,arg2);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_fann_get_activation_function(void * jarg1, int jarg2, int jarg3) {
+  int jresult ;
+  fann *arg1 = (fann *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  enum fann_activationfunc_enum result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  result = (enum fann_activationfunc_enum)fann_get_activation_function(arg1,arg2,arg3);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_activation_function(void * jarg1, int jarg2, int jarg3, int jarg4) {
+  fann *arg1 = (fann *) 0 ;
+  enum fann_activationfunc_enum arg2 ;
+  int arg3 ;
+  int arg4 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (enum fann_activationfunc_enum)jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = (int)jarg4; 
+  fann_set_activation_function(arg1,arg2,arg3,arg4);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_activation_function_layer(void * jarg1, int jarg2, int jarg3) {
+  fann *arg1 = (fann *) 0 ;
+  enum fann_activationfunc_enum arg2 ;
+  int arg3 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (enum fann_activationfunc_enum)jarg2; 
+  arg3 = (int)jarg3; 
+  fann_set_activation_function_layer(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_activation_function_hidden(void * jarg1, int jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  enum fann_activationfunc_enum arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (enum fann_activationfunc_enum)jarg2; 
+  fann_set_activation_function_hidden(arg1,arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_activation_function_output(void * jarg1, int jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  enum fann_activationfunc_enum arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (enum fann_activationfunc_enum)jarg2; 
+  fann_set_activation_function_output(arg1,arg2);
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_fann_get_activation_steepness(void * jarg1, int jarg2, int jarg3) {
+  double jresult ;
+  fann *arg1 = (fann *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  fann_type result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  result = (fann_type)fann_get_activation_steepness(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_activation_steepness(void * jarg1, double jarg2, int jarg3, int jarg4) {
+  fann *arg1 = (fann *) 0 ;
+  fann_type arg2 ;
+  int arg3 ;
+  int arg4 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_type)jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = (int)jarg4; 
+  fann_set_activation_steepness(arg1,arg2,arg3,arg4);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_activation_steepness_layer(void * jarg1, double jarg2, int jarg3) {
+  fann *arg1 = (fann *) 0 ;
+  fann_type arg2 ;
+  int arg3 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_type)jarg2; 
+  arg3 = (int)jarg3; 
+  fann_set_activation_steepness_layer(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_activation_steepness_hidden(void * jarg1, double jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  fann_type arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_type)jarg2; 
+  fann_set_activation_steepness_hidden(arg1,arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_activation_steepness_output(void * jarg1, double jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  fann_type arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_type)jarg2; 
+  fann_set_activation_steepness_output(arg1,arg2);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_fann_get_train_error_function(void * jarg1) {
+  int jresult ;
+  fann *arg1 = (fann *) 0 ;
+  enum fann_errorfunc_enum result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (enum fann_errorfunc_enum)fann_get_train_error_function(arg1);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_train_error_function(void * jarg1, int jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  enum fann_errorfunc_enum arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (enum fann_errorfunc_enum)jarg2; 
+  fann_set_train_error_function(arg1,arg2);
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_fann_get_train_stop_function(void * jarg1) {
+  int jresult ;
+  fann *arg1 = (fann *) 0 ;
+  enum fann_stopfunc_enum result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (enum fann_stopfunc_enum)fann_get_train_stop_function(arg1);
+  jresult = (int)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_train_stop_function(void * jarg1, int jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  enum fann_stopfunc_enum arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (enum fann_stopfunc_enum)jarg2; 
+  fann_set_train_stop_function(arg1,arg2);
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_fann_get_bit_fail_limit(void * jarg1) {
+  double jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_type result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (fann_type)fann_get_bit_fail_limit(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_bit_fail_limit(void * jarg1, double jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  fann_type arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_type)jarg2; 
+  fann_set_bit_fail_limit(arg1,arg2);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_callback(void * jarg1, void * jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  fann_callback_type arg2 = (fann_callback_type) 0 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_callback_type)jarg2; 
+  fann_set_callback(arg1,arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_quickprop_decay(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_quickprop_decay(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_quickprop_decay(void * jarg1, float jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  float arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (float)jarg2; 
+  fann_set_quickprop_decay(arg1,arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_quickprop_mu(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_quickprop_mu(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_quickprop_mu(void * jarg1, float jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  float arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (float)jarg2; 
+  fann_set_quickprop_mu(arg1,arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_rprop_increase_factor(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_rprop_increase_factor(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_rprop_increase_factor(void * jarg1, float jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  float arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (float)jarg2; 
+  fann_set_rprop_increase_factor(arg1,arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_rprop_decrease_factor(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_rprop_decrease_factor(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_rprop_decrease_factor(void * jarg1, float jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  float arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (float)jarg2; 
+  fann_set_rprop_decrease_factor(arg1,arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_rprop_delta_min(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_rprop_delta_min(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_rprop_delta_min(void * jarg1, float jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  float arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (float)jarg2; 
+  fann_set_rprop_delta_min(arg1,arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_rprop_delta_max(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_rprop_delta_max(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_rprop_delta_max(void * jarg1, float jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  float arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (float)jarg2; 
+  fann_set_rprop_delta_max(arg1,arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_rprop_delta_zero(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_rprop_delta_zero(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_rprop_delta_zero(void * jarg1, float jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  float arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (float)jarg2; 
+  fann_set_rprop_delta_zero(arg1,arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_sarprop_weight_decay_shift(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_sarprop_weight_decay_shift(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_sarprop_weight_decay_shift(void * jarg1, float jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  float arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (float)jarg2; 
+  fann_set_sarprop_weight_decay_shift(arg1,arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_sarprop_step_error_threshold_factor(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_sarprop_step_error_threshold_factor(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_sarprop_step_error_threshold_factor(void * jarg1, float jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  float arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (float)jarg2; 
+  fann_set_sarprop_step_error_threshold_factor(arg1,arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_sarprop_step_error_shift(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_sarprop_step_error_shift(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_sarprop_step_error_shift(void * jarg1, float jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  float arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (float)jarg2; 
+  fann_set_sarprop_step_error_shift(arg1,arg2);
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_fann_get_sarprop_temperature(void * jarg1) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  result = (float)fann_get_sarprop_temperature(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_fann_set_sarprop_temperature(void * jarg1, float jarg2) {
+  fann *arg1 = (fann *) 0 ;
+  float arg2 ;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (float)jarg2; 
+  fann_set_sarprop_temperature(arg1,arg2);
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_connectionArray(int jarg1) {
   void * jresult ;
   int arg1 ;
@@ -2858,6 +4357,18 @@ SWIGEXPORT void SWIGSTDCALL CSharp_training_data_subset_train_data(void * jarg1,
   arg2 = (unsigned int)jarg2; 
   arg3 = (unsigned int)jarg3; 
   (arg1)->subset_train_data(arg2,arg3);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_training_data_to_fann_train_data(void * jarg1) {
+  void * jresult ;
+  FANN::training_data *arg1 = (FANN::training_data *) 0 ;
+  fann_train_data *result = 0 ;
+  
+  arg1 = (FANN::training_data *)jarg1; 
+  result = (fann_train_data *)(arg1)->operator struct fann_train_data*();
+  jresult = (void *)result; 
+  return jresult;
 }
 
 
@@ -4475,6 +5986,242 @@ SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_enable_seed_rand(void * jarg1) {
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_neural_net_to_fann(void * jarg1) {
+  void * jresult ;
+  FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
+  fann *result = 0 ;
+  
+  arg1 = (FANN::neural_net *)jarg1; 
+  result = (fann *)(arg1)->operator struct fann*();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_train_epoch_batch_parallel__SWIG_0(void * jarg1, void * jarg2, unsigned int jarg3) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  unsigned int arg3 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  result = (float)parallel_fann::train_epoch_batch_parallel(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_train_epoch_irpropm_parallel__SWIG_0(void * jarg1, void * jarg2, unsigned int jarg3) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  unsigned int arg3 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  result = (float)parallel_fann::train_epoch_irpropm_parallel(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_train_epoch_quickprop_parallel__SWIG_0(void * jarg1, void * jarg2, unsigned int jarg3) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  unsigned int arg3 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  result = (float)parallel_fann::train_epoch_quickprop_parallel(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_train_epoch_sarprop_parallel__SWIG_0(void * jarg1, void * jarg2, unsigned int jarg3) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  unsigned int arg3 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  result = (float)parallel_fann::train_epoch_sarprop_parallel(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_train_epoch_incremental_mod__SWIG_0(void * jarg1, void * jarg2) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  result = (float)parallel_fann::train_epoch_incremental_mod(arg1,arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_train_epoch_batch_parallel__SWIG_1(void * jarg1, void * jarg2, unsigned int jarg3, void * jarg4) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  unsigned int arg3 ;
+  std::vector< std::vector< fann_type > > *arg4 = 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  arg4 = (std::vector< std::vector< fann_type > > *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::vector< fann_type > > & type is null", 0);
+    return 0;
+  } 
+  result = (float)parallel_fann::train_epoch_batch_parallel(arg1,arg2,arg3,*arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_train_epoch_irpropm_parallel__SWIG_1(void * jarg1, void * jarg2, unsigned int jarg3, void * jarg4) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  unsigned int arg3 ;
+  std::vector< std::vector< fann_type > > *arg4 = 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  arg4 = (std::vector< std::vector< fann_type > > *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::vector< fann_type > > & type is null", 0);
+    return 0;
+  } 
+  result = (float)parallel_fann::train_epoch_irpropm_parallel(arg1,arg2,arg3,*arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_train_epoch_quickprop_parallel__SWIG_1(void * jarg1, void * jarg2, unsigned int jarg3, void * jarg4) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  unsigned int arg3 ;
+  std::vector< std::vector< fann_type > > *arg4 = 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  arg4 = (std::vector< std::vector< fann_type > > *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::vector< fann_type > > & type is null", 0);
+    return 0;
+  } 
+  result = (float)parallel_fann::train_epoch_quickprop_parallel(arg1,arg2,arg3,*arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_train_epoch_sarprop_parallel__SWIG_1(void * jarg1, void * jarg2, unsigned int jarg3, void * jarg4) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  unsigned int arg3 ;
+  std::vector< std::vector< fann_type > > *arg4 = 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  arg4 = (std::vector< std::vector< fann_type > > *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::vector< fann_type > > & type is null", 0);
+    return 0;
+  } 
+  result = (float)parallel_fann::train_epoch_sarprop_parallel(arg1,arg2,arg3,*arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_train_epoch_incremental_mod__SWIG_1(void * jarg1, void * jarg2, void * jarg3) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  std::vector< std::vector< fann_type > > *arg3 = 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (std::vector< std::vector< fann_type > > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::vector< fann_type > > & type is null", 0);
+    return 0;
+  } 
+  result = (float)parallel_fann::train_epoch_incremental_mod(arg1,arg2,*arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_test_data_parallel__SWIG_0(void * jarg1, void * jarg2, unsigned int jarg3) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  unsigned int arg3 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  result = (float)parallel_fann::test_data_parallel(arg1,arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_test_data_parallel__SWIG_1(void * jarg1, void * jarg2, unsigned int jarg3, void * jarg4) {
+  float jresult ;
+  fann *arg1 = (fann *) 0 ;
+  fann_train_data *arg2 = (fann_train_data *) 0 ;
+  unsigned int arg3 ;
+  std::vector< std::vector< fann_type > > *arg4 = 0 ;
+  float result;
+  
+  arg1 = (fann *)jarg1; 
+  arg2 = (fann_train_data *)jarg2; 
+  arg3 = (unsigned int)jarg3; 
+  arg4 = (std::vector< std::vector< fann_type > > *)jarg4;
+  if (!arg4) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::vector< fann_type > > & type is null", 0);
+    return 0;
+  } 
+  result = (float)parallel_fann::test_data_parallel(arg1,arg2,arg3,*arg4);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_fopen(char * jarg1, char * jarg2) {
   void * jresult ;
   char *arg1 = (char *) 0 ;
@@ -4486,6 +6233,822 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_fopen(char * jarg1, char * jarg2) {
   result = (FILE *)fopen((char const *)arg1,(char const *)arg2);
   jresult = (void *)result; 
   return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Clear(void * jarg1) {
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Add(void * jarg1, void * jarg2) {
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  std::vector< double > *arg2 = 0 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  arg2 = (std::vector< double > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< double > const & type is null", 0);
+    return ;
+  } 
+  (arg1)->push_back((std::vector< double > const &)*arg2);
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_DoubleVectorVector_size(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  std::vector< std::vector< double > >::size_type result;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  result = ((std::vector< std::vector< double > > const *)arg1)->size();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_DoubleVectorVector_capacity(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  std::vector< std::vector< double > >::size_type result;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  result = ((std::vector< std::vector< double > > const *)arg1)->capacity();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_reserve(void * jarg1, unsigned long jarg2) {
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  std::vector< std::vector< double > >::size_type arg2 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  arg2 = (std::vector< std::vector< double > >::size_type)jarg2; 
+  (arg1)->reserve(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVectorVector__SWIG_0() {
+  void * jresult ;
+  std::vector< std::vector< double > > *result = 0 ;
+  
+  result = (std::vector< std::vector< double > > *)new std::vector< std::vector< double > >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVectorVector__SWIG_1(void * jarg1) {
+  void * jresult ;
+  std::vector< std::vector< double > > *arg1 = 0 ;
+  std::vector< std::vector< double > > *result = 0 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::vector< double > > const & type is null", 0);
+    return 0;
+  } 
+  result = (std::vector< std::vector< double > > *)new std::vector< std::vector< double > >((std::vector< std::vector< double > > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVectorVector__SWIG_2(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  std::vector< std::vector< double > > *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  try {
+    result = (std::vector< std::vector< double > > *)new_std_vector_Sl_std_vector_Sl_double_Sg__Sg___SWIG_2(arg1);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVectorVector_getitemcopy(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  int arg2 ;
+  std::vector< double > result;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = std_vector_Sl_std_vector_Sl_double_Sg__Sg__getitemcopy(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = new std::vector< double >((const std::vector< double > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVectorVector_getitem(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  int arg2 ;
+  std::vector< double > *result = 0 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< double > *) &std_vector_Sl_std_vector_Sl_double_Sg__Sg__getitem(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_setitem(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  int arg2 ;
+  std::vector< double > *arg3 = 0 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< double > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< double > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_std_vector_Sl_double_Sg__Sg__setitem(arg1,arg2,(std::vector< double > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_AddRange(void * jarg1, void * jarg2) {
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  std::vector< std::vector< double > > *arg2 = 0 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  arg2 = (std::vector< std::vector< double > > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::vector< double > > const & type is null", 0);
+    return ;
+  } 
+  std_vector_Sl_std_vector_Sl_double_Sg__Sg__AddRange(arg1,(std::vector< std::vector< double > > const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVectorVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  std::vector< std::vector< double > > *result = 0 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    result = (std::vector< std::vector< double > > *)std_vector_Sl_std_vector_Sl_double_Sg__Sg__GetRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Insert(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  int arg2 ;
+  std::vector< double > *arg3 = 0 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< double > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< double > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_std_vector_Sl_double_Sg__Sg__Insert(arg1,arg2,(std::vector< double > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  int arg2 ;
+  std::vector< std::vector< double > > *arg3 = 0 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< std::vector< double > > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::vector< double > > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_std_vector_Sl_double_Sg__Sg__InsertRange(arg1,arg2,(std::vector< std::vector< double > > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_RemoveAt(void * jarg1, int jarg2) {
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  int arg2 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    std_vector_Sl_std_vector_Sl_double_Sg__Sg__RemoveAt(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_std_vector_Sl_double_Sg__Sg__RemoveRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVectorVector_Repeat(void * jarg1, int jarg2) {
+  void * jresult ;
+  std::vector< double > *arg1 = 0 ;
+  int arg2 ;
+  std::vector< std::vector< double > > *result = 0 ;
+  
+  arg1 = (std::vector< double > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< double > const & type is null", 0);
+    return 0;
+  } 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< std::vector< double > > *)std_vector_Sl_std_vector_Sl_double_Sg__Sg__Repeat((std::vector< double > const &)*arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Reverse__SWIG_0(void * jarg1) {
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  std_vector_Sl_std_vector_Sl_double_Sg__Sg__Reverse__SWIG_0(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_std_vector_Sl_double_Sg__Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  int arg2 ;
+  std::vector< std::vector< double > > *arg3 = 0 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< std::vector< double > > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< std::vector< double > > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_std_vector_Sl_double_Sg__Sg__SetRange(arg1,arg2,(std::vector< std::vector< double > > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_DoubleVectorVector(void * jarg1) {
+  std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
+  
+  arg1 = (std::vector< std::vector< double > > *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Clear(void * jarg1) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  (arg1)->clear();
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Add(void * jarg1, double jarg2) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  double *arg2 = 0 ;
+  double temp2 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  temp2 = (double)jarg2; 
+  arg2 = &temp2; 
+  (arg1)->push_back((double const &)*arg2);
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_DoubleVector_size(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  std::vector< double >::size_type result;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  result = ((std::vector< double > const *)arg1)->size();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_DoubleVector_capacity(void * jarg1) {
+  unsigned long jresult ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  std::vector< double >::size_type result;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  result = ((std::vector< double > const *)arg1)->capacity();
+  jresult = (unsigned long)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_reserve(void * jarg1, unsigned long jarg2) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  std::vector< double >::size_type arg2 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  arg2 = (std::vector< double >::size_type)jarg2; 
+  (arg1)->reserve(arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVector__SWIG_0() {
+  void * jresult ;
+  std::vector< double > *result = 0 ;
+  
+  result = (std::vector< double > *)new std::vector< double >();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVector__SWIG_1(void * jarg1) {
+  void * jresult ;
+  std::vector< double > *arg1 = 0 ;
+  std::vector< double > *result = 0 ;
+  
+  arg1 = (std::vector< double > *)jarg1;
+  if (!arg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< double > const & type is null", 0);
+    return 0;
+  } 
+  result = (std::vector< double > *)new std::vector< double >((std::vector< double > const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVector__SWIG_2(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  std::vector< double > *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  try {
+    result = (std::vector< double > *)new_std_vector_Sl_double_Sg___SWIG_2(arg1);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_DoubleVector_getitemcopy(void * jarg1, int jarg2) {
+  double jresult ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  int arg2 ;
+  double result;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (double)std_vector_Sl_double_Sg__getitemcopy(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_DoubleVector_getitem(void * jarg1, int jarg2) {
+  double jresult ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  int arg2 ;
+  double *result = 0 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (double *) &std_vector_Sl_double_Sg__getitem(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = *result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_setitem(void * jarg1, int jarg2, double jarg3) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  int arg2 ;
+  double *arg3 = 0 ;
+  double temp3 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  arg2 = (int)jarg2; 
+  temp3 = (double)jarg3; 
+  arg3 = &temp3; 
+  try {
+    std_vector_Sl_double_Sg__setitem(arg1,arg2,(double const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_AddRange(void * jarg1, void * jarg2) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  std::vector< double > *arg2 = 0 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  arg2 = (std::vector< double > *)jarg2;
+  if (!arg2) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< double > const & type is null", 0);
+    return ;
+  } 
+  std_vector_Sl_double_Sg__AddRange(arg1,(std::vector< double > const &)*arg2);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+  void * jresult ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  std::vector< double > *result = 0 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    result = (std::vector< double > *)std_vector_Sl_double_Sg__GetRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Insert(void * jarg1, int jarg2, double jarg3) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  int arg2 ;
+  double *arg3 = 0 ;
+  double temp3 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  arg2 = (int)jarg2; 
+  temp3 = (double)jarg3; 
+  arg3 = &temp3; 
+  try {
+    std_vector_Sl_double_Sg__Insert(arg1,arg2,(double const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  int arg2 ;
+  std::vector< double > *arg3 = 0 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< double > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< double > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_double_Sg__InsertRange(arg1,arg2,(std::vector< double > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_RemoveAt(void * jarg1, int jarg2) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  int arg2 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  arg2 = (int)jarg2; 
+  try {
+    std_vector_Sl_double_Sg__RemoveAt(arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_double_Sg__RemoveRange(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVector_Repeat(double jarg1, int jarg2) {
+  void * jresult ;
+  double *arg1 = 0 ;
+  int arg2 ;
+  double temp1 ;
+  std::vector< double > *result = 0 ;
+  
+  temp1 = (double)jarg1; 
+  arg1 = &temp1; 
+  arg2 = (int)jarg2; 
+  try {
+    result = (std::vector< double > *)std_vector_Sl_double_Sg__Repeat((double const &)*arg1,arg2);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return 0;
+  }
+  
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Reverse__SWIG_0(void * jarg1) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  std_vector_Sl_double_Sg__Reverse__SWIG_0(arg1);
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  try {
+    std_vector_Sl_double_Sg__Reverse__SWIG_1(arg1,arg2,arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  catch(std::invalid_argument &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentException, (&_e)->what(), "");
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  int arg2 ;
+  std::vector< double > *arg3 = 0 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (std::vector< double > *)jarg3;
+  if (!arg3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "std::vector< double > const & type is null", 0);
+    return ;
+  } 
+  try {
+    std_vector_Sl_double_Sg__SetRange(arg1,arg2,(std::vector< double > const &)*arg3);
+  }
+  catch(std::out_of_range &_e) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentOutOfRangeException, 0, (&_e)->what());
+    return ;
+  }
+  
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_DoubleVector_Contains(void * jarg1, double jarg2) {
+  unsigned int jresult ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  double *arg2 = 0 ;
+  double temp2 ;
+  bool result;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  temp2 = (double)jarg2; 
+  arg2 = &temp2; 
+  result = (bool)std_vector_Sl_double_Sg__Contains(arg1,(double const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_DoubleVector_IndexOf(void * jarg1, double jarg2) {
+  int jresult ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  double *arg2 = 0 ;
+  double temp2 ;
+  int result;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  temp2 = (double)jarg2; 
+  arg2 = &temp2; 
+  result = (int)std_vector_Sl_double_Sg__IndexOf(arg1,(double const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_DoubleVector_LastIndexOf(void * jarg1, double jarg2) {
+  int jresult ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  double *arg2 = 0 ;
+  double temp2 ;
+  int result;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  temp2 = (double)jarg2; 
+  arg2 = &temp2; 
+  result = (int)std_vector_Sl_double_Sg__LastIndexOf(arg1,(double const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_DoubleVector_Remove(void * jarg1, double jarg2) {
+  unsigned int jresult ;
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  double *arg2 = 0 ;
+  double temp2 ;
+  bool result;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  temp2 = (double)jarg2; 
+  arg2 = &temp2; 
+  result = (bool)std_vector_Sl_double_Sg__Remove(arg1,(double const &)*arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_DoubleVector(void * jarg1) {
+  std::vector< double > *arg1 = (std::vector< double > *) 0 ;
+  
+  arg1 = (std::vector< double > *)jarg1; 
+  delete arg1;
 }
 
 

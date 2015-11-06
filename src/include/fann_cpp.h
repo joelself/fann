@@ -2708,6 +2708,10 @@ namespace FANN {
             fann_enable_seed_rand();
         }
 
+		operator struct fann*() {
+			return ann;
+		}
+		
         /*********************************************************************/
 
     private:

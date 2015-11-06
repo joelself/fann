@@ -124,8 +124,11 @@
     <Compile Include="FannWrapperFloat\fann_error.cs" />
     <Compile Include="FannWrapperFloat\fann_layer.cs" />
     <Compile Include="FannWrapperFloat\fann_neuron.cs" />
+    <Compile Include="FannWrapperFloat\fann_train_data.cs" />
     <Compile Include="FannWrapperFloat\floatArray.cs" />
     <Compile Include="FannWrapperFloat\floatArrayArray.cs" />
+    <Compile Include="FannWrapperFloat\FloatVector.cs" />
+    <Compile Include="FannWrapperFloat\FloatVectorVector.cs" />
     <Compile Include="FannWrapperFloat\neural_net.cs" />
     <Compile Include="FannWrapperFloat\SwigFannFloat.cs" />
     <Compile Include="FannWrapperFloat\SwigFannFloatPINVOKE.cs" />

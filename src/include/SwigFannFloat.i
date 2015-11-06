@@ -5,10 +5,14 @@
 #include "fann_cpp.h"
 #include "fann_error.h"
 #include "fann_data.h"
+#include "fann_train.h"
 #include "fann_data_cpp.h"
 #include "fann_training_data_cpp.h"
+#include "parallel_fann.hpp"
 #include "stdio.h"
 %}
+%rename("to_fann") operator struct fann*();
+%rename("to_fann_train_data") operator struct fann_train_data*();
 #define FANN_EXTERNAL /**/
 #define FANN_API /**/
 %include typemaps.i
@@ -16,12 +20,19 @@
 %include "arrays_csharp.i"
 %include "cpointer.i"
 %include "std_string.i"
+%include "std_vector.i"
 %include "fann_data.h"
+%include "fann_train.h"
 %array_class(FANN::connection, connectionArray);
 %include "fann_training_data_cpp.h"
 %include "fann_cpp.h"
 %include "fann_data_cpp.h"
+%include "parallel_fann.hpp"
 FILE *fopen(const char *filename, const char *mode);
+namespace std {
+    %template(FloatVectorVector) vector<vector<float>>;
+	%template(FloatVector) vector<float>;
+}
 struct fann_connection
 {
     /* Unique number used to identify source neuron */
@@ -31,7 +42,7 @@ struct fann_connection
     /* The numerical value of the weight */
     fann_type weight;
 };
-%inline %{
+%inline %{;
 	typedef float* float_ptr;
     typedef float fann_type;
 	typedef fann_connection connection;
