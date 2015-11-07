@@ -762,29 +762,29 @@ namespace FANNCSharp
             FannFile result = new FannFile(file);
             return result;
         }
-        public float train_epoch_batch_parallel(TrainingDataFloat data, uint threadnumb)
+        public float TrainEpochBatchParallel(TrainingDataFloat data, uint threadnumb)
         {
-            return SwigFannFloat.train_epoch_batch_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb);
+            return SwigFannFloat.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
-        public float train_epoch_irpropm_parallel(TrainingDataFloat data, uint threadnumb)
+        public float TrainEpochIrpropmParallel(TrainingDataFloat data, uint threadnumb)
         {
-            return SwigFannFloat.train_epoch_irpropm_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb);
+            return SwigFannFloat.train_epoch_irpropm_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
-        public float train_epoch_quickprop_parallel(TrainingDataFloat data, uint threadnumb)
+        public float TrainEpochQuickpropParallel(TrainingDataFloat data, uint threadnumb)
         {
-            return SwigFannFloat.train_epoch_quickprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb);
+            return SwigFannFloat.train_epoch_quickprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
-        public float train_epoch_sarprop_parallel(TrainingDataFloat data, uint threadnumb)
+        public float TrainEpochSarpropParallel(TrainingDataFloat data, uint threadnumb)
         {
-            return SwigFannFloat.train_epoch_sarprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb);
+            return SwigFannFloat.train_epoch_sarprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
         public float TrainEpochIncrementalMod(TrainingDataFloat data)
         {
-            return SwigFannFloat.train_epoch_incremental_mod(net.to_fann(), data.InternalData.to_fann_train_data());
+            return SwigFannFloat.train_epoch_incremental_mod(net.to_fann(), data.ToFannTrainData());
         }
 
         public float TrainEpochBatchParallel(TrainingDataFloat data, uint threadnumb, List<List<float>> predicted_outputs)
@@ -796,7 +796,7 @@ namespace FANNCSharp
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
                 
-                float result = SwigFannFloat.train_epoch_batch_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                float result = SwigFannFloat.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
 
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
@@ -820,7 +820,7 @@ namespace FANNCSharp
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
-                float result = SwigFannFloat.train_epoch_irpropm_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                float result = SwigFannFloat.train_epoch_irpropm_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
 
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
@@ -844,7 +844,7 @@ namespace FANNCSharp
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
-                float result = SwigFannFloat.train_epoch_quickprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                float result = SwigFannFloat.train_epoch_quickprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
                 
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
@@ -868,7 +868,7 @@ namespace FANNCSharp
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
-                float result = SwigFannFloat.train_epoch_sarprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                float result = SwigFannFloat.train_epoch_sarprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
                  
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
@@ -892,7 +892,7 @@ namespace FANNCSharp
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
-                float result = SwigFannFloat.train_epoch_incremental_mod(net.to_fann(), data.InternalData.to_fann_train_data(), predicted_out);
+                float result = SwigFannFloat.train_epoch_incremental_mod(net.to_fann(), data.ToFannTrainData(), predicted_out);
                 
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
@@ -910,7 +910,7 @@ namespace FANNCSharp
 
         public float TestDataParallel(TrainingDataFloat data, uint threadnumb)
         {
-            return SwigFannFloat.test_data_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb);
+            return SwigFannFloat.test_data_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
         public float TestDataParallel(TrainingDataFloat data, uint threadnumb, List<List<float>> predicted_outputs)
@@ -921,7 +921,7 @@ namespace FANNCSharp
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
-                float result = SwigFannFloat.test_data_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                float result = SwigFannFloat.test_data_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
                 
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)

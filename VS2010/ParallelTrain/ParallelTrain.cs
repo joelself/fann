@@ -37,7 +37,7 @@ namespace Example
                 before = Environment.TickCount;
                 for (int i = 1; i <= max_epochs; i++)
                 {
-                    error = num_threads > 1 ? net.train_epoch_irpropm_parallel(data, num_threads) : net.TrainEpoch(data);
+                    error = num_threads > 1 ? net.TrainEpochIrpropmParallel(data, num_threads) : net.TrainEpoch(data);
                     Console.WriteLine("Epochs     {0}. Current error: {1}", i.ToString("00000000"), error.ToString("0.0000000000"));
                 }
 
