@@ -33,7 +33,7 @@ public class uintArray : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          SwigFannFloatPINVOKE.delete_uintArray(swigCPtr);
+          fannfloatPINVOKE.delete_uintArray(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -41,26 +41,26 @@ public class uintArray : global::System.IDisposable {
     }
   }
 
-  public uintArray(int nelements) : this(SwigFannFloatPINVOKE.new_uintArray(nelements), true) {
+  public uintArray(int nelements) : this(fannfloatPINVOKE.new_uintArray(nelements), true) {
   }
 
   public uint getitem(int index) {
-    uint ret = SwigFannFloatPINVOKE.uintArray_getitem(swigCPtr, index);
+    uint ret = fannfloatPINVOKE.uintArray_getitem(swigCPtr, index);
     return ret;
   }
 
   public void setitem(int index, uint value) {
-    SwigFannFloatPINVOKE.uintArray_setitem(swigCPtr, index, value);
+    fannfloatPINVOKE.uintArray_setitem(swigCPtr, index, value);
   }
 
   public SWIGTYPE_p_unsigned_int cast() {
-    global::System.IntPtr cPtr = SwigFannFloatPINVOKE.uintArray_cast(swigCPtr);
+    global::System.IntPtr cPtr = fannfloatPINVOKE.uintArray_cast(swigCPtr);
     SWIGTYPE_p_unsigned_int ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_unsigned_int(cPtr, false);
     return ret;
   }
 
   public static uintArray frompointer(SWIGTYPE_p_unsigned_int t) {
-    global::System.IntPtr cPtr = SwigFannFloatPINVOKE.uintArray_frompointer(SWIGTYPE_p_unsigned_int.getCPtr(t));
+    global::System.IntPtr cPtr = fannfloatPINVOKE.uintArray_frompointer(SWIGTYPE_p_unsigned_int.getCPtr(t));
     uintArray ret = (cPtr == global::System.IntPtr.Zero) ? null : new uintArray(cPtr, false);
     return ret;
   }

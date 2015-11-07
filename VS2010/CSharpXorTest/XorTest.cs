@@ -41,19 +41,17 @@ namespace Example
                         Console.WriteLine("Error reading training data --- ABORTING.\n");
                         return -1;
                     }
-                    DataType[][] inputs = data.GetInput();
-                    DataType[][] outputs = data.GetOutput();
                     for (int i = 0; i < data.LengthTrainData(); i++)
                     {
                         net.ResetMSE();
-                        DataType[] calc_out = net.Test(inputs[i], inputs[i]);
+                        DataType[] calc_out = net.Test(data.Input[i], data.Input[i]);
 
                         Console.WriteLine("XOR test ({0}, {1}) -> {2}, should be {3}, difference={4}",
-                            inputs[i][0],
-                            inputs[i][1],
+                            data.Input[i][0],
+                            data.Input[i][1],
                             calc_out[0],
-                            outputs[i][0],
-                            calc_out[0] - outputs[i][0]);
+                            data.Output[i][0],
+                            calc_out[0] - data.Output[i][0]);
                     }
                 }
             }

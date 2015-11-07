@@ -11,7 +11,7 @@
 namespace FannWrapper {
 
 public enum stop_function_enum {
-  STOPFUNC_MSE = fann_stopfunc_enum.FANN_STOPFUNC_MSE,
+  STOPFUNC_MSE = 0,
   STOPFUNC_BIT
 }
 

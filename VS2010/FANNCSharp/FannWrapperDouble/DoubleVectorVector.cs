@@ -35,7 +35,7 @@ public class DoubleVectorVector : global::System.IDisposable, global::System.Col
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          SwigFannDoublePINVOKE.delete_DoubleVectorVector(swigCPtr);
+          fanndoublePINVOKE.delete_DoubleVectorVector(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -202,107 +202,107 @@ public class DoubleVectorVector : global::System.IDisposable, global::System.Col
   }
 
   public void Clear() {
-    SwigFannDoublePINVOKE.DoubleVectorVector_Clear(swigCPtr);
+    fanndoublePINVOKE.DoubleVectorVector_Clear(swigCPtr);
   }
 
   public void Add(DoubleVector x) {
-    SwigFannDoublePINVOKE.DoubleVectorVector_Add(swigCPtr, DoubleVector.getCPtr(x));
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+    fanndoublePINVOKE.DoubleVectorVector_Add(swigCPtr, DoubleVector.getCPtr(x));
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
   private uint size() {
-    uint ret = SwigFannDoublePINVOKE.DoubleVectorVector_size(swigCPtr);
+    uint ret = fanndoublePINVOKE.DoubleVectorVector_size(swigCPtr);
     return ret;
   }
 
   private uint capacity() {
-    uint ret = SwigFannDoublePINVOKE.DoubleVectorVector_capacity(swigCPtr);
+    uint ret = fanndoublePINVOKE.DoubleVectorVector_capacity(swigCPtr);
     return ret;
   }
 
   private void reserve(uint n) {
-    SwigFannDoublePINVOKE.DoubleVectorVector_reserve(swigCPtr, n);
+    fanndoublePINVOKE.DoubleVectorVector_reserve(swigCPtr, n);
   }
 
-  public DoubleVectorVector() : this(SwigFannDoublePINVOKE.new_DoubleVectorVector__SWIG_0(), true) {
+  public DoubleVectorVector() : this(fanndoublePINVOKE.new_DoubleVectorVector__SWIG_0(), true) {
   }
 
-  public DoubleVectorVector(DoubleVectorVector other) : this(SwigFannDoublePINVOKE.new_DoubleVectorVector__SWIG_1(DoubleVectorVector.getCPtr(other)), true) {
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+  public DoubleVectorVector(DoubleVectorVector other) : this(fanndoublePINVOKE.new_DoubleVectorVector__SWIG_1(DoubleVectorVector.getCPtr(other)), true) {
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public DoubleVectorVector(int capacity) : this(SwigFannDoublePINVOKE.new_DoubleVectorVector__SWIG_2(capacity), true) {
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+  public DoubleVectorVector(int capacity) : this(fanndoublePINVOKE.new_DoubleVectorVector__SWIG_2(capacity), true) {
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
   private DoubleVector getitemcopy(int index) {
-    DoubleVector ret = new DoubleVector(SwigFannDoublePINVOKE.DoubleVectorVector_getitemcopy(swigCPtr, index), true);
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+    DoubleVector ret = new DoubleVector(fanndoublePINVOKE.DoubleVectorVector_getitemcopy(swigCPtr, index), true);
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private DoubleVector getitem(int index) {
-    DoubleVector ret = new DoubleVector(SwigFannDoublePINVOKE.DoubleVectorVector_getitem(swigCPtr, index), false);
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+    DoubleVector ret = new DoubleVector(fanndoublePINVOKE.DoubleVectorVector_getitem(swigCPtr, index), false);
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private void setitem(int index, DoubleVector val) {
-    SwigFannDoublePINVOKE.DoubleVectorVector_setitem(swigCPtr, index, DoubleVector.getCPtr(val));
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+    fanndoublePINVOKE.DoubleVectorVector_setitem(swigCPtr, index, DoubleVector.getCPtr(val));
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void AddRange(DoubleVectorVector values) {
-    SwigFannDoublePINVOKE.DoubleVectorVector_AddRange(swigCPtr, DoubleVectorVector.getCPtr(values));
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+    fanndoublePINVOKE.DoubleVectorVector_AddRange(swigCPtr, DoubleVectorVector.getCPtr(values));
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
   public DoubleVectorVector GetRange(int index, int count) {
-    global::System.IntPtr cPtr = SwigFannDoublePINVOKE.DoubleVectorVector_GetRange(swigCPtr, index, count);
+    global::System.IntPtr cPtr = fanndoublePINVOKE.DoubleVectorVector_GetRange(swigCPtr, index, count);
     DoubleVectorVector ret = (cPtr == global::System.IntPtr.Zero) ? null : new DoubleVectorVector(cPtr, true);
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void Insert(int index, DoubleVector x) {
-    SwigFannDoublePINVOKE.DoubleVectorVector_Insert(swigCPtr, index, DoubleVector.getCPtr(x));
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+    fanndoublePINVOKE.DoubleVectorVector_Insert(swigCPtr, index, DoubleVector.getCPtr(x));
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void InsertRange(int index, DoubleVectorVector values) {
-    SwigFannDoublePINVOKE.DoubleVectorVector_InsertRange(swigCPtr, index, DoubleVectorVector.getCPtr(values));
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+    fanndoublePINVOKE.DoubleVectorVector_InsertRange(swigCPtr, index, DoubleVectorVector.getCPtr(values));
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void RemoveAt(int index) {
-    SwigFannDoublePINVOKE.DoubleVectorVector_RemoveAt(swigCPtr, index);
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+    fanndoublePINVOKE.DoubleVectorVector_RemoveAt(swigCPtr, index);
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void RemoveRange(int index, int count) {
-    SwigFannDoublePINVOKE.DoubleVectorVector_RemoveRange(swigCPtr, index, count);
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+    fanndoublePINVOKE.DoubleVectorVector_RemoveRange(swigCPtr, index, count);
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static DoubleVectorVector Repeat(DoubleVector value, int count) {
-    global::System.IntPtr cPtr = SwigFannDoublePINVOKE.DoubleVectorVector_Repeat(DoubleVector.getCPtr(value), count);
+    global::System.IntPtr cPtr = fanndoublePINVOKE.DoubleVectorVector_Repeat(DoubleVector.getCPtr(value), count);
     DoubleVectorVector ret = (cPtr == global::System.IntPtr.Zero) ? null : new DoubleVectorVector(cPtr, true);
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void Reverse() {
-    SwigFannDoublePINVOKE.DoubleVectorVector_Reverse__SWIG_0(swigCPtr);
+    fanndoublePINVOKE.DoubleVectorVector_Reverse__SWIG_0(swigCPtr);
   }
 
   public void Reverse(int index, int count) {
-    SwigFannDoublePINVOKE.DoubleVectorVector_Reverse__SWIG_1(swigCPtr, index, count);
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+    fanndoublePINVOKE.DoubleVectorVector_Reverse__SWIG_1(swigCPtr, index, count);
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void SetRange(int index, DoubleVectorVector values) {
-    SwigFannDoublePINVOKE.DoubleVectorVector_SetRange(swigCPtr, index, DoubleVectorVector.getCPtr(values));
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+    fanndoublePINVOKE.DoubleVectorVector_SetRange(swigCPtr, index, DoubleVectorVector.getCPtr(values));
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
 }

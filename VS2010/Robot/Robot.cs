@@ -45,11 +45,9 @@ namespace Example
                 try
                 {
                     net.ResetMSE();
-                    DataType[][] input = testData.GetInput();
-                    DataType[][] output = testData.GetOutput();
                     for (int i = 0; i < testData.LengthTrainData(); i++)
                     {
-                        net.Test(input[i], output[i]);
+                        net.Test(testData.Input[i], testData.Output[i]);
                     }
                     Console.WriteLine("MSE error on test data: {0}", net.GetMSE());
 

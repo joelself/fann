@@ -11,7 +11,7 @@
 namespace FannWrapper {
 
 public enum network_type_enum {
-  LAYER = fann_nettype_enum.FANN_NETTYPE_LAYER,
+  LAYER = 0,
   SHORTCUT
 }
 

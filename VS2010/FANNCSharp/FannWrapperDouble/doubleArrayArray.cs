@@ -33,7 +33,7 @@ public class doubleArrayArray : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          SwigFannDoublePINVOKE.delete_doubleArrayArray(swigCPtr);
+          fanndoublePINVOKE.delete_doubleArrayArray(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -41,27 +41,27 @@ public class doubleArrayArray : global::System.IDisposable {
     }
   }
 
-  public doubleArrayArray(int nelements) : this(SwigFannDoublePINVOKE.new_doubleArrayArray(nelements), true) {
+  public doubleArrayArray(int nelements) : this(fanndoublePINVOKE.new_doubleArrayArray(nelements), true) {
   }
 
   public SWIGTYPE_p_double getitem(int index) {
-    global::System.IntPtr cPtr = SwigFannDoublePINVOKE.doubleArrayArray_getitem(swigCPtr, index);
+    global::System.IntPtr cPtr = fanndoublePINVOKE.doubleArrayArray_getitem(swigCPtr, index);
     SWIGTYPE_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_double(cPtr, false);
     return ret;
   }
 
   public void setitem(int index, SWIGTYPE_p_double value) {
-    SwigFannDoublePINVOKE.doubleArrayArray_setitem(swigCPtr, index, SWIGTYPE_p_double.getCPtr(value));
+    fanndoublePINVOKE.doubleArrayArray_setitem(swigCPtr, index, SWIGTYPE_p_double.getCPtr(value));
   }
 
   public SWIGTYPE_p_p_double cast() {
-    global::System.IntPtr cPtr = SwigFannDoublePINVOKE.doubleArrayArray_cast(swigCPtr);
+    global::System.IntPtr cPtr = fanndoublePINVOKE.doubleArrayArray_cast(swigCPtr);
     SWIGTYPE_p_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_p_double(cPtr, false);
     return ret;
   }
 
   public static doubleArrayArray frompointer(SWIGTYPE_p_p_double t) {
-    global::System.IntPtr cPtr = SwigFannDoublePINVOKE.doubleArrayArray_frompointer(SWIGTYPE_p_p_double.getCPtr(t));
+    global::System.IntPtr cPtr = fanndoublePINVOKE.doubleArrayArray_frompointer(SWIGTYPE_p_p_double.getCPtr(t));
     doubleArrayArray ret = (cPtr == global::System.IntPtr.Zero) ? null : new doubleArrayArray(cPtr, false);
     return ret;
   }

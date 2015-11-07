@@ -49,11 +49,9 @@ namespace Example
                 {
                     testData.ReadTrainFromFile("..\\..\\datasets\\mushroom.test");
                     net.ResetMSE();
-                    DataType[][] input = data.GetInput();
-                    DataType[][] output = data.GetOutput();
                     for (int i = 0; i < testData.LengthTrainData(); i++)
                     {
-                        net.Test(input[i], output[i]);
+                        net.Test(testData.Input[i], testData.Output[i]);
                     }
 
                     Console.WriteLine("MSE error on test data {0}", net.GetMSE());

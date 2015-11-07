@@ -17,17 +17,7 @@ namespace FANNCSharp
         {
            net = new neural_net(other.InternalFloatNet);
         }
-
-        public NeuralNetFloat(fann other)
-        {
-           net = new neural_net(other);
-        }
-
-        public void CopyFromFann(fann other)
-        {
-            net.copy_from_struct_fann(other);
-        }
-
+        
         public void Dispose()
         {
            net.destroy();
@@ -59,7 +49,7 @@ namespace FANNCSharp
             }
         }
 
-        public bool Create(float connectionRate, uint numLayers, params uint[] args)
+        public bool CreateSparse(float connectionRate, uint numLayers, params uint[] args)
         {
             using (uintArray newLayers = new uintArray((int)numLayers))
             {
@@ -72,7 +62,7 @@ namespace FANNCSharp
             }
         }
 
-        public bool Create(float connectionRate, uint[] layers)
+        public bool CreateSparse(float connectionRate, uint[] layers)
         {
             using (uintArray newLayers = new uintArray(layers.Length))
             {
@@ -408,80 +398,116 @@ namespace FANNCSharp
         {
            net.set_sarprop_temperature(sarprop_temperature);
         }
-        public uint GetNumInput()
+        public uint NumInput
         {
-            return net.get_num_input();
-        }
-        public uint GetNumOutput()
-        {
-            return net.get_num_output();
-        }
-        public uint GetTotalNeurons()
-        {
-            return net.get_total_neurons();
-        }
-        public uint GetTotalConnections()
-        {
-            return net.get_total_connections();
-        }
-        public network_type_enum GetNetworkType()
-        {
-            return net.get_network_type();
-        }
-        public float GetConnectionRate()
-        {
-            return net.get_connection_rate();
-        }
-        public uint GetNumLayers()
-        {
-            return net.get_num_layers();
-        }
-        public void GetLayerArray(out uint[] layers)
-        {
-            layers = new uint[net.get_num_layers()];
-            using (uintArray array = new uintArray(layers.Length))
+            get
             {
-               net.get_layer_array(array.cast());
-                for (int i = 0; i < layers.Length; i++)
-                {
-                    layers[i] = array.getitem(i);
-                }
+                return net.get_num_input();
             }
         }
-        public void GetBiasArray(out uint[] bias)
+        public uint NumOutput
         {
-            bias = new uint[net.get_num_layers()];
-            using (uintArray array = new uintArray(bias.Length))
+            get
             {
-               net.get_layer_array(array.cast());
-                for (int i = 0; i < bias.Length; i++)
-                {
-                    bias[i] = array.getitem(i);
-                }
+                return net.get_num_output();
             }
         }
-        public void GetConnectionArray(out fann_connection[] connections)
+        public uint TotalNeurons
         {
-            uint count = net.get_total_connections();
-            connections = new fann_connection[count];
-            using (connectionArray output = new connectionArray(connections.Length))
+            get
             {
-               net.get_connection_array(output.cast());
-                for (uint i = 0; i < count; i++)
-                {
-                    connections[i] = output.getitem((int)i);
-                }
+                return net.get_total_neurons();
             }
         }
-        public void SetWeightArray(fann_connection[] connections)
+        public uint TotalConnections
         {
-            using (connectionArray input = new connectionArray(connections.Length))
+            get
             {
-                for (int i = 0; i < connections.Length; i++)
+                return net.get_total_connections();
+            }
+        }
+        public network_type_enum NetworkType
+        {
+            get
+            {
+                return net.get_network_type();
+            }
+        }
+        public float ConnectionRate
+        {
+            get
+            {
+                return net.get_connection_rate();
+            }
+        }
+        public uint LayerCount
+        {
+            get
+            {
+                return net.get_num_layers();
+            }
+        }
+        public uint[] LayerArray
+        {
+            get
+            {
+                uint[] layers = new uint[net.get_num_layers()];
+                using (uintArray array = new uintArray(layers.Length))
                 {
-                    input.setitem(i, connections[i]);
+                    net.get_layer_array(array.cast());
+                    for (int i = 0; i < layers.Length; i++)
+                    {
+                        layers[i] = array.getitem(i);
+                    }
                 }
-               net.set_weight_array(input.cast(), (uint)connections.Length);
+                return layers;
+            }
+        }
+        public uint[] BiasArray
+        {
+            get
+            {
+                uint[] bias = new uint[net.get_num_layers()];
+                using (uintArray array = new uintArray(bias.Length))
+                {
+                    net.get_layer_array(array.cast());
+                    for (int i = 0; i < bias.Length; i++)
+                    {
+                        bias[i] = array.getitem(i);
+                    }
+                }
+                return bias;
+            }
+        }
+        public connection[] ConnectionArray
+        {
+            get
+            {
+                uint count = net.get_total_connections();
+                connection[] connections = new connection[count];
+                using (connectionArray output = new connectionArray(connections.Length))
+                {
+                    net.get_connection_array(output.cast());
+                    for (uint i = 0; i < count; i++)
+                    {
+                        connections[i] = output.getitem((int)i);
+                    }
+                }
+                return connections;
+            }
+        }
+        public connection[] WeightArray
+        {
+            set
+            {
+                using (connectionArray input = new connectionArray(value.Length))
+                {
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        input.setitem(i, value[i]);
+                    }
+                    net.set_weight_array(input.cast(), (uint)value.Length);
+                }
             }
         }
         public void SetWeight(uint from_neuron, uint to_neuron, float weight)
@@ -599,7 +625,7 @@ namespace FANNCSharp
         public activation_function_enum[] GetCascadeActivationFunctions()
         {
             int count = (int)net.get_cascade_activation_functions_count();
-            using (activationFunctionEnumArray result = activationFunctionEnumArray.frompointer(net.get_cascade_activation_functions()))
+            using (activationFunctionArray result = activationFunctionArray.frompointer(net.get_cascade_activation_functions()))
             {
                 activation_function_enum[] arrayResult = new activation_function_enum[net.get_cascade_activation_functions_count()];
                 for (int i = 0; i < count; i++)
@@ -611,7 +637,7 @@ namespace FANNCSharp
         }
         public void SetCascadeActivationFunctions(activation_function_enum[] cascade_activation_functions)
         {
-            using (activationFunctionEnumArray input = new activationFunctionEnumArray(cascade_activation_functions.Length))
+            using (activationFunctionArray input = new activationFunctionArray(cascade_activation_functions.Length))
             {
                 for (int i = 0; i < cascade_activation_functions.Length; i++)
                 {
@@ -758,33 +784,33 @@ namespace FANNCSharp
         }
         public FannFile OpenFile(string filename, string mode)
         {
-            SWIGTYPE_p_FILE file = SwigFannFloat.fopen(filename, mode);
+            SWIGTYPE_p_FILE file = fannfloat.fopen(filename, mode);
             FannFile result = new FannFile(file);
             return result;
         }
         public float TrainEpochBatchParallel(TrainingDataFloat data, uint threadnumb)
         {
-            return SwigFannFloat.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
+            return fannfloat.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
         public float TrainEpochIrpropmParallel(TrainingDataFloat data, uint threadnumb)
         {
-            return SwigFannFloat.train_epoch_irpropm_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
+            return fannfloat.train_epoch_irpropm_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
         public float TrainEpochQuickpropParallel(TrainingDataFloat data, uint threadnumb)
         {
-            return SwigFannFloat.train_epoch_quickprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
+            return fannfloat.train_epoch_quickprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
         public float TrainEpochSarpropParallel(TrainingDataFloat data, uint threadnumb)
         {
-            return SwigFannFloat.train_epoch_sarprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
+            return fannfloat.train_epoch_sarprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
         public float TrainEpochIncrementalMod(TrainingDataFloat data)
         {
-            return SwigFannFloat.train_epoch_incremental_mod(net.to_fann(), data.ToFannTrainData());
+            return fannfloat.train_epoch_incremental_mod(net.to_fann(), data.ToFannTrainData());
         }
 
         public float TrainEpochBatchParallel(TrainingDataFloat data, uint threadnumb, List<List<float>> predicted_outputs)
@@ -796,7 +822,7 @@ namespace FANNCSharp
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
                 
-                float result = SwigFannFloat.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
+                float result = fannfloat.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
 
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
@@ -820,7 +846,7 @@ namespace FANNCSharp
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
-                float result = SwigFannFloat.train_epoch_irpropm_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
+                float result = fannfloat.train_epoch_irpropm_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
 
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
@@ -844,7 +870,7 @@ namespace FANNCSharp
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
-                float result = SwigFannFloat.train_epoch_quickprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
+                float result = fannfloat.train_epoch_quickprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
                 
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
@@ -868,7 +894,7 @@ namespace FANNCSharp
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
-                float result = SwigFannFloat.train_epoch_sarprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
+                float result = fannfloat.train_epoch_sarprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
                  
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
@@ -892,7 +918,7 @@ namespace FANNCSharp
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
-                float result = SwigFannFloat.train_epoch_incremental_mod(net.to_fann(), data.ToFannTrainData(), predicted_out);
+                float result = fannfloat.train_epoch_incremental_mod(net.to_fann(), data.ToFannTrainData(), predicted_out);
                 
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
@@ -910,7 +936,7 @@ namespace FANNCSharp
 
         public float TestDataParallel(TrainingDataFloat data, uint threadnumb)
         {
-            return SwigFannFloat.test_data_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
+            return fannfloat.test_data_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
         public float TestDataParallel(TrainingDataFloat data, uint threadnumb, List<List<float>> predicted_outputs)
@@ -921,7 +947,7 @@ namespace FANNCSharp
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
-                float result = SwigFannFloat.test_data_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
+                float result = fannfloat.test_data_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
                 
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)

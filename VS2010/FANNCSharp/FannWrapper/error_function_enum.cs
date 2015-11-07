@@ -11,7 +11,7 @@
 namespace FannWrapper {
 
 public enum error_function_enum {
-  ERRORFUNC_LINEAR = fann_errorfunc_enum.FANN_ERRORFUNC_LINEAR,
+  ERRORFUNC_LINEAR = 0,
   ERRORFUNC_TANH
 }
 

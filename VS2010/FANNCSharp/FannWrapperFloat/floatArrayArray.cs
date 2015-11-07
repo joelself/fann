@@ -33,7 +33,7 @@ public class floatArrayArray : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          SwigFannFloatPINVOKE.delete_floatArrayArray(swigCPtr);
+          fannfloatPINVOKE.delete_floatArrayArray(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -41,27 +41,27 @@ public class floatArrayArray : global::System.IDisposable {
     }
   }
 
-  public floatArrayArray(int nelements) : this(SwigFannFloatPINVOKE.new_floatArrayArray(nelements), true) {
+  public floatArrayArray(int nelements) : this(fannfloatPINVOKE.new_floatArrayArray(nelements), true) {
   }
 
   public SWIGTYPE_p_float getitem(int index) {
-    global::System.IntPtr cPtr = SwigFannFloatPINVOKE.floatArrayArray_getitem(swigCPtr, index);
+    global::System.IntPtr cPtr = fannfloatPINVOKE.floatArrayArray_getitem(swigCPtr, index);
     SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
     return ret;
   }
 
   public void setitem(int index, SWIGTYPE_p_float value) {
-    SwigFannFloatPINVOKE.floatArrayArray_setitem(swigCPtr, index, SWIGTYPE_p_float.getCPtr(value));
+    fannfloatPINVOKE.floatArrayArray_setitem(swigCPtr, index, SWIGTYPE_p_float.getCPtr(value));
   }
 
   public SWIGTYPE_p_p_float cast() {
-    global::System.IntPtr cPtr = SwigFannFloatPINVOKE.floatArrayArray_cast(swigCPtr);
+    global::System.IntPtr cPtr = fannfloatPINVOKE.floatArrayArray_cast(swigCPtr);
     SWIGTYPE_p_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_p_float(cPtr, false);
     return ret;
   }
 
   public static floatArrayArray frompointer(SWIGTYPE_p_p_float t) {
-    global::System.IntPtr cPtr = SwigFannFloatPINVOKE.floatArrayArray_frompointer(SWIGTYPE_p_p_float.getCPtr(t));
+    global::System.IntPtr cPtr = fannfloatPINVOKE.floatArrayArray_frompointer(SWIGTYPE_p_p_float.getCPtr(t));
     floatArrayArray ret = (cPtr == global::System.IntPtr.Zero) ? null : new floatArrayArray(cPtr, false);
     return ret;
   }

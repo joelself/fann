@@ -86,7 +86,7 @@ namespace FANNCSharp
 
         }
 
-        public void set_train_data(uint num_data, double[] input, double[] output)
+        public void SetTrainData(uint num_data, double[] input, double[] output)
         {
             uint numInput = (uint)input.Length / num_data;
             uint numOutput = (uint)output.Length / num_data;
@@ -150,46 +150,61 @@ namespace FANNCSharp
         {
             return InternalData.to_fann_train_data();
         }
-        public double[][] GetOutput()
+
+        private double [][] cachedOutput = null;
+        public double[][] Output
         {
-            using (doubleArrayArray output = doubleArrayArray.frompointer(InternalData.get_output()))
-            {
-                int length = (int)InternalData.length_train_data();
-                int count = (int)InternalData.num_output_train_data();
-                double[][] result = new double[length][];
-                for (int i = 0; i < length; i++)
+            get {
+                if (cachedOutput == null)
                 {
-                    result[i] = new double[count];
-                    using (doubleArray inputArray = doubleArray.frompointer(output.getitem(i)))
+                    using (doubleArrayArray output = doubleArrayArray.frompointer(InternalData.get_output()))
                     {
-                        for (int j = 0; j < count; j++)
+                        int length = (int)InternalData.length_train_data();
+                        int count = (int)InternalData.num_output_train_data();
+                        cachedOutput = new double[length][];
+                        for (int i = 0; i < length; i++)
                         {
-                            result[i][j] = inputArray.getitem(j);
+                            cachedOutput[i] = new double[count];
+                            using (doubleArray inputArray = doubleArray.frompointer(output.getitem(i)))
+                            {
+                                for (int j = 0; j < count; j++)
+                                {
+                                    cachedOutput[i][j] = inputArray.getitem(j);
+                                }
+                            }
                         }
                     }
                 }
-                return result;
+                return cachedOutput;
             }
         }
-        public double[][] GetInput()
+
+        private double[][] cachedInput = null;
+        public double[][] Input
         {
-            using (doubleArrayArray input = doubleArrayArray.frompointer(InternalData.get_input()))
+            get
             {
-                int length = (int)InternalData.length_train_data();
-                int count = (int)InternalData.num_input_train_data();
-                double[][] result = new double[length][];
-                for (int i = 0; i < length; i++)
+                if (cachedInput == null)
                 {
-                    result[i] = new double[count];
-                    using (doubleArray inputArray = doubleArray.frompointer(input.getitem(i)))
+                    using (doubleArrayArray input = doubleArrayArray.frompointer(InternalData.get_input()))
                     {
-                        for (int j = 0; j < count; j++)
+                        int length = (int)InternalData.length_train_data();
+                        int count = (int)InternalData.num_input_train_data();
+                        cachedInput = new double[length][];
+                        for (int i = 0; i < length; i++)
                         {
-                            result[i][j] = inputArray.getitem(j);
+                            cachedInput[i] = new double[count];
+                            using (doubleArray inputArray = doubleArray.frompointer(input.getitem(i)))
+                            {
+                                for (int j = 0; j < count; j++)
+                                {
+                                    cachedInput[i][j] = inputArray.getitem(j);
+                                }
+                            }
                         }
                     }
                 }
-                return result;
+                return cachedInput;
             }
         }
 
@@ -222,7 +237,7 @@ namespace FANNCSharp
         {
             InternalData.Dispose();
         }
-        internal FannWrapperDouble.training_data InternalData
+        public FannWrapperDouble.training_data InternalData
         { 
             get;
             protected set;
