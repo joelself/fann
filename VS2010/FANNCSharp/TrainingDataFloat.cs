@@ -80,6 +80,10 @@ namespace FANNCSharp
         {
             return InternalData.length_train_data();
         }
+        public void ScaleTrainData(float new_min, float new_max)
+        {
+            InternalData.scale_train_data(new_min, new_max);
+        }
         public void Dispose()
         {
             InternalData.Dispose();

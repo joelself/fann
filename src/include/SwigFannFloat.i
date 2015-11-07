@@ -42,7 +42,7 @@ struct fann_connection
     /* The numerical value of the weight */
     fann_type weight;
 };
-%inline %{;
+%inline %{
 	typedef float* float_ptr;
     typedef float fann_type;
 	typedef fann_connection connection;

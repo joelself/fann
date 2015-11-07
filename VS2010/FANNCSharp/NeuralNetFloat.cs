@@ -762,7 +762,6 @@ namespace FANNCSharp
             FannFile result = new FannFile(file);
             return result;
         }
-
         public float train_epoch_batch_parallel(TrainingDataFloat data, uint threadnumb)
         {
             return SwigFannFloat.train_epoch_batch_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb);
@@ -795,12 +794,21 @@ namespace FANNCSharp
                 for (int i = 0; i < predicted_outputs.Count; i++)
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
-                    for (int j = 0; j < predicted_outputs[i].Count; j++)
-                    {
-                        predicted_out[i][j] = predicted_outputs[i][j];
-                    }
                 }
-                return SwigFannFloat.train_epoch_batch_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                
+                float result = SwigFannFloat.train_epoch_batch_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+
+                predicted_outputs.Clear();
+                for (int i = 0; i < predicted_out.Count; i++)
+                {
+                    List<float> list = new List<float>();
+                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    {
+                        list.Add(predicted_out[i][j]);
+                    }
+                    predicted_outputs.Add(list);
+                }
+                return result;
             }
         }
 
@@ -811,12 +819,20 @@ namespace FANNCSharp
                 for (int i = 0; i < predicted_outputs.Count; i++)
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
-                    for (int j = 0; j < predicted_outputs[i].Count; j++)
-                    {
-                        predicted_out[i][j] = predicted_outputs[i][j];
-                    }
                 }
-                return SwigFannFloat.train_epoch_irpropm_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                float result = SwigFannFloat.train_epoch_irpropm_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+
+                predicted_outputs.Clear();
+                for (int i = 0; i < predicted_out.Count; i++)
+                {
+                    List<float> list = new List<float>();
+                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    {
+                        list.Add(predicted_out[i][j]);
+                    }
+                    predicted_outputs.Add(list);
+                }
+                return result;
             }
         }
 
@@ -827,12 +843,20 @@ namespace FANNCSharp
                 for (int i = 0; i < predicted_outputs.Count; i++)
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
-                    for (int j = 0; j < predicted_outputs[i].Count; j++)
-                    {
-                        predicted_out[i][j] = predicted_outputs[i][j];
-                    }
                 }
-                return SwigFannFloat.train_epoch_quickprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                float result = SwigFannFloat.train_epoch_quickprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                
+                predicted_outputs.Clear();
+                for (int i = 0; i < predicted_out.Count; i++)
+                {
+                    List<float> list = new List<float>();
+                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    {
+                        list.Add(predicted_out[i][j]);
+                    }
+                    predicted_outputs.Add(list);
+                }
+                return result;
             }
         }
 
@@ -843,12 +867,20 @@ namespace FANNCSharp
                 for (int i = 0; i < predicted_outputs.Count; i++)
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
-                    for (int j = 0; j < predicted_outputs[i].Count; j++)
-                    {
-                        predicted_out[i][j] = predicted_outputs[i][j];
-                    }
                 }
-                return SwigFannFloat.train_epoch_sarprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                float result = SwigFannFloat.train_epoch_sarprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                 
+                predicted_outputs.Clear();
+                for (int i = 0; i < predicted_out.Count; i++)
+                {
+                    List<float> list = new List<float>();
+                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    {
+                        list.Add(predicted_out[i][j]);
+                    }
+                    predicted_outputs.Add(list);
+                }
+                return result;
             }
         }
 
@@ -859,12 +891,20 @@ namespace FANNCSharp
                 for (int i = 0; i < predicted_outputs.Count; i++)
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
-                    for (int j = 0; j < predicted_outputs[i].Count; j++)
-                    {
-                        predicted_out[i][j] = predicted_outputs[i][j];
-                    }
                 }
-                return SwigFannFloat.train_epoch_incremental_mod(net.to_fann(), data.InternalData.to_fann_train_data(), predicted_out);
+                float result = SwigFannFloat.train_epoch_incremental_mod(net.to_fann(), data.InternalData.to_fann_train_data(), predicted_out);
+                
+                predicted_outputs.Clear();
+                for (int i = 0; i < predicted_out.Count; i++)
+                {
+                    List<float> list = new List<float>();
+                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    {
+                        list.Add(predicted_out[i][j]);
+                    }
+                    predicted_outputs.Add(list);
+                }
+                return result;
             }
         }
 
@@ -880,12 +920,20 @@ namespace FANNCSharp
                 for (int i = 0; i < predicted_outputs.Count; i++)
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
-                    for (int j = 0; j < predicted_outputs[i].Count; j++)
-                    {
-                        predicted_out[i][j] = predicted_outputs[i][j];
-                    }
                 }
-                return SwigFannFloat.test_data_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                float result = SwigFannFloat.test_data_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                
+                predicted_outputs.Clear();
+                for (int i = 0; i < predicted_out.Count; i++)
+                {
+                    List<float> list = new List<float>();
+                    for (int j = 0; j < predicted_out[i].Count; j++)
+                    {
+                        list.Add(predicted_out[i][j]);
+                    }
+                    predicted_outputs.Add(list);
+                }
+                return result;
             }
         }
 

@@ -542,7 +542,7 @@ SWIGINTERN bool std_vector_Sl_float_Sg__Remove(std::vector< float > *self,float 
         }
         return false;
       }
-;
+
 	typedef float* float_ptr;
     typedef float fann_type;
 	typedef fann_connection connection;

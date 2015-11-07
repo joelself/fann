@@ -646,6 +646,10 @@ namespace FANNCSharp
                     input.setitem(i, cascade_activation_steepnesses[i]);
                 }
                net.set_cascade_activation_steepnesses(input.cast(), (uint)cascade_activation_steepnesses.Length);
+               for (int i = 0; i < cascade_activation_steepnesses.Length; i++)
+               {
+                   cascade_activation_steepnesses[i] = input.getitem(i);
+               }
             }
         }
         public uint GetCascadeNumCandidateGroups()
@@ -794,12 +798,21 @@ namespace FANNCSharp
                 for (int i = 0; i < predicted_outputs.Count; i++)
                 {
                     predicted_out[i] = new DoubleVector(predicted_outputs[i].Count);
-                    for (int j = 0; j < predicted_outputs[i].Count; j++)
-                    {
-                        predicted_out[i][j] = predicted_outputs[i][j];
-                    }
                 }
-                return SwigFannDouble.train_epoch_batch_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                
+                float result = SwigFannDouble.train_epoch_batch_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+
+                predicted_outputs.Clear();
+                for (int i = 0; i < predicted_out.Count; i++)
+                {
+                    List<double> list = new List<double>();
+                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    {
+                        list.Add(predicted_out[i][j]);
+                    }
+                    predicted_outputs.Add(list);
+                }
+                return result;
             }
         }
 
@@ -810,12 +823,20 @@ namespace FANNCSharp
                 for (int i = 0; i < predicted_outputs.Count; i++)
                 {
                     predicted_out[i] = new DoubleVector(predicted_outputs[i].Count);
-                    for (int j = 0; j < predicted_outputs[i].Count; j++)
-                    {
-                        predicted_out[i][j] = predicted_outputs[i][j];
-                    }
                 }
-                return SwigFannDouble.train_epoch_irpropm_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                float result = SwigFannDouble.train_epoch_irpropm_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+
+                predicted_outputs.Clear();
+                for (int i = 0; i < predicted_out.Count; i++)
+                {
+                    List<double> list = new List<double>();
+                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    {
+                        list.Add(predicted_out[i][j]);
+                    }
+                    predicted_outputs.Add(list);
+                }
+                return result;
             }
         }
 
@@ -826,12 +847,20 @@ namespace FANNCSharp
                 for (int i = 0; i < predicted_outputs.Count; i++)
                 {
                     predicted_out[i] = new DoubleVector(predicted_outputs[i].Count);
-                    for (int j = 0; j < predicted_outputs[i].Count; j++)
-                    {
-                        predicted_out[i][j] = predicted_outputs[i][j];
-                    }
                 }
-                return SwigFannDouble.train_epoch_quickprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                float result = SwigFannDouble.train_epoch_quickprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                
+                predicted_outputs.Clear();
+                for (int i = 0; i < predicted_out.Count; i++)
+                {
+                    List<double> list = new List<double>();
+                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    {
+                        list.Add(predicted_out[i][j]);
+                    }
+                    predicted_outputs.Add(list);
+                }
+                return result;
             }
         }
 
@@ -842,12 +871,20 @@ namespace FANNCSharp
                 for (int i = 0; i < predicted_outputs.Count; i++)
                 {
                     predicted_out[i] = new DoubleVector(predicted_outputs[i].Count);
-                    for (int j = 0; j < predicted_outputs[i].Count; j++)
-                    {
-                        predicted_out[i][j] = predicted_outputs[i][j];
-                    }
                 }
-                return SwigFannDouble.train_epoch_sarprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                float result = SwigFannDouble.train_epoch_sarprop_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                 
+                predicted_outputs.Clear();
+                for (int i = 0; i < predicted_out.Count; i++)
+                {
+                    List<double> list = new List<double>();
+                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    {
+                        list.Add(predicted_out[i][j]);
+                    }
+                    predicted_outputs.Add(list);
+                }
+                return result;
             }
         }
 
@@ -858,12 +895,20 @@ namespace FANNCSharp
                 for (int i = 0; i < predicted_outputs.Count; i++)
                 {
                     predicted_out[i] = new DoubleVector(predicted_outputs[i].Count);
-                    for (int j = 0; j < predicted_outputs[i].Count; j++)
-                    {
-                        predicted_out[i][j] = predicted_outputs[i][j];
-                    }
                 }
-                return SwigFannDouble.train_epoch_incremental_mod(net.to_fann(), data.InternalData.to_fann_train_data(), predicted_out);
+                float result = SwigFannDouble.train_epoch_incremental_mod(net.to_fann(), data.InternalData.to_fann_train_data(), predicted_out);
+                
+                predicted_outputs.Clear();
+                for (int i = 0; i < predicted_out.Count; i++)
+                {
+                    List<double> list = new List<double>();
+                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    {
+                        list.Add(predicted_out[i][j]);
+                    }
+                    predicted_outputs.Add(list);
+                }
+                return result;
             }
         }
 
@@ -879,12 +924,20 @@ namespace FANNCSharp
                 for (int i = 0; i < predicted_outputs.Count; i++)
                 {
                     predicted_out[i] = new DoubleVector(predicted_outputs[i].Count);
-                    for (int j = 0; j < predicted_outputs[i].Count; j++)
-                    {
-                        predicted_out[i][j] = predicted_outputs[i][j];
-                    }
                 }
-                return SwigFannDouble.test_data_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                float result = SwigFannDouble.test_data_parallel(net.to_fann(), data.InternalData.to_fann_train_data(), threadnumb, predicted_out);
+                
+                predicted_outputs.Clear();
+                for (int i = 0; i < predicted_out.Count; i++)
+                {
+                    List<double> list = new List<double>();
+                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    {
+                        list.Add(predicted_out[i][j]);
+                    }
+                    predicted_outputs.Add(list);
+                }
+                return result;
             }
         }
 

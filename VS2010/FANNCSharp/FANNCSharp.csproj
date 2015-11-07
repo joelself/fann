@@ -82,11 +82,14 @@
     <Compile Include="FannWrapperDouble\connectionArray.cs" />
     <Compile Include="FannWrapperDouble\doubleArray.cs" />
     <Compile Include="FannWrapperDouble\doubleArrayArray.cs" />
+    <Compile Include="FannWrapperDouble\DoubleVector.cs" />
+    <Compile Include="FannWrapperDouble\DoubleVectorVector.cs" />
     <Compile Include="FannWrapperDouble\fann.cs" />
     <Compile Include="FannWrapperDouble\fann_connection.cs" />
     <Compile Include="FannWrapperDouble\fann_error.cs" />
     <Compile Include="FannWrapperDouble\fann_layer.cs" />
     <Compile Include="FannWrapperDouble\fann_neuron.cs" />
+    <Compile Include="FannWrapperDouble\fann_train_data.cs" />
     <Compile Include="FannWrapperDouble\neural_net.cs" />
     <Compile Include="FannWrapperDouble\SwigFannDouble.cs" />
     <Compile Include="FannWrapperDouble\SwigFannDoublePINVOKE.cs" />

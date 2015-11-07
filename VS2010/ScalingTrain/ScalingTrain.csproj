@@ -7,8 +7,8 @@
     <ProjectGuid>{8C90D000-7F4F-4B55-B532-23D25761D1A1}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XorTrain</RootNamespace>
-    <AssemblyName>XorTrain</AssemblyName>
+    <RootNamespace>ScalingTrain</RootNamespace>
+    <AssemblyName>ScalingTrain</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

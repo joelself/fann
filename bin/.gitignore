@@ -1,4 +1,6 @@
-
+x86/
+x64/
+Win32/
 *.pdb
 *.exp
 *.ilk
