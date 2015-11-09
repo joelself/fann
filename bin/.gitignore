@@ -1,6 +1,11 @@
-x86/
-x64/
 Win32/
 *.pdb
 *.exp
 *.ilk
+*.bsc
+*.lib
+*.exe
+*.exe.config
+*.vshost.exe
+*.vshost.exe.config
+

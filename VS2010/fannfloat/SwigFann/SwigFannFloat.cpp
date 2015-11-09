@@ -2703,6 +2703,18 @@ SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_enable_seed_rand(void * jarg1) {
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_neural_net_to_fann(void * jarg1) {
+  void * jresult ;
+  FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
+  fann *result = 0 ;
+  
+  arg1 = (FANN::neural_net *)jarg1; 
+  result = (fann *)(arg1)->operator struct fann*();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_fopen(char * jarg1, char * jarg2) {
   void * jresult ;
   char *arg1 = (char *) 0 ;

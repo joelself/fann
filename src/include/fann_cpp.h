@@ -63,6 +63,7 @@
  *
  */
 
+#include <assert.h>
 #include <stdarg.h>
 #include <string>
 #include "fann_data_cpp.h"
@@ -2894,6 +2895,10 @@ namespace FANN {
         void enable_seed_rand() {
             fann_enable_seed_rand();
         }
+
+		operator struct fann*() {
+			return ann;
+		}
 
         /*********************************************************************/
 
