@@ -274,13 +274,28 @@ class fannfloatPINVOKE {
   public static extern global::System.IntPtr training_data_to_fann_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_0")]
-  public static extern global::System.IntPtr new_neural_net__SWIG_0();
-
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_1")]
-  public static extern global::System.IntPtr new_neural_net__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern global::System.IntPtr new_neural_net__SWIG_0(int jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_2")]
-  public static extern global::System.IntPtr new_neural_net__SWIG_2(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern global::System.IntPtr new_neural_net__SWIG_2(int jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_3")]
+  public static extern global::System.IntPtr new_neural_net__SWIG_3(float jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_4")]
+  public static extern global::System.IntPtr new_neural_net__SWIG_4(float jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_5")]
+  public static extern global::System.IntPtr new_neural_net__SWIG_5(string jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_6")]
+  public static extern global::System.IntPtr new_neural_net__SWIG_6(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_7")]
+  public static extern global::System.IntPtr new_neural_net__SWIG_7(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_8")]
+  public static extern global::System.IntPtr new_neural_net__SWIG_8();
 
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_copy_from_struct_fann")]
   public static extern void neural_net_copy_from_struct_fann(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -665,9 +680,6 @@ class fannfloatPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_enable_seed_rand")]
   public static extern void neural_net_enable_seed_rand(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_to_fann")]
-  public static extern global::System.IntPtr neural_net_to_fann(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_fopen")]
   public static extern global::System.IntPtr fopen(string jarg1, string jarg2);

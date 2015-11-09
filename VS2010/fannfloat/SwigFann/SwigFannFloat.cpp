@@ -1016,17 +1016,86 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_training_data_to_fann_train_data(void * jar
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_neural_net__SWIG_0() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_neural_net__SWIG_0(int jarg1, unsigned int jarg2, void * jarg3) {
   void * jresult ;
+  FANN::network_type_enum arg1 ;
+  unsigned int arg2 ;
+  unsigned int *arg3 = (unsigned int *) 0 ;
   FANN::neural_net *result = 0 ;
   
-  result = (FANN::neural_net *)new FANN::neural_net();
+  arg1 = (FANN::network_type_enum)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (unsigned int *)jarg3; 
+  result = (FANN::neural_net *)new FANN::neural_net(arg1,arg2,(unsigned int const *)arg3);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_neural_net__SWIG_1(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_neural_net__SWIG_2(int jarg1, unsigned int jarg2) {
+  void * jresult ;
+  FANN::network_type_enum arg1 ;
+  unsigned int arg2 ;
+  void *arg3 = 0 ;
+  FANN::neural_net *result = 0 ;
+  
+  arg1 = (FANN::network_type_enum)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  result = (FANN::neural_net *)new FANN::neural_net(arg1,arg2,arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_neural_net__SWIG_3(float jarg1, unsigned int jarg2) {
+  void * jresult ;
+  float arg1 ;
+  unsigned int arg2 ;
+  void *arg3 = 0 ;
+  FANN::neural_net *result = 0 ;
+  
+  arg1 = (float)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  result = (FANN::neural_net *)new FANN::neural_net(arg1,arg2,arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_neural_net__SWIG_4(float jarg1, unsigned int jarg2, void * jarg3) {
+  void * jresult ;
+  float arg1 ;
+  unsigned int arg2 ;
+  unsigned int *arg3 = (unsigned int *) 0 ;
+  FANN::neural_net *result = 0 ;
+  
+  arg1 = (float)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  arg3 = (unsigned int *)jarg3; 
+  result = (FANN::neural_net *)new FANN::neural_net(arg1,arg2,(unsigned int const *)arg3);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_neural_net__SWIG_5(char * jarg1) {
+  void * jresult ;
+  std::string *arg1 = 0 ;
+  FANN::neural_net *result = 0 ;
+  
+  if (!jarg1) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "null string", 0);
+    return 0;
+  }
+  std::string arg1_str(jarg1);
+  arg1 = &arg1_str; 
+  result = (FANN::neural_net *)new FANN::neural_net((std::string const &)*arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_neural_net__SWIG_6(void * jarg1) {
   void * jresult ;
   FANN::neural_net *arg1 = 0 ;
   FANN::neural_net *result = 0 ;
@@ -1042,13 +1111,23 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_neural_net__SWIG_1(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_neural_net__SWIG_2(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_neural_net__SWIG_7(void * jarg1) {
   void * jresult ;
   fann *arg1 = (fann *) 0 ;
   FANN::neural_net *result = 0 ;
   
   arg1 = (fann *)jarg1; 
   result = (FANN::neural_net *)new FANN::neural_net(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_neural_net__SWIG_8() {
+  void * jresult ;
+  FANN::neural_net *result = 0 ;
+  
+  result = (FANN::neural_net *)new FANN::neural_net();
   jresult = (void *)result; 
   return jresult;
 }
@@ -2621,18 +2700,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_enable_seed_rand(void * jarg1) {
   
   arg1 = (FANN::neural_net *)jarg1; 
   (arg1)->enable_seed_rand();
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_neural_net_to_fann(void * jarg1) {
-  void * jresult ;
-  FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
-  fann *result = 0 ;
-  
-  arg1 = (FANN::neural_net *)jarg1; 
-  result = (fann *)(arg1)->operator struct fann*();
-  jresult = (void *)result; 
-  return jresult;
 }
 
 
