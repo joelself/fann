@@ -35,7 +35,7 @@ public class FloatVector : global::System.IDisposable, global::System.Collection
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          SwigFannFloatPINVOKE.delete_FloatVector(swigCPtr);
+          fannfloatPINVOKE.delete_FloatVector(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -202,125 +202,125 @@ public class FloatVector : global::System.IDisposable, global::System.Collection
   }
 
   public void Clear() {
-    SwigFannFloatPINVOKE.FloatVector_Clear(swigCPtr);
+    fannfloatPINVOKE.FloatVector_Clear(swigCPtr);
   }
 
   public void Add(float x) {
-    SwigFannFloatPINVOKE.FloatVector_Add(swigCPtr, x);
+    fannfloatPINVOKE.FloatVector_Add(swigCPtr, x);
   }
 
   private uint size() {
-    uint ret = SwigFannFloatPINVOKE.FloatVector_size(swigCPtr);
+    uint ret = fannfloatPINVOKE.FloatVector_size(swigCPtr);
     return ret;
   }
 
   private uint capacity() {
-    uint ret = SwigFannFloatPINVOKE.FloatVector_capacity(swigCPtr);
+    uint ret = fannfloatPINVOKE.FloatVector_capacity(swigCPtr);
     return ret;
   }
 
   private void reserve(uint n) {
-    SwigFannFloatPINVOKE.FloatVector_reserve(swigCPtr, n);
+    fannfloatPINVOKE.FloatVector_reserve(swigCPtr, n);
   }
 
-  public FloatVector() : this(SwigFannFloatPINVOKE.new_FloatVector__SWIG_0(), true) {
+  public FloatVector() : this(fannfloatPINVOKE.new_FloatVector__SWIG_0(), true) {
   }
 
-  public FloatVector(FloatVector other) : this(SwigFannFloatPINVOKE.new_FloatVector__SWIG_1(FloatVector.getCPtr(other)), true) {
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+  public FloatVector(FloatVector other) : this(fannfloatPINVOKE.new_FloatVector__SWIG_1(FloatVector.getCPtr(other)), true) {
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public FloatVector(int capacity) : this(SwigFannFloatPINVOKE.new_FloatVector__SWIG_2(capacity), true) {
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+  public FloatVector(int capacity) : this(fannfloatPINVOKE.new_FloatVector__SWIG_2(capacity), true) {
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
   private float getitemcopy(int index) {
-    float ret = SwigFannFloatPINVOKE.FloatVector_getitemcopy(swigCPtr, index);
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+    float ret = fannfloatPINVOKE.FloatVector_getitemcopy(swigCPtr, index);
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private float getitem(int index) {
-    float ret = SwigFannFloatPINVOKE.FloatVector_getitem(swigCPtr, index);
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+    float ret = fannfloatPINVOKE.FloatVector_getitem(swigCPtr, index);
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   private void setitem(int index, float val) {
-    SwigFannFloatPINVOKE.FloatVector_setitem(swigCPtr, index, val);
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+    fannfloatPINVOKE.FloatVector_setitem(swigCPtr, index, val);
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void AddRange(FloatVector values) {
-    SwigFannFloatPINVOKE.FloatVector_AddRange(swigCPtr, FloatVector.getCPtr(values));
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+    fannfloatPINVOKE.FloatVector_AddRange(swigCPtr, FloatVector.getCPtr(values));
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public FloatVector GetRange(int index, int count) {
-    global::System.IntPtr cPtr = SwigFannFloatPINVOKE.FloatVector_GetRange(swigCPtr, index, count);
+    global::System.IntPtr cPtr = fannfloatPINVOKE.FloatVector_GetRange(swigCPtr, index, count);
     FloatVector ret = (cPtr == global::System.IntPtr.Zero) ? null : new FloatVector(cPtr, true);
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void Insert(int index, float x) {
-    SwigFannFloatPINVOKE.FloatVector_Insert(swigCPtr, index, x);
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+    fannfloatPINVOKE.FloatVector_Insert(swigCPtr, index, x);
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void InsertRange(int index, FloatVector values) {
-    SwigFannFloatPINVOKE.FloatVector_InsertRange(swigCPtr, index, FloatVector.getCPtr(values));
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+    fannfloatPINVOKE.FloatVector_InsertRange(swigCPtr, index, FloatVector.getCPtr(values));
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void RemoveAt(int index) {
-    SwigFannFloatPINVOKE.FloatVector_RemoveAt(swigCPtr, index);
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+    fannfloatPINVOKE.FloatVector_RemoveAt(swigCPtr, index);
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void RemoveRange(int index, int count) {
-    SwigFannFloatPINVOKE.FloatVector_RemoveRange(swigCPtr, index, count);
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+    fannfloatPINVOKE.FloatVector_RemoveRange(swigCPtr, index, count);
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public static FloatVector Repeat(float value, int count) {
-    global::System.IntPtr cPtr = SwigFannFloatPINVOKE.FloatVector_Repeat(value, count);
+    global::System.IntPtr cPtr = fannfloatPINVOKE.FloatVector_Repeat(value, count);
     FloatVector ret = (cPtr == global::System.IntPtr.Zero) ? null : new FloatVector(cPtr, true);
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void Reverse() {
-    SwigFannFloatPINVOKE.FloatVector_Reverse__SWIG_0(swigCPtr);
+    fannfloatPINVOKE.FloatVector_Reverse__SWIG_0(swigCPtr);
   }
 
   public void Reverse(int index, int count) {
-    SwigFannFloatPINVOKE.FloatVector_Reverse__SWIG_1(swigCPtr, index, count);
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+    fannfloatPINVOKE.FloatVector_Reverse__SWIG_1(swigCPtr, index, count);
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void SetRange(int index, FloatVector values) {
-    SwigFannFloatPINVOKE.FloatVector_SetRange(swigCPtr, index, FloatVector.getCPtr(values));
-    if (SwigFannFloatPINVOKE.SWIGPendingException.Pending) throw SwigFannFloatPINVOKE.SWIGPendingException.Retrieve();
+    fannfloatPINVOKE.FloatVector_SetRange(swigCPtr, index, FloatVector.getCPtr(values));
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public bool Contains(float value) {
-    bool ret = SwigFannFloatPINVOKE.FloatVector_Contains(swigCPtr, value);
+    bool ret = fannfloatPINVOKE.FloatVector_Contains(swigCPtr, value);
     return ret;
   }
 
   public int IndexOf(float value) {
-    int ret = SwigFannFloatPINVOKE.FloatVector_IndexOf(swigCPtr, value);
+    int ret = fannfloatPINVOKE.FloatVector_IndexOf(swigCPtr, value);
     return ret;
   }
 
   public int LastIndexOf(float value) {
-    int ret = SwigFannFloatPINVOKE.FloatVector_LastIndexOf(swigCPtr, value);
+    int ret = fannfloatPINVOKE.FloatVector_LastIndexOf(swigCPtr, value);
     return ret;
   }
 
   public bool Remove(float value) {
-    bool ret = SwigFannFloatPINVOKE.FloatVector_Remove(swigCPtr, value);
+    bool ret = fannfloatPINVOKE.FloatVector_Remove(swigCPtr, value);
     return ret;
   }
 

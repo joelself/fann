@@ -33,7 +33,7 @@ public class fann_train_data : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          SwigFannDoublePINVOKE.delete_fann_train_data(swigCPtr);
+          fanndoublePINVOKE.delete_fann_train_data(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -41,22 +41,22 @@ public class fann_train_data : global::System.IDisposable {
     }
   }
 
-  public SWIGTYPE_fann_errno_enum errno_f {
+  public fann_errno_enum errno_f {
     set {
-      SwigFannDoublePINVOKE.fann_train_data_errno_f_set(swigCPtr, (int)value);
+      fanndoublePINVOKE.fann_train_data_errno_f_set(swigCPtr, (int)value);
     } 
     get {
-      SWIGTYPE_fann_errno_enum ret = (SWIGTYPE_fann_errno_enum)SwigFannDoublePINVOKE.fann_train_data_errno_f_get(swigCPtr);
+      fann_errno_enum ret = (fann_errno_enum)fanndoublePINVOKE.fann_train_data_errno_f_get(swigCPtr);
       return ret;
     } 
   }
 
   public SWIGTYPE_p_FILE error_log {
     set {
-      SwigFannDoublePINVOKE.fann_train_data_error_log_set(swigCPtr, SWIGTYPE_p_FILE.getCPtr(value));
+      fanndoublePINVOKE.fann_train_data_error_log_set(swigCPtr, SWIGTYPE_p_FILE.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = SwigFannDoublePINVOKE.fann_train_data_error_log_get(swigCPtr);
+      global::System.IntPtr cPtr = fanndoublePINVOKE.fann_train_data_error_log_get(swigCPtr);
       SWIGTYPE_p_FILE ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_FILE(cPtr, false);
       return ret;
     } 
@@ -64,50 +64,50 @@ public class fann_train_data : global::System.IDisposable {
 
   public string errstr {
     set {
-      SwigFannDoublePINVOKE.fann_train_data_errstr_set(swigCPtr, value);
+      fanndoublePINVOKE.fann_train_data_errstr_set(swigCPtr, value);
     } 
     get {
-      string ret = SwigFannDoublePINVOKE.fann_train_data_errstr_get(swigCPtr);
+      string ret = fanndoublePINVOKE.fann_train_data_errstr_get(swigCPtr);
       return ret;
     } 
   }
 
   public uint num_data {
     set {
-      SwigFannDoublePINVOKE.fann_train_data_num_data_set(swigCPtr, value);
+      fanndoublePINVOKE.fann_train_data_num_data_set(swigCPtr, value);
     } 
     get {
-      uint ret = SwigFannDoublePINVOKE.fann_train_data_num_data_get(swigCPtr);
+      uint ret = fanndoublePINVOKE.fann_train_data_num_data_get(swigCPtr);
       return ret;
     } 
   }
 
   public uint num_input {
     set {
-      SwigFannDoublePINVOKE.fann_train_data_num_input_set(swigCPtr, value);
+      fanndoublePINVOKE.fann_train_data_num_input_set(swigCPtr, value);
     } 
     get {
-      uint ret = SwigFannDoublePINVOKE.fann_train_data_num_input_get(swigCPtr);
+      uint ret = fanndoublePINVOKE.fann_train_data_num_input_get(swigCPtr);
       return ret;
     } 
   }
 
   public uint num_output {
     set {
-      SwigFannDoublePINVOKE.fann_train_data_num_output_set(swigCPtr, value);
+      fanndoublePINVOKE.fann_train_data_num_output_set(swigCPtr, value);
     } 
     get {
-      uint ret = SwigFannDoublePINVOKE.fann_train_data_num_output_get(swigCPtr);
+      uint ret = fanndoublePINVOKE.fann_train_data_num_output_get(swigCPtr);
       return ret;
     } 
   }
 
   public SWIGTYPE_p_p_double input {
     set {
-      SwigFannDoublePINVOKE.fann_train_data_input_set(swigCPtr, SWIGTYPE_p_p_double.getCPtr(value));
+      fanndoublePINVOKE.fann_train_data_input_set(swigCPtr, SWIGTYPE_p_p_double.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = SwigFannDoublePINVOKE.fann_train_data_input_get(swigCPtr);
+      global::System.IntPtr cPtr = fanndoublePINVOKE.fann_train_data_input_get(swigCPtr);
       SWIGTYPE_p_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_p_double(cPtr, false);
       return ret;
     } 
@@ -115,16 +115,16 @@ public class fann_train_data : global::System.IDisposable {
 
   public SWIGTYPE_p_p_double output {
     set {
-      SwigFannDoublePINVOKE.fann_train_data_output_set(swigCPtr, SWIGTYPE_p_p_double.getCPtr(value));
+      fanndoublePINVOKE.fann_train_data_output_set(swigCPtr, SWIGTYPE_p_p_double.getCPtr(value));
     } 
     get {
-      global::System.IntPtr cPtr = SwigFannDoublePINVOKE.fann_train_data_output_get(swigCPtr);
+      global::System.IntPtr cPtr = fanndoublePINVOKE.fann_train_data_output_get(swigCPtr);
       SWIGTYPE_p_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_p_double(cPtr, false);
       return ret;
     } 
   }
 
-  public fann_train_data() : this(SwigFannDoublePINVOKE.new_fann_train_data(), true) {
+  public fann_train_data() : this(fanndoublePINVOKE.new_fann_train_data(), true) {
   }
 
 }

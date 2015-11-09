@@ -11,7 +11,7 @@
 namespace FannWrapper {
 
 public enum activation_function_enum {
-  LINEAR = fann_activationfunc_enum.FANN_LINEAR,
+  LINEAR = 0,
   THRESHOLD,
   THRESHOLD_SYMMETRIC,
   SIGMOID,

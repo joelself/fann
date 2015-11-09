@@ -33,7 +33,7 @@ public class connectionArray : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          SwigFannDoublePINVOKE.delete_connectionArray(swigCPtr);
+          fanndoublePINVOKE.delete_connectionArray(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -41,27 +41,27 @@ public class connectionArray : global::System.IDisposable {
     }
   }
 
-  public connectionArray(int nelements) : this(SwigFannDoublePINVOKE.new_connectionArray(nelements), true) {
+  public connectionArray(int nelements) : this(fanndoublePINVOKE.new_connectionArray(nelements), true) {
   }
 
-  public fann_connection getitem(int index) {
-    fann_connection ret = new fann_connection(SwigFannDoublePINVOKE.connectionArray_getitem(swigCPtr, index), true);
+  public connection getitem(int index) {
+    connection ret = new connection(fanndoublePINVOKE.connectionArray_getitem(swigCPtr, index), true);
     return ret;
   }
 
-  public void setitem(int index, fann_connection value) {
-    SwigFannDoublePINVOKE.connectionArray_setitem(swigCPtr, index, fann_connection.getCPtr(value));
-    if (SwigFannDoublePINVOKE.SWIGPendingException.Pending) throw SwigFannDoublePINVOKE.SWIGPendingException.Retrieve();
+  public void setitem(int index, connection value) {
+    fanndoublePINVOKE.connectionArray_setitem(swigCPtr, index, connection.getCPtr(value));
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public fann_connection cast() {
-    global::System.IntPtr cPtr = SwigFannDoublePINVOKE.connectionArray_cast(swigCPtr);
-    fann_connection ret = (cPtr == global::System.IntPtr.Zero) ? null : new fann_connection(cPtr, false);
+  public connection cast() {
+    global::System.IntPtr cPtr = fanndoublePINVOKE.connectionArray_cast(swigCPtr);
+    connection ret = (cPtr == global::System.IntPtr.Zero) ? null : new connection(cPtr, false);
     return ret;
   }
 
-  public static connectionArray frompointer(fann_connection t) {
-    global::System.IntPtr cPtr = SwigFannDoublePINVOKE.connectionArray_frompointer(fann_connection.getCPtr(t));
+  public static connectionArray frompointer(connection t) {
+    global::System.IntPtr cPtr = fanndoublePINVOKE.connectionArray_frompointer(connection.getCPtr(t));
     connectionArray ret = (cPtr == global::System.IntPtr.Zero) ? null : new connectionArray(cPtr, false);
     return ret;
   }

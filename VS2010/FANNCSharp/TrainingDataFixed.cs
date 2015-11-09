@@ -126,48 +126,64 @@ namespace FANNCSharp
             InternalData.subset_train_data(pos, length);
         }
 
-        public int[][] GetOutput()
+        private int[][] cachedOutput = null;
+        public int[][] Output
         {
-            using (intArrayArray output = intArrayArray.frompointer(InternalData.get_output()))
+            get
             {
-                int length = (int)InternalData.length_train_data();
-                int count = (int)InternalData.num_output_train_data();
-                int[][] result = new int[length][];
-                for (int i = 0; i < length; i++)
+                if (cachedOutput == null)
                 {
-                    result[i] = new int[count];
-                    using (intArray inputArray = intArray.frompointer(output.getitem(i)))
+                    using (intArrayArray output = intArrayArray.frompointer(InternalData.get_output()))
                     {
-                        for (int j = 0; j < count; j++)
+                        int length = (int)InternalData.length_train_data();
+                        int count = (int)InternalData.num_output_train_data();
+                        cachedOutput = new int[length][];
+                        for (int i = 0; i < length; i++)
                         {
-                            result[i][j] = inputArray.getitem(j);
+                            cachedOutput[i] = new int[count];
+                            using (intArray inputArray = intArray.frompointer(output.getitem(i)))
+                            {
+                                for (int j = 0; j < count; j++)
+                                {
+                                    cachedOutput[i][j] = inputArray.getitem(j);
+                                }
+                            }
                         }
                     }
                 }
-                return result;
+                return cachedOutput;
             }
         }
-        public int[][] GetInput()
+
+        private int[][] cachedInput = null;
+        public int[][] Input
         {
-            using (intArrayArray input = intArrayArray.frompointer(InternalData.get_input()))
+            get
             {
-                int length = (int)InternalData.length_train_data();
-                int count = (int)InternalData.num_input_train_data();
-                int[][] result = new int[length][];
-                for (int i = 0; i < length; i++)
+                if (cachedInput == null)
                 {
-                    result[i] = new int[count];
-                    using (intArray inputArray = intArray.frompointer(input.getitem(i)))
+                    using (intArrayArray input = intArrayArray.frompointer(InternalData.get_input()))
                     {
-                        for (int j = 0; j < count; j++)
+                        int length = (int)InternalData.length_train_data();
+                        int count = (int)InternalData.num_input_train_data();
+                        cachedInput = new int[length][];
+                        for (int i = 0; i < length; i++)
                         {
-                            result[i][j] = inputArray.getitem(j);
+                            cachedInput[i] = new int[count];
+                            using (intArray inputArray = intArray.frompointer(input.getitem(i)))
+                            {
+                                for (int j = 0; j < count; j++)
+                                {
+                                    cachedInput[i][j] = inputArray.getitem(j);
+                                }
+                            }
                         }
                     }
                 }
-                return result;
+                return cachedInput;
             }
         }
+
         public uint NumInput()
         {
             return InternalData.num_input_train_data();
@@ -195,7 +211,7 @@ namespace FANNCSharp
         {
             InternalData.Dispose();
         }
-        internal FannWrapperFixed.training_data InternalData
+        public FannWrapperFixed.training_data InternalData
         {
             get;
             protected set;

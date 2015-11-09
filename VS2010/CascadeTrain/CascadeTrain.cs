@@ -89,15 +89,13 @@ namespace Example
 
                     Console.WriteLine("\nTrain error: {0}, Train bit-fail: {1}, Test error: {2}, Test bit-fail: {3}\n",
                                       mse_train, bit_fail_train, mse_test, bit_fail_test);
-                    DataType[][] input = trainData.GetInput();
-                    DataType[][] outputs = trainData.GetOutput();
                     for (int i = 0; i < trainData.LengthTrainData(); i++)
                     {
-                        output = net.Run(input[i]);
-                        if((outputs[i][0] >= 0 && output[0] <= 0) ||
-                            (outputs[i][0] <= 0 && output[0] >= 0))
+                        output = net.Run(trainData.Input[i]);
+                        if ((trainData.Output[i][0] >= 0 && output[0] <= 0) ||
+                            (trainData.Output[i][0] <= 0 && output[0] >= 0))
                         {
-                            Console.WriteLine("ERROR: {0} does not match {1}", outputs[i][0], output[0]);
+                            Console.WriteLine("ERROR: {0} does not match {1}", trainData.Output[i][0], trainData.Output[0]);
                         }
                     }
 
