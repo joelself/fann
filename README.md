@@ -9,7 +9,7 @@ Cross-platform execution in both fixed and floating point are supported. It incl
 **`Fann C#`** is a wapper around FANN that lets you use the FANN libraries from C# on Windows. This is currently a work in progress as only a subset of the FANN functionality has been tested. As time goes on I plan to add more of the FANN functionality as well as make it much easier to use.
 
 ## Current Progress
-The entire FANN neural_net and training_data C++ wrapper functionality is available along with the FANN parallel functions (for fannfloat and fanndouble).
+Most of the FANN neural_net and training_data C++ wrapper functionality is available along with the FANN parallel functions (for fannfloat and fanndouble).
 
 ## To Install
 
