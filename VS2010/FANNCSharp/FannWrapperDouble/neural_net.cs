@@ -41,14 +41,30 @@ public class neural_net : global::System.IDisposable {
     }
   }
 
-  public neural_net() : this(fanndoublePINVOKE.new_neural_net__SWIG_0(), true) {
+  public neural_net(network_type_enum net_type, uint num_layers, SWIGTYPE_p_unsigned_int layers) : this(fanndoublePINVOKE.new_neural_net__SWIG_0((int)net_type, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers)), true) {
   }
 
-  public neural_net(neural_net other) : this(fanndoublePINVOKE.new_neural_net__SWIG_1(neural_net.getCPtr(other)), true) {
+  public neural_net(network_type_enum net_type, uint num_layers) : this(fanndoublePINVOKE.new_neural_net__SWIG_2((int)net_type, num_layers), true) {
+  }
+
+  public neural_net(float connection_rate, uint num_layers) : this(fanndoublePINVOKE.new_neural_net__SWIG_3(connection_rate, num_layers), true) {
+  }
+
+  public neural_net(float connection_rate, uint num_layers, SWIGTYPE_p_unsigned_int layers) : this(fanndoublePINVOKE.new_neural_net__SWIG_4(connection_rate, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers)), true) {
+  }
+
+  public neural_net(string configuration_file) : this(fanndoublePINVOKE.new_neural_net__SWIG_5(configuration_file), true) {
     if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public neural_net(SWIGTYPE_p_fann other) : this(fanndoublePINVOKE.new_neural_net__SWIG_2(SWIGTYPE_p_fann.getCPtr(other)), true) {
+  public neural_net(neural_net other) : this(fanndoublePINVOKE.new_neural_net__SWIG_6(neural_net.getCPtr(other)), true) {
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public neural_net(SWIGTYPE_p_fann other) : this(fanndoublePINVOKE.new_neural_net__SWIG_7(SWIGTYPE_p_fann.getCPtr(other)), true) {
+  }
+
+  public neural_net() : this(fanndoublePINVOKE.new_neural_net__SWIG_8(), true) {
   }
 
   public void copy_from_struct_fann(SWIGTYPE_p_fann other) {

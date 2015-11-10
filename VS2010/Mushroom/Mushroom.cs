@@ -28,18 +28,16 @@ namespace Example
 
             
             using (TrainingData data = new TrainingData())
-            using (NeuralNet net = new NeuralNet())
+            using (NeuralNet net = new NeuralNet(network_type_enum.LAYER, num_layers, data.InputCount, num_neurons_hidden, data.OutputCount))
             {
                 Console.WriteLine("Creating network.");
 
                 data.ReadTrainFromFile("..\\..\\datasets\\mushroom.train");
 
-                net.Create(num_layers, data.NumInput(), num_neurons_hidden, data.NumOutput());
-
                 Console.WriteLine("Training network.");
 
-                net.SetActivationFunctionHidden(activation_function_enum.SIGMOID_SYMMETRIC);
-                net.SetActivationFunctionOutput(activation_function_enum.SIGMOID);
+                net.ActivationFunctionHidden = activation_function_enum.SIGMOID_SYMMETRIC;
+                net.ActivationFunctionOutput = activation_function_enum.SIGMOID;
 
                 net.TrainOnData(data, max_epochs, epochs_between_reports, desired_error);
 
@@ -49,12 +47,12 @@ namespace Example
                 {
                     testData.ReadTrainFromFile("..\\..\\datasets\\mushroom.test");
                     net.ResetMSE();
-                    for (int i = 0; i < testData.LengthTrainData(); i++)
+                    for (int i = 0; i < testData.TrainDataLength; i++)
                     {
                         net.Test(testData.Input[i], testData.Output[i]);
                     }
 
-                    Console.WriteLine("MSE error on test data {0}", net.GetMSE());
+                    Console.WriteLine("MSE error on test data {0}", net.MSE);
 
                     Console.WriteLine("Saving network.");
 

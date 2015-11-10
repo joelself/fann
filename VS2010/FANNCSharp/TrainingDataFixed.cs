@@ -36,8 +36,8 @@ namespace FANNCSharp
         {
             using (intArray output = intArray.frompointer(InternalData.get_train_input(position)))
             {
-                int[] result = new int[NumInput()];
-                for (int i = 0; i < NumInput(); i++)
+                int[] result = new int[InputCount];
+                for (int i = 0; i < InputCount; i++)
                 {
                     result[i] = output.getitem(i);
                 }
@@ -49,8 +49,8 @@ namespace FANNCSharp
         {
             using (intArray output = intArray.frompointer(InternalData.get_train_input(position)))
             {
-                int[] result = new int[NumOutput()];
-                for (int i = 0; i < NumOutput(); i++)
+                int[] result = new int[OutputCount];
+                for (int i = 0; i < OutputCount; i++)
                 {
                     result[i] = output.getitem(i);
                 }
@@ -58,11 +58,11 @@ namespace FANNCSharp
             }
         }
 
-        public void SetTrainData(int[,] input, int[,] output)
+        public void SetTrainData(int[][] input, int[][] output)
         {
-            int numData = input.GetLength(0);
-            int inputSize = input.GetLength(1);
-            int outputSize = output.GetLength(1);
+            int numData = input.Length;
+            int inputSize = input[0].Length;
+            int outputSize = output[0].Length;
             using (intArrayArray inputArray = new intArrayArray(numData))
             using (intArrayArray outputArray = new intArrayArray(numData))
             {
@@ -74,16 +74,15 @@ namespace FANNCSharp
                     outputArray.setitem(i, outArray.cast());
                     for (int j = 0; j < inputSize; j++)
                     {
-                        inArray.setitem(j, input[i, j]);
+                        inArray.setitem(j, input[i][j]);
                     }
                     for (int j = 0; j < outputSize; j++)
                     {
-                        outArray.setitem(j, output[i, j]);
+                        outArray.setitem(j, output[i][j]);
                     }
                 }
                 InternalData.set_train_data((uint)numData, (uint)inputSize, inputArray.cast(), (uint)outputSize, outputArray.cast());
             }
-
         }
 
         public void set_train_data(uint num_data, int[] input, int[] output)
@@ -106,7 +105,7 @@ namespace FANNCSharp
             }
         }
 
-        public void CreateTrainFromCallback(uint num_data, uint num_input, uint num_output, SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_int_p_int__void user_function)
+        internal void CreateTrainFromCallback(uint num_data, uint num_input, uint num_output, SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_int_p_int__void user_function)
         {
             throw new System.NotImplementedException("CreateTrainFromCallback is not implemented yet.");
         }
@@ -184,14 +183,20 @@ namespace FANNCSharp
             }
         }
 
-        public uint NumInput()
+        public uint InputCount
         {
-            return InternalData.num_input_train_data();
+            get
+            {
+                return InternalData.num_input_train_data();
+            }
         }
 
-        public uint NumOutput()
+        public uint OutputCount
         {
-            return InternalData.num_output_train_data();
+            get
+            {
+                return InternalData.num_output_train_data();
+            }
         }
 
         public bool SaveTrainToFixed(string filename, uint decimalPoint)
@@ -199,9 +204,12 @@ namespace FANNCSharp
             return InternalData.save_train_to_fixed(filename, decimalPoint);
         }
 
-        public uint LengthTrainData()
+        public uint TrainDataLength
         {
-            return InternalData.length_train_data();
+            get
+            {
+                return InternalData.length_train_data();
+            }
         }
         public void ScaleTrainData(int new_min, int new_max)
         {
@@ -211,10 +219,9 @@ namespace FANNCSharp
         {
             InternalData.Dispose();
         }
-        public FannWrapperFixed.training_data InternalData
+        internal FannWrapperFixed.training_data InternalData
         {
-            get;
-            protected set;
+            get; set;
         }
     }
 }

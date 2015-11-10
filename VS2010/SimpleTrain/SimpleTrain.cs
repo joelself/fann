@@ -28,12 +28,10 @@ namespace Example
             const uint max_epochs = 500000;
             const uint epochs_between_reports = 1000;
 
-            using (NeuralNet net = new NeuralNet())
+            using (NeuralNet net = new NeuralNet(network_type_enum.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
             {
-                net.Create(num_layers, num_input, num_neurons_hidden, num_output);
-
-                net.SetActivationFunctionHidden(activation_function_enum.SIGMOID_SYMMETRIC);
-                net.SetActivationFunctionOutput(activation_function_enum.SIGMOID_SYMMETRIC);
+                net.ActivationFunctionHidden = activation_function_enum.SIGMOID_SYMMETRIC;
+                net.ActivationFunctionOutput = activation_function_enum.SIGMOID_SYMMETRIC;
 
                 net.TrainOnFile("..\\..\\examples\\xor.data", max_epochs, epochs_between_reports, desired_error);
 

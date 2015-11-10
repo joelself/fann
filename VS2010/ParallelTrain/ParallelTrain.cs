@@ -26,13 +26,12 @@ namespace Example
             if (argv.Length == 2)
                 num_threads = UInt32.Parse(argv[1]);
             using (data = new TrainingData())
-            using (net = new NeuralNet())
+            using (net = new NeuralNet(network_type_enum.LAYER, 3, data.InputCount, 32, data.OutputCount))
             {
                 data.ReadTrainFromFile("..\\..\\datasets\\mushroom.train");
-                net.Create(3, data.NumInput(), 32, data.NumOutput());
 
-                net.SetActivationFunctionHidden(activation_function_enum.SIGMOID_SYMMETRIC);
-                net.SetActivationFunctionOutput(activation_function_enum.SIGMOID);
+                net.ActivationFunctionHidden = activation_function_enum.SIGMOID_SYMMETRIC;
+                net.ActivationFunctionOutput = activation_function_enum.SIGMOID;
 
                 before = Environment.TickCount;
                 for (int i = 1; i <= max_epochs; i++)

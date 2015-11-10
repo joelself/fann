@@ -8,22 +8,18 @@ namespace FANNCSharp
     public class NeuralNetFloat : IDisposable
     {
         neural_net net = null;
-        public NeuralNetFloat()
-        {
-           net = new neural_net();
-        }
 
         public NeuralNetFloat(NeuralNetFloat other)
         {
-           net = new neural_net(other.InternalFloatNet);
+            net = new neural_net(other.InternalFloatNet);
         }
-        
+
         public void Dispose()
         {
-           net.destroy();
+            net.destroy();
         }
 
-        public bool Create(uint numLayers, params uint[]args)
+        public NeuralNetFloat(network_type_enum netType, uint numLayers, params uint[] args)
         {
             using (uintArray newLayers = new uintArray((int)numLayers))
             {
@@ -32,50 +28,27 @@ namespace FANNCSharp
                     newLayers.setitem(i, args[i]);
                 }
                 Outputs = args[args.Length - 1];
-                return net.create_standard_array(numLayers, newLayers.cast());
+                net = new neural_net(netType, numLayers, newLayers.cast());
             }
         }
 
-        public bool Create(uint[] layers)
+        public NeuralNetFloat(network_type_enum netType, ICollection<uint> layers)
         {
-            using (uintArray newLayers = new uintArray(layers.Length))
+            using (uintArray newLayers = new uintArray(layers.Count))
             {
-                for (int i = 0; i < layers.Length; i++)
+                IEnumerator<uint> enumerator = layers.GetEnumerator();
+                int i = 0;
+                do
                 {
-                    newLayers.setitem(i, layers[i]);
-                }
-                Outputs = layers[layers.Length - 1];
-                return net.create_standard_array((uint)layers.Length, newLayers.cast());
+                    newLayers.setitem(i, enumerator.Current);
+                    i++;
+                } while (enumerator.MoveNext());
+                Outputs = newLayers.getitem(layers.Count - 1);
+                net = new neural_net(netType, (uint)layers.Count, newLayers.cast());
             }
         }
 
-        public bool CreateSparse(float connectionRate, uint numLayers, params uint[] args)
-        {
-            using (uintArray newLayers = new uintArray((int)numLayers))
-            {
-                for (int i = 0; i < args.Length; i++)
-                {
-                    newLayers.setitem(i, args[i]);
-                }
-                Outputs = args[args.Length - 1];
-                return net.create_sparse_array(connectionRate, numLayers, newLayers.cast());
-            }
-        }
-
-        public bool CreateSparse(float connectionRate, uint[] layers)
-        {
-            using (uintArray newLayers = new uintArray(layers.Length))
-            {
-                for (int i = 0; i < layers.Length; i++)
-                {
-                    newLayers.setitem(i, layers[i]);
-                }
-                Outputs = layers[layers.Length - 1];
-                return net.create_sparse_array(connectionRate, (uint)layers.Length, newLayers.cast());
-            }
-        }
-
-        public bool CreateShortcut(uint numLayers, params uint[] args)
+        public NeuralNetFloat(float connectionRate, uint numLayers, params uint[] args)
         {
             using (uintArray newLayers = new uintArray((int)numLayers))
             {
@@ -84,21 +57,28 @@ namespace FANNCSharp
                     newLayers.setitem(i, args[i]);
                 }
                 Outputs = args[args.Length - 1];
-                return net.create_shortcut_array(numLayers, newLayers.cast());
+                net = new neural_net(connectionRate, numLayers, newLayers.cast());
             }
         }
 
-        public bool CreateShortcut(uint[] layers)
+        public NeuralNetFloat(float connectionRate, ICollection<uint> layers)
         {
-            using (uintArray newLayers = new uintArray(layers.Length))
+            using (uintArray newLayers = new uintArray(layers.Count))
             {
-                for (int i = 0; i < layers.Length; i++)
+                IEnumerator<uint> enumerator = layers.GetEnumerator();
+                int i = 0;
+                do
                 {
-                    newLayers.setitem(i, layers[i]);
-                }
-                Outputs = layers[layers.Length - 1];
-                return net.create_shortcut_array((uint)layers.Length, newLayers.cast());
+                    newLayers.setitem(i, enumerator.Current);
+                    i++;
+                } while (enumerator.MoveNext());
+                Outputs = newLayers.getitem(layers.Count - 1);
+                net = new neural_net(connectionRate, (uint)layers.Count, newLayers.cast());
             }
+        }
+        public NeuralNetFloat(string filename)
+        {
+            net = new neural_net(filename);
         }
 
         public float[] Run(float[] input)
@@ -123,23 +103,16 @@ namespace FANNCSharp
 
         public void RandomizeWeights(float minWeight, float maxWeight)
         {
-           net.randomize_weights(minWeight, maxWeight);
+            net.randomize_weights(minWeight, maxWeight);
         }
         public void InitWeights(TrainingDataFloat data)
         {
-           net.init_weights(data.InternalData);
+            net.init_weights(data.InternalData);
         }
 
         public void PrintConnections()
         {
-           net.print_connections();
-        }
-
-        public bool CreateFromFile(string file)
-        {
-            bool result = net.create_from_file(file);
-            Outputs = net.get_num_output();
-            return result;
+            net.print_connections();
         }
 
         public bool Save(string file)
@@ -165,7 +138,7 @@ namespace FANNCSharp
                 {
                     floatsOut.setitem(i, input[i]);
                 }
-               net.train(floatsIn.cast(), floatsOut.cast());
+                net.train(floatsIn.cast(), floatsOut.cast());
             }
         }
 
@@ -176,12 +149,12 @@ namespace FANNCSharp
 
         public void TrainOnData(TrainingDataFloat data, uint maxEpochs, uint epochsBetweenReports, float desiredError)
         {
-           net.train_on_data(data.InternalData, maxEpochs, epochsBetweenReports, desiredError);
+            net.train_on_data(data.InternalData, maxEpochs, epochsBetweenReports, desiredError);
         }
 
         public void TrainOnFile(string filename, uint maxEpochs, uint epochsBetweenReports, float desiredError)
         {
-           net.train_on_file(filename, maxEpochs, epochsBetweenReports, desiredError);
+            net.train_on_file(filename, maxEpochs, epochsBetweenReports, desiredError);
         }
 
         public float[] Test(float[] input, float[] desiredOutput)
@@ -212,41 +185,47 @@ namespace FANNCSharp
             return net.test_data(data.InternalData);
         }
 
-        public float GetMSE()
+        public float MSE
         {
-            return net.get_MSE();
+            get
+            {
+                return net.get_MSE();
+            }
         }
 
         public void ResetMSE()
         {
-           net.reset_MSE();
+            net.reset_MSE();
         }
 
         public void PrintParameters()
         {
-           net.print_parameters();
+            net.print_parameters();
         }
 
-        public training_algorithm_enum GetTrainingAlgorithm()
+        public training_algorithm_enum TrainingAlgorithm
         {
-            return net.get_training_algorithm();
+            get
+            {
+                return net.get_training_algorithm();
+            }
+            set
+            {
+                net.set_training_algorithm(value);
+            }
         }
 
-        public void SetTrainingAlgorithm(training_algorithm_enum algorithm)
+        public float LearningRate
         {
-           net.set_training_algorithm(algorithm);
+            get
+            {
+                return net.get_learning_rate();
+            }
+            set
+            {
+                net.set_learning_rate(value);
+            }
         }
-
-        public float GetLearningRate()
-        {
-            return net.get_learning_rate();
-        }
-
-        public void SetLearningRate(float rate)
-        {
-           net.set_learning_rate(rate);
-        }
-
         public activation_function_enum GetActivationFunction(int layer, int neuron)
         {
             return net.get_activation_function(layer, neuron);
@@ -254,22 +233,28 @@ namespace FANNCSharp
 
         public void SetActivationFunction(activation_function_enum function, int layer, int neuron)
         {
-           net.set_activation_function(function, layer, neuron);
+            net.set_activation_function(function, layer, neuron);
         }
 
         public void SetActivationFunctionLayer(activation_function_enum function, int layer)
         {
-           net.set_activation_function_layer(function, layer);
+            net.set_activation_function_layer(function, layer);
         }
 
-        public void SetActivationFunctionHidden(activation_function_enum function)
+        public activation_function_enum ActivationFunctionHidden
         {
-           net.set_activation_function_hidden(function);
+            set
+            {
+                net.set_activation_function_hidden(value);
+            }
         }
 
-        public void SetActivationFunctionOutput(activation_function_enum function)
+        public activation_function_enum ActivationFunctionOutput
         {
-           net.set_activation_function_output(function);
+            set
+            {
+                net.set_activation_function_output(value);
+            }
         }
 
         public float GetActivationSteepness(int layer, int neuron)
@@ -279,133 +264,167 @@ namespace FANNCSharp
 
         public void SetActivationSteepness(float steepness, int layer, int neuron)
         {
-           net.set_activation_steepness(steepness, layer, neuron);
+            net.set_activation_steepness(steepness, layer, neuron);
         }
 
         public void SetActivationSteepnessLayer(float steepness, int layer)
         {
-           net.set_activation_steepness_layer(steepness, layer);
+            net.set_activation_steepness_layer(steepness, layer);
         }
 
         public void SetActivationSteepnessHidden(float steepness)
         {
-           net.set_activation_steepness_hidden(steepness);
+            net.set_activation_steepness_hidden(steepness);
         }
 
         public void SetActivationSteepnessOutput(float steepness)
         {
-           net.set_activation_steepness_output(steepness);
+            net.set_activation_steepness_output(steepness);
         }
 
-        public error_function_enum GetTrainErrorFunction()
+        public error_function_enum TrainErrorFunction
         {
-            return net.get_train_error_function();
+            get
+            {
+                return net.get_train_error_function();
+            }
+            set
+            {
+                net.set_train_error_function(value);
+            }
         }
 
-        public void SetTrainErrorFunction(error_function_enum function)
+        public float QuickpropDecay
         {
-           net.set_train_error_function(function);
+            get
+            {
+                return net.get_quickprop_decay();
+            }
+            set
+            {
+                net.set_quickprop_decay(value);
+            }
         }
 
-        public float GetQuickpropDecay()
+        public float QuickpropMu
         {
-            return net.get_quickprop_decay();
+            get
+            {
+                return net.get_quickprop_mu();
+            }
+            set
+            {
+                net.set_quickprop_mu(value);
+            }
+        }
+        public float RpropIncreaseFactor
+        {
+            get
+            {
+                return net.get_rprop_increase_factor();
+            }
+            set
+            {
+                net.set_rprop_increase_factor(value);
+            }
+        }
+        public float RpropDecreaseFactor
+        {
+            get
+            {
+                return net.get_rprop_decrease_factor();
+            }
+            set
+            {
+                net.set_rprop_decrease_factor(value);
+            }
+        }
+        public float RpropDeltaZero
+        {
+            get
+            {
+                return net.get_rprop_delta_zero();
+            }
+            set
+            {
+                net.set_rprop_delta_zero(value);
+            }
+        }
+        public float RpropDeltaMin
+        {
+            get
+            {
+                return net.get_rprop_delta_min();
+            }
+            set
+            {
+                net.set_rprop_delta_min(value);
+            }
+        }
+        public float RpropDeltaMax
+        {
+            get
+            {
+                return net.get_rprop_delta_max();
+            }
+            set
+            {
+                net.set_rprop_delta_max(value);
+            }
+        }
+        public float SarpropWeightDecayShift
+        {
+            get
+            {
+                return net.get_sarprop_weight_decay_shift();
+            }
+            set
+            {
+                net.set_sarprop_weight_decay_shift(value);
+            }
+        }
+        public float SarpropStepErrorThresholdFactor
+        {
+            get
+            {
+                return net.get_sarprop_step_error_threshold_factor();
+            }
+            set
+            {
+                net.set_sarprop_step_error_threshold_factor(value);
+            }
+        }
+        public float SarpropStepErrorShift
+        {
+            get
+            {
+                return net.get_sarprop_step_error_shift();
+            }
+            set
+            {
+                net.set_sarprop_step_error_shift(value);
+            }
+        }
+        public float SarpropTemperature
+        {
+            get
+            {
+                return net.get_sarprop_temperature();
+            }
+            set
+            {
+                net.set_sarprop_temperature(value);
+            }
         }
 
-        public void SetQuickpropDecay(float decay)
-        {
-           net.set_quickprop_decay(decay);
-        }
-
-        public float GetQuickpropMu()
-        {
-            return net.get_quickprop_mu();
-        }
-        public void SetQuickpropMu(float quickprop_mu)
-        {
-           net.set_quickprop_mu(quickprop_mu);
-        }
-        public float GetRpropIncreaseFactor()
-        {
-            return net.get_rprop_increase_factor();
-        }
-        public void SetRpropIncreaseFactor(float rprop_increase_factor)
-        {
-           net.set_rprop_increase_factor(rprop_increase_factor);
-        }
-        public float GetRpropDecreaseFactor()
-        {
-            return net.get_rprop_decrease_factor();
-        }
-        public void SetRpropDecreaseFactor(float rprop_decrease_factor)
-        {
-           net.set_rprop_decrease_factor(rprop_decrease_factor);
-        }
-        public float GetRpropDeltaZero()
-        {
-            return net.get_rprop_delta_zero();
-        }
-        public void SetRpropDeltaZero(float rprop_delta_zero)
-        {
-           net.set_rprop_delta_zero(rprop_delta_zero);
-        }
-        public float GetRpropDeltaMin()
-        {
-            return net.get_rprop_delta_min();
-        }
-        public void SetRpropDeltaMin(float rprop_delta_min)
-        {
-           net.set_rprop_delta_min(rprop_delta_min);
-        }
-        public float GetRpropDeltaMax()
-        {
-            return net.get_rprop_delta_max();
-        }
-        public void SetRpropDeltaMax(float rprop_delta_max)
-        {
-           net.set_rprop_delta_max(rprop_delta_max);
-        }
-        public float GetSarpropWeightDecayShift()
-        {
-            return net.get_sarprop_weight_decay_shift();
-        }
-        public void SetSarpropWeightDecayShift(float sarprop_weight_decay_shift)
-        {
-           net.set_sarprop_weight_decay_shift(sarprop_weight_decay_shift);
-        }
-        public float GetSarpropStepErrorThresholdFactor()
-        {
-            return net.get_sarprop_step_error_threshold_factor();
-        }
-        public void SetSarpropStepErrorThresholdFactor(float sarprop_step_error_threshold_factor)
-        {
-           net.set_sarprop_step_error_threshold_factor(sarprop_step_error_threshold_factor);
-        }
-        public float GetSarpropStepErrorShift()
-        {
-            return net.get_sarprop_step_error_shift();
-        }
-        public void SetSarpropStepErrorShift(float sarprop_step_error_shift)
-        {
-           net.set_sarprop_step_error_shift(sarprop_step_error_shift);
-        }
-        public float GetSarpropTemperature()
-        {
-            return net.get_sarprop_temperature();
-        }
-
-        public void SetSarpropTemperature(float sarprop_temperature)
-        {
-           net.set_sarprop_temperature(sarprop_temperature);
-        }
-        public uint NumInput
+        public uint InputCount
         {
             get
             {
                 return net.get_num_input();
             }
         }
-        public uint NumOutput
+        public uint OutputCount
         {
             get
             {
@@ -512,183 +531,241 @@ namespace FANNCSharp
         }
         public void SetWeight(uint from_neuron, uint to_neuron, float weight)
         {
-           net.set_weight(from_neuron, to_neuron, weight);
+            net.set_weight(from_neuron, to_neuron, weight);
         }
-        public float GetLearningMomentum()
+        public float LearningMomentum
         {
-            return net.get_learning_momentum();
+            get
+            {
+                return net.get_learning_momentum();
+            }
+            set
+            {
+                net.set_learning_momentum(value);
+            }
         }
-        public void SetLearningMomentum(float learning_momentum)
+        public stop_function_enum TrainStopFunction
         {
-           net.set_learning_momentum(learning_momentum);
+            get
+            {
+                return net.get_train_stop_function();
+            }
+            set
+            {
+                net.set_train_stop_function(value);
+            }
         }
-        public stop_function_enum GetTrainStopFunction()
+        public float BitFailLimit
         {
-            return net.get_train_stop_function();
+            get
+            {
+                return net.get_bit_fail_limit();
+            }
+            set
+            {
+                net.set_bit_fail_limit(value);
+            }
         }
-        public void SetTrainStopFunction(stop_function_enum train_stop_function)
+        public uint BitFail
         {
-           net.set_train_stop_function(train_stop_function);
-        }
-        public float GetBitFailLimit()
-        {
-            return net.get_bit_fail_limit();
-        }
-        public void SetBitFailLimit(float bit_fail_limit)
-        {
-           net.set_bit_fail_limit(bit_fail_limit);
-        }
-        public uint GetBitFail()
-        {
-            return net.get_bit_fail();
+            get
+            {
+                return net.get_bit_fail();
+            }
         }
         public void CascadetrainOnData(TrainingDataFloat data, uint max_neurons, uint neurons_between_reports, float desired_error)
         {
-           net.cascadetrain_on_data(data.InternalData, max_neurons, neurons_between_reports, desired_error);
+            net.cascadetrain_on_data(data.InternalData, max_neurons, neurons_between_reports, desired_error);
         }
         public void CascadetrainOnFile(string filename, uint max_neurons, uint neurons_between_reports, float desired_error)
         {
-           net.cascadetrain_on_file(filename, max_neurons, neurons_between_reports, desired_error);
+            net.cascadetrain_on_file(filename, max_neurons, neurons_between_reports, desired_error);
         }
-        public float GetCascadeOutputChangeFraction()
+        public float CascadeOutputChangeFraction
         {
-            return net.get_cascade_output_change_fraction();
-        }
-        public void SetCascadeOutputChangeFraction(float cascade_output_change_fraction)
-        {
-           net.set_cascade_output_change_fraction(cascade_output_change_fraction);
-        }
-        public uint GetCascadeOutputStagnationEpochs()
-        {
-            return net.get_cascade_output_stagnation_epochs();
-        }
-        public void SetCascadeOutputStagnationEpochs(uint cascade_output_stagnation_epochs)
-        {
-           net.set_cascade_output_stagnation_epochs(cascade_output_stagnation_epochs);
-        }
-        public float GetCascadeCandidateChangeFraction()
-        {
-            return net.get_cascade_candidate_change_fraction();
-        }
-        public void SetCascadeCandidateChangeFraction(float cascade_candidate_change_fraction)
-        {
-           net.set_cascade_output_change_fraction(cascade_candidate_change_fraction);
-        }
-        public uint GetCascadeCandidateStagnationEpochs()
-        {
-            return net.get_cascade_candidate_stagnation_epochs();
-        }
-        public void SetCascadeCandidateStagnationEpochs(uint cascade_candidate_stagnation_epochs)
-        {
-           net.set_cascade_candidate_stagnation_epochs(cascade_candidate_stagnation_epochs);
-        }
-        public float GetCascadeWeightMultiplier()
-        {
-            return net.get_cascade_weight_multiplier();
-        }
-        public void SetCascadeWeightMultiplier(float cascade_weight_multiplier)
-        {
-           net.set_cascade_weight_multiplier(cascade_weight_multiplier);
-        }
-        public float GetCascadeCandidateLimit()
-        {
-            return net.get_cascade_candidate_limit();
-        }
-        public void SetCascadeCandidateLimit(float cascade_candidate_limit)
-        {
-           net.set_cascade_candidate_limit(cascade_candidate_limit);
-        }
-        public uint GetCascadeMaxOutEpochs()
-        {
-            return net.get_cascade_max_out_epochs();
-        }
-        public void SetCascadeMaxOutEpochs(uint cascade_max_out_epochs)
-        {
-           net.set_cascade_max_out_epochs(cascade_max_out_epochs);
-        }
-        public uint GetCascadeMaxCandEpochs()
-        {
-            return net.get_cascade_max_cand_epochs();
-        }
-        public void SetCascadeMaxCandEpochs(uint cascade_max_cand_epochs)
-        {
-           net.set_cascade_max_cand_epochs(cascade_max_cand_epochs);
-        }
-        public uint GetCascadeNumCandidates()
-        {
-            return net.get_cascade_num_candidates();
-        }
-        public uint GetCascadeActivationFunctionsCount()
-        {
-            return net.get_cascade_activation_functions_count();
-        }
-        public activation_function_enum[] GetCascadeActivationFunctions()
-        {
-            int count = (int)net.get_cascade_activation_functions_count();
-            using (activationFunctionArray result = activationFunctionArray.frompointer(net.get_cascade_activation_functions()))
+            get
             {
-                activation_function_enum[] arrayResult = new activation_function_enum[net.get_cascade_activation_functions_count()];
-                for (int i = 0; i < count; i++)
-                {
-                    arrayResult[i] = result.getitem(i);
-                }
-                return arrayResult;
+                return net.get_cascade_output_change_fraction();
+            }
+            set
+            {
+                net.set_cascade_output_change_fraction(value);
             }
         }
-        public void SetCascadeActivationFunctions(activation_function_enum[] cascade_activation_functions)
+        public uint CascadeOutputStagnationEpochs
         {
-            using (activationFunctionArray input = new activationFunctionArray(cascade_activation_functions.Length))
+            get
             {
-                for (int i = 0; i < cascade_activation_functions.Length; i++)
-                {
-                    input.setitem(i, cascade_activation_functions[i]);
-                }
-               net.set_cascade_activation_functions(input.cast(), (uint)cascade_activation_functions.Length);
+                return net.get_cascade_output_stagnation_epochs();
+            }
+            set
+            {
+                net.set_cascade_output_stagnation_epochs(value);
             }
         }
-        public uint GetCascadeActivationSteepnessesCount()
+        public float CascadeCandidateChangeFraction
         {
-            return net.get_cascade_activation_steepnesses_count();
-        }
-        public float[] GetCascadeActivationSteepnesses()
-        {
-            using (floatArray result = floatArray.frompointer(net.get_cascade_activation_steepnesses()))
+            get
             {
-                uint count = net.get_cascade_activation_steepnesses_count();
-                float[] resultArray = new float[net.get_cascade_activation_steepnesses_count()];
-                for (int i = 0; i < count; i++)
-                {
-                    resultArray[i] = result.getitem(i);
-                }
-                return resultArray;
+                return net.get_cascade_candidate_change_fraction();
+            }
+            set
+            {
+                net.set_cascade_output_change_fraction(value);
             }
         }
-        public void SetCascadeActivationSteepnesses(float[] cascade_activation_steepnesses)
+        public uint CascadeCandidateStagnationEpochs
         {
-            using (floatArray input = new floatArray(cascade_activation_steepnesses.Length))
+            get
             {
-                for (int i = 0; i < cascade_activation_steepnesses.Length; i++)
-                {
-                    input.setitem(i, cascade_activation_steepnesses[i]);
-                }
-               net.set_cascade_activation_steepnesses(input.cast(), (uint)cascade_activation_steepnesses.Length);
+                return net.get_cascade_candidate_stagnation_epochs();
+            }
+            set
+            {
+                net.set_cascade_candidate_stagnation_epochs(value);
             }
         }
-        public uint GetCascadeNumCandidateGroups()
+        public float CascadeWeightMultiplier
         {
-            return net.get_cascade_num_candidate_groups();
+            get
+            {
+                return net.get_cascade_weight_multiplier();
+            }
+            set
+            {
+                net.set_cascade_weight_multiplier(value);
+            }
         }
-        public void SetCascadeNumCandidateGroups(uint cascade_num_candidate_groups)
+        public float CascadeCandidateLimit
         {
-           net.set_cascade_num_candidate_groups(cascade_num_candidate_groups);
+            get
+            {
+                return net.get_cascade_candidate_limit();
+            }
+            set
+            {
+                net.set_cascade_candidate_limit(value);
+            }
+        }
+        public uint CascadeMaxOutEpochs
+        {
+            get
+            {
+                return net.get_cascade_max_out_epochs();
+            }
+            set
+            {
+                net.set_cascade_max_out_epochs(value);
+            }
+        }
+        public uint CascadeMaxCandEpochs
+        {
+            get
+            {
+                return net.get_cascade_max_cand_epochs();
+            }
+            set
+            {
+                net.set_cascade_max_cand_epochs(value);
+            }
+        }
+        public uint CascadeCandidatesCount
+        {
+            get
+            {
+                return net.get_cascade_num_candidates();
+            }
+        }
+        public uint CascadeActivationFunctionsCount
+        {
+            get
+            {
+                return net.get_cascade_activation_functions_count();
+            }
+        }
+        public activation_function_enum[] CascadeActivationFunctions
+        {
+            get
+            {
+                int count = (int)net.get_cascade_activation_functions_count();
+                using (activationFunctionArray result = activationFunctionArray.frompointer(net.get_cascade_activation_functions()))
+                {
+                    activation_function_enum[] arrayResult = new activation_function_enum[net.get_cascade_activation_functions_count()];
+                    for (int i = 0; i < count; i++)
+                    {
+                        arrayResult[i] = result.getitem(i);
+                    }
+                    return arrayResult;
+                }
+            }
+            set
+            {
+                using (activationFunctionArray input = new activationFunctionArray(value.Length))
+                {
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        input.setitem(i, value[i]);
+                    }
+                    net.set_cascade_activation_functions(input.cast(), (uint)value.Length);
+                }
+            }
+        }
+        public uint CascadeActivationSteepnessesCount
+        {
+            get
+            {
+                return net.get_cascade_activation_steepnesses_count();
+            }
+        }
+        public float[] CascadeActivationSteepnesses
+        {
+            get
+            {
+                using (floatArray result = floatArray.frompointer(net.get_cascade_activation_steepnesses()))
+                {
+                    uint count = net.get_cascade_activation_steepnesses_count();
+                    float[] resultArray = new float[net.get_cascade_activation_steepnesses_count()];
+                    for (int i = 0; i < count; i++)
+                    {
+                        resultArray[i] = result.getitem(i);
+                    }
+                    return resultArray;
+                }
+            }
+            set
+            {
+                using (floatArray input = new floatArray(value.Length))
+                {
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        input.setitem(i, value[i]);
+                    }
+                    net.set_cascade_activation_steepnesses(input.cast(), (uint)value.Length);
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        value[i] = input.getitem(i);
+                    }
+                }
+            }
+        }
+        public uint CascadeCandidateGroupsCount
+        {
+            get
+            {
+                return net.get_cascade_num_candidate_groups();
+            }
+            set
+            {
+                net.set_cascade_num_candidate_groups(value);
+            }
         }
         public void ScaleTrain(TrainingDataFloat data)
         {
-           net.scale_train(data.InternalData);
+            net.scale_train(data.InternalData);
         }
         public void DescaleTrain(TrainingDataFloat data)
         {
-           net.descale_train(data.InternalData);
+            net.descale_train(data.InternalData);
         }
         public bool SetInputScalingParams(TrainingDataFloat data, float new_input_min, float new_input_max)
         {
@@ -714,7 +791,7 @@ namespace FANNCSharp
                 {
                     inputs.setitem(i, input_vector[i]);
                 }
-               net.scale_input(inputs.cast());
+                net.scale_input(inputs.cast());
             }
         }
         public void ScaleOutput(float[] output_vector)
@@ -725,7 +802,7 @@ namespace FANNCSharp
                 {
                     inputs.setitem(i, output_vector[i]);
                 }
-               net.scale_output(inputs.cast());
+                net.scale_output(inputs.cast());
             }
         }
         public void DescaleInput(float[] input_vector)
@@ -736,7 +813,7 @@ namespace FANNCSharp
                 {
                     inputs.setitem(i, input_vector[i]);
                 }
-               net.descale_input(inputs.cast());
+                net.descale_input(inputs.cast());
             }
         }
         public void DescaleOutput(float[] output_vector)
@@ -747,47 +824,48 @@ namespace FANNCSharp
                 {
                     inputs.setitem(i, output_vector[i]);
                 }
-               net.descale_output(inputs.cast());
+                net.descale_output(inputs.cast());
             }
         }
         public void SetErrorLog(FannFile log_file)
         {
-           net.set_error_log(log_file.InternalFile);
+            net.set_error_log(log_file.InternalFile);
         }
-        public uint GetErrno()
+        public uint ErrNo
         {
-            return net.get_errno();
+            get
+            {
+                return net.get_errno();
+            }
         }
         public void ResetErrno()
         {
-           net.reset_errno();
+            net.reset_errno();
         }
         public void ResetErrstr()
         {
-           net.reset_errstr();
+            net.reset_errstr();
         }
-        public string GetErrstr()
+        public string ErrStr
         {
-            return net.get_errstr();
+            get
+            {
+                return net.get_errstr();
+            }
         }
         public void PrintError()
         {
-           net.print_error();
+            net.print_error();
         }
         public void DisableSeedRand()
         {
-           net.disable_seed_rand();
+            net.disable_seed_rand();
         }
         public void EnableSeedRand()
         {
-           net.enable_seed_rand();
+            net.enable_seed_rand();
         }
-        public FannFile OpenFile(string filename, string mode)
-        {
-            SWIGTYPE_p_FILE file = fannfloat.fopen(filename, mode);
-            FannFile result = new FannFile(file);
-            return result;
-        }
+
         public float TrainEpochBatchParallel(TrainingDataFloat data, uint threadnumb)
         {
             return fannfloat.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
@@ -821,14 +899,14 @@ namespace FANNCSharp
                 {
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
-                
+
                 float result = fannfloat.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
 
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
                 {
                     List<float> list = new List<float>();
-                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    for (int j = 0; j < predicted_out[i].Count; j++)
                     {
                         list.Add(predicted_out[i][j]);
                     }
@@ -852,7 +930,7 @@ namespace FANNCSharp
                 for (int i = 0; i < predicted_out.Count; i++)
                 {
                     List<float> list = new List<float>();
-                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    for (int j = 0; j < predicted_out[i].Count; j++)
                     {
                         list.Add(predicted_out[i][j]);
                     }
@@ -871,12 +949,12 @@ namespace FANNCSharp
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
                 float result = fannfloat.train_epoch_quickprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
-                
+
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
                 {
                     List<float> list = new List<float>();
-                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    for (int j = 0; j < predicted_out[i].Count; j++)
                     {
                         list.Add(predicted_out[i][j]);
                     }
@@ -895,12 +973,12 @@ namespace FANNCSharp
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
                 float result = fannfloat.train_epoch_sarprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
-                 
+
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
                 {
                     List<float> list = new List<float>();
-                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    for (int j = 0; j < predicted_out[i].Count; j++)
                     {
                         list.Add(predicted_out[i][j]);
                     }
@@ -919,12 +997,12 @@ namespace FANNCSharp
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
                 float result = fannfloat.train_epoch_incremental_mod(net.to_fann(), data.ToFannTrainData(), predicted_out);
-                
+
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
                 {
                     List<float> list = new List<float>();
-                    for(int j = 0; j < predicted_out[i].Count; j++)
+                    for (int j = 0; j < predicted_out[i].Count; j++)
                     {
                         list.Add(predicted_out[i][j]);
                     }
@@ -948,7 +1026,7 @@ namespace FANNCSharp
                     predicted_out[i] = new FloatVector(predicted_outputs[i].Count);
                 }
                 float result = fannfloat.test_data_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
-                
+
                 predicted_outputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
                 {
@@ -963,7 +1041,7 @@ namespace FANNCSharp
             }
         }
 
-#region Properties
+        #region Properties
         public neural_net InternalFloatNet
         {
             get
@@ -973,6 +1051,6 @@ namespace FANNCSharp
         }
 
         private uint Outputs { get; set; }
-#endregion Properties
+        #endregion Properties
     }
 }

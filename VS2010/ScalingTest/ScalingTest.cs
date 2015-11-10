@@ -23,19 +23,15 @@ namespace Example
             DataType[] calc_out;
             Console.WriteLine("Creating network.");
 
-            using(NeuralNet net = new NeuralNet())
+            using(NeuralNet net = new NeuralNet("..\\..\\datasets\\scaling.net"))
             {
-                if(!net.CreateFromFile("..\\..\\datasets\\scaling.net"))
-                {
-                    Console.WriteLine("Error creating NeuralNet --- ABORTING.");
-                }
                 net.PrintConnections();
                 net.PrintParameters();
                 Console.WriteLine("Testing network.");
                 using(TrainingData data = new TrainingData())
                 {
                     data.ReadTrainFromFile("..\\..\\datasets\\scaling.data");
-                    for(int i = 0; i < data.LengthTrainData(); i++)
+                    for(int i = 0; i < data.TrainDataLength; i++)
                     {
                         net.ResetMSE();
                         net.ScaleInput(data.Input[i]);

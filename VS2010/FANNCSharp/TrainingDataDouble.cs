@@ -36,8 +36,8 @@ namespace FANNCSharp
         {
             using (doubleArray output = doubleArray.frompointer(InternalData.get_train_input(position)))
             {
-                double[] result = new double[NumInput()];
-                for (int i = 0; i < NumInput(); i++)
+                double[] result = new double[InputCount];
+                for (int i = 0; i < InputCount; i++)
                 {
                     result[i] = output.getitem(i);
                 }
@@ -49,8 +49,8 @@ namespace FANNCSharp
         {
             using (doubleArray output = doubleArray.frompointer(InternalData.get_train_input(position)))
             {
-                double[] result = new double[NumOutput()];
-                for (int i = 0; i < NumOutput(); i++)
+                double[] result = new double[OutputCount];
+                for (int i = 0; i < OutputCount; i++)
                 {
                     result[i] = output.getitem(i);
                 }
@@ -58,11 +58,11 @@ namespace FANNCSharp
             }
         }
 
-        public void SetTrainData(double[,]input, double[,] output)
+        public void SetTrainData(double[][]input, double[][] output)
         {
-            int numData = input.GetLength(0);
-            int inputSize = input.GetLength(1);
-            int outputSize = output.GetLength(1);
+            int numData = input.Length;
+            int inputSize = input[0].Length;
+            int outputSize = output[0].Length;
             using(doubleArrayArray inputArray = new doubleArrayArray(numData))
             using (doubleArrayArray outputArray = new doubleArrayArray(numData))
             {
@@ -74,16 +74,15 @@ namespace FANNCSharp
                     outputArray.setitem(i, outArray.cast());
                     for (int j = 0; j < inputSize; j++)
                     {
-                        inArray.setitem(j, input[i,j]);
+                        inArray.setitem(j, input[i][j]);
                     }
                     for (int j = 0; j < outputSize; j++)
                     {
-                        outArray.setitem(j, output[i,j]);
+                        outArray.setitem(j, output[i][j]);
                     }
                 }
                 InternalData.set_train_data((uint)numData, (uint)inputSize, inputArray.cast(), (uint)outputSize, outputArray.cast());
             }
-
         }
 
         public void SetTrainData(uint num_data, double[] input, double[] output)
@@ -106,29 +105,41 @@ namespace FANNCSharp
             }
         }
 
-        public void CreateTrainFromCallback(uint num_data, uint num_input, uint num_output, SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_double_p_double__void user_function)
+        internal void CreateTrainFromCallback(uint num_data, uint num_input, uint num_output, SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_double_p_double__void user_function)
         {
             throw new System.NotImplementedException("CreateTrainFromCallback is not implemented yet.");
         }
 
-        public double GetMinInput()
+        public double MinInput
         {
-            return InternalData.get_min_input();
+            get
+            {
+                return InternalData.get_min_input();
+            }
         }
 
-        public double get_max_input()
+        public double MaxInput
         {
-            return InternalData.get_max_input();
+            get
+            {
+                return InternalData.get_max_input();
+            }
         }
 
-        public double get_min_output()
+        public double MinOutput
         {
-            return InternalData.get_min_output();
+            get
+            {
+                return InternalData.get_min_output();
+            }
         }
 
-        public double get_max_output()
+        public double MaxOutput
         {
-            return InternalData.get_max_output();
+            get
+            {
+                return InternalData.get_max_output();
+            }
         }
 
         public void ScaleInputTrainData(double new_min, double new_max)
@@ -208,14 +219,20 @@ namespace FANNCSharp
             }
         }
 
-        public uint NumInput()
+        public uint InputCount
         {
-            return InternalData.num_input_train_data();
+            get
+            {
+                return InternalData.num_input_train_data();
+            }
         }
 
-        public uint NumOutput()
+        public uint OutputCount
         {
-            return InternalData.num_output_train_data();
+            get
+            {
+                return InternalData.num_output_train_data();
+            }
         }
 
         public bool SaveTrainToFixed(string filename, uint decimalPoint)
@@ -223,9 +240,12 @@ namespace FANNCSharp
             return InternalData.save_train_to_fixed(filename, decimalPoint);
         }
 
-        public uint LengthTrainData()
+        public uint TrainDataLength
         {
-            return InternalData.length_train_data();
+            get
+            {
+                return InternalData.length_train_data();
+            }
         }
 
         public void ScaleTrainData(double new_min, double new_max)
@@ -237,10 +257,9 @@ namespace FANNCSharp
         {
             InternalData.Dispose();
         }
-        public FannWrapperDouble.training_data InternalData
+        internal FannWrapperDouble.training_data InternalData
         { 
-            get;
-            protected set;
+            get; set;
         }
     }
 }

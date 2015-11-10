@@ -32,20 +32,19 @@ namespace XorTrain
             int decimal_point;
 
             Console.WriteLine("Creating network.");
-            using (NeuralNet net = new NeuralNet())
+            using (NeuralNet net = new NeuralNet(network_type_enum.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
             {
-                net.Create(num_layers, num_input, num_neurons_hidden, num_output);
                 using (TrainingData data = new TrainingData())
                 {
                     data.ReadTrainFromFile("..\\..\\examples\\xor.data");
 
-                    net.SetActivationFunctionHidden(activation_function_enum.SIGMOID_SYMMETRIC);
-                    net.SetActivationFunctionOutput(activation_function_enum.SIGMOID_SYMMETRIC);
+                    net.ActivationFunctionHidden = activation_function_enum.SIGMOID_SYMMETRIC;
+                    net.ActivationFunctionOutput = activation_function_enum.SIGMOID_SYMMETRIC;
 
-                    net.SetTrainStopFunction(stop_function_enum.STOPFUNC_BIT);
-                    net.SetBitFailLimit(0.01F);
+                    net.TrainStopFunction = stop_function_enum.STOPFUNC_BIT;
+                    net.BitFailLimit = 0.01F;
 
-                    net.SetTrainingAlgorithm(training_algorithm_enum.TRAIN_RPROP);
+                    net.TrainingAlgorithm = training_algorithm_enum.TRAIN_RPROP;
 
                     net.InitWeights(data);
 
@@ -54,7 +53,7 @@ namespace XorTrain
 
                     Console.WriteLine("Testing network");
 
-                    for (int i = 0; i < data.LengthTrainData(); i++)
+                    for (int i = 0; i < data.TrainDataLength; i++)
                     {
                         calc_out = net.Run(data.Input[i]);
                         Console.WriteLine("XOR test ({0},{1}) -> {2}, should be {3}, difference={4}",

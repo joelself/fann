@@ -34,13 +34,12 @@ namespace Example
                 for (float momentum = 0.0F; momentum < 0.7F; momentum += 0.1F)
                 {
                     Console.WriteLine("============= momentum = {0} =============\n", momentum);
-                    using (NeuralNet net = new NeuralNet())
+                    using (NeuralNet net = new NeuralNet(num_layers, trainData.InputCount, num_neurons_hidden, trainData.OutputCount))
                     {
-                        net.Create(num_layers, trainData.NumInput(), num_neurons_hidden, trainData.NumOutput());
 
-                        net.SetTrainingAlgorithm(training_algorithm_enum.TRAIN_INCREMENTAL);
+                        net.TrainingAlgorithm = training_algorithm_enum.TRAIN_INCREMENTAL;
 
-                        net.SetLearningMomentum(momentum);
+                        net.LearningMomentum = momentum;
 
                         net.TrainOnData(trainData, 2000, 500, desired_error);
 

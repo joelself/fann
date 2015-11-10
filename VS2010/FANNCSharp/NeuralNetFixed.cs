@@ -1,16 +1,13 @@
 ﻿using System;
 using FannWrapperFixed;
 using FannWrapper;
+using System.Collections.Generic;
 
 namespace FANNCSharp
 {
     public class NeuralNetFixed : IDisposable
     {
         neural_net net = null;
-        public NeuralNetFixed()
-        {
-           net = new neural_net();
-        }
 
         public NeuralNetFixed(NeuralNetFixed other)
         {
@@ -27,12 +24,13 @@ namespace FANNCSharp
             return net.get_multiplier();
         }
 
+
         public void Dispose()
         {
-           net.destroy();
+            net.destroy();
         }
 
-        public bool Create(uint numLayers, params uint[]args)
+        public NeuralNetFixed(network_type_enum netType, uint numLayers, params uint[] args)
         {
             using (uintArray newLayers = new uintArray((int)numLayers))
             {
@@ -41,50 +39,27 @@ namespace FANNCSharp
                     newLayers.setitem(i, args[i]);
                 }
                 Outputs = args[args.Length - 1];
-                return net.create_standard_array(numLayers, newLayers.cast());
+                net = new neural_net(netType, numLayers, newLayers.cast());
             }
         }
 
-        public bool Create(uint[] layers)
+        public NeuralNetFixed(network_type_enum netType, ICollection<uint> layers)
         {
-            using (uintArray newLayers = new uintArray(layers.Length))
+            using (uintArray newLayers = new uintArray(layers.Count))
             {
-                for (int i = 0; i < layers.Length; i++)
+                IEnumerator<uint> enumerator = layers.GetEnumerator();
+                int i = 0;
+                do
                 {
-                    newLayers.setitem(i, layers[i]);
-                }
-                Outputs = layers[layers.Length - 1];
-                return net.create_standard_array((uint)layers.Length, newLayers.cast());
+                    newLayers.setitem(i, enumerator.Current);
+                    i++;
+                } while (enumerator.MoveNext());
+                Outputs = newLayers.getitem(layers.Count - 1);
+                net = new neural_net(netType, (uint)layers.Count, newLayers.cast());
             }
         }
 
-        public bool CreateSparse(float connectionRate, uint numLayers, params uint[] args)
-        {
-            using (uintArray newLayers = new uintArray((int)numLayers))
-            {
-                for (int i = 0; i < args.Length; i++)
-                {
-                    newLayers.setitem(i, args[i]);
-                }
-                Outputs = args[args.Length - 1];
-                return net.create_sparse_array(connectionRate, numLayers, newLayers.cast());
-            }
-        }
-
-        public bool CreateSparse(float connectionRate, uint[] layers)
-        {
-            using (uintArray newLayers = new uintArray(layers.Length))
-            {
-                for (int i = 0; i < layers.Length; i++)
-                {
-                    newLayers.setitem(i, layers[i]);
-                }
-                Outputs = layers[layers.Length - 1];
-                return net.create_sparse_array(connectionRate, (uint)layers.Length, newLayers.cast());
-            }
-        }
-
-        public bool CreateShortcut(uint numLayers, params uint[] args)
+        public NeuralNetFixed(float connectionRate, uint numLayers, params uint[] args)
         {
             using (uintArray newLayers = new uintArray((int)numLayers))
             {
@@ -93,21 +68,29 @@ namespace FANNCSharp
                     newLayers.setitem(i, args[i]);
                 }
                 Outputs = args[args.Length - 1];
-                return net.create_shortcut_array(numLayers, newLayers.cast());
+                net = new neural_net(connectionRate, numLayers, newLayers.cast());
             }
         }
 
-        public bool CreateShortcut(uint[] layers)
+        public NeuralNetFixed(float connectionRate, ICollection<uint> layers)
         {
-            using (uintArray newLayers = new uintArray(layers.Length))
+            using (uintArray newLayers = new uintArray(layers.Count))
             {
-                for (int i = 0; i < layers.Length; i++)
+                IEnumerator<uint> enumerator = layers.GetEnumerator();
+                int i = 0;
+                do
                 {
-                    newLayers.setitem(i, layers[i]);
-                }
-                Outputs = layers[layers.Length - 1];
-                return net.create_shortcut_array((uint)layers.Length, newLayers.cast());
+                    newLayers.setitem(i, enumerator.Current);
+                    i++;
+                } while (enumerator.MoveNext());
+                Outputs = newLayers.getitem(layers.Count - 1);
+                net = new neural_net(connectionRate, (uint)layers.Count, newLayers.cast());
             }
+        }
+
+        public NeuralNetFixed(string filename)
+        {
+            net = new neural_net(filename);
         }
 
         public int[] Run(int[] input)
@@ -132,23 +115,16 @@ namespace FANNCSharp
 
         public void RandomizeWeights(int minWeight, int maxWeight)
         {
-           net.randomize_weights(minWeight, maxWeight);
+            net.randomize_weights(minWeight, maxWeight);
         }
         public void InitWeights(TrainingDataFixed data)
         {
-           net.init_weights(data.InternalData);
+            net.init_weights(data.InternalData);
         }
 
         public void PrintConnections()
         {
-           net.print_connections();
-        }
-
-        public bool CreateFromFile(string file)
-        {
-            bool result = net.create_from_file(file);
-            Outputs = net.get_num_output();
-            return result;
+            net.print_connections();
         }
 
         public bool Save(string file)
@@ -189,41 +165,47 @@ namespace FANNCSharp
             return net.test_data(data.InternalData);
         }
 
-        public float GetMSE()
+        public float MSE
         {
-            return net.get_MSE();
+            get
+            {
+                return net.get_MSE();
+            }
         }
 
         public void ResetMSE()
         {
-           net.reset_MSE();
+            net.reset_MSE();
         }
 
         public void PrintParameters()
         {
-           net.print_parameters();
+            net.print_parameters();
         }
 
-        public training_algorithm_enum GetTrainingAlgorithm()
+        public training_algorithm_enum TrainingAlgorithm
         {
-            return net.get_training_algorithm();
+            get
+            {
+                return net.get_training_algorithm();
+            }
+            set
+            {
+                net.set_training_algorithm(value);
+            }
         }
 
-        public void SetTrainingAlgorithm(training_algorithm_enum algorithm)
+        public float LearningRate
         {
-           net.set_training_algorithm(algorithm);
+            get
+            {
+                return net.get_learning_rate();
+            }
+            set
+            {
+                net.set_learning_rate(value);
+            }
         }
-
-        public float GetLearningRate()
-        {
-            return net.get_learning_rate();
-        }
-
-        public void SetLearningRate(float rate)
-        {
-           net.set_learning_rate(rate);
-        }
-
         public activation_function_enum GetActivationFunction(int layer, int neuron)
         {
             return net.get_activation_function(layer, neuron);
@@ -231,22 +213,28 @@ namespace FANNCSharp
 
         public void SetActivationFunction(activation_function_enum function, int layer, int neuron)
         {
-           net.set_activation_function(function, layer, neuron);
+            net.set_activation_function(function, layer, neuron);
         }
 
         public void SetActivationFunctionLayer(activation_function_enum function, int layer)
         {
-           net.set_activation_function_layer(function, layer);
+            net.set_activation_function_layer(function, layer);
         }
 
-        public void SetActivationFunctionHidden(activation_function_enum function)
+        public activation_function_enum ActivationFunctionHidden
         {
-           net.set_activation_function_hidden(function);
+            set
+            {
+                net.set_activation_function_hidden(value);
+            }
         }
 
-        public void SetActivationFunctionOutput(activation_function_enum function)
+        public activation_function_enum ActivationFunctionOutput
         {
-           net.set_activation_function_output(function);
+            set
+            {
+                net.set_activation_function_output(value);
+            }
         }
 
         public int GetActivationSteepness(int layer, int neuron)
@@ -256,133 +244,167 @@ namespace FANNCSharp
 
         public void SetActivationSteepness(int steepness, int layer, int neuron)
         {
-           net.set_activation_steepness(steepness, layer, neuron);
+            net.set_activation_steepness(steepness, layer, neuron);
         }
 
         public void SetActivationSteepnessLayer(int steepness, int layer)
         {
-           net.set_activation_steepness_layer(steepness, layer);
+            net.set_activation_steepness_layer(steepness, layer);
         }
 
         public void SetActivationSteepnessHidden(int steepness)
         {
-           net.set_activation_steepness_hidden(steepness);
+            net.set_activation_steepness_hidden(steepness);
         }
 
         public void SetActivationSteepnessOutput(int steepness)
         {
-           net.set_activation_steepness_output(steepness);
+            net.set_activation_steepness_output(steepness);
         }
 
-        public error_function_enum GetTrainErrorFunction()
+        public error_function_enum TrainErrorFunction
         {
-            return net.get_train_error_function();
+            get
+            {
+                return net.get_train_error_function();
+            }
+            set
+            {
+                net.set_train_error_function(value);
+            }
         }
 
-        public void SetTrainErrorFunction(error_function_enum function)
+        public float QuickpropDecay
         {
-           net.set_train_error_function(function);
+            get
+            {
+                return net.get_quickprop_decay();
+            }
+            set
+            {
+                net.set_quickprop_decay(value);
+            }
         }
 
-        public float GetQuickpropDecay()
+        public float QuickpropMu
         {
-            return net.get_quickprop_decay();
+            get
+            {
+                return net.get_quickprop_mu();
+            }
+            set
+            {
+                net.set_quickprop_mu(value);
+            }
+        }
+        public float RpropIncreaseFactor
+        {
+            get
+            {
+                return net.get_rprop_increase_factor();
+            }
+            set
+            {
+                net.set_rprop_increase_factor(value);
+            }
+        }
+        public float RpropDecreaseFactor
+        {
+            get
+            {
+                return net.get_rprop_decrease_factor();
+            }
+            set
+            {
+                net.set_rprop_decrease_factor(value);
+            }
+        }
+        public float RpropDeltaZero
+        {
+            get
+            {
+                return net.get_rprop_delta_zero();
+            }
+            set
+            {
+                net.set_rprop_delta_zero(value);
+            }
+        }
+        public float RpropDeltaMin
+        {
+            get
+            {
+                return net.get_rprop_delta_min();
+            }
+            set
+            {
+                net.set_rprop_delta_min(value);
+            }
+        }
+        public float RpropDeltaMax
+        {
+            get
+            {
+                return net.get_rprop_delta_max();
+            }
+            set
+            {
+                net.set_rprop_delta_max(value);
+            }
+        }
+        public float SarpropWeightDecayShift
+        {
+            get
+            {
+                return net.get_sarprop_weight_decay_shift();
+            }
+            set
+            {
+                net.set_sarprop_weight_decay_shift(value);
+            }
+        }
+        public float SarpropStepErrorThresholdFactor
+        {
+            get
+            {
+                return net.get_sarprop_step_error_threshold_factor();
+            }
+            set
+            {
+                net.set_sarprop_step_error_threshold_factor(value);
+            }
+        }
+        public float SarpropStepErrorShift
+        {
+            get
+            {
+                return net.get_sarprop_step_error_shift();
+            }
+            set
+            {
+                net.set_sarprop_step_error_shift(value);
+            }
+        }
+        public float SarpropTemperature
+        {
+            get
+            {
+                return net.get_sarprop_temperature();
+            }
+            set
+            {
+                net.set_sarprop_temperature(value);
+            }
         }
 
-        public void SetQuickpropDecay(float decay)
-        {
-           net.set_quickprop_decay(decay);
-        }
-
-        public float GetQuickpropMu()
-        {
-            return net.get_quickprop_mu();
-        }
-        public void SetQuickpropMu(float quickprop_mu)
-        {
-           net.set_quickprop_mu(quickprop_mu);
-        }
-        public float GetRpropIncreaseFactor()
-        {
-            return net.get_rprop_increase_factor();
-        }
-        public void SetRpropIncreaseFactor(float rprop_increase_factor)
-        {
-           net.set_rprop_increase_factor(rprop_increase_factor);
-        }
-        public float GetRpropDecreaseFactor()
-        {
-            return net.get_rprop_decrease_factor();
-        }
-        public void SetRpropDecreaseFactor(float rprop_decrease_factor)
-        {
-           net.set_rprop_decrease_factor(rprop_decrease_factor);
-        }
-        public float GetRpropDeltaZero()
-        {
-            return net.get_rprop_delta_zero();
-        }
-        public void SetRpropDeltaZero(float rprop_delta_zero)
-        {
-           net.set_rprop_delta_zero(rprop_delta_zero);
-        }
-        public float GetRpropDeltaMin()
-        {
-            return net.get_rprop_delta_min();
-        }
-        public void SetRpropDeltaMin(float rprop_delta_min)
-        {
-           net.set_rprop_delta_min(rprop_delta_min);
-        }
-        public float GetRpropDeltaMax()
-        {
-            return net.get_rprop_delta_max();
-        }
-        public void SetRpropDeltaMax(float rprop_delta_max)
-        {
-           net.set_rprop_delta_max(rprop_delta_max);
-        }
-        public float GetSarpropWeightDecayShift()
-        {
-            return net.get_sarprop_weight_decay_shift();
-        }
-        public void SetSarpropWeightDecayShift(float sarprop_weight_decay_shift)
-        {
-           net.set_sarprop_weight_decay_shift(sarprop_weight_decay_shift);
-        }
-        public float GetSarpropStepErrorThresholdFactor()
-        {
-            return net.get_sarprop_step_error_threshold_factor();
-        }
-        public void SetSarpropStepErrorThresholdFactor(float sarprop_step_error_threshold_factor)
-        {
-           net.set_sarprop_step_error_threshold_factor(sarprop_step_error_threshold_factor);
-        }
-        public float GetSarpropStepErrorShift()
-        {
-            return net.get_sarprop_step_error_shift();
-        }
-        public void SetSarpropStepErrorShift(float sarprop_step_error_shift)
-        {
-           net.set_sarprop_step_error_shift(sarprop_step_error_shift);
-        }
-        public float GetSarpropTemperature()
-        {
-            return net.get_sarprop_temperature();
-        }
-
-        public void SetSarpropTemperature(float sarprop_temperature)
-        {
-           net.set_sarprop_temperature(sarprop_temperature);
-        }
-        public uint NumInput
+        public uint InputCount
         {
             get
             {
                 return net.get_num_input();
             }
         }
-        public uint NumOutput
+        public uint OutputCount
         {
             get
             {
@@ -489,77 +511,88 @@ namespace FANNCSharp
         }
         public void SetWeight(uint from_neuron, uint to_neuron, int weight)
         {
-           net.set_weight(from_neuron, to_neuron, weight);
+            net.set_weight(from_neuron, to_neuron, weight);
         }
-        public float GetLearningMomentum()
+        public float LearningMomentum
         {
-            return net.get_learning_momentum();
+            get
+            {
+                return net.get_learning_momentum();
+            }
+            set
+            {
+                net.set_learning_momentum(value);
+            }
         }
-        public void SetLearningMomentum(float learning_momentum)
+        public stop_function_enum TrainStopFunction
         {
-           net.set_learning_momentum(learning_momentum);
+            get
+            {
+                return net.get_train_stop_function();
+            }
+            set
+            {
+                net.set_train_stop_function(value);
+            }
         }
-        public stop_function_enum GetTrainStopFunction()
+        public int BitFailLimit
         {
-            return net.get_train_stop_function();
+            get
+            {
+                return net.get_bit_fail_limit();
+            }
+            set
+            {
+                net.set_bit_fail_limit(value);
+            }
         }
-        public void SetTrainStopFunction(stop_function_enum train_stop_function)
+        public uint BitFail
         {
-           net.set_train_stop_function(train_stop_function);
+            get
+            {
+                return net.get_bit_fail();
+            }
         }
-        public int GetBitFailLimit()
-        {
-            return net.get_bit_fail_limit();
-        }
-        public void SetBitFailLimit(int bit_fail_limit)
-        {
-           net.set_bit_fail_limit(bit_fail_limit);
-        }
-        public uint GetBitFail()
-        {
-            return net.get_bit_fail();
-        }
-
         public void SetErrorLog(FannFile log_file)
         {
-           net.set_error_log(log_file.InternalFile);
+            net.set_error_log(log_file.InternalFile);
         }
-        public uint GetErrno()
+        public uint ErrNo
         {
-            return net.get_errno();
+            get
+            {
+                return net.get_errno();
+            }
         }
         public void ResetErrno()
         {
-           net.reset_errno();
+            net.reset_errno();
         }
         public void ResetErrstr()
         {
-           net.reset_errstr();
+            net.reset_errstr();
         }
-        public string GetErrstr()
+        public string ErrStr
         {
-            return net.get_errstr();
+            get
+            {
+                return net.get_errstr();
+            }
         }
         public void PrintError()
         {
-           net.print_error();
+            net.print_error();
         }
         public void DisableSeedRand()
         {
-           net.disable_seed_rand();
+            net.disable_seed_rand();
         }
         public void EnableSeedRand()
         {
-           net.enable_seed_rand();
-        }
-        public FannFile OpenFile(string filename, string mode)
-        {
-            SWIGTYPE_p_FILE file = fannfixed.fopen(filename, mode);
-            FannFile result = new FannFile(file);
-            return result;
+            net.enable_seed_rand();
         }
 
-#region Properties
+        #region Properties
         public neural_net InternalFloatNet
         {
             get
@@ -569,6 +602,6 @@ namespace FANNCSharp
         }
 
         private uint Outputs { get; set; }
-#endregion Properties
+        #endregion Properties
     }
 }

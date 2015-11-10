@@ -7,9 +7,14 @@ namespace FANNCSharp
 {
     public class FannFile
     {
-        public FannFile(SWIGTYPE_p_FILE file)
+        internal FannFile(SWIGTYPE_p_FILE file)
         {
             InternalFile = file;
+        }
+
+        public FannFile(string filename, string mode)
+        {
+            InternalFile = fanndouble.fopen(filename, mode);
         }
 
         internal SWIGTYPE_p_FILE InternalFile { get; set; }

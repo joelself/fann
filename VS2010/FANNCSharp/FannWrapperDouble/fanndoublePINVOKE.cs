@@ -280,13 +280,28 @@ class fanndoublePINVOKE {
   public static extern global::System.IntPtr training_data_to_fann_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_0")]
-  public static extern global::System.IntPtr new_neural_net__SWIG_0();
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_1")]
-  public static extern global::System.IntPtr new_neural_net__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern global::System.IntPtr new_neural_net__SWIG_0(int jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_2")]
-  public static extern global::System.IntPtr new_neural_net__SWIG_2(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern global::System.IntPtr new_neural_net__SWIG_2(int jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_3")]
+  public static extern global::System.IntPtr new_neural_net__SWIG_3(float jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_4")]
+  public static extern global::System.IntPtr new_neural_net__SWIG_4(float jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_5")]
+  public static extern global::System.IntPtr new_neural_net__SWIG_5(string jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_6")]
+  public static extern global::System.IntPtr new_neural_net__SWIG_6(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_7")]
+  public static extern global::System.IntPtr new_neural_net__SWIG_7(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_8")]
+  public static extern global::System.IntPtr new_neural_net__SWIG_8();
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_copy_from_struct_fann")]
   public static extern void neural_net_copy_from_struct_fann(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);

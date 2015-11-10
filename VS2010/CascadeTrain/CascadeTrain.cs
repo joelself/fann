@@ -44,34 +44,32 @@ namespace Example
 
                 Console.WriteLine("Creating network.");
 
-                using (NeuralNet net = new NeuralNet())
+                using (NeuralNet net = new NeuralNet(network_type_enum.SHORTCUT, 2, trainData.InputCount, trainData.OutputCount))
                 {
-                    net.CreateShortcut(2, trainData.NumInput(), trainData.NumOutput());
-
-                    net.SetTrainingAlgorithm(training_algorithm);
-                    net.SetActivationFunctionHidden(activation_function_enum.SIGMOID_SYMMETRIC);
-                    net.SetActivationFunctionOutput(activation_function_enum.LINEAR);
-                    net.SetTrainErrorFunction(error_function_enum.ERRORFUNC_LINEAR);
+                    net.TrainingAlgorithm = training_algorithm;
+                    net.ActivationFunctionHidden = activation_function_enum.SIGMOID_SYMMETRIC;
+                    net.ActivationFunctionOutput = activation_function_enum.LINEAR;
+                    net.TrainErrorFunction = error_function_enum.ERRORFUNC_LINEAR;
 
                     if (multi != 0)
                     {
                         steepness[0] = 1;
-                        net.SetCascadeActivationSteepnesses(steepness);
+                        net.CascadeActivationSteepnesses = steepness;
 
                         activation[1] = activation_function_enum.SIGMOID_SYMMETRIC;
 
-                        net.SetCascadeActivationFunctions(activation);
-                        net.SetCascadeNumCandidateGroups(8);
+                        net.CascadeActivationFunctions = activation;
+                        net.CascadeCandidateGroupsCount = 8;
                     }
 
                     if (training_algorithm == training_algorithm_enum.TRAIN_QUICKPROP)
                     {
-                        net.SetLearningRate(0.35F);
+                        net.LearningRate = 0.35F;
                         net.RandomizeWeights(-2.0F, 2.0F);
                     }
 
-                    net.SetBitFailLimit((DataType)0.9);
-                    net.SetTrainStopFunction(stop_function_enum.STOPFUNC_BIT);
+                    net.BitFailLimit = (DataType)0.9;
+                    net.TrainStopFunction = stop_function_enum.STOPFUNC_BIT;
                     net.PrintParameters();
 
                     net.Save("..\\..\\examples\\cascade_train2.net");
@@ -83,13 +81,13 @@ namespace Example
                     net.PrintConnections();
 
                     mse_train = net.TestData(trainData);
-                    bit_fail_train = net.GetBitFail();
+                    bit_fail_train = net.BitFail;
                     mse_test = net.TestData(testData);
-                    bit_fail_test = net.GetBitFail();
+                    bit_fail_test = net.BitFail;
 
                     Console.WriteLine("\nTrain error: {0}, Train bit-fail: {1}, Test error: {2}, Test bit-fail: {3}\n",
                                       mse_train, bit_fail_train, mse_test, bit_fail_test);
-                    for (int i = 0; i < trainData.LengthTrainData(); i++)
+                    for (int i = 0; i < trainData.TrainDataLength; i++)
                     {
                         output = net.Run(trainData.Input[i]);
                         if ((trainData.Output[i][0] >= 0 && output[0] <= 0) ||

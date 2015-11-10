@@ -21,14 +21,8 @@ namespace Example
     {
         static int Main(string[] args)
         {
-            using (NeuralNet net = new NeuralNet())
+            using (NeuralNet net = new NeuralNet("..\\..\\examples\\xor_float.net"))
             {
-                if (!net.CreateFromFile("..\\..\\examples\\xor_float.net"))
-                {
-                    Console.WriteLine("Error creating ann --- ABORTING.\n");
-                    return -1;
-                }
-
                 net.PrintConnections();
                 net.PrintParameters();
 
@@ -41,7 +35,7 @@ namespace Example
                         Console.WriteLine("Error reading training data --- ABORTING.\n");
                         return -1;
                     }
-                    for (int i = 0; i < data.LengthTrainData(); i++)
+                    for (int i = 0; i < data.TrainDataLength; i++)
                     {
                         net.ResetMSE();
                         DataType[] calc_out = net.Test(data.Input[i], data.Input[i]);
