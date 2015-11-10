@@ -11,20 +11,20 @@
 using FannWrapperFloat;
 namespace FannWrapper {
 
-public class activationFunctionArray : global::System.IDisposable {
+public class ActivationFunctionArray : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal activationFunctionArray(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal ActivationFunctionArray(global::System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(activationFunctionArray obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(ActivationFunctionArray obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 
-  ~activationFunctionArray() {
+  ~ActivationFunctionArray() {
     Dispose();
   }
 
@@ -33,7 +33,7 @@ public class activationFunctionArray : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          fannfloatPINVOKE.delete_activationFunctionArray(swigCPtr);
+          fannfloatPINVOKE.delete_ActivationFunctionArray(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -41,27 +41,27 @@ public class activationFunctionArray : global::System.IDisposable {
     }
   }
 
-  public activationFunctionArray(int nelements) : this(fannfloatPINVOKE.new_activationFunctionArray(nelements), true) {
+  public ActivationFunctionArray(int nelements) : this(fannfloatPINVOKE.new_ActivationFunctionArray(nelements), true) {
   }
 
-  public activation_function_enum getitem(int index) {
-    activation_function_enum ret = (activation_function_enum)fannfloatPINVOKE.activationFunctionArray_getitem(swigCPtr, index);
+  public ActivationFunction getitem(int index) {
+    ActivationFunction ret = (ActivationFunction)fannfloatPINVOKE.ActivationFunctionArray_getitem(swigCPtr, index);
     return ret;
   }
 
-  public void setitem(int index, activation_function_enum value) {
-    fannfloatPINVOKE.activationFunctionArray_setitem(swigCPtr, index, (int)value);
+  public void setitem(int index, ActivationFunction value) {
+    fannfloatPINVOKE.ActivationFunctionArray_setitem(swigCPtr, index, (int)value);
   }
 
   public SWIGTYPE_p_FANN__activation_function_enum cast() {
-    global::System.IntPtr cPtr = fannfloatPINVOKE.activationFunctionArray_cast(swigCPtr);
+    global::System.IntPtr cPtr = fannfloatPINVOKE.ActivationFunctionArray_cast(swigCPtr);
     SWIGTYPE_p_FANN__activation_function_enum ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_FANN__activation_function_enum(cPtr, false);
     return ret;
   }
 
-  public static activationFunctionArray frompointer(SWIGTYPE_p_FANN__activation_function_enum t) {
-    global::System.IntPtr cPtr = fannfloatPINVOKE.activationFunctionArray_frompointer(SWIGTYPE_p_FANN__activation_function_enum.getCPtr(t));
-    activationFunctionArray ret = (cPtr == global::System.IntPtr.Zero) ? null : new activationFunctionArray(cPtr, false);
+  public static ActivationFunctionArray frompointer(SWIGTYPE_p_FANN__activation_function_enum t) {
+    global::System.IntPtr cPtr = fannfloatPINVOKE.ActivationFunctionArray_frompointer(SWIGTYPE_p_FANN__activation_function_enum.getCPtr(t));
+    ActivationFunctionArray ret = (cPtr == global::System.IntPtr.Zero) ? null : new ActivationFunctionArray(cPtr, false);
     return ret;
   }
 

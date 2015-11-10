@@ -41,10 +41,10 @@ public class neural_net : global::System.IDisposable {
     }
   }
 
-  public neural_net(network_type_enum net_type, uint num_layers, SWIGTYPE_p_unsigned_int layers) : this(fanndoublePINVOKE.new_neural_net__SWIG_0((int)net_type, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers)), true) {
+  public neural_net(NetworkType net_type, uint num_layers, SWIGTYPE_p_unsigned_int layers) : this(fanndoublePINVOKE.new_neural_net__SWIG_0((int)net_type, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers)), true) {
   }
 
-  public neural_net(network_type_enum net_type, uint num_layers) : this(fanndoublePINVOKE.new_neural_net__SWIG_2((int)net_type, num_layers), true) {
+  public neural_net(NetworkType net_type, uint num_layers) : this(fanndoublePINVOKE.new_neural_net__SWIG_2((int)net_type, num_layers), true) {
   }
 
   public neural_net(float connection_rate, uint num_layers) : this(fanndoublePINVOKE.new_neural_net__SWIG_3(connection_rate, num_layers), true) {
@@ -191,12 +191,12 @@ public class neural_net : global::System.IDisposable {
     fanndoublePINVOKE.neural_net_print_parameters(swigCPtr);
   }
 
-  public training_algorithm_enum get_training_algorithm() {
-    training_algorithm_enum ret = (training_algorithm_enum)fanndoublePINVOKE.neural_net_get_training_algorithm(swigCPtr);
+  public TrainingAlgorithm get_training_algorithm() {
+    TrainingAlgorithm ret = (TrainingAlgorithm)fanndoublePINVOKE.neural_net_get_training_algorithm(swigCPtr);
     return ret;
   }
 
-  public void set_training_algorithm(training_algorithm_enum training_algorithm) {
+  public void set_training_algorithm(TrainingAlgorithm training_algorithm) {
     fanndoublePINVOKE.neural_net_set_training_algorithm(swigCPtr, (int)training_algorithm);
   }
 
@@ -209,24 +209,24 @@ public class neural_net : global::System.IDisposable {
     fanndoublePINVOKE.neural_net_set_learning_rate(swigCPtr, learning_rate);
   }
 
-  public activation_function_enum get_activation_function(int layer, int neuron) {
-    activation_function_enum ret = (activation_function_enum)fanndoublePINVOKE.neural_net_get_activation_function(swigCPtr, layer, neuron);
+  public ActivationFunction get_activation_function(int layer, int neuron) {
+    ActivationFunction ret = (ActivationFunction)fanndoublePINVOKE.neural_net_get_activation_function(swigCPtr, layer, neuron);
     return ret;
   }
 
-  public void set_activation_function(activation_function_enum activation_function, int layer, int neuron) {
+  public void set_activation_function(ActivationFunction activation_function, int layer, int neuron) {
     fanndoublePINVOKE.neural_net_set_activation_function(swigCPtr, (int)activation_function, layer, neuron);
   }
 
-  public void set_activation_function_layer(activation_function_enum activation_function, int layer) {
+  public void set_activation_function_layer(ActivationFunction activation_function, int layer) {
     fanndoublePINVOKE.neural_net_set_activation_function_layer(swigCPtr, (int)activation_function, layer);
   }
 
-  public void set_activation_function_hidden(activation_function_enum activation_function) {
+  public void set_activation_function_hidden(ActivationFunction activation_function) {
     fanndoublePINVOKE.neural_net_set_activation_function_hidden(swigCPtr, (int)activation_function);
   }
 
-  public void set_activation_function_output(activation_function_enum activation_function) {
+  public void set_activation_function_output(ActivationFunction activation_function) {
     fanndoublePINVOKE.neural_net_set_activation_function_output(swigCPtr, (int)activation_function);
   }
 
@@ -251,12 +251,12 @@ public class neural_net : global::System.IDisposable {
     fanndoublePINVOKE.neural_net_set_activation_steepness_output(swigCPtr, steepness);
   }
 
-  public error_function_enum get_train_error_function() {
-    error_function_enum ret = (error_function_enum)fanndoublePINVOKE.neural_net_get_train_error_function(swigCPtr);
+  public ErrorFunction get_train_error_function() {
+    ErrorFunction ret = (ErrorFunction)fanndoublePINVOKE.neural_net_get_train_error_function(swigCPtr);
     return ret;
   }
 
-  public void set_train_error_function(error_function_enum train_error_function) {
+  public void set_train_error_function(ErrorFunction train_error_function) {
     fanndoublePINVOKE.neural_net_set_train_error_function(swigCPtr, (int)train_error_function);
   }
 
@@ -379,8 +379,8 @@ public class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public network_type_enum get_network_type() {
-    network_type_enum ret = (network_type_enum)fanndoublePINVOKE.neural_net_get_network_type(swigCPtr);
+  public NetworkType get_network_type() {
+    NetworkType ret = (NetworkType)fanndoublePINVOKE.neural_net_get_network_type(swigCPtr);
     return ret;
   }
 
@@ -402,12 +402,12 @@ public class neural_net : global::System.IDisposable {
     fanndoublePINVOKE.neural_net_get_bias_array(swigCPtr, SWIGTYPE_p_unsigned_int.getCPtr(bias));
   }
 
-  public void get_connection_array(connection connections) {
-    fanndoublePINVOKE.neural_net_get_connection_array(swigCPtr, connection.getCPtr(connections));
+  public void get_connection_array(Connection connections) {
+    fanndoublePINVOKE.neural_net_get_connection_array(swigCPtr, Connection.getCPtr(connections));
   }
 
-  public void set_weight_array(connection connections, uint num_connections) {
-    fanndoublePINVOKE.neural_net_set_weight_array(swigCPtr, connection.getCPtr(connections), num_connections);
+  public void set_weight_array(Connection connections, uint num_connections) {
+    fanndoublePINVOKE.neural_net_set_weight_array(swigCPtr, Connection.getCPtr(connections), num_connections);
   }
 
   public void set_weight(uint from_neuron, uint to_neuron, double weight) {
@@ -423,12 +423,12 @@ public class neural_net : global::System.IDisposable {
     fanndoublePINVOKE.neural_net_set_learning_momentum(swigCPtr, learning_momentum);
   }
 
-  public stop_function_enum get_train_stop_function() {
-    stop_function_enum ret = (stop_function_enum)fanndoublePINVOKE.neural_net_get_train_stop_function(swigCPtr);
+  public StopFunction get_train_stop_function() {
+    StopFunction ret = (StopFunction)fanndoublePINVOKE.neural_net_get_train_stop_function(swigCPtr);
     return ret;
   }
 
-  public void set_train_stop_function(stop_function_enum train_stop_function) {
+  public void set_train_stop_function(StopFunction train_stop_function) {
     fanndoublePINVOKE.neural_net_set_train_stop_function(swigCPtr, (int)train_stop_function);
   }
 

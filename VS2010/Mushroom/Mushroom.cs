@@ -28,7 +28,7 @@ namespace Example
 
             
             using (TrainingData data = new TrainingData())
-            using (NeuralNet net = new NeuralNet(network_type_enum.LAYER, num_layers, data.InputCount, num_neurons_hidden, data.OutputCount))
+            using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, data.InputCount, num_neurons_hidden, data.OutputCount))
             {
                 Console.WriteLine("Creating network.");
 
@@ -36,8 +36,8 @@ namespace Example
 
                 Console.WriteLine("Training network.");
 
-                net.ActivationFunctionHidden = activation_function_enum.SIGMOID_SYMMETRIC;
-                net.ActivationFunctionOutput = activation_function_enum.SIGMOID;
+                net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
+                net.ActivationFunctionOutput = ActivationFunction.SIGMOID;
 
                 net.TrainOnData(data, max_epochs, epochs_between_reports, desired_error);
 

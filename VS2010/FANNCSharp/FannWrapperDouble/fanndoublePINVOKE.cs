@@ -195,6 +195,30 @@ class fanndoublePINVOKE {
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_FANNSCANF_get")]
   public static extern string FANNSCANF_get();
 
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_from_neuron_set")]
+  public static extern void Connection_from_neuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_from_neuron_get")]
+  public static extern uint Connection_from_neuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_to_neuron_set")]
+  public static extern void Connection_to_neuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_to_neuron_get")]
+  public static extern uint Connection_to_neuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_weight_set")]
+  public static extern void Connection_weight_set(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_weight_get")]
+  public static extern double Connection_weight_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_Connection")]
+  public static extern global::System.IntPtr new_Connection();
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_Connection")]
+  public static extern void delete_Connection(global::System.Runtime.InteropServices.HandleRef jarg1);
+
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_training_data__SWIG_0")]
   public static extern global::System.IntPtr new_training_data__SWIG_0();
 
@@ -693,48 +717,6 @@ class fanndoublePINVOKE {
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fopen")]
   public static extern global::System.IntPtr fopen(string jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_connection_from_neuron_set")]
-  public static extern void connection_from_neuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_connection_from_neuron_get")]
-  public static extern uint connection_from_neuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_connection_to_neuron_set")]
-  public static extern void connection_to_neuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_connection_to_neuron_get")]
-  public static extern uint connection_to_neuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_connection_weight_set")]
-  public static extern void connection_weight_set(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_connection_weight_get")]
-  public static extern double connection_weight_get(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_connection")]
-  public static extern global::System.IntPtr new_connection();
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_connection")]
-  public static extern void delete_connection(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_connectionArray")]
-  public static extern global::System.IntPtr new_connectionArray(int jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_connectionArray")]
-  public static extern void delete_connectionArray(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_connectionArray_getitem")]
-  public static extern global::System.IntPtr connectionArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_connectionArray_setitem")]
-  public static extern void connectionArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_connectionArray_cast")]
-  public static extern global::System.IntPtr connectionArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_connectionArray_frompointer")]
-  public static extern global::System.IntPtr connectionArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
-
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_uintArray")]
   public static extern global::System.IntPtr new_uintArray(int jarg1);
 
@@ -753,23 +735,41 @@ class fanndoublePINVOKE {
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_uintArray_frompointer")]
   public static extern global::System.IntPtr uintArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_activationFunctionArray")]
-  public static extern global::System.IntPtr new_activationFunctionArray(int jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_ActivationFunctionArray")]
+  public static extern global::System.IntPtr new_ActivationFunctionArray(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_activationFunctionArray")]
-  public static extern void delete_activationFunctionArray(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_ActivationFunctionArray")]
+  public static extern void delete_ActivationFunctionArray(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_activationFunctionArray_getitem")]
-  public static extern int activationFunctionArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ActivationFunctionArray_getitem")]
+  public static extern int ActivationFunctionArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_activationFunctionArray_setitem")]
-  public static extern void activationFunctionArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ActivationFunctionArray_setitem")]
+  public static extern void ActivationFunctionArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_activationFunctionArray_cast")]
-  public static extern global::System.IntPtr activationFunctionArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ActivationFunctionArray_cast")]
+  public static extern global::System.IntPtr ActivationFunctionArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_activationFunctionArray_frompointer")]
-  public static extern global::System.IntPtr activationFunctionArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ActivationFunctionArray_frompointer")]
+  public static extern global::System.IntPtr ActivationFunctionArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_ConnectionArray")]
+  public static extern global::System.IntPtr new_ConnectionArray(int jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_ConnectionArray")]
+  public static extern void delete_ConnectionArray(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionArray_getitem")]
+  public static extern global::System.IntPtr ConnectionArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionArray_setitem")]
+  public static extern void ConnectionArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionArray_cast")]
+  public static extern global::System.IntPtr ConnectionArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionArray_frompointer")]
+  public static extern global::System.IntPtr ConnectionArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_train_epoch_batch_parallel__SWIG_0")]
   public static extern float train_epoch_batch_parallel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
@@ -807,203 +807,149 @@ class fanndoublePINVOKE {
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_test_data_parallel__SWIG_1")]
   public static extern float test_data_parallel__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_errno_f_set")]
-  public static extern void fann_train_data_errno_f_set(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_Clear")]
+  public static extern void doubleVectorVector_Clear(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_errno_f_get")]
-  public static extern int fann_train_data_errno_f_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_Add")]
+  public static extern void doubleVectorVector_Add(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_error_log_set")]
-  public static extern void fann_train_data_error_log_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_size")]
+  public static extern uint doubleVectorVector_size(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_error_log_get")]
-  public static extern global::System.IntPtr fann_train_data_error_log_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_capacity")]
+  public static extern uint doubleVectorVector_capacity(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_errstr_set")]
-  public static extern void fann_train_data_errstr_set(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_reserve")]
+  public static extern void doubleVectorVector_reserve(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_errstr_get")]
-  public static extern string fann_train_data_errstr_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleVectorVector__SWIG_0")]
+  public static extern global::System.IntPtr new_doubleVectorVector__SWIG_0();
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_num_data_set")]
-  public static extern void fann_train_data_num_data_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleVectorVector__SWIG_1")]
+  public static extern global::System.IntPtr new_doubleVectorVector__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_num_data_get")]
-  public static extern uint fann_train_data_num_data_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleVectorVector__SWIG_2")]
+  public static extern global::System.IntPtr new_doubleVectorVector__SWIG_2(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_num_input_set")]
-  public static extern void fann_train_data_num_input_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_getitemcopy")]
+  public static extern global::System.IntPtr doubleVectorVector_getitemcopy(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_num_input_get")]
-  public static extern uint fann_train_data_num_input_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_getitem")]
+  public static extern global::System.IntPtr doubleVectorVector_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_num_output_set")]
-  public static extern void fann_train_data_num_output_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_setitem")]
+  public static extern void doubleVectorVector_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_num_output_get")]
-  public static extern uint fann_train_data_num_output_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_AddRange")]
+  public static extern void doubleVectorVector_AddRange(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_input_set")]
-  public static extern void fann_train_data_input_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_GetRange")]
+  public static extern global::System.IntPtr doubleVectorVector_GetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_input_get")]
-  public static extern global::System.IntPtr fann_train_data_input_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_Insert")]
+  public static extern void doubleVectorVector_Insert(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_output_set")]
-  public static extern void fann_train_data_output_set(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_InsertRange")]
+  public static extern void doubleVectorVector_InsertRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fann_train_data_output_get")]
-  public static extern global::System.IntPtr fann_train_data_output_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_RemoveAt")]
+  public static extern void doubleVectorVector_RemoveAt(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_fann_train_data")]
-  public static extern global::System.IntPtr new_fann_train_data();
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_RemoveRange")]
+  public static extern void doubleVectorVector_RemoveRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_fann_train_data")]
-  public static extern void delete_fann_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_Repeat")]
+  public static extern global::System.IntPtr doubleVectorVector_Repeat(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_Clear")]
-  public static extern void DoubleVectorVector_Clear(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_Reverse__SWIG_0")]
+  public static extern void doubleVectorVector_Reverse__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_Add")]
-  public static extern void DoubleVectorVector_Add(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_Reverse__SWIG_1")]
+  public static extern void doubleVectorVector_Reverse__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_size")]
-  public static extern uint DoubleVectorVector_size(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_SetRange")]
+  public static extern void doubleVectorVector_SetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_capacity")]
-  public static extern uint DoubleVectorVector_capacity(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_doubleVectorVector")]
+  public static extern void delete_doubleVectorVector(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_reserve")]
-  public static extern void DoubleVectorVector_reserve(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Clear")]
+  public static extern void doubleVector_Clear(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_DoubleVectorVector__SWIG_0")]
-  public static extern global::System.IntPtr new_DoubleVectorVector__SWIG_0();
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Add")]
+  public static extern void doubleVector_Add(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_DoubleVectorVector__SWIG_1")]
-  public static extern global::System.IntPtr new_DoubleVectorVector__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_size")]
+  public static extern uint doubleVector_size(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_DoubleVectorVector__SWIG_2")]
-  public static extern global::System.IntPtr new_DoubleVectorVector__SWIG_2(int jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_capacity")]
+  public static extern uint doubleVector_capacity(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_getitemcopy")]
-  public static extern global::System.IntPtr DoubleVectorVector_getitemcopy(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_reserve")]
+  public static extern void doubleVector_reserve(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_getitem")]
-  public static extern global::System.IntPtr DoubleVectorVector_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleVector__SWIG_0")]
+  public static extern global::System.IntPtr new_doubleVector__SWIG_0();
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_setitem")]
-  public static extern void DoubleVectorVector_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleVector__SWIG_1")]
+  public static extern global::System.IntPtr new_doubleVector__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_AddRange")]
-  public static extern void DoubleVectorVector_AddRange(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleVector__SWIG_2")]
+  public static extern global::System.IntPtr new_doubleVector__SWIG_2(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_GetRange")]
-  public static extern global::System.IntPtr DoubleVectorVector_GetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_getitemcopy")]
+  public static extern double doubleVector_getitemcopy(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_Insert")]
-  public static extern void DoubleVectorVector_Insert(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_getitem")]
+  public static extern double doubleVector_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_InsertRange")]
-  public static extern void DoubleVectorVector_InsertRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_setitem")]
+  public static extern void doubleVector_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, double jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_RemoveAt")]
-  public static extern void DoubleVectorVector_RemoveAt(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_AddRange")]
+  public static extern void doubleVector_AddRange(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_RemoveRange")]
-  public static extern void DoubleVectorVector_RemoveRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_GetRange")]
+  public static extern global::System.IntPtr doubleVector_GetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_Repeat")]
-  public static extern global::System.IntPtr DoubleVectorVector_Repeat(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Insert")]
+  public static extern void doubleVector_Insert(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, double jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_Reverse__SWIG_0")]
-  public static extern void DoubleVectorVector_Reverse__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_InsertRange")]
+  public static extern void doubleVector_InsertRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_Reverse__SWIG_1")]
-  public static extern void DoubleVectorVector_Reverse__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_RemoveAt")]
+  public static extern void doubleVector_RemoveAt(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVectorVector_SetRange")]
-  public static extern void DoubleVectorVector_SetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_RemoveRange")]
+  public static extern void doubleVector_RemoveRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_DoubleVectorVector")]
-  public static extern void delete_DoubleVectorVector(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Repeat")]
+  public static extern global::System.IntPtr doubleVector_Repeat(double jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_Clear")]
-  public static extern void DoubleVector_Clear(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Reverse__SWIG_0")]
+  public static extern void doubleVector_Reverse__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_Add")]
-  public static extern void DoubleVector_Add(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Reverse__SWIG_1")]
+  public static extern void doubleVector_Reverse__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_size")]
-  public static extern uint DoubleVector_size(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_SetRange")]
+  public static extern void doubleVector_SetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_capacity")]
-  public static extern uint DoubleVector_capacity(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Contains")]
+  public static extern bool doubleVector_Contains(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_reserve")]
-  public static extern void DoubleVector_reserve(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_IndexOf")]
+  public static extern int doubleVector_IndexOf(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_DoubleVector__SWIG_0")]
-  public static extern global::System.IntPtr new_DoubleVector__SWIG_0();
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_LastIndexOf")]
+  public static extern int doubleVector_LastIndexOf(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_DoubleVector__SWIG_1")]
-  public static extern global::System.IntPtr new_DoubleVector__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Remove")]
+  public static extern bool doubleVector_Remove(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_DoubleVector__SWIG_2")]
-  public static extern global::System.IntPtr new_DoubleVector__SWIG_2(int jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_getitemcopy")]
-  public static extern double DoubleVector_getitemcopy(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_getitem")]
-  public static extern double DoubleVector_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_setitem")]
-  public static extern void DoubleVector_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, double jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_AddRange")]
-  public static extern void DoubleVector_AddRange(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_GetRange")]
-  public static extern global::System.IntPtr DoubleVector_GetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_Insert")]
-  public static extern void DoubleVector_Insert(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, double jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_InsertRange")]
-  public static extern void DoubleVector_InsertRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_RemoveAt")]
-  public static extern void DoubleVector_RemoveAt(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_RemoveRange")]
-  public static extern void DoubleVector_RemoveRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_Repeat")]
-  public static extern global::System.IntPtr DoubleVector_Repeat(double jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_Reverse__SWIG_0")]
-  public static extern void DoubleVector_Reverse__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_Reverse__SWIG_1")]
-  public static extern void DoubleVector_Reverse__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_SetRange")]
-  public static extern void DoubleVector_SetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_Contains")]
-  public static extern bool DoubleVector_Contains(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_IndexOf")]
-  public static extern int DoubleVector_IndexOf(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_LastIndexOf")]
-  public static extern int DoubleVector_LastIndexOf(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleVector_Remove")]
-  public static extern bool DoubleVector_Remove(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_DoubleVector")]
-  public static extern void delete_DoubleVector(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_doubleVector")]
+  public static extern void delete_doubleVector(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleArrayArray")]
   public static extern global::System.IntPtr new_doubleArrayArray(int jarg1);

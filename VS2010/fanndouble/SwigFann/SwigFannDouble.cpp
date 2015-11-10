@@ -295,7 +295,6 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_fanndouble(SWIG_CSharpStr
 
 #include "fann.h"
 #include "fann_cpp.h"
-#include "fann_error.h"
 #include "fann_data.h"
 #include "fann_train.h"
 #include "fann_data_cpp.h"
@@ -306,34 +305,12 @@ SWIGEXPORT void SWIGSTDCALL SWIGRegisterStringCallback_fanndouble(SWIG_CSharpStr
 #include <string>
 
 
-typedef struct fann_connection connection;
-typedef FANN::activation_function_enum activation_function_enum;
-typedef FANN::error_function_enum error_function_enum;
-typedef FANN::network_type_enum network_type_enum;
-typedef FANN::stop_function_enum stop_function_enum;
-typedef FANN::training_algorithm_enum training_algorithm_enum;
+typedef enum FANN::activation_function_enum ActivationFunction;
+typedef enum error_function_enum ErrorFunction;
+typedef enum network_type_enum NetworkType;
+typedef enum stop_function_enum StopFunction;
+typedef enum training_algorithm_enum TrainingAlgorithm;
 
-
-typedef connection connectionArray;
-
-SWIGINTERN connectionArray *new_connectionArray(int nelements){
-  return new connection[nelements]();
-}
-SWIGINTERN void delete_connectionArray(connectionArray *self){
-  delete [] self;
-}
-SWIGINTERN connection connectionArray_getitem(connectionArray *self,int index){
-  return self[index];
-}
-SWIGINTERN void connectionArray_setitem(connectionArray *self,int index,connection value){
-  self[index] = value;
-}
-SWIGINTERN connection *connectionArray_cast(connectionArray *self){
-  return self;
-}
-SWIGINTERN connectionArray *connectionArray_frompointer(connection *t){
-  return (connectionArray *) t;
-}
 
 typedef unsigned int uintArray;
 
@@ -356,25 +333,46 @@ SWIGINTERN uintArray *uintArray_frompointer(unsigned int *t){
   return (uintArray *) t;
 }
 
-typedef FANN::activation_function_enum activationFunctionArray;
+typedef ActivationFunction ActivationFunctionArray;
 
-SWIGINTERN activationFunctionArray *new_activationFunctionArray(int nelements){
-  return new FANN::activation_function_enum[nelements]();
+SWIGINTERN ActivationFunctionArray *new_ActivationFunctionArray(int nelements){
+  return new ActivationFunction[nelements]();
 }
-SWIGINTERN void delete_activationFunctionArray(activationFunctionArray *self){
+SWIGINTERN void delete_ActivationFunctionArray(ActivationFunctionArray *self){
   delete [] self;
 }
-SWIGINTERN FANN::activation_function_enum activationFunctionArray_getitem(activationFunctionArray *self,int index){
+SWIGINTERN ActivationFunction ActivationFunctionArray_getitem(ActivationFunctionArray *self,int index){
   return self[index];
 }
-SWIGINTERN void activationFunctionArray_setitem(activationFunctionArray *self,int index,FANN::activation_function_enum value){
+SWIGINTERN void ActivationFunctionArray_setitem(ActivationFunctionArray *self,int index,ActivationFunction value){
   self[index] = value;
 }
-SWIGINTERN FANN::activation_function_enum *activationFunctionArray_cast(activationFunctionArray *self){
+SWIGINTERN ActivationFunction *ActivationFunctionArray_cast(ActivationFunctionArray *self){
   return self;
 }
-SWIGINTERN activationFunctionArray *activationFunctionArray_frompointer(FANN::activation_function_enum *t){
-  return (activationFunctionArray *) t;
+SWIGINTERN ActivationFunctionArray *ActivationFunctionArray_frompointer(ActivationFunction *t){
+  return (ActivationFunctionArray *) t;
+}
+
+typedef fann_connection ConnectionArray;
+
+SWIGINTERN ConnectionArray *new_ConnectionArray(int nelements){
+  return new fann_connection[nelements]();
+}
+SWIGINTERN void delete_ConnectionArray(ConnectionArray *self){
+  delete [] self;
+}
+SWIGINTERN fann_connection ConnectionArray_getitem(ConnectionArray *self,int index){
+  return self[index];
+}
+SWIGINTERN void ConnectionArray_setitem(ConnectionArray *self,int index,fann_connection value){
+  self[index] = value;
+}
+SWIGINTERN fann_connection *ConnectionArray_cast(ConnectionArray *self){
+  return self;
+}
+SWIGINTERN ConnectionArray *ConnectionArray_frompointer(fann_connection *t){
+  return (ConnectionArray *) t;
 }
 
 #include "parallel_fann.hpp"
@@ -662,6 +660,90 @@ SWIGEXPORT char * SWIGSTDCALL CSharp_FANNSCANF_get() {
   result = (char *)("%le");
   jresult = SWIG_csharp_string_callback((const char *)result); 
   return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_Connection_from_neuron_set(void * jarg1, unsigned int jarg2) {
+  fann_connection *arg1 = (fann_connection *) 0 ;
+  unsigned int arg2 ;
+  
+  arg1 = (fann_connection *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  if (arg1) (arg1)->from_neuron = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_Connection_from_neuron_get(void * jarg1) {
+  unsigned int jresult ;
+  fann_connection *arg1 = (fann_connection *) 0 ;
+  unsigned int result;
+  
+  arg1 = (fann_connection *)jarg1; 
+  result = (unsigned int) ((arg1)->from_neuron);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_Connection_to_neuron_set(void * jarg1, unsigned int jarg2) {
+  fann_connection *arg1 = (fann_connection *) 0 ;
+  unsigned int arg2 ;
+  
+  arg1 = (fann_connection *)jarg1; 
+  arg2 = (unsigned int)jarg2; 
+  if (arg1) (arg1)->to_neuron = arg2;
+}
+
+
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_Connection_to_neuron_get(void * jarg1) {
+  unsigned int jresult ;
+  fann_connection *arg1 = (fann_connection *) 0 ;
+  unsigned int result;
+  
+  arg1 = (fann_connection *)jarg1; 
+  result = (unsigned int) ((arg1)->to_neuron);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_Connection_weight_set(void * jarg1, double jarg2) {
+  fann_connection *arg1 = (fann_connection *) 0 ;
+  fann_type arg2 ;
+  
+  arg1 = (fann_connection *)jarg1; 
+  arg2 = (fann_type)jarg2; 
+  if (arg1) (arg1)->weight = arg2;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_Connection_weight_get(void * jarg1) {
+  double jresult ;
+  fann_connection *arg1 = (fann_connection *) 0 ;
+  fann_type result;
+  
+  arg1 = (fann_connection *)jarg1; 
+  result = (fann_type) ((arg1)->weight);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_Connection() {
+  void * jresult ;
+  fann_connection *result = 0 ;
+  
+  result = (fann_connection *)new fann_connection();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_Connection(void * jarg1) {
+  fann_connection *arg1 = (fann_connection *) 0 ;
+  
+  arg1 = (fann_connection *)jarg1; 
+  delete arg1;
 }
 
 
@@ -2749,166 +2831,6 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_fopen(char * jarg1, char * jarg2) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_connection_from_neuron_set(void * jarg1, unsigned int jarg2) {
-  fann_connection *arg1 = (fann_connection *) 0 ;
-  unsigned int arg2 ;
-  
-  arg1 = (fann_connection *)jarg1; 
-  arg2 = (unsigned int)jarg2; 
-  if (arg1) (arg1)->from_neuron = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_connection_from_neuron_get(void * jarg1) {
-  unsigned int jresult ;
-  fann_connection *arg1 = (fann_connection *) 0 ;
-  unsigned int result;
-  
-  arg1 = (fann_connection *)jarg1; 
-  result = (unsigned int) ((arg1)->from_neuron);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_connection_to_neuron_set(void * jarg1, unsigned int jarg2) {
-  fann_connection *arg1 = (fann_connection *) 0 ;
-  unsigned int arg2 ;
-  
-  arg1 = (fann_connection *)jarg1; 
-  arg2 = (unsigned int)jarg2; 
-  if (arg1) (arg1)->to_neuron = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_connection_to_neuron_get(void * jarg1) {
-  unsigned int jresult ;
-  fann_connection *arg1 = (fann_connection *) 0 ;
-  unsigned int result;
-  
-  arg1 = (fann_connection *)jarg1; 
-  result = (unsigned int) ((arg1)->to_neuron);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_connection_weight_set(void * jarg1, double jarg2) {
-  fann_connection *arg1 = (fann_connection *) 0 ;
-  fann_type arg2 ;
-  
-  arg1 = (fann_connection *)jarg1; 
-  arg2 = (fann_type)jarg2; 
-  if (arg1) (arg1)->weight = arg2;
-}
-
-
-SWIGEXPORT double SWIGSTDCALL CSharp_connection_weight_get(void * jarg1) {
-  double jresult ;
-  fann_connection *arg1 = (fann_connection *) 0 ;
-  fann_type result;
-  
-  arg1 = (fann_connection *)jarg1; 
-  result = (fann_type) ((arg1)->weight);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_connection() {
-  void * jresult ;
-  fann_connection *result = 0 ;
-  
-  result = (fann_connection *)new fann_connection();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_connection(void * jarg1) {
-  fann_connection *arg1 = (fann_connection *) 0 ;
-  
-  arg1 = (fann_connection *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_connectionArray(int jarg1) {
-  void * jresult ;
-  int arg1 ;
-  connectionArray *result = 0 ;
-  
-  arg1 = (int)jarg1; 
-  result = (connectionArray *)new_connectionArray(arg1);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_connectionArray(void * jarg1) {
-  connectionArray *arg1 = (connectionArray *) 0 ;
-  
-  arg1 = (connectionArray *)jarg1; 
-  delete_connectionArray(arg1);
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_connectionArray_getitem(void * jarg1, int jarg2) {
-  void * jresult ;
-  connectionArray *arg1 = (connectionArray *) 0 ;
-  int arg2 ;
-  connection result;
-  
-  arg1 = (connectionArray *)jarg1; 
-  arg2 = (int)jarg2; 
-  result = connectionArray_getitem(arg1,arg2);
-  jresult = new connection((const connection &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_connectionArray_setitem(void * jarg1, int jarg2, void * jarg3) {
-  connectionArray *arg1 = (connectionArray *) 0 ;
-  int arg2 ;
-  connection arg3 ;
-  connection *argp3 ;
-  
-  arg1 = (connectionArray *)jarg1; 
-  arg2 = (int)jarg2; 
-  argp3 = (connection *)jarg3; 
-  if (!argp3) {
-    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null connection", 0);
-    return ;
-  }
-  arg3 = *argp3; 
-  connectionArray_setitem(arg1,arg2,arg3);
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_connectionArray_cast(void * jarg1) {
-  void * jresult ;
-  connectionArray *arg1 = (connectionArray *) 0 ;
-  connection *result = 0 ;
-  
-  arg1 = (connectionArray *)jarg1; 
-  result = (connection *)connectionArray_cast(arg1);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_connectionArray_frompointer(void * jarg1) {
-  void * jresult ;
-  connection *arg1 = (connection *) 0 ;
-  connectionArray *result = 0 ;
-  
-  arg1 = (connection *)jarg1; 
-  result = (connectionArray *)connectionArray_frompointer(arg1);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_uintArray(int jarg1) {
   void * jresult ;
   int arg1 ;
@@ -2979,71 +2901,147 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_uintArray_frompointer(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_activationFunctionArray(int jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ActivationFunctionArray(int jarg1) {
   void * jresult ;
   int arg1 ;
-  activationFunctionArray *result = 0 ;
+  ActivationFunctionArray *result = 0 ;
   
   arg1 = (int)jarg1; 
-  result = (activationFunctionArray *)new_activationFunctionArray(arg1);
+  result = (ActivationFunctionArray *)new_ActivationFunctionArray(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_activationFunctionArray(void * jarg1) {
-  activationFunctionArray *arg1 = (activationFunctionArray *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ActivationFunctionArray(void * jarg1) {
+  ActivationFunctionArray *arg1 = (ActivationFunctionArray *) 0 ;
   
-  arg1 = (activationFunctionArray *)jarg1; 
-  delete_activationFunctionArray(arg1);
+  arg1 = (ActivationFunctionArray *)jarg1; 
+  delete_ActivationFunctionArray(arg1);
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_activationFunctionArray_getitem(void * jarg1, int jarg2) {
+SWIGEXPORT int SWIGSTDCALL CSharp_ActivationFunctionArray_getitem(void * jarg1, int jarg2) {
   int jresult ;
-  activationFunctionArray *arg1 = (activationFunctionArray *) 0 ;
+  ActivationFunctionArray *arg1 = (ActivationFunctionArray *) 0 ;
   int arg2 ;
-  FANN::activation_function_enum result;
+  ActivationFunction result;
   
-  arg1 = (activationFunctionArray *)jarg1; 
+  arg1 = (ActivationFunctionArray *)jarg1; 
   arg2 = (int)jarg2; 
-  result = (FANN::activation_function_enum)activationFunctionArray_getitem(arg1,arg2);
+  result = (ActivationFunction)ActivationFunctionArray_getitem(arg1,arg2);
   jresult = (int)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_activationFunctionArray_setitem(void * jarg1, int jarg2, int jarg3) {
-  activationFunctionArray *arg1 = (activationFunctionArray *) 0 ;
+SWIGEXPORT void SWIGSTDCALL CSharp_ActivationFunctionArray_setitem(void * jarg1, int jarg2, int jarg3) {
+  ActivationFunctionArray *arg1 = (ActivationFunctionArray *) 0 ;
   int arg2 ;
-  FANN::activation_function_enum arg3 ;
+  ActivationFunction arg3 ;
   
-  arg1 = (activationFunctionArray *)jarg1; 
+  arg1 = (ActivationFunctionArray *)jarg1; 
   arg2 = (int)jarg2; 
-  arg3 = (FANN::activation_function_enum)jarg3; 
-  activationFunctionArray_setitem(arg1,arg2,arg3);
+  arg3 = (ActivationFunction)jarg3; 
+  ActivationFunctionArray_setitem(arg1,arg2,arg3);
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_activationFunctionArray_cast(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ActivationFunctionArray_cast(void * jarg1) {
   void * jresult ;
-  activationFunctionArray *arg1 = (activationFunctionArray *) 0 ;
-  FANN::activation_function_enum *result = 0 ;
+  ActivationFunctionArray *arg1 = (ActivationFunctionArray *) 0 ;
+  ActivationFunction *result = 0 ;
   
-  arg1 = (activationFunctionArray *)jarg1; 
-  result = (FANN::activation_function_enum *)activationFunctionArray_cast(arg1);
+  arg1 = (ActivationFunctionArray *)jarg1; 
+  result = (ActivationFunction *)ActivationFunctionArray_cast(arg1);
   jresult = (void *)result; 
   return jresult;
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_activationFunctionArray_frompointer(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_ActivationFunctionArray_frompointer(void * jarg1) {
   void * jresult ;
-  FANN::activation_function_enum *arg1 = (FANN::activation_function_enum *) 0 ;
-  activationFunctionArray *result = 0 ;
+  ActivationFunction *arg1 = (ActivationFunction *) 0 ;
+  ActivationFunctionArray *result = 0 ;
   
-  arg1 = (FANN::activation_function_enum *)jarg1; 
-  result = (activationFunctionArray *)activationFunctionArray_frompointer(arg1);
+  arg1 = (ActivationFunction *)jarg1; 
+  result = (ActivationFunctionArray *)ActivationFunctionArray_frompointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_ConnectionArray(int jarg1) {
+  void * jresult ;
+  int arg1 ;
+  ConnectionArray *result = 0 ;
+  
+  arg1 = (int)jarg1; 
+  result = (ConnectionArray *)new_ConnectionArray(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_ConnectionArray(void * jarg1) {
+  ConnectionArray *arg1 = (ConnectionArray *) 0 ;
+  
+  arg1 = (ConnectionArray *)jarg1; 
+  delete_ConnectionArray(arg1);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ConnectionArray_getitem(void * jarg1, int jarg2) {
+  void * jresult ;
+  ConnectionArray *arg1 = (ConnectionArray *) 0 ;
+  int arg2 ;
+  fann_connection result;
+  
+  arg1 = (ConnectionArray *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = ConnectionArray_getitem(arg1,arg2);
+  jresult = new fann_connection((const fann_connection &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_ConnectionArray_setitem(void * jarg1, int jarg2, void * jarg3) {
+  ConnectionArray *arg1 = (ConnectionArray *) 0 ;
+  int arg2 ;
+  fann_connection arg3 ;
+  fann_connection *argp3 ;
+  
+  arg1 = (ConnectionArray *)jarg1; 
+  arg2 = (int)jarg2; 
+  argp3 = (fann_connection *)jarg3; 
+  if (!argp3) {
+    SWIG_CSharpSetPendingExceptionArgument(SWIG_CSharpArgumentNullException, "Attempt to dereference null fann_connection", 0);
+    return ;
+  }
+  arg3 = *argp3; 
+  ConnectionArray_setitem(arg1,arg2,arg3);
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ConnectionArray_cast(void * jarg1) {
+  void * jresult ;
+  ConnectionArray *arg1 = (ConnectionArray *) 0 ;
+  fann_connection *result = 0 ;
+  
+  arg1 = (ConnectionArray *)jarg1; 
+  result = (fann_connection *)ConnectionArray_cast(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_ConnectionArray_frompointer(void * jarg1) {
+  void * jresult ;
+  fann_connection *arg1 = (fann_connection *) 0 ;
+  ConnectionArray *result = 0 ;
+  
+  arg1 = (fann_connection *)jarg1; 
+  result = (ConnectionArray *)ConnectionArray_frompointer(arg1);
   jresult = (void *)result; 
   return jresult;
 }
@@ -3273,209 +3271,7 @@ SWIGEXPORT float SWIGSTDCALL CSharp_test_data_parallel__SWIG_1(void * jarg1, voi
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_errno_f_set(void * jarg1, int jarg2) {
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  enum fann_errno_enum arg2 ;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  arg2 = (enum fann_errno_enum)jarg2; 
-  if (arg1) (arg1)->errno_f = arg2;
-}
-
-
-SWIGEXPORT int SWIGSTDCALL CSharp_fann_train_data_errno_f_get(void * jarg1) {
-  int jresult ;
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  enum fann_errno_enum result;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  result = (enum fann_errno_enum) ((arg1)->errno_f);
-  jresult = (int)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_error_log_set(void * jarg1, void * jarg2) {
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  FILE *arg2 = (FILE *) 0 ;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  arg2 = (FILE *)jarg2; 
-  if (arg1) (arg1)->error_log = arg2;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_fann_train_data_error_log_get(void * jarg1) {
-  void * jresult ;
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  FILE *result = 0 ;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  result = (FILE *) ((arg1)->error_log);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_errstr_set(void * jarg1, char * jarg2) {
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  char *arg2 = (char *) 0 ;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  arg2 = (char *)jarg2; 
-  {
-    delete [] arg1->errstr;
-    if (arg2) {
-      arg1->errstr = (char *) (new char[strlen((const char *)arg2)+1]);
-      strcpy((char *)arg1->errstr, (const char *)arg2);
-    } else {
-      arg1->errstr = 0;
-    }
-  }
-}
-
-
-SWIGEXPORT char * SWIGSTDCALL CSharp_fann_train_data_errstr_get(void * jarg1) {
-  char * jresult ;
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  char *result = 0 ;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  result = (char *) ((arg1)->errstr);
-  jresult = SWIG_csharp_string_callback((const char *)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_num_data_set(void * jarg1, unsigned int jarg2) {
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  unsigned int arg2 ;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  arg2 = (unsigned int)jarg2; 
-  if (arg1) (arg1)->num_data = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_fann_train_data_num_data_get(void * jarg1) {
-  unsigned int jresult ;
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  unsigned int result;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  result = (unsigned int) ((arg1)->num_data);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_num_input_set(void * jarg1, unsigned int jarg2) {
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  unsigned int arg2 ;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  arg2 = (unsigned int)jarg2; 
-  if (arg1) (arg1)->num_input = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_fann_train_data_num_input_get(void * jarg1) {
-  unsigned int jresult ;
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  unsigned int result;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  result = (unsigned int) ((arg1)->num_input);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_num_output_set(void * jarg1, unsigned int jarg2) {
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  unsigned int arg2 ;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  arg2 = (unsigned int)jarg2; 
-  if (arg1) (arg1)->num_output = arg2;
-}
-
-
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_fann_train_data_num_output_get(void * jarg1) {
-  unsigned int jresult ;
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  unsigned int result;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  result = (unsigned int) ((arg1)->num_output);
-  jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_input_set(void * jarg1, void * jarg2) {
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  fann_type **arg2 = (fann_type **) 0 ;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  arg2 = (fann_type **)jarg2; 
-  if (arg1) (arg1)->input = arg2;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_fann_train_data_input_get(void * jarg1) {
-  void * jresult ;
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  fann_type **result = 0 ;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  result = (fann_type **) ((arg1)->input);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_fann_train_data_output_set(void * jarg1, void * jarg2) {
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  fann_type **arg2 = (fann_type **) 0 ;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  arg2 = (fann_type **)jarg2; 
-  if (arg1) (arg1)->output = arg2;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_fann_train_data_output_get(void * jarg1) {
-  void * jresult ;
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  fann_type **result = 0 ;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  result = (fann_type **) ((arg1)->output);
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_fann_train_data() {
-  void * jresult ;
-  fann_train_data *result = 0 ;
-  
-  result = (fann_train_data *)new fann_train_data();
-  jresult = (void *)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_fann_train_data(void * jarg1) {
-  fann_train_data *arg1 = (fann_train_data *) 0 ;
-  
-  arg1 = (fann_train_data *)jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Clear(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVectorVector_Clear(void * jarg1) {
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   
   arg1 = (std::vector< std::vector< double > > *)jarg1; 
@@ -3483,7 +3279,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Clear(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Add(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVectorVector_Add(void * jarg1, void * jarg2) {
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   std::vector< double > *arg2 = 0 ;
   
@@ -3497,7 +3293,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Add(void * jarg1, void * j
 }
 
 
-SWIGEXPORT unsigned long SWIGSTDCALL CSharp_DoubleVectorVector_size(void * jarg1) {
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_doubleVectorVector_size(void * jarg1) {
   unsigned long jresult ;
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   std::vector< std::vector< double > >::size_type result;
@@ -3509,7 +3305,7 @@ SWIGEXPORT unsigned long SWIGSTDCALL CSharp_DoubleVectorVector_size(void * jarg1
 }
 
 
-SWIGEXPORT unsigned long SWIGSTDCALL CSharp_DoubleVectorVector_capacity(void * jarg1) {
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_doubleVectorVector_capacity(void * jarg1) {
   unsigned long jresult ;
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   std::vector< std::vector< double > >::size_type result;
@@ -3521,7 +3317,7 @@ SWIGEXPORT unsigned long SWIGSTDCALL CSharp_DoubleVectorVector_capacity(void * j
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_reserve(void * jarg1, unsigned long jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVectorVector_reserve(void * jarg1, unsigned long jarg2) {
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   std::vector< std::vector< double > >::size_type arg2 ;
   
@@ -3531,7 +3327,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_reserve(void * jarg1, unsi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVectorVector__SWIG_0() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_doubleVectorVector__SWIG_0() {
   void * jresult ;
   std::vector< std::vector< double > > *result = 0 ;
   
@@ -3541,7 +3337,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVectorVector__SWIG_0() {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVectorVector__SWIG_1(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_doubleVectorVector__SWIG_1(void * jarg1) {
   void * jresult ;
   std::vector< std::vector< double > > *arg1 = 0 ;
   std::vector< std::vector< double > > *result = 0 ;
@@ -3557,7 +3353,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVectorVector__SWIG_1(void * jarg1
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVectorVector__SWIG_2(int jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_doubleVectorVector__SWIG_2(int jarg1) {
   void * jresult ;
   int arg1 ;
   std::vector< std::vector< double > > *result = 0 ;
@@ -3576,7 +3372,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVectorVector__SWIG_2(int jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVectorVector_getitemcopy(void * jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_doubleVectorVector_getitemcopy(void * jarg1, int jarg2) {
   void * jresult ;
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   int arg2 ;
@@ -3597,7 +3393,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVectorVector_getitemcopy(void * jarg1
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVectorVector_getitem(void * jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_doubleVectorVector_getitem(void * jarg1, int jarg2) {
   void * jresult ;
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   int arg2 ;
@@ -3618,7 +3414,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVectorVector_getitem(void * jarg1, in
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_setitem(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVectorVector_setitem(void * jarg1, int jarg2, void * jarg3) {
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   int arg2 ;
   std::vector< double > *arg3 = 0 ;
@@ -3641,7 +3437,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_setitem(void * jarg1, int 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_AddRange(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVectorVector_AddRange(void * jarg1, void * jarg2) {
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   std::vector< std::vector< double > > *arg2 = 0 ;
   
@@ -3655,7 +3451,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_AddRange(void * jarg1, voi
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVectorVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_doubleVectorVector_GetRange(void * jarg1, int jarg2, int jarg3) {
   void * jresult ;
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   int arg2 ;
@@ -3682,7 +3478,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVectorVector_GetRange(void * jarg1, i
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Insert(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVectorVector_Insert(void * jarg1, int jarg2, void * jarg3) {
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   int arg2 ;
   std::vector< double > *arg3 = 0 ;
@@ -3705,7 +3501,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Insert(void * jarg1, int j
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVectorVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   int arg2 ;
   std::vector< std::vector< double > > *arg3 = 0 ;
@@ -3728,7 +3524,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_InsertRange(void * jarg1, 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_RemoveAt(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVectorVector_RemoveAt(void * jarg1, int jarg2) {
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   int arg2 ;
   
@@ -3745,7 +3541,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_RemoveAt(void * jarg1, int
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVectorVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -3768,7 +3564,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_RemoveRange(void * jarg1, 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVectorVector_Repeat(void * jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_doubleVectorVector_Repeat(void * jarg1, int jarg2) {
   void * jresult ;
   std::vector< double > *arg1 = 0 ;
   int arg2 ;
@@ -3793,7 +3589,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVectorVector_Repeat(void * jarg1, int
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Reverse__SWIG_0(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVectorVector_Reverse__SWIG_0(void * jarg1) {
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   
   arg1 = (std::vector< std::vector< double > > *)jarg1; 
@@ -3801,7 +3597,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Reverse__SWIG_0(void * jar
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVectorVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -3824,7 +3620,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_Reverse__SWIG_1(void * jar
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVectorVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   int arg2 ;
   std::vector< std::vector< double > > *arg3 = 0 ;
@@ -3847,7 +3643,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVectorVector_SetRange(void * jarg1, int
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_DoubleVectorVector(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_doubleVectorVector(void * jarg1) {
   std::vector< std::vector< double > > *arg1 = (std::vector< std::vector< double > > *) 0 ;
   
   arg1 = (std::vector< std::vector< double > > *)jarg1; 
@@ -3855,7 +3651,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_delete_DoubleVectorVector(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Clear(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVector_Clear(void * jarg1) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   
   arg1 = (std::vector< double > *)jarg1; 
@@ -3863,7 +3659,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Clear(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Add(void * jarg1, double jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVector_Add(void * jarg1, double jarg2) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   double *arg2 = 0 ;
   double temp2 ;
@@ -3875,7 +3671,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Add(void * jarg1, double jarg2) 
 }
 
 
-SWIGEXPORT unsigned long SWIGSTDCALL CSharp_DoubleVector_size(void * jarg1) {
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_doubleVector_size(void * jarg1) {
   unsigned long jresult ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   std::vector< double >::size_type result;
@@ -3887,7 +3683,7 @@ SWIGEXPORT unsigned long SWIGSTDCALL CSharp_DoubleVector_size(void * jarg1) {
 }
 
 
-SWIGEXPORT unsigned long SWIGSTDCALL CSharp_DoubleVector_capacity(void * jarg1) {
+SWIGEXPORT unsigned long SWIGSTDCALL CSharp_doubleVector_capacity(void * jarg1) {
   unsigned long jresult ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   std::vector< double >::size_type result;
@@ -3899,7 +3695,7 @@ SWIGEXPORT unsigned long SWIGSTDCALL CSharp_DoubleVector_capacity(void * jarg1) 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_reserve(void * jarg1, unsigned long jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVector_reserve(void * jarg1, unsigned long jarg2) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   std::vector< double >::size_type arg2 ;
   
@@ -3909,7 +3705,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_reserve(void * jarg1, unsigned l
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVector__SWIG_0() {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_doubleVector__SWIG_0() {
   void * jresult ;
   std::vector< double > *result = 0 ;
   
@@ -3919,7 +3715,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVector__SWIG_0() {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVector__SWIG_1(void * jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_doubleVector__SWIG_1(void * jarg1) {
   void * jresult ;
   std::vector< double > *arg1 = 0 ;
   std::vector< double > *result = 0 ;
@@ -3935,7 +3731,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVector__SWIG_1(void * jarg1) {
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVector__SWIG_2(int jarg1) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_doubleVector__SWIG_2(int jarg1) {
   void * jresult ;
   int arg1 ;
   std::vector< double > *result = 0 ;
@@ -3954,7 +3750,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleVector__SWIG_2(int jarg1) {
 }
 
 
-SWIGEXPORT double SWIGSTDCALL CSharp_DoubleVector_getitemcopy(void * jarg1, int jarg2) {
+SWIGEXPORT double SWIGSTDCALL CSharp_doubleVector_getitemcopy(void * jarg1, int jarg2) {
   double jresult ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
@@ -3975,7 +3771,7 @@ SWIGEXPORT double SWIGSTDCALL CSharp_DoubleVector_getitemcopy(void * jarg1, int 
 }
 
 
-SWIGEXPORT double SWIGSTDCALL CSharp_DoubleVector_getitem(void * jarg1, int jarg2) {
+SWIGEXPORT double SWIGSTDCALL CSharp_doubleVector_getitem(void * jarg1, int jarg2) {
   double jresult ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
@@ -3996,7 +3792,7 @@ SWIGEXPORT double SWIGSTDCALL CSharp_DoubleVector_getitem(void * jarg1, int jarg
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_setitem(void * jarg1, int jarg2, double jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVector_setitem(void * jarg1, int jarg2, double jarg3) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
   double *arg3 = 0 ;
@@ -4017,7 +3813,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_setitem(void * jarg1, int jarg2,
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_AddRange(void * jarg1, void * jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVector_AddRange(void * jarg1, void * jarg2) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   std::vector< double > *arg2 = 0 ;
   
@@ -4031,7 +3827,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_AddRange(void * jarg1, void * ja
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVector_GetRange(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_doubleVector_GetRange(void * jarg1, int jarg2, int jarg3) {
   void * jresult ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
@@ -4058,7 +3854,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVector_GetRange(void * jarg1, int jar
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Insert(void * jarg1, int jarg2, double jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVector_Insert(void * jarg1, int jarg2, double jarg3) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
   double *arg3 = 0 ;
@@ -4079,7 +3875,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Insert(void * jarg1, int jarg2, 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVector_InsertRange(void * jarg1, int jarg2, void * jarg3) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
   std::vector< double > *arg3 = 0 ;
@@ -4102,7 +3898,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_InsertRange(void * jarg1, int ja
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_RemoveAt(void * jarg1, int jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVector_RemoveAt(void * jarg1, int jarg2) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
   
@@ -4119,7 +3915,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_RemoveAt(void * jarg1, int jarg2
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVector_RemoveRange(void * jarg1, int jarg2, int jarg3) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -4142,7 +3938,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_RemoveRange(void * jarg1, int ja
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVector_Repeat(double jarg1, int jarg2) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_doubleVector_Repeat(double jarg1, int jarg2) {
   void * jresult ;
   double *arg1 = 0 ;
   int arg2 ;
@@ -4165,7 +3961,7 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleVector_Repeat(double jarg1, int jarg2
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Reverse__SWIG_0(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVector_Reverse__SWIG_0(void * jarg1) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   
   arg1 = (std::vector< double > *)jarg1; 
@@ -4173,7 +3969,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Reverse__SWIG_0(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVector_Reverse__SWIG_1(void * jarg1, int jarg2, int jarg3) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -4196,7 +3992,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_Reverse__SWIG_1(void * jarg1, in
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
+SWIGEXPORT void SWIGSTDCALL CSharp_doubleVector_SetRange(void * jarg1, int jarg2, void * jarg3) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   int arg2 ;
   std::vector< double > *arg3 = 0 ;
@@ -4219,7 +4015,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_DoubleVector_SetRange(void * jarg1, int jarg2
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_DoubleVector_Contains(void * jarg1, double jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_doubleVector_Contains(void * jarg1, double jarg2) {
   unsigned int jresult ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   double *arg2 = 0 ;
@@ -4235,7 +4031,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_DoubleVector_Contains(void * jarg1, d
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_DoubleVector_IndexOf(void * jarg1, double jarg2) {
+SWIGEXPORT int SWIGSTDCALL CSharp_doubleVector_IndexOf(void * jarg1, double jarg2) {
   int jresult ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   double *arg2 = 0 ;
@@ -4251,7 +4047,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_DoubleVector_IndexOf(void * jarg1, double jarg
 }
 
 
-SWIGEXPORT int SWIGSTDCALL CSharp_DoubleVector_LastIndexOf(void * jarg1, double jarg2) {
+SWIGEXPORT int SWIGSTDCALL CSharp_doubleVector_LastIndexOf(void * jarg1, double jarg2) {
   int jresult ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   double *arg2 = 0 ;
@@ -4267,7 +4063,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_DoubleVector_LastIndexOf(void * jarg1, double 
 }
 
 
-SWIGEXPORT unsigned int SWIGSTDCALL CSharp_DoubleVector_Remove(void * jarg1, double jarg2) {
+SWIGEXPORT unsigned int SWIGSTDCALL CSharp_doubleVector_Remove(void * jarg1, double jarg2) {
   unsigned int jresult ;
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   double *arg2 = 0 ;
@@ -4283,7 +4079,7 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_DoubleVector_Remove(void * jarg1, dou
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_delete_DoubleVector(void * jarg1) {
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_doubleVector(void * jarg1) {
   std::vector< double > *arg1 = (std::vector< double > *) 0 ;
   
   arg1 = (std::vector< double > *)jarg1; 

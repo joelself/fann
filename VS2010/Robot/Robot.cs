@@ -27,14 +27,14 @@ namespace Example
             Console.WriteLine("Creating network.");
 
             using (TrainingData data = new TrainingData())
-            using (NeuralNet net = new NeuralNet(network_type_enum.LAYER, num_layers, data.InputCount, num_neurons_hidden, data.OutputCount))
+            using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, data.InputCount, num_neurons_hidden, data.OutputCount))
             using (TrainingData testData = new TrainingData())
             {
                 data.ReadTrainFromFile("..\\..\\datasets\\robot.train");
 
                 Console.WriteLine("Training network.");
 
-                net.TrainingAlgorithm = training_algorithm_enum.TRAIN_INCREMENTAL;
+                net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_INCREMENTAL;
                 net.LearningMomentum = 0.4F;
 
                 net.TrainOnData(data, 3000, 10, desired_error);

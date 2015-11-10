@@ -8,23 +8,23 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-using FannWrapper;
-namespace FannWrapperFloat {
+using FannWrapperFloat;
+namespace FannWrapper {
 
-public class connection : global::System.IDisposable {
+public class Connection : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal connection(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal Connection(global::System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(connection obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(Connection obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 
-  ~connection() {
+  ~Connection() {
     Dispose();
   }
 
@@ -33,7 +33,7 @@ public class connection : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          fannfloatPINVOKE.delete_connection(swigCPtr);
+          fannfloatPINVOKE.delete_Connection(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -43,35 +43,35 @@ public class connection : global::System.IDisposable {
 
   public uint from_neuron {
     set {
-      fannfloatPINVOKE.connection_from_neuron_set(swigCPtr, value);
+      fannfloatPINVOKE.Connection_from_neuron_set(swigCPtr, value);
     } 
     get {
-      uint ret = fannfloatPINVOKE.connection_from_neuron_get(swigCPtr);
+      uint ret = fannfloatPINVOKE.Connection_from_neuron_get(swigCPtr);
       return ret;
     } 
   }
 
   public uint to_neuron {
     set {
-      fannfloatPINVOKE.connection_to_neuron_set(swigCPtr, value);
+      fannfloatPINVOKE.Connection_to_neuron_set(swigCPtr, value);
     } 
     get {
-      uint ret = fannfloatPINVOKE.connection_to_neuron_get(swigCPtr);
+      uint ret = fannfloatPINVOKE.Connection_to_neuron_get(swigCPtr);
       return ret;
     } 
   }
 
   public float weight {
     set {
-      fannfloatPINVOKE.connection_weight_set(swigCPtr, value);
+      fannfloatPINVOKE.Connection_weight_set(swigCPtr, value);
     } 
     get {
-      float ret = fannfloatPINVOKE.connection_weight_get(swigCPtr);
+      float ret = fannfloatPINVOKE.Connection_weight_get(swigCPtr);
       return ret;
     } 
   }
 
-  public connection() : this(fannfloatPINVOKE.new_connection(), true) {
+  public Connection() : this(fannfloatPINVOKE.new_Connection(), true) {
   }
 
 }

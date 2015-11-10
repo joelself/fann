@@ -1,5 +1,6 @@
 ﻿using System;
 using FannWrapperDouble;
+using FannWrapper;
 
 namespace FANNCSharp
 {
@@ -157,7 +158,7 @@ namespace FANNCSharp
             InternalData.subset_train_data(pos, length);
         }
 
-        internal fann_train_data ToFannTrainData()
+        internal SWIGTYPE_p_fann_train_data ToFannTrainData()
         {
             return InternalData.to_fann_train_data();
         }
