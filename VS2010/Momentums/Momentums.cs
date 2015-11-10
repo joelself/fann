@@ -37,7 +37,7 @@ namespace Example
                     using (NeuralNet net = new NeuralNet(num_layers, trainData.InputCount, num_neurons_hidden, trainData.OutputCount))
                     {
 
-                        net.TrainingAlgorithm = training_algorithm_enum.TRAIN_INCREMENTAL;
+                        net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_INCREMENTAL;
 
                         net.LearningMomentum = momentum;
 

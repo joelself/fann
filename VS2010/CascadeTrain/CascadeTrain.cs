@@ -28,8 +28,8 @@ namespace Example
 	        DataType[] output;
 	        DataType[] steepness = new DataType[1];
 	        int multi = 0;
-            activation_function_enum[] activation = new activation_function_enum[1];
-	        training_algorithm_enum training_algorithm = training_algorithm_enum.TRAIN_RPROP;
+            ActivationFunction[] activation = new ActivationFunction[1];
+            TrainingAlgorithm training_algorithm = TrainingAlgorithm.TRAIN_RPROP;
 
             Console.WriteLine("Reading data.");
 
@@ -44,32 +44,32 @@ namespace Example
 
                 Console.WriteLine("Creating network.");
 
-                using (NeuralNet net = new NeuralNet(network_type_enum.SHORTCUT, 2, trainData.InputCount, trainData.OutputCount))
+                using (NeuralNet net = new NeuralNet(NetworkType.SHORTCUT, 2, trainData.InputCount, trainData.OutputCount))
                 {
                     net.TrainingAlgorithm = training_algorithm;
-                    net.ActivationFunctionHidden = activation_function_enum.SIGMOID_SYMMETRIC;
-                    net.ActivationFunctionOutput = activation_function_enum.LINEAR;
-                    net.TrainErrorFunction = error_function_enum.ERRORFUNC_LINEAR;
+                    net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
+                    net.ActivationFunctionOutput = ActivationFunction.LINEAR;
+                    net.TrainErrorFunction = ErrorFunction.ERRORFUNC_LINEAR;
 
                     if (multi != 0)
                     {
                         steepness[0] = 1;
                         net.CascadeActivationSteepnesses = steepness;
 
-                        activation[1] = activation_function_enum.SIGMOID_SYMMETRIC;
+                        activation[1] = ActivationFunction.SIGMOID_SYMMETRIC;
 
                         net.CascadeActivationFunctions = activation;
                         net.CascadeCandidateGroupsCount = 8;
                     }
 
-                    if (training_algorithm == training_algorithm_enum.TRAIN_QUICKPROP)
+                    if (training_algorithm == TrainingAlgorithm.TRAIN_QUICKPROP)
                     {
                         net.LearningRate = 0.35F;
                         net.RandomizeWeights(-2.0F, 2.0F);
                     }
 
                     net.BitFailLimit = (DataType)0.9;
-                    net.TrainStopFunction = stop_function_enum.STOPFUNC_BIT;
+                    net.TrainStopFunction = StopFunction.STOPFUNC_BIT;
                     net.PrintParameters();
 
                     net.Save("..\\..\\examples\\cascade_train2.net");

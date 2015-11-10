@@ -74,19 +74,19 @@ namespace Example
 
             using (TrainingData data = new TrainingData())
             {
-                using (NeuralNet net = new NeuralNet(network_type_enum.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
+                using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
                 {
                     data.ReadTrainFromFile("..\\..\\examples\\xor.data");
 
-                    net.ActivationFunctionHidden = activation_function_enum.SIGMOID_SYMMETRIC;
-                    net.ActivationFunctionOutput = activation_function_enum.SIGMOID_SYMMETRIC;
+                    net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
+                    net.ActivationFunctionOutput = ActivationFunction.SIGMOID_SYMMETRIC;
 
-                    net.TrainingAlgorithm = training_algorithm_enum.TRAIN_QUICKPROP;
+                    net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_QUICKPROP;
 
                     TrainOnSteepnessFile(net, "..\\..\\examples\\xor.data", max_epochs, epochs_between_reports, desired_error, 1.0F, 0.1F, 20.0F);
 
-                    net.ActivationFunctionHidden = activation_function_enum.THRESHOLD_SYMMETRIC;
-                    net.ActivationFunctionOutput = activation_function_enum.THRESHOLD_SYMMETRIC;
+                    net.ActivationFunctionHidden = ActivationFunction.THRESHOLD_SYMMETRIC;
+                    net.ActivationFunctionOutput = ActivationFunction.THRESHOLD_SYMMETRIC;
 
                     for(int i = 0; i < data.TrainDataLength; i++)
                     {

@@ -32,19 +32,19 @@ namespace XorTrain
             int decimal_point;
 
             Console.WriteLine("Creating network.");
-            using (NeuralNet net = new NeuralNet(network_type_enum.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
+            using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
             {
                 using (TrainingData data = new TrainingData())
                 {
                     data.ReadTrainFromFile("..\\..\\examples\\xor.data");
 
-                    net.ActivationFunctionHidden = activation_function_enum.SIGMOID_SYMMETRIC;
-                    net.ActivationFunctionOutput = activation_function_enum.SIGMOID_SYMMETRIC;
+                    net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
+                    net.ActivationFunctionOutput = ActivationFunction.SIGMOID_SYMMETRIC;
 
-                    net.TrainStopFunction = stop_function_enum.STOPFUNC_BIT;
+                    net.TrainStopFunction = StopFunction.STOPFUNC_BIT;
                     net.BitFailLimit = 0.01F;
 
-                    net.TrainingAlgorithm = training_algorithm_enum.TRAIN_RPROP;
+                    net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_RPROP;
 
                     net.InitWeights(data);
 

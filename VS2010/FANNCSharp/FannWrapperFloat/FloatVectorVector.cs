@@ -11,22 +11,22 @@
 using FannWrapper;
 namespace FannWrapperFloat {
 
-public class FloatVectorVector : global::System.IDisposable, global::System.Collections.IEnumerable
-    , global::System.Collections.Generic.IEnumerable<FloatVector>
+public class floatVectorVector : global::System.IDisposable, global::System.Collections.IEnumerable
+    , global::System.Collections.Generic.IEnumerable<floatVector>
  {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal FloatVectorVector(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal floatVectorVector(global::System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(FloatVectorVector obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(floatVectorVector obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 
-  ~FloatVectorVector() {
+  ~floatVectorVector() {
     Dispose();
   }
 
@@ -35,7 +35,7 @@ public class FloatVectorVector : global::System.IDisposable, global::System.Coll
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          fannfloatPINVOKE.delete_FloatVectorVector(swigCPtr);
+          fannfloatPINVOKE.delete_floatVectorVector(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -43,10 +43,10 @@ public class FloatVectorVector : global::System.IDisposable, global::System.Coll
     }
   }
 
-  public FloatVectorVector(global::System.Collections.ICollection c) : this() {
+  public floatVectorVector(global::System.Collections.ICollection c) : this() {
     if (c == null)
       throw new global::System.ArgumentNullException("c");
-    foreach (FloatVector element in c) {
+    foreach (floatVector element in c) {
       this.Add(element);
     }
   }
@@ -63,7 +63,7 @@ public class FloatVectorVector : global::System.IDisposable, global::System.Coll
     }
   }
 
-  public FloatVector this[int index]  {
+  public floatVector this[int index]  {
     get {
       return getitem(index);
     }
@@ -95,17 +95,17 @@ public class FloatVectorVector : global::System.IDisposable, global::System.Coll
     }
   }
 
-  public void CopyTo(FloatVector[] array)
+  public void CopyTo(floatVector[] array)
   {
     CopyTo(0, array, 0, this.Count);
   }
 
-  public void CopyTo(FloatVector[] array, int arrayIndex)
+  public void CopyTo(floatVector[] array, int arrayIndex)
   {
     CopyTo(0, array, arrayIndex, this.Count);
   }
 
-  public void CopyTo(int index, FloatVector[] array, int arrayIndex, int count)
+  public void CopyTo(int index, floatVector[] array, int arrayIndex, int count)
   {
     if (array == null)
       throw new global::System.ArgumentNullException("array");
@@ -123,16 +123,16 @@ public class FloatVectorVector : global::System.IDisposable, global::System.Coll
       array.SetValue(getitemcopy(index+i), arrayIndex+i);
   }
 
-  global::System.Collections.Generic.IEnumerator<FloatVector> global::System.Collections.Generic.IEnumerable<FloatVector>.GetEnumerator() {
-    return new FloatVectorVectorEnumerator(this);
+  global::System.Collections.Generic.IEnumerator<floatVector> global::System.Collections.Generic.IEnumerable<floatVector>.GetEnumerator() {
+    return new floatVectorVectorEnumerator(this);
   }
 
   global::System.Collections.IEnumerator global::System.Collections.IEnumerable.GetEnumerator() {
-    return new FloatVectorVectorEnumerator(this);
+    return new floatVectorVectorEnumerator(this);
   }
 
-  public FloatVectorVectorEnumerator GetEnumerator() {
-    return new FloatVectorVectorEnumerator(this);
+  public floatVectorVectorEnumerator GetEnumerator() {
+    return new floatVectorVectorEnumerator(this);
   }
 
   // Type-safe enumerator
@@ -140,15 +140,15 @@ public class FloatVectorVector : global::System.IDisposable, global::System.Coll
   /// whenever the collection is modified. This has been done for changes in the size of the
   /// collection but not when one of the elements of the collection is modified as it is a bit
   /// tricky to detect unmanaged code that modifies the collection under our feet.
-  public sealed class FloatVectorVectorEnumerator : global::System.Collections.IEnumerator
-    , global::System.Collections.Generic.IEnumerator<FloatVector>
+  public sealed class floatVectorVectorEnumerator : global::System.Collections.IEnumerator
+    , global::System.Collections.Generic.IEnumerator<floatVector>
   {
-    private FloatVectorVector collectionRef;
+    private floatVectorVector collectionRef;
     private int currentIndex;
     private object currentObject;
     private int currentSize;
 
-    public FloatVectorVectorEnumerator(FloatVectorVector collection) {
+    public floatVectorVectorEnumerator(floatVectorVector collection) {
       collectionRef = collection;
       currentIndex = -1;
       currentObject = null;
@@ -156,7 +156,7 @@ public class FloatVectorVector : global::System.IDisposable, global::System.Coll
     }
 
     // Type-safe iterator Current
-    public FloatVector Current {
+    public floatVector Current {
       get {
         if (currentIndex == -1)
           throw new global::System.InvalidOperationException("Enumeration not started.");
@@ -164,7 +164,7 @@ public class FloatVectorVector : global::System.IDisposable, global::System.Coll
           throw new global::System.InvalidOperationException("Enumeration finished.");
         if (currentObject == null)
           throw new global::System.InvalidOperationException("Collection modified.");
-        return (FloatVector)currentObject;
+        return (floatVector)currentObject;
       }
     }
 
@@ -202,106 +202,106 @@ public class FloatVectorVector : global::System.IDisposable, global::System.Coll
   }
 
   public void Clear() {
-    fannfloatPINVOKE.FloatVectorVector_Clear(swigCPtr);
+    fannfloatPINVOKE.floatVectorVector_Clear(swigCPtr);
   }
 
-  public void Add(FloatVector x) {
-    fannfloatPINVOKE.FloatVectorVector_Add(swigCPtr, FloatVector.getCPtr(x));
+  public void Add(floatVector x) {
+    fannfloatPINVOKE.floatVectorVector_Add(swigCPtr, floatVector.getCPtr(x));
     if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
   private uint size() {
-    uint ret = fannfloatPINVOKE.FloatVectorVector_size(swigCPtr);
+    uint ret = fannfloatPINVOKE.floatVectorVector_size(swigCPtr);
     return ret;
   }
 
   private uint capacity() {
-    uint ret = fannfloatPINVOKE.FloatVectorVector_capacity(swigCPtr);
+    uint ret = fannfloatPINVOKE.floatVectorVector_capacity(swigCPtr);
     return ret;
   }
 
   private void reserve(uint n) {
-    fannfloatPINVOKE.FloatVectorVector_reserve(swigCPtr, n);
+    fannfloatPINVOKE.floatVectorVector_reserve(swigCPtr, n);
   }
 
-  public FloatVectorVector() : this(fannfloatPINVOKE.new_FloatVectorVector__SWIG_0(), true) {
+  public floatVectorVector() : this(fannfloatPINVOKE.new_floatVectorVector__SWIG_0(), true) {
   }
 
-  public FloatVectorVector(FloatVectorVector other) : this(fannfloatPINVOKE.new_FloatVectorVector__SWIG_1(FloatVectorVector.getCPtr(other)), true) {
+  public floatVectorVector(floatVectorVector other) : this(fannfloatPINVOKE.new_floatVectorVector__SWIG_1(floatVectorVector.getCPtr(other)), true) {
     if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public FloatVectorVector(int capacity) : this(fannfloatPINVOKE.new_FloatVectorVector__SWIG_2(capacity), true) {
+  public floatVectorVector(int capacity) : this(fannfloatPINVOKE.new_floatVectorVector__SWIG_2(capacity), true) {
     if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  private FloatVector getitemcopy(int index) {
-    FloatVector ret = new FloatVector(fannfloatPINVOKE.FloatVectorVector_getitemcopy(swigCPtr, index), true);
-    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
-    return ret;
-  }
-
-  private FloatVector getitem(int index) {
-    FloatVector ret = new FloatVector(fannfloatPINVOKE.FloatVectorVector_getitem(swigCPtr, index), false);
+  private floatVector getitemcopy(int index) {
+    floatVector ret = new floatVector(fannfloatPINVOKE.floatVectorVector_getitemcopy(swigCPtr, index), true);
     if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  private void setitem(int index, FloatVector val) {
-    fannfloatPINVOKE.FloatVectorVector_setitem(swigCPtr, index, FloatVector.getCPtr(val));
-    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  public void AddRange(FloatVectorVector values) {
-    fannfloatPINVOKE.FloatVectorVector_AddRange(swigCPtr, FloatVectorVector.getCPtr(values));
-    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
-  }
-
-  public FloatVectorVector GetRange(int index, int count) {
-    global::System.IntPtr cPtr = fannfloatPINVOKE.FloatVectorVector_GetRange(swigCPtr, index, count);
-    FloatVectorVector ret = (cPtr == global::System.IntPtr.Zero) ? null : new FloatVectorVector(cPtr, true);
+  private floatVector getitem(int index) {
+    floatVector ret = new floatVector(fannfloatPINVOKE.floatVectorVector_getitem(swigCPtr, index), false);
     if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public void Insert(int index, FloatVector x) {
-    fannfloatPINVOKE.FloatVectorVector_Insert(swigCPtr, index, FloatVector.getCPtr(x));
+  private void setitem(int index, floatVector val) {
+    fannfloatPINVOKE.floatVectorVector_setitem(swigCPtr, index, floatVector.getCPtr(val));
     if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public void InsertRange(int index, FloatVectorVector values) {
-    fannfloatPINVOKE.FloatVectorVector_InsertRange(swigCPtr, index, FloatVectorVector.getCPtr(values));
+  public void AddRange(floatVectorVector values) {
+    fannfloatPINVOKE.floatVectorVector_AddRange(swigCPtr, floatVectorVector.getCPtr(values));
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public floatVectorVector GetRange(int index, int count) {
+    global::System.IntPtr cPtr = fannfloatPINVOKE.floatVectorVector_GetRange(swigCPtr, index, count);
+    floatVectorVector ret = (cPtr == global::System.IntPtr.Zero) ? null : new floatVectorVector(cPtr, true);
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
+    return ret;
+  }
+
+  public void Insert(int index, floatVector x) {
+    fannfloatPINVOKE.floatVectorVector_Insert(swigCPtr, index, floatVector.getCPtr(x));
+    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
+  }
+
+  public void InsertRange(int index, floatVectorVector values) {
+    fannfloatPINVOKE.floatVectorVector_InsertRange(swigCPtr, index, floatVectorVector.getCPtr(values));
     if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void RemoveAt(int index) {
-    fannfloatPINVOKE.FloatVectorVector_RemoveAt(swigCPtr, index);
+    fannfloatPINVOKE.floatVectorVector_RemoveAt(swigCPtr, index);
     if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
   public void RemoveRange(int index, int count) {
-    fannfloatPINVOKE.FloatVectorVector_RemoveRange(swigCPtr, index, count);
+    fannfloatPINVOKE.floatVectorVector_RemoveRange(swigCPtr, index, count);
     if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public static FloatVectorVector Repeat(FloatVector value, int count) {
-    global::System.IntPtr cPtr = fannfloatPINVOKE.FloatVectorVector_Repeat(FloatVector.getCPtr(value), count);
-    FloatVectorVector ret = (cPtr == global::System.IntPtr.Zero) ? null : new FloatVectorVector(cPtr, true);
+  public static floatVectorVector Repeat(floatVector value, int count) {
+    global::System.IntPtr cPtr = fannfloatPINVOKE.floatVectorVector_Repeat(floatVector.getCPtr(value), count);
+    floatVectorVector ret = (cPtr == global::System.IntPtr.Zero) ? null : new floatVectorVector(cPtr, true);
     if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
   public void Reverse() {
-    fannfloatPINVOKE.FloatVectorVector_Reverse__SWIG_0(swigCPtr);
+    fannfloatPINVOKE.floatVectorVector_Reverse__SWIG_0(swigCPtr);
   }
 
   public void Reverse(int index, int count) {
-    fannfloatPINVOKE.FloatVectorVector_Reverse__SWIG_1(swigCPtr, index, count);
+    fannfloatPINVOKE.floatVectorVector_Reverse__SWIG_1(swigCPtr, index, count);
     if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public void SetRange(int index, FloatVectorVector values) {
-    fannfloatPINVOKE.FloatVectorVector_SetRange(swigCPtr, index, FloatVectorVector.getCPtr(values));
+  public void SetRange(int index, floatVectorVector values) {
+    fannfloatPINVOKE.floatVectorVector_SetRange(swigCPtr, index, floatVectorVector.getCPtr(values));
     if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 

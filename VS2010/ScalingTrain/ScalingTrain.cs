@@ -27,11 +27,11 @@ namespace Example
             const float desired_error = 0.0001F;
             const uint max_epochs = 5000;
             const uint epochs_between_reports = 1000;
-            using(NeuralNet net = new NeuralNet(network_type_enum.LAYER, num_layers, num_input, num_neurons_hidden, num_neurons_hidden, num_output))
+            using(NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, num_input, num_neurons_hidden, num_neurons_hidden, num_output))
             {
-                net.ActivationFunctionHidden = activation_function_enum.SIGMOID_SYMMETRIC;
-                net.ActivationFunctionOutput = activation_function_enum.LINEAR;
-                net.TrainingAlgorithm = training_algorithm_enum.TRAIN_RPROP;
+                net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
+                net.ActivationFunctionOutput = ActivationFunction.LINEAR;
+                net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_RPROP;
                 using(TrainingData data = new TrainingData())
                 {
                     data.ReadTrainFromFile("..\\..\\datasets\\scaling.data");

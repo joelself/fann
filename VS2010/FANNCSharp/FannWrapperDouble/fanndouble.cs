@@ -18,68 +18,68 @@ public class fanndouble {
     return ret;
   }
 
-  public static float train_epoch_batch_parallel(SWIGTYPE_p_fann ann, fann_train_data data, uint threadnumb) {
-    float ret = fanndoublePINVOKE.train_epoch_batch_parallel__SWIG_0(SWIGTYPE_p_fann.getCPtr(ann), fann_train_data.getCPtr(data), threadnumb);
+  public static float train_epoch_batch_parallel(SWIGTYPE_p_fann ann, SWIGTYPE_p_fann_train_data data, uint threadnumb) {
+    float ret = fanndoublePINVOKE.train_epoch_batch_parallel__SWIG_0(SWIGTYPE_p_fann.getCPtr(ann), SWIGTYPE_p_fann_train_data.getCPtr(data), threadnumb);
     return ret;
   }
 
-  public static float train_epoch_irpropm_parallel(SWIGTYPE_p_fann ann, fann_train_data data, uint threadnumb) {
-    float ret = fanndoublePINVOKE.train_epoch_irpropm_parallel__SWIG_0(SWIGTYPE_p_fann.getCPtr(ann), fann_train_data.getCPtr(data), threadnumb);
+  public static float train_epoch_irpropm_parallel(SWIGTYPE_p_fann ann, SWIGTYPE_p_fann_train_data data, uint threadnumb) {
+    float ret = fanndoublePINVOKE.train_epoch_irpropm_parallel__SWIG_0(SWIGTYPE_p_fann.getCPtr(ann), SWIGTYPE_p_fann_train_data.getCPtr(data), threadnumb);
     return ret;
   }
 
-  public static float train_epoch_quickprop_parallel(SWIGTYPE_p_fann ann, fann_train_data data, uint threadnumb) {
-    float ret = fanndoublePINVOKE.train_epoch_quickprop_parallel__SWIG_0(SWIGTYPE_p_fann.getCPtr(ann), fann_train_data.getCPtr(data), threadnumb);
+  public static float train_epoch_quickprop_parallel(SWIGTYPE_p_fann ann, SWIGTYPE_p_fann_train_data data, uint threadnumb) {
+    float ret = fanndoublePINVOKE.train_epoch_quickprop_parallel__SWIG_0(SWIGTYPE_p_fann.getCPtr(ann), SWIGTYPE_p_fann_train_data.getCPtr(data), threadnumb);
     return ret;
   }
 
-  public static float train_epoch_sarprop_parallel(SWIGTYPE_p_fann ann, fann_train_data data, uint threadnumb) {
-    float ret = fanndoublePINVOKE.train_epoch_sarprop_parallel__SWIG_0(SWIGTYPE_p_fann.getCPtr(ann), fann_train_data.getCPtr(data), threadnumb);
+  public static float train_epoch_sarprop_parallel(SWIGTYPE_p_fann ann, SWIGTYPE_p_fann_train_data data, uint threadnumb) {
+    float ret = fanndoublePINVOKE.train_epoch_sarprop_parallel__SWIG_0(SWIGTYPE_p_fann.getCPtr(ann), SWIGTYPE_p_fann_train_data.getCPtr(data), threadnumb);
     return ret;
   }
 
-  public static float train_epoch_incremental_mod(SWIGTYPE_p_fann ann, fann_train_data data) {
-    float ret = fanndoublePINVOKE.train_epoch_incremental_mod__SWIG_0(SWIGTYPE_p_fann.getCPtr(ann), fann_train_data.getCPtr(data));
+  public static float train_epoch_incremental_mod(SWIGTYPE_p_fann ann, SWIGTYPE_p_fann_train_data data) {
+    float ret = fanndoublePINVOKE.train_epoch_incremental_mod__SWIG_0(SWIGTYPE_p_fann.getCPtr(ann), SWIGTYPE_p_fann_train_data.getCPtr(data));
     return ret;
   }
 
-  public static float train_epoch_batch_parallel(SWIGTYPE_p_fann ann, fann_train_data data, uint threadnumb, DoubleVectorVector predicted_outputs) {
-    float ret = fanndoublePINVOKE.train_epoch_batch_parallel__SWIG_1(SWIGTYPE_p_fann.getCPtr(ann), fann_train_data.getCPtr(data), threadnumb, DoubleVectorVector.getCPtr(predicted_outputs));
+  public static float train_epoch_batch_parallel(SWIGTYPE_p_fann ann, SWIGTYPE_p_fann_train_data data, uint threadnumb, doubleVectorVector predicted_outputs) {
+    float ret = fanndoublePINVOKE.train_epoch_batch_parallel__SWIG_1(SWIGTYPE_p_fann.getCPtr(ann), SWIGTYPE_p_fann_train_data.getCPtr(data), threadnumb, doubleVectorVector.getCPtr(predicted_outputs));
     if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public static float train_epoch_irpropm_parallel(SWIGTYPE_p_fann ann, fann_train_data data, uint threadnumb, DoubleVectorVector predicted_outputs) {
-    float ret = fanndoublePINVOKE.train_epoch_irpropm_parallel__SWIG_1(SWIGTYPE_p_fann.getCPtr(ann), fann_train_data.getCPtr(data), threadnumb, DoubleVectorVector.getCPtr(predicted_outputs));
+  public static float train_epoch_irpropm_parallel(SWIGTYPE_p_fann ann, SWIGTYPE_p_fann_train_data data, uint threadnumb, doubleVectorVector predicted_outputs) {
+    float ret = fanndoublePINVOKE.train_epoch_irpropm_parallel__SWIG_1(SWIGTYPE_p_fann.getCPtr(ann), SWIGTYPE_p_fann_train_data.getCPtr(data), threadnumb, doubleVectorVector.getCPtr(predicted_outputs));
     if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public static float train_epoch_quickprop_parallel(SWIGTYPE_p_fann ann, fann_train_data data, uint threadnumb, DoubleVectorVector predicted_outputs) {
-    float ret = fanndoublePINVOKE.train_epoch_quickprop_parallel__SWIG_1(SWIGTYPE_p_fann.getCPtr(ann), fann_train_data.getCPtr(data), threadnumb, DoubleVectorVector.getCPtr(predicted_outputs));
+  public static float train_epoch_quickprop_parallel(SWIGTYPE_p_fann ann, SWIGTYPE_p_fann_train_data data, uint threadnumb, doubleVectorVector predicted_outputs) {
+    float ret = fanndoublePINVOKE.train_epoch_quickprop_parallel__SWIG_1(SWIGTYPE_p_fann.getCPtr(ann), SWIGTYPE_p_fann_train_data.getCPtr(data), threadnumb, doubleVectorVector.getCPtr(predicted_outputs));
     if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public static float train_epoch_sarprop_parallel(SWIGTYPE_p_fann ann, fann_train_data data, uint threadnumb, DoubleVectorVector predicted_outputs) {
-    float ret = fanndoublePINVOKE.train_epoch_sarprop_parallel__SWIG_1(SWIGTYPE_p_fann.getCPtr(ann), fann_train_data.getCPtr(data), threadnumb, DoubleVectorVector.getCPtr(predicted_outputs));
+  public static float train_epoch_sarprop_parallel(SWIGTYPE_p_fann ann, SWIGTYPE_p_fann_train_data data, uint threadnumb, doubleVectorVector predicted_outputs) {
+    float ret = fanndoublePINVOKE.train_epoch_sarprop_parallel__SWIG_1(SWIGTYPE_p_fann.getCPtr(ann), SWIGTYPE_p_fann_train_data.getCPtr(data), threadnumb, doubleVectorVector.getCPtr(predicted_outputs));
     if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public static float train_epoch_incremental_mod(SWIGTYPE_p_fann ann, fann_train_data data, DoubleVectorVector predicted_outputs) {
-    float ret = fanndoublePINVOKE.train_epoch_incremental_mod__SWIG_1(SWIGTYPE_p_fann.getCPtr(ann), fann_train_data.getCPtr(data), DoubleVectorVector.getCPtr(predicted_outputs));
+  public static float train_epoch_incremental_mod(SWIGTYPE_p_fann ann, SWIGTYPE_p_fann_train_data data, doubleVectorVector predicted_outputs) {
+    float ret = fanndoublePINVOKE.train_epoch_incremental_mod__SWIG_1(SWIGTYPE_p_fann.getCPtr(ann), SWIGTYPE_p_fann_train_data.getCPtr(data), doubleVectorVector.getCPtr(predicted_outputs));
     if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }
 
-  public static float test_data_parallel(SWIGTYPE_p_fann ann, fann_train_data data, uint threadnumb) {
-    float ret = fanndoublePINVOKE.test_data_parallel__SWIG_0(SWIGTYPE_p_fann.getCPtr(ann), fann_train_data.getCPtr(data), threadnumb);
+  public static float test_data_parallel(SWIGTYPE_p_fann ann, SWIGTYPE_p_fann_train_data data, uint threadnumb) {
+    float ret = fanndoublePINVOKE.test_data_parallel__SWIG_0(SWIGTYPE_p_fann.getCPtr(ann), SWIGTYPE_p_fann_train_data.getCPtr(data), threadnumb);
     return ret;
   }
 
-  public static float test_data_parallel(SWIGTYPE_p_fann ann, fann_train_data data, uint threadnumb, DoubleVectorVector predicted_outputs) {
-    float ret = fanndoublePINVOKE.test_data_parallel__SWIG_1(SWIGTYPE_p_fann.getCPtr(ann), fann_train_data.getCPtr(data), threadnumb, DoubleVectorVector.getCPtr(predicted_outputs));
+  public static float test_data_parallel(SWIGTYPE_p_fann ann, SWIGTYPE_p_fann_train_data data, uint threadnumb, doubleVectorVector predicted_outputs) {
+    float ret = fanndoublePINVOKE.test_data_parallel__SWIG_1(SWIGTYPE_p_fann.getCPtr(ann), SWIGTYPE_p_fann_train_data.getCPtr(data), threadnumb, doubleVectorVector.getCPtr(predicted_outputs));
     if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
     return ret;
   }

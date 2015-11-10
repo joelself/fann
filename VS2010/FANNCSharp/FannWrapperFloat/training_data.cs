@@ -166,9 +166,9 @@ public class training_data : global::System.IDisposable {
     fannfloatPINVOKE.training_data_subset_train_data(swigCPtr, pos, length);
   }
 
-  public fann_train_data to_fann_train_data() {
+  public SWIGTYPE_p_fann_train_data to_fann_train_data() {
     global::System.IntPtr cPtr = fannfloatPINVOKE.training_data_to_fann_train_data(swigCPtr);
-    fann_train_data ret = (cPtr == global::System.IntPtr.Zero) ? null : new fann_train_data(cPtr, false);
+    SWIGTYPE_p_fann_train_data ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_fann_train_data(cPtr, false);
     return ret;
   }
 

@@ -12,17 +12,21 @@ namespace CleanUpForSwig
 {
     class Program
     {
-        private static string [] filesToCopy = { "activation_function_enum.cs",
-                                                 "activationFunctionArray.cs",
-                                                 "error_function_enum.cs",
-                                                 "network_type_enum.cs",
-                                                 "stop_function_enum.cs",
+        private static string [] filesToCopy = { "ActivationFunction.cs",
+                                                 "ErrorFunction.cs",
+                                                 "NetworkType.cs",
+                                                 "StopFunction.cs",
+                                                 "TrainingAlgorithm.cs",
+                                                 "Connection.cs",
+                                                 "ConnectionArray.cs",
+                                                 "ActivationFunctionArray.cs",
+                                                 "uintArray.cs",
                                                  "SWIGTYPE_p_FANN__activation_function_enum.cs",
                                                  "SWIGTYPE_p_FILE.cs",
                                                  "SWIGTYPE_p_unsigned_int.cs",
                                                  "SWIGTYPE_p_void.cs",
-                                                 "training_algorithm_enum.cs",
-                                                 "uintArray.cs"};
+                                                 "SWIGTYPE_p_fann_train_data.cs",
+                                                 "SWIGTYPE_p_fann.cs"};
         static int Main(string[] args)
         {
             if (args.Length < 4)
@@ -43,7 +47,9 @@ namespace CleanUpForSwig
             if (addNamespace(args[1]) < 0)
                 return -1;
             if (args[2] == "copy" && (addNamespaceFile(args[1], "uintArray.cs") < 0 ||
-                addNamespaceFile(args[1], "activationFunctionArray.cs") < 0))
+                addNamespaceFile(args[1], "activationFunctionArray.cs") < 0 ||
+                addNamespaceFile(args[1], "Connection.cs") < 0 ||
+                addNamespaceFile(args[1], "ConnectionArray.cs") < 0))
                 return -1;
             //if (addInheritance(args[1], args[3]) < 0)
             //    return -1;
@@ -154,14 +160,14 @@ namespace CleanUpForSwig
             }
             string text = File.ReadAllText(path);
             Console.WriteLine("Fixing code in " + path);
-            //Regex callbackRegex = new Regex(@"([a-zA-Z0-9\-_:]*?((callback_type)|(training_algorithm_enum)|(activation_function_enum)|(error_function_enum)|(network_type_enum)|(stop_function_enum)|(connection)))( |\()");
+            //Regex callbackRegex = new Regex(@"([a-zA-Z0-9\-_:]*?((callback_type)|(training_algorithm_enum)|(ActivationFunction)|(ErrorFunction)|(NetworkType)|(stop_function_enum)|(connection)))( |\()");
             //MatchCollection matches = callbackRegex.Matches(text);
             //int offset = 0;
             //foreach (Match match in matches)
             //{
             //    if (match.Groups[1].Value == "callback_type" || match.Groups[1].Value == "training_algorithm_enum" ||
-            //        match.Groups[1].Value == "activation_function_enum" || match.Groups[1].Value == "error_function_enum" ||
-            //        match.Groups[1].Value == "network_type_enum" || match.Groups[1].Value == "stop_function_enum" ||
+            //        match.Groups[1].Value == "ActivationFunction" || match.Groups[1].Value == "ErrorFunction" ||
+            //        match.Groups[1].Value == "NetworkType" || match.Groups[1].Value == "stop_function_enum" ||
             //        match.Groups[1].Value == "connection")
             //    {
             //        text = text.Insert(match.Groups[1].Index + offset, "FANN::");

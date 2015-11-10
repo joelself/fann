@@ -30,7 +30,7 @@ namespace FANNCSharp
             net.destroy();
         }
 
-        public NeuralNetFixed(network_type_enum netType, uint numLayers, params uint[] args)
+        public NeuralNetFixed(NetworkType netType, uint numLayers, params uint[] args)
         {
             using (uintArray newLayers = new uintArray((int)numLayers))
             {
@@ -43,7 +43,7 @@ namespace FANNCSharp
             }
         }
 
-        public NeuralNetFixed(network_type_enum netType, ICollection<uint> layers)
+        public NeuralNetFixed(NetworkType netType, ICollection<uint> layers)
         {
             using (uintArray newLayers = new uintArray(layers.Count))
             {
@@ -183,7 +183,7 @@ namespace FANNCSharp
             net.print_parameters();
         }
 
-        public training_algorithm_enum TrainingAlgorithm
+        public TrainingAlgorithm TrainingAlgorithm
         {
             get
             {
@@ -206,22 +206,22 @@ namespace FANNCSharp
                 net.set_learning_rate(value);
             }
         }
-        public activation_function_enum GetActivationFunction(int layer, int neuron)
+        public ActivationFunction GetActivationFunction(int layer, int neuron)
         {
             return net.get_activation_function(layer, neuron);
         }
 
-        public void SetActivationFunction(activation_function_enum function, int layer, int neuron)
+        public void SetActivationFunction(ActivationFunction function, int layer, int neuron)
         {
             net.set_activation_function(function, layer, neuron);
         }
 
-        public void SetActivationFunctionLayer(activation_function_enum function, int layer)
+        public void SetActivationFunctionLayer(ActivationFunction function, int layer)
         {
             net.set_activation_function_layer(function, layer);
         }
 
-        public activation_function_enum ActivationFunctionHidden
+        public ActivationFunction ActivationFunctionHidden
         {
             set
             {
@@ -229,7 +229,7 @@ namespace FANNCSharp
             }
         }
 
-        public activation_function_enum ActivationFunctionOutput
+        public ActivationFunction ActivationFunctionOutput
         {
             set
             {
@@ -262,7 +262,7 @@ namespace FANNCSharp
             net.set_activation_steepness_output(steepness);
         }
 
-        public error_function_enum TrainErrorFunction
+        public ErrorFunction TrainErrorFunction
         {
             get
             {
@@ -425,7 +425,7 @@ namespace FANNCSharp
                 return net.get_total_connections();
             }
         }
-        public network_type_enum NetworkType
+        public NetworkType NetworkType
         {
             get
             {
@@ -478,13 +478,13 @@ namespace FANNCSharp
                 return bias;
             }
         }
-        public connection[] ConnectionArray
+        public Connection[] ConnectionArray
         {
             get
             {
                 uint count = net.get_total_connections();
-                connection[] connections = new connection[count];
-                using (connectionArray output = new connectionArray(connections.Length))
+                Connection[] connections = new Connection[count];
+                using (ConnectionArray output = new ConnectionArray(connections.Length))
                 {
                     net.get_connection_array(output.cast());
                     for (uint i = 0; i < count; i++)
@@ -495,11 +495,11 @@ namespace FANNCSharp
                 return connections;
             }
         }
-        public connection[] WeightArray
+        public Connection[] WeightArray
         {
             set
             {
-                using (connectionArray input = new connectionArray(value.Length))
+                using (ConnectionArray input = new ConnectionArray(value.Length))
                 {
                     for (int i = 0; i < value.Length; i++)
                     {
@@ -524,7 +524,7 @@ namespace FANNCSharp
                 net.set_learning_momentum(value);
             }
         }
-        public stop_function_enum TrainStopFunction
+        public StopFunction TrainStopFunction
         {
             get
             {
