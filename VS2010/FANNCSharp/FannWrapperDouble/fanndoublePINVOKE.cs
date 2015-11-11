@@ -400,7 +400,7 @@ class fanndoublePINVOKE {
   public static extern void neural_net_reset_MSE(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_callback")]
-  public static extern void neural_net_set_callback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void neural_net_set_callback(global::System.Runtime.InteropServices.HandleRef jarg1, training_callback jarg2, System.Object jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_print_parameters")]
   public static extern void neural_net_print_parameters(global::System.Runtime.InteropServices.HandleRef jarg1);

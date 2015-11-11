@@ -19,6 +19,11 @@ namespace FANNCSharp
             InternalData = new FannWrapperDouble.training_data();
         }
 
+        internal TrainingDataDouble(training_data other)
+        {
+            InternalData = other;
+        }
+
         /// <summary> Constructor. </summary>
         ///
         /// <remarks> Joel Self, 11/10/2015. </remarks>

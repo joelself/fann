@@ -2,6 +2,7 @@
 using FannWrapperFloat;
 using FannWrapper;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace FANNCSharp
 {
@@ -22,6 +23,11 @@ namespace FANNCSharp
         public NeuralNetFloat(NeuralNetFloat other)
         {
            net = new neural_net(other.InternalFloatNet);
+        }
+
+        internal NeuralNetFloat(neural_net other)
+        {
+            net = other;
         }
 
         /// <summary> Performs application-defined tasks associated with freeing, releasing, or resetting
@@ -1741,6 +1747,25 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Callback, called when the set. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="callback"> The callback. </param>
+        /// <param name="userData"> Information describing the user. </param>
+
+        public void SetCallback(TrainingCallbackFloat callback, Object userData)
+        {
+            Callback = callback;
+            UserData = userData;
+            training_callback back = (net, data, max_epochs, epochs_between_reports, desired_error, epochs, user_data) => {
+                NeuralNetFloat callbackNet = new NeuralNetFloat(net);
+                TrainingDataFloat callbackData = new TrainingDataFloat(data);
+                return Callback(callbackNet, callbackData, max_epochs, epochs_between_reports, desired_error, epochs, user_data);
+            };
+            fannfloatPINVOKE.neural_net_set_callback(neural_net.getCPtr(this.net), Marshal.GetFunctionPointerForDelegate(back), UserData);
+        }
+
         #region Properties
         public neural_net InternalFloatNet
         {
@@ -1750,7 +1775,26 @@ namespace FANNCSharp
             }
         }
 
+        private TrainingCallbackFloat Callback { get; set; }
+        private Object UserData { get; set; }
+
         private uint Outputs { get; set; }
         #endregion Properties
     }
+
+    /// <summary> Training callback float. </summary>
+    ///
+    /// <remarks> Joel Self, 11/10/2015. </remarks>
+    ///
+    /// <param name="net">                  The net. </param>
+    /// <param name="data">                 The data. </param>
+    /// <param name="maxEpochs">            The maximum epochs. </param>
+    /// <param name="epochsBetweenReports"> The epochs between reports. </param>
+    /// <param name="desiredError">         The desired error. </param>
+    /// <param name="epochs">               The epochs. </param>
+    /// <param name="userData">             Information describing the user. </param>
+    ///
+    /// <returns> An int. </returns>
+
+    public delegate int TrainingCallbackFloat(NeuralNetFloat net, TrainingDataFloat data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, Object userData);
 }

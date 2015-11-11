@@ -76,6 +76,14 @@ namespace Example
             {
                 using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
                 {
+                    TrainingCallbackFloat callback = (callbackNet, callbackData, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, callbackUserData) =>
+                    {
+                        Console.WriteLine("Layer count: {0}, Data length: {1}, Max epochs: {2}, Epochs between reports: {3}, Desired error: {4}, Epochs so far: {5}, Greeting: \"{6}\"",
+                            callbackNet.LayerCount, callbackData.TrainDataLength, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, (string)callbackUserData);
+                        return 1;
+                    };
+                    net.SetCallback(callback, "Hello!");
+
                     data.ReadTrainFromFile("..\\..\\examples\\xor.data");
 
                     net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;

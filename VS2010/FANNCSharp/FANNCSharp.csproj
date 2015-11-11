@@ -89,7 +89,6 @@
     <Compile Include="FannWrapperDouble\fanndoublePINVOKE.cs" />
     <Compile Include="FannWrapperDouble\neural_net.cs" />
     <Compile Include="FannWrapperDouble\SWIGTYPE_p_double.cs" />
-    <Compile Include="FannWrapperDouble\SWIGTYPE_p_f_r_FANN__neural_net_r_FANN__training_data_unsigned_int_unsigned_int_float_unsigned_int_p_void__int.cs" />
     <Compile Include="FannWrapperDouble\SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_double_p_double__void.cs" />
     <Compile Include="FannWrapperDouble\SWIGTYPE_p_p_double.cs" />
     <Compile Include="FannWrapperDouble\training_data.cs" />
@@ -98,11 +97,11 @@
     <Compile Include="FannWrapperFixed\intArray.cs" />
     <Compile Include="FannWrapperFixed\intArrayArray.cs" />
     <Compile Include="FannWrapperFixed\neural_net.cs" />
-    <Compile Include="FannWrapperFixed\SWIGTYPE_p_f_r_FANN__neural_net_r_FANN__training_data_unsigned_int_unsigned_int_float_unsigned_int_p_void__int.cs" />
     <Compile Include="FannWrapperFixed\SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_int_p_int__void.cs" />
     <Compile Include="FannWrapperFixed\SWIGTYPE_p_int.cs" />
     <Compile Include="FannWrapperFixed\SWIGTYPE_p_p_int.cs" />
     <Compile Include="FannWrapperFixed\training_data.cs" />
+    <Compile Include="CallbackDelegate.cs" />
     <Compile Include="FannWrapperFloat\fannfloat.cs" />
     <Compile Include="FannWrapperFloat\fannfloatPINVOKE.cs" />
     <Compile Include="FannWrapperFloat\floatArray.cs" />
@@ -111,7 +110,6 @@
     <Compile Include="FannWrapperFloat\floatVectorVector.cs" />
     <Compile Include="FannWrapperFloat\neural_net.cs" />
     <Compile Include="FannWrapperFloat\SWIGTYPE_p_float.cs" />
-    <Compile Include="FannWrapperFloat\SWIGTYPE_p_f_r_FANN__neural_net_r_FANN__training_data_unsigned_int_unsigned_int_float_unsigned_int_p_void__int.cs" />
     <Compile Include="FannWrapperFloat\SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_float_p_float__void.cs" />
     <Compile Include="FannWrapperFloat\SWIGTYPE_p_p_float.cs" />
     <Compile Include="FannWrapperFloat\training_data.cs" />
@@ -127,7 +125,6 @@
     <Compile Include="FannWrapper\SWIGTYPE_p_FANN__activation_function_enum.cs" />
     <Compile Include="FannWrapper\SWIGTYPE_p_FILE.cs" />
     <Compile Include="FannWrapper\SWIGTYPE_p_unsigned_int.cs" />
-    <Compile Include="FannWrapper\SWIGTYPE_p_void.cs" />
     <Compile Include="FannWrapper\TrainingAlgorithm.cs" />
     <Compile Include="FannWrapper\uintArray.cs" />
     <Compile Include="NeuralNetFixed.cs" />

@@ -163,8 +163,8 @@ public class neural_net : global::System.IDisposable {
     fannfixedPINVOKE.neural_net_reset_MSE(swigCPtr);
   }
 
-  public void set_callback(SWIGTYPE_p_f_r_FANN__neural_net_r_FANN__training_data_unsigned_int_unsigned_int_float_unsigned_int_p_void__int callback, SWIGTYPE_p_void user_data) {
-    fannfixedPINVOKE.neural_net_set_callback(swigCPtr, SWIGTYPE_p_f_r_FANN__neural_net_r_FANN__training_data_unsigned_int_unsigned_int_float_unsigned_int_p_void__int.getCPtr(callback), SWIGTYPE_p_void.getCPtr(user_data));
+  public void set_callback(training_callback callback, System.Object user_data) {
+    fannfixedPINVOKE.neural_net_set_callback(swigCPtr, callback, user_data);
   }
 
   public void print_parameters() {

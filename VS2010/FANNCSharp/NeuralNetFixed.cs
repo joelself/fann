@@ -2,6 +2,7 @@
 using FannWrapperFixed;
 using FannWrapper;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace FANNCSharp
 {
@@ -22,6 +23,11 @@ namespace FANNCSharp
         public NeuralNetFixed(NeuralNetFixed other)
         {
            net = new neural_net(other.InternalFixedNet);
+        }
+
+        internal NeuralNetFixed(neural_net other)
+        {
+            net = other;
         }
 
         /// <summary> Gets decimal point. </summary>
@@ -983,6 +989,32 @@ namespace FANNCSharp
         {
            net.enable_seed_rand();
         }
+
+        /// <summary> Callback, called when the set. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="callback"> The callback. </param>
+        /// <param name="userData"> Information describing the user. </param>
+
+        public void SetCallback(TrainingCallbackFixed callback, Object userData)
+        {
+            Callback = callback;
+            UserData = userData;
+            training_callback back = (net, data, max_epochs, epochs_between_reports, desired_error, epochs, user_data) =>
+            {
+                NeuralNetFixed callbackNet = new NeuralNetFixed(new neural_net(fannfixedPINVOKE.new_neural_net__SWIG_6(net), true));
+                TrainingDataFixed callbackData = new TrainingDataFixed(new training_data(fannfixedPINVOKE.new_training_data__SWIG_1(data), true));
+                return Callback(callbackNet, callbackData, max_epochs, epochs_between_reports, desired_error, epochs, user_data);
+            };
+            neural_net_set_callback(neural_net.getCPtr(this.net), back, UserData);
+        }
+
+        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+        internal delegate int training_callback(global::System.Runtime.InteropServices.HandleRef net, global::System.Runtime.InteropServices.HandleRef data, uint max_epochs, uint epochs_between_reports, float desired_error, uint epochs, Object user_data);
+        [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint = "CSharp_neural_net_set_callback")]
+        internal static extern void neural_net_set_callback(global::System.Runtime.InteropServices.HandleRef net, [MarshalAs(UnmanagedType.FunctionPtr)] training_callback callback, Object userData);
+
         #region Properties
         public neural_net InternalFixedNet
         {
@@ -991,8 +1023,26 @@ namespace FANNCSharp
                 return net;
             }
         }
+        private TrainingCallbackFixed Callback { get; set; }
+        private Object UserData { get; set; }
 
         private uint Outputs { get; set; }
         #endregion Properties
     }
+
+    /// <summary> Training callback fixed. </summary>
+    ///
+    /// <remarks> Joel Self, 11/10/2015. </remarks>
+    ///
+    /// <param name="net">                  The net. </param>
+    /// <param name="data">                 The data. </param>
+    /// <param name="maxEpochs">            The maximum epochs. </param>
+    /// <param name="epochsBetweenReports"> The epochs between reports. </param>
+    /// <param name="desiredError">         The desired error. </param>
+    /// <param name="epochs">               The epochs. </param>
+    /// <param name="userData">             Information describing the user. </param>
+    ///
+    /// <returns> An int. </returns>
+
+    public delegate int TrainingCallbackFixed(NeuralNetFixed net, TrainingDataFixed data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, Object userData);
 }

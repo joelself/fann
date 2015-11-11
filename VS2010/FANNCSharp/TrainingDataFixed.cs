@@ -19,6 +19,11 @@ namespace FANNCSharp
             InternalData = new FannWrapperFixed.training_data();
         }
 
+        internal TrainingDataFixed(training_data other)
+        {
+            InternalData = other;
+        }
+
         /// <summary> Constructor. </summary>
         ///
         /// <remarks> Joel Self, 11/10/2015. </remarks>

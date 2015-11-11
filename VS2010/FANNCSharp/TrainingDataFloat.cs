@@ -29,6 +29,11 @@ namespace FANNCSharp
             InternalData = new FannWrapperFloat.training_data(data.InternalData);
         }
 
+        internal TrainingDataFloat(training_data data)
+        {
+            InternalData = data;
+        }
+
         /// <summary> Reads train from file. </summary>
         ///
         /// <remarks> Joel Self, 11/10/2015. </remarks>
