@@ -89,8 +89,11 @@
     <Compile Include="FannWrapperDouble\fanndoublePINVOKE.cs" />
     <Compile Include="FannWrapperDouble\neural_net.cs" />
     <Compile Include="FannWrapperDouble\SWIGTYPE_p_double.cs" />
+<<<<<<< Updated upstream
     <Compile Include="FannWrapperDouble\SWIGTYPE_p_f_r_FANN__neural_net_r_FANN__training_data_unsigned_int_unsigned_int_float_unsigned_int_p_void__int.cs" />
     <Compile Include="FannWrapperDouble\SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_double_p_double__void.cs" />
+=======
+>>>>>>> Stashed changes
     <Compile Include="FannWrapperDouble\SWIGTYPE_p_p_double.cs" />
     <Compile Include="FannWrapperDouble\training_data.cs" />
     <Compile Include="FannWrapperFixed\fannfixed.cs" />
@@ -98,8 +101,11 @@
     <Compile Include="FannWrapperFixed\intArray.cs" />
     <Compile Include="FannWrapperFixed\intArrayArray.cs" />
     <Compile Include="FannWrapperFixed\neural_net.cs" />
+<<<<<<< Updated upstream
     <Compile Include="FannWrapperFixed\SWIGTYPE_p_f_r_FANN__neural_net_r_FANN__training_data_unsigned_int_unsigned_int_float_unsigned_int_p_void__int.cs" />
     <Compile Include="FannWrapperFixed\SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_int_p_int__void.cs" />
+=======
+>>>>>>> Stashed changes
     <Compile Include="FannWrapperFixed\SWIGTYPE_p_int.cs" />
     <Compile Include="FannWrapperFixed\SWIGTYPE_p_p_int.cs" />
     <Compile Include="FannWrapperFixed\training_data.cs" />
@@ -111,8 +117,11 @@
     <Compile Include="FannWrapperFloat\floatVectorVector.cs" />
     <Compile Include="FannWrapperFloat\neural_net.cs" />
     <Compile Include="FannWrapperFloat\SWIGTYPE_p_float.cs" />
+<<<<<<< Updated upstream
     <Compile Include="FannWrapperFloat\SWIGTYPE_p_f_r_FANN__neural_net_r_FANN__training_data_unsigned_int_unsigned_int_float_unsigned_int_p_void__int.cs" />
     <Compile Include="FannWrapperFloat\SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_float_p_float__void.cs" />
+=======
+>>>>>>> Stashed changes
     <Compile Include="FannWrapperFloat\SWIGTYPE_p_p_float.cs" />
     <Compile Include="FannWrapperFloat\training_data.cs" />
     <Compile Include="FannWrapper\ActivationFunction.cs" />

@@ -67,7 +67,7 @@ namespace Example
             const uint num_output = 1;
             const uint num_layers = 3;
             const uint num_neurons_hidden = 3;
-            const float desired_error = 0.001F;
+            const float desired_error = 0.00001F;
             const uint max_epochs = 500000;
             const uint epochs_between_reports = 1000;
             DataType[] calc_out;

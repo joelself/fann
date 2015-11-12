@@ -274,7 +274,7 @@ class fanndoublePINVOKE {
   public static extern void training_data_set_train_data__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, uint jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_create_train_from_callback")]
-  public static extern void training_data_create_train_from_callback(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, uint jarg4, global::System.Runtime.InteropServices.HandleRef jarg5);
+  public static extern void training_data_create_train_from_callback(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, uint jarg4, global::System.IntPtr jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_get_min_input")]
   public static extern double training_data_get_min_input(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -400,7 +400,11 @@ class fanndoublePINVOKE {
   public static extern void neural_net_reset_MSE(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_callback")]
+<<<<<<< Updated upstream
   public static extern void neural_net_set_callback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+=======
+  public static extern void neural_net_set_callback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
+>>>>>>> Stashed changes
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_print_parameters")]
   public static extern void neural_net_print_parameters(global::System.Runtime.InteropServices.HandleRef jarg1);

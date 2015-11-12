@@ -7,7 +7,6 @@
 %}
 %include "std_vector.i"
 %include "parallel_fann.hpp"
-
 namespace std {
     %template(doubleVectorVector) vector<vector<double>>;
 	%template(doubleVector) vector<double>;

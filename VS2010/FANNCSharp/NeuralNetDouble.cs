@@ -1041,6 +1041,37 @@ namespace FANNCSharp
             }
         }
 
+<<<<<<< Updated upstream
+=======
+        /// <summary> Callback, called when the set. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="callback"> The callback. </param>
+        /// <param name="userData"> Information describing the user. </param>
+
+        public void SetCallback(TrainingCallbackDouble callback, Object userData)
+        {
+            Callback = callback;
+            UserData = userData;
+            GCHandle handle = GCHandle.Alloc(userData);
+            training_callback back = new training_callback(InternalCallback);
+            fanndoublePINVOKE.neural_net_set_callback(neural_net.getCPtr(this.net), Marshal.GetFunctionPointerForDelegate(back), (IntPtr)handle);
+        }
+
+        private int InternalCallback(global::System.IntPtr netPtr, global::System.IntPtr dataPtr, uint max_epochs, uint epochs_between_reports, float desired_error, uint epochs, global::System.IntPtr user_data)
+        {
+            NeuralNetDouble callbackNet = new NeuralNetDouble(new neural_net(netPtr, false));
+            TrainingDataDouble callbackData = new TrainingDataDouble(new training_data(dataPtr, false));
+            GCHandle handle = (GCHandle)user_data;
+            return Callback(callbackNet, callbackData, max_epochs, epochs_between_reports, desired_error, epochs, handle.Target as Object);
+        }
+
+
+        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+        internal delegate int training_callback(global::System.IntPtr net, global::System.IntPtr data, uint max_epochs, uint epochs_between_reports, float desired_error, uint epochs, global::System.IntPtr user_data);
+
+>>>>>>> Stashed changes
 #region Properties
         public neural_net InternalFloatNet
         {

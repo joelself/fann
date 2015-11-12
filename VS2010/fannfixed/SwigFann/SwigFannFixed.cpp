@@ -787,7 +787,7 @@ SWIGEXPORT void SWIGSTDCALL CSharp_training_data_create_train_from_callback(void
   arg2 = (unsigned int)jarg2; 
   arg3 = (unsigned int)jarg3; 
   arg4 = (unsigned int)jarg4; 
-  arg5 = (void (__stdcall *)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *))jarg5; 
+  arg5 = (void (__stdcall *)(unsigned int,unsigned int,unsigned int, int *, int *))jarg5;
   (arg1)->create_train_from_callback(arg2,arg3,arg4,arg5);
 }
 

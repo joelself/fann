@@ -8,4 +8,5 @@ Win32/
 *.exe.config
 *.vshost.exe
 *.vshost.exe.config
+*.vshost.exe.manifest
 

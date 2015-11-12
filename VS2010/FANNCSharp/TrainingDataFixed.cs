@@ -1,5 +1,10 @@
 ﻿using System;
 using FannWrapperFixed;
+<<<<<<< Updated upstream
+=======
+using FannWrapper;
+using System.Runtime.InteropServices;
+>>>>>>> Stashed changes
 
 namespace FANNCSharp
 {
@@ -13,6 +18,25 @@ namespace FANNCSharp
             InternalData = new FannWrapperFixed.training_data(data);
         }
 
+<<<<<<< Updated upstream
+=======
+        public TrainingDataFixed(uint dataCount, uint inputCount, uint outputCount, DataCreateCallbackFixed callback)
+        {
+            InternalData = new FannWrapperFixed.training_data();
+            Callback = callback;
+            RawCallback = new data_create_callback(InternalCallback);
+            fannfixedPINVOKE.training_data_create_train_from_callback(training_data.getCPtr(this.InternalData), dataCount, inputCount, outputCount, Marshal.GetFunctionPointerForDelegate(RawCallback));
+        }
+
+        /// <summary> Reads train from file. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="filename"> Filename of the file. </param>
+        ///
+        /// <returns> true if it succeeds, false if it fails. </returns>
+
+>>>>>>> Stashed changes
         public bool ReadTrainFromFile(string filename)
         {
             return InternalData.read_train_from_file(filename);
@@ -105,10 +129,19 @@ namespace FANNCSharp
             }
         }
 
+<<<<<<< Updated upstream
         internal void CreateTrainFromCallback(uint num_data, uint num_input, uint num_output, SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_int_p_int__void user_function)
         {
             throw new System.NotImplementedException("CreateTrainFromCallback is not implemented yet.");
         }
+=======
+        /// <summary> Scale input train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="new_min"> The new minimum. </param>
+        /// <param name="new_max"> The new maximum. </param>
+>>>>>>> Stashed changes
 
         public void ScaleInputTrainData(int new_min, int new_max)
         {
@@ -223,5 +256,33 @@ namespace FANNCSharp
         {
             get; set;
         }
+        private void InternalCallback(uint number, uint inputCount, uint outputCount, global::System.IntPtr inputs, global::System.IntPtr outputs)
+        {
+            int[] callbackInput = new int[inputCount];
+            int[] callbackOutput = new int[outputCount];
+
+            Callback(number, inputCount, outputCount, callbackInput, callbackOutput);
+
+            using (intArray inputArray = new intArray(inputs, false))
+            using (intArray outputArray = new intArray(outputs, false))
+            {
+                for (int i = 0; i < inputCount; i++)
+                {
+                    inputArray.setitem(i, callbackInput[i]);
+                }
+                for (int i = 0; i < outputCount; i++)
+                {
+                    outputArray.setitem(i, callbackOutput[i]);
+                }
+            }
+        }
+
+        private DataCreateCallbackFixed Callback { get; set; }
+        private data_create_callback RawCallback { get; set; }
+
+        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+        internal delegate void data_create_callback(uint number, uint inputCount, uint outputCount, global::System.IntPtr inputs, global::System.IntPtr outputs);
     }
+
+    public delegate void DataCreateCallbackFixed(uint number, uint inputCount, uint outputCount, int[] inputs, int[] outputs);
 }

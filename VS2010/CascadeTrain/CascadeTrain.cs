@@ -21,7 +21,7 @@ namespace Example
         static void Main()
         {   
 	        const float desired_error = 0.0F;
-	        uint max_neurons = 30;
+	        uint max_neurons = 300;
 	        uint neurons_between_reports = 1;
 	        uint bit_fail_train, bit_fail_test;
 	        float mse_train, mse_test;
@@ -46,6 +46,14 @@ namespace Example
 
                 using (NeuralNet net = new NeuralNet(NetworkType.SHORTCUT, 2, trainData.InputCount, trainData.OutputCount))
                 {
+                    TrainingCallbackFloat callback = (callbackNet, callbackData, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, callbackUserData) =>
+                    {
+                        Console.WriteLine("Layer count: {0}, Data length: {1}, Max epochs: {2}, Epochs between reports: {3}, Desired error: {4}, Epochs so far: {5}, Greeting: \"{6}\"",
+                            callbackNet.LayerCount, callbackData.TrainDataLength, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, (string)callbackUserData);
+                        return 1;
+                    };
+
+                    net.SetCallback(callback, "Hello!");
                     net.TrainingAlgorithm = training_algorithm;
                     net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
                     net.ActivationFunctionOutput = ActivationFunction.LINEAR;

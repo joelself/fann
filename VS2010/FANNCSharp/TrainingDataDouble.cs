@@ -1,6 +1,7 @@
 ﻿using System;
 using FannWrapperDouble;
 using FannWrapper;
+using System.Runtime.InteropServices;
 
 namespace FANNCSharp
 {
@@ -12,6 +13,14 @@ namespace FANNCSharp
         }
         public TrainingDataDouble(TrainingDataDouble data) {
             InternalData = new FannWrapperDouble.training_data(data.InternalData);
+        }
+        
+        public TrainingDataDouble(uint dataCount, uint inputCount, uint outputCount, DataCreateCallbackDouble callback)
+        {
+            InternalData = new FannWrapperDouble.training_data();
+            Callback = callback;
+            RawCallback = new data_create_callback(InternalCallback);
+            fanndoublePINVOKE.training_data_create_train_from_callback(training_data.getCPtr(this.InternalData), dataCount, inputCount, outputCount, Marshal.GetFunctionPointerForDelegate(RawCallback));
         }
 
         public bool ReadTrainFromFile(string filename)
@@ -106,10 +115,16 @@ namespace FANNCSharp
             }
         }
 
+<<<<<<< Updated upstream
         internal void CreateTrainFromCallback(uint num_data, uint num_input, uint num_output, SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_double_p_double__void user_function)
         {
             throw new System.NotImplementedException("CreateTrainFromCallback is not implemented yet.");
         }
+=======
+        /// <summary> Gets the minimum input. </summary>
+        ///
+        /// <value> The minimum input. </value>
+>>>>>>> Stashed changes
 
         public double MinInput
         {
@@ -262,5 +277,34 @@ namespace FANNCSharp
         { 
             get; set;
         }
+
+        private void InternalCallback(uint number, uint inputCount, uint outputCount, global::System.IntPtr inputs, global::System.IntPtr outputs)
+        {
+            double[] callbackInput = new double[inputCount];
+            double[] callbackOutput = new double[outputCount];
+
+            Callback(number, inputCount, outputCount, callbackInput, callbackOutput);
+
+            using (doubleArray inputArray = new doubleArray(inputs, false))
+            using (doubleArray outputArray = new doubleArray(outputs, false))
+            {
+                for (int i = 0; i < inputCount; i++)
+                {
+                    inputArray.setitem(i, callbackInput[i]);
+                }
+                for (int i = 0; i < outputCount; i++)
+                {
+                    outputArray.setitem(i, callbackOutput[i]);
+                }
+            }
+        }
+
+        private DataCreateCallbackDouble Callback { get; set; }
+        private data_create_callback RawCallback { get; set; }
+
+        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+        internal delegate void data_create_callback(uint number, uint inputCount, uint outputCount, global::System.IntPtr inputs, global::System.IntPtr outputs);
     }
+
+    public delegate void DataCreateCallbackDouble(uint number, uint inputCount, uint outputCount, double[] inputs, double[] outputs);
 }

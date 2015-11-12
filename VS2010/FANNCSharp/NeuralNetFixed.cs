@@ -589,9 +589,42 @@ namespace FANNCSharp
         }
         public void EnableSeedRand()
         {
+<<<<<<< Updated upstream
             net.enable_seed_rand();
         }
 
+=======
+           net.enable_seed_rand();
+        }
+        /// <summary> Callback, called when the set. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="callback"> The callback. </param>
+        /// <param name="userData"> Information describing the user. </param>
+
+        public void SetCallback(TrainingCallbackFixed callback, Object userData)
+        {
+            Callback = callback;
+            UserData = userData;
+            GCHandle handle = GCHandle.Alloc(userData);
+            training_callback back = new training_callback(InternalCallback);
+            fannfixedPINVOKE.neural_net_set_callback(neural_net.getCPtr(this.net), Marshal.GetFunctionPointerForDelegate(back), (IntPtr)handle);
+        }
+
+        private int InternalCallback(global::System.IntPtr netPtr, global::System.IntPtr dataPtr, uint max_epochs, uint epochs_between_reports, float desired_error, uint epochs, global::System.IntPtr user_data)
+        {
+            NeuralNetFixed callbackNet = new NeuralNetFixed(new neural_net(netPtr, false));
+            TrainingDataFixed callbackData = new TrainingDataFixed(new training_data(dataPtr, false));
+            GCHandle handle = (GCHandle)user_data;
+            return Callback(callbackNet, callbackData, max_epochs, epochs_between_reports, desired_error, epochs, handle.Target as Object);
+        }
+
+
+        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+        internal delegate int training_callback(global::System.IntPtr net, global::System.IntPtr data, uint max_epochs, uint epochs_between_reports, float desired_error, uint epochs, global::System.IntPtr user_data);
+
+>>>>>>> Stashed changes
         #region Properties
         public neural_net InternalFloatNet
         {

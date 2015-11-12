@@ -1,6 +1,7 @@
 ﻿using System;
 using FannWrapperFloat;
 using FannWrapper;
+using System.Runtime.InteropServices;
 
 namespace FANNCSharp
 {
@@ -10,8 +11,33 @@ namespace FANNCSharp
         {
             InternalData = new FannWrapperFloat.training_data();
         }
+<<<<<<< Updated upstream
         public TrainingDataFloat(FannWrapperFloat.training_data data) {
             InternalData = new FannWrapperFloat.training_data(data);
+=======
+
+        /// <summary> Constructor. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="data"> The data. </param>
+
+        public TrainingDataFloat(TrainingDataFloat data) {
+            InternalData = new FannWrapperFloat.training_data(data.InternalData);
+        }
+
+        public TrainingDataFloat(uint dataCount, uint inputCount, uint outputCount, DataCreateCallbackFloat callback)
+        {
+            InternalData = new FannWrapperFloat.training_data();
+            Callback = callback;
+            RawCallback = new data_create_callback(InternalCallback);
+            fannfloatPINVOKE.training_data_create_train_from_callback(training_data.getCPtr(this.InternalData), dataCount, inputCount, outputCount, Marshal.GetFunctionPointerForDelegate(RawCallback));
+        }
+
+        internal TrainingDataFloat(training_data data)
+        {
+            InternalData = data;
+>>>>>>> Stashed changes
         }
 
         public bool ReadTrainFromFile(string filename)
@@ -107,10 +133,16 @@ namespace FANNCSharp
             }
         }
 
+<<<<<<< Updated upstream
         internal void CreateTrainFromCallback(uint num_data, uint num_input, uint num_output, SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_float_p_float__void user_function)
         {
             throw new System.NotImplementedException("CreateTrainFromCallback is not implemented yet.");
         }
+=======
+        /// <summary> Gets the minimum input. </summary>
+        ///
+        /// <value> The minimum input. </value>
+>>>>>>> Stashed changes
 
         public float MinInput
         {
@@ -258,9 +290,41 @@ namespace FANNCSharp
         {
             InternalData.Dispose();
         }
+
+
         internal FannWrapperFloat.training_data InternalData
         {
             get; set;
         }
+        private void InternalCallback(uint number, uint inputCount, uint outputCount, global::System.IntPtr inputs, global::System.IntPtr outputs)
+        {
+            float[] callbackInput = new float[inputCount];
+            float[] callbackOutput = new float[outputCount];
+
+            Callback(number, inputCount, outputCount, callbackInput, callbackOutput);
+            
+            using (floatArray inputArray = new floatArray(inputs, false))
+            using (floatArray outputArray = new floatArray(outputs, false))
+            {
+                for (int i = 0; i < inputCount; i++)
+                {
+                    inputArray.setitem(i, callbackInput[i]);
+                }
+                for (int i = 0; i < outputCount; i++)
+                {
+                    outputArray.setitem(i, callbackOutput[i]);
+                }
+            }
+        }
+
+        private DataCreateCallbackFloat Callback { get; set; }
+        private data_create_callback RawCallback { get; set; }
+
+        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+        internal delegate void data_create_callback(uint number, uint inputCount, uint outputCount, global::System.IntPtr inputs, global::System.IntPtr outputs);
     }
+
+
+    public delegate void DataCreateCallbackFloat(uint number, uint inputCount, uint outputCount, float [] inputs, float [] outputs);
+
 }

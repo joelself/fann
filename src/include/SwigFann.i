@@ -36,6 +36,39 @@
 %ignore FANN_ERRORFUNC_NAMES;
 %ignore FANN_ACTIVATIONFUNC_NAMES;
 %ignore FANN_TRAIN_NAMES;
+<<<<<<< Updated upstream
+=======
+%typemap(ctype) void* "void*"
+%typemap(in) void* user_data %{ $1 = (void*)$input;%}
+%typemap(imtype, out="global::System.IntPtr") void* user_data "global::System.IntPtr" 
+%typemap(cstype, out="global::System.IntPtr") void* user_data "global::System.IntPtr"
+%typemap(csin) void* user_data "$csinput"
+%typemap(ctype) int (*)(FANN::neural_net&, FANN::training_data&, unsigned int, unsigned int, float, unsigned int, void*) "int (*)(FANN::neural_net&, FANN::training_data&, unsigned int, unsigned int, float, unsigned int, void*)" 
+%typemap(in) int (*)(FANN::neural_net&, FANN::training_data&, unsigned int, unsigned int, float, unsigned int, void*) %{ $1 = (int (*)(FANN::neural_net&, FANN::training_data&, unsigned int, unsigned int, float, unsigned int, void*))$input;%} 
+%typemap(imtype, out="global::System.IntPtr") int (*)(FANN::neural_net&, training_data&, unsigned int, unsigned int, float, unsigned int, void*) "global::System.IntPtr" 
+%typemap(cstype, out="global::System.IntPtr") int (*)(FANN::neural_net&, FANN::training_data&, unsigned int, unsigned int, float, unsigned int, void*) "global::System.IntPtr"
+%typemap(csin) int (*)(FANN::neural_net&, FANN::training_data&, unsigned int, unsigned int, float, unsigned int, void*) "$csinput"
+%typemap(ctype) FANN::callback_type "FANN::callback_type" 
+%typemap(in) FANN::callback_type %{ $1 = (FANN::callback_type)$input;%} 
+%typemap(imtype, out="global::System.IntPtr") FANN::callback_type "global::System.IntPtr" 
+%typemap(cstype, out="global::System.IntPtr") FANN::callback_type "global::System.IntPtr"
+%typemap(csin) FANN::callback_type "$csinput"
+%typemap(ctype) void (*)(unsigned int, unsigned int, unsigned int, float *, float *) "void *" 
+%typemap(in) void (*)(unsigned int, unsigned int, unsigned int, float *, float *) %{ $1 = (void (*)(unsigned int, unsigned int, unsigned int, float *, float *))$input;%} 
+%typemap(imtype, out="global::System.IntPtr") void (*)(unsigned int, unsigned int, unsigned int, float *, float *) "global::System.IntPtr" 
+%typemap(cstype, out="global::System.IntPtr") void (*)(unsigned int, unsigned int, unsigned int, float *, float *) "global::System.IntPtr"
+%typemap(csin) void (*)(unsigned int, unsigned int, unsigned int, float *, float *) "$csinput"
+%typemap(ctype) void (*)(unsigned int, unsigned int, unsigned int, double *, double *) "void *" 
+%typemap(in) void (*)(unsigned int, unsigned int, unsigned int, double *, double *) %{ $1 = (void (*)(unsigned int, unsigned int, unsigned int, double *, double *))$input;%} 
+%typemap(imtype, out="global::System.IntPtr") void (*)(unsigned int, unsigned int, unsigned int, double *, double *) "global::System.IntPtr" 
+%typemap(cstype, out="global::System.IntPtr") void (*)(unsigned int, unsigned int, unsigned int, double *, double *) "global::System.IntPtr"
+%typemap(csin) void (*)(unsigned int, unsigned int, unsigned int, double *, double *) "$csinput"
+%typemap(ctype) void (*)(unsigned int, unsigned int, unsigned int, int *, int *) "void *"
+%typemap(in) void (*)(unsigned int, unsigned int, unsigned int, int *, int *) %{ $1 = (void (*)(unsigned int, unsigned int, unsigned int, int *, int *))$input;%} 
+%typemap(imtype, out="global::System.IntPtr") void (*)(unsigned int, unsigned int, unsigned int, int *, int *) "global::System.IntPtr" 
+%typemap(cstype, out="global::System.IntPtr") void (*)(unsigned int, unsigned int, unsigned int, int *, int *) "global::System.IntPtr"
+%typemap(csin) void (*)(unsigned int, unsigned int, unsigned int, int *, int *) "$csinput"
+>>>>>>> Stashed changes
 #define FANN_EXTERNAL /**/
 #define FANN_API /**/
 %include "typemaps.i"

@@ -73,9 +73,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FANNCSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="FANNCSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\x86\FANNCSharp.dll</HintPath>
+      <HintPath>..\..\bin\x64\FANNCSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

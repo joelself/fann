@@ -34,14 +34,15 @@ namespace Example
                 for (float momentum = 0.0F; momentum < 0.7F; momentum += 0.1F)
                 {
                     Console.WriteLine("============= momentum = {0} =============\n", momentum);
-                    using (NeuralNet net = new NeuralNet(num_layers, trainData.InputCount, num_neurons_hidden, trainData.OutputCount))
+                    using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, trainData.InputCount, num_neurons_hidden, trainData.OutputCount))
                     {
-
+                        net.SetCallback(TrainingCallback, "Hello!");
+                        
                         net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_INCREMENTAL;
 
                         net.LearningMomentum = momentum;
 
-                        net.TrainOnData(trainData, 2000, 500, desired_error);
+                        net.TrainOnData(trainData, 20000, 5000, desired_error);
 
                         Console.WriteLine("MSE error on train data: {0}", net.TestData(trainData));
                         Console.WriteLine("MSE error on test data: {0}", net.TestData(testData));
@@ -50,6 +51,11 @@ namespace Example
                 }
             }
             Console.ReadKey();
+        }
+
+        static int TrainingCallback(NeuralNetFloat net, TrainingDataFloat data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, object userData) {
+            Console.WriteLine("Callback: {0}, {1}, {2}, {2}, {3}, {4}, {5}, {6}", net.InputCount, data.Input[0][0], maxEpochs, epochsBetweenReports, desiredError, epochs, userData);
+            return 1;
         }
     }
 }

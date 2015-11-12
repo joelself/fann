@@ -189,8 +189,12 @@ namespace CleanUpForSwig
             //}
             text = text.Replace("void (*arg5)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *) = (void (*)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *)) 0 ;",
                                 "void (__stdcall *arg5)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *) = (void (__stdcall *)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *)) 0 ;");
-            text = text.Replace("arg5 = (void (*)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *))jarg5;",
-                                "arg5 = (void (__stdcall *)(unsigned int,unsigned int,unsigned int,fann_type *,fann_type *))jarg5;");
+            text = text.Replace("arg5 = (void (*)(unsigned int, unsigned int, unsigned int, float *, float *))jarg5;",
+                                "arg5 = (void (__stdcall *)(unsigned int,unsigned int,unsigned int,float *,float *))jarg5;");
+            text = text.Replace("arg5 = (void (*)(unsigned int, unsigned int, unsigned int, int *, int *))jarg5;",
+                    "arg5 = (void (__stdcall *)(unsigned int,unsigned int,unsigned int, int *, int *))jarg5;");
+            text = text.Replace("arg5 = (void (*)(unsigned int, unsigned int, unsigned int, double *, double *))jarg5;",
+                    "arg5 = (void (__stdcall *)(unsigned int,unsigned int,unsigned int, double *, double *))jarg5;");
             File.Delete(path);
             File.WriteAllText(path, text);
             return 0;
