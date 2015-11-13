@@ -3,17 +3,75 @@ using FannWrapperDouble;
 using FannWrapper;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+/*
+ *  Fast Artificial Neural Network (fann) C# Wrapper
+ *  Copyright (C) 2015 created by joelself (at) gmail dot com
+ *
+ *  This wrapper is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License as published by the Free Software Foundation; either
+ *  version 2.1 of the License, or (at your option) any later version.
+ *
+ *  This wrapper is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+ */
 
+/*
+ *  Title: FANN C# neural_net Wrapper Double
+ *
+ *  Overview:
+ *
+ *  The Fann Wrapper for C# provides Six classes: <NeuralNetFloat>,
+ *  <NeuralNetDouble>, <NeuralNetFixed>, <TrainingDataFloat>,
+ *  <TrainingDataDouble>, <TrainingDataFixed>. To use the wrapper add
+ *  FANNCSharp.dll as a reference to your project.
+ *
+ *  To get started see XorSample project.
+ *  The license is LGPL. Copyright (C) 2015 created by <joelself@gmail.com>.
+ *
+ *
+ *  Note:  Notes and differences from C API
+ *
+ *  -  The Fann Wrapper for C# is a minimal wrapper without use of
+ *       templates or exception handling for efficient use in any environment.
+ *       Benefits include fixed array sizes, simpler memory
+ *       management and code completion in program editor.
+ *  -  Method names are the same as the function names in the C++
+ *       API except the snake_case style naming has been replaced with
+ *       CamelCase, getters and setters have been turned into properties, and
+ *       "num" has been replace with "Count" to be more C#-ish
+ *  -  The arguments to the methods are the same as the C++ API
+ *       except that the neural_net *net/training_data *data
+ *       arguments are encapsulated so they are not present in the
+ *       method signatures or are translated into class references.
+ *  -  The neural network and training data is automatically cleaned
+ *       up in the Dispose methods
+ *
+ */
+/* Namespace: FANNCSharp
+    The FANNCSharp namespace groups the C# wrapper definitions */
 namespace FANNCSharp
 {
+    /* Class: NeuralNetDouble
+        <NeuralNetDouble> is the main neural network class used for both training and execution using doubles
 
+        Encapsulation of a double neural network <neural_net at http://libfann.github.io/fann/docs/files/fann_cpp-h.html#neural_net> and
+        associated C++ API functions.
+    */
     public class NeuralNetDouble : IDisposable
     {
         neural_net net = null;
 
-        /* Constructor neural_net(NeuralNetDouble other)
+        /* Constructor: NeuralNetDouble
 
-        Creates a copy the other NeuralNetDouble.
+            Creates a copy the other NeuralNetDouble.
         */
         public NeuralNetDouble(NeuralNetDouble other)
         {
@@ -33,7 +91,7 @@ namespace FANNCSharp
         {
            net.destroy();
         }
-        /* Constructor: NeuralNetDouble(NetworkType netType, uint numLayers, ...)
+        /* Constructor: NeuralNetDouble
 
             Creates a neural network of the desired <network_type_enum> net_type.
 
@@ -65,7 +123,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Constructor: NeuralNetDouble(NetworkType netType, ICollection<uint> layers)
+        /* Constructor: NeuralNetDouble
 
             Creates a neural network of the desired <NetworkType> netType, based on a collection of layers.
 
@@ -94,7 +152,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Constructor: NeuralNetDouble(float connectionRate, unsigned int numLayers, ...)
+        /* Constructor: NeuralNetDouble
 
             Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <LAYER>
 
@@ -102,7 +160,7 @@ namespace FANNCSharp
                 connectionRate - The connection rate controls how many connections there will be in the
                     network. If the connection rate is set to 1, the network will be fully
                     connected, but if it is set to 0.5 only half of the connections will be set.
-                    A connection rate of 1 will yield the same result as <fann_create_standard>
+                    A connection rate of 1 will yield the same result as <fann_create_standard at http://libfann.github.io/fann/docs/files/fann-h.html#fann_create_standard>
                 numLayers - The total number of layers including the input and the output layer.
                 ... - Integer values determining the number of neurons in each layer starting with the
                     input layer and ending with the output layer.
@@ -122,7 +180,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Constructor: NeuralNetDouble(float connectionRate, ICollection<uint> layers)
+        /* Constructor: NeuralNetDouble
 
             Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <LAYER>
 
@@ -130,7 +188,7 @@ namespace FANNCSharp
                 connectionRate - The connection rate controls how many connections there will be in the
                     network. If the connection rate is set to 1, the network will be fully
                     connected, but if it is set to 0.5 only half of the connections will be set.
-                    A connection rate of 1 will yield the same result as <fann_create_standard>
+                    A connection rate of 1 will yield the same result as <fann_create_standard at http://libfann.github.io/fann/docs/files/fann-h.html#fann_create_standard>
                 numLayers - The total number of layers including the input and the output layer.
                 layers - Integer values determining the number of neurons in each layer starting with the
                     input layer and ending with the output layer.
@@ -153,7 +211,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Constructor: NeuralNetDouble(string filename)
+        /* Constructor: NeuralNetDouble
 
            Constructs a backpropagation neural network from a configuration file,
            which have been saved by <Save>.
@@ -174,7 +232,7 @@ namespace FANNCSharp
             equal to the number of neurons in the output layer.
 
             See also:
-                <Test>, <fann_run>
+                <Test>, <fann_run at http://libfann.github.io/fann/docs/files/fann-h.html#fann_run>
 
             This function appears in FANN >= 1.0.0.
         */
@@ -205,7 +263,7 @@ namespace FANNCSharp
             From the beginning the weights are random between -0.1 and 0.1.
 
             See also:
-                <InitWeights>, <fann_randomize_weights>
+                <InitWeights>, <fann_randomize_weights at http://libfann.github.io/fann/docs/files/fann-h.html#fann_randomize_weights>
 
             This function appears in FANN >= 1.0.0.
         */
@@ -218,7 +276,7 @@ namespace FANNCSharp
 
             Initialize the weights using Widrow + Nguyen's algorithm.
         	
-            This function behaves similarly to fann_randomize_weights. It will use the algorithm developed 
+            This function behaves similarly to <fann_randomize_weights at http://libfann.github.io/fann/docs/files/fann-h.html#fann_randomize_weights>. It will use the algorithm developed 
             by Derrick Nguyen and Bernard Widrow to set the weights in such a way 
             as to speed up training. This technique is not always successful, and in some cases can be less 
             efficient than a purely random initialization.
@@ -229,7 +287,7 @@ namespace FANNCSharp
 
             See also:
                 <RandomizeWeight>, <TrainingData.ReadTrainFromFile>,
-                <fann_init_weights>
+                <fann_init_weights at http://libfann.github.io/fann/docs/files/fann-h.html#fann_init_weights>
 
             This function appears in FANN >= 1.1.0.
         */
@@ -243,7 +301,7 @@ namespace FANNCSharp
             Will print the connections of the network in a compact matrix, for easy viewing of the internals 
             of the network.
 
-            The output from fann_print_connections on a small (2 2 1) network trained on the xor problem
+            The output from <fann_print_connections at http://libfann.github.io/fann/docs/files/fann-h.html#fann_print_connections> on a small (2 2 1) network trained on the xor problem
             >Layer / Neuron 012345
             >L   1 / N    3 BBa...
             >L   1 / N    4 BBA...
@@ -277,7 +335,7 @@ namespace FANNCSharp
            <NeuralNetDouble(string filename)> to create an exact copy of the neural network and all of the
            parameters associated with the neural network.
            
-           These two parameters (<SetCallback>, <SetErrorLog>) are *NOT* saved 
+           These two parameters (<SetCallback>, <ErrorLog>) are *NOT* saved 
            to the file because they cannot safely be ported to a different location. Also temporary
            parameters generated during training like <MSE> is not saved.
            
@@ -285,7 +343,7 @@ namespace FANNCSharp
            The function returns true on success and false on failure.
            
            See also:
-            <NeuralNetDouble(string filename)>, <SaveToFixed>, <fann_save>
+            <NeuralNetDouble(string filename)>, <SaveToFixed>, <fann_save at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save>
 
            This function appears in FANN >= 1.0.0.
          */
@@ -322,7 +380,7 @@ namespace FANNCSharp
            point version is actually faster.
 
            See also:
-            <NeuralNetDouble(string filename)>, <Save>, <fann_save_to_fixed>
+            <NeuralNetDouble(string filename)>, <Save>, <fann_save_to_fixed at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save_to_fixed>
 
            This function appears in FANN >= 1.0.0.
         */
@@ -342,7 +400,7 @@ namespace FANNCSharp
    	        desiredOutput - an array of desired outputs. This array must be exactly <OutputCount> long.
            	
    	        See also:
-   		        <TrainOnData>, <TrainEpoch>, <fann_train>
+   		        <TrainOnData>, <TrainEpoch>, <fann_train at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_train>
            	
    	        This function appears in FANN >= 1.0.0.
          */
@@ -378,7 +436,7 @@ namespace FANNCSharp
 	        function.
         	
 	        See also:
-		        <TrainOnData>, <TestData>, <fann_train_epoch>
+		        <TrainOnData>, <TestData>, <fann_train_epoch at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_train_epoch>
         		
 	        This function appears in FANN >= 1.2.0.
          */
@@ -406,7 +464,7 @@ namespace FANNCSharp
 	        (see <SetCallback>).
         	
 	        See also:
-		        <TrainOnFile>, <TrainEpoch>, <fann_train_on_data>
+		        <TrainOnFile>, <TrainEpoch>, <fann_train_on_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_train_on_data>
 
 	        This function appears in FANN >= 1.0.0.
         */
@@ -420,7 +478,7 @@ namespace FANNCSharp
            Does the same as <TrainOnData>, but reads the training data directly from a file.
            
            See also:
-   		        <TrainOnData>, <fann_train_on_file>
+   		        <TrainOnData>, <fann_train_on_file at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_train_on_file>
 
 	        This function appears in FANN >= 1.0.0.
         */
@@ -436,7 +494,7 @@ namespace FANNCSharp
            change the network in any way.
            
            See also:
-   		        <TestData>, <Train>, <fann_test>
+   		        <TestData>, <Train>, <fann_test at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_test>
            
            This function appears in FANN >= 1.0.0.
         */
@@ -470,7 +528,7 @@ namespace FANNCSharp
            This function updates the MSE and the bit fail values.
            
            See also:
- 	        <Test>, <MSE>, <BitFail>, <fann_test_data>
+ 	        <Test>, <MSE>, <BitFail>, <fann_test_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_test_data>
 
 	        This function appears in FANN >= 1.2.0.
          */
@@ -487,7 +545,7 @@ namespace FANNCSharp
            have been changed since the last calculation of the value.
            
            See also:
-   	        <TestData>, <fann_get_MSE>
+   	        <TestData>, <fann_get_MSE at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_MSE>
 
 	        This function appears in FANN >= 1.1.0.
          */
@@ -506,7 +564,7 @@ namespace FANNCSharp
            This function also resets the number of bits that fail.
            
            See also:
-            <MSE>, <BitFailLimit>, <fann_reset_MSE>
+            <MSE>, <BitFailLimit>, <fann_reset_MSE at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_reset_MSE>
            
             This function appears in FANN >= 1.1.0
          */
@@ -515,12 +573,33 @@ namespace FANNCSharp
            net.reset_MSE();
         }
 
+        /* Method: SetCallback
+           
+           Sets the callback function for use during training. The user_data is passed to
+           the callback. It can point to arbitrary data that the callback might require and
+           can be NULL if it is not used.
+         	
+           See <FANN::callback_type> for more information about the callback function.
+           
+           The default callback function simply prints out some status information.
+
+           This function appears in FANN >= 2.0.0.
+         */
+        public void SetCallback(TrainingCallback callback, Object userData)
+        {
+            Callback = callback;
+            UserData = userData;
+            GCHandle handle = GCHandle.Alloc(userData);
+            training_callback back = new training_callback(InternalCallback);
+            fanndoublePINVOKE.neural_net_set_callback(neural_net.getCPtr(this.net), Marshal.GetFunctionPointerForDelegate(back), (IntPtr)handle);
+        }
+
         /* Method: PrintParameters
 
   	        Prints all of the parameters and options of the neural network
 
             See also:
-                <fann_print_parameters>
+                <fann_print_parameters at http://libfann.github.io/fann/docs/files/fann-h.html#fann_print_parameters>
 
 	        This function appears in FANN >= 1.2.0.
         */
@@ -541,7 +620,8 @@ namespace FANNCSharp
            
            See also:
             <TrainingAlgorithm>,
-            <fann_get_training_algorithm>
+            <fann_get_training_algorithm at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_training_algorithm>,
+            <fann_set_training_algorithm at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_training_algorithm>
 
            This function appears in FANN >= 1.0.0.   	
          */
@@ -569,7 +649,8 @@ namespace FANNCSharp
            
            See also:
    	        <TrainingAlgorithm>,
-            <fann_get_learning_rate>
+            <fann_get_learning_rate at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_learning_rate>,
+            <fann_set_learning_rate at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_learning_rate>
            
            This function appears in FANN >= 1.0.0.   	
          */
@@ -587,7 +668,7 @@ namespace FANNCSharp
 
         /*************************************************************************************************************/
 
-        /* Method: GetActivationFunction(int layer, int neuron)
+        /* Method: GetActivationFunction
 
            Get the activation function for neuron number *neuron* in layer number *layer*, 
            counting the input layer as layer 0. 
@@ -602,7 +683,7 @@ namespace FANNCSharp
            See also:
    	        <SetActivationFunctionLayer>, <ActivationFunctionHidden>,
    	        <ActivationFunctionOutput>, <SetActivationSteepness>,
-            <SetActivationFunction>, <fann_get_activation_function>
+            <SetActivationFunction>, <fann_get_activation_function at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_activation_function>
 
            This function appears in FANN >= 2.1.0
          */
@@ -611,7 +692,7 @@ namespace FANNCSharp
             return net.get_activation_function(layer, neuron);
         }
 
-        /* Method:  SetActivationFunction(int layer, int neuron)
+        /* Method:  SetActivationFunction
 
            Set the activation function for neuron number *neuron* in layer number *layer*, 
            counting the input layer as layer 0. 
@@ -629,7 +710,7 @@ namespace FANNCSharp
            See also:
    	        <SetActivationFunctionLayer>, <ActivationFunctionHidden>,
    	        <ActivationFunctionOutput>, <SetActivationSteepness>,
-            <GetActivationFunction>, <fann_get_activation_function>
+            <GetActivationFunction>, <fann_get_activation_function at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_activation_function>
 
            This function appears in FANN >= 2.0.0.
          */
@@ -638,7 +719,7 @@ namespace FANNCSharp
            net.set_activation_function(function, layer, neuron);
         }
 
-        /* Method: SetActivationFunctionLayer(ActivationFunction function, int layer)
+        /* Method: SetActivationFunctionLayer
 
            Set the activation function for all the neurons in the layer number *layer*, 
            counting the input layer as layer 0. 
@@ -648,7 +729,7 @@ namespace FANNCSharp
            See also:
    	        <SetActivationFunction>, <ActivationFunctionHidden>,
    	        <ActivationFunctionOutput>, <SetActivationSteepnessLayer>,
-            <fann_set_activation_function_layer>
+            <fann_set_activation_function_layer at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_activation_function_layer>
 
            This function appears in FANN >= 2.0.0.
          */
@@ -664,7 +745,7 @@ namespace FANNCSharp
            See also:
    	        <SetActivationFunction>, <SetActivationFunctionLayer>,
    	        <ActivationFunctionOutput>, <ActivationFunctionSteepnessHidden>,
-            <fann_set_activation_function_hidden>
+            <fann_set_activation_function_hidden at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_activation_function_hidden>
 
            This function appears in FANN >= 1.0.0.
          */
@@ -683,7 +764,7 @@ namespace FANNCSharp
            See also:
    	        <SetActivationFunction>, <SetActivationFunctionLayer>,
    	        <ActivationFunctionHidden>, <ActivationSteepnessOutput>,
-            <fann_set_activation_function_output>
+            <fann_set_activation_function_output at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_activation_function_output>
 
            This function appears in FANN >= 1.0.0.
          */
@@ -695,7 +776,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Method: GetActivationSteepness(int layer, int neuron)
+        /* Method: GetActivationSteepness
 
            Get the activation steepness for neuron number *neuron* in layer number *layer*, 
            counting the input layer as layer 0. 
@@ -717,7 +798,7 @@ namespace FANNCSharp
            See also:
    	        <SetActivationSteepnessLayer>, <ActivationSteepnessHidden>,
    	        <ActivationSteepnessOutput>, <SetActivationFunction>,
-            <SetActivationSteepness>, <fann_get_activation_steepness>
+            <SetActivationSteepness>, <fann_get_activation_steepness at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_activation_steepness>
 
            This function appears in FANN >= 2.1.0
          */
@@ -726,7 +807,7 @@ namespace FANNCSharp
             return net.get_activation_steepness(layer, neuron);
         }
 
-        /* Method: SetActivationSteepness(double steepness, int layer, int neuron)
+        /* Method: SetActivationSteepness
 
            Set the activation steepness for neuron number *neuron* in layer number *layer*, 
            counting the input layer as layer 0. 
@@ -745,7 +826,7 @@ namespace FANNCSharp
            See also:
    	        <SetActivationSteepnessLayer>, <ActivationSteepnessHidden>,
    	        <ActivationSteepnessOutput>, <SetActivationFunction>,
-            <GetActivationSteepness>, <fann_set_activation_steepness>
+            <GetActivationSteepness>, <fann_set_activation_steepness at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_activation_steepness>
 
            This function appears in FANN >= 2.0.0.
          */
@@ -754,7 +835,7 @@ namespace FANNCSharp
            net.set_activation_steepness(steepness, layer, neuron);
         }
 
-        /* Method: SetActivationSteepnessLayer(double steepness, int layer)
+        /* Method: SetActivationSteepnessLayer
 
            Set the activation steepness all of the neurons in layer number *layer*, 
            counting the input layer as layer 0. 
@@ -764,7 +845,7 @@ namespace FANNCSharp
            See also:
    	        <SetActivationSteepness>, <ActivationSteepnessHidden>,
    	        <ActivationSteepnessOutput>, <SetActivationFunctionLayer>,
-            <fann_set_activation_steepness_layer>
+            <fann_set_activation_steepness_layer at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_activation_steepness_layer>
 
            This function appears in FANN >= 2.0.0.
          */
@@ -780,7 +861,7 @@ namespace FANNCSharp
            See also:
    	        <SetActivationSteepness>, <SetActivationSteepnessLayer>,
    	        <ActivationSteepnessOutput>, <ActivationFunctionHidden>,
-            <fann_set_activation_steepness_hidden>
+            <fann_set_activation_steepness_hidden at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_activation_steepness_hidden>
 
            This function appears in FANN >= 1.2.0.
          */
@@ -799,7 +880,7 @@ namespace FANNCSharp
            See also:
    	        <SetActivationSteepness>, <SetActivationSteepnessLayer>,
    	        <ActivationFunctionHidden>, <ActivationSteepnessOutput>,
-            <fann_set_activation_steepness_output>
+            <fann_set_activation_steepness_output at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_activation_steepness_output>
 
            This function appears in FANN >= 1.2.0.
          */
@@ -822,7 +903,8 @@ namespace FANNCSharp
            The default error function is ErrorFunction.ERRORFUNC_TANH
            
            See also:
-   	       <fann_get_train_error_function>
+   	       <fann_get_train_error_function at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_train_error_function>,
+   	       <fann_set_train_error_function at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_train_error_function>
               
            This function appears in FANN >= 1.2.0.
           */
@@ -849,7 +931,8 @@ namespace FANNCSharp
            The default decay is -0.0001.
            
            See also:
-   	       <fann_get_quickprop_decay>
+   	       <fann_get_quickprop_decay at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_quickprop_decay>,
+   	       <fann_set_quickprop_decay at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_quickprop_decay>
 
            This function appears in FANN >= 1.2.0.
          */
@@ -876,7 +959,8 @@ namespace FANNCSharp
            The default mu factor is 1.75. 
            
            See also:
-   	       <fann_get_quickprop_mu>
+   	       <fann_get_quickprop_mu at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_quickprop_mu>,
+   	       <fann_set_quickprop_mu at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_quickprop_mu>
 
            This function appears in FANN >= 1.2.0.
         */
@@ -902,7 +986,8 @@ namespace FANNCSharp
            The default increase factor is 1.2.
            
            See also:
-   	       <fann_get_rprop_increase_factor>
+   	       <fann_get_rprop_increase_factor at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_rprop_increase_factor>,
+   	       <fann_set_rprop_increase_factor at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_rprop_increase_factor>
 
            This function appears in FANN >= 1.2.0.
         */
@@ -927,7 +1012,8 @@ namespace FANNCSharp
            The default decrease factor is 0.5.
 
            See also:
-           <fann_get_rprop_decrease_factor>
+           <fann_get_rprop_decrease_factor at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_rprop_decrease_factor>,
+           <fann_set_rprop_decrease_factor at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_rprop_decrease_factor>
 
            This function appears in FANN >= 1.2.0.
         */
@@ -952,7 +1038,8 @@ namespace FANNCSharp
            The default value delta zero is 0.1.
 
            See also:
-   	       <fann_get_rprop_delta_zero>
+   	       <fann_get_rprop_delta_zero at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_rprop_delta_zero>,
+   	       <fann_set_rprop_delta_zero at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_rprop_delta_zero>
            	
            This function appears in FANN >= 2.1.0.
         */
@@ -977,7 +1064,8 @@ namespace FANNCSharp
            The default value delta min is 0.0.
 
            See also:
-   	       <fann_get_rprop_delta_min>
+   	       <fann_get_rprop_delta_min at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_rprop_delta_min>,
+   	       <fann_set_rprop_delta_min at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_rprop_delta_min>
            	
            This function appears in FANN >= 1.2.0.
         */
@@ -1002,7 +1090,8 @@ namespace FANNCSharp
            The default delta max is 50.0.
 
            See also:
-   	        <RpropDeltaMin>, <fann_get_rprop_delta_max>
+   	        <RpropDeltaMin>, <fann_get_rprop_delta_max at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_rprop_delta_max>,
+            <fann_set_rprop_delta_max at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_rprop_delta_max>
 
            This function appears in FANN >= 1.2.0.
         */
@@ -1178,7 +1267,7 @@ namespace FANNCSharp
                 The neural network type from enum <FannWrapper.NetworkType>
 
             See Also:
-                <fann_get_network_type>
+                <fann_get_network_type at http://libfann.github.io/fann/docs/files/fann-h.html#fann_get_network_type>
 
            This function appears in FANN >= 2.1.0
         */
@@ -1198,7 +1287,7 @@ namespace FANNCSharp
                 The connection rate
 
             See also:
-                <fann_get_connection_rate>
+                <fann_get_connection_rate at http://libfann.github.io/fann/docs/files/fann-h.html#fann_get_connection_rate>
 
            This function appears in FANN >= 2.1.0
         */
@@ -1218,7 +1307,7 @@ namespace FANNCSharp
 		        The number of layers in the neural network
 
             See also:
-                <fann_get_num_layers>
+                <fann_get_num_layers at http://libfann.github.io/fann/docs/files/fann-h.html#fann_get_num_layers>
 
            This function appears in FANN >= 2.1.0
         */
@@ -1237,7 +1326,7 @@ namespace FANNCSharp
             Bias is not included so the layers match the create methods.
 
             See also:
-                <fann_get_layer_array>
+                <fann_get_layer_array at http://libfann.github.io/fann/docs/files/fann-h.html#fann_get_layer_array>
 
            This function appears in FANN >= 2.1.0
         */
@@ -1263,7 +1352,7 @@ namespace FANNCSharp
             Get the number of bias in each layer in the network.
 
             See also:
-                <fann_get_bias_array>
+                <fann_get_bias_array at http://libfann.github.io/fann/docs/files/fann-h.html#fann_get_bias_array>
 
             This function appears in FANN >= 2.1.0
         */
@@ -1289,7 +1378,7 @@ namespace FANNCSharp
             Get the connections in the network.
 
             See also:
-                <fann_get_connection_array>
+                <fann_get_connection_array at http://libfann.github.io/fann/docs/files/fann-h.html#fann_get_connection_array>
 
            This function appears in FANN >= 2.1.0
         */
@@ -1318,7 +1407,7 @@ namespace FANNCSharp
             if they do not already exist in the network.
 
             See also:
-                <fann_set_weight_array>
+                <fann_set_weight_array at http://libfann.github.io/fann/docs/files/fann-h.html#fann_set_weight_array>
 
            This function appears in FANN >= 2.1.0
         */
@@ -1337,7 +1426,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Method: SetWeight(uint fromNeuron, uint toNeuron, double weight)
+        /* Method: SetWeight
 
             Set a connection in the network.
 
@@ -1345,7 +1434,7 @@ namespace FANNCSharp
             ignored if it does not already exist in the network.
 
             See also:
-                <fann_set_weight>
+                <fann_set_weight at http://libfann.github.io/fann/docs/files/fann-h.html#fann_set_weight>
 
            This function appears in FANN >= 2.1.0
         */
@@ -1461,7 +1550,7 @@ namespace FANNCSharp
 
         /*********************************************************************/
 
-        /* Method: CascadetrainOnData(TrainingDataDouble data, uint maxNeurons, uint neuronsBetweenReports, float desiredError)
+        /* Method: CascadetrainOnData
 
            Trains on an entire dataset, for a period of time using the Cascade2 training algorithm.
            This algorithm adds neurons to the neural network while training, which means that it
@@ -1495,12 +1584,13 @@ namespace FANNCSharp
            net.cascadetrain_on_data(data.InternalData, maxNeurons, neuronsBetweenReports, desiredError);
         }
 
-        /* Method: CascadetrainOnFile(string filename, uint maxNeurons, uint neuronsBetweenReports, float desiredError)
+        /* Method: CascadetrainOnFile
            
            Does the same as <CascadetrainOnData>, but reads the training data directly from a file.
            
            See also:
-   		        <fann_cascadetrain_on_data>, <fann_cascadetrain_on_file>
+   		        <fann_cascadetrain_on_data at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_cascadetrain_on_data>,
+                <fann_cascadetrain_on_file at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_cascadetrain_on_file>
 
 	        This function appears in FANN >= 2.0.0.
         */
@@ -1527,7 +1617,9 @@ namespace FANNCSharp
            The default cascade output change fraction is 0.01, which is equalent to a 1% change in MSE.
 
            See also:
-   		        <MSE>, <CascadeOutputStagnationEpochs>, <fann_get_cascade_output_change_fraction>
+   		        <MSE>, <CascadeOutputStagnationEpochs>,
+                <fann_get_cascade_output_change_fraction at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_get_cascade_output_change_fraction>,
+                <fann_set_cascade_output_change_fraction at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_set_cascade_output_change_fraction>
 
 	        This function appears in FANN >= 2.0.0.
          */
@@ -1553,7 +1645,9 @@ namespace FANNCSharp
            The default number of cascade output stagnation epochs is 12.
 
            See also:
-   		        <CascadeOutputChangeFraction>, <fann_get_cascade_output_stagnation_epochs>
+   		        <CascadeOutputChangeFraction>,
+                <fann_get_cascade_output_stagnation_epochs at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_get_cascade_output_stagnation_epochs>,
+                <fann_set_cascade_output_stagnation_epochs at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_set_cascade_output_stagnation_epochs>
 
 	        This function appears in FANN >= 2.0.0.
          */
@@ -1587,7 +1681,9 @@ namespace FANNCSharp
            The default cascade candidate change fraction is 0.01, which is equalent to a 1% change in MSE.
 
            See also:
-   		        <MSE>, <CascadeCandidateStagnationEpochs>, <fann_get_cascade_candidate_change_fraction>
+   		        <MSE>, <CascadeCandidateStagnationEpochs>,
+                <fann_get_cascade_candidate_change_fraction at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_get_cascade_candidate_change_fraction>,
+                <fann_set_cascade_candidate_change_fraction at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_set_cascade_candidate_change_fraction>
 
 	        This function appears in FANN >= 2.0.0.
          */
@@ -1613,7 +1709,9 @@ namespace FANNCSharp
            The default number of cascade candidate stagnation epochs is 12.
 
            See also:
-   		        <CascadeCandidateChangeFraction>, <fann_get_cascade_candidate_stagnation_epochs>
+   		        <CascadeCandidateChangeFraction>,
+                <fann_get_cascade_candidate_stagnation_epochs at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_get_cascade_candidate_stagnation_epochs>,
+                <fann_set_cascade_candidate_stagnation_epochs at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_set_cascade_candidate_stagnation_epochs>
 
 	        This function appears in FANN >= 2.0.0.
          */
@@ -1638,7 +1736,8 @@ namespace FANNCSharp
            The default weight multiplier is 0.4
 
            See also:
-   		        <fann_get_cascade_weight_multiplier>
+   		        <fann_get_cascade_weight_multiplier at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_get_cascade_weight_multiplier>,
+   		        <fann_set_cascade_weight_multiplier at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_set_cascade_weight_multiplier>
 
 	        This function appears in FANN >= 2.0.0.
          */
@@ -1665,7 +1764,8 @@ namespace FANNCSharp
            The default candidate limit is 1000.0
 
            See also:
-   		        <fann_get_cascade_candidate_limit>
+   		        <fann_get_cascade_candidate_limit at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_get_cascade_candidate_limit>,
+   		        <fann_set_cascade_candidate_limit at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_set_cascade_candidate_limit>
 
 	        This function appears in FANN >= 2.0.0.
          */
@@ -1689,7 +1789,8 @@ namespace FANNCSharp
            The default max out epochs is 150
 
            See also:
-   		        <fann_get_cascade_max_out_epochs>
+   		        <fann_get_cascade_max_out_epochs at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_get_cascade_max_out_epochs>,
+   		        <fann_set_cascade_max_out_epochs at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_set_cascade_max_out_epochs>
 
 	        This function appears in FANN >= 2.0.0.
          */
@@ -1713,7 +1814,8 @@ namespace FANNCSharp
            The default max candidate epochs is 150
 
            See also:
-   		        <fann_get_cascade_max_cand_epochs>
+   		        <fann_get_cascade_max_cand_epochs at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_get_cascade_max_cand_epochs>,
+   		        <fann_set_cascade_max_cand_epochs at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_set_cascade_max_cand_epochs>
 
 	        This function appears in FANN >= 2.0.0.
          */
@@ -1748,7 +1850,8 @@ namespace FANNCSharp
            See also:
    		        <CascadeActivationFunctions>, <CascadeActivationFunctionsCount>, 
    		        <CascadeActivationSteepnesses>, <CascadeActivationSteepnessesCount>,
-   		        <CascadeCandidateGroupsCount>, <fann_get_cascade_num_candidates>
+   		        <CascadeCandidateGroupsCount>,
+                <fann_get_cascade_num_candidates at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_get_cascade_num_candidates>
 
 	        This function appears in FANN >= 2.0.0.
          */
@@ -1760,7 +1863,18 @@ namespace FANNCSharp
             }
         }
 
+        /* Property: CascadeActivationFunctionsCount
 
+           The number of activation functions in the <CascadeActivationFunctions> array.
+
+           The default number of activation functions is 10.
+
+           See also:
+   		        <CascadeActivationFunctions>,
+                <fann_get_cascade_activation_functions_count at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_get_cascade_activation_functions_count>
+
+	        This function appears in FANN >= 2.0.0.
+         */
         public uint CascadeActivationFunctionsCount
         {
             get
@@ -1769,7 +1883,19 @@ namespace FANNCSharp
             }
         }
 
+        /* Property: CascadeActivationFunctions
 
+           The cascade activation functions array is an array of the different activation functions used by
+           the candidates. 
+           
+           See <CascadeCandidatesCount> for a description of which candidate neurons will be 
+           generated by this array.
+           
+           See also:
+   		        <CascadeActivationFunctionsCount>, <ActivationFunction>
+
+	        This function appears in FANN >= 2.0.0.
+         */
         public ActivationFunction[] CascadeActivationFunctions
         {
             get
@@ -1798,7 +1924,18 @@ namespace FANNCSharp
             }
         }
 
+        /* Property: CascadeActivationSteepnessesCount
 
+           The number of activation steepnesses in the <CascadeActivationFunctions> array.
+
+           The default number of activation steepnesses is 4.
+
+           See also:
+   		        <CascadeActivationSteepnesses>, <CascadeActivationFunctions>,
+                <fann_get_cascade_activation_steepnesses_count at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_get_cascade_activation_steepnesses_count>
+
+	        This function appears in FANN >= 2.0.0.
+         */
         public uint CascadeActivationSteepnessesCount
         {
             get
@@ -1807,7 +1944,23 @@ namespace FANNCSharp
             }
         }
 
+        /* Property: CascadeActivationSteepnesses
 
+           The cascade activation steepnesses array is an array of the different activation functions used by
+           the candidates.
+
+           See <CascadeCandidatesCount> for a description of which candidate neurons will be 
+           generated by this array.
+
+           The default activation steepnesses is {0.25, 0.50, 0.75, 1.00}
+
+           See also:
+   		        <CascadeActivationSteepnessesCount>,
+                <fann_get_cascade_activation_steepnesses at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_get_cascade_activation_steepnesses>,
+                <fann_set_cascade_activation_steepnesses at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_set_cascade_activation_steepnesses>
+
+	        This function appears in FANN >= 2.0.0.
+         */
         public double[] CascadeActivationSteepnesses
         {
             get
@@ -1840,7 +1993,24 @@ namespace FANNCSharp
             }
         }
 
+        /* Property: CascadeCandidateGroupsCount
 
+           The number of candidate groups is the number of groups of identical candidates which will be used
+           during training.
+           
+           This number can be used to have more candidates without having to define new parameters for the candidates.
+           
+           See <CascadeCandidatesCount> for a description of which candidate neurons will be 
+           generated by this parameter.
+           
+           The default number of candidate groups is 2
+
+           See also:
+   		        <fann_get_cascade_num_candidate_groups at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_get_cascade_num_candidate_groups>,
+   		        <fann_set_cascade_num_candidate_groups at http://libfann.github.io/fann/docs/files/fann_cascade-h.html#fann_set_cascade_num_candidate_groups>
+
+	        This function appears in FANN >= 2.0.0.
+         */
         public uint CascadeCandidateGroupsCount
         {
             get
@@ -1853,101 +2023,237 @@ namespace FANNCSharp
             }
         }
 
+        /*********************************************************************/
 
+
+        /* Method: ScaleTrain
+
+           Scale input and output data based on previously calculated parameters.
+
+           See also:
+   		        <DescaleTrain>, <fann_scale_train at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_scale_train>
+
+	        This function appears in FANN >= 2.1.0.
+         */
         public void ScaleTrain(TrainingDataDouble data)
         {
            net.scale_train(data.InternalData);
         }
 
+        /* Method: DescaleTrain
 
+           Descale input and output data based on previously calculated parameters.
+
+           See also:
+   		        <ScaleTrain>, <fann_descale_train at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_descale_train>
+
+	        This function appears in FANN >= 2.1.0.
+         */
         public void DescaleTrain(TrainingDataDouble data)
         {
            net.descale_train(data.InternalData);
         }
 
+        /* Method: SetInputScalingParams
 
-        public bool SetInputScalingParams(TrainingDataDouble data, float new_input_min, float new_input_max)
+           Calculate scaling parameters for future use based on training data.
+
+           See also:
+   		        <SetOutputScalingParams>,
+                <fann_set_input_scaling_params at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_input_scaling_params>
+
+	        This function appears in FANN >= 2.1.0.
+         */
+        public bool SetInputScalingParams(TrainingDataDouble data, float newInputMin, float newInputMax)
         {
-            return net.set_input_scaling_params(data.InternalData, new_input_min, new_input_max);
+            return net.set_input_scaling_params(data.InternalData, newInputMin, newInputMax);
         }
 
+        /* Method: SetOutputScalingParams
 
-        public bool SetOutputScalingParams(TrainingDataDouble data, float new_output_min, float new_output_max)
+           Calculate scaling parameters for future use based on training data.
+
+           See also:
+   		        <SetInputScalingParams>,
+                <fann_set_output_scaling_params at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_output_scaling_params>
+
+	        This function appears in FANN >= 2.1.0.
+         */
+        public bool SetOutputScalingParams(TrainingDataDouble data, float newOutputMin, float newOutputMax)
         {
-            return net.set_output_scaling_params(data.InternalData, new_output_min, new_output_max);
+            return net.set_output_scaling_params(data.InternalData, newOutputMin, newOutputMax);
         }
 
+        /* Method: SetScalingParams
 
-        public bool SetScalingParams(TrainingDataDouble data, float new_input_min, float new_input_max, float new_output_min, float new_output_max)
+           Calculate scaling parameters for future use based on training data.
+
+           See also:
+   		        <ClearScalingParams>,
+                <fann_set_scaling_params at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_scaling_params>
+
+	        This function appears in FANN >= 2.1.0.
+         */
+        public bool SetScalingParams(TrainingDataDouble data, float newInputMin, float newInputMax, float newOutputMin, float newOutputMax)
         {
-            return net.set_scaling_params(data.InternalData, new_input_min, new_input_max, new_output_min, new_output_max);
+            return net.set_scaling_params(data.InternalData, newInputMin, newInputMax, newOutputMin, newOutputMax);
         }
 
+        /* Method: ClearScalingParams
 
+           Clears scaling parameters.
+
+           See also:
+   		        <SetScalingParams>,
+                <fann_clear_scaling_params at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_clear_scaling_params>
+
+	        This function appears in FANN >= 2.1.0.
+         */
         public bool ClearScalingParams()
         {
             return net.clear_scaling_params();
         }
 
+        /* Property: ScaleInput
 
-        public void ScaleInput(double[] input_vector)
+           Scale data in input vector before feed it to ann based on previously calculated parameters.
+
+           See also:
+   		        <DescaleInput>, <ScaleOutput>,
+                <fann_scale_input at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_scale_input>
+
+	        This function appears in FANN >= 2.1.0.
+         */
+        public double[] ScaleInput
         {
-            using (doubleArray inputs = new doubleArray(input_vector.Length))
+            set
             {
-                for (int i = 0; i < input_vector.Length; i++)
+                using (doubleArray inputs = new doubleArray(value.Length))
                 {
-                    inputs.setitem(i, input_vector[i]);
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        inputs.setitem(i, value[i]);
+                    }
+                    net.scale_input(inputs.cast());
                 }
-               net.scale_input(inputs.cast());
             }
         }
 
+        /* Property: ScaleOutput
 
-        public void ScaleOutput(double[] output_vector)
+           Scale data in output vector before feed it to ann based on previously calculated parameters.
+
+           See also:
+   		        <DescaleOutput>, <ScaleInput>,
+                <fann_scale_output at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_scale_output>
+
+	        This function appears in FANN >= 2.1.0.
+         */
+        public double[] ScaleOutput
         {
-            using (doubleArray inputs = new doubleArray(output_vector.Length))
+            set
             {
-                for (int i = 0; i < output_vector.Length; i++)
+                using (doubleArray inputs = new doubleArray(value.Length))
                 {
-                    inputs.setitem(i, output_vector[i]);
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        inputs.setitem(i, value[i]);
+                    }
+                    net.scale_output(inputs.cast());
                 }
-               net.scale_output(inputs.cast());
             }
         }
 
+        /* Property: DescaleInput
 
-        public void DescaleInput(double[] input_vector)
+           Scale data in input vector after get it from ann based on previously calculated parameters.
+
+           See also:
+   		        <ScaleInput>, <DescaleOutput>,
+                <fann_descale_input at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_descale_input>
+
+	        This function appears in FANN >= 2.1.0.
+         */
+        public double[] DescaleInput
         {
-            using (doubleArray inputs = new doubleArray(input_vector.Length))
+            set
             {
-                for (int i = 0; i < input_vector.Length; i++)
+                using (doubleArray inputs = new doubleArray(value.Length))
                 {
-                    inputs.setitem(i, input_vector[i]);
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        inputs.setitem(i, value[i]);
+                    }
+                    net.descale_input(inputs.cast());
                 }
-               net.descale_input(inputs.cast());
             }
         }
 
+        /* Property: DescaleOutput
 
-        public void DescaleOutput(double[] output_vector)
+           Scale data in output vector after get it from ann based on previously calculated parameters.
+
+           See also:
+   		        <ScaleOutput>, <DescaleInput>,
+                <fann_descale_output at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_descale_output>
+
+	        This function appears in FANN >= 2.1.0.
+         */
+        public double[] DescaleOutput
         {
-            using (doubleArray inputs = new doubleArray(output_vector.Length))
+            set
             {
-                for (int i = 0; i < output_vector.Length; i++)
+                using (doubleArray inputs = new doubleArray(value.Length))
                 {
-                    inputs.setitem(i, output_vector[i]);
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        inputs.setitem(i, value[i]);
+                    }
+                    net.descale_output(inputs.cast());
                 }
-               net.descale_output(inputs.cast());
             }
         }
 
+        /*********************************************************************/
 
-        public void SetErrorLog(FannFile log_file)
+        /* Property: ErrorLog
+
+           Change where errors are logged to.
+           
+           If the value is NULL, no errors will be printed.
+           
+           If NeuralNetDouble is empty the default log will be set.
+           The default log is the log used when creating a NeuralNetDouble.
+           This default log will also be the default for all new NeuralNetDouble
+           that are created.
+           
+           The default behavior is to log them to Console.Error.
+           
+           See also:
+                <struct fann_error at http://libfann.github.io/fann/docs/files/fann_data-h.html#struct_fann_error>,
+                <fann_set_error_log at http://libfann.github.io/fann/docs/files/fann_error-h.html#fann_set_error_log>
+           
+           This function appears in FANN >= 1.1.0.   
+         */
+        public FannFile ErrorLog
         {
-           net.set_error_log(log_file.InternalFile);
+            set
+            {
+                net.set_error_log(value.InternalFile);
+            }
         }
 
+        /* Property: ErrNo
 
+           Returns the last error number.
+           
+           See also:
+            <fann_errno_enum at http://libfann.github.io/fann/docs/files/fann_error-h.html#fann_errno_enum>,
+            <fann_reset_errno at http://libfann.github.io/fann/docs/files/fann_error-h.html#fann_reset_errno>,
+            <fann_get_errno at http://libfann.github.io/fann/docs/files/fann_error-h.html#fann_get_errno>
+            
+           This function appears in FANN >= 1.1.0.   
+         */
         public uint ErrNo
         {
             get
@@ -1956,19 +2262,36 @@ namespace FANNCSharp
             }
         }
 
+        /* Method:  ResetErrno
 
+           Resets the last error number.
+           
+           This function appears in FANN >= 1.1.0.   
+         */
         public void ResetErrno()
         {
            net.reset_errno();
         }
 
+        /* Method:  ResetErrstr
 
+           Resets the last error string.
+
+           This function appears in FANN >= 1.1.0.   
+         */
         public void ResetErrstr()
         {
            net.reset_errstr();
         }
 
+        /* Property: ErrStr
 
+           Returns the last errstr.
+          
+           This function calls <fann_reset_errno at http://libfann.github.io/fann/docs/files/fann_error-h.html#fann_reset_errno> and <fann_reset_errstr at http://libfann.github.io/fann/docs/files/fann_error-h.html#fann_reset_errstr>
+
+           This function appears in FANN >= 1.1.0.   
+         */
         public string ErrStr
         {
             get
@@ -1977,67 +2300,126 @@ namespace FANNCSharp
             }
         }
 
+        /* Method:  PrintError
 
+           Prints the last error to Console.Error.
+
+           This function appears in FANN >= 1.1.0.   
+         */
         public void PrintError()
         {
            net.print_error();
         }
 
+        /* Method: DisableSeedRand
 
+           Disables the automatic random generator seeding that happens in FANN.
+
+           Per default FANN will always seed the random generator when creating a new network,
+           unless FANN_NO_SEED is defined during compilation of the library. This method can
+           disable this at runtime.
+
+           This function appears in FANN >= 2.3.0
+        */
         public void DisableSeedRand()
         {
            net.disable_seed_rand();
         }
 
+        /* Method: EnableSeedRand
 
+           Enables the automatic random generator seeding that happens in FANN.
+
+           Per default FANN will always seed the random generator when creating a new network,
+           unless FANN_NO_SEED is defined during compilation of the library. This method can
+           disable this at runtime.
+
+           This function appears in FANN >= 2.3.0
+        */
         public void EnableSeedRand()
         {
            net.enable_seed_rand();
         }
 
-
-        public float TrainEpochBatchParallel(TrainingDataDouble data, uint threadnumb)
+        /* Method: TrainEpochBatchParallel
+           
+            Parameters:
+                data - the data to train on
+                threadNumb - the thread to do training on
+           
+        */
+        public float TrainEpochBatchParallel(TrainingDataDouble data, uint threadNumb)
         {
-            return fanndouble.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
+            return fanndouble.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb);
         }
 
-
-        public float TrainEpochIrpropmParallel(TrainingDataDouble data, uint threadnumb)
+        /* Method: TrainEpochIrpropmParallel
+           
+            Parameters:
+                data - the data to train on
+                threadNumb - the thread to do training on
+           
+        */
+        public float TrainEpochIrpropmParallel(TrainingDataDouble data, uint threadNumb)
         {
-            return fanndouble.train_epoch_irpropm_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
+            return fanndouble.train_epoch_irpropm_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb);
         }
 
-
-        public float TrainEpochQuickpropParallel(TrainingDataDouble data, uint threadnumb)
+        /* Method: TrainEpochQuickpropParallel
+           
+            Parameters:
+                data - the data to train on
+                threadNumb - the thread to do training on
+           
+        */
+        public float TrainEpochQuickpropParallel(TrainingDataDouble data, uint threadNumb)
         {
-            return fanndouble.train_epoch_quickprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
+            return fanndouble.train_epoch_quickprop_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb);
         }
 
-
-        public float TrainEpochSarpropParallel(TrainingDataDouble data, uint threadnumb)
+        /* Method: TrainEpochSarpropParallel
+           
+            Parameters:
+                data - the data to train on
+                threadNumb - the thread to do training on
+           
+        */
+        public float TrainEpochSarpropParallel(TrainingDataDouble data, uint threadNumb)
         {
-            return fanndouble.train_epoch_sarprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
+            return fanndouble.train_epoch_sarprop_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb);
         }
 
-
+        /* Method: TrainEpochIncrementalMod
+           
+            Parameters:
+                data - the data to train on
+           
+        */
         public float TrainEpochIncrementalMod(TrainingDataDouble data)
         {
             return fanndouble.train_epoch_incremental_mod(net.to_fann(), data.ToFannTrainData());
         }
 
-
-        public float TrainEpochBatchParallel(TrainingDataDouble data, uint threadnumb, List<List<double>> predicted_outputs)
+        /* Method: TrainEpochBatchParallel
+           
+            Parameters:
+                data - the data to train on
+                threadNumb - the thread to do training on
+                predictedOutputs - the predicted outputs
+           
+        */
+        public float TrainEpochBatchParallel(TrainingDataDouble data, uint threadNumb, List<List<double>> predictedOutputs)
         {
-            using (doubleVectorVector predicted_out = new doubleVectorVector(predicted_outputs.Count))
+            using (doubleVectorVector predicted_out = new doubleVectorVector(predictedOutputs.Count))
             {
-                for (int i = 0; i < predicted_outputs.Count; i++)
+                for (int i = 0; i < predictedOutputs.Count; i++)
                 {
-                    predicted_out[i] = new doubleVector(predicted_outputs[i].Count);
+                    predicted_out[i] = new doubleVector(predictedOutputs[i].Count);
                 }
 
-                float result = fanndouble.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
+                float result = fanndouble.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb, predicted_out);
 
-                predicted_outputs.Clear();
+                predictedOutputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
                 {
                     List<double> list = new List<double>();
@@ -2045,24 +2427,31 @@ namespace FANNCSharp
                     {
                         list.Add(predicted_out[i][j]);
                     }
-                    predicted_outputs.Add(list);
+                    predictedOutputs.Add(list);
                 }
                 return result;
             }
         }
 
-
-        public float TrainEpochIrpropmParallel(TrainingDataDouble data, uint threadnumb, List<List<double>> predicted_outputs)
+        /* Method: TrainEpochIrpropmParallel
+           
+            Parameters:
+                data - the data to train on
+                threadNumb - the thread to do training on
+                predictedOutputs - the predicted outputs
+           
+        */
+        public float TrainEpochIrpropmParallel(TrainingDataDouble data, uint threadNumb, List<List<double>> predictedOutputs)
         {
-            using (doubleVectorVector predicted_out = new doubleVectorVector(predicted_outputs.Count))
+            using (doubleVectorVector predicted_out = new doubleVectorVector(predictedOutputs.Count))
             {
-                for (int i = 0; i < predicted_outputs.Count; i++)
+                for (int i = 0; i < predictedOutputs.Count; i++)
                 {
-                    predicted_out[i] = new doubleVector(predicted_outputs[i].Count);
+                    predicted_out[i] = new doubleVector(predictedOutputs[i].Count);
                 }
-                float result = fanndouble.train_epoch_irpropm_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
+                float result = fanndouble.train_epoch_irpropm_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb, predicted_out);
 
-                predicted_outputs.Clear();
+                predictedOutputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
                 {
                     List<double> list = new List<double>();
@@ -2070,24 +2459,31 @@ namespace FANNCSharp
                     {
                         list.Add(predicted_out[i][j]);
                     }
-                    predicted_outputs.Add(list);
+                    predictedOutputs.Add(list);
                 }
                 return result;
             }
         }
 
-
-        public float TrainEpochQuickpropParallel(TrainingDataDouble data, uint threadnumb, List<List<double>> predicted_outputs)
+        /* Method: TrainEpochQuickpropParallel
+           
+            Parameters:
+                data - the data to train on
+                threadNumb - the thread to do training on
+                predictedOutputs - the predicted outputs
+           
+        */
+        public float TrainEpochQuickpropParallel(TrainingDataDouble data, uint threadNumb, List<List<double>> predictedOutputs)
         {
-            using (doubleVectorVector predicted_out = new doubleVectorVector(predicted_outputs.Count))
+            using (doubleVectorVector predicted_out = new doubleVectorVector(predictedOutputs.Count))
             {
-                for (int i = 0; i < predicted_outputs.Count; i++)
+                for (int i = 0; i < predictedOutputs.Count; i++)
                 {
-                    predicted_out[i] = new doubleVector(predicted_outputs[i].Count);
+                    predicted_out[i] = new doubleVector(predictedOutputs[i].Count);
                 }
-                float result = fanndouble.train_epoch_quickprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
-                
-                predicted_outputs.Clear();
+                float result = fanndouble.train_epoch_quickprop_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb, predicted_out);
+
+                predictedOutputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
                 {
                     List<double> list = new List<double>();
@@ -2095,24 +2491,31 @@ namespace FANNCSharp
                     {
                         list.Add(predicted_out[i][j]);
                     }
-                    predicted_outputs.Add(list);
+                    predictedOutputs.Add(list);
                 }
                 return result;
             }
         }
 
-
-        public float TrainEpochSarpropParallel(TrainingDataDouble data, uint threadnumb, List<List<double>> predicted_outputs)
+        /* Method: TrainEpochSarpropParallel
+           
+            Parameters:
+                data - the data to train on
+                threadNumb - the thread to do training on
+                predictedOutputs - the predicted outputs
+           
+        */
+        public float TrainEpochSarpropParallel(TrainingDataDouble data, uint threadNumb, List<List<double>> predictedOutputs)
         {
-            using (doubleVectorVector predicted_out = new doubleVectorVector(predicted_outputs.Count))
+            using (doubleVectorVector predicted_out = new doubleVectorVector(predictedOutputs.Count))
             {
-                for (int i = 0; i < predicted_outputs.Count; i++)
+                for (int i = 0; i < predictedOutputs.Count; i++)
                 {
-                    predicted_out[i] = new doubleVector(predicted_outputs[i].Count);
+                    predicted_out[i] = new doubleVector(predictedOutputs[i].Count);
                 }
-                float result = fanndouble.train_epoch_sarprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
-                 
-                predicted_outputs.Clear();
+                float result = fanndouble.train_epoch_sarprop_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb, predicted_out);
+
+                predictedOutputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
                 {
                     List<double> list = new List<double>();
@@ -2120,24 +2523,30 @@ namespace FANNCSharp
                     {
                         list.Add(predicted_out[i][j]);
                     }
-                    predicted_outputs.Add(list);
+                    predictedOutputs.Add(list);
                 }
                 return result;
             }
         }
 
-
-        public float TrainEpochIncrementalMod(TrainingDataDouble data, List<List<double>> predicted_outputs)
+        /* Method: TrainEpochIncrementalMod
+           
+            Parameters:
+                data - the data to train on
+                predictedOutputs - the predicted outputs
+           
+        */
+        public float TrainEpochIncrementalMod(TrainingDataDouble data, List<List<double>> predictedOutputs)
         {
-            using (doubleVectorVector predicted_out = new doubleVectorVector(predicted_outputs.Count))
+            using (doubleVectorVector predicted_out = new doubleVectorVector(predictedOutputs.Count))
             {
-                for (int i = 0; i < predicted_outputs.Count; i++)
+                for (int i = 0; i < predictedOutputs.Count; i++)
                 {
-                    predicted_out[i] = new doubleVector(predicted_outputs[i].Count);
+                    predicted_out[i] = new doubleVector(predictedOutputs[i].Count);
                 }
                 float result = fanndouble.train_epoch_incremental_mod(net.to_fann(), data.ToFannTrainData(), predicted_out);
-                
-                predicted_outputs.Clear();
+
+                predictedOutputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
                 {
                     List<double> list = new List<double>();
@@ -2145,30 +2554,43 @@ namespace FANNCSharp
                     {
                         list.Add(predicted_out[i][j]);
                     }
-                    predicted_outputs.Add(list);
+                    predictedOutputs.Add(list);
                 }
                 return result;
             }
         }
 
-
-        public float TestDataParallel(TrainingDataDouble data, uint threadnumb)
+        /* Method: TestDataParallel
+           
+            Parameters:
+                data - the data to train on
+                threadNumb - the thread to do training on
+           
+        */
+        public float TestDataParallel(TrainingDataDouble data, uint threadNumb)
         {
-            return fanndouble.test_data_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
+            return fanndouble.test_data_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb);
         }
 
-
-        public float TestDataParallel(TrainingDataDouble data, uint threadnumb, List<List<double>> predicted_outputs)
+        /* Method: TestDataParallel
+           
+            Parameters:
+                data - the data to train on
+                threadNumb - the thread to do training on
+                predictedOutputs - the predicted outputs
+           
+        */
+        public float TestDataParallel(TrainingDataDouble data, uint threadNumb, List<List<double>> predictedOutputs)
         {
-            using (doubleVectorVector predicted_out = new doubleVectorVector(predicted_outputs.Count))
+            using (doubleVectorVector predicted_out = new doubleVectorVector(predictedOutputs.Count))
             {
-                for (int i = 0; i < predicted_outputs.Count; i++)
+                for (int i = 0; i < predictedOutputs.Count; i++)
                 {
-                    predicted_out[i] = new doubleVector(predicted_outputs[i].Count);
+                    predicted_out[i] = new doubleVector(predictedOutputs[i].Count);
                 }
-                float result = fanndouble.test_data_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb, predicted_out);
-                
-                predicted_outputs.Clear();
+                float result = fanndouble.test_data_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb, predicted_out);
+
+                predictedOutputs.Clear();
                 for (int i = 0; i < predicted_out.Count; i++)
                 {
                     List<double> list = new List<double>();
@@ -2176,20 +2598,10 @@ namespace FANNCSharp
                     {
                         list.Add(predicted_out[i][j]);
                     }
-                    predicted_outputs.Add(list);
+                    predictedOutputs.Add(list);
                 }
                 return result;
             }
-        }
-
-
-        public void SetCallback(TrainingCallback callback, Object userData)
-        {
-            Callback = callback;
-            UserData = userData;
-            GCHandle handle = GCHandle.Alloc(userData);
-            training_callback back = new training_callback(InternalCallback);
-            fanndoublePINVOKE.neural_net_set_callback(neural_net.getCPtr(this.net), Marshal.GetFunctionPointerForDelegate(back), (IntPtr)handle);
         }
 
         private int InternalCallback(global::System.IntPtr netPtr, global::System.IntPtr dataPtr, uint max_epochs, uint epochs_between_reports, float desired_error, uint epochs, global::System.IntPtr user_data)
@@ -2205,7 +2617,30 @@ namespace FANNCSharp
         internal delegate int training_callback(global::System.IntPtr net, global::System.IntPtr data, uint max_epochs, uint epochs_between_reports, float desired_error, uint epochs, global::System.IntPtr user_data);
 
 
+        /* Delegate: TrainingCallback
+           This callback function can be called during training when using <TrainOnData>,
+           <TrainOnFile> or <CascadetrainOnData>
 
+            The callback can be set by using <SetCallback> and is very useful for doing custom
+            things during training. It is recommended to use this function when implementing custom
+            training procedures, or when visualizing the training in a GUI etc. The parameters which the
+            callback function takes is the parameters given to the <TrainOnData>, plus an epochs
+            parameter which tells how many epochs the training have taken so far.
+
+            The callback function should return an integer, if the callback function returns -1, the training
+            will terminate.
+
+            Example of a callback function that prints information to the Console:
+                >int PrintCallback(NeuralNetDouble net, TrainingDataDouble data,
+                >    uint maxEpochs, uint epochsBetweenReports,
+                >    float desiredError, uint epochs, Object userData)
+                >{
+                >    Console.WriteLine("Epochs     {0}. Current Error: {1}", epochs.ToString("00000000"), net.MSE.ToString().PadRight(8));
+                >}
+
+            See also:
+                <SetCallback>, <fann_callback_type at http://libfann.github.io/fann/docs/files/fann_data-h.html#fann_callback_type>
+         */
         public delegate int TrainingCallback(NeuralNetDouble net, TrainingDataDouble data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, Object userData);
 
 #region Properties
