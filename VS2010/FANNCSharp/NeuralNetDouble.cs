@@ -93,7 +93,7 @@ namespace FANNCSharp
         }
         /* Constructor: NeuralNetDouble
 
-            Creates a neural network of the desired <network_type_enum> net_type.
+            Creates a neural network of the desired <NetworkType> net_type.
 
             Parameters:
                 numLayers - The total number of layers including the input and the output layer.
@@ -154,7 +154,7 @@ namespace FANNCSharp
 
         /* Constructor: NeuralNetDouble
 
-            Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <LAYER>
+            Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <NetworkType.LAYER>
 
             Parameters:
                 connectionRate - The connection rate controls how many connections there will be in the
@@ -182,7 +182,7 @@ namespace FANNCSharp
 
         /* Constructor: NeuralNetDouble
 
-            Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <LAYER>
+            Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <NetworkType.LAYER>
 
             Parameters:
                 connectionRate - The connection rate controls how many connections there will be in the
@@ -286,7 +286,7 @@ namespace FANNCSharp
             train the network.
 
             See also:
-                <RandomizeWeight>, <TrainingData.ReadTrainFromFile>,
+                <RandomizeWeights>, <TrainingData.ReadTrainFromFile>,
                 <fann_init_weights at http://libfann.github.io/fann/docs/files/fann-h.html#fann_init_weights>
 
             This function appears in FANN >= 1.1.0.
@@ -343,7 +343,7 @@ namespace FANNCSharp
            The function returns true on success and false on failure.
            
            See also:
-            <NeuralNetDouble(string filename)>, <SaveToFixed>, <fann_save at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save>
+            <NeuralNetDouble>, <SaveToFixed>, <fann_save at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save>
 
            This function appears in FANN >= 1.0.0.
          */
@@ -380,7 +380,7 @@ namespace FANNCSharp
            point version is actually faster.
 
            See also:
-            <NeuralNetDouble(string filename)>, <Save>, <fann_save_to_fixed at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save_to_fixed>
+            <NeuralNetDouble>, <Save>, <fann_save_to_fixed at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save_to_fixed>
 
            This function appears in FANN >= 1.0.0.
         */
@@ -579,7 +579,7 @@ namespace FANNCSharp
            the callback. It can point to arbitrary data that the callback might require and
            can be NULL if it is not used.
          	
-           See <FANN::callback_type> for more information about the callback function.
+           See <FANN::callback_type at http://libfann.github.io/fann/docs/files/fann_data_cpp-h.html#callback_type> for more information about the callback function.
            
            The default callback function simply prints out some status information.
 
@@ -703,7 +703,7 @@ namespace FANNCSharp
            functions have different range. FANN::SIGMOID is e.g. in the 0 - 1 range while 
            FANN::SIGMOID_SYMMETRIC is in the -1 - 1 range and FANN::LINEAR is unbounded.
            
-           Information about the individual activation functions is available at <FANN::activation_function_enum>.
+           Information about the individual activation functions is available at <ActivationFunction>.
            
            The default activation function is FANN::SIGMOID_STEPWISE.
            
@@ -744,7 +744,7 @@ namespace FANNCSharp
 
            See also:
    	        <SetActivationFunction>, <SetActivationFunctionLayer>,
-   	        <ActivationFunctionOutput>, <ActivationFunctionSteepnessHidden>,
+   	        <ActivationFunctionOutput>, <ActivationSteepnessHidden>,
             <fann_set_activation_function_hidden at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_activation_function_hidden>
 
            This function appears in FANN >= 1.0.0.
@@ -1114,7 +1114,8 @@ namespace FANNCSharp
            The default delta max is -6.644.
 
            See also:
-   	       <fann get_sarprop_weight_decay_shift>
+   	       <fann_get_sarprop_weight_decay_shift at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_sarprop_weight_decay_shift>,
+   	       <fann_set_sarprop_weight_decay_shift at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_sarprop_weight_decay_shift>
 
            This function appears in FANN >= 2.1.0.
         */
@@ -1137,7 +1138,8 @@ namespace FANNCSharp
            The default delta max is 0.1.
 
            See also:
-   	       <fann get_sarprop_step_error_threshold_factor>
+   	       <fann_get_sarprop_step_error_threshold_factor at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_sarprop_step_error_threshold_factor>,
+   	       <fann_set_sarprop_step_error_threshold_factor at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_sarprop_step_error_threshold_factor>
 
            This function appears in FANN >= 2.1.0.
         */
@@ -1161,7 +1163,8 @@ namespace FANNCSharp
            The default delta max is 1.385.
 
            See also:
-   	       <fann get_sarprop_step_error_shift>
+   	       <fann_get_sarprop_step_error_shift at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_sarprop_step_error_shift>,
+   	       <fann_set_sarprop_step_error_shift at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_sarprop_step_error_shift>
 
            This function appears in FANN >= 2.1.0.
         */
@@ -1184,7 +1187,8 @@ namespace FANNCSharp
                The default delta max is 0.015.
 
                See also:
-               <fann get_sarprop_temperature>
+               <fann_get_sarprop_temperature at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_sarprop_temperature>,
+               <fann_set_sarprop_temperature at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_sarprop_temperature>
 
                This function appears in FANN >= 2.1.0.
         */
@@ -1264,7 +1268,7 @@ namespace FANNCSharp
             Get the type of neural network it was created as.
 
 	        Returns:
-                The neural network type from enum <FannWrapper.NetworkType>
+                The neural network type from enum <NetworkType>
 
             See Also:
                 <fann_get_network_type at http://libfann.github.io/fann/docs/files/fann-h.html#fann_get_network_type>
@@ -1528,7 +1532,7 @@ namespace FANNCSharp
         /* Property: BitFail
         	
             Gets or set the number of fail bits. Means the number of output neurons which differ more 
-	        than the bit fail limit (see <get_bit_fail_limit>, <set_bit_fail_limit>). 
+	        than the bit fail limit (see <BitFailLimit>). 
 	        The bits are counted in all of the training data, so this number can be higher than
 	        the number of training data.
         	
@@ -1555,7 +1559,7 @@ namespace FANNCSharp
            Trains on an entire dataset, for a period of time using the Cascade2 training algorithm.
            This algorithm adds neurons to the neural network while training, which means that it
            needs to start with an ANN without any hidden layers. The neural network should also use
-           shortcut connections, so <NeuralNetDouble(NetworkType.SHORTCUT, ...)> should be used to create the NeuralNetwork like this:
+           shortcut connections, so NeuralNetDouble(NetworkType.SHORTCUT, ...) should be used to create the NeuralNetwork like this:
            >NeuralNetDouble net(NetworkType.SHORTCUT, ...);
            
            This training uses the parameters set using the Cascade..., but it also uses another
@@ -1575,7 +1579,7 @@ namespace FANNCSharp
 	        (see <SetCallback>).
         	
 	        See also:
-		        <TrainOnData>, <CascadetrainOnFile>, <fann_cascadetrain_on_data>
+		        <TrainOnData>, <CascadetrainOnFile>, <fann_cascadetrain_on_data at http://libfann.github.io/fann/docs/files/fann_cpp-h.html#neural_net.cascadetrain_on_data>
 
 	        This function appears in FANN >= 2.0.0. 
         */
@@ -1602,7 +1606,7 @@ namespace FANNCSharp
         /* Property: CascadeOutputChangeFraction
 
            The cascade output change fraction is a number between 0 and 1 determining how large a fraction
-           the <MSE> value should change within <get_cascade_output_stagnation_epochs> during
+           the <MSE> value should change within <CascadeOutputStagnationEpochs> during
            training of the output connections, in order for the training not to stagnate. If the training 
            stagnates, the training of the output connections will be ended and new candidates will be prepared.
            
