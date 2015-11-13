@@ -6,23 +6,15 @@ using System.Runtime.InteropServices;
 
 namespace FANNCSharp
 {
-    /// <summary> A neural net float. </summary>
-    ///
-    /// <remarks> Joel Self, 11/10/2015. </remarks>
 
     public class NeuralNetFloat : IDisposable
     {
         neural_net net = null;
 
-        /// <summary> Constructor. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="other"> The other. </param>
 
         public NeuralNetFloat(NeuralNetFloat other)
         {
-           net = new neural_net(other.InternalFloatNet);
+            net = new neural_net(other.InternalFloatNet.to_fann());
         }
 
         internal NeuralNetFloat(neural_net other)
@@ -30,23 +22,12 @@ namespace FANNCSharp
             net = other;
         }
 
-        /// <summary> Performs application-defined tasks associated with freeing, releasing, or resetting
-        /// unmanaged resources. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
 
         public void Dispose()
         {
            net.destroy();
         }
 
-        /// <summary> Constructor. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="netType">    Type of the net. </param>
-        /// <param name="numLayers">  Number of layers. </param>
-        /// <param name="uint[]args"> A variable-length parameters list containing arguments. </param>
 
         public NeuralNetFloat(NetworkType netType, uint numLayers, params uint[]args)
         {
@@ -61,12 +42,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Constructor. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="netType"> Type of the net. </param>
-        /// <param name="layers">  The layers. </param>
 
         public NeuralNetFloat(NetworkType netType, ICollection<uint> layers)
         {
@@ -84,13 +59,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Constructor. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="connectionRate"> The connection rate. </param>
-        /// <param name="numLayers">      Number of layers. </param>
-        /// <param name="args">           A variable-length parameters list containing arguments. </param>
 
         public NeuralNetFloat(float connectionRate, uint numLayers, params uint[] args)
         {
@@ -105,12 +73,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Constructor. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="connectionRate"> The connection rate. </param>
-        /// <param name="layers">         The layers. </param>
 
         public NeuralNetFloat(float connectionRate, ICollection<uint> layers)
         {
@@ -128,24 +90,12 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Constructor. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="filename"> Filename of the file. </param>
 
         public NeuralNetFloat(string filename)
         {
             net = new neural_net(filename);
         }
 
-        /// <summary> Runs the given input. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="input"> The input. </param>
-        ///
-        /// <returns> A float[]. </returns>
 
         public float[] Run(float[] input)
         {
@@ -167,70 +117,36 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Randomize weights. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="minWeight"> The minimum weight. </param>
-        /// <param name="maxWeight"> The maximum weight. </param>
 
         public void RandomizeWeights(float minWeight, float maxWeight)
         {
            net.randomize_weights(minWeight, maxWeight);
         }
 
-        /// <summary> Initialises the weights. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data"> The data. </param>
 
         public void InitWeights(TrainingDataFloat data)
         {
            net.init_weights(data.InternalData);
         }
 
-        /// <summary> Print connections. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
 
         public void PrintConnections()
         {
            net.print_connections();
         }
 
-        /// <summary> Saves the given file. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="file"> The file. </param>
-        ///
-        /// <returns> true if it succeeds, false if it fails. </returns>
 
         public bool Save(string file)
         {
             return net.save(file);
         }
 
-        /// <summary> Saves to fixed. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="file"> The file. </param>
-        ///
-        /// <returns> An int. </returns>
 
         public int SaveToFixed(string file)
         {
             return net.save_to_fixed(file);
         }
 
-        /// <summary> Trains. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="input">         The input. </param>
-        /// <param name="desiredOutput"> The desired output. </param>
 
         public void Train(float[] input, float[] desiredOutput)
         {
@@ -249,55 +165,24 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Train epoch. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data"> The data. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TrainEpoch(TrainingDataFloat data)
         {
             return net.train_epoch(data.InternalData);
         }
 
-        /// <summary> Train on data. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">                 The data. </param>
-        /// <param name="maxEpochs">            The maximum epochs. </param>
-        /// <param name="epochsBetweenReports"> The epochs between reports. </param>
-        /// <param name="desiredError">         The desired error. </param>
 
         public void TrainOnData(TrainingDataFloat data, uint maxEpochs, uint epochsBetweenReports, float desiredError)
         {
            net.train_on_data(data.InternalData, maxEpochs, epochsBetweenReports, desiredError);
         }
 
-        /// <summary> Train on file. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="filename">             Filename of the file. </param>
-        /// <param name="maxEpochs">            The maximum epochs. </param>
-        /// <param name="epochsBetweenReports"> The epochs between reports. </param>
-        /// <param name="desiredError">         The desired error. </param>
 
         public void TrainOnFile(string filename, uint maxEpochs, uint epochsBetweenReports, float desiredError)
         {
            net.train_on_file(filename, maxEpochs, epochsBetweenReports, desiredError);
         }
 
-        /// <summary> Tests. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="input">         The input. </param>
-        /// <param name="desiredOutput"> The desired output. </param>
-        ///
-        /// <returns> A float[]. </returns>
 
         public float[] Test(float[] input, float[] desiredOutput)
         {
@@ -322,22 +207,12 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Tests data. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data"> The data. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TestData(TrainingDataFloat data)
         {
             return net.test_data(data.InternalData);
         }
 
-        /// <summary> Gets the mse. </summary>
-        ///
-        /// <value> The mse. </value>
 
         public float MSE
         {
@@ -347,27 +222,18 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Resets the mse. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
 
         public void ResetMSE()
         {
            net.reset_MSE();
         }
 
-        /// <summary> Print parameters. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
 
         public void PrintParameters()
         {
            net.print_parameters();
         }
 
-        /// <summary> Gets or sets the training algorithm. </summary>
-        ///
-        /// <value> The training algorithm. </value>
 
         public TrainingAlgorithm TrainingAlgorithm
         {
@@ -381,9 +247,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the learning rate. </summary>
-        ///
-        /// <value> The learning rate. </value>
 
         public float LearningRate
         {
@@ -397,48 +260,24 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets activation function. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="layer">  The layer. </param>
-        /// <param name="neuron"> The neuron. </param>
-        ///
-        /// <returns> The activation function. </returns>
 
         public ActivationFunction GetActivationFunction(int layer, int neuron)
         {
             return net.get_activation_function(layer, neuron);
         }
 
-        /// <summary> Sets activation function. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="function"> The function. </param>
-        /// <param name="layer">    The layer. </param>
-        /// <param name="neuron">   The neuron. </param>
 
         public void SetActivationFunction(ActivationFunction function, int layer, int neuron)
         {
            net.set_activation_function(function, layer, neuron);
         }
 
-        /// <summary> Sets activation function layer. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="function"> The function. </param>
-        /// <param name="layer">    The layer. </param>
 
         public void SetActivationFunctionLayer(ActivationFunction function, int layer)
         {
            net.set_activation_function_layer(function, layer);
         }
 
-        /// <summary> Sets the activation function hidden. </summary>
-        ///
-        /// <value> The activation function hidden. </value>
 
         public ActivationFunction ActivationFunctionHidden
         {
@@ -448,9 +287,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Sets the activation function output. </summary>
-        ///
-        /// <value> The activation function output. </value>
 
         public ActivationFunction ActivationFunctionOutput
         {
@@ -460,70 +296,36 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets activation steepness. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="layer">  The layer. </param>
-        /// <param name="neuron"> The neuron. </param>
-        ///
-        /// <returns> The activation steepness. </returns>
 
         public float GetActivationSteepness(int layer, int neuron)
         {
             return net.get_activation_steepness(layer, neuron);
         }
 
-        /// <summary> Sets activation steepness. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="steepness"> The steepness. </param>
-        /// <param name="layer">     The layer. </param>
-        /// <param name="neuron">    The neuron. </param>
 
         public void SetActivationSteepness(float steepness, int layer, int neuron)
         {
            net.set_activation_steepness(steepness, layer, neuron);
         }
 
-        /// <summary> Sets activation steepness layer. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="steepness"> The steepness. </param>
-        /// <param name="layer">     The layer. </param>
 
         public void SetActivationSteepnessLayer(float steepness, int layer)
         {
            net.set_activation_steepness_layer(steepness, layer);
         }
 
-        /// <summary> Sets activation steepness hidden. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="steepness"> The steepness. </param>
 
         public void SetActivationSteepnessHidden(float steepness)
         {
            net.set_activation_steepness_hidden(steepness);
         }
 
-        /// <summary> Sets activation steepness output. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="steepness"> The steepness. </param>
 
         public void SetActivationSteepnessOutput(float steepness)
         {
            net.set_activation_steepness_output(steepness);
         }
 
-        /// <summary> Gets or sets the train error function. </summary>
-        ///
-        /// <value> The train error function. </value>
 
         public ErrorFunction TrainErrorFunction
         {
@@ -537,9 +339,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the quickprop decay. </summary>
-        ///
-        /// <value> The quickprop decay. </value>
 
         public float QuickpropDecay
         {
@@ -553,9 +352,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the quickprop mu. </summary>
-        ///
-        /// <value> The quickprop mu. </value>
 
         public float QuickpropMu
         {
@@ -569,9 +365,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the rprop increase factor. </summary>
-        ///
-        /// <value> The rprop increase factor. </value>
 
         public float RpropIncreaseFactor
         {
@@ -585,9 +378,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the rprop decrease factor. </summary>
-        ///
-        /// <value> The rprop decrease factor. </value>
 
         public float RpropDecreaseFactor
         {
@@ -601,9 +391,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the rprop delta zero. </summary>
-        ///
-        /// <value> The rprop delta zero. </value>
 
         public float RpropDeltaZero
         {
@@ -617,9 +404,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the rprop delta minimum. </summary>
-        ///
-        /// <value> The rprop delta minimum. </value>
 
         public float RpropDeltaMin
         {
@@ -633,9 +417,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the rprop delta maximum. </summary>
-        ///
-        /// <value> The rprop delta maximum. </value>
 
         public float RpropDeltaMax
         {
@@ -649,9 +430,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the sarprop weight decay shift. </summary>
-        ///
-        /// <value> The sarprop weight decay shift. </value>
 
         public float SarpropWeightDecayShift
         {
@@ -665,9 +443,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the sarprop step error threshold factor. </summary>
-        ///
-        /// <value> The sarprop step error threshold factor. </value>
 
         public float SarpropStepErrorThresholdFactor
         {
@@ -681,9 +456,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the sarprop step error shift. </summary>
-        ///
-        /// <value> The sarprop step error shift. </value>
 
         public float SarpropStepErrorShift
         {
@@ -697,9 +469,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the sarprop temperature. </summary>
-        ///
-        /// <value> The sarprop temperature. </value>
 
         public float SarpropTemperature
         {
@@ -713,9 +482,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets the number of inputs. </summary>
-        ///
-        /// <value> The number of inputs. </value>
 
         public uint InputCount
         {
@@ -725,9 +491,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets the number of outputs. </summary>
-        ///
-        /// <value> The number of outputs. </value>
 
         public uint OutputCount
         {
@@ -737,9 +500,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets the total number of neurons. </summary>
-        ///
-        /// <value> The total number of neurons. </value>
 
         public uint TotalNeurons
         {
@@ -749,9 +509,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets the total number of connections. </summary>
-        ///
-        /// <value> The total number of connections. </value>
 
         public uint TotalConnections
         {
@@ -761,9 +518,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets the type of the network. </summary>
-        ///
-        /// <value> The type of the network. </value>
 
         public NetworkType NetworkType
         {
@@ -773,9 +527,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets the connection rate. </summary>
-        ///
-        /// <value> The connection rate. </value>
 
         public float ConnectionRate
         {
@@ -785,9 +536,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets the number of layers. </summary>
-        ///
-        /// <value> The number of layers. </value>
 
         public uint LayerCount
         {
@@ -797,9 +545,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets an array of layers. </summary>
-        ///
-        /// <value> An Array of layers. </value>
 
         public uint[] LayerArray
         {
@@ -818,9 +563,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets an array of bias. </summary>
-        ///
-        /// <value> An Array of bias. </value>
 
         public uint[] BiasArray
         {
@@ -839,9 +581,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets an array of connections. </summary>
-        ///
-        /// <value> An Array of connections. </value>
 
         public Connection[] ConnectionArray
         {
@@ -860,9 +599,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Sets an array of weights. </summary>
-        ///
-        /// <value> An Array of weights. </value>
 
         public Connection[] WeightArray
         {
@@ -879,22 +615,12 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Sets a weight. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="from_neuron"> from neuron. </param>
-        /// <param name="to_neuron">   to neuron. </param>
-        /// <param name="weight">      The weight. </param>
 
         public void SetWeight(uint from_neuron, uint to_neuron, float weight)
         {
            net.set_weight(from_neuron, to_neuron, weight);
         }
 
-        /// <summary> Gets or sets the learning momentum. </summary>
-        ///
-        /// <value> The learning momentum. </value>
 
         public float LearningMomentum
         {
@@ -908,9 +634,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the train stop function. </summary>
-        ///
-        /// <value> The train stop function. </value>
 
         public StopFunction TrainStopFunction
         {
@@ -924,9 +647,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the bit fail limit. </summary>
-        ///
-        /// <value> The bit fail limit. </value>
 
         public float BitFailLimit
         {
@@ -940,9 +660,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets the bit fail. </summary>
-        ///
-        /// <value> The bit fail. </value>
 
         public uint BitFail
         {
@@ -952,37 +669,18 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Cascadetrain on data. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">                    The data. </param>
-        /// <param name="max_neurons">             The maximum neurons. </param>
-        /// <param name="neurons_between_reports"> The neurons between reports. </param>
-        /// <param name="desired_error">           The desired error. </param>
 
         public void CascadetrainOnData(TrainingDataFloat data, uint max_neurons, uint neurons_between_reports, float desired_error)
         {
            net.cascadetrain_on_data(data.InternalData, max_neurons, neurons_between_reports, desired_error);
         }
 
-        /// <summary> Cascadetrain on file. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="filename">                Filename of the file. </param>
-        /// <param name="max_neurons">             The maximum neurons. </param>
-        /// <param name="neurons_between_reports"> The neurons between reports. </param>
-        /// <param name="desired_error">           The desired error. </param>
 
         public void CascadetrainOnFile(string filename, uint max_neurons, uint neurons_between_reports, float desired_error)
         {
            net.cascadetrain_on_file(filename, max_neurons, neurons_between_reports, desired_error);
         }
 
-        /// <summary> Gets or sets the cascade output change fraction. </summary>
-        ///
-        /// <value> The cascade output change fraction. </value>
 
         public float CascadeOutputChangeFraction
         {
@@ -996,9 +694,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the cascade output stagnation epochs. </summary>
-        ///
-        /// <value> The cascade output stagnation epochs. </value>
 
         public uint CascadeOutputStagnationEpochs
         {
@@ -1012,9 +707,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the cascade candidate change fraction. </summary>
-        ///
-        /// <value> The cascade candidate change fraction. </value>
 
         public float CascadeCandidateChangeFraction
         {
@@ -1028,9 +720,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the cascade candidate stagnation epochs. </summary>
-        ///
-        /// <value> The cascade candidate stagnation epochs. </value>
 
         public uint CascadeCandidateStagnationEpochs
         {
@@ -1044,9 +733,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the cascade weight multiplier. </summary>
-        ///
-        /// <value> The cascade weight multiplier. </value>
 
         public float CascadeWeightMultiplier
         {
@@ -1060,9 +746,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the cascade candidate limit. </summary>
-        ///
-        /// <value> The cascade candidate limit. </value>
 
         public float CascadeCandidateLimit
         {
@@ -1076,9 +759,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the cascade maximum out epochs. </summary>
-        ///
-        /// <value> The cascade maximum out epochs. </value>
 
         public uint CascadeMaxOutEpochs
         {
@@ -1092,9 +772,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the cascade maximum cand epochs. </summary>
-        ///
-        /// <value> The cascade maximum cand epochs. </value>
 
         public uint CascadeMaxCandEpochs
         {
@@ -1108,9 +785,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets the number of cascade candidates. </summary>
-        ///
-        /// <value> The number of cascade candidates. </value>
 
         public uint CascadeCandidatesCount
         {
@@ -1120,9 +794,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets the number of cascade activation functions. </summary>
-        ///
-        /// <value> The number of cascade activation functions. </value>
 
         public uint CascadeActivationFunctionsCount
         {
@@ -1132,9 +803,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the cascade activation functions. </summary>
-        ///
-        /// <value> The cascade activation functions. </value>
 
         public ActivationFunction[] CascadeActivationFunctions
         {
@@ -1164,9 +832,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets the number of cascade activation steepnesses. </summary>
-        ///
-        /// <value> The number of cascade activation steepnesses. </value>
 
         public uint CascadeActivationSteepnessesCount
         {
@@ -1176,9 +841,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the cascade activation steepnesses. </summary>
-        ///
-        /// <value> The cascade activation steepnesses. </value>
 
         public float[] CascadeActivationSteepnesses
         {
@@ -1212,9 +874,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Gets or sets the number of cascade candidate groups. </summary>
-        ///
-        /// <value> The number of cascade candidate groups. </value>
 
         public uint CascadeCandidateGroupsCount
         {
@@ -1228,91 +887,42 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Scale train. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data"> The data. </param>
 
         public void ScaleTrain(TrainingDataFloat data)
         {
            net.scale_train(data.InternalData);
         }
 
-        /// <summary> Descale train. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data"> The data. </param>
 
         public void DescaleTrain(TrainingDataFloat data)
         {
            net.descale_train(data.InternalData);
         }
 
-        /// <summary> Sets input scaling parameters. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">          The data. </param>
-        /// <param name="new_input_min"> The new input minimum. </param>
-        /// <param name="new_input_max"> The new input maximum. </param>
-        ///
-        /// <returns> true if it succeeds, false if it fails. </returns>
 
         public bool SetInputScalingParams(TrainingDataFloat data, float new_input_min, float new_input_max)
         {
             return net.set_input_scaling_params(data.InternalData, new_input_min, new_input_max);
         }
 
-        /// <summary> Sets output scaling parameters. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">           The data. </param>
-        /// <param name="new_output_min"> The new output minimum. </param>
-        /// <param name="new_output_max"> The new output maximum. </param>
-        ///
-        /// <returns> true if it succeeds, false if it fails. </returns>
 
         public bool SetOutputScalingParams(TrainingDataFloat data, float new_output_min, float new_output_max)
         {
             return net.set_output_scaling_params(data.InternalData, new_output_min, new_output_max);
         }
 
-        /// <summary> Sets scaling parameters. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">           The data. </param>
-        /// <param name="new_input_min">  The new input minimum. </param>
-        /// <param name="new_input_max">  The new input maximum. </param>
-        /// <param name="new_output_min"> The new output minimum. </param>
-        /// <param name="new_output_max"> The new output maximum. </param>
-        ///
-        /// <returns> true if it succeeds, false if it fails. </returns>
 
         public bool SetScalingParams(TrainingDataFloat data, float new_input_min, float new_input_max, float new_output_min, float new_output_max)
         {
             return net.set_scaling_params(data.InternalData, new_input_min, new_input_max, new_output_min, new_output_max);
         }
 
-        /// <summary> Clears the scaling parameters. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <returns> true if it succeeds, false if it fails. </returns>
 
         public bool ClearScalingParams()
         {
             return net.clear_scaling_params();
         }
 
-        /// <summary> Scale input. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="input_vector"> The input vector. </param>
 
         public void ScaleInput(float[] input_vector)
         {
@@ -1326,11 +936,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Scale output. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="output_vector"> The output vector. </param>
 
         public void ScaleOutput(float[] output_vector)
         {
@@ -1344,11 +949,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Descale input. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="input_vector"> The input vector. </param>
 
         public void DescaleInput(float[] input_vector)
         {
@@ -1362,11 +962,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Descale output. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="output_vector"> The output vector. </param>
 
         public void DescaleOutput(float[] output_vector)
         {
@@ -1380,20 +975,12 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Sets error log. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="log_file"> The log file. </param>
 
         public void SetErrorLog(FannFile log_file)
         {
            net.set_error_log(log_file.InternalFile);
         }
 
-        /// <summary> Gets the error no. </summary>
-        ///
-        /// <value> The error no. </value>
 
         public uint ErrNo
         {
@@ -1403,27 +990,18 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Resets the errno. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
 
         public void ResetErrno()
         {
            net.reset_errno();
         }
 
-        /// <summary> Resets the errstr. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
 
         public void ResetErrstr()
         {
            net.reset_errstr();
         }
 
-        /// <summary> Gets the error string. </summary>
-        ///
-        /// <value> The error string. </value>
 
         public string ErrStr
         {
@@ -1433,111 +1011,54 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Print error. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
 
         public void PrintError()
         {
            net.print_error();
         }
 
-        /// <summary> Disables the seed random. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
 
         public void DisableSeedRand()
         {
            net.disable_seed_rand();
         }
 
-        /// <summary> Enables the seed random. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
 
         public void EnableSeedRand()
         {
            net.enable_seed_rand();
         }
 
-        /// <summary> Train epoch batch parallel. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">       The data. </param>
-        /// <param name="threadnumb"> The threadnumb. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TrainEpochBatchParallel(TrainingDataFloat data, uint threadnumb)
         {
             return fannfloat.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
-        /// <summary> Train epoch irpropm parallel. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">       The data. </param>
-        /// <param name="threadnumb"> The threadnumb. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TrainEpochIrpropmParallel(TrainingDataFloat data, uint threadnumb)
         {
             return fannfloat.train_epoch_irpropm_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
-        /// <summary> Train epoch quickprop parallel. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">       The data. </param>
-        /// <param name="threadnumb"> The threadnumb. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TrainEpochQuickpropParallel(TrainingDataFloat data, uint threadnumb)
         {
             return fannfloat.train_epoch_quickprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
-        /// <summary> Train epoch sarprop parallel. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">       The data. </param>
-        /// <param name="threadnumb"> The threadnumb. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TrainEpochSarpropParallel(TrainingDataFloat data, uint threadnumb)
         {
             return fannfloat.train_epoch_sarprop_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
-        /// <summary> Train epoch incremental modifier. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data"> The data. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TrainEpochIncrementalMod(TrainingDataFloat data)
         {
             return fannfloat.train_epoch_incremental_mod(net.to_fann(), data.ToFannTrainData());
         }
 
-        /// <summary> Train epoch batch parallel. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">              The data. </param>
-        /// <param name="threadnumb">        The threadnumb. </param>
-        /// <param name="predicted_outputs"> The predicted outputs. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TrainEpochBatchParallel(TrainingDataFloat data, uint threadnumb, List<List<float>> predicted_outputs)
         {
@@ -1564,15 +1085,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Train epoch irpropm parallel. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">              The data. </param>
-        /// <param name="threadnumb">        The threadnumb. </param>
-        /// <param name="predicted_outputs"> The predicted outputs. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TrainEpochIrpropmParallel(TrainingDataFloat data, uint threadnumb, List<List<float>> predicted_outputs)
         {
@@ -1598,15 +1110,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Train epoch quickprop parallel. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">              The data. </param>
-        /// <param name="threadnumb">        The threadnumb. </param>
-        /// <param name="predicted_outputs"> The predicted outputs. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TrainEpochQuickpropParallel(TrainingDataFloat data, uint threadnumb, List<List<float>> predicted_outputs)
         {
@@ -1632,15 +1135,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Train epoch sarprop parallel. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">              The data. </param>
-        /// <param name="threadnumb">        The threadnumb. </param>
-        /// <param name="predicted_outputs"> The predicted outputs. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TrainEpochSarpropParallel(TrainingDataFloat data, uint threadnumb, List<List<float>> predicted_outputs)
         {
@@ -1666,14 +1160,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Train epoch incremental modifier. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">              The data. </param>
-        /// <param name="predicted_outputs"> The predicted outputs. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TrainEpochIncrementalMod(TrainingDataFloat data, List<List<float>> predicted_outputs)
         {
@@ -1699,29 +1185,12 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Tests data parallel. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">       The data. </param>
-        /// <param name="threadnumb"> The threadnumb. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TestDataParallel(TrainingDataFloat data, uint threadnumb)
         {
             return fannfloat.test_data_parallel(net.to_fann(), data.ToFannTrainData(), threadnumb);
         }
 
-        /// <summary> Tests data parallel. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="data">              The data. </param>
-        /// <param name="threadnumb">        The threadnumb. </param>
-        /// <param name="predicted_outputs"> The predicted outputs. </param>
-        ///
-        /// <returns> A float. </returns>
 
         public float TestDataParallel(TrainingDataFloat data, uint threadnumb, List<List<float>> predicted_outputs)
         {
@@ -1747,12 +1216,6 @@ namespace FANNCSharp
             }
         }
 
-        /// <summary> Callback, called when the set. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="callback"> The callback. </param>
-        /// <param name="userData"> Information describing the user. </param>
 
         public void SetCallback(TrainingCallback callback, Object userData)
         {
@@ -1772,19 +1235,6 @@ namespace FANNCSharp
         }
 
 
-        /// <summary> Training callback float. </summary>
-        ///
-        /// <remarks> Joel Self, 11/10/2015. </remarks>
-        ///
-        /// <param name="net">                  The net. </param>
-        /// <param name="data">                 The data. </param>
-        /// <param name="maxEpochs">            The maximum epochs. </param>
-        /// <param name="epochsBetweenReports"> The epochs between reports. </param>
-        /// <param name="desiredError">         The desired error. </param>
-        /// <param name="epochs">               The epochs. </param>
-        /// <param name="userData">             Information describing the user. </param>
-        ///
-        /// <returns> An int. </returns>
 
         public delegate int TrainingCallback(NeuralNetFloat net, TrainingDataFloat data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, Object userData);
 

@@ -99,7 +99,6 @@
     <Compile Include="FannWrapperFixed\SWIGTYPE_p_int.cs" />
     <Compile Include="FannWrapperFixed\SWIGTYPE_p_p_int.cs" />
     <Compile Include="FannWrapperFixed\training_data.cs" />
-    <Compile Include="CallbackDelegate.cs" />
     <Compile Include="FannWrapperFloat\fannfloat.cs" />
     <Compile Include="FannWrapperFloat\fannfloatPINVOKE.cs" />
     <Compile Include="FannWrapperFloat\floatArray.cs" />
