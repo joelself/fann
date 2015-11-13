@@ -24,7 +24,6 @@ namespace CleanUpForSwig
                                                  "SWIGTYPE_p_FANN__activation_function_enum.cs",
                                                  "SWIGTYPE_p_FILE.cs",
                                                  "SWIGTYPE_p_unsigned_int.cs",
-                                                 "SWIGTYPE_p_void.cs",
                                                  "SWIGTYPE_p_fann_train_data.cs",
                                                  "SWIGTYPE_p_fann.cs"};
         static int Main(string[] args)

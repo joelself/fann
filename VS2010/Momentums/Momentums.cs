@@ -36,7 +36,8 @@ namespace Example
                     Console.WriteLine("============= momentum = {0} =============\n", momentum);
                     using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, trainData.InputCount, num_neurons_hidden, trainData.OutputCount))
                     {
-                        net.SetCallback(TrainingCallback, "Hello!");
+                        // Just testing the callback
+                        //net.SetCallback(TrainingCallback, "Hello!");
                         
                         net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_INCREMENTAL;
 

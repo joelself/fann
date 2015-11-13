@@ -5,16 +5,20 @@ using System.Runtime.InteropServices;
 
 namespace FANNCSharp
 {
+    /// <summary> A training data float. </summary>
+    ///
+    /// <remarks> Joel Self, 11/10/2015. </remarks>
+
     public class TrainingDataFloat : IDisposable
     {
+        /// <summary> Default constructor. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+
         public TrainingDataFloat()
         {
             InternalData = new FannWrapperFloat.training_data();
         }
-<<<<<<< Updated upstream
-        public TrainingDataFloat(FannWrapperFloat.training_data data) {
-            InternalData = new FannWrapperFloat.training_data(data);
-=======
 
         /// <summary> Constructor. </summary>
         ///
@@ -22,11 +26,26 @@ namespace FANNCSharp
         ///
         /// <param name="data"> The data. </param>
 
-        public TrainingDataFloat(TrainingDataFloat data) {
+        public TrainingDataFloat(TrainingDataFloat data) 
+        {
             InternalData = new FannWrapperFloat.training_data(data.InternalData);
         }
 
-        public TrainingDataFloat(uint dataCount, uint inputCount, uint outputCount, DataCreateCallbackFloat callback)
+        internal TrainingDataFloat(training_data data)
+        {
+            InternalData = data;
+        }
+
+        /// <summary> Constructor. </summary>
+        ///
+        /// <remarks> Joel Self, 11/12/2015. </remarks>
+        ///
+        /// <param name="dataCount">   Number of data. </param>
+        /// <param name="inputCount">  The number of inputs. </param>
+        /// <param name="outputCount"> The number of outputs. </param>
+        /// <param name="callback">    The callback. </param>
+
+        public TrainingDataFloat(uint dataCount, uint inputCount, uint outputCount, DataCreateCallback callback)
         {
             InternalData = new FannWrapperFloat.training_data();
             Callback = callback;
@@ -34,31 +53,59 @@ namespace FANNCSharp
             fannfloatPINVOKE.training_data_create_train_from_callback(training_data.getCPtr(this.InternalData), dataCount, inputCount, outputCount, Marshal.GetFunctionPointerForDelegate(RawCallback));
         }
 
-        internal TrainingDataFloat(training_data data)
-        {
-            InternalData = data;
->>>>>>> Stashed changes
-        }
+        /// <summary> Reads train from file. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="filename"> Filename of the file. </param>
+        ///
+        /// <returns> true if it succeeds, false if it fails. </returns>
 
         public bool ReadTrainFromFile(string filename)
         {
             return InternalData.read_train_from_file(filename);
         }
 
+        /// <summary> Saves the given file. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="filename"> Filename of the file. </param>
+        ///
+        /// <returns> true if it succeeds, false if it fails. </returns>
+
         public bool Save(string filename)
         {
             return InternalData.save_train(filename);
         }
+
+        /// <summary> Shuffle train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
 
         public void ShuffleTrainData()
         {
             InternalData.shuffle_train_data();
         }
 
+        /// <summary> Merge train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="data"> The data. </param>
+
         public void MergeTrainData(TrainingDataFloat data)
         {
             InternalData.merge_train_data(data.InternalData);
         }
+
+        /// <summary> Gets train input. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="position"> The position. </param>
+        ///
+        /// <returns> An array of float. </returns>
 
         public float[] GetTrainInput(uint position)
         {
@@ -73,6 +120,14 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Gets train output. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="position"> The position. </param>
+        ///
+        /// <returns> An array of float. </returns>
+
         public float[] GetTrainOutput(uint position)
         {
             using (floatArray output = floatArray.frompointer(InternalData.get_train_input(position)))
@@ -86,12 +141,19 @@ namespace FANNCSharp
             }
         }
 
-        public void SetTrainData(float[][] input, float[][] output)
+        /// <summary> Sets train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="parameter1"> The input. </param>
+        /// <param name="output">     The output. </param>
+
+        public void SetTrainData(float[][]input, float[][] output)
         {
             int numData = input.Length;
             int inputSize = input[0].Length;
             int outputSize = output[0].Length;
-            using (floatArrayArray inputArray = new floatArrayArray(numData))
+            using(floatArrayArray inputArray = new floatArrayArray(numData))
             using (floatArrayArray outputArray = new floatArrayArray(numData))
             {
                 for (int i = 0; i < numData; i++)
@@ -113,12 +175,20 @@ namespace FANNCSharp
             }
         }
 
-        public void set_train_data(uint num_data, float[] input, float[] output)
+        /// <summary> Sets train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="num_data"> Number of data. </param>
+        /// <param name="input">    The input. </param>
+        /// <param name="output">   The output. </param>
+
+        public void SetTrainData(uint num_data, float[] input, float[] output)
         {
             uint numInput = (uint)input.Length / num_data;
             uint numOutput = (uint)output.Length / num_data;
-            using (floatArray inputArray = new floatArray((int)(numInput * num_data)))
-            using (floatArray outputArray = new floatArray((int)(numOutput * num_data)))
+            using(floatArray inputArray = new floatArray((int)(numInput * num_data)))
+            using(floatArray outputArray = new floatArray((int)(numOutput * num_data)))
             {
                 for (int i = 0; i < numInput * num_data; i++)
                 {
@@ -133,16 +203,9 @@ namespace FANNCSharp
             }
         }
 
-<<<<<<< Updated upstream
-        internal void CreateTrainFromCallback(uint num_data, uint num_input, uint num_output, SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_float_p_float__void user_function)
-        {
-            throw new System.NotImplementedException("CreateTrainFromCallback is not implemented yet.");
-        }
-=======
         /// <summary> Gets the minimum input. </summary>
         ///
         /// <value> The minimum input. </value>
->>>>>>> Stashed changes
 
         public float MinInput
         {
@@ -152,6 +215,10 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Gets the maximum input. </summary>
+        ///
+        /// <value> The maximum input. </value>
+
         public float MaxInput
         {
             get
@@ -159,6 +226,10 @@ namespace FANNCSharp
                 return InternalData.get_max_input();
             }
         }
+
+        /// <summary> Gets the minimum output. </summary>
+        ///
+        /// <value> The minimum output. </value>
 
         public float MinOutput
         {
@@ -168,6 +239,10 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Gets the maximum output. </summary>
+        ///
+        /// <value> The maximum output. </value>
+
         public float MaxOutput
         {
             get
@@ -176,15 +251,36 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Scale input train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="new_min"> The new minimum. </param>
+        /// <param name="new_max"> The new maximum. </param>
+
         public void ScaleInputTrainData(float new_min, float new_max)
         {
             InternalData.scale_input_train_data(new_min, new_max);
         }
 
+        /// <summary> Scale output train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="new_min"> The new minimum. </param>
+        /// <param name="new_max"> The new maximum. </param>
+
         public void ScaleOutputTrainData(float new_min, float new_max)
         {
             InternalData.scale_output_train_data(new_min, new_max);
         }
+
+        /// <summary> Subset train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="pos">    The position. </param>
+        /// <param name="length"> The length. </param>
 
         public void SubsetTrainData(uint pos, uint length)
         {
@@ -196,11 +292,15 @@ namespace FANNCSharp
             return InternalData.to_fann_train_data();
         }
 
-        private float[][] cachedOutput = null;
+        private float [][] cachedOutput = null;
+
+        /// <summary> Gets the output. </summary>
+        ///
+        /// <value> The output. </value>
+
         public float[][] Output
         {
-            get
-            {
+            get {
                 if (cachedOutput == null)
                 {
                     using (floatArrayArray output = floatArrayArray.frompointer(InternalData.get_output()))
@@ -226,6 +326,11 @@ namespace FANNCSharp
         }
 
         private float[][] cachedInput = null;
+
+        /// <summary> Gets the input. </summary>
+        ///
+        /// <value> The input. </value>
+
         public float[][] Input
         {
             get
@@ -253,7 +358,11 @@ namespace FANNCSharp
                 return cachedInput;
             }
         }
-        
+
+        /// <summary> Gets the number of inputs. </summary>
+        ///
+        /// <value> The number of inputs. </value>
+
         public uint InputCount
         {
             get
@@ -261,6 +370,10 @@ namespace FANNCSharp
                 return InternalData.num_input_train_data();
             }
         }
+
+        /// <summary> Gets the number of outputs. </summary>
+        ///
+        /// <value> The number of outputs. </value>
 
         public uint OutputCount
         {
@@ -270,10 +383,23 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Saves a train to fixed. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="filename">     Filename of the file. </param>
+        /// <param name="decimalPoint"> The decimal point. </param>
+        ///
+        /// <returns> true if it succeeds, false if it fails. </returns>
+
         public bool SaveTrainToFixed(string filename, uint decimalPoint)
         {
             return InternalData.save_train_to_fixed(filename, decimalPoint);
         }
+
+        /// <summary> Gets the length of the train data. </summary>
+        ///
+        /// <value> The length of the train data. </value>
 
         public uint TrainDataLength
         {
@@ -282,10 +408,24 @@ namespace FANNCSharp
                 return InternalData.length_train_data();
             }
         }
+
+        /// <summary> Scale train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="new_min"> The new minimum. </param>
+        /// <param name="new_max"> The new maximum. </param>
+
         public void ScaleTrainData(float new_min, float new_max)
         {
             InternalData.scale_train_data(new_min, new_max);
         }
+
+        /// <summary> Performs application-defined tasks associated with freeing, releasing, or resetting
+        /// unmanaged resources. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+
         public void Dispose()
         {
             InternalData.Dispose();
@@ -293,7 +433,7 @@ namespace FANNCSharp
 
 
         internal FannWrapperFloat.training_data InternalData
-        {
+        { 
             get; set;
         }
         private void InternalCallback(uint number, uint inputCount, uint outputCount, global::System.IntPtr inputs, global::System.IntPtr outputs)
@@ -317,14 +457,21 @@ namespace FANNCSharp
             }
         }
 
-        private DataCreateCallbackFloat Callback { get; set; }
+        /// <summary> Data create callback float. </summary>
+        ///
+        /// <remarks> Joel Self, 11/12/2015. </remarks>
+        ///
+        /// <param name="number">      Number of. </param>
+        /// <param name="inputCount">  Number of inputs. </param>
+        /// <param name="outputCount"> Number of outputs. </param>
+        /// <param name="inputs">      The inputs. </param>
+        /// <param name="outputs">     The outputs. </param>
+
+        public delegate void DataCreateCallback(uint number, uint inputCount, uint outputCount, float[] inputs, float[] outputs);
+        private DataCreateCallback Callback { get; set; }
         private data_create_callback RawCallback { get; set; }
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         internal delegate void data_create_callback(uint number, uint inputCount, uint outputCount, global::System.IntPtr inputs, global::System.IntPtr outputs);
     }
-
-
-    public delegate void DataCreateCallbackFloat(uint number, uint inputCount, uint outputCount, float [] inputs, float [] outputs);
-
 }

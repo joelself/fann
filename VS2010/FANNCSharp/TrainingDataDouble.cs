@@ -5,17 +5,37 @@ using System.Runtime.InteropServices;
 
 namespace FANNCSharp
 {
+    /// <summary> A training data double. </summary>
+    ///
+    /// <remarks> Joel Self, 11/10/2015. </remarks>
+
     public class TrainingDataDouble : IDisposable
     {
+        /// <summary> Default constructor. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+
         public TrainingDataDouble()
         {
             InternalData = new FannWrapperDouble.training_data();
         }
+
+        internal TrainingDataDouble(training_data other)
+        {
+            InternalData = other;
+        }
+
+        /// <summary> Constructor. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="data"> The data. </param>
+
         public TrainingDataDouble(TrainingDataDouble data) {
             InternalData = new FannWrapperDouble.training_data(data.InternalData);
         }
         
-        public TrainingDataDouble(uint dataCount, uint inputCount, uint outputCount, DataCreateCallbackDouble callback)
+        public TrainingDataDouble(uint dataCount, uint inputCount, uint outputCount, DataCreateCallback callback)
         {
             InternalData = new FannWrapperDouble.training_data();
             Callback = callback;
@@ -23,24 +43,59 @@ namespace FANNCSharp
             fanndoublePINVOKE.training_data_create_train_from_callback(training_data.getCPtr(this.InternalData), dataCount, inputCount, outputCount, Marshal.GetFunctionPointerForDelegate(RawCallback));
         }
 
+        /// <summary> Reads train from file. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="filename"> Filename of the file. </param>
+        ///
+        /// <returns> true if it succeeds, false if it fails. </returns>
+
         public bool ReadTrainFromFile(string filename)
         {
             return InternalData.read_train_from_file(filename);
         }
+
+        /// <summary> Saves the given file. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="filename"> Filename of the file. </param>
+        ///
+        /// <returns> true if it succeeds, false if it fails. </returns>
+
         public bool Save(string filename)
         {
             return InternalData.save_train(filename);
         }
+
+        /// <summary> Shuffle train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
 
         public void ShuffleTrainData()
         {
             InternalData.shuffle_train_data();
         }
 
+        /// <summary> Merge train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="data"> The data. </param>
+
         public void MergeTrainData(TrainingDataDouble data)
         {
             InternalData.merge_train_data(data.InternalData);
         }
+
+        /// <summary> Gets train input. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="position"> The position. </param>
+        ///
+        /// <returns> An array of double. </returns>
 
         public double[] GetTrainInput(uint position)
         {
@@ -55,6 +110,14 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Gets train output. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="position"> The position. </param>
+        ///
+        /// <returns> An array of double. </returns>
+
         public double[] GetTrainOutput(uint position)
         {
             using (doubleArray output = doubleArray.frompointer(InternalData.get_train_input(position)))
@@ -67,6 +130,13 @@ namespace FANNCSharp
                 return result;
             }
         }
+
+        /// <summary> Sets train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="parameter1"> The input. </param>
+        /// <param name="output">     The output. </param>
 
         public void SetTrainData(double[][]input, double[][] output)
         {
@@ -95,6 +165,14 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Sets train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="num_data"> Number of data. </param>
+        /// <param name="input">    The input. </param>
+        /// <param name="output">   The output. </param>
+
         public void SetTrainData(uint num_data, double[] input, double[] output)
         {
             uint numInput = (uint)input.Length / num_data;
@@ -115,16 +193,9 @@ namespace FANNCSharp
             }
         }
 
-<<<<<<< Updated upstream
-        internal void CreateTrainFromCallback(uint num_data, uint num_input, uint num_output, SWIGTYPE_p_f_unsigned_int_unsigned_int_unsigned_int_p_double_p_double__void user_function)
-        {
-            throw new System.NotImplementedException("CreateTrainFromCallback is not implemented yet.");
-        }
-=======
         /// <summary> Gets the minimum input. </summary>
         ///
         /// <value> The minimum input. </value>
->>>>>>> Stashed changes
 
         public double MinInput
         {
@@ -134,6 +205,10 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Gets the maximum input. </summary>
+        ///
+        /// <value> The maximum input. </value>
+
         public double MaxInput
         {
             get
@@ -141,6 +216,10 @@ namespace FANNCSharp
                 return InternalData.get_max_input();
             }
         }
+
+        /// <summary> Gets the minimum output. </summary>
+        ///
+        /// <value> The minimum output. </value>
 
         public double MinOutput
         {
@@ -150,6 +229,10 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Gets the maximum output. </summary>
+        ///
+        /// <value> The maximum output. </value>
+
         public double MaxOutput
         {
             get
@@ -158,15 +241,36 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Scale input train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="new_min"> The new minimum. </param>
+        /// <param name="new_max"> The new maximum. </param>
+
         public void ScaleInputTrainData(double new_min, double new_max)
         {
             InternalData.scale_input_train_data(new_min, new_max);
         }
 
+        /// <summary> Scale output train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="new_min"> The new minimum. </param>
+        /// <param name="new_max"> The new maximum. </param>
+
         public void ScaleOutputTrainData(double new_min, double new_max)
         {
             InternalData.scale_output_train_data(new_min, new_max);
         }
+
+        /// <summary> Subset train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="pos">    The position. </param>
+        /// <param name="length"> The length. </param>
 
         public void SubsetTrainData(uint pos, uint length)
         {
@@ -179,6 +283,11 @@ namespace FANNCSharp
         }
 
         private double [][] cachedOutput = null;
+
+        /// <summary> Gets the output. </summary>
+        ///
+        /// <value> The output. </value>
+
         public double[][] Output
         {
             get {
@@ -207,6 +316,11 @@ namespace FANNCSharp
         }
 
         private double[][] cachedInput = null;
+
+        /// <summary> Gets the input. </summary>
+        ///
+        /// <value> The input. </value>
+
         public double[][] Input
         {
             get
@@ -235,6 +349,10 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Gets the number of inputs. </summary>
+        ///
+        /// <value> The number of inputs. </value>
+
         public uint InputCount
         {
             get
@@ -242,6 +360,10 @@ namespace FANNCSharp
                 return InternalData.num_input_train_data();
             }
         }
+
+        /// <summary> Gets the number of outputs. </summary>
+        ///
+        /// <value> The number of outputs. </value>
 
         public uint OutputCount
         {
@@ -251,10 +373,23 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Saves a train to fixed. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="filename">     Filename of the file. </param>
+        /// <param name="decimalPoint"> The decimal point. </param>
+        ///
+        /// <returns> true if it succeeds, false if it fails. </returns>
+
         public bool SaveTrainToFixed(string filename, uint decimalPoint)
         {
             return InternalData.save_train_to_fixed(filename, decimalPoint);
         }
+
+        /// <summary> Gets the length of the train data. </summary>
+        ///
+        /// <value> The length of the train data. </value>
 
         public uint TrainDataLength
         {
@@ -264,10 +399,22 @@ namespace FANNCSharp
             }
         }
 
+        /// <summary> Scale train data. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
+        ///
+        /// <param name="new_min"> The new minimum. </param>
+        /// <param name="new_max"> The new maximum. </param>
+
         public void ScaleTrainData(double new_min, double new_max)
         {
             InternalData.scale_train_data(new_min, new_max);
         }
+
+        /// <summary> Performs application-defined tasks associated with freeing, releasing, or resetting
+        /// unmanaged resources. </summary>
+        ///
+        /// <remarks> Joel Self, 11/10/2015. </remarks>
 
         public void Dispose()
         {
@@ -299,12 +446,21 @@ namespace FANNCSharp
             }
         }
 
-        private DataCreateCallbackDouble Callback { get; set; }
+        /// <summary> Callback, called when the data create. </summary>
+        ///
+        /// <remarks> Joel Self, 11/12/2015. </remarks>
+        ///
+        /// <param name="number">      Number of. </param>
+        /// <param name="inputCount">  Number of inputs. </param>
+        /// <param name="outputCount"> Number of outputs. </param>
+        /// <param name="inputs">      The inputs. </param>
+        /// <param name="outputs">     The outputs. </param>
+
+        public delegate void DataCreateCallback(uint number, uint inputCount, uint outputCount, double[] inputs, double[] outputs);
+        private DataCreateCallback Callback { get; set; }
         private data_create_callback RawCallback { get; set; }
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         internal delegate void data_create_callback(uint number, uint inputCount, uint outputCount, global::System.IntPtr inputs, global::System.IntPtr outputs);
     }
-
-    public delegate void DataCreateCallbackDouble(uint number, uint inputCount, uint outputCount, double[] inputs, double[] outputs);
 }

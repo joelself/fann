@@ -36,9 +36,6 @@
 %ignore FANN_ERRORFUNC_NAMES;
 %ignore FANN_ACTIVATIONFUNC_NAMES;
 %ignore FANN_TRAIN_NAMES;
-<<<<<<< Updated upstream
-=======
-%typemap(ctype) void* "void*"
 %typemap(in) void* user_data %{ $1 = (void*)$input;%}
 %typemap(imtype, out="global::System.IntPtr") void* user_data "global::System.IntPtr" 
 %typemap(cstype, out="global::System.IntPtr") void* user_data "global::System.IntPtr"
@@ -68,7 +65,6 @@
 %typemap(imtype, out="global::System.IntPtr") void (*)(unsigned int, unsigned int, unsigned int, int *, int *) "global::System.IntPtr" 
 %typemap(cstype, out="global::System.IntPtr") void (*)(unsigned int, unsigned int, unsigned int, int *, int *) "global::System.IntPtr"
 %typemap(csin) void (*)(unsigned int, unsigned int, unsigned int, int *, int *) "$csinput"
->>>>>>> Stashed changes
 #define FANN_EXTERNAL /**/
 #define FANN_API /**/
 %include "typemaps.i"
