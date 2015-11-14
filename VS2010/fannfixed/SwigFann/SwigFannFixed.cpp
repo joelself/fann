@@ -2045,6 +2045,18 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_fopen(char * jarg1, char * jarg2) {
 }
 
 
+SWIGEXPORT int SWIGSTDCALL CSharp_fclose(void * jarg1) {
+  int jresult ;
+  FILE *arg1 = (FILE *) 0 ;
+  int result;
+  
+  arg1 = (FILE *)jarg1; 
+  result = (int)fclose(arg1);
+  jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_uintArray(int jarg1) {
   void * jresult ;
   int arg1 ;

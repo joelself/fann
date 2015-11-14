@@ -1,6 +1,5 @@
 ﻿using System;
 using FannWrapperFixed;
-using FannWrapper;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 /*
@@ -75,7 +74,7 @@ namespace FANNCSharp
         */
         public NeuralNetFixed(NeuralNetFixed other)
         {
-            net = new neural_net(other.InternalFixedNet.to_fann());
+            net = new neural_net(other.Net.to_fann());
         }
 
         internal NeuralNetFixed(neural_net other)
@@ -89,7 +88,7 @@ namespace FANNCSharp
         */
         public void Dispose()
         {
-            net.destroy();
+            net.Dispose();
         }
         /* Constructor: NeuralNetFixed
 
@@ -292,15 +291,13 @@ namespace FANNCSharp
                 {
                     ints.setitem(i, input[i]);
                 }
-                using (intArray outputs = intArray.frompointer(net.run(ints.cast())))
+                intArray outputs = intArray.frompointer(net.run(ints.cast()));
+                int[] result = new int[Outputs];
+                for (int i = 0; i < Outputs; i++)
                 {
-                    int[] result = new int[Outputs];
-                    for (int i = 0; i < Outputs; i++)
-                    {
-                        result[i] = outputs.getitem(i);
-                    }
-                    return result;
+                    result[i] = outputs.getitem(i);
                 }
+                return result;
             }
         }
 
@@ -1332,18 +1329,18 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.1.0
         */
-        public Connection[] ConnectionArray
+        public ConnectionFixed[] ConnectionArray
         {
             get
             {
                 uint count = net.get_total_connections();
-                Connection[] connections = new Connection[count];
+                ConnectionFixed[] connections = new ConnectionFixed[count];
                 using (ConnectionArray output = new ConnectionArray(connections.Length))
                 {
                     net.get_connection_array(output.cast());
                     for (uint i = 0; i < count; i++)
                     {
-                        connections[i] = output.getitem((int)i);
+                        connections[i] = new ConnectionFixed(output.getitem((int)i));
                     }
                 }
                 return connections;
@@ -1362,7 +1359,7 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.1.0
         */
-        public Connection[] WeightArray
+        public ConnectionFixed[] WeightArray
         {
             set
             {
@@ -1370,7 +1367,7 @@ namespace FANNCSharp
                 {
                     for (int i = 0; i < value.Length; i++)
                     {
-                        input.setitem(i, value[i]);
+                        input.setitem(i, value[i].connection);
                     }
                     net.set_weight_array(input.cast(), (uint)value.Length);
                 }
@@ -1666,7 +1663,7 @@ namespace FANNCSharp
         public delegate int TrainingCallback(NeuralNetFixed net, TrainingDataFixed data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, Object userData);
 
         #region Properties
-        public neural_net InternalFixedNet
+        internal neural_net Net
         {
             get
             {

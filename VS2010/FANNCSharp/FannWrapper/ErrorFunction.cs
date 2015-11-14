@@ -8,11 +8,24 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-namespace FannWrapper {
+namespace FANNCSharp
+{
+    /* Enum: ErrorFunction
+	    Error function used during training.
 
-public enum ErrorFunction {
-  ERRORFUNC_LINEAR = 0,
-  ERRORFUNC_TANH
-}
+	    ERRORFUNC_LINEAR - Standard linear error function.
+	    ERRORFUNC_TANH - Tanh error function, usually better
+		    but can require a lower learning rate. This error function aggressively targets outputs that
+		    differ much from the desired, while not targeting outputs that only differ a little that much.
+		    This activation function is not recommended for cascade training and incremental training.
+
+	    See also:
+		    <NeuralNetFloat.TrainErrorFunction>
+    */
+    public enum ErrorFunction
+    {
+        ERRORFUNC_LINEAR = 0,
+        ERRORFUNC_TANH
+    }
 
 }

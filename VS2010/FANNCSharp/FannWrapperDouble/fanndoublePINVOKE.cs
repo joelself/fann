@@ -8,7 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-using FannWrapper;
+using FANNCSharp;
 namespace FannWrapperDouble {
 
 class fanndoublePINVOKE {
@@ -125,7 +125,7 @@ class fanndoublePINVOKE {
 
   protected static SWIGExceptionHelper swigExceptionHelper = new SWIGExceptionHelper();
 
-  public class SWIGPendingException {
+  internal class SWIGPendingException {
     [global::System.ThreadStatic]
     private static global::System.Exception pendingException = null;
     private static int numExceptionsPending = 0;
@@ -716,6 +716,9 @@ class fanndoublePINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fopen")]
   public static extern global::System.IntPtr fopen(string jarg1, string jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fclose")]
+  public static extern int fclose(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_uintArray")]
   public static extern global::System.IntPtr new_uintArray(int jarg1);

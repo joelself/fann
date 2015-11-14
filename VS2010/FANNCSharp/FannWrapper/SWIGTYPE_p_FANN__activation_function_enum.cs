@@ -8,9 +8,10 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-namespace FannWrapper {
+namespace FANNCSharp
+{
 
-public class SWIGTYPE_p_FANN__activation_function_enum {
+internal class SWIGTYPE_p_FANN__activation_function_enum {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
 
   internal SWIGTYPE_p_FANN__activation_function_enum(global::System.IntPtr cPtr, bool futureUse) {

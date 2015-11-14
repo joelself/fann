@@ -1,6 +1,5 @@
 ﻿using System;
 using FANNCSharp;
-using FannWrapper;
 #if FANN_FIXED
 using NeuralNet = FANNCSharp.NeuralNetFixed;
 using TrainingData = FANNCSharp.TrainingDataFixed;

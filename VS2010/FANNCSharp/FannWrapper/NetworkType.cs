@@ -8,11 +8,24 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-namespace FannWrapper {
+namespace FANNCSharp
+{
+    /* Enum: NetworkType
 
-public enum NetworkType {
-  LAYER = 0,
-  SHORTCUT
-}
+        Definition of network types used by <NeuralNetFloat.NetworkType>
+
+        LAYER - Each layer only has connections to the next layer
+        SHORTCUT - Each layer has connections to all following layers
+
+       See Also:
+          <NeuralNetFloat.NetworkType>, <fann_get_network_type at http://libfann.github.io/fann/docs/files/fann-h.html#fann_get_network_type>
+
+       This enumeration appears in FANN >= 2.1.0
+    */
+    public enum NetworkType
+    {
+        LAYER = 0,
+        SHORTCUT
+    }
 
 }

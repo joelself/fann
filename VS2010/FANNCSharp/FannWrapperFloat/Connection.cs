@@ -8,10 +8,10 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-using FannWrapperFloat;
-namespace FannWrapper {
+using FANNCSharp;
+namespace FannWrapperFloat {
 
-public class Connection : global::System.IDisposable {
+internal class Connection : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 

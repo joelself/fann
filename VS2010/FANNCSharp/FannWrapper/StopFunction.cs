@@ -8,11 +8,25 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-namespace FannWrapper {
+namespace FANNCSharp
+{
+    /* Enum: StopFunction
+	    Stop criteria used during training.
 
-public enum StopFunction {
-  STOPFUNC_MSE = 0,
-  STOPFUNC_BIT
-}
+	    STOPFUNC_MSE - Stop criteria is Mean Square Error (MSE) value.
+	    STOPFUNC_BIT - Stop criteria is number of bits that fail. The number of bits; means the
+		    number of output neurons which differ more than the bit fail limit
+		    (see <NeuralNetFloat.BitFailLimit>).
+		    The bits are counted in all of the training data, so this number can be higher than
+		    the number of training data.
+
+	    See also:
+		    <NeuralNet.TrainStopFunction>, <neural_net::get_train_stop_function>
+    */
+    public enum StopFunction
+    {
+        STOPFUNC_MSE = 0,
+        STOPFUNC_BIT
+    }
 
 }

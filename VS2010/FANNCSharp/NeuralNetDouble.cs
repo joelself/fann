@@ -1,6 +1,5 @@
 ﻿using System;
 using FannWrapperDouble;
-using FannWrapper;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 /*
@@ -75,7 +74,7 @@ namespace FANNCSharp
         */
         public NeuralNetDouble(NeuralNetDouble other)
         {
-           net = new neural_net(other.InternalDoubleNet.to_fann());
+           net = new neural_net(other.Net.to_fann());
         }
 
         internal NeuralNetDouble(neural_net other)
@@ -89,7 +88,7 @@ namespace FANNCSharp
         */
         public void Dispose()
         {
-           net.destroy();
+            net.Dispose();
         }
         /* Constructor: NeuralNetDouble
 
@@ -244,15 +243,13 @@ namespace FANNCSharp
                 {
                     doubles.setitem(i, input[i]);
                 }
-                using (doubleArray outputs = doubleArray.frompointer(net.run(doubles.cast())))
+                doubleArray outputs = doubleArray.frompointer(net.run(doubles.cast()));
+                double[] result = new double[Outputs];
+                for (int i = 0; i < Outputs; i++)
                 {
-                    double[] result = new double[Outputs];
-                    for (int i = 0; i < Outputs; i++)
-                    {
-                        result[i] = outputs.getitem(i);
-                    }
-                    return result;
+                    result[i] = outputs.getitem(i);
                 }
+                return result;
             }
         }
 
@@ -1386,17 +1383,17 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.1.0
         */
-        public Connection[] ConnectionArray
+        public ConnectionDouble[] ConnectionArray
         {
             get {
                 uint count = net.get_total_connections();
-                Connection[] connections = new Connection[count];
+                ConnectionDouble[] connections = new ConnectionDouble[count];
                 using (ConnectionArray output = new ConnectionArray(connections.Length))
                 {
                    net.get_connection_array(output.cast());
                     for (uint i = 0; i < count; i++)
                     {
-                        connections[i] = output.getitem((int)i);
+                        connections[i] = new ConnectionDouble(output.getitem((int)i));
                     }
                 }
                 return connections;
@@ -1415,7 +1412,7 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.1.0
         */
-        public Connection[] WeightArray
+        public ConnectionDouble[] WeightArray
         {
             set
             {
@@ -1423,7 +1420,7 @@ namespace FANNCSharp
                 {
                     for (int i = 0; i < value.Length; i++)
                     {
-                        input.setitem(i, value[i]);
+                        input.setitem(i, value[i].connection);
                     }
                     net.set_weight_array(input.cast(), (uint)value.Length);
                 }
@@ -1905,15 +1902,13 @@ namespace FANNCSharp
             get
             {
                 int count = (int)net.get_cascade_activation_functions_count();
-                using (ActivationFunctionArray result = ActivationFunctionArray.frompointer(net.get_cascade_activation_functions()))
+                ActivationFunctionArray result = ActivationFunctionArray.frompointer(net.get_cascade_activation_functions());
+                ActivationFunction[] arrayResult = new ActivationFunction[net.get_cascade_activation_functions_count()];
+                for (int i = 0; i < count; i++)
                 {
-                    ActivationFunction[] arrayResult = new ActivationFunction[net.get_cascade_activation_functions_count()];
-                    for (int i = 0; i < count; i++)
-                    {
-                        arrayResult[i] = result.getitem(i);
-                    }
-                    return arrayResult;
+                    arrayResult[i] = result.getitem(i);
                 }
+                return arrayResult;
             }
             set
             {
@@ -1969,16 +1964,14 @@ namespace FANNCSharp
         {
             get
             {
-                using (doubleArray result = doubleArray.frompointer(net.get_cascade_activation_steepnesses()))
+                doubleArray result = doubleArray.frompointer(net.get_cascade_activation_steepnesses());
+                uint count = net.get_cascade_activation_steepnesses_count();
+                double[] resultArray = new double[net.get_cascade_activation_steepnesses_count()];
+                for (int i = 0; i < count; i++)
                 {
-                    uint count = net.get_cascade_activation_steepnesses_count();
-                    double[] resultArray = new double[net.get_cascade_activation_steepnesses_count()];
-                    for (int i = 0; i < count; i++)
-                    {
-                        resultArray[i] = result.getitem(i);
-                    }
-                    return resultArray;
+                    resultArray[i] = result.getitem(i);
                 }
+                return resultArray;
             }
             set
             {
@@ -2118,7 +2111,7 @@ namespace FANNCSharp
             return net.clear_scaling_params();
         }
 
-        /* Property: ScaleInput
+        /* Method: ScaleInput
 
            Scale data in input vector before feed it to ann based on previously calculated parameters.
 
@@ -2128,22 +2121,19 @@ namespace FANNCSharp
 
 	        This function appears in FANN >= 2.1.0.
          */
-        public double[] ScaleInput
+        public void ScaleInput(double[] input)
         {
-            set
+            using (doubleArray inputs = new doubleArray(input.Length))
             {
-                using (doubleArray inputs = new doubleArray(value.Length))
+                for (int i = 0; i < input.Length; i++)
                 {
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        inputs.setitem(i, value[i]);
-                    }
-                    net.scale_input(inputs.cast());
+                    inputs.setitem(i, input[i]);
                 }
+                net.scale_input(inputs.cast());
             }
         }
 
-        /* Property: ScaleOutput
+        /* Method: ScaleOutput
 
            Scale data in output vector before feed it to ann based on previously calculated parameters.
 
@@ -2153,22 +2143,19 @@ namespace FANNCSharp
 
 	        This function appears in FANN >= 2.1.0.
          */
-        public double[] ScaleOutput
+        public void ScaleOutput(double[] output)
         {
-            set
+            using (doubleArray inputs = new doubleArray(output.Length))
             {
-                using (doubleArray inputs = new doubleArray(value.Length))
+                for (int i = 0; i < output.Length; i++)
                 {
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        inputs.setitem(i, value[i]);
-                    }
-                    net.scale_output(inputs.cast());
+                    inputs.setitem(i, output[i]);
                 }
+                net.scale_output(inputs.cast());
             }
         }
 
-        /* Property: DescaleInput
+        /* Method: DescaleInput
 
            Scale data in input vector after get it from ann based on previously calculated parameters.
 
@@ -2178,22 +2165,19 @@ namespace FANNCSharp
 
 	        This function appears in FANN >= 2.1.0.
          */
-        public double[] DescaleInput
+        public void DeScaleInput(double[] input)
         {
-            set
+            using (doubleArray inputs = new doubleArray(input.Length))
             {
-                using (doubleArray inputs = new doubleArray(value.Length))
+                for (int i = 0; i < input.Length; i++)
                 {
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        inputs.setitem(i, value[i]);
-                    }
-                    net.descale_input(inputs.cast());
+                    inputs.setitem(i, input[i]);
                 }
+                net.descale_input(inputs.cast());
             }
         }
 
-        /* Property: DescaleOutput
+        /* Method: DescaleOutput
 
            Scale data in output vector after get it from ann based on previously calculated parameters.
 
@@ -2203,18 +2187,15 @@ namespace FANNCSharp
 
 	        This function appears in FANN >= 2.1.0.
          */
-        public double[] DescaleOutput
+        public void DescaleOutput(double[] output)
         {
-            set
+            using (doubleArray inputs = new doubleArray(output.Length))
             {
-                using (doubleArray inputs = new doubleArray(value.Length))
+                for (int i = 0; i < output.Length; i++)
                 {
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        inputs.setitem(i, value[i]);
-                    }
-                    net.descale_output(inputs.cast());
+                    inputs.setitem(i, output[i]);
                 }
+                net.descale_output(inputs.cast());
             }
         }
 
@@ -2648,7 +2629,7 @@ namespace FANNCSharp
         public delegate int TrainingCallback(NeuralNetDouble net, TrainingDataDouble data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, Object userData);
 
 #region Properties
-        public neural_net InternalDoubleNet
+        internal neural_net Net
         {
             get
             {
