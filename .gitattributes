@@ -1,2 +1,0 @@
-*.dll filter=lfs -crlf
-*.zip filter=lfs -crlf
