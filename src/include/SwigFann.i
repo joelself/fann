@@ -78,6 +78,7 @@
 %include "fann_data_cpp.h"
 %include "fann_cpp.h"
 FILE *fopen(const char *filename, const char *mode);
+int fclose ( FILE * stream );
 %inline %{
 typedef enum FANN::activation_function_enum ActivationFunction;
 typedef enum error_function_enum ErrorFunction;

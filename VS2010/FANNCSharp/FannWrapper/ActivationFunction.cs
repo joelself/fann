@@ -8,25 +8,118 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-namespace FannWrapper {
+namespace FANNCSharp
+{
+    /* Enum: ActivationFunction
 
-public enum ActivationFunction {
-  LINEAR = 0,
-  THRESHOLD,
-  THRESHOLD_SYMMETRIC,
-  SIGMOID,
-  SIGMOID_STEPWISE,
-  SIGMOID_SYMMETRIC,
-  SIGMOID_SYMMETRIC_STEPWISE,
-  GAUSSIAN,
-  GAUSSIAN_SYMMETRIC,
-  GAUSSIAN_STEPWISE,
-  ELLIOT,
-  ELLIOT_SYMMETRIC,
-  LINEAR_PIECE,
-  LINEAR_PIECE_SYMMETRIC,
-  SIN_SYMMETRIC,
-  COS_SYMMETRIC
-}
+	    The activation functions used for the neurons during training. The activation functions
+	    can either be defined for a group of neurons by <NeuralNetFloat.SetActivationFunctionHidden>
+        and <NeuralNetFloat.SetActivationFunctionOutput> or it can be defined for a single neuron by
+        <NeuralNetFloat.SetActivationFunction>.
+
+	    The steepness of an activation function is defined in the same way by
+	    <NeuralNetFloat.SetActivationSteepnessHidden>, <NeuralNetFloat.SetActivationSteepnessOutput>
+        and <NeuralNetFloat.SetActivationSteepness>.
+
+       The functions are described with functions where:
+       * x is the input to the activation function,
+       * y is the output,
+       * s is the steepness and
+       * d is the derivation.
+
+       FANN_LINEAR - Linear activation function.
+         * span: -inf < y < inf
+	     * y = x*s, d = 1*s
+	     * Can NOT be used in fixed point.
+
+       FANN_THRESHOLD - Threshold activation function.
+	     * x < 0 -> y = 0, x >= 0 -> y = 1
+	     * Can NOT be used during training.
+
+       FANN_THRESHOLD_SYMMETRIC - Threshold activation function.
+	     * x < 0 -> y = 0, x >= 0 -> y = 1
+	     * Can NOT be used during training.
+
+       FANN_SIGMOID - Sigmoid activation function.
+	     * One of the most used activation functions.
+	     * span: 0 < y < 1
+	     * y = 1/(1 + exp(-2*s*x))
+	     * d = 2*s*y*(1 - y)
+
+       FANN_SIGMOID_STEPWISE - Stepwise linear approximation to sigmoid.
+	     * Faster than sigmoid but a bit less precise.
+
+       FANN_SIGMOID_SYMMETRIC - Symmetric sigmoid activation function, aka. tanh.
+	     * One of the most used activation functions.
+	     * span: -1 < y < 1
+	     * y = tanh(s*x) = 2/(1 + exp(-2*s*x)) - 1
+	     * d = s*(1-(y*y))
+
+       FANN_SIGMOID_SYMMETRIC - Stepwise linear approximation to symmetric sigmoid.
+	     * Faster than symmetric sigmoid but a bit less precise.
+
+       FANN_GAUSSIAN - Gaussian activation function.
+	     * 0 when x = -inf, 1 when x = 0 and 0 when x = inf
+	     * span: 0 < y < 1
+	     * y = exp(-x*s*x*s)
+	     * d = -2*x*s*y*s
+
+       FANN_GAUSSIAN_SYMMETRIC - Symmetric gaussian activation function.
+	     * -1 when x = -inf, 1 when x = 0 and 0 when x = inf
+	     * span: -1 < y < 1
+	     * y = exp(-x*s*x*s)*2-1
+	     * d = -2*x*s*(y+1)*s
+
+       FANN_ELLIOT - Fast (sigmoid like) activation function defined by David Elliott
+	     * span: 0 < y < 1
+	     * y = ((x*s) / 2) / (1 + |x*s|) + 0.5
+	     * d = s*1/(2*(1+|x*s|)*(1+|x*s|))
+
+       FANN_ELLIOT_SYMMETRIC - Fast (symmetric sigmoid like) activation function defined by David Elliott
+	     * span: -1 < y < 1
+	     * y = (x*s) / (1 + |x*s|)
+	     * d = s*1/((1+|x*s|)*(1+|x*s|))
+
+	    FANN_LINEAR_PIECE - Bounded linear activation function.
+	     * span: 0 < y < 1
+	     * y = x*s, d = 1*s
+
+	    FANN_LINEAR_PIECE_SYMMETRIC - Bounded Linear activation function.
+	     * span: -1 < y < 1
+	     * y = x*s, d = 1*s
+
+        FANN_SIN_SYMMETRIC - Periodical sinus activation function.
+         * span: -1 <= y <= 1
+         * y = sin(x*s)
+         * d = s*cos(x*s)
+
+        FANN_COS_SYMMETRIC - Periodical cosinus activation function.
+         * span: -1 <= y <= 1
+         * y = cos(x*s)
+         * d = s*-sin(x*s)
+
+	    See also:
+		    <NeuralNetFloat.SetActivationFunctionHidden>,
+		    <NeuralNetFloat.SetActivationFunctionOutput>
+    */
+    public enum ActivationFunction
+    {
+        LINEAR = 0,
+        THRESHOLD,
+        THRESHOLD_SYMMETRIC,
+        SIGMOID,
+        SIGMOID_STEPWISE,
+        SIGMOID_SYMMETRIC,
+        SIGMOID_SYMMETRIC_STEPWISE,
+        GAUSSIAN,
+        GAUSSIAN_SYMMETRIC,
+        GAUSSIAN_STEPWISE,
+        ELLIOT,
+        ELLIOT_SYMMETRIC,
+        LINEAR_PIECE,
+        LINEAR_PIECE_SYMMETRIC,
+        SIN_SYMMETRIC,
+        COS_SYMMETRIC
+    }
 
 }

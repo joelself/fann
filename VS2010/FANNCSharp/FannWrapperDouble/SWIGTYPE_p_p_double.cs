@@ -8,10 +8,10 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-using FannWrapper;
+using FANNCSharp;
 namespace FannWrapperDouble {
 
-public class SWIGTYPE_p_p_double {
+internal class SWIGTYPE_p_p_double {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
 
   internal SWIGTYPE_p_p_double(global::System.IntPtr cPtr, bool futureUse) {

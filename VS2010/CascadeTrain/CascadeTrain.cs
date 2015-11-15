@@ -1,6 +1,5 @@
 ﻿using System;
 using FANNCSharp;
-using FannWrapper;
 #if FANN_FIXED
 using NeuralNet = FANNCSharp.NeuralNetFixed;
 using TrainingData = FANNCSharp.TrainingDataFixed;
@@ -46,7 +45,7 @@ namespace Example
 
                 using (NeuralNet net = new NeuralNet(NetworkType.SHORTCUT, 2, trainData.InputCount, trainData.OutputCount))
                 {
-                    TrainingCallbackFloat callback = (callbackNet, callbackData, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, callbackUserData) =>
+                    NeuralNet.TrainingCallback callback = (callbackNet, callbackData, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, callbackUserData) =>
                     {
                         Console.WriteLine("Layer count: {0}, Data length: {1}, Max epochs: {2}, Epochs between reports: {3}, Desired error: {4}, Epochs so far: {5}, Greeting: \"{6}\"",
                             callbackNet.LayerCount, callbackData.TrainDataLength, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, (string)callbackUserData);

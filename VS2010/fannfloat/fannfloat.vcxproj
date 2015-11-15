@@ -108,9 +108,8 @@
     </Link>
     <PreBuildEvent>
       <Command>del /Q $(SolutionDir)FANNCSharp\FannWrapperFloat\*.cs
-del /Q $(SolutionDir)FANNCSharp\FannWrapper\*.cs
 swig -c++ -csharp -namespace FannWrapperFloat -o $(SolutionDir)fannfloat\SwigFann\SwigFannFloat.cpp -outdir $(SolutionDir)FANNCSharp\FannWrapperFloat $(SolutionDir)..\src\include\SwigFannFloat.i
-$(SolutionDir)CleanUpForSwig\bin\CleanUpForSwig.exe $(SolutionDir)fannfloat\SwigFann\SwigFannFloat.cpp $(SolutionDir)FANNCSharp\FannWrapperFloat\ copy float</Command>
+$(SolutionDir)CleanUpForSwig\bin\CleanUpForSwig.exe $(SolutionDir)fannfloat\SwigFann\SwigFannFloat.cpp $(SolutionDir)FANNCSharp\FannWrapperFloat\ delete float</Command>
       <Message>Generate the FannWrapper and fixup the code a bit</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -130,9 +129,8 @@ $(SolutionDir)CleanUpForSwig\bin\CleanUpForSwig.exe $(SolutionDir)fannfloat\Swig
     </Link>
     <PreBuildEvent>
       <Command>del /Q $(SolutionDir)FANNCSharp\FannWrapperFloat\*.cs
-del /Q $(SolutionDir)FANNCSharp\FannWrapper\*.cs
 swig -c++ -csharp -namespace FannWrapperFloat -o $(SolutionDir)fannfloat\SwigFann\SwigFannFloat.cpp -outdir $(SolutionDir)FANNCSharp\FannWrapperFloat $(SolutionDir)..\src\include\SwigFannFloat.i
-$(SolutionDir)CleanUpForSwig\bin\CleanUpForSwig.exe $(SolutionDir)fannfloat\SwigFann\SwigFannFloat.cpp $(SolutionDir)FANNCSharp\FannWrapperFloat\ copy float</Command>
+$(SolutionDir)CleanUpForSwig\bin\CleanUpForSwig.exe $(SolutionDir)fannfloat\SwigFann\SwigFannFloat.cpp $(SolutionDir)FANNCSharp\FannWrapperFloat\ delete float</Command>
       <Message>Generate the FannWrapper and fixup the code a bit</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -158,9 +156,8 @@ $(SolutionDir)CleanUpForSwig\bin\CleanUpForSwig.exe $(SolutionDir)fannfloat\Swig
     </Link>
     <PreBuildEvent>
       <Command>del /Q $(SolutionDir)FANNCSharp\FannWrapperFloat\*.cs
-del /Q $(SolutionDir)FANNCSharp\FannWrapper\*.cs
 swig -c++ -csharp -namespace FannWrapperFloat -o $(SolutionDir)fannfloat\SwigFann\SwigFannFloat.cpp -outdir $(SolutionDir)FANNCSharp\FannWrapperFloat $(SolutionDir)..\src\include\SwigFannFloat.i
-$(SolutionDir)CleanUpForSwig\bin\CleanUpForSwig.exe $(SolutionDir)fannfloat\SwigFann\SwigFannFloat.cpp $(SolutionDir)FANNCSharp\FannWrapperFloat\ copy float</Command>
+$(SolutionDir)CleanUpForSwig\bin\CleanUpForSwig.exe $(SolutionDir)fannfloat\SwigFann\SwigFannFloat.cpp $(SolutionDir)FANNCSharp\FannWrapperFloat\ delete float</Command>
       <Message>Generate the FannWrapper and fixup the code a bit</Message>
     </PreBuildEvent>
     <Bscmake>
@@ -188,9 +185,8 @@ $(SolutionDir)CleanUpForSwig\bin\CleanUpForSwig.exe $(SolutionDir)fannfloat\Swig
     </Link>
     <PreBuildEvent>
       <Command>del /Q $(SolutionDir)FANNCSharp\FannWrapperFloat\*.cs
-del /Q $(SolutionDir)FANNCSharp\FannWrapper\*.cs
 swig -c++ -csharp -namespace FannWrapperFloat -o $(SolutionDir)fannfloat\SwigFann\SwigFannFloat.cpp -outdir $(SolutionDir)FANNCSharp\FannWrapperFloat $(SolutionDir)..\src\include\SwigFannFloat.i
-$(SolutionDir)CleanUpForSwig\bin\CleanUpForSwig.exe $(SolutionDir)fannfloat\SwigFann\SwigFannFloat.cpp $(SolutionDir)FANNCSharp\FannWrapperFloat\ copy float</Command>
+$(SolutionDir)CleanUpForSwig\bin\CleanUpForSwig.exe $(SolutionDir)fannfloat\SwigFann\SwigFannFloat.cpp $(SolutionDir)FANNCSharp\FannWrapperFloat\ delete float</Command>
       <Message>Generate the FannWrapper and fixup the code a bit</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>

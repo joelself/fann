@@ -17,8 +17,6 @@ namespace CleanUpForSwig
                                                  "NetworkType.cs",
                                                  "StopFunction.cs",
                                                  "TrainingAlgorithm.cs",
-                                                 "Connection.cs",
-                                                 "ConnectionArray.cs",
                                                  "ActivationFunctionArray.cs",
                                                  "uintArray.cs",
                                                  "SWIGTYPE_p_FANN__activation_function_enum.cs",
@@ -43,7 +41,7 @@ namespace CleanUpForSwig
                 return -1;
             if (deleteFiles(args[1]) < 0)
                 return -1;
-            if (addNamespace(args[1]) < 0)
+            if (addNamespaceMakeInternal(args[1]) < 0)
                 return -1;
             if (args[2] == "copy" && (addNamespaceFile(args[1], "uintArray.cs") < 0 ||
                 addNamespaceFile(args[1], "activationFunctionArray.cs") < 0 ||
@@ -65,14 +63,15 @@ namespace CleanUpForSwig
             return 0;
         }
 
-        static int addNamespace(string folder)
+        static int addNamespaceMakeInternal(string folder)
         {
             DirectoryInfo info = new DirectoryInfo(folder);
             foreach(FileInfo file in info.EnumerateFiles("*.cs"))
             {
                 string text = File.ReadAllText(file.FullName);
                 Match match = Regex.Match(text, "^.*?namespace.*?FannWrap[a-zA-z0-9]*.*?{.*$", RegexOptions.Multiline);
-                text = text.Insert(match.Index, "using FannWrapper;\n");
+                text = text.Insert(match.Index, "using FANNCSharp;\n");
+                text = text.Replace("public class", "internal class");
                 try
                 {
                     File.WriteAllText(file.FullName, text);
@@ -97,7 +96,7 @@ namespace CleanUpForSwig
         static int copyFiles(string fromFolder)
         {
             DirectoryInfo info = Directory.GetParent(fromFolder).Parent;
-            Regex regex = new Regex("(.*?namespace.*?FannWrapper)([a-zA-z0-9]*)(.*?{.*)");
+            Regex regex = new Regex("(.*?namespace.*?(FannWrapper[a-zA-z0-9]*)(.*?{.*)");
             string toFolder = info.FullName + "\\FannWrapper\\";
             string[] lines = null;
             foreach (string file in filesToCopy)
@@ -109,7 +108,7 @@ namespace CleanUpForSwig
                     MatchCollection matches = regex.Matches(lines[i]);
                     if(matches.Count > 0)
                     {
-                        lines[i] = matches[0].Groups[1].Value + matches[0].Groups[3].Value;
+                        lines[i] = matches[0].Groups[1].Value + "FANNCSharp" + matches[0].Groups[3].Value;
                         break;
                     }
                 }

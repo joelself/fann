@@ -8,13 +8,18 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-using FannWrapper;
+using FANNCSharp;
 namespace FannWrapperFloat {
 
-public class fannfloat {
+internal class fannfloat {
   public static SWIGTYPE_p_FILE fopen(string filename, string mode) {
     global::System.IntPtr cPtr = fannfloatPINVOKE.fopen(filename, mode);
     SWIGTYPE_p_FILE ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_FILE(cPtr, false);
+    return ret;
+  }
+
+  public static int fclose(SWIGTYPE_p_FILE stream) {
+    int ret = fannfloatPINVOKE.fclose(SWIGTYPE_p_FILE.getCPtr(stream));
     return ret;
   }
 

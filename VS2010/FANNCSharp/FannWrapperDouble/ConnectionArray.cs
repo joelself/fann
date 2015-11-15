@@ -8,10 +8,10 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-using FannWrapperFloat;
-namespace FannWrapper {
+using FANNCSharp;
+namespace FannWrapperDouble {
 
-public class ConnectionArray : global::System.IDisposable {
+internal class ConnectionArray : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
@@ -33,7 +33,7 @@ public class ConnectionArray : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          fannfloatPINVOKE.delete_ConnectionArray(swigCPtr);
+          fanndoublePINVOKE.delete_ConnectionArray(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -41,27 +41,27 @@ public class ConnectionArray : global::System.IDisposable {
     }
   }
 
-  public ConnectionArray(int nelements) : this(fannfloatPINVOKE.new_ConnectionArray(nelements), true) {
+  public ConnectionArray(int nelements) : this(fanndoublePINVOKE.new_ConnectionArray(nelements), true) {
   }
 
   public Connection getitem(int index) {
-    Connection ret = new Connection(fannfloatPINVOKE.ConnectionArray_getitem(swigCPtr, index), true);
+    Connection ret = new Connection(fanndoublePINVOKE.ConnectionArray_getitem(swigCPtr, index), true);
     return ret;
   }
 
   public void setitem(int index, Connection value) {
-    fannfloatPINVOKE.ConnectionArray_setitem(swigCPtr, index, Connection.getCPtr(value));
-    if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
+    fanndoublePINVOKE.ConnectionArray_setitem(swigCPtr, index, Connection.getCPtr(value));
+    if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
   public Connection cast() {
-    global::System.IntPtr cPtr = fannfloatPINVOKE.ConnectionArray_cast(swigCPtr);
+    global::System.IntPtr cPtr = fanndoublePINVOKE.ConnectionArray_cast(swigCPtr);
     Connection ret = (cPtr == global::System.IntPtr.Zero) ? null : new Connection(cPtr, false);
     return ret;
   }
 
   public static ConnectionArray frompointer(Connection t) {
-    global::System.IntPtr cPtr = fannfloatPINVOKE.ConnectionArray_frompointer(Connection.getCPtr(t));
+    global::System.IntPtr cPtr = fanndoublePINVOKE.ConnectionArray_frompointer(Connection.getCPtr(t));
     ConnectionArray ret = (cPtr == global::System.IntPtr.Zero) ? null : new ConnectionArray(cPtr, false);
     return ret;
   }

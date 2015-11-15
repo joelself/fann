@@ -8,10 +8,10 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-using FannWrapper;
+using FANNCSharp;
 namespace FannWrapperDouble {
 
-public class doubleVectorVector : global::System.IDisposable, global::System.Collections.IEnumerable
+internal class doubleVectorVector : global::System.IDisposable, global::System.Collections.IEnumerable
     , global::System.Collections.Generic.IEnumerable<doubleVector>
  {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;

@@ -1,6 +1,5 @@
 ﻿using System;
 using FANNCSharp;
-using FannWrapper;
 #if FANN_FIXED
 using NeuralNet = FANNCSharp.NeuralNetFixed;
 using TrainingData = FANNCSharp.TrainingDataFixed;
@@ -33,8 +32,8 @@ namespace Example
                     Console.WriteLine("Max epochs {0}. Desired error: {1}", max_epochs.ToString("00000000"), desired_error.ToString("0.0000000000"));
                 }
 
-                net.SetActivationSteepnessHidden(steepness_start);
-                net.SetActivationSteepnessOutput(steepness_start);
+                net.ActivationSteepnessHidden = steepness_start;
+                net.ActivationSteepnessOutput = steepness_start;
                 for (int i = 0; i <= max_epochs; i++)
                 {
                     error = net.TrainEpoch(data);
@@ -50,8 +49,8 @@ namespace Example
                         if(steepness_start <= steepness_end)
                         {
                             Console.WriteLine("Steepness: {0}", steepness_start);
-                            net.SetActivationSteepnessHidden(steepness_start);
-                            net.SetActivationSteepnessOutput(steepness_start);
+                            net.ActivationSteepnessHidden = steepness_start;
+                            net.ActivationSteepnessOutput = steepness_start;
                         }
                         else
                         {
@@ -76,7 +75,7 @@ namespace Example
             {
                 using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
                 {
-                    TrainingCallbackFloat callback = (callbackNet, callbackData, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, callbackUserData) =>
+                    NeuralNet.TrainingCallback callback = (callbackNet, callbackData, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, callbackUserData) =>
                     {
                         Console.WriteLine("Layer count: {0}, Data length: {1}, Max epochs: {2}, Epochs between reports: {3}, Desired error: {4}, Epochs so far: {5}, Greeting: \"{6}\"",
                             callbackNet.LayerCount, callbackData.TrainDataLength, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, (string)callbackUserData);

@@ -8,10 +8,10 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-using FannWrapper;
+using FANNCSharp;
 namespace FannWrapperFloat {
 
-public class floatArrayArray : global::System.IDisposable {
+internal class floatArrayArray : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 

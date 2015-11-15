@@ -8,14 +8,50 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-namespace FannWrapper {
+namespace FANNCSharp
+{
+    /* Enum: TrainingAlgorithm
+	    The Training algorithms used when training on <TrainingDataFloat> with functions like
+	    <NeuralNetFloat.TrainOnData> or <NeuralNetFloat.TrainOnFile>. The incremental training
+        looks alters the weights after each time it is presented an input pattern, while batch
+        only alters the weights once after it has been presented to all the patterns.
 
-public enum TrainingAlgorithm {
-  TRAIN_INCREMENTAL = 0,
-  TRAIN_BATCH,
-  TRAIN_RPROP,
-  TRAIN_QUICKPROP,
-  TRAIN_SARPROP
-}
+	    TRAIN_INCREMENTAL -  Standard backpropagation algorithm, where the weights are
+		    updated after each training pattern. This means that the weights are updated many
+		    times during a single epoch. For this reason some problems, will train very fast with
+		    this algorithm, while other more advanced problems will not train very well.
+	    TRAIN_BATCH -  Standard backpropagation algorithm, where the weights are updated after
+		    calculating the mean square error for the whole training set. This means that the weights
+		    are only updated once during an epoch. For this reason some problems, will train slower with
+		    this algorithm. But since the mean square error is calculated more correctly than in
+		    incremental training, some problems will reach a better solutions with this algorithm.
+	    TRAIN_RPROP - A more advanced batch training algorithm which achieves good results
+		    for many problems. The RPROP training algorithm is adaptive, and does therefore not
+		    use the learning_rate. Some other parameters can however be set to change the way the
+		    RPROP algorithm works, but it is only recommended for users with insight in how the RPROP
+		    training algorithm works. The RPROP training algorithm is described by
+		    [Riedmiller and Braun, 1993], but the actual learning algorithm used here is the
+		    iRPROP- training algorithm which is described by [Igel and Husken, 2000] which
+		    is a variant of the standard RPROP training algorithm.
+	    TRAIN_QUICKPROP - A more advanced batch training algorithm which achieves good results
+		    for many problems. The quickprop training algorithm uses the learning_rate parameter
+		    along with other more advanced parameters, but it is only recommended to change these
+		    advanced parameters, for users with insight in how the quickprop training algorithm works.
+		    The quickprop training algorithm is described by [Fahlman, 1988].
+		FANN_TRAIN_SARPROP - THE SARPROP ALGORITHM: A SIMULATED ANNEALING ENHANCEMENT TO RESILIENT BACK PROPAGATION
+            http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.8197&rep=rep1&type=pdf
+
+
+	    See also:
+		    <NeuralNetFloat.TrainingAlgorithm>
+    */
+    public enum TrainingAlgorithm
+    {
+        TRAIN_INCREMENTAL = 0,
+        TRAIN_BATCH,
+        TRAIN_RPROP,
+        TRAIN_QUICKPROP,
+        TRAIN_SARPROP
+    }
 
 }

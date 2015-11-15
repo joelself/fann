@@ -8,10 +8,10 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 
-using FannWrapper;
+using FANNCSharp;
 namespace FannWrapperFloat {
 
-public class floatVectorVector : global::System.IDisposable, global::System.Collections.IEnumerable
+internal class floatVectorVector : global::System.IDisposable, global::System.Collections.IEnumerable
     , global::System.Collections.Generic.IEnumerable<floatVector>
  {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;

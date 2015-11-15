@@ -1,98 +1,332 @@
 ﻿using System;
 using FannWrapperFixed;
-using FannWrapper;
 using System.Runtime.InteropServices;
 
 namespace FANNCSharp
 {
 
+    /* Section: FANN C# Training Data
+    */
+
+    /* Class: TrainingDataFixed
+
+    <TrainingDataFixed> is used to create and manipulate training data used by the <NeuralNetFixed>
+
+    Encapsulation of a training_data class <training_data at http://libfann.github.io/fann/docs/files/fann_training_data_cpp-h.html#training_data> and
+    associated C++ API functions.
+    */
     public class TrainingDataFixed : IDisposable
     {
+        /* Constructor: TrainingDataFixed
 
+            Default constructor creates an empty training data.
+            Use <ReadTrainFromFile>, <SetTrainData> or <CreateTrainFromCallback> to initialize.
+        */
         public TrainingDataFixed()
         {
             InternalData = new FannWrapperFixed.training_data();
         }
-
         internal TrainingDataFixed(training_data other)
         {
             InternalData = other;
         }
 
 
+        /* Constructor: TrainingData
+
+            Copy constructor constructs a copy of the training data.
+            Corresponds to the C API <fann_duplicate_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_duplicate_train_data> function.
+        */
         public TrainingDataFixed(TrainingDataFixed data)
         {
             InternalData = new FannWrapperFixed.training_data(data.InternalData);
         }
+        /* Method: Dispose
 
-
-        public TrainingDataFixed(uint dataCount, uint inputCount, uint outputCount, DataCreateCallback callback)
+            Disposes of the training data.
+        */
+        public void Dispose()
         {
-            InternalData = new FannWrapperFixed.training_data();
-            Callback = callback;
-            RawCallback = new data_create_callback(InternalCallback);
-            fannfixedPINVOKE.training_data_create_train_from_callback(training_data.getCPtr(this.InternalData), dataCount, inputCount, outputCount, Marshal.GetFunctionPointerForDelegate(RawCallback));
+            InternalData.Dispose();
         }
 
+        /* Method: ReadTrainFromFile
+           Reads a file that stores training data.
 
+           The file must be formatted like:
+           >TrainDataLength InputCount OutputCount
+           >inputdata seperated by space
+           >outputdata seperated by space
+           >
+           >.
+           >.
+           >.
+           >
+           >inputdata seperated by space
+           >outputdata seperated by space
+
+           See also:
+   	        <NeuralNetFixed.TrainOnData>, <SaveTrain>, <fann_read_train_from_file at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_read_train_from_file>
+
+            This function appears in FANN >= 1.0.0
+        */
         public bool ReadTrainFromFile(string filename)
         {
             return InternalData.read_train_from_file(filename);
         }
 
+        /* Method: SaveTrain
 
-        public bool Save(string filename)
+           Save the training structure to a file, with the format as specified in <ReadTrainFromFile>
+
+           Return:
+           The function returns true on success and false on failure.
+
+           See also:
+   	        <ReadTrainFromFile>, <SaveTrainToFixed>, <fann_save_train at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_save_train> 
+
+           This function appears in FANN >= 1.0.0.
+         */
+        public bool SaveTrain(string filename)
         {
             return InternalData.save_train(filename);
         }
 
+        /* Method: SaveTrainToFixed
 
+           Saves the training structure to a fixed point data file.
+
+           This function is very useful for testing the quality of a fixed point network.
+
+           Return:
+           The function returns true on success and false on failure.
+
+           See also:
+   	        <SaveTrain>, <fann_save_train_to_fixed at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_save_train_to_fixed>
+
+           This function appears in FANN >= 1.0.0.
+         */
+        public bool SaveTrainToFixed(string filename, uint decimalPoint)
+        {
+            return InternalData.save_train_to_fixed(filename, decimalPoint);
+        }
+
+        /* Method: ShuffleTrainData
+
+           Shuffles training data, randomizing the order.
+           This is recommended for incremental training, while it have no influence during batch training.
+
+           This function appears in FANN >= 1.1.0.
+         */
         public void ShuffleTrainData()
         {
             InternalData.shuffle_train_data();
         }
 
+        /* Method: MergeTrainData
 
+           Merges the data into the data contained in the <TrainingDataFixed>.
+
+           This function appears in FANN >= 1.1.0.
+         */
         public void MergeTrainData(TrainingDataFixed data)
         {
             InternalData.merge_train_data(data.InternalData);
         }
 
+        /* Property: TrainDataLength
 
+           Returns the number of training patterns in the <TrainingDataFixed>.
+
+           See also:
+           <InputCount>, <OutputCount>, <fann_length_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_length_train_data>
+
+           This function appears in FANN >= 2.0.0.
+         */
+        public uint TrainDataLength
+        {
+            get
+            {
+                return InternalData.length_train_data();
+            }
+        }
+
+        /* Property: InputCount
+
+           Returns the number of inputs in each of the training patterns in the <TrainingDataFixed>.
+
+           See also:
+           <OutputCount>, <TrainDataLength>, <fann_num_input_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_num_input_train_data>
+
+           This function appears in FANN >= 2.0.0.
+         */
+        public uint InputCount
+        {
+            get
+            {
+                return InternalData.num_input_train_data();
+            }
+        }
+
+        /* Property: OutputCount
+
+           Returns the number of outputs in each of the training patterns in the <TrainingDataFixed>.
+
+           See also:
+           <InputCount>, <TrainDataLength>, <fann_num_output_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_num_output_train_data>
+
+           This function appears in FANN >= 2.0.0.
+         */
+        public uint OutputCount
+        {
+            get
+            {
+                return InternalData.num_output_train_data();
+            }
+        }
+
+        private int[][] cachedInput = null;
+
+        /* Property: Input
+            Grant access to the encapsulated data since many situations
+            and applications creates the data from sources other than files
+            or uses the training data for testing and related functions
+
+            Returns:
+                A array of arrays of input training data
+
+            See also:
+                <Output>, <SetTrainData>
+
+           This function appears in FANN >= 2.0.0.
+        */
+        public int[][] Input
+        {
+            get
+            {
+                if (cachedInput == null)
+                {
+                    intArrayArray input = intArrayArray.frompointer(InternalData.get_input());
+                    int length = (int)InternalData.length_train_data();
+                    int count = (int)InternalData.num_input_train_data();
+                    cachedInput = new int[length][];
+                    for (int i = 0; i < length; i++)
+                    {
+                        cachedInput[i] = new int[count];
+                        intArray inputArray = intArray.frompointer(input.getitem(i));
+                        for (int j = 0; j < count; j++)
+                        {
+                            cachedInput[i][j] = inputArray.getitem(j);
+                        }
+                    }
+                }
+                return cachedInput;
+            }
+        }
+
+        private int[][] cachedOutput = null;
+
+        /* Property: Output
+
+            Grant access to the encapsulated data since many situations
+            and applications creates the data from sources other than files
+            or uses the training data for testing and related functions
+
+            Returns:
+                A arrray of arrays of output training data
+
+            See also:
+                <Input>, <SetTrainData>
+
+           This function appears in FANN >= 2.0.0.
+        */
+        public int[][] Output
+        {
+            get
+            {
+                if (cachedOutput == null)
+                {
+                    intArrayArray output = intArrayArray.frompointer(InternalData.get_output());
+                    int length = (int)InternalData.length_train_data();
+                    int count = (int)InternalData.num_output_train_data();
+                    cachedOutput = new int[length][];
+                    for (int i = 0; i < length; i++)
+                    {
+                        cachedOutput[i] = new int[count];
+                        intArray inputArray = intArray.frompointer(output.getitem(i));
+                        for (int j = 0; j < count; j++)
+                        {
+                            cachedOutput[i][j] = inputArray.getitem(j);
+                        }
+                    }
+                }
+                return cachedOutput;
+            }
+        }
+        /* Method: GetTrainInput
+            Gets the training input data at the given position
+
+            Returns:
+                An array of input training data at the given position
+
+            See also:
+                <GetTrainOutput>, <SetTrainData>
+
+           This function appears in FANN >= 2.3.0.
+        */
         public int[] GetTrainInput(uint position)
         {
-            using (intArray output = intArray.frompointer(InternalData.get_train_input(position)))
+            intArray output = intArray.frompointer(InternalData.get_train_input(position));
+            int[] result = new int[InputCount];
+            for (int i = 0; i < InputCount; i++)
             {
-                int[] result = new int[InputCount];
-                for (int i = 0; i < InputCount; i++)
-                {
-                    result[i] = output.getitem(i);
-                }
-                return result;
+                result[i] = output.getitem(i);
             }
+            return result;
         }
 
+        /* Method: GetTrainOutput
+            Gets the training output data at the given position
 
+            Returns:
+                An array of output training data at the given position
+
+            See also:
+                <GetTrainInput>
+
+           This function appears in FANN >= 2.3.0.
+        */
         public int[] GetTrainOutput(uint position)
         {
-            using (intArray output = intArray.frompointer(InternalData.get_train_input(position)))
+            intArray output = intArray.frompointer(InternalData.get_train_input(position));
+            int[] result = new int[OutputCount];
+            for (int i = 0; i < OutputCount; i++)
             {
-                int[] result = new int[OutputCount];
-                for (int i = 0; i < OutputCount; i++)
-                {
-                    result[i] = output.getitem(i);
-                }
-                return result;
+                result[i] = output.getitem(i);
             }
+            return result;
         }
 
+        /* Method: SetTrainData
 
-        public void SetTrainData(int[][]input, int[][] output)
+            Set the training data to the input and output data provided.
+
+            A copy of the data is made so there are no restrictions on the
+            allocation of the input/output data.
+
+           Parameters:
+             input      - The set of inputs (an array of arrays of int data)
+             output     - The set of desired outputs (an array of arrays of int data)
+
+            See also:
+                <Input>, <Output>
+        */
+        public void SetTrainData(int[][] input, int[][] output)
         {
             int numData = input.Length;
             int inputSize = input[0].Length;
             int outputSize = output[0].Length;
-            using(intArrayArray inputArray = new intArrayArray(numData))
+            using (intArrayArray inputArray = new intArrayArray(numData))
             using (intArrayArray outputArray = new intArrayArray(numData))
             {
                 for (int i = 0; i < numData; i++)
@@ -114,40 +348,159 @@ namespace FANNCSharp
             }
         }
 
+        /* Method: SetTrainData
 
-        public void SetTrainData(uint num_data, int[] input, int[] output)
+            Set the training data to the input and output data provided.
+
+            A copy of the data is made so there are no restrictions on the
+            allocation of the input/output data..
+
+           Parameters:
+             dataLength      - The number of training data
+             input      - The set of inputs (an array with the dimension dataLength*inputCount)
+             output     - The set of desired outputs (an array with the dimension dataLength*inputCount)
+
+            See also:
+                <Input>, <Output>
+        */
+        public void SetTrainData(uint dataLength, int[] input, int[] output)
         {
-            uint numInput = (uint)input.Length / num_data;
-            uint numOutput = (uint)output.Length / num_data;
-            using(intArray inputArray = new intArray((int)(numInput * num_data)))
-            using(intArray outputArray = new intArray((int)(numOutput * num_data)))
+            uint numInput = (uint)input.Length / dataLength;
+            uint numOutput = (uint)output.Length / dataLength;
+            using (intArray inputArray = new intArray((int)(numInput * dataLength)))
+            using (intArray outputArray = new intArray((int)(numOutput * dataLength)))
             {
-                for (int i = 0; i < numInput * num_data; i++)
+                for (int i = 0; i < numInput * dataLength; i++)
                 {
                     inputArray.setitem(i, input[i]);
                 }
-                for (int i = 0; i < numOutput * num_data; i++)
+                for (int i = 0; i < numOutput * dataLength; i++)
                 {
                     outputArray.setitem(i, output[i]);
                 }
 
-                InternalData.set_train_data(num_data, numInput, inputArray.cast(), numOutput, outputArray.cast());
+                InternalData.set_train_data(dataLength, numInput, inputArray.cast(), numOutput, outputArray.cast());
             }
         }
+        /*********************************************************************/
 
+        /* Method: CreateTrainFromCallback
+           Creates the training data from a user supplied function.
+           As the training data are numerable (data 1, data 2...), the user must write
+           a function that receives the number of the training data set (input,output)
+           and returns the set.
 
+           Parameters:
+             dataCount      - The number of training data
+             inputCount     - The number of inputs per training data
+             outputCount    - The number of ouputs per training data
+             callback       - The user suplied delegate
+          
+           Parameters for the user delegate:
+             number      - The number of the training data set
+             inputCount  - The number of inputs per training data
+             outputCount - The number of ouputs per training data
+             input       - The set of inputs
+             output      - The set of desired outputs
+
+           See also:
+             <ReadTrainFromFile>, <NeuralNet.TrainOnData>,
+             <fann_create_train_from_callback at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_create_train_from_callback>
+
+            This function appears in FANN >= 2.1.0
+        */
+        public void CreateTrainFromCallback(uint dataCount, uint inputCount, uint outputCount, DataCreateCallback callback)
+        {
+            InternalData = new FannWrapperFixed.training_data();
+            Callback = callback;
+            RawCallback = new data_create_callback(InternalCallback);
+            fannfixedPINVOKE.training_data_create_train_from_callback(training_data.getCPtr(this.InternalData), dataCount, inputCount, outputCount, Marshal.GetFunctionPointerForDelegate(RawCallback));
+        }
+
+        /* Method: ScaleInputTrainData
+
+           Scales the inputs in the training data to the specified range.
+
+           A simplified scaling method, which is mostly useful in examples where it's known that all the
+           data will be in one range and it should be transformed to another range.
+
+           It is not recommended to use this on subsets of data as the complete input range might not be
+           available in that subset.
+
+           For more powerful scaling, please consider <NeuralNetFixed.ScaleTrain>
+
+           See also:
+   	        <ScaleOutputTrainData>, <ScaleTrainData>, <fann_scale_input_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_scale_input_train_data>
+
+           This function appears in FANN >= 2.0.0.
+         */
         public void ScaleInputTrainData(int new_min, int new_max)
         {
             InternalData.scale_input_train_data(new_min, new_max);
         }
 
+        /* Method: ScaleOutputTrainData
 
+           Scales the outputs in the training data to the specified range.
+
+           A simplified scaling method, which is mostly useful in examples where it's known that all the
+           data will be in one range and it should be transformed to another range.
+
+           It is not recommended to use this on subsets of data as the complete input range might not be
+           available in that subset.
+
+           For more powerful scaling, please consider <NeuralNetFixed.ScaleTrain>
+
+           See also:
+   	        <ScaleInputTrainData>, <ScaleTrainData>, <fann_scale_output_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_scale_output_train_data>
+
+           This function appears in FANN >= 2.0.0.
+         */
         public void ScaleOutputTrainData(int new_min, int new_max)
         {
             InternalData.scale_output_train_data(new_min, new_max);
         }
 
+        /* Method: ScaleTrainData
 
+           Scales the inputs and outputs in the training data to the specified range.
+
+           A simplified scaling method, which is mostly useful in examples where it's known that all the
+           data will be in one range and it should be transformed to another range.
+
+           It is not recommended to use this on subsets of data as the complete input range might not be
+           available in that subset.
+
+           For more powerful scaling, please consider <NeuralNetFixed.ScaleTrain>
+
+           See also:
+   	        <ScaleOutputTrainData>, <ScaleInputTrainData>, <fann_scale_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_scale_train_data>
+
+           This function appears in FANN >= 2.0.0.
+         */
+        public void ScaleTrainData(int new_min, int new_max)
+        {
+            InternalData.scale_train_data(new_min, new_max);
+        }
+
+        /* Method: SubsetTrainData
+
+           Changes the training data to a subset, starting at position *pos*
+           and *length* elements forward. Use the copy constructor to work
+           on a new copy of the training data.
+
+            >TrainingDataFixed fullDataSet = new TrainingDataFixed();
+            >fullDataSet.ReadTrainFromFile("somefile.train");
+            >TrainingDataFixed smallDataSet = new TrainingDataFixed(fullDataSet);
+            >smallDataSet->SubsetTrainData(0, 2); // Only use first two
+            >// Use smallDataSet ...
+            >small_data_set.Dispose();
+
+           See also:
+   	        <fann_subset_train_data http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_subset_train_data>
+
+           This function appears in FANN >= 2.0.0.
+         */
         public void SubsetTrainData(uint pos, uint length)
         {
             InternalData.subset_train_data(pos, length);
@@ -158,115 +511,12 @@ namespace FANNCSharp
             return InternalData.to_fann_train_data();
         }
 
-        private int [][] cachedOutput = null;
-
-
-        public int[][] Output
-        {
-            get {
-                if (cachedOutput == null)
-                {
-                    using (intArrayArray output = intArrayArray.frompointer(InternalData.get_output()))
-                    {
-                        int length = (int)InternalData.length_train_data();
-                        int count = (int)InternalData.num_output_train_data();
-                        cachedOutput = new int[length][];
-                        for (int i = 0; i < length; i++)
-                        {
-                            cachedOutput[i] = new int[count];
-                            using (intArray inputArray = intArray.frompointer(output.getitem(i)))
-                            {
-                                for (int j = 0; j < count; j++)
-                                {
-                                    cachedOutput[i][j] = inputArray.getitem(j);
-                                }
-                            }
-                        }
-                    }
-                }
-                return cachedOutput;
-            }
-        }
-
-        private int[][] cachedInput = null;
-
-
-        public int[][] Input
-        {
-            get
-            {
-                if (cachedInput == null)
-                {
-                    using (intArrayArray input = intArrayArray.frompointer(InternalData.get_input()))
-                    {
-                        int length = (int)InternalData.length_train_data();
-                        int count = (int)InternalData.num_input_train_data();
-                        cachedInput = new int[length][];
-                        for (int i = 0; i < length; i++)
-                        {
-                            cachedInput[i] = new int[count];
-                            using (intArray inputArray = intArray.frompointer(input.getitem(i)))
-                            {
-                                for (int j = 0; j < count; j++)
-                                {
-                                    cachedInput[i][j] = inputArray.getitem(j);
-                                }
-                            }
-                        }
-                    }
-                }
-                return cachedInput;
-            }
-        }
-
-
-        public uint InputCount
-        {
-            get
-            {
-                return InternalData.num_input_train_data();
-            }
-        }
-
-
-        public uint OutputCount
-        {
-            get
-            {
-                return InternalData.num_output_train_data();
-            }
-        }
-
-
-        public bool SaveTrainToFixed(string filename, uint decimalPoint)
-        {
-            return InternalData.save_train_to_fixed(filename, decimalPoint);
-        }
-
-
-        public uint TrainDataLength
-        {
-            get
-            {
-                return InternalData.length_train_data();
-            }
-        }
-
-
-        public void ScaleTrainData(int new_min, int new_max)
-        {
-            InternalData.scale_train_data(new_min, new_max);
-        }
-
-
-        public void Dispose()
-        {
-            InternalData.Dispose();
-        }
         internal FannWrapperFixed.training_data InternalData
-        { 
-            get; set;
+        {
+            get;
+            set;
         }
+
         private void InternalCallback(uint number, uint inputCount, uint outputCount, global::System.IntPtr inputs, global::System.IntPtr outputs)
         {
             int[] callbackInput = new int[inputCount];
@@ -288,13 +538,24 @@ namespace FANNCSharp
             }
         }
 
-
-        public delegate void DataCreateCallback(uint number, uint inputCount, uint outputCount, int[] inputs, int[] outputs);
+        /* Delegate: DataCreateCallback
+           Called for each trianing data input/output pair to create the entire training data set.
+          
+             Parameters for the user function:
+             number      - The number of the training data set
+             inputCount  - The number of inputs per training data
+             outputCount - The number of ouputs per training data
+             input       - The set of inputs
+             output      - The set of desired outputs
+         
+           See also:
+             <CreateTrainFromCallback>, <fann_create_train_from_callback at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_create_train_from_callback>
+        */
+        public delegate void DataCreateCallback(uint number, uint inputCount, uint outputCount, int[] input, int[] output);
         private DataCreateCallback Callback { get; set; }
         private data_create_callback RawCallback { get; set; }
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         internal delegate void data_create_callback(uint number, uint inputCount, uint outputCount, global::System.IntPtr inputs, global::System.IntPtr outputs);
     }
-
 }

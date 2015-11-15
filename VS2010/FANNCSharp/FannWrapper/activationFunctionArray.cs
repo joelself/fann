@@ -9,9 +9,9 @@
 //------------------------------------------------------------------------------
 
 using FannWrapperFloat;
-namespace FannWrapper {
+namespace FANNCSharp {
 
-public class ActivationFunctionArray : global::System.IDisposable {
+internal class ActivationFunctionArray : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
