@@ -23,7 +23,7 @@ using System.Runtime.InteropServices;
  */
 
 /*
- *  Title: FANN C# neural_net Wrapper Double
+ *  Title: FANN C# NeuralNet double
  *
  *  Overview:
  *
@@ -111,15 +111,8 @@ namespace FANNCSharp
         */
         public NeuralNetDouble(NetworkType netType, uint numLayers, params uint[]args)
         {
-            using (uintArray newLayers = new uintArray((int)numLayers))
-            {
-                for (int i = 0; i < args.Length; i++)
-                {
-                    newLayers.setitem(i, args[i]);
-                }
-                Outputs = args[args.Length - 1];
-                net = new neural_net(netType, numLayers, newLayers.cast());
-            }
+            Outputs = args[numLayers - 1];
+            net = new neural_net(netType, numLayers, args);
         }
 
         /* Constructor: NeuralNetDouble
@@ -137,18 +130,9 @@ namespace FANNCSharp
          */
         public NeuralNetDouble(NetworkType netType, ICollection<uint> layers)
         {
-            using (uintArray newLayers = new uintArray(layers.Count))
-            {
-                IEnumerator<uint> enumerator = layers.GetEnumerator();
-                int i = 0;
-                do
-                {
-                    newLayers.setitem(i, enumerator.Current);
-                    i++;
-                } while (enumerator.MoveNext());
-                Outputs = newLayers.getitem(layers.Count - 1);
-                net = new neural_net(netType, (uint)layers.Count, newLayers.cast());
-            }
+            uint[] newLayers = layers as uint[];
+            Outputs = newLayers[layers.Count - 1];
+            net = new neural_net(netType, (uint)layers.Count, newLayers);
         }
 
         /* Constructor: NeuralNetDouble
@@ -168,15 +152,8 @@ namespace FANNCSharp
         */
         public NeuralNetDouble(float connectionRate, uint numLayers, params uint[] args)
         {
-            using (uintArray newLayers = new uintArray((int)numLayers))
-            {
-                for (int i = 0; i < args.Length; i++)
-                {
-                    newLayers.setitem(i, args[i]);
-                }
-                Outputs = args[args.Length - 1];
-                net = new neural_net(connectionRate, numLayers, newLayers.cast());
-            }
+            Outputs = args[args.Length - 1];
+            net = new neural_net(connectionRate, numLayers, args);
         }
 
         /* Constructor: NeuralNetDouble
@@ -196,18 +173,9 @@ namespace FANNCSharp
         */
         public NeuralNetDouble(float connectionRate, ICollection<uint> layers)
         {
-            using (uintArray newLayers = new uintArray(layers.Count))
-            {
-                IEnumerator<uint> enumerator = layers.GetEnumerator();
-                int i = 0;
-                do
-                {
-                    newLayers.setitem(i, enumerator.Current);
-                    i++;
-                } while (enumerator.MoveNext());
-                Outputs = newLayers.getitem(layers.Count - 1);
-                net = new neural_net(connectionRate, (uint)layers.Count, newLayers.cast());
-            }
+            uint[] newLayers = layers as uint[];
+            Outputs = newLayers[layers.Count - 1];
+            net = new neural_net(connectionRate, (uint)layers.Count, newLayers);
         }
 
         /* Constructor: NeuralNetDouble
@@ -237,20 +205,7 @@ namespace FANNCSharp
         */
         public double[] Run(double[] input)
         {
-            using (doubleArray doubles = new doubleArray(input.Length))
-            {
-                for (int i = 0; i < input.Length; i++)
-                {
-                    doubles.setitem(i, input[i]);
-                }
-                doubleArray outputs = doubleArray.frompointer(net.run(doubles.cast()));
-                double[] result = new double[Outputs];
-                for (int i = 0; i < Outputs; i++)
-                {
-                    result[i] = outputs.getitem(i);
-                }
-                return result;
-            }
+            return net.run(input);
         }
 
         /* Method: RandomizeWeights
@@ -403,19 +358,7 @@ namespace FANNCSharp
          */
         public void Train(double[] input, double[] desiredOutput)
         {
-            using (doubleArray doublesIn = new doubleArray(input.Length))
-            {
-                for (int i = 0; i < input.Length; i++)
-                {
-                    doublesIn.setitem(i, input[i]);
-                }
-                doubleArray doublesOut = new doubleArray(desiredOutput.Length);
-                for (int i = 0; i < input.Length; i++)
-                {
-                    doublesOut.setitem(i, input[i]);
-                }
-               net.train(doublesIn.cast(), doublesOut.cast());
-            }
+            net.train(input, desiredOutput);
         }
 
         /* Method: TrainEpoch
@@ -497,25 +440,7 @@ namespace FANNCSharp
         */
         public double[] Test(double[] input, double[] desiredOutput)
         {
-            using (doubleArray doublesIn = new doubleArray(input.Length))
-            using (doubleArray doublesOut = new doubleArray(desiredOutput.Length))
-            {
-                for (int i = 0; i < input.Length; i++)
-                {
-                    doublesIn.setitem(i, input[i]);
-                }
-                for (int i = 0; i < desiredOutput.Length; i++)
-                {
-                    doublesOut.setitem(i, desiredOutput[i]);
-                }
-                doubleArray result = doubleArray.frompointer(net.test(doublesIn.cast(), doublesOut.cast()));
-                double[] arrayResult = new double[Outputs];
-                for (int i = 0; i < Outputs; i++)
-                {
-                    arrayResult[i] = result.getitem(i);
-                }
-                return arrayResult;
-            }
+                return net.test(input, desiredOutput);
         }
 
         /* Method: TestData
@@ -587,8 +512,8 @@ namespace FANNCSharp
             Callback = callback;
             UserData = userData;
             GCHandle handle = GCHandle.Alloc(userData);
-            training_callback back = new training_callback(InternalCallback);
-            fanndoublePINVOKE.neural_net_set_callback(neural_net.getCPtr(this.net), Marshal.GetFunctionPointerForDelegate(back), (IntPtr)handle);
+            UnmanagedCallback = new training_callback(InternalCallback);
+            fanndoublePINVOKE.neural_net_set_callback(neural_net.getCPtr(this.net), Marshal.GetFunctionPointerForDelegate(UnmanagedCallback), (IntPtr)handle);
         }
 
         /* Method: PrintParameters
@@ -1229,14 +1154,14 @@ namespace FANNCSharp
             }
         }
 
-        /* Property: TotalNeurons
+        /* Property: NeuronCount
 
            Get the total number of neurons in the entire network. This number does also include the 
 	        bias neurons, so a 2-4-2 network has 2+4+2 +2(bias) = 10 neurons.
 
 	        This function appears in FANN >= 1.0.0.
         */
-        public uint TotalNeurons
+        public uint NeuronCount
         {
             get
             {
@@ -1244,13 +1169,13 @@ namespace FANNCSharp
             }
         }
 
-        /* Property: TotalConnections
+        /* Property: ConnectionCount
 
            Get the total number of connections in the entire network.
 
 	        This function appears in FANN >= 1.0.0.
         */
-        public uint TotalConnections
+        public uint ConnectionCount
         {
             get
             {
@@ -1320,7 +1245,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Property: LayerArray
+        /* Property: Layers
 
             Get the number of neurons in each layer in the network.
 
@@ -1331,24 +1256,17 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.1.0
         */
-        public uint[] LayerArray
+        public uint[] Layers
         {
             get
             {
                 uint[] layers = new uint[net.get_num_layers()];
-                using (uintArray array = new uintArray(layers.Length))
-                {
-                    net.get_layer_array(array.cast());
-                    for (int i = 0; i < layers.Length; i++)
-                    {
-                        layers[i] = array.getitem(i);
-                    }
-                }
+                net.get_layer_array(layers);
                 return layers;
             }
         }
 
-        /* Property: BiasArray
+        /* Property: Biases
 
             Get the number of bias in each layer in the network.
 
@@ -1362,19 +1280,12 @@ namespace FANNCSharp
             get
             {
                 uint[] bias = new uint[net.get_num_layers()];
-                using (uintArray array = new uintArray(bias.Length))
-                {
-                    net.get_layer_array(array.cast());
-                    for (int i = 0; i < bias.Length; i++)
-                    {
-                        bias[i] = array.getitem(i);
-                    }
-                }
+                net.get_layer_array(bias);
                 return bias;
             }
         }
 
-        /* Property: ConnectionArray
+        /* Property: Connections
 
             Get the connections in the network.
 
@@ -1383,24 +1294,18 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.1.0
         */
-        public ConnectionDouble[] ConnectionArray
+        public ConnectionDouble[] Connections
         {
-            get {
-                uint count = net.get_total_connections();
-                ConnectionDouble[] connections = new ConnectionDouble[count];
-                using (ConnectionArray output = new ConnectionArray(connections.Length))
-                {
-                   net.get_connection_array(output.cast());
-                    for (uint i = 0; i < count; i++)
-                    {
-                        connections[i] = new ConnectionDouble(output.getitem((int)i));
-                    }
-                }
+            get
+            {
+                ConnectionDouble[] connections = new ConnectionDouble[net.get_total_connections()];
+                connections.Initialize();
+                net.get_connection_array(connections);
                 return connections;
             }
         }
 
-        /* Property: WeightArray
+        /* Property: Weights
 
             Set connections in the network.
 
@@ -1412,18 +1317,11 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.1.0
         */
-        public ConnectionDouble[] WeightArray
+        public ConnectionDouble[] Weights
         {
             set
             {
-                using (ConnectionArray input = new ConnectionArray(value.Length))
-                {
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        input.setitem(i, value[i].connection);
-                    }
-                    net.set_weight_array(input.cast(), (uint)value.Length);
-                }
+                net.set_weight_array(value, (uint)value.Length);
             }
         }
 
@@ -1901,25 +1799,11 @@ namespace FANNCSharp
         {
             get
             {
-                int count = (int)net.get_cascade_activation_functions_count();
-                ActivationFunctionArray result = ActivationFunctionArray.frompointer(net.get_cascade_activation_functions());
-                ActivationFunction[] arrayResult = new ActivationFunction[net.get_cascade_activation_functions_count()];
-                for (int i = 0; i < count; i++)
-                {
-                    arrayResult[i] = result.getitem(i);
-                }
-                return arrayResult;
+                return net.get_cascade_activation_functions();
             }
             set
             {
-                using (ActivationFunctionArray input = new ActivationFunctionArray(value.Length))
-                {
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        input.setitem(i, value[i]);
-                    }
-                    net.set_cascade_activation_functions(input.cast(), (uint)value.Length);
-                }
+                net.set_cascade_activation_functions(value, (uint)value.Length);
             }
         }
 
@@ -1964,29 +1848,12 @@ namespace FANNCSharp
         {
             get
             {
-                doubleArray result = doubleArray.frompointer(net.get_cascade_activation_steepnesses());
-                uint count = net.get_cascade_activation_steepnesses_count();
-                double[] resultArray = new double[net.get_cascade_activation_steepnesses_count()];
-                for (int i = 0; i < count; i++)
-                {
-                    resultArray[i] = result.getitem(i);
-                }
-                return resultArray;
+                return net.get_cascade_activation_steepnesses();
+
             }
             set
             {
-                using (doubleArray input = new doubleArray(value.Length))
-                {
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        input.setitem(i, value[i]);
-                    }
-                    net.set_cascade_activation_steepnesses(input.cast(), (uint)value.Length);
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        value[i] = input.getitem(i);
-                    }
-                }
+                net.set_cascade_activation_steepnesses(value, (uint)value.Length);
             }
         }
 
@@ -2123,14 +1990,7 @@ namespace FANNCSharp
          */
         public void ScaleInput(double[] input)
         {
-            using (doubleArray inputs = new doubleArray(input.Length))
-            {
-                for (int i = 0; i < input.Length; i++)
-                {
-                    inputs.setitem(i, input[i]);
-                }
-                net.scale_input(inputs.cast());
-            }
+            net.scale_input(input);
         }
 
         /* Method: ScaleOutput
@@ -2145,14 +2005,7 @@ namespace FANNCSharp
          */
         public void ScaleOutput(double[] output)
         {
-            using (doubleArray inputs = new doubleArray(output.Length))
-            {
-                for (int i = 0; i < output.Length; i++)
-                {
-                    inputs.setitem(i, output[i]);
-                }
-                net.scale_output(inputs.cast());
-            }
+            net.scale_output(output);
         }
 
         /* Method: DescaleInput
@@ -2167,14 +2020,7 @@ namespace FANNCSharp
          */
         public void DeScaleInput(double[] input)
         {
-            using (doubleArray inputs = new doubleArray(input.Length))
-            {
-                for (int i = 0; i < input.Length; i++)
-                {
-                    inputs.setitem(i, input[i]);
-                }
-                net.descale_input(inputs.cast());
-            }
+            net.descale_input(input);
         }
 
         /* Method: DescaleOutput
@@ -2189,14 +2035,7 @@ namespace FANNCSharp
          */
         public void DescaleOutput(double[] output)
         {
-            using (doubleArray inputs = new doubleArray(output.Length))
-            {
-                for (int i = 0; i < output.Length; i++)
-                {
-                    inputs.setitem(i, output[i]);
-                }
-                net.descale_output(inputs.cast());
-            }
+            net.descale_output(output);
         }
 
         /*********************************************************************/
@@ -2637,6 +2476,7 @@ namespace FANNCSharp
             }
         }
         private TrainingCallback Callback { get; set; }
+        private training_callback UnmanagedCallback { get; set; }
         private Object UserData { get; set; }
 
         private uint Outputs { get; set; }

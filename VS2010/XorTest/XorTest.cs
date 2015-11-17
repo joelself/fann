@@ -19,7 +19,7 @@ namespace Example
 {
     class XorTest
     {
-        static int Main(string[] args)
+        static int Main()
         {
             using (NeuralNet net = new NeuralNet("..\\..\\examples\\xor_float.net"))
             {
@@ -35,17 +35,17 @@ namespace Example
                         Console.WriteLine("Error reading training data --- ABORTING.\n");
                         return -1;
                     }
-                    for (int i = 0; i < data.TrainDataLength; i++)
+                    for (uint i = 0; i < data.TrainDataLength; i++)
                     {
                         net.ResetMSE();
-                        DataType[] calc_out = net.Test(data.Input[i], data.Input[i]);
+                        DataType[] calc_out = net.Test(data.GetTrainInput(i), data.GetTrainOutput(i));
 
                         Console.WriteLine("XOR test ({0}, {1}) -> {2}, should be {3}, difference={4}",
-                            data.Input[i][0],
-                            data.Input[i][1],
+                            data.GetTrainInput(i)[0],
+                            data.GetTrainInput(i)[1],
                             calc_out[0],
-                            data.Output[i][0],
-                            calc_out[0] - data.Output[i][0]);
+                            data.GetTrainOutput(i)[0],
+                            calc_out[0] - data.GetTrainOutput(i)[0]);
                     }
                 }
             }

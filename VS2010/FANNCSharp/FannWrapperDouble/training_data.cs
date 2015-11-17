@@ -94,36 +94,32 @@ internal class training_data : global::System.IDisposable {
     return ret;
   }
 
-  public SWIGTYPE_p_p_double get_input() {
-    global::System.IntPtr cPtr = fanndoublePINVOKE.training_data_get_input(swigCPtr);
-    SWIGTYPE_p_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_p_double(cPtr, false);
+  public double[][] get_input()  {
+      return fanndoublePINVOKE.training_data_get_input(swigCPtr);
+}
+
+
+  public double[][] get_output()  {
+      return fanndoublePINVOKE.training_data_get_output(swigCPtr);
+}
+
+
+  public double[] get_train_input(uint position) {
+    double[] ret = fanndoublePINVOKE.training_data_get_train_input(swigCPtr, position);
     return ret;
-  }
+}
 
-  public SWIGTYPE_p_p_double get_output() {
-    global::System.IntPtr cPtr = fanndoublePINVOKE.training_data_get_output(swigCPtr);
-    SWIGTYPE_p_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_p_double(cPtr, false);
+  public double[] get_train_output(uint position) {
+    double[] ret = fanndoublePINVOKE.training_data_get_train_output(swigCPtr, position);
     return ret;
+}
+
+  public void set_train_data(uint num_data, uint num_input, double[][] input, uint num_output, double[][] output) {
+    fanndoublePINVOKE.training_data_set_train_data__SWIG_0(swigCPtr, num_data, num_input, input, num_output, output);
   }
 
-  public SWIGTYPE_p_double get_train_input(uint position) {
-    global::System.IntPtr cPtr = fanndoublePINVOKE.training_data_get_train_input(swigCPtr, position);
-    SWIGTYPE_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_double(cPtr, false);
-    return ret;
-  }
-
-  public SWIGTYPE_p_double get_train_output(uint position) {
-    global::System.IntPtr cPtr = fanndoublePINVOKE.training_data_get_train_output(swigCPtr, position);
-    SWIGTYPE_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_double(cPtr, false);
-    return ret;
-  }
-
-  public void set_train_data(uint num_data, uint num_input, SWIGTYPE_p_p_double input, uint num_output, SWIGTYPE_p_p_double output) {
-    fanndoublePINVOKE.training_data_set_train_data__SWIG_0(swigCPtr, num_data, num_input, SWIGTYPE_p_p_double.getCPtr(input), num_output, SWIGTYPE_p_p_double.getCPtr(output));
-  }
-
-  public void set_train_data(uint num_data, uint num_input, SWIGTYPE_p_double input, uint num_output, SWIGTYPE_p_double output) {
-    fanndoublePINVOKE.training_data_set_train_data__SWIG_1(swigCPtr, num_data, num_input, SWIGTYPE_p_double.getCPtr(input), num_output, SWIGTYPE_p_double.getCPtr(output));
+  public void set_train_data(uint num_data, uint num_input, double[] input, uint num_output, double[] output) {
+    fanndoublePINVOKE.training_data_set_train_data__SWIG_1(swigCPtr, num_data, num_input, input, num_output, output);
   }
 
   public void create_train_from_callback(uint num_data, uint num_input, uint num_output, global::System.IntPtr user_function) {

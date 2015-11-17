@@ -12,6 +12,7 @@ using DataType = System.Double;
 using NeuralNet = FANNCSharp.NeuralNetFloat;
 using TrainingData = FANNCSharp.TrainingDataFloat;
 using DataType = System.Single;
+using System.IO;
 #endif
 namespace Example
 {
@@ -35,9 +36,6 @@ namespace Example
                     Console.WriteLine("============= momentum = {0} =============\n", momentum);
                     using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, trainData.InputCount, num_neurons_hidden, trainData.OutputCount))
                     {
-                        // Just testing the callback
-                        //net.SetCallback(TrainingCallback, "Hello!");
-                        
                         net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_INCREMENTAL;
 
                         net.LearningMomentum = momentum;
@@ -51,11 +49,6 @@ namespace Example
                 }
             }
             Console.ReadKey();
-        }
-
-        static int TrainingCallback(NeuralNetFloat net, TrainingDataFloat data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, object userData) {
-            Console.WriteLine("Callback: {0}, {1}, {2}, {2}, {3}, {4}, {5}, {6}", net.InputCount, data.Input[0][0], maxEpochs, epochsBetweenReports, desiredError, epochs, userData);
-            return 1;
         }
     }
 }

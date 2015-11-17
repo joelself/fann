@@ -52,12 +52,12 @@ namespace XorTrain
 
                     Console.WriteLine("Testing network");
 
-                    for (int i = 0; i < data.TrainDataLength; i++)
+                    for (uint i = 0; i < data.TrainDataLength; i++)
                     {
-                        calc_out = net.Run(data.Input[i]);
+                        calc_out = net.Run(data.GetTrainInput(i));
                         Console.WriteLine("XOR test ({0},{1}) -> {2}, should be {3}, difference={4}",
-                                            data.Input[i][0], data.Input[i][1], calc_out[0], data.Output[i][0],
-                                            FannAbs(calc_out[0] - data.Output[i][0]));
+                                            data.GetTrainInput(i)[0], data.GetTrainInput(i)[1], calc_out[0], data.GetTrainOutput(i)[0],
+                                            FannAbs(calc_out[0] - data.GetTrainOutput(i)[0]));
                     }
 
                     Console.WriteLine("Saving network.\n");

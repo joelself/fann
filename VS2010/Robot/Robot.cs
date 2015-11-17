@@ -43,9 +43,9 @@ namespace Example
                 try
                 {
                     net.ResetMSE();
-                    for (int i = 0; i < testData.TrainDataLength; i++)
+                    for (uint i = 0; i < testData.TrainDataLength; i++)
                     {
-                        net.Test(testData.Input[i], testData.Output[i]);
+                        net.Test(testData.GetTrainInput(i), testData.GetTrainOutput(i));
                     }
                     Console.WriteLine("MSE error on test data: {0}", net.MSE);
 

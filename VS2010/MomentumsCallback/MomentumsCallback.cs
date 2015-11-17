@@ -100,7 +100,7 @@ namespace Example
             System.GC.Collect(); // Make sure nothing's getting garbage-collected prematurely
             GC.WaitForPendingFinalizers();
             Console.WriteLine("Callback: Last neuron weight: {0}, Last data input: {1}, Max epochs: {2}\nEpochs between reports: {3}, Desired error: {4}, Current epoch: {5}\nGreeting: \"{6}\"",
-                                net.ConnectionArray[net.TotalConnections - 1].Weight, data.GetTrainInput(data.TrainDataLength - 1)[data.InputCount - 1],
+                                net.Connections[net.ConnectionCount - 1].Weight, data.GetTrainInput(data.TrainDataLength - 1)[data.InputCount - 1],
                                 maxEpochs, epochsBetweenReports, desiredError, epochs, userData);
             return 1;
         }

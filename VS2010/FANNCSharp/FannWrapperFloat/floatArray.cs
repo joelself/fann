@@ -54,10 +54,9 @@ internal class floatArray : global::System.IDisposable {
   }
 
   public SWIGTYPE_p_float cast() {
-    global::System.IntPtr cPtr = fannfloatPINVOKE.floatArray_cast(swigCPtr);
-    SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
+    float[] ret = fannfloatPINVOKE.floatArray_cast(swigCPtr);
     return ret;
-  }
+}
 
   public static floatArray frompointer(SWIGTYPE_p_float t) {
     global::System.IntPtr cPtr = fannfloatPINVOKE.floatArray_frompointer(SWIGTYPE_p_float.getCPtr(t));

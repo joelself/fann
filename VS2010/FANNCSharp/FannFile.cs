@@ -3,9 +3,20 @@ using FannWrapperFixed;
 using FannWrapperDouble;
 using System;
 using System.IO;
+/*
+ * Title: FANN C# FILE* wrapper
+ */
 namespace FANNCSharp
 {
+    /* Class: FannFile
 
+        A C# class wrapper around a C FILE pointer
+
+        See Also:
+            <NeuralNetFloat.ErrorLog>
+
+       This structure appears in FANN >= 2.1.0
+    */
     public class FannFile : IDisposable
     {
         internal FannFile(SWIGTYPE_p_FILE file)

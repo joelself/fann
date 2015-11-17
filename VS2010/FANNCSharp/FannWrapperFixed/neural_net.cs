@@ -41,7 +41,7 @@ internal class neural_net : global::System.IDisposable {
     }
   }
 
-  public neural_net(NetworkType net_type, uint num_layers, SWIGTYPE_p_unsigned_int layers) : this(fannfixedPINVOKE.new_neural_net__SWIG_0((int)net_type, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers)), true) {
+  public neural_net(NetworkType net_type, uint num_layers, uint[] layers) : this(fannfixedPINVOKE.new_neural_net__SWIG_0((int)net_type, num_layers, layers), true) {
   }
 
   public neural_net(NetworkType net_type, uint num_layers) : this(fannfixedPINVOKE.new_neural_net__SWIG_2((int)net_type, num_layers), true) {
@@ -50,7 +50,7 @@ internal class neural_net : global::System.IDisposable {
   public neural_net(float connection_rate, uint num_layers) : this(fannfixedPINVOKE.new_neural_net__SWIG_3(connection_rate, num_layers), true) {
   }
 
-  public neural_net(float connection_rate, uint num_layers, SWIGTYPE_p_unsigned_int layers) : this(fannfixedPINVOKE.new_neural_net__SWIG_4(connection_rate, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers)), true) {
+  public neural_net(float connection_rate, uint num_layers, uint[] layers) : this(fannfixedPINVOKE.new_neural_net__SWIG_4(connection_rate, num_layers, layers), true) {
   }
 
   public neural_net(string configuration_file) : this(fannfixedPINVOKE.new_neural_net__SWIG_5(configuration_file), true) {
@@ -80,8 +80,8 @@ internal class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public bool create_standard_array(uint num_layers, SWIGTYPE_p_unsigned_int layers) {
-    bool ret = fannfixedPINVOKE.neural_net_create_standard_array(swigCPtr, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers));
+  public bool create_standard_array(uint num_layers, uint[] layers) {
+    bool ret = fannfixedPINVOKE.neural_net_create_standard_array(swigCPtr, num_layers, layers);
     return ret;
   }
 
@@ -90,8 +90,8 @@ internal class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public bool create_sparse_array(float connection_rate, uint num_layers, SWIGTYPE_p_unsigned_int layers) {
-    bool ret = fannfixedPINVOKE.neural_net_create_sparse_array(swigCPtr, connection_rate, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers));
+  public bool create_sparse_array(float connection_rate, uint num_layers, uint[] layers) {
+    bool ret = fannfixedPINVOKE.neural_net_create_sparse_array(swigCPtr, connection_rate, num_layers, layers);
     return ret;
   }
 
@@ -100,16 +100,15 @@ internal class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public bool create_shortcut_array(uint num_layers, SWIGTYPE_p_unsigned_int layers) {
-    bool ret = fannfixedPINVOKE.neural_net_create_shortcut_array(swigCPtr, num_layers, SWIGTYPE_p_unsigned_int.getCPtr(layers));
+  public bool create_shortcut_array(uint num_layers, uint[] layers) {
+    bool ret = fannfixedPINVOKE.neural_net_create_shortcut_array(swigCPtr, num_layers, layers);
     return ret;
   }
 
-  public SWIGTYPE_p_int run(SWIGTYPE_p_int input) {
-    global::System.IntPtr cPtr = fannfixedPINVOKE.neural_net_run(swigCPtr, SWIGTYPE_p_int.getCPtr(input));
-    SWIGTYPE_p_int ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_int(cPtr, false);
+  public int[] run(int[] input) {
+    int[] ret = fannfixedPINVOKE.neural_net_run(swigCPtr, input);
     return ret;
-  }
+}
 
   public void randomize_weights(int min_weight, int max_weight) {
     fannfixedPINVOKE.neural_net_randomize_weights(swigCPtr, min_weight, max_weight);
@@ -142,11 +141,10 @@ internal class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public SWIGTYPE_p_int test(SWIGTYPE_p_int input, SWIGTYPE_p_int desired_output) {
-    global::System.IntPtr cPtr = fannfixedPINVOKE.neural_net_test(swigCPtr, SWIGTYPE_p_int.getCPtr(input), SWIGTYPE_p_int.getCPtr(desired_output));
-    SWIGTYPE_p_int ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_int(cPtr, false);
+  public int[] test(int[] input, SWIGTYPE_p_int desired_output) {
+    int[] ret = fannfixedPINVOKE.neural_net_test(swigCPtr, input, SWIGTYPE_p_int.getCPtr(desired_output));
     return ret;
-  }
+}
 
   public float test_data(training_data data) {
     float ret = fannfixedPINVOKE.neural_net_test_data(swigCPtr, training_data.getCPtr(data));
@@ -384,20 +382,20 @@ internal class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public void get_layer_array(SWIGTYPE_p_unsigned_int layers) {
-    fannfixedPINVOKE.neural_net_get_layer_array(swigCPtr, SWIGTYPE_p_unsigned_int.getCPtr(layers));
+  public void get_layer_array(uint[] layers) {
+    fannfixedPINVOKE.neural_net_get_layer_array(swigCPtr, layers);
   }
 
-  public void get_bias_array(SWIGTYPE_p_unsigned_int bias) {
-    fannfixedPINVOKE.neural_net_get_bias_array(swigCPtr, SWIGTYPE_p_unsigned_int.getCPtr(bias));
+  public void get_bias_array(uint[] bias) {
+    fannfixedPINVOKE.neural_net_get_bias_array(swigCPtr, bias);
   }
 
-  public void get_connection_array(Connection connections) {
-    fannfixedPINVOKE.neural_net_get_connection_array(swigCPtr, Connection.getCPtr(connections));
+  public void get_connection_array(ConnectionFixed[] connections) {
+    fannfixedPINVOKE.neural_net_get_connection_array(swigCPtr, connections);
   }
 
-  public void set_weight_array(Connection connections, uint num_connections) {
-    fannfixedPINVOKE.neural_net_set_weight_array(swigCPtr, Connection.getCPtr(connections), num_connections);
+  public void set_weight_array(ConnectionFixed[] connections, uint num_connections) {
+    fannfixedPINVOKE.neural_net_set_weight_array(swigCPtr, connections, num_connections);
   }
 
   public void set_weight(uint from_neuron, uint to_neuron, int weight) {

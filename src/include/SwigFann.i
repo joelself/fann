@@ -5,7 +5,9 @@
 %rename(NetworkType) network_type_enum;
 %rename(StopFunction) stop_function_enum;
 %rename(TrainingAlgorithm) training_algorithm_enum;
-%rename(Connection) fann_connection;
+%rename(Weight) weight;
+%rename(ToNeuron) to_neuron;
+%rename(FromNeuron) from_neuron;
 %{
 #include "fann.h"
 #include "fann_cpp.h"
@@ -73,10 +75,6 @@
 %include "arrays_csharp.i"
 %include "cpointer.i"
 %include "std_string.i"
-%include "fann_data.h"
-%include "fann_training_data_cpp.h"
-%include "fann_data_cpp.h"
-%include "fann_cpp.h"
 FILE *fopen(const char *filename, const char *mode);
 int fclose ( FILE * stream );
 %inline %{
@@ -87,5 +85,13 @@ typedef enum stop_function_enum StopFunction;
 typedef enum training_algorithm_enum TrainingAlgorithm;
 %}
 %array_class(unsigned int, uintArray);
-%array_class(ActivationFunction, ActivationFunctionArray);
-%array_class(fann_connection, ConnectionArray);
+CSHARP_ARRAYS( FANN::activation_function_enum, ActivationFunction )
+%apply FANN::activation_function_enum INPUT[]  { FANN::activation_function_enum* cascade_activation_functions }
+%apply FANN::activation_function_enum OUTPUT[]  { FANN::activation_function_enum* get_cascade_activation_functions }
+%apply unsigned int OUTPUT[] { unsigned int* layers}
+%apply unsigned int OUTPUT[] { unsigned int* bias}
+%typemap(out) FANN::activation_function_enum * %{ $result = $1; %}
+%typemap(csout, excode=SWIGEXCODE2) FANN::activation_function_enum *, FANN::activation_function_enum [] %{ {
+      return $imcall;
+}
+%}

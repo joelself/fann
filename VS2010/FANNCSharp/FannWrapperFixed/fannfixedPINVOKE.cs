@@ -195,29 +195,71 @@ class fannfixedPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_FANNSCANF_get")]
   public static extern string FANNSCANF_get();
 
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_Connection_from_neuron_set")]
-  public static extern void Connection_from_neuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_fopen")]
+  public static extern global::System.IntPtr fopen(string jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_Connection_from_neuron_get")]
-  public static extern uint Connection_from_neuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_fclose")]
+  public static extern int fclose(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_Connection_to_neuron_set")]
-  public static extern void Connection_to_neuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_uintArray")]
+  public static extern global::System.IntPtr new_uintArray(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_Connection_to_neuron_get")]
-  public static extern uint Connection_to_neuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_delete_uintArray")]
+  public static extern void delete_uintArray(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_Connection_weight_set")]
-  public static extern void Connection_weight_set(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_uintArray_getitem")]
+  public static extern uint uintArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_Connection_weight_get")]
-  public static extern int Connection_weight_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_uintArray_setitem")]
+  public static extern void uintArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_Connection")]
-  public static extern global::System.IntPtr new_Connection();
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_uintArray_cast")]
+  public static extern global::System.IntPtr uintArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_delete_Connection")]
-  public static extern void delete_Connection(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_uintArray_frompointer")]
+  public static extern global::System.IntPtr uintArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_intArray")]
+  public static extern global::System.IntPtr new_intArray(int jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_delete_intArray")]
+  public static extern void delete_intArray(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_intArray_getitem")]
+  public static extern int intArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_intArray_setitem")]
+  public static extern void intArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_intArray_cast")]
+  public static extern global::System.IntPtr intArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_intArray_frompointer")]
+  public static extern global::System.IntPtr intArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ConnectionFixed_FromNeuron_set")]
+  public static extern void ConnectionFixed_FromNeuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ConnectionFixed_FromNeuron_get")]
+  public static extern uint ConnectionFixed_FromNeuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ConnectionFixed_ToNeuron_set")]
+  public static extern void ConnectionFixed_ToNeuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ConnectionFixed_ToNeuron_get")]
+  public static extern uint ConnectionFixed_ToNeuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ConnectionFixed_Weight_set")]
+  public static extern void ConnectionFixed_Weight_set(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ConnectionFixed_Weight_get")]
+  public static extern int ConnectionFixed_Weight_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_ConnectionFixed")]
+  public static extern global::System.IntPtr new_ConnectionFixed();
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_delete_ConnectionFixed")]
+  public static extern void delete_ConnectionFixed(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_training_data__SWIG_0")]
   public static extern global::System.IntPtr new_training_data__SWIG_0();
@@ -256,22 +298,22 @@ class fannfixedPINVOKE {
   public static extern uint training_data_num_output_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_training_data_get_input")]
-  public static extern global::System.IntPtr training_data_get_input(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern int[][] training_data_get_input(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_training_data_get_output")]
-  public static extern global::System.IntPtr training_data_get_output(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern int[][] training_data_get_output(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_training_data_get_train_input")]
-  public static extern global::System.IntPtr training_data_get_train_input(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+  public static extern int[] training_data_get_train_input(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_training_data_get_train_output")]
-  public static extern global::System.IntPtr training_data_get_train_output(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+  public static extern int[] training_data_get_train_output(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_training_data_set_train_data__SWIG_0")]
-  public static extern void training_data_set_train_data__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, uint jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+  public static extern void training_data_set_train_data__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]int[][] jarg4, uint jarg5, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]int[][] jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_training_data_set_train_data__SWIG_1")]
-  public static extern void training_data_set_train_data__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, uint jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+  public static extern void training_data_set_train_data__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]int[] jarg4, uint jarg5, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]int[] jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_training_data_create_train_from_callback")]
   public static extern void training_data_create_train_from_callback(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, uint jarg4, global::System.IntPtr jarg5);
@@ -292,7 +334,7 @@ class fannfixedPINVOKE {
   public static extern global::System.IntPtr training_data_to_fann_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_neural_net__SWIG_0")]
-  public static extern global::System.IntPtr new_neural_net__SWIG_0(int jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern global::System.IntPtr new_neural_net__SWIG_0(int jarg1, uint jarg2, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_neural_net__SWIG_2")]
   public static extern global::System.IntPtr new_neural_net__SWIG_2(int jarg1, uint jarg2);
@@ -301,7 +343,7 @@ class fannfixedPINVOKE {
   public static extern global::System.IntPtr new_neural_net__SWIG_3(float jarg1, uint jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_neural_net__SWIG_4")]
-  public static extern global::System.IntPtr new_neural_net__SWIG_4(float jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern global::System.IntPtr new_neural_net__SWIG_4(float jarg1, uint jarg2, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_neural_net__SWIG_5")]
   public static extern global::System.IntPtr new_neural_net__SWIG_5(string jarg1);
@@ -328,22 +370,22 @@ class fannfixedPINVOKE {
   public static extern bool neural_net_create_standard(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_create_standard_array")]
-  public static extern bool neural_net_create_standard_array(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern bool neural_net_create_standard_array(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_create_sparse")]
   public static extern bool neural_net_create_sparse(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, uint jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_create_sparse_array")]
-  public static extern bool neural_net_create_sparse_array(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern bool neural_net_create_sparse_array(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, uint jarg3, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_create_shortcut")]
   public static extern bool neural_net_create_shortcut(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_create_shortcut_array")]
-  public static extern bool neural_net_create_shortcut_array(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern bool neural_net_create_shortcut_array(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_run")]
-  public static extern global::System.IntPtr neural_net_run(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern int[] neural_net_run(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]int[] jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_randomize_weights")]
   public static extern void neural_net_randomize_weights(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
@@ -364,7 +406,7 @@ class fannfixedPINVOKE {
   public static extern int neural_net_save_to_fixed(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_test")]
-  public static extern global::System.IntPtr neural_net_test(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern int[] neural_net_test(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]int[] jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_test_data")]
   public static extern float neural_net_test_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -523,16 +565,16 @@ class fannfixedPINVOKE {
   public static extern uint neural_net_get_num_layers(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_get_layer_array")]
-  public static extern void neural_net_get_layer_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_get_layer_array(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_get_bias_array")]
-  public static extern void neural_net_get_bias_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_get_bias_array(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_get_connection_array")]
-  public static extern void neural_net_get_connection_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_get_connection_array(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]ConnectionFixed[] jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_set_weight_array")]
-  public static extern void neural_net_set_weight_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
+  public static extern void neural_net_set_weight_array(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]ConnectionFixed[] jarg2, uint jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_set_weight")]
   public static extern void neural_net_set_weight(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, int jarg4);
@@ -584,102 +626,6 @@ class fannfixedPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_to_fann")]
   public static extern global::System.IntPtr neural_net_to_fann(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_fopen")]
-  public static extern global::System.IntPtr fopen(string jarg1, string jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_fclose")]
-  public static extern int fclose(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_uintArray")]
-  public static extern global::System.IntPtr new_uintArray(int jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_delete_uintArray")]
-  public static extern void delete_uintArray(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_uintArray_getitem")]
-  public static extern uint uintArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_uintArray_setitem")]
-  public static extern void uintArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, uint jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_uintArray_cast")]
-  public static extern global::System.IntPtr uintArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_uintArray_frompointer")]
-  public static extern global::System.IntPtr uintArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_ActivationFunctionArray")]
-  public static extern global::System.IntPtr new_ActivationFunctionArray(int jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_delete_ActivationFunctionArray")]
-  public static extern void delete_ActivationFunctionArray(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ActivationFunctionArray_getitem")]
-  public static extern int ActivationFunctionArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ActivationFunctionArray_setitem")]
-  public static extern void ActivationFunctionArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ActivationFunctionArray_cast")]
-  public static extern global::System.IntPtr ActivationFunctionArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ActivationFunctionArray_frompointer")]
-  public static extern global::System.IntPtr ActivationFunctionArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_ConnectionArray")]
-  public static extern global::System.IntPtr new_ConnectionArray(int jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_delete_ConnectionArray")]
-  public static extern void delete_ConnectionArray(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ConnectionArray_getitem")]
-  public static extern global::System.IntPtr ConnectionArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ConnectionArray_setitem")]
-  public static extern void ConnectionArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ConnectionArray_cast")]
-  public static extern global::System.IntPtr ConnectionArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_ConnectionArray_frompointer")]
-  public static extern global::System.IntPtr ConnectionArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_intArrayArray")]
-  public static extern global::System.IntPtr new_intArrayArray(int jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_delete_intArrayArray")]
-  public static extern void delete_intArrayArray(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_intArrayArray_getitem")]
-  public static extern global::System.IntPtr intArrayArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_intArrayArray_setitem")]
-  public static extern void intArrayArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_intArrayArray_cast")]
-  public static extern global::System.IntPtr intArrayArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_intArrayArray_frompointer")]
-  public static extern global::System.IntPtr intArrayArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_intArray")]
-  public static extern global::System.IntPtr new_intArray(int jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_delete_intArray")]
-  public static extern void delete_intArray(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_intArray_getitem")]
-  public static extern int intArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_intArray_setitem")]
-  public static extern void intArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_intArray_cast")]
-  public static extern global::System.IntPtr intArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_intArray_frompointer")]
-  public static extern global::System.IntPtr intArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 }
 
 }

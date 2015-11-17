@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace FANNCSharp
 {
 
-    /* Section: FANN C# Training Data
+    /* Section: FANN C# Training Data double
     */
 
     /* Class: TrainingDataDouble
@@ -185,18 +185,16 @@ namespace FANNCSharp
             }
         }
 
-        private double[][] cachedInput = null;
-
         /* Property: Input
             Grant access to the encapsulated data since many situations
             and applications creates the data from sources other than files
             or uses the training data for testing and related functions
-
+         
             Returns:
                 A array of arrays of input training data
 
             See also:
-                <Output>, <SetTrainData>
+                <Output>, <GetTrainInput>, <SetTrainData>
 
            This function appears in FANN >= 2.0.0.
         */
@@ -204,39 +202,29 @@ namespace FANNCSharp
         {
             get
             {
-                if (cachedInput == null)
-                {
-                    doubleArrayArray input = doubleArrayArray.frompointer(InternalData.get_input());
-                    int length = (int)InternalData.length_train_data();
-                    int count = (int)InternalData.num_input_train_data();
-                    cachedInput = new double[length][];
-                    for (int i = 0; i < length; i++)
-                    {
-                        cachedInput[i] = new double[count];
-                        doubleArray inputArray = doubleArray.frompointer(input.getitem(i));
-                        for (int j = 0; j < count; j++)
-                        {
-                            cachedInput[i][j] = inputArray.getitem(j);
-                        }
-                    }
-                }
-                return cachedInput;
+                return InternalData.get_input();
             }
         }
-
-        private double[][] cachedOutput = null;
 
         /* Property: Output
 
             Grant access to the encapsulated data since many situations
             and applications creates the data from sources other than files
             or uses the training data for testing and related functions
-
+            
+            Use of this property, when you don't need all of the output data,
+            is discouraged because it creates a copy of all of the output
+            data every time it is called, thus taking extra time and
+            duplicating data in the managed layer.
+          
+            Instead, if you need a particular output call the <GetTrainOutput>
+            with the index of the output you want.
+         
             Returns:
                 A arrray of arrays of output training data
 
             See also:
-                <Input>, <SetTrainData>
+                <Input>, <GetTrainOutput>, <SetTrainData>
 
            This function appears in FANN >= 2.0.0.
         */
@@ -244,25 +232,10 @@ namespace FANNCSharp
         {
             get
             {
-                if (cachedOutput == null)
-                {
-                    doubleArrayArray output = doubleArrayArray.frompointer(InternalData.get_output());
-                    int length = (int)InternalData.length_train_data();
-                    int count = (int)InternalData.num_output_train_data();
-                    cachedOutput = new double[length][];
-                    for (int i = 0; i < length; i++)
-                    {
-                        cachedOutput[i] = new double[count];
-                        doubleArray inputArray = doubleArray.frompointer(output.getitem(i));
-                        for (int j = 0; j < count; j++)
-                        {
-                            cachedOutput[i][j] = inputArray.getitem(j);
-                        }
-                    }
-                }
-                return cachedOutput;
+                return InternalData.get_output();
             }
         }
+
         /* Method: GetTrainInput
             Gets the training input data at the given position
 
@@ -270,41 +243,29 @@ namespace FANNCSharp
                 An array of input training data at the given position
 
             See also:
-                <GetTrainOutput>, <SetTrainData>
+                <GetTrainOutput>, <Input>, <SetTrainData>
 
            This function appears in FANN >= 2.3.0.
         */
         public double[] GetTrainInput(uint position)
         {
-            doubleArray output = doubleArray.frompointer(InternalData.get_train_input(position));
-            double[] result = new double[InputCount];
-            for (int i = 0; i < InputCount; i++)
-            {
-                result[i] = output.getitem(i);
-            }
-            return result;
+            return InternalData.get_train_input(position);
         }
 
         /* Method: GetTrainOutput
-            Gets the training output data at the given position
+            Gets the training output data at the given position.
 
             Returns:
                 An array of output training data at the given position
 
             See also:
-                <GetTrainInput>
+                <GetTrainInput>, <Output>, <SetTrainData>
 
            This function appears in FANN >= 2.3.0.
         */
         public double[] GetTrainOutput(uint position)
         {
-            doubleArray output = doubleArray.frompointer(InternalData.get_train_input(position));
-            double[] result = new double[OutputCount];
-            for (int i = 0; i < OutputCount; i++)
-            {
-                result[i] = output.getitem(i);
-            }
-            return result;
+            return InternalData.get_train_input(position);
         }
 
         /* Method: SetTrainData
@@ -323,29 +284,7 @@ namespace FANNCSharp
         */
         public void SetTrainData(double[][] input, double[][] output)
         {
-            int numData = input.Length;
-            int inputSize = input[0].Length;
-            int outputSize = output[0].Length;
-            using (doubleArrayArray inputArray = new doubleArrayArray(numData))
-            using (doubleArrayArray outputArray = new doubleArrayArray(numData))
-            {
-                for (int i = 0; i < numData; i++)
-                {
-                    doubleArray inArray = new doubleArray((int)inputSize);
-                    doubleArray outArray = new doubleArray((int)outputSize);
-                    inputArray.setitem(i, inArray.cast());
-                    outputArray.setitem(i, outArray.cast());
-                    for (int j = 0; j < inputSize; j++)
-                    {
-                        inArray.setitem(j, input[i][j]);
-                    }
-                    for (int j = 0; j < outputSize; j++)
-                    {
-                        outArray.setitem(j, output[i][j]);
-                    }
-                }
-                InternalData.set_train_data((uint)numData, (uint)inputSize, inputArray.cast(), (uint)outputSize, outputArray.cast());
-            }
+            InternalData.set_train_data((uint)input.Length, (uint)input[0].Length, input, (uint)output[0].Length, output);
         }
 
         /* Method: SetTrainData
@@ -367,20 +306,7 @@ namespace FANNCSharp
         {
             uint numInput = (uint)input.Length / dataLength;
             uint numOutput = (uint)output.Length / dataLength;
-            using (doubleArray inputArray = new doubleArray((int)(numInput * dataLength)))
-            using (doubleArray outputArray = new doubleArray((int)(numOutput * dataLength)))
-            {
-                for (int i = 0; i < numInput * dataLength; i++)
-                {
-                    inputArray.setitem(i, input[i]);
-                }
-                for (int i = 0; i < numOutput * dataLength; i++)
-                {
-                    outputArray.setitem(i, output[i]);
-                }
-
-                InternalData.set_train_data(dataLength, numInput, inputArray.cast(), numOutput, outputArray.cast());
-            }
+            InternalData.set_train_data(dataLength, numInput, input, numOutput, output);
         }
         /*********************************************************************/
 
@@ -413,8 +339,8 @@ namespace FANNCSharp
         {
             InternalData = new FannWrapperDouble.training_data();
             Callback = callback;
-            RawCallback = new data_create_callback(InternalCallback);
-            fanndoublePINVOKE.training_data_create_train_from_callback(training_data.getCPtr(this.InternalData), dataCount, inputCount, outputCount, Marshal.GetFunctionPointerForDelegate(RawCallback));
+            UnmanagedCallback = new data_create_callback(InternalCallback);
+            fanndoublePINVOKE.training_data_create_train_from_callback(training_data.getCPtr(this.InternalData), dataCount, inputCount, outputCount, Marshal.GetFunctionPointerForDelegate(UnmanagedCallback));
         }
 
         /* Property: MinInput
@@ -609,7 +535,7 @@ namespace FANNCSharp
         */
         public delegate void DataCreateCallback(uint number, uint inputCount, uint outputCount, double[] input, double[] output);
         private DataCreateCallback Callback { get; set; }
-        private data_create_callback RawCallback { get; set; }
+        private data_create_callback UnmanagedCallback { get; set; }
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall)]
         internal delegate void data_create_callback(uint number, uint inputCount, uint outputCount, global::System.IntPtr inputs, global::System.IntPtr outputs);

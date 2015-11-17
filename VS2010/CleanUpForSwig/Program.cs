@@ -17,13 +17,15 @@ namespace CleanUpForSwig
                                                  "NetworkType.cs",
                                                  "StopFunction.cs",
                                                  "TrainingAlgorithm.cs",
-                                                 "ActivationFunctionArray.cs",
                                                  "uintArray.cs",
                                                  "SWIGTYPE_p_FANN__activation_function_enum.cs",
                                                  "SWIGTYPE_p_FILE.cs",
                                                  "SWIGTYPE_p_unsigned_int.cs",
                                                  "SWIGTYPE_p_fann_train_data.cs",
                                                  "SWIGTYPE_p_fann.cs"};
+        private static string[] filesToCopyToTopLevel = { "ConnectionDouble.cs",
+                                                          "ConnectionFloat.cs",
+                                                          "ConnectionFixed.cs"};
         static int Main(string[] args)
         {
             if (args.Length < 4)
@@ -37,7 +39,7 @@ namespace CleanUpForSwig
                 return -1;
             //if (fixCSharp(args[1], args[3]) < 0)
             //    return -1;
-            if (args[2] == "copy" && copyFiles(args[1]) < 0)
+            if (copyFiles(args[1], "\\") < 0)
                 return -1;
             if (deleteFiles(args[1]) < 0)
                 return -1;
@@ -93,26 +95,30 @@ namespace CleanUpForSwig
             return 0;
         }
 
-        static int copyFiles(string fromFolder)
+        static int copyFiles(string fromFolder, string toFolderPath)
         {
             DirectoryInfo info = Directory.GetParent(fromFolder).Parent;
-            Regex regex = new Regex("(.*?namespace.*?(FannWrapper[a-zA-z0-9]*)(.*?{.*)");
-            string toFolder = info.FullName + "\\FannWrapper\\";
+            Regex regex = new Regex("(.*?namespace.*?)(FannWrapper[a-zA-z0-9]*)(.*?{.*)");
+            string toFolder = info.FullName + toFolderPath;
             string[] lines = null;
-            foreach (string file in filesToCopy)
+            foreach (string file in filesToCopyToTopLevel)
             {
-                Console.WriteLine("Copying \"" + fromFolder + file + "\" to \"" + toFolder + "\"");
-                lines = File.ReadAllLines(fromFolder + file);
-                for(int i = 0; i < lines.Length; i++)
-                {
-                    MatchCollection matches = regex.Matches(lines[i]);
-                    if(matches.Count > 0)
-                    {
-                        lines[i] = matches[0].Groups[1].Value + "FANNCSharp" + matches[0].Groups[3].Value;
-                        break;
-                    }
-                }
-                File.WriteAllLines(toFolder + file, lines);
+                //if (File.Exists(fromFolder + file))
+                //{
+                //    Console.WriteLine("Copying \"" + fromFolder + file + "\" to \"" + toFolder + "\"");
+                //    lines = File.ReadAllLines(fromFolder + file);
+                //    for (int i = 0; i < lines.Length; i++)
+                //    {
+                //        MatchCollection matches = regex.Matches(lines[i]);
+                //        if (matches.Count > 0)
+                //        {
+                //            lines[i] = "using " + matches[0].Groups[2].Value + ";\n" + matches[0].Groups[1].Value + "FANNCSharp" + matches[0].Groups[3].Value;
+                //            break;
+                //        }
+                //    }
+                //    File.WriteAllLines(toFolder + file, lines);
+                    File.Delete(fromFolder + file);
+                //}
             }
             return 0;
         }

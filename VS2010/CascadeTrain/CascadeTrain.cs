@@ -45,14 +45,6 @@ namespace Example
 
                 using (NeuralNet net = new NeuralNet(NetworkType.SHORTCUT, 2, trainData.InputCount, trainData.OutputCount))
                 {
-                    NeuralNet.TrainingCallback callback = (callbackNet, callbackData, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, callbackUserData) =>
-                    {
-                        Console.WriteLine("Layer count: {0}, Data length: {1}, Max epochs: {2}, Epochs between reports: {3}, Desired error: {4}, Epochs so far: {5}, Greeting: \"{6}\"",
-                            callbackNet.LayerCount, callbackData.TrainDataLength, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, (string)callbackUserData);
-                        return 1;
-                    };
-
-                    net.SetCallback(callback, "Hello!");
                     net.TrainingAlgorithm = training_algorithm;
                     net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
                     net.ActivationFunctionOutput = ActivationFunction.LINEAR;
@@ -94,11 +86,11 @@ namespace Example
 
                     Console.WriteLine("\nTrain error: {0}, Train bit-fail: {1}, Test error: {2}, Test bit-fail: {3}\n",
                                       mse_train, bit_fail_train, mse_test, bit_fail_test);
-                    for (int i = 0; i < trainData.TrainDataLength; i++)
+                    for (uint i = 0; i < trainData.TrainDataLength; i++)
                     {
                         output = net.Run(trainData.Input[i]);
-                        if ((trainData.Output[i][0] >= 0 && output[0] <= 0) ||
-                            (trainData.Output[i][0] <= 0 && output[0] >= 0))
+                        if ((trainData.GetTrainOutput(i)[0] >= 0 && output[0] <= 0) ||
+                            (trainData.GetTrainOutput(i)[0] <= 0 && output[0] >= 0))
                         {
                             Console.WriteLine("ERROR: {0} does not match {1}", trainData.Output[i][0], trainData.Output[0]);
                         }

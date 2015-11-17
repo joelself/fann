@@ -30,14 +30,14 @@ namespace Example
                 using(TrainingData data = new TrainingData())
                 {
                     data.ReadTrainFromFile("..\\..\\datasets\\scaling.data");
-                    for(int i = 0; i < data.TrainDataLength; i++)
+                    for(uint i = 0; i < data.TrainDataLength; i++)
                     {
                         net.ResetMSE();
-                        net.ScaleInput(data.Input[i]);
-                        calc_out = net.Run(data.Input[i]);
+                        net.ScaleInput(data.GetTrainInput(i));
+                        calc_out = net.Run(data.GetTrainInput(i));
                         net.DescaleOutput(calc_out);
-                        Console.WriteLine("Result {0} original {1} error {2}", calc_out[0], data.Output[i][0],
-                                          FannAbs(calc_out[0] - data.Output[i][0]));
+                        Console.WriteLine("Result {0} original {1} error {2}", calc_out[0], data.GetTrainOutput(i)[0],
+                                          FannAbs(calc_out[0] - data.GetTrainOutput(i)[0]));
                     }
                     Console.ReadKey();
                 }

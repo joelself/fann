@@ -195,29 +195,71 @@ class fanndoublePINVOKE {
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_FANNSCANF_get")]
   public static extern string FANNSCANF_get();
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_from_neuron_set")]
-  public static extern void Connection_from_neuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fopen")]
+  public static extern global::System.IntPtr fopen(string jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_from_neuron_get")]
-  public static extern uint Connection_from_neuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fclose")]
+  public static extern int fclose(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_to_neuron_set")]
-  public static extern void Connection_to_neuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_uintArray")]
+  public static extern global::System.IntPtr new_uintArray(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_to_neuron_get")]
-  public static extern uint Connection_to_neuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_uintArray")]
+  public static extern void delete_uintArray(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_weight_set")]
-  public static extern void Connection_weight_set(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_uintArray_getitem")]
+  public static extern uint uintArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_weight_get")]
-  public static extern double Connection_weight_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_uintArray_setitem")]
+  public static extern void uintArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_Connection")]
-  public static extern global::System.IntPtr new_Connection();
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_uintArray_cast")]
+  public static extern global::System.IntPtr uintArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_Connection")]
-  public static extern void delete_Connection(global::System.Runtime.InteropServices.HandleRef jarg1);
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_uintArray_frompointer")]
+  public static extern global::System.IntPtr uintArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleArray")]
+  public static extern global::System.IntPtr new_doubleArray(int jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_doubleArray")]
+  public static extern void delete_doubleArray(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArray_getitem")]
+  public static extern double doubleArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArray_setitem")]
+  public static extern void doubleArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, double jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArray_cast")]
+  public static extern global::System.IntPtr doubleArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArray_frompointer")]
+  public static extern global::System.IntPtr doubleArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionDouble_FromNeuron_set")]
+  public static extern void ConnectionDouble_FromNeuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionDouble_FromNeuron_get")]
+  public static extern uint ConnectionDouble_FromNeuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionDouble_ToNeuron_set")]
+  public static extern void ConnectionDouble_ToNeuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionDouble_ToNeuron_get")]
+  public static extern uint ConnectionDouble_ToNeuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionDouble_Weight_set")]
+  public static extern void ConnectionDouble_Weight_set(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionDouble_Weight_get")]
+  public static extern double ConnectionDouble_Weight_get(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_ConnectionDouble")]
+  public static extern global::System.IntPtr new_ConnectionDouble();
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_ConnectionDouble")]
+  public static extern void delete_ConnectionDouble(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_training_data__SWIG_0")]
   public static extern global::System.IntPtr new_training_data__SWIG_0();
@@ -256,22 +298,22 @@ class fanndoublePINVOKE {
   public static extern uint training_data_num_output_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_get_input")]
-  public static extern global::System.IntPtr training_data_get_input(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern double[][] training_data_get_input(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_get_output")]
-  public static extern global::System.IntPtr training_data_get_output(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern double[][] training_data_get_output(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_get_train_input")]
-  public static extern global::System.IntPtr training_data_get_train_input(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+  public static extern double[] training_data_get_train_input(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_get_train_output")]
-  public static extern global::System.IntPtr training_data_get_train_output(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
+  public static extern double[] training_data_get_train_output(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_set_train_data__SWIG_0")]
-  public static extern void training_data_set_train_data__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, uint jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+  public static extern void training_data_set_train_data__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[][] jarg4, uint jarg5, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[][] jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_set_train_data__SWIG_1")]
-  public static extern void training_data_set_train_data__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, uint jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
+  public static extern void training_data_set_train_data__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg4, uint jarg5, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg6);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_create_train_from_callback")]
   public static extern void training_data_create_train_from_callback(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, uint jarg4, global::System.IntPtr jarg5);
@@ -304,7 +346,7 @@ class fanndoublePINVOKE {
   public static extern global::System.IntPtr training_data_to_fann_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_0")]
-  public static extern global::System.IntPtr new_neural_net__SWIG_0(int jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern global::System.IntPtr new_neural_net__SWIG_0(int jarg1, uint jarg2, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_2")]
   public static extern global::System.IntPtr new_neural_net__SWIG_2(int jarg1, uint jarg2);
@@ -313,7 +355,7 @@ class fanndoublePINVOKE {
   public static extern global::System.IntPtr new_neural_net__SWIG_3(float jarg1, uint jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_4")]
-  public static extern global::System.IntPtr new_neural_net__SWIG_4(float jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern global::System.IntPtr new_neural_net__SWIG_4(float jarg1, uint jarg2, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_5")]
   public static extern global::System.IntPtr new_neural_net__SWIG_5(string jarg1);
@@ -340,22 +382,22 @@ class fanndoublePINVOKE {
   public static extern bool neural_net_create_standard(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_create_standard_array")]
-  public static extern bool neural_net_create_standard_array(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern bool neural_net_create_standard_array(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_create_sparse")]
   public static extern bool neural_net_create_sparse(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, uint jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_create_sparse_array")]
-  public static extern bool neural_net_create_sparse_array(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
+  public static extern bool neural_net_create_sparse_array(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, uint jarg3, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg4);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_create_shortcut")]
   public static extern bool neural_net_create_shortcut(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_create_shortcut_array")]
-  public static extern bool neural_net_create_shortcut_array(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern bool neural_net_create_shortcut_array(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_run")]
-  public static extern global::System.IntPtr neural_net_run(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern double[] neural_net_run(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_randomize_weights")]
   public static extern void neural_net_randomize_weights(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2, double jarg3);
@@ -376,7 +418,7 @@ class fanndoublePINVOKE {
   public static extern int neural_net_save_to_fixed(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_train")]
-  public static extern void neural_net_train(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern void neural_net_train(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_train_epoch")]
   public static extern float neural_net_train_epoch(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -388,7 +430,7 @@ class fanndoublePINVOKE {
   public static extern void neural_net_train_on_file(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, uint jarg3, uint jarg4, float jarg5);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_test")]
-  public static extern global::System.IntPtr neural_net_test(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern double[] neural_net_test(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_test_data")]
   public static extern float neural_net_test_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -541,16 +583,16 @@ class fanndoublePINVOKE {
   public static extern uint neural_net_get_num_layers(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_layer_array")]
-  public static extern void neural_net_get_layer_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_get_layer_array(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_bias_array")]
-  public static extern void neural_net_get_bias_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_get_bias_array(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]uint[] jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_connection_array")]
-  public static extern void neural_net_get_connection_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_get_connection_array(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]ConnectionDouble[] jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_weight_array")]
-  public static extern void neural_net_set_weight_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
+  public static extern void neural_net_set_weight_array(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]ConnectionDouble[] jarg2, uint jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_weight")]
   public static extern void neural_net_set_weight(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, double jarg4);
@@ -637,19 +679,19 @@ class fanndoublePINVOKE {
   public static extern uint neural_net_get_cascade_activation_functions_count(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_activation_functions")]
-  public static extern global::System.IntPtr neural_net_get_cascade_activation_functions(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern ActivationFunction[] neural_net_get_cascade_activation_functions(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_cascade_activation_functions")]
-  public static extern void neural_net_set_cascade_activation_functions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
+  public static extern void neural_net_set_cascade_activation_functions(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]ActivationFunction[] jarg2, uint jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_activation_steepnesses_count")]
   public static extern uint neural_net_get_cascade_activation_steepnesses_count(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_activation_steepnesses")]
-  public static extern global::System.IntPtr neural_net_get_cascade_activation_steepnesses(global::System.Runtime.InteropServices.HandleRef jarg1);
+  public static extern double[] neural_net_get_cascade_activation_steepnesses(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_cascade_activation_steepnesses")]
-  public static extern void neural_net_set_cascade_activation_steepnesses(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
+  public static extern void neural_net_set_cascade_activation_steepnesses(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2, uint jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_num_candidate_groups")]
   public static extern uint neural_net_get_cascade_num_candidate_groups(global::System.Runtime.InteropServices.HandleRef jarg1);
@@ -676,16 +718,16 @@ class fanndoublePINVOKE {
   public static extern bool neural_net_clear_scaling_params(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_scale_input")]
-  public static extern void neural_net_scale_input(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_scale_input(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_scale_output")]
-  public static extern void neural_net_scale_output(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_scale_output(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_descale_input")]
-  public static extern void neural_net_descale_input(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_descale_input(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_descale_output")]
-  public static extern void neural_net_descale_output(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
+  public static extern void neural_net_descale_output(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_error_log")]
   public static extern void neural_net_set_error_log(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -713,66 +755,6 @@ class fanndoublePINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_to_fann")]
   public static extern global::System.IntPtr neural_net_to_fann(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fopen")]
-  public static extern global::System.IntPtr fopen(string jarg1, string jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fclose")]
-  public static extern int fclose(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_uintArray")]
-  public static extern global::System.IntPtr new_uintArray(int jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_uintArray")]
-  public static extern void delete_uintArray(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_uintArray_getitem")]
-  public static extern uint uintArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_uintArray_setitem")]
-  public static extern void uintArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, uint jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_uintArray_cast")]
-  public static extern global::System.IntPtr uintArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_uintArray_frompointer")]
-  public static extern global::System.IntPtr uintArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_ActivationFunctionArray")]
-  public static extern global::System.IntPtr new_ActivationFunctionArray(int jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_ActivationFunctionArray")]
-  public static extern void delete_ActivationFunctionArray(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ActivationFunctionArray_getitem")]
-  public static extern int ActivationFunctionArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ActivationFunctionArray_setitem")]
-  public static extern void ActivationFunctionArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ActivationFunctionArray_cast")]
-  public static extern global::System.IntPtr ActivationFunctionArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ActivationFunctionArray_frompointer")]
-  public static extern global::System.IntPtr ActivationFunctionArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_ConnectionArray")]
-  public static extern global::System.IntPtr new_ConnectionArray(int jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_ConnectionArray")]
-  public static extern void delete_ConnectionArray(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionArray_getitem")]
-  public static extern global::System.IntPtr ConnectionArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionArray_setitem")]
-  public static extern void ConnectionArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionArray_cast")]
-  public static extern global::System.IntPtr ConnectionArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionArray_frompointer")]
-  public static extern global::System.IntPtr ConnectionArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_train_epoch_batch_parallel__SWIG_0")]
   public static extern float train_epoch_batch_parallel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
@@ -953,42 +935,6 @@ class fanndoublePINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_doubleVector")]
   public static extern void delete_doubleVector(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleArrayArray")]
-  public static extern global::System.IntPtr new_doubleArrayArray(int jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_doubleArrayArray")]
-  public static extern void delete_doubleArrayArray(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArrayArray_getitem")]
-  public static extern global::System.IntPtr doubleArrayArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArrayArray_setitem")]
-  public static extern void doubleArrayArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArrayArray_cast")]
-  public static extern global::System.IntPtr doubleArrayArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArrayArray_frompointer")]
-  public static extern global::System.IntPtr doubleArrayArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleArray")]
-  public static extern global::System.IntPtr new_doubleArray(int jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_doubleArray")]
-  public static extern void delete_doubleArray(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArray_getitem")]
-  public static extern double doubleArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArray_setitem")]
-  public static extern void doubleArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, double jarg3);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArray_cast")]
-  public static extern global::System.IntPtr doubleArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
-
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArray_frompointer")]
-  public static extern global::System.IntPtr doubleArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 }
 
 }

@@ -11,20 +11,20 @@
 using FANNCSharp;
 namespace FannWrapperFloat {
 
-internal class ConnectionArray : global::System.IDisposable {
+internal class connectionArray : global::System.IDisposable {
   private global::System.Runtime.InteropServices.HandleRef swigCPtr;
   protected bool swigCMemOwn;
 
-  internal ConnectionArray(global::System.IntPtr cPtr, bool cMemoryOwn) {
+  internal connectionArray(global::System.IntPtr cPtr, bool cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
   }
 
-  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(ConnectionArray obj) {
+  internal static global::System.Runtime.InteropServices.HandleRef getCPtr(connectionArray obj) {
     return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
   }
 
-  ~ConnectionArray() {
+  ~connectionArray() {
     Dispose();
   }
 
@@ -33,7 +33,7 @@ internal class ConnectionArray : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          fannfloatPINVOKE.delete_ConnectionArray(swigCPtr);
+          fannfloatPINVOKE.delete_connectionArray(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -41,28 +41,28 @@ internal class ConnectionArray : global::System.IDisposable {
     }
   }
 
-  public ConnectionArray(int nelements) : this(fannfloatPINVOKE.new_ConnectionArray(nelements), true) {
+  public connectionArray(int nelements) : this(fannfloatPINVOKE.new_connectionArray(nelements), true) {
   }
 
-  public Connection getitem(int index) {
-    Connection ret = new Connection(fannfloatPINVOKE.ConnectionArray_getitem(swigCPtr, index), true);
+  public fann_connection getitem(int index) {
+    fann_connection ret = new fann_connection(fannfloatPINVOKE.connectionArray_getitem(swigCPtr, index), true);
     return ret;
   }
 
-  public void setitem(int index, Connection value) {
-    fannfloatPINVOKE.ConnectionArray_setitem(swigCPtr, index, Connection.getCPtr(value));
+  public void setitem(int index, fann_connection value) {
+    fannfloatPINVOKE.connectionArray_setitem(swigCPtr, index, fann_connection.getCPtr(value));
     if (fannfloatPINVOKE.SWIGPendingException.Pending) throw fannfloatPINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public Connection cast() {
-    global::System.IntPtr cPtr = fannfloatPINVOKE.ConnectionArray_cast(swigCPtr);
-    Connection ret = (cPtr == global::System.IntPtr.Zero) ? null : new Connection(cPtr, false);
+  public fann_connection cast() {
+    global::System.IntPtr cPtr = fannfloatPINVOKE.connectionArray_cast(swigCPtr);
+    fann_connection ret = (cPtr == global::System.IntPtr.Zero) ? null : new fann_connection(cPtr, false);
     return ret;
   }
 
-  public static ConnectionArray frompointer(Connection t) {
-    global::System.IntPtr cPtr = fannfloatPINVOKE.ConnectionArray_frompointer(Connection.getCPtr(t));
-    ConnectionArray ret = (cPtr == global::System.IntPtr.Zero) ? null : new ConnectionArray(cPtr, false);
+  public static connectionArray frompointer(fann_connection t) {
+    global::System.IntPtr cPtr = fannfloatPINVOKE.connectionArray_frompointer(fann_connection.getCPtr(t));
+    connectionArray ret = (cPtr == global::System.IntPtr.Zero) ? null : new connectionArray(cPtr, false);
     return ret;
   }
 

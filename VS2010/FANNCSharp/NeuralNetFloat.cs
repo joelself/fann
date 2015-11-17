@@ -23,7 +23,7 @@ using System.Runtime.InteropServices;
  */
 
 /*
- *  Title: FANN C# neural_net Wrapper Float
+ *  Title: FANN C# NeuralNet float
  *
  *  Overview:
  *
@@ -36,7 +36,7 @@ using System.Runtime.InteropServices;
  *  The license is LGPL. Copyright (C) 2015 created by <joelself@gmail.com>.
  *
  *
- *  Note:  Notes and differences from C++ API
+ *  Note:  Notes and differences from C API
  *
  *  -  The Fann Wrapper for C# is a minimal wrapper without use of
  *       templates or exception handling for efficient use in any environment.
@@ -92,7 +92,7 @@ namespace FANNCSharp
         }
         /* Constructor: NeuralNetFloat
 
-            Creates a neural network of the desired <network_type_enum> net_type.
+            Creates a neural network of the desired <NetworkType> net_type.
 
             Parameters:
                 numLayers - The total number of layers including the input and the output layer.
@@ -111,15 +111,8 @@ namespace FANNCSharp
         */
         public NeuralNetFloat(NetworkType netType, uint numLayers, params uint[] args)
         {
-            using (uintArray newLayers = new uintArray((int)numLayers))
-            {
-                for (int i = 0; i < args.Length; i++)
-                {
-                    newLayers.setitem(i, args[i]);
-                }
-                Outputs = args[args.Length - 1];
-                net = new neural_net(netType, numLayers, newLayers.cast());
-            }
+            Outputs = args[numLayers - 1];
+            net = new neural_net(netType, numLayers, args);
         }
 
         /* Constructor: NeuralNetFloat
@@ -137,23 +130,14 @@ namespace FANNCSharp
          */
         public NeuralNetFloat(NetworkType netType, ICollection<uint> layers)
         {
-            using (uintArray newLayers = new uintArray(layers.Count))
-            {
-                IEnumerator<uint> enumerator = layers.GetEnumerator();
-                int i = 0;
-                do
-                {
-                    newLayers.setitem(i, enumerator.Current);
-                    i++;
-                } while (enumerator.MoveNext());
-                Outputs = newLayers.getitem(layers.Count - 1);
-                net = new neural_net(netType, (uint)layers.Count, newLayers.cast());
-            }
+            uint[] newLayers = layers as uint[];
+            Outputs = newLayers[layers.Count - 1];
+            net = new neural_net(netType, (uint)layers.Count, newLayers);
         }
 
         /* Constructor: NeuralNetFloat
 
-            Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <LAYER>
+            Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <NetworkType.LAYER>
 
             Parameters:
                 connectionRate - The connection rate controls how many connections there will be in the
@@ -168,20 +152,13 @@ namespace FANNCSharp
         */
         public NeuralNetFloat(float connectionRate, uint numLayers, params uint[] args)
         {
-            using (uintArray newLayers = new uintArray((int)numLayers))
-            {
-                for (int i = 0; i < args.Length; i++)
-                {
-                    newLayers.setitem(i, args[i]);
-                }
-                Outputs = args[args.Length - 1];
-                net = new neural_net(connectionRate, numLayers, newLayers.cast());
-            }
+            Outputs = args[args.Length - 1];
+            net = new neural_net(connectionRate, numLayers, args);
         }
 
         /* Constructor: NeuralNetFloat
 
-            Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <LAYER>
+            Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <NetworkType.LAYER>
 
             Parameters:
                 connectionRate - The connection rate controls how many connections there will be in the
@@ -196,18 +173,9 @@ namespace FANNCSharp
         */
         public NeuralNetFloat(float connectionRate, ICollection<uint> layers)
         {
-            using (uintArray newLayers = new uintArray(layers.Count))
-            {
-                IEnumerator<uint> enumerator = layers.GetEnumerator();
-                int i = 0;
-                do
-                {
-                    newLayers.setitem(i, enumerator.Current);
-                    i++;
-                } while (enumerator.MoveNext());
-                Outputs = newLayers.getitem(layers.Count - 1);
-                net = new neural_net(connectionRate, (uint)layers.Count, newLayers.cast());
-            }
+            uint[] newLayers = layers as uint[];
+            Outputs = newLayers[layers.Count - 1];
+            net = new neural_net(connectionRate, (uint)layers.Count, newLayers);
         }
 
         /* Constructor: NeuralNetFloat
@@ -237,20 +205,7 @@ namespace FANNCSharp
         */
         public float[] Run(float[] input)
         {
-            using (floatArray floats = new floatArray(input.Length))
-            {
-                for (int i = 0; i < input.Length; i++)
-                {
-                    floats.setitem(i, input[i]);
-                }
-                floatArray outputs = floatArray.frompointer(net.run(floats.cast()));
-                float[] result = new float[Outputs];
-                for (int i = 0; i < Outputs; i++)
-                {
-                    result[i] = outputs.getitem(i);
-                }
-                return result;
-            }
+            return net.run(input);
         }
 
         /* Method: RandomizeWeights
@@ -283,7 +238,7 @@ namespace FANNCSharp
             train the network.
 
             See also:
-                <RandomizeWeight>, <TrainingData.ReadTrainFromFile>,
+                <RandomizeWeights>, <TrainingData.ReadTrainFromFile>,
                 <fann_init_weights at http://libfann.github.io/fann/docs/files/fann-h.html#fann_init_weights>
 
             This function appears in FANN >= 1.1.0.
@@ -340,7 +295,7 @@ namespace FANNCSharp
            The function returns true on success and false on failure.
            
            See also:
-            <NeuralNetFloat(string filename)>, <SaveToFixed>, <fann_save at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save>
+            <NeuralNetFloat>, <SaveToFixed>, <fann_save at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save>
 
            This function appears in FANN >= 1.0.0.
          */
@@ -377,7 +332,7 @@ namespace FANNCSharp
            point version is actually faster.
 
            See also:
-            <NeuralNetFloat(string filename)>, <Save>, <fann_save_to_fixed at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save_to_fixed>
+            <NeuralNetFloat>, <Save>, <fann_save_to_fixed at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save_to_fixed>
 
            This function appears in FANN >= 1.0.0.
         */
@@ -403,19 +358,7 @@ namespace FANNCSharp
          */
         public void Train(float[] input, float[] desiredOutput)
         {
-            using (floatArray floatsIn = new floatArray(input.Length))
-            {
-                for (int i = 0; i < input.Length; i++)
-                {
-                    floatsIn.setitem(i, input[i]);
-                }
-                floatArray floatsOut = new floatArray(desiredOutput.Length);
-                for (int i = 0; i < input.Length; i++)
-                {
-                    floatsOut.setitem(i, input[i]);
-                }
-                net.train(floatsIn.cast(), floatsOut.cast());
-            }
+            net.train(input, desiredOutput);
         }
 
         /* Method: TrainEpoch
@@ -497,25 +440,7 @@ namespace FANNCSharp
         */
         public float[] Test(float[] input, float[] desiredOutput)
         {
-            using (floatArray floatsIn = new floatArray(input.Length))
-            using (floatArray floatsOut = new floatArray(desiredOutput.Length))
-            {
-                for (int i = 0; i < input.Length; i++)
-                {
-                    floatsIn.setitem(i, input[i]);
-                }
-                for (int i = 0; i < desiredOutput.Length; i++)
-                {
-                    floatsOut.setitem(i, desiredOutput[i]);
-                }
-                floatArray result = floatArray.frompointer(net.test(floatsIn.cast(), floatsOut.cast()));
-                float[] arrayResult = new float[Outputs];
-                for (int i = 0; i < Outputs; i++)
-                {
-                    arrayResult[i] = result.getitem(i);
-                }
-                return arrayResult;
-            }
+            return net.test(input, desiredOutput);
         }
 
         /* Method: TestData
@@ -576,7 +501,7 @@ namespace FANNCSharp
            the callback. It can point to arbitrary data that the callback might require and
            can be NULL if it is not used.
          	
-           See <FANN::callback_type> for more information about the callback function.
+           See <FANN::callback_type at http://libfann.github.io/fann/docs/files/fann_data_cpp-h.html#callback_type> for more information about the callback function.
            
            The default callback function simply prints out some status information.
 
@@ -587,8 +512,8 @@ namespace FANNCSharp
             Callback = callback;
             UserData = userData;
             GCHandle handle = GCHandle.Alloc(userData);
-            training_callback back = new training_callback(InternalCallback);
-            fannfloatPINVOKE.neural_net_set_callback(neural_net.getCPtr(this.net), Marshal.GetFunctionPointerForDelegate(back), (IntPtr)handle);
+            UnmanagedCallback = new training_callback(InternalCallback);
+            fannfloatPINVOKE.neural_net_set_callback(neural_net.getCPtr(this.net), Marshal.GetFunctionPointerForDelegate(UnmanagedCallback), (IntPtr)handle);
         }
 
         /* Method: PrintParameters
@@ -700,7 +625,7 @@ namespace FANNCSharp
            functions have different range. FANN::SIGMOID is e.g. in the 0 - 1 range while 
            FANN::SIGMOID_SYMMETRIC is in the -1 - 1 range and FANN::LINEAR is unbounded.
            
-           Information about the individual activation functions is available at <FANN::activation_function_enum>.
+           Information about the individual activation functions is available at <ActivationFunction>.
            
            The default activation function is FANN::SIGMOID_STEPWISE.
            
@@ -741,7 +666,7 @@ namespace FANNCSharp
 
            See also:
    	        <SetActivationFunction>, <SetActivationFunctionLayer>,
-   	        <ActivationFunctionOutput>, <ActivationFunctionSteepnessHidden>,
+   	        <ActivationFunctionOutput>, <ActivationSteepnessHidden>,
             <fann_set_activation_function_hidden at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_activation_function_hidden>
 
            This function appears in FANN >= 1.0.0.
@@ -1111,7 +1036,8 @@ namespace FANNCSharp
            The default delta max is -6.644.
 
            See also:
-   	       <fann get_sarprop_weight_decay_shift>
+   	       <fann_get_sarprop_weight_decay_shift at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_sarprop_weight_decay_shift>,
+   	       <fann_set_sarprop_weight_decay_shift at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_sarprop_weight_decay_shift>
 
            This function appears in FANN >= 2.1.0.
         */
@@ -1134,7 +1060,8 @@ namespace FANNCSharp
            The default delta max is 0.1.
 
            See also:
-   	       <fann get_sarprop_step_error_threshold_factor>
+   	       <fann_get_sarprop_step_error_threshold_factor at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_sarprop_step_error_threshold_factor>,
+   	       <fann_set_sarprop_step_error_threshold_factor at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_sarprop_step_error_threshold_factor>
 
            This function appears in FANN >= 2.1.0.
         */
@@ -1158,7 +1085,8 @@ namespace FANNCSharp
            The default delta max is 1.385.
 
            See also:
-   	       <fann get_sarprop_step_error_shift>
+   	       <fann_get_sarprop_step_error_shift at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_sarprop_step_error_shift>,
+   	       <fann_set_sarprop_step_error_shift at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_sarprop_step_error_shift>
 
            This function appears in FANN >= 2.1.0.
         */
@@ -1181,7 +1109,8 @@ namespace FANNCSharp
                The default delta max is 0.015.
 
                See also:
-               <fann get_sarprop_temperature>
+               <fann_get_sarprop_temperature at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_get_sarprop_temperature>,
+               <fann_set_sarprop_temperature at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_set_sarprop_temperature>
 
                This function appears in FANN >= 2.1.0.
         */
@@ -1225,14 +1154,14 @@ namespace FANNCSharp
             }
         }
 
-        /* Property: TotalNeurons
+        /* Property: NeuronCount
 
            Get the total number of neurons in the entire network. This number does also include the 
 	        bias neurons, so a 2-4-2 network has 2+4+2 +2(bias) = 10 neurons.
 
 	        This function appears in FANN >= 1.0.0.
         */
-        public uint TotalNeurons
+        public uint NeuronCount
         {
             get
             {
@@ -1240,13 +1169,13 @@ namespace FANNCSharp
             }
         }
 
-        /* Property: TotalConnections
+        /* Property: ConnectionCount
 
            Get the total number of connections in the entire network.
 
 	        This function appears in FANN >= 1.0.0.
         */
-        public uint TotalConnections
+        public uint ConnectionCount
         {
             get
             {
@@ -1261,7 +1190,7 @@ namespace FANNCSharp
             Get the type of neural network it was created as.
 
 	        Returns:
-                The neural network type from enum <FannWrapper.NetworkType>
+                The neural network type from enum <NetworkType>
 
             See Also:
                 <fann_get_network_type at http://libfann.github.io/fann/docs/files/fann-h.html#fann_get_network_type>
@@ -1316,7 +1245,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Property: LayerArray
+        /* Property: Layers
 
             Get the number of neurons in each layer in the network.
 
@@ -1327,24 +1256,17 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.1.0
         */
-        public uint[] LayerArray
+        public uint[] Layers
         {
             get
             {
                 uint[] layers = new uint[net.get_num_layers()];
-                using (uintArray array = new uintArray(layers.Length))
-                {
-                    net.get_layer_array(array.cast());
-                    for (int i = 0; i < layers.Length; i++)
-                    {
-                        layers[i] = array.getitem(i);
-                    }
-                }
+                net.get_layer_array(layers);
                 return layers;
             }
         }
 
-        /* Property: BiasArray
+        /* Property: Biases
 
             Get the number of bias in each layer in the network.
 
@@ -1353,24 +1275,17 @@ namespace FANNCSharp
 
             This function appears in FANN >= 2.1.0
         */
-        public uint[] BiasArray
+        public uint[] Biases
         {
             get
             {
                 uint[] bias = new uint[net.get_num_layers()];
-                using (uintArray array = new uintArray(bias.Length))
-                {
-                    net.get_layer_array(array.cast());
-                    for (int i = 0; i < bias.Length; i++)
-                    {
-                        bias[i] = array.getitem(i);
-                    }
-                }
+                net.get_layer_array(bias);
                 return bias;
             }
         }
 
-        /* Property: ConnectionArray
+        /* Property: Connection
 
             Get the connections in the network.
 
@@ -1379,25 +1294,21 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.1.0
         */
-        public ConnectionFloat[] ConnectionArray
+        public ConnectionFloat[] Connections
         {
             get
             {
-                uint count = net.get_total_connections();
-                ConnectionFloat[] connections = new ConnectionFloat[count];
-                using (ConnectionArray output = new ConnectionArray(connections.Length))
+                ConnectionFloat[] connections = new ConnectionFloat[net.get_total_connections()];
+                for (int i = 0; i < connections.Length; i++)
                 {
-                    net.get_connection_array(output.cast());
-                    for (uint i = 0; i < count; i++)
-                    {
-                        connections[i] = new ConnectionFloat(output.getitem((int)i));
-                    }
+                    connections[i] = new ConnectionFloat();
                 }
+                net.get_connection_array(connections);
                 return connections;
             }
         }
 
-        /* Property: WeightArray
+        /* Property: Weights
 
             Set connections in the network.
 
@@ -1413,14 +1324,7 @@ namespace FANNCSharp
         {
             set
             {
-                using (ConnectionArray input = new ConnectionArray(value.Length))
-                {
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        input.setitem(i, value[i].connection);
-                    }
-                    net.set_weight_array(input.cast(), (uint)value.Length);
-                }
+                net.set_weight_array(value, (uint)value.Length);
             }
         }
 
@@ -1526,7 +1430,7 @@ namespace FANNCSharp
         /* Property: BitFail
         	
             Gets or set the number of fail bits. Means the number of output neurons which differ more 
-	        than the bit fail limit (see <get_bit_fail_limit>, <set_bit_fail_limit>). 
+	        than the bit fail limit (see <BitFailLimit>). 
 	        The bits are counted in all of the training data, so this number can be higher than
 	        the number of training data.
         	
@@ -1553,7 +1457,7 @@ namespace FANNCSharp
            Trains on an entire dataset, for a period of time using the Cascade2 training algorithm.
            This algorithm adds neurons to the neural network while training, which means that it
            needs to start with an ANN without any hidden layers. The neural network should also use
-           shortcut connections, so <NeuralNetFloat(NetworkType.SHORTCUT, ...)> should be used to create the NeuralNetwork like this:
+           shortcut connections, so NeuralNetFloat(NetworkType.SHORTCUT, ...) should be used to create the NeuralNetwork like this:
            >NeuralNetFloat net(NetworkType.SHORTCUT, ...);
            
            This training uses the parameters set using the Cascade..., but it also uses another
@@ -1573,7 +1477,7 @@ namespace FANNCSharp
 	        (see <SetCallback>).
         	
 	        See also:
-		        <TrainOnData>, <CascadetrainOnFile>, <fann_cascadetrain_on_data>
+		        <TrainOnData>, <CascadetrainOnFile>, <fann_cascadetrain_on_data at http://libfann.github.io/fann/docs/files/fann_cpp-h.html#neural_net.cascadetrain_on_data>
 
 	        This function appears in FANN >= 2.0.0. 
         */
@@ -1600,7 +1504,7 @@ namespace FANNCSharp
         /* Property: CascadeOutputChangeFraction
 
            The cascade output change fraction is a number between 0 and 1 determining how large a fraction
-           the <MSE> value should change within <get_cascade_output_stagnation_epochs> during
+           the <MSE> value should change within <CascadeOutputStagnationEpochs> during
            training of the output connections, in order for the training not to stagnate. If the training 
            stagnates, the training of the output connections will be ended and new candidates will be prepared.
            
@@ -1898,27 +1802,11 @@ namespace FANNCSharp
         {
             get
             {
-                int count = (int)net.get_cascade_activation_functions_count();
-                using (ActivationFunctionArray result = ActivationFunctionArray.frompointer(net.get_cascade_activation_functions()))
-                {
-                    ActivationFunction[] arrayResult = new ActivationFunction[net.get_cascade_activation_functions_count()];
-                    for (int i = 0; i < count; i++)
-                    {
-                        arrayResult[i] = result.getitem(i);
-                    }
-                    return arrayResult;
-                }
+                return net.get_cascade_activation_functions();
             }
             set
             {
-                using (ActivationFunctionArray input = new ActivationFunctionArray(value.Length))
-                {
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        input.setitem(i, value[i]);
-                    }
-                    net.set_cascade_activation_functions(input.cast(), (uint)value.Length);
-                }
+                net.set_cascade_activation_functions(value, (uint)value.Length);
             }
         }
 
@@ -1963,29 +1851,12 @@ namespace FANNCSharp
         {
             get
             {
-                floatArray result = floatArray.frompointer(net.get_cascade_activation_steepnesses());
-                uint count = net.get_cascade_activation_steepnesses_count();
-                float[] resultArray = new float[net.get_cascade_activation_steepnesses_count()];
-                for (int i = 0; i < count; i++)
-                {
-                    resultArray[i] = result.getitem(i);
-                }
-                return resultArray;
+                return net.get_cascade_activation_steepnesses();
+
             }
             set
             {
-                using (floatArray input = new floatArray(value.Length))
-                {
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        input.setitem(i, value[i]);
-                    }
-                    net.set_cascade_activation_steepnesses(input.cast(), (uint)value.Length);
-                    for (int i = 0; i < value.Length; i++)
-                    {
-                        value[i] = input.getitem(i);
-                    }
-                }
+                net.set_cascade_activation_steepnesses(value, (uint)value.Length);
             }
         }
 
@@ -2122,14 +1993,7 @@ namespace FANNCSharp
          */
         public void ScaleInput(float[] input)
         {
-            using (floatArray inputs = new floatArray(input.Length))
-            {
-                for (int i = 0; i < input.Length; i++)
-                {
-                    inputs.setitem(i, input[i]);
-                }
-                net.scale_input(inputs.cast());
-            }
+            net.scale_input(input);
         }
 
         /* Method: ScaleOutput
@@ -2144,14 +2008,7 @@ namespace FANNCSharp
          */
         public void ScaleOutput(float[] output)
         {
-            using (floatArray inputs = new floatArray(output.Length))
-            {
-                for (int i = 0; i < output.Length; i++)
-                {
-                    inputs.setitem(i, output[i]);
-                }
-                net.scale_output(inputs.cast());
-            }
+            net.scale_output(output);
         }
 
         /* Method: DescaleInput
@@ -2166,14 +2023,7 @@ namespace FANNCSharp
          */
         public void DeScaleInput(float[] input)
         {
-            using (floatArray inputs = new floatArray(input.Length))
-            {
-                for (int i = 0; i < input.Length; i++)
-                {
-                    inputs.setitem(i, input[i]);
-                }
-                net.descale_input(inputs.cast());
-            }
+            net.descale_input(input);
         }
 
         /* Method: DescaleOutput
@@ -2188,14 +2038,7 @@ namespace FANNCSharp
          */
         public void DescaleOutput(float[] output)
         {
-            using (floatArray inputs = new floatArray(output.Length))
-            {
-                for (int i = 0; i < output.Length; i++)
-                {
-                    inputs.setitem(i, output[i]);
-                }
-                net.descale_output(inputs.cast());
-            }
+            net.descale_output(output);
         }
 
         /*********************************************************************/
@@ -2636,6 +2479,7 @@ namespace FANNCSharp
             }
         }
         private TrainingCallback Callback { get; set; }
+        private training_callback UnmanagedCallback { get; set; }
         private Object UserData { get; set; }
 
         private uint Outputs { get; set; }

@@ -86,11 +86,11 @@ namespace XorTrain
                             DataType[] calc_out = net.Run(data.Input[i]);
 
                             Console.WriteLine("XOR test ({0}, {1}) -> {2}, should be {3}, difference = {4}",
-                                data.Input[i][0].ToString("+#;-#"),
-                                data.Input[i][1].ToString("+#;-#"),
+                                data.GetTrainInput(i)[0].ToString("+#;-#"),
+                                data.GetTrainInput(i)[1].ToString("+#;-#"),
                                 calc_out[0] == 0 ? 0.ToString() : calc_out[0].ToString("+#;-#"),
-                                data.Output[i][0].ToString("+#;-#"),
-                                FannAbs(calc_out[0] - data.Output[i][0]));
+                                data.GetTrainOutput(i)[0].ToString("+#;-#"),
+                                FannAbs(calc_out[0] - data.GetTrainOutput(i)[0]));
                         }
 
                         Console.WriteLine("\nSaving network.");
