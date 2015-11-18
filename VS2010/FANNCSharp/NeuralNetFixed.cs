@@ -29,19 +29,15 @@ using System.Runtime.InteropServices;
  *
  *  The Fann Wrapper for C# provides Six classes: <NeuralNetFloat>,
  *  <NeuralNetFixed>, <NeuralNetFixed>, <TrainingDataFloat>,
- *  <TrainingDataFixed>, <TrainingDataFixed>. To use the wrapper add
+ *  <TrainingDataDouble>, <TrainingDataFixed>. To use the wrapper add
  *  FANNCSharp.dll as a reference to your project.
  *
  *  To get started see XorSample project.
  *  The license is LGPL. Copyright (C) 2015 created by <joelself@gmail.com>.
  *
  *
- *  Note:  Notes and differences from C API
+ *  Note:  Notes and differences from C++ API
  *
- *  -  The Fann Wrapper for C# is a minimal wrapper without use of
- *       templates or exception handling for efficient use in any environment.
- *       Benefits include fixed array sizes, simpler memory
- *       management and code completion in program editor.
  *  -  Method names are the same as the function names in the C++
  *       API except the snake_case style naming has been replaced with
  *       CamelCase, getters and setters have been turned into properties, and

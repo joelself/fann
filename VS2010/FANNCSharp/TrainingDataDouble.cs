@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace FANNCSharp
 {
 
-    /* Section: FANN C# Training Data
+    /* Section: FANN C# Training Data Double
     */
 
     /* Class: TrainingDataDouble
