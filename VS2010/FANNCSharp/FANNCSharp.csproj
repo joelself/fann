@@ -86,7 +86,9 @@
     <Compile Include="FannFile.cs" />
     <Compile Include="FannWrapperDouble\Connection.cs" />
     <Compile Include="FannWrapperDouble\ConnectionArray.cs" />
+    <Compile Include="DoubleAccessor.cs" />
     <Compile Include="FannWrapperDouble\doubleArray.cs" />
+    <Compile Include="DoubleArrayAccessor.cs" />
     <Compile Include="FannWrapperDouble\doubleArrayArray.cs" />
     <Compile Include="FannWrapperDouble\doubleVector.cs" />
     <Compile Include="FannWrapperDouble\doubleVectorVector.cs" />
@@ -100,7 +102,10 @@
     <Compile Include="FannWrapperFixed\ConnectionArray.cs" />
     <Compile Include="FannWrapperFixed\fannfixed.cs" />
     <Compile Include="FannWrapperFixed\fannfixedPINVOKE.cs" />
+    <Compile Include="FannWrapper\ActivationFunctionArray.cs" />
+    <Compile Include="IntAccessor.cs" />
     <Compile Include="FannWrapperFixed\intArray.cs" />
+    <Compile Include="IntArrayAccessor.cs" />
     <Compile Include="FannWrapperFixed\intArrayArray.cs" />
     <Compile Include="FannWrapperFixed\neural_net.cs" />
     <Compile Include="FannWrapperFixed\SWIGTYPE_p_int.cs" />
@@ -110,7 +115,9 @@
     <Compile Include="FannWrapperFloat\connectionArray.cs" />
     <Compile Include="FannWrapperFloat\fannfloat.cs" />
     <Compile Include="FannWrapperFloat\fannfloatPINVOKE.cs" />
+    <Compile Include="FloatAccessor.cs" />
     <Compile Include="FannWrapperFloat\floatArray.cs" />
+    <Compile Include="FloatArrayAccessor.cs" />
     <Compile Include="FannWrapperFloat\floatArrayArray.cs" />
     <Compile Include="FannWrapperFloat\floatVector.cs" />
     <Compile Include="FannWrapperFloat\floatVectorVector.cs" />
@@ -119,7 +126,6 @@
     <Compile Include="FannWrapperFloat\SWIGTYPE_p_p_float.cs" />
     <Compile Include="FannWrapperFloat\training_data.cs" />
     <Compile Include="FannWrapper\ActivationFunction.cs" />
-    <Compile Include="FannWrapper\activationFunctionArray.cs" />
     <Compile Include="FannWrapper\ErrorFunction.cs" />
     <Compile Include="FannWrapper\NetworkType.cs" />
     <Compile Include="FannWrapper\StopFunction.cs" />

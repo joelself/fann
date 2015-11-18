@@ -18,6 +18,12 @@ namespace CleanUpForSwig
                                                  "StopFunction.cs",
                                                  "TrainingAlgorithm.cs",
                                                  "ActivationFunctionArray.cs",
+                                                 "FloatArrayAccessor.cs",
+                                                 "FloatAccessor.cs",
+                                                 "DoubleArrayAccessor.cs",
+                                                 "DoubleAccessor.cs",
+                                                 "IntArrayAccessor.cs",
+                                                 "IntAccessor.cs",
                                                  "uintArray.cs",
                                                  "SWIGTYPE_p_FANN__activation_function_enum.cs",
                                                  "SWIGTYPE_p_FILE.cs",
@@ -88,7 +94,10 @@ namespace CleanUpForSwig
         {
             foreach (string file in filesToCopy)
             {
-                File.Delete(folder + file);
+                if (File.Exists(folder + file))
+                {
+                    File.Delete(folder + file);
+                }
             }
             return 0;
         }

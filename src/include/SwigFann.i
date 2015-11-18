@@ -71,6 +71,7 @@
 %include "enums.swg"
 %include "carrays.i"
 %include "arrays_csharp.i"
+%include "array2D.i"
 %include "cpointer.i"
 %include "std_string.i"
 FILE *fopen(const char *filename, const char *mode);

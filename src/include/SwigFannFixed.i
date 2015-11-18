@@ -14,5 +14,7 @@
 %}
 %array_class(int, intArray);
 %array_class(int_ptr, intArrayArray);
+%array_accessor(int, IntArrayAccessor,IntAccessor)
+%arrayarray_accessor(int, IntAccessor, IntArrayAccessor);
 
 

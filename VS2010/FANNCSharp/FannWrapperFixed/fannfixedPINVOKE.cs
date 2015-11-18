@@ -680,6 +680,33 @@ class fannfixedPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_intArrayArray_frompointer")]
   public static extern global::System.IntPtr intArrayArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_IntAccessor_Get")]
+  public static extern int IntAccessor_Get(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_IntAccessor_FromPointer")]
+  public static extern global::System.IntPtr IntAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_IntAccessor")]
+  public static extern global::System.IntPtr new_IntAccessor();
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_delete_IntAccessor")]
+  public static extern void delete_IntAccessor(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_IntArrayAccessor_Get__SWIG_0")]
+  public static extern global::System.IntPtr IntArrayAccessor_Get__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_IntArrayAccessor_Get__SWIG_1")]
+  public static extern int IntArrayAccessor_Get__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_IntArrayAccessor_FromPointer")]
+  public static extern global::System.IntPtr IntArrayAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_IntArrayAccessor")]
+  public static extern global::System.IntPtr new_IntArrayAccessor();
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_delete_IntArrayAccessor")]
+  public static extern void delete_IntArrayAccessor(global::System.Runtime.InteropServices.HandleRef jarg1);
 }
 
 }

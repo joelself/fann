@@ -31,13 +31,29 @@ namespace Example
                 trainData.CreateTrainFromCallback(374, 48, 3, TrainingDataCallback);
                 testData.CreateTrainFromCallback(594, 48, 3, TestDataCallback);
 
+                // Test Accessor classes
+                for (int i = 0; i < trainData.TrainDataLength; i++)
+                {
+                    Console.Write("Input {0}: ", i);
+                    for (int j = 0; j < trainData.InputCount; j++)
+                    {
+                        Console.Write("{0}, ", trainData.InputAccessor.Get(i, j));
+                    }
+                    Console.Write("\nOutput {0}: ", i);
+                    for (int j = 0; j < trainData.OutputCount; j++)
+                    {
+                        Console.Write("{0}, ", trainData.OutputAccessor.Get(i).Get(j));
+                    }
+                    Console.WriteLine("");
+                }
+
                 for (float momentum = 0.0F; momentum < 0.7F; momentum += 0.1F)
                 {
                     Console.WriteLine("============= momentum = {0} =============\n", momentum);
                     using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, trainData.InputCount, num_neurons_hidden, trainData.OutputCount))
                     {
                         net.SetCallback(TrainingCallback, "Hello!");
-                        
+
                         net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_INCREMENTAL;
 
                         net.LearningMomentum = momentum;
@@ -100,7 +116,7 @@ namespace Example
             System.GC.Collect(); // Make sure nothing's getting garbage-collected prematurely
             GC.WaitForPendingFinalizers();
             Console.WriteLine("Callback: Last neuron weight: {0}, Last data input: {1}, Max epochs: {2}\nEpochs between reports: {3}, Desired error: {4}, Current epoch: {5}\nGreeting: \"{6}\"",
-                                net.ConnectionArray[net.TotalConnections - 1].Weight, data.GetTrainInput(data.TrainDataLength - 1)[data.InputCount - 1],
+                                net.ConnectionArray[net.TotalConnections - 1].Weight, data.InputAccessor.Get((int)data.TrainDataLength - 1, (int)data.InputCount - 1),
                                 maxEpochs, epochsBetweenReports, desiredError, epochs, userData);
             return 1;
         }

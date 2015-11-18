@@ -28,5 +28,7 @@ namespace std {
 %}
 %array_class(double, doubleArray);
 %array_class(double_ptr, doubleArrayArray);
+%array_accessor(double, DoubleArrayAccessor,DoubleAccessor)
+%arrayarray_accessor(double, DoubleAccessor, DoubleArrayAccessor);
 
 

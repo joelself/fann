@@ -989,6 +989,33 @@ class fanndoublePINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArrayArray_frompointer")]
   public static extern global::System.IntPtr doubleArrayArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleAccessor_Get")]
+  public static extern double DoubleAccessor_Get(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleAccessor_FromPointer")]
+  public static extern global::System.IntPtr DoubleAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_DoubleAccessor")]
+  public static extern global::System.IntPtr new_DoubleAccessor();
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_DoubleAccessor")]
+  public static extern void delete_DoubleAccessor(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleArrayAccessor_Get__SWIG_0")]
+  public static extern global::System.IntPtr DoubleArrayAccessor_Get__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleArrayAccessor_Get__SWIG_1")]
+  public static extern double DoubleArrayAccessor_Get__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleArrayAccessor_FromPointer")]
+  public static extern global::System.IntPtr DoubleArrayAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_DoubleArrayAccessor")]
+  public static extern global::System.IntPtr new_DoubleArrayAccessor();
+
+  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_DoubleArrayAccessor")]
+  public static extern void delete_DoubleArrayAccessor(global::System.Runtime.InteropServices.HandleRef jarg1);
 }
 
 }

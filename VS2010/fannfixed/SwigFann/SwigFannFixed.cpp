@@ -421,6 +421,51 @@ SWIGINTERN intArrayArray *intArrayArray_frompointer(int_ptr *t){
   return (intArrayArray *) t;
 }
 
+struct _IntArrayAccessor;
+typedef struct _IntAccessor{
+    friend _IntArrayAccessor;
+private:
+    int *array;
+public:
+    int Get(int index) {
+      return array[index];
+    }
+    static _IntAccessor *FromPointer(int *t) {
+#ifdef __cplusplus
+      _IntAccessor * newStruct = new _IntAccessor();
+#else
+      _IntAccessor * newStruct = (_IntAccessor *) calloc(1, sizeof(_IntAccessor));
+#endif
+      newStruct->array = t;
+      return newStruct;
+    }
+} IntAccessor;
+
+
+
+typedef struct _IntArrayAccessor{
+private:
+    int **array;
+public:
+    _IntAccessor* Get(int index) {
+      return _IntAccessor::FromPointer(array[index]);
+    }
+    int Get(int x, int y) {
+      return array[x][y];
+    }
+    static _IntArrayAccessor *FromPointer(int **t) {
+#ifdef __cplusplus
+      _IntArrayAccessor * newStruct = new _IntArrayAccessor();
+#else
+      _IntArrayAccessor * newStruct = (_IntArrayAccessor *) calloc(1, sizeof(_IntArrayAccessor));
+#endif
+      newStruct->array = t;
+      return newStruct;
+    } 
+} IntArrayAccessor;
+
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -2418,6 +2463,110 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_intArrayArray_frompointer(void * jarg1) {
   result = (intArrayArray *)intArrayArray_frompointer(arg1);
   jresult = (void *)result; 
   return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_IntAccessor_Get(void * jarg1, int jarg2) {
+  int jresult ;
+  _IntAccessor *arg1 = (_IntAccessor *) 0 ;
+  int arg2 ;
+  int result;
+  
+  arg1 = (_IntAccessor *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (int)(arg1)->Get(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_IntAccessor_FromPointer(void * jarg1) {
+  void * jresult ;
+  int *arg1 = (int *) 0 ;
+  _IntAccessor *result = 0 ;
+  
+  arg1 = (int *)jarg1; 
+  result = (_IntAccessor *)_IntAccessor::FromPointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_IntAccessor() {
+  void * jresult ;
+  _IntAccessor *result = 0 ;
+  
+  result = (_IntAccessor *)new _IntAccessor();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntAccessor(void * jarg1) {
+  _IntAccessor *arg1 = (_IntAccessor *) 0 ;
+  
+  arg1 = (_IntAccessor *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_IntArrayAccessor_Get__SWIG_0(void * jarg1, int jarg2) {
+  void * jresult ;
+  _IntArrayAccessor *arg1 = (_IntArrayAccessor *) 0 ;
+  int arg2 ;
+  _IntAccessor *result = 0 ;
+  
+  arg1 = (_IntArrayAccessor *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (_IntAccessor *)(arg1)->Get(arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT int SWIGSTDCALL CSharp_IntArrayAccessor_Get__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  int jresult ;
+  _IntArrayAccessor *arg1 = (_IntArrayAccessor *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int result;
+  
+  arg1 = (_IntArrayAccessor *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  result = (int)(arg1)->Get(arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_IntArrayAccessor_FromPointer(void * jarg1) {
+  void * jresult ;
+  int **arg1 = (int **) 0 ;
+  _IntArrayAccessor *result = 0 ;
+  
+  arg1 = (int **)jarg1; 
+  result = (_IntArrayAccessor *)_IntArrayAccessor::FromPointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_IntArrayAccessor() {
+  void * jresult ;
+  _IntArrayAccessor *result = 0 ;
+  
+  result = (_IntArrayAccessor *)new _IntArrayAccessor();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_IntArrayAccessor(void * jarg1) {
+  _IntArrayAccessor *arg1 = (_IntArrayAccessor *) 0 ;
+  
+  arg1 = (_IntArrayAccessor *)jarg1; 
+  delete arg1;
 }
 
 

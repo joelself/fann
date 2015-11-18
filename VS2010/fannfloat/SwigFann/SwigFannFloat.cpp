@@ -639,6 +639,51 @@ SWIGINTERN floatArrayArray *floatArrayArray_frompointer(float_ptr *t){
   return (floatArrayArray *) t;
 }
 
+struct _FloatArrayAccessor;
+typedef struct _FloatAccessor{
+    friend _FloatArrayAccessor;
+private:
+    float *array;
+public:
+    float Get(int index) {
+      return array[index];
+    }
+    static _FloatAccessor *FromPointer(float *t) {
+#ifdef __cplusplus
+      _FloatAccessor * newStruct = new _FloatAccessor();
+#else
+      _FloatAccessor * newStruct = (_FloatAccessor *) calloc(1, sizeof(_FloatAccessor));
+#endif
+      newStruct->array = t;
+      return newStruct;
+    }
+} FloatAccessor;
+
+
+
+typedef struct _FloatArrayAccessor{
+private:
+    float **array;
+public:
+    _FloatAccessor* Get(int index) {
+      return _FloatAccessor::FromPointer(array[index]);
+    }
+    float Get(int x, int y) {
+      return array[x][y];
+    }
+    static _FloatArrayAccessor *FromPointer(float **t) {
+#ifdef __cplusplus
+      _FloatArrayAccessor * newStruct = new _FloatArrayAccessor();
+#else
+      _FloatArrayAccessor * newStruct = (_FloatArrayAccessor *) calloc(1, sizeof(_FloatArrayAccessor));
+#endif
+      newStruct->array = t;
+      return newStruct;
+    } 
+} FloatArrayAccessor;
+
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -4240,6 +4285,110 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_floatArrayArray_frompointer(void * jarg1) {
   result = (floatArrayArray *)floatArrayArray_frompointer(arg1);
   jresult = (void *)result; 
   return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_FloatAccessor_Get(void * jarg1, int jarg2) {
+  float jresult ;
+  _FloatAccessor *arg1 = (_FloatAccessor *) 0 ;
+  int arg2 ;
+  float result;
+  
+  arg1 = (_FloatAccessor *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (float)(arg1)->Get(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_FloatAccessor_FromPointer(void * jarg1) {
+  void * jresult ;
+  float *arg1 = (float *) 0 ;
+  _FloatAccessor *result = 0 ;
+  
+  arg1 = (float *)jarg1; 
+  result = (_FloatAccessor *)_FloatAccessor::FromPointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_FloatAccessor() {
+  void * jresult ;
+  _FloatAccessor *result = 0 ;
+  
+  result = (_FloatAccessor *)new _FloatAccessor();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_FloatAccessor(void * jarg1) {
+  _FloatAccessor *arg1 = (_FloatAccessor *) 0 ;
+  
+  arg1 = (_FloatAccessor *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_FloatArrayAccessor_Get__SWIG_0(void * jarg1, int jarg2) {
+  void * jresult ;
+  _FloatArrayAccessor *arg1 = (_FloatArrayAccessor *) 0 ;
+  int arg2 ;
+  _FloatAccessor *result = 0 ;
+  
+  arg1 = (_FloatArrayAccessor *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (_FloatAccessor *)(arg1)->Get(arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT float SWIGSTDCALL CSharp_FloatArrayAccessor_Get__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  float jresult ;
+  _FloatArrayAccessor *arg1 = (_FloatArrayAccessor *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  float result;
+  
+  arg1 = (_FloatArrayAccessor *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  result = (float)(arg1)->Get(arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_FloatArrayAccessor_FromPointer(void * jarg1) {
+  void * jresult ;
+  float **arg1 = (float **) 0 ;
+  _FloatArrayAccessor *result = 0 ;
+  
+  arg1 = (float **)jarg1; 
+  result = (_FloatArrayAccessor *)_FloatArrayAccessor::FromPointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_FloatArrayAccessor() {
+  void * jresult ;
+  _FloatArrayAccessor *result = 0 ;
+  
+  result = (_FloatArrayAccessor *)new _FloatArrayAccessor();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_FloatArrayAccessor(void * jarg1) {
+  _FloatArrayAccessor *arg1 = (_FloatArrayAccessor *) 0 ;
+  
+  arg1 = (_FloatArrayAccessor *)jarg1; 
+  delete arg1;
 }
 
 

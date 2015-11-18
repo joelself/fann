@@ -639,6 +639,51 @@ SWIGINTERN doubleArrayArray *doubleArrayArray_frompointer(double_ptr *t){
   return (doubleArrayArray *) t;
 }
 
+struct _DoubleArrayAccessor;
+typedef struct _DoubleAccessor{
+    friend _DoubleArrayAccessor;
+private:
+    double *array;
+public:
+    double Get(int index) {
+      return array[index];
+    }
+    static _DoubleAccessor *FromPointer(double *t) {
+#ifdef __cplusplus
+      _DoubleAccessor * newStruct = new _DoubleAccessor();
+#else
+      _DoubleAccessor * newStruct = (_DoubleAccessor *) calloc(1, sizeof(_DoubleAccessor));
+#endif
+      newStruct->array = t;
+      return newStruct;
+    }
+} DoubleAccessor;
+
+
+
+typedef struct _DoubleArrayAccessor{
+private:
+    double **array;
+public:
+    _DoubleAccessor* Get(int index) {
+      return _DoubleAccessor::FromPointer(array[index]);
+    }
+    double Get(int x, int y) {
+      return array[x][y];
+    }
+    static _DoubleArrayAccessor *FromPointer(double **t) {
+#ifdef __cplusplus
+      _DoubleArrayAccessor * newStruct = new _DoubleArrayAccessor();
+#else
+      _DoubleArrayAccessor * newStruct = (_DoubleArrayAccessor *) calloc(1, sizeof(_DoubleArrayAccessor));
+#endif
+      newStruct->array = t;
+      return newStruct;
+    } 
+} DoubleArrayAccessor;
+
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -4260,6 +4305,110 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_doubleArrayArray_frompointer(void * jarg1) 
   result = (doubleArrayArray *)doubleArrayArray_frompointer(arg1);
   jresult = (void *)result; 
   return jresult;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_DoubleAccessor_Get(void * jarg1, int jarg2) {
+  double jresult ;
+  _DoubleAccessor *arg1 = (_DoubleAccessor *) 0 ;
+  int arg2 ;
+  double result;
+  
+  arg1 = (_DoubleAccessor *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (double)(arg1)->Get(arg2);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleAccessor_FromPointer(void * jarg1) {
+  void * jresult ;
+  double *arg1 = (double *) 0 ;
+  _DoubleAccessor *result = 0 ;
+  
+  arg1 = (double *)jarg1; 
+  result = (_DoubleAccessor *)_DoubleAccessor::FromPointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleAccessor() {
+  void * jresult ;
+  _DoubleAccessor *result = 0 ;
+  
+  result = (_DoubleAccessor *)new _DoubleAccessor();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_DoubleAccessor(void * jarg1) {
+  _DoubleAccessor *arg1 = (_DoubleAccessor *) 0 ;
+  
+  arg1 = (_DoubleAccessor *)jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleArrayAccessor_Get__SWIG_0(void * jarg1, int jarg2) {
+  void * jresult ;
+  _DoubleArrayAccessor *arg1 = (_DoubleArrayAccessor *) 0 ;
+  int arg2 ;
+  _DoubleAccessor *result = 0 ;
+  
+  arg1 = (_DoubleArrayAccessor *)jarg1; 
+  arg2 = (int)jarg2; 
+  result = (_DoubleAccessor *)(arg1)->Get(arg2);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT double SWIGSTDCALL CSharp_DoubleArrayAccessor_Get__SWIG_1(void * jarg1, int jarg2, int jarg3) {
+  double jresult ;
+  _DoubleArrayAccessor *arg1 = (_DoubleArrayAccessor *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  double result;
+  
+  arg1 = (_DoubleArrayAccessor *)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  result = (double)(arg1)->Get(arg2,arg3);
+  jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_DoubleArrayAccessor_FromPointer(void * jarg1) {
+  void * jresult ;
+  double **arg1 = (double **) 0 ;
+  _DoubleArrayAccessor *result = 0 ;
+  
+  arg1 = (double **)jarg1; 
+  result = (_DoubleArrayAccessor *)_DoubleArrayAccessor::FromPointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_new_DoubleArrayAccessor() {
+  void * jresult ;
+  _DoubleArrayAccessor *result = 0 ;
+  
+  result = (_DoubleArrayAccessor *)new _DoubleArrayAccessor();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_delete_DoubleArrayAccessor(void * jarg1) {
+  _DoubleArrayAccessor *arg1 = (_DoubleArrayAccessor *) 0 ;
+  
+  arg1 = (_DoubleArrayAccessor *)jarg1; 
+  delete arg1;
 }
 
 

@@ -31,5 +31,8 @@ namespace std {
 %typemap(csin) void (*)(unsigned int, unsigned int, unsigned int, float *, float *) "$csinput"
 %array_class(float, floatArray);
 %array_class(float_ptr, floatArrayArray);
+%array_accessor(float, FloatArrayAccessor,FloatAccessor)
+%arrayarray_accessor(float, FloatAccessor, FloatArrayAccessor);
+
 
 

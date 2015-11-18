@@ -200,7 +200,7 @@ namespace FANNCSharp
                 return InternalData.num_output_train_data();
             }
         }
-        
+
         /* Property: Input
             Grant access to the encapsulated data since many situations
             and applications creates the data from sources other than files
@@ -210,11 +210,14 @@ namespace FANNCSharp
             use the <GetTrainInput> method as this property has to duplicate
             the entirity of the input data in the managed layer.
 
+            If you need repeated fast access to all input data consider using
+            <InputAccessor>
+          
             Returns:
                 A array of arrays of input training data
 
             See also:
-                <Output>, <SetTrainData>
+                <Output>, <InputAccessor>, <SetTrainData>
 
            This function appears in FANN >= 2.0.0.
         */
@@ -244,6 +247,24 @@ namespace FANNCSharp
             }
         }
 
+        /* Property: InputAccessor
+            An alternative to <Input> that returns an accessor object that
+            grants access to to the input data with no copying.
+
+            Returns:
+                A <IntArrayAccessor> that can access the input arrray
+
+            See also:
+                <Input>, <SetTrainData>
+        */
+        public IntArrayAccessor InputAccessor
+        {
+            get
+            {
+                return IntArrayAccessor.FromPointer(InternalData.get_input());
+            }
+        }
+
         /* Property: Output
 
             Grant access to the encapsulated data since many situations
@@ -253,12 +274,15 @@ namespace FANNCSharp
             If you only need a specfic output data then it is preferrable to
             use the <GetTrainOutput> method as this property has to duplicate
             the entirity of the output data in the managed layer.
+          
+              If you need repeated fast access to all output data consider using
+              <OutputAccessor>
 
             Returns:
                 A arrray of arrays of output training data
 
             See also:
-                <Input>, <SetTrainData>
+                <Input>, <OutputAccessor>, <SetTrainData>
 
            This function appears in FANN >= 2.0.0.
         */
@@ -285,6 +309,23 @@ namespace FANNCSharp
                     }
                 }
                 return output;
+            }
+        }
+        /* Property: OutputAccessor
+            An alternative to <Output> that returns an accessor object that
+            grants access to to the input data with no copying.
+
+            Returns:
+                A <IntArrayAccessor> that can access the output arrray
+
+            See also:
+                <Output>, <SetTrainData>
+        */
+        public IntArrayAccessor OutputAccessor
+        {
+            get
+            {
+                return IntArrayAccessor.FromPointer(InternalData.get_output());
             }
         }
         /* Method: GetTrainInput

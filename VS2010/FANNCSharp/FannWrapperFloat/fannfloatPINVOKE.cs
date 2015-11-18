@@ -983,6 +983,33 @@ class fannfloatPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatArrayArray_frompointer")]
   public static extern global::System.IntPtr floatArrayArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatAccessor_Get")]
+  public static extern float FloatAccessor_Get(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatAccessor_FromPointer")]
+  public static extern global::System.IntPtr FloatAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_FloatAccessor")]
+  public static extern global::System.IntPtr new_FloatAccessor();
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_FloatAccessor")]
+  public static extern void delete_FloatAccessor(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatArrayAccessor_Get__SWIG_0")]
+  public static extern global::System.IntPtr FloatArrayAccessor_Get__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatArrayAccessor_Get__SWIG_1")]
+  public static extern float FloatArrayAccessor_Get__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatArrayAccessor_FromPointer")]
+  public static extern global::System.IntPtr FloatArrayAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_FloatArrayAccessor")]
+  public static extern global::System.IntPtr new_FloatArrayAccessor();
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_FloatArrayAccessor")]
+  public static extern void delete_FloatArrayAccessor(global::System.Runtime.InteropServices.HandleRef jarg1);
 }
 
 }
