@@ -28,9 +28,9 @@ using System.Runtime.InteropServices;
  *  Overview:
  *
  *  The Fann Wrapper for C# provides Six classes: <NeuralNetFloat>,
- *  <NeuralNetFloat>, <NeuralNetFixed>, <TrainingDataFloat>,
- *  <TrainingDataDouble>, <TrainingDataFixed>. To use the wrapper add
- *  FANNCSharp.dll as a reference to your project.
+ *  <NeuralNetFloat>, <NeuralNetFixed>, <FANNCSharp::TrainingDataFloat>,
+ *  <FANNCSharp::TrainingDataDouble>, <FANNCSharp::TrainingDataFixed>.
+ *  To use the wrapper add FANNCSharp.dll as a reference to your project.
  *
  *  To get started see XorSample project.
  *  The license is LGPL. Copyright (C) 2015 created by <joelself@gmail.com>.

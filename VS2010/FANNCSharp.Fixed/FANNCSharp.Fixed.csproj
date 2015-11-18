@@ -81,6 +81,36 @@
     <Compile Include="..\FANNCSharp\FannFile.cs">
       <Link>FannFile.cs</Link>
     </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFixed\Connection.cs">
+      <Link>FannWrapperFixed\Connection.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFixed\ConnectionArray.cs">
+      <Link>FannWrapperFixed\ConnectionArray.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFixed\fannfixed.cs">
+      <Link>FannWrapperFixed\fannfixed.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFixed\fannfixedPINVOKE.cs">
+      <Link>FannWrapperFixed\fannfixedPINVOKE.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFixed\intArray.cs">
+      <Link>FannWrapperFixed\intArray.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFixed\intArrayArray.cs">
+      <Link>FannWrapperFixed\intArrayArray.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFixed\neural_net.cs">
+      <Link>FannWrapperFixed\neural_net.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFixed\SWIGTYPE_p_int.cs">
+      <Link>FannWrapperFixed\SWIGTYPE_p_int.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFixed\SWIGTYPE_p_p_int.cs">
+      <Link>FannWrapperFixed\SWIGTYPE_p_p_int.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFixed\training_data.cs">
+      <Link>FannWrapperFixed\training_data.cs</Link>
+    </Compile>
     <Compile Include="..\FANNCSharp\FannWrapper\ActivationFunction.cs">
       <Link>FannWrapper\ActivationFunction.cs</Link>
     </Compile>

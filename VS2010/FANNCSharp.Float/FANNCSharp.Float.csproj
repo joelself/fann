@@ -81,6 +81,42 @@
     <Compile Include="..\FANNCSharp\FannFile.cs">
       <Link>FannFile.cs</Link>
     </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFloat\Connection.cs">
+      <Link>FannWrapperFloat\Connection.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFloat\ConnectionArray.cs">
+      <Link>FannWrapperFloat\ConnectionArray.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFloat\fannfloat.cs">
+      <Link>FannWrapperFloat\fannfloat.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFloat\fannfloatPINVOKE.cs">
+      <Link>FannWrapperFloat\fannfloatPINVOKE.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFloat\floatArray.cs">
+      <Link>FannWrapperFloat\floatArray.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFloat\floatArrayArray.cs">
+      <Link>FannWrapperFloat\floatArrayArray.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFloat\FloatVector.cs">
+      <Link>FannWrapperFloat\FloatVector.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFloat\FloatVectorVector.cs">
+      <Link>FannWrapperFloat\FloatVectorVector.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFloat\neural_net.cs">
+      <Link>FannWrapperFloat\neural_net.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFloat\SWIGTYPE_p_float.cs">
+      <Link>FannWrapperFloat\SWIGTYPE_p_float.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFloat\SWIGTYPE_p_p_float.cs">
+      <Link>FannWrapperFloat\SWIGTYPE_p_p_float.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapperFloat\training_data.cs">
+      <Link>FannWrapperFloat\training_data.cs</Link>
+    </Compile>
     <Compile Include="..\FANNCSharp\FannWrapper\ActivationFunction.cs">
       <Link>FannWrapper\ActivationFunction.cs</Link>
     </Compile>
