@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{18D1FB22-131D-4BA5-AE29-42265C01B2CB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FANNCSharp.Fixed</RootNamespace>
+    <AssemblyName>FANNCSharp.Fixed</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\x64\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\bin\x64\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\bin\x86\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\..\bin\x86\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\FANNCSharp\ConnectionFixed.cs">
+      <Link>ConnectionFixed.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannFile.cs">
+      <Link>FannFile.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapper\ActivationFunction.cs">
+      <Link>FannWrapper\ActivationFunction.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapper\activationFunctionArray.cs">
+      <Link>FannWrapper\activationFunctionArray.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapper\ErrorFunction.cs">
+      <Link>FannWrapper\ErrorFunction.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapper\NetworkType.cs">
+      <Link>FannWrapper\NetworkType.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapper\StopFunction.cs">
+      <Link>FannWrapper\StopFunction.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapper\SWIGTYPE_p_fann.cs">
+      <Link>FannWrapper\SWIGTYPE_p_fann.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapper\SWIGTYPE_p_fann_train_data.cs">
+      <Link>FannWrapper\SWIGTYPE_p_fann_train_data.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapper\SWIGTYPE_p_FANN__activation_function_enum.cs">
+      <Link>FannWrapper\SWIGTYPE_p_FANN__activation_function_enum.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapper\SWIGTYPE_p_FILE.cs">
+      <Link>FannWrapper\SWIGTYPE_p_FILE.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapper\SWIGTYPE_p_unsigned_int.cs">
+      <Link>FannWrapper\SWIGTYPE_p_unsigned_int.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapper\TrainingAlgorithm.cs">
+      <Link>FannWrapper\TrainingAlgorithm.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapper\uintArray.cs">
+      <Link>FannWrapper\uintArray.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\IntAccessor.cs">
+      <Link>IntAccessor.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\IntArrayAccessor.cs">
+      <Link>IntArrayAccessor.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\NeuralNetFixed.cs">
+      <Link>NeuralNetFixed.cs</Link>
+    </Compile>
+    <Compile Include="..\FANNCSharp\TrainingDataFixed.cs">
+      <Link>TrainingDataFixed.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
