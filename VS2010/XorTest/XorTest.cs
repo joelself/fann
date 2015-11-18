@@ -38,14 +38,14 @@ namespace Example
                     for (int i = 0; i < data.TrainDataLength; i++)
                     {
                         net.ResetMSE();
-                        DataType[] calc_out = net.Test(data.Input[i], data.Input[i]);
+                        DataType[] calc_out = net.Test(data.GetTrainInput((uint)i), data.GetTrainOutput((uint)i));
 
                         Console.WriteLine("XOR test ({0}, {1}) -> {2}, should be {3}, difference={4}",
-                            data.Input[i][0],
-                            data.Input[i][1],
+                            data.GetTrainInput((uint)i)[0],
+                            data.GetTrainInput((uint)i)[1],
                             calc_out[0],
-                            data.Output[i][0],
-                            calc_out[0] - data.Output[i][0]);
+                            data.GetTrainOutput((uint)i)[0],
+                            calc_out[0] - data.GetTrainOutput((uint)i)[0]);
                     }
                 }
             }

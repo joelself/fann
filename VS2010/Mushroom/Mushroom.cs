@@ -25,14 +25,11 @@ namespace Example
 	        const uint max_epochs = 300;
 	        const uint epochs_between_reports = 10;
 
-            
-            using (TrainingData data = new TrainingData())
+
+            Console.WriteLine("Creating network.");
+            using (TrainingData data = new TrainingData("..\\..\\datasets\\mushroom.train"))
             using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, data.InputCount, num_neurons_hidden, data.OutputCount))
             {
-                Console.WriteLine("Creating network.");
-
-                data.ReadTrainFromFile("..\\..\\datasets\\mushroom.train");
-
                 Console.WriteLine("Training network.");
 
                 net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
@@ -48,7 +45,9 @@ namespace Example
                     net.ResetMSE();
                     for (int i = 0; i < testData.TrainDataLength; i++)
                     {
-                        net.Test(testData.Input[i], testData.Output[i]);
+                        // The difference between calling GetTrain[Input|Output] and calling
+                        // the Input and Output properties is huge in terms of speed
+                        net.Test(testData.GetTrainInput((uint)i), testData.GetTrainOutput((uint)i));
                     }
 
                     Console.WriteLine("MSE error on test data {0}", net.MSE);

@@ -105,8 +105,8 @@ internal class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public SWIGTYPE_p_double run(SWIGTYPE_p_double input) {
-    global::System.IntPtr cPtr = fanndoublePINVOKE.neural_net_run(swigCPtr, SWIGTYPE_p_double.getCPtr(input));
+  public SWIGTYPE_p_double run(double[] input) {
+    global::System.IntPtr cPtr = fanndoublePINVOKE.neural_net_run(swigCPtr, input);
     SWIGTYPE_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_double(cPtr, false);
     return ret;
   }
@@ -142,8 +142,8 @@ internal class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public void train(SWIGTYPE_p_double input, SWIGTYPE_p_double desired_output) {
-    fanndoublePINVOKE.neural_net_train(swigCPtr, SWIGTYPE_p_double.getCPtr(input), SWIGTYPE_p_double.getCPtr(desired_output));
+  public void train(double[] input, double[] desired_output) {
+    fanndoublePINVOKE.neural_net_train(swigCPtr, input, desired_output);
   }
 
   public float train_epoch(training_data data) {
@@ -162,8 +162,8 @@ internal class neural_net : global::System.IDisposable {
     if (fanndoublePINVOKE.SWIGPendingException.Pending) throw fanndoublePINVOKE.SWIGPendingException.Retrieve();
   }
 
-  public SWIGTYPE_p_double test(SWIGTYPE_p_double input, SWIGTYPE_p_double desired_output) {
-    global::System.IntPtr cPtr = fanndoublePINVOKE.neural_net_test(swigCPtr, SWIGTYPE_p_double.getCPtr(input), SWIGTYPE_p_double.getCPtr(desired_output));
+  public SWIGTYPE_p_double test(double[] input, double[] desired_output) {
+    global::System.IntPtr cPtr = fanndoublePINVOKE.neural_net_test(swigCPtr, input, desired_output);
     SWIGTYPE_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_double(cPtr, false);
     return ret;
   }
@@ -559,8 +559,8 @@ internal class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public void set_cascade_activation_steepnesses(SWIGTYPE_p_double cascade_activation_steepnesses, uint cascade_activation_steepnesses_count) {
-    fanndoublePINVOKE.neural_net_set_cascade_activation_steepnesses(swigCPtr, SWIGTYPE_p_double.getCPtr(cascade_activation_steepnesses), cascade_activation_steepnesses_count);
+  public void set_cascade_activation_steepnesses(double[] cascade_activation_steepnesses, uint cascade_activation_steepnesses_count) {
+    fanndoublePINVOKE.neural_net_set_cascade_activation_steepnesses(swigCPtr, cascade_activation_steepnesses, cascade_activation_steepnesses_count);
   }
 
   public uint get_cascade_num_candidate_groups() {
@@ -605,20 +605,20 @@ internal class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public void scale_input(SWIGTYPE_p_double input_vector) {
-    fanndoublePINVOKE.neural_net_scale_input(swigCPtr, SWIGTYPE_p_double.getCPtr(input_vector));
+  public void scale_input(double[] input_vector) {
+    fanndoublePINVOKE.neural_net_scale_input(swigCPtr, input_vector);
   }
 
-  public void scale_output(SWIGTYPE_p_double output_vector) {
-    fanndoublePINVOKE.neural_net_scale_output(swigCPtr, SWIGTYPE_p_double.getCPtr(output_vector));
+  public void scale_output(double[] output_vector) {
+    fanndoublePINVOKE.neural_net_scale_output(swigCPtr, output_vector);
   }
 
-  public void descale_input(SWIGTYPE_p_double input_vector) {
-    fanndoublePINVOKE.neural_net_descale_input(swigCPtr, SWIGTYPE_p_double.getCPtr(input_vector));
+  public void descale_input(double[] input_vector) {
+    fanndoublePINVOKE.neural_net_descale_input(swigCPtr, input_vector);
   }
 
-  public void descale_output(SWIGTYPE_p_double output_vector) {
-    fanndoublePINVOKE.neural_net_descale_output(swigCPtr, SWIGTYPE_p_double.getCPtr(output_vector));
+  public void descale_output(double[] output_vector) {
+    fanndoublePINVOKE.neural_net_descale_output(swigCPtr, output_vector);
   }
 
   public void set_error_log(SWIGTYPE_p_FILE log_file) {

@@ -208,10 +208,12 @@ $(SolutionDir)CleanUpForSwig\bin\CleanUpForSwig.exe $(SolutionDir)fannfloat\Swig
     <ClInclude Include="..\..\src\include\fann_cascade.h" />
     <ClInclude Include="..\..\src\include\fann_cpp.h" />
     <ClInclude Include="..\..\src\include\fann_data.h" />
+    <ClInclude Include="..\..\src\include\fann_data_cpp.h" />
     <ClInclude Include="..\..\src\include\fann_error.h" />
     <ClInclude Include="..\..\src\include\fann_internal.h" />
     <ClInclude Include="..\..\src\include\fann_io.h" />
     <ClInclude Include="..\..\src\include\fann_train.h" />
+    <ClInclude Include="..\..\src\include\fann_training_data_cpp.h" />
     <ClInclude Include="..\..\src\include\parallel_fann.h" />
     <ClInclude Include="..\..\src\include\parallel_fann.hpp" />
   </ItemGroup>

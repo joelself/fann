@@ -1,4 +1,8 @@
 using FannWrapperFixed;
+using System;
+/*
+ * Title: FANN C# Connection int
+ */
 namespace FANNCSharp
 {
     /* Class: ConnectionFixed
@@ -10,18 +14,42 @@ namespace FANNCSharp
         Weight - The numerical value of the weight
 
         See Also:
-            <NeuralNetFixed.ConnectionArray>, <NeuralNetFixed.WeightArray>
+            <NeuralNetFixed::Connections>, <NeuralNetFixed::Weights>
 
        This structure appears in FANN >= 2.1.0
     */
-    public class ConnectionFixed
+    public class ConnectionFixed : IDisposable
     {
         internal ConnectionFixed(Connection other)
         {
             connection = other;
         }
-
-        /* Unique number used to identify source neuron */
+        /* Constructor: ConnectionFixed
+            Creates a connection with the specified parameters
+            Parameters:
+                fromNeuron - Unique number used to identify source neuron
+                toNeuron - Unique number used to identify destination neuron
+                weight - The numerical value of the weight
+            Example:
+              >ConnectionFixed connection(2, 7, 1);
+         */
+        public ConnectionFixed(uint fromNeuron, uint toNeuron, int weight)
+        {
+            FromNeuron = fromNeuron;
+            ToNeuron = toNeuron;
+            Weight = weight;
+        }
+        /* Method: Dispose
+        
+            Destructs the connection. Must be called manually.
+        */
+        public void Dispose()
+        {
+            connection.Dispose();
+        }
+        /* Property: FromNeuron
+         Unique number used to identify source neuron
+       */
         public uint FromNeuron
         {
             get
@@ -34,7 +62,9 @@ namespace FANNCSharp
             }
         }
 
-        /* Unique number used to identify destination neuron */
+        /* Property: ToNeuron
+           Unique number used to identify destination neuron
+         */
         public uint ToNeuron
         {
             get
@@ -47,7 +77,9 @@ namespace FANNCSharp
             }
         }
 
-        /* The numerical value of the weight */
+        /* Property: Weight
+           The numerical value of the weight
+         */
         public int Weight
         {
             get

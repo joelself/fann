@@ -31,9 +31,8 @@ namespace Example
                 net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
                 net.ActivationFunctionOutput = ActivationFunction.LINEAR;
                 net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_RPROP;
-                using(TrainingData data = new TrainingData())
+                using (TrainingData data = new TrainingData("..\\..\\datasets\\scaling.data"))
                 {
-                    data.ReadTrainFromFile("..\\..\\datasets\\scaling.data");
                     net.SetScalingParams(data, -1, 1, -1, 1);
                     net.ScaleTrain(data);
 

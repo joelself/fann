@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{77B12FAD-884C-4B0B-BF46-56BEB8D4DCAF}</ProjectGuid>
+    <ProjectGuid>{69D51BCF-D181-48C7-BE53-129328644DAE}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CascadeTrain</RootNamespace>
-    <AssemblyName>CascadeTrain</AssemblyName>
+    <RootNamespace>MomentumsCallback</RootNamespace>
+    <AssemblyName>MomentumsCallback</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -73,9 +73,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FANNCSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+    <Reference Include="FANNCSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\x86\FANNCSharp.dll</HintPath>
+      <HintPath>..\..\bin\x64\FANNCSharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -87,7 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CascadeTrain.cs" />
+    <Compile Include="MomentumsCallback.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

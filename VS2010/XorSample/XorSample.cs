@@ -39,7 +39,7 @@ namespace XorTrain
 
             Console.WriteLine("\nCreating network.");
 
-            using (NeuralNet net = new NeuralNet(num_layers, num_input, num_hidden, num_output))
+            using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, num_input, num_hidden, num_output))
             {
                 net.LearningRate = learning_rate;
 

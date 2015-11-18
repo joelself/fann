@@ -107,7 +107,7 @@
     <Compile Include="FannWrapperFixed\SWIGTYPE_p_p_int.cs" />
     <Compile Include="FannWrapperFixed\training_data.cs" />
     <Compile Include="FannWrapperFloat\Connection.cs" />
-    <Compile Include="FannWrapperFloat\ConnectionArray.cs" />
+    <Compile Include="FannWrapperFloat\connectionArray.cs" />
     <Compile Include="FannWrapperFloat\fannfloat.cs" />
     <Compile Include="FannWrapperFloat\fannfloatPINVOKE.cs" />
     <Compile Include="FannWrapperFloat\floatArray.cs" />
@@ -119,7 +119,7 @@
     <Compile Include="FannWrapperFloat\SWIGTYPE_p_p_float.cs" />
     <Compile Include="FannWrapperFloat\training_data.cs" />
     <Compile Include="FannWrapper\ActivationFunction.cs" />
-    <Compile Include="FannWrapper\ActivationFunctionArray.cs" />
+    <Compile Include="FannWrapper\activationFunctionArray.cs" />
     <Compile Include="FannWrapper\ErrorFunction.cs" />
     <Compile Include="FannWrapper\NetworkType.cs" />
     <Compile Include="FannWrapper\StopFunction.cs" />

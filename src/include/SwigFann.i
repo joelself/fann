@@ -73,10 +73,6 @@
 %include "arrays_csharp.i"
 %include "cpointer.i"
 %include "std_string.i"
-%include "fann_data.h"
-%include "fann_training_data_cpp.h"
-%include "fann_data_cpp.h"
-%include "fann_cpp.h"
 FILE *fopen(const char *filename, const char *mode);
 int fclose ( FILE * stream );
 %inline %{

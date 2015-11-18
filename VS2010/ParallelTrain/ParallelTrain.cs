@@ -24,11 +24,9 @@ namespace Example
 
             if (argv.Length == 2)
                 num_threads = UInt32.Parse(argv[1]);
-            using (data = new TrainingData())
+            using (data = new TrainingData("..\\..\\datasets\\mushroom.train"))
             using (net = new NeuralNet(NetworkType.LAYER, 3, data.InputCount, 32, data.OutputCount))
             {
-                data.ReadTrainFromFile("..\\..\\datasets\\mushroom.train");
-
                 net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
                 net.ActivationFunctionOutput = ActivationFunction.SIGMOID;
 

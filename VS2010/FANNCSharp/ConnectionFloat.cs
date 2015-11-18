@@ -1,4 +1,8 @@
 using FannWrapperFloat;
+using System;
+/*
+ * Title: FANN C# Connection float
+ */
 namespace FANNCSharp
 {
     /* Class: ConnectionFloat
@@ -10,18 +14,42 @@ namespace FANNCSharp
         Weight - The numerical value of the weight
 
         See Also:
-            <NeuralNetFloat.ConnectionArray>, <NeuralNetFloat.WeightArray>
+            <NeuralNetFloat::Connections>, <NeuralNetFloat::Weights>
 
        This structure appears in FANN >= 2.1.0
     */
-    public class ConnectionFloat
+    public class ConnectionFloat : IDisposable
     {
         internal ConnectionFloat(Connection other)
         {
             connection = other;
         }
-
-        /* Unique number used to identify source neuron */
+        /* Constructor: ConnectionFloat
+            Creates a connection with the specified parameters
+            Parameters:
+                fromNeuron - Unique number used to identify source neuron
+                toNeuron - Unique number used to identify destination neuron
+                weight - The numerical value of the weight
+            Example:
+              >ConnectionFloat connection(2, 7, 0.5);
+         */
+        public ConnectionFloat(uint fromNeuron, uint toNeuron, float weight)
+        {
+            FromNeuron = fromNeuron;
+            ToNeuron = toNeuron;
+            Weight = weight;
+        }
+        /* Method: Dispose
+        
+            Destructs the connection. Must be called manually.
+        */
+        public void Dispose()
+        {
+            connection.Dispose();
+        }
+        /* Property: FromNeuron
+         Unique number used to identify source neuron
+       */
         public uint FromNeuron
         {
             get
@@ -34,7 +62,9 @@ namespace FANNCSharp
             }
         }
 
-        /* Unique number used to identify destination neuron */
+        /* Property: ToNeuron
+           Unique number used to identify destination neuron
+         */
         public uint ToNeuron
         {
             get
@@ -47,7 +77,9 @@ namespace FANNCSharp
             }
         }
 
-        /* The numerical value of the weight */
+        /* Property: Weight
+           The numerical value of the weight
+         */
         public float Weight
         {
             get

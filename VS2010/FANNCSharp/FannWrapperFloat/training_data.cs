@@ -122,8 +122,8 @@ internal class training_data : global::System.IDisposable {
     fannfloatPINVOKE.training_data_set_train_data__SWIG_0(swigCPtr, num_data, num_input, SWIGTYPE_p_p_float.getCPtr(input), num_output, SWIGTYPE_p_p_float.getCPtr(output));
   }
 
-  public void set_train_data(uint num_data, uint num_input, SWIGTYPE_p_float input, uint num_output, SWIGTYPE_p_float output) {
-    fannfloatPINVOKE.training_data_set_train_data__SWIG_1(swigCPtr, num_data, num_input, SWIGTYPE_p_float.getCPtr(input), num_output, SWIGTYPE_p_float.getCPtr(output));
+  public void set_train_data(uint num_data, uint num_input, float[] input, uint num_output, float[] output) {
+    fannfloatPINVOKE.training_data_set_train_data__SWIG_1(swigCPtr, num_data, num_input, input, num_output, output);
   }
 
   public void create_train_from_callback(uint num_data, uint num_input, uint num_output, global::System.IntPtr user_function) {

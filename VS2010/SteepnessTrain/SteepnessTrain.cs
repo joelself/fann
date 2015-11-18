@@ -71,42 +71,38 @@ namespace Example
             const uint epochs_between_reports = 1000;
             DataType[] calc_out;
 
-            using (TrainingData data = new TrainingData())
+            using (TrainingData data = new TrainingData("..\\..\\examples\\xor.data"))
+            using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
             {
-                using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
+                NeuralNet.TrainingCallback callback = (callbackNet, callbackData, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, callbackUserData) =>
                 {
-                    NeuralNet.TrainingCallback callback = (callbackNet, callbackData, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, callbackUserData) =>
-                    {
-                        Console.WriteLine("Layer count: {0}, Data length: {1}, Max epochs: {2}, Epochs between reports: {3}, Desired error: {4}, Epochs so far: {5}, Greeting: \"{6}\"",
-                            callbackNet.LayerCount, callbackData.TrainDataLength, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, (string)callbackUserData);
-                        return 1;
-                    };
-                    net.SetCallback(callback, "Hello!");
+                    Console.WriteLine("Layer count: {0}, Data length: {1}, Max epochs: {2}, Epochs between reports: {3}, Desired error: {4}, Epochs so far: {5}, Greeting: \"{6}\"",
+                        callbackNet.LayerCount, callbackData.TrainDataLength, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, (string)callbackUserData);
+                    return 1;
+                };
+                net.SetCallback(callback, "Hello!");
 
-                    data.ReadTrainFromFile("..\\..\\examples\\xor.data");
+                net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
+                net.ActivationFunctionOutput = ActivationFunction.SIGMOID_SYMMETRIC;
 
-                    net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
-                    net.ActivationFunctionOutput = ActivationFunction.SIGMOID_SYMMETRIC;
+                net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_QUICKPROP;
 
-                    net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_QUICKPROP;
+                TrainOnSteepnessFile(net, "..\\..\\examples\\xor.data", max_epochs, epochs_between_reports, desired_error, 1.0F, 0.1F, 20.0F);
 
-                    TrainOnSteepnessFile(net, "..\\..\\examples\\xor.data", max_epochs, epochs_between_reports, desired_error, 1.0F, 0.1F, 20.0F);
+                net.ActivationFunctionHidden = ActivationFunction.THRESHOLD_SYMMETRIC;
+                net.ActivationFunctionOutput = ActivationFunction.THRESHOLD_SYMMETRIC;
 
-                    net.ActivationFunctionHidden = ActivationFunction.THRESHOLD_SYMMETRIC;
-                    net.ActivationFunctionOutput = ActivationFunction.THRESHOLD_SYMMETRIC;
-
-                    for(int i = 0; i < data.TrainDataLength; i++)
-                    {
-                        calc_out = net.Run(data.Input[i]);
-                        Console.WriteLine("XOR test ({0}, {1}) -> {2}, should be {3}, difference={4}",
-                                           data.Input[i][0], data.Input[i][1], calc_out[0], data.Output[i][0],
-                                           FannAbs(calc_out[0] - data.Output[i][0]));
-                    }
-
-                    net.Save("..\\..\\examples\\xor_float.net");
-
-                    Console.ReadKey();
+                for(int i = 0; i < data.TrainDataLength; i++)
+                {
+                    calc_out = net.Run(data.Input[i]);
+                    Console.WriteLine("XOR test ({0}, {1}) -> {2}, should be {3}, difference={4}",
+                                        data.Input[i][0], data.Input[i][1], calc_out[0], data.Output[i][0],
+                                        FannAbs(calc_out[0] - data.Output[i][0]));
                 }
+
+                net.Save("..\\..\\examples\\xor_float.net");
+
+                Console.ReadKey();
             }
         }
 

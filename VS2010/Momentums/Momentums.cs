@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FANNCSharp;
 #if FANN_FIXED
 using NeuralNet = FANNCSharp.NeuralNetFixed;
@@ -12,6 +13,7 @@ using DataType = System.Double;
 using NeuralNet = FANNCSharp.NeuralNetFloat;
 using TrainingData = FANNCSharp.TrainingDataFloat;
 using DataType = System.Single;
+using System.IO;
 #endif
 namespace Example
 {
@@ -27,17 +29,14 @@ namespace Example
             using (TrainingData trainData = new TrainingData())
             using (TrainingData testData = new TrainingData())
             {
-                trainData.ReadTrainFromFile("..\\..\\datasets\\robot.train");
-                testData.ReadTrainFromFile("..\\..\\datasets\\robot.test");
+                trainData.SetTrainData(getInput("..\\..\\datasets\\robot.train"), getOutput("..\\..\\datasets\\robot.train"));
+                trainData.SetTrainData(getInput("..\\..\\datasets\\robot.test"), getOutput("..\\..\\datasets\\robot.test"));
 
                 for (float momentum = 0.0F; momentum < 0.7F; momentum += 0.1F)
                 {
                     Console.WriteLine("============= momentum = {0} =============\n", momentum);
                     using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, trainData.InputCount, num_neurons_hidden, trainData.OutputCount))
-                    {
-                        // Just testing the callback
-                        //net.SetCallback(TrainingCallback, "Hello!");
-                        
+                    {                        
                         net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_INCREMENTAL;
 
                         net.LearningMomentum = momentum;
@@ -53,9 +52,55 @@ namespace Example
             Console.ReadKey();
         }
 
-        static int TrainingCallback(NeuralNetFloat net, TrainingDataFloat data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, object userData) {
-            Console.WriteLine("Callback: {0}, {1}, {2}, {2}, {3}, {4}, {5}, {6}", net.InputCount, data.Input[0][0], maxEpochs, epochsBetweenReports, desiredError, epochs, userData);
-            return 1;
+        private static Dictionary<string, DataType[][][]> dataInputs = new Dictionary<string, DataType[][][]>();
+        private static void getAllInput(string file)
+        {
+            if (!dataInputs.ContainsKey(file))
+            {
+                string line;
+                string[] tokens;
+                StreamReader trainFile = new StreamReader(file);
+                tokens = trainFile.ReadLine().Split(new char[] { ' ' });
+                int lengthData = Int32.Parse(tokens[0]);
+                int inputCount = Int32.Parse(tokens[1]);
+                int outputCount = Int32.Parse(tokens[2]);
+                bool inputLine = true;
+                DataType[][][] allData = new DataType[2][][];
+                allData[0] = new DataType[lengthData/2][];
+                allData[1] = new DataType[lengthData/2][];
+                int count = 0;
+                while ((line = trainFile.ReadLine()) != null && count < lengthData)
+                {
+                    DataType[] input;
+                    if (inputLine)
+                    {
+                        input = new DataType[inputCount];
+                    }
+                    else
+                    {
+                        input = new DataType[outputCount];
+                    }
+                    tokens = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    for (int i = 0; i < tokens.Length; i++)
+                    {
+                        input[i] = DataType.Parse(tokens[i]);
+                    }
+                    allData[inputLine ? 0 : 1][count/2] = input;
+                    inputLine = !inputLine;
+                    count++;
+                }
+                dataInputs.Add(file, allData);
+            }
+        }
+        private static DataType[][] getInput(string file)
+        {
+            getAllInput(file);
+            return dataInputs[file][0];
+        }
+        private static DataType[][] getOutput(string file)
+        {
+            getAllInput(file);
+            return dataInputs[file][1];
         }
     }
 }

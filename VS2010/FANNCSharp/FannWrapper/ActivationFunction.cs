@@ -18,8 +18,8 @@ namespace FANNCSharp
         <NeuralNetFloat.SetActivationFunction>.
 
 	    The steepness of an activation function is defined in the same way by
-	    <NeuralNetFloat.SetActivationSteepnessHidden>, <NeuralNetFloat.SetActivationSteepnessOutput>
-        and <NeuralNetFloat.SetActivationSteepness>.
+	    <NeuralNetFloat::SetActivationSteepnessHidden>, <NeuralNetFloat::SetActivationSteepnessOutput>
+        and <NeuralNetFloat::SetActivationSteepness>.
 
        The functions are described with functions where:
        * x is the input to the activation function,
@@ -99,8 +99,8 @@ namespace FANNCSharp
          * d = s*-sin(x*s)
 
 	    See also:
-		    <NeuralNetFloat.SetActivationFunctionHidden>,
-		    <NeuralNetFloat.SetActivationFunctionOutput>
+		    <NeuralNetFloat::SetActivationFunctionHidden>,
+		    <NeuralNetFloat::SetActivationFunctionOutput>
     */
     public enum ActivationFunction
     {

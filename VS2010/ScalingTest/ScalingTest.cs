@@ -27,9 +27,8 @@ namespace Example
                 net.PrintConnections();
                 net.PrintParameters();
                 Console.WriteLine("Testing network.");
-                using(TrainingData data = new TrainingData())
+                using (TrainingData data = new TrainingData("..\\..\\datasets\\scaling.data"))
                 {
-                    data.ReadTrainFromFile("..\\..\\datasets\\scaling.data");
                     for(int i = 0; i < data.TrainDataLength; i++)
                     {
                         net.ResetMSE();

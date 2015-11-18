@@ -1,6 +1,7 @@
 ﻿using System;
 using FannWrapperFloat;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 namespace FANNCSharp
 {
@@ -32,7 +33,7 @@ namespace FANNCSharp
         }
 
 
-        /* Constructor: TrainingData
+        /* Constructor: TrainingDataFloat
 
             Copy constructor constructs a copy of the training data.
             Corresponds to the C API <fann_duplicate_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_duplicate_train_data> function.
@@ -40,6 +41,20 @@ namespace FANNCSharp
         public TrainingDataFloat(TrainingDataFloat data)
         {
             InternalData = new FannWrapperFloat.training_data(data.InternalData);
+        }
+        /* Constructor: TrainingDataFloat
+           Reads a file that stores training data.
+
+            See also:
+                <ReadTrainFromFile>, <SetTrainData> or <CreateTrainFromCallback>
+        */
+        public TrainingDataFloat(string filename)
+        {
+            InternalData = new FannWrapperFloat.training_data();
+            if (!ReadTrainFromFile(filename))
+            {
+                throw new ArgumentException("Cannot read data from \"{0}\"", filename);
+            }
         }
         /* Method: Dispose
 
@@ -66,7 +81,7 @@ namespace FANNCSharp
            >outputdata seperated by space
 
            See also:
-   	        <NeuralNetFloat.TrainOnData>, <SaveTrain>, <fann_read_train_from_file at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_read_train_from_file>
+   	        <NeuralNetFloat::TrainOnData>, <SaveTrain>, <fann_read_train_from_file at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_read_train_from_file>
 
             This function appears in FANN >= 1.0.0
         */
@@ -185,13 +200,18 @@ namespace FANNCSharp
             }
         }
 
-        private float[][] cachedInput = null;
-
         /* Property: Input
             Grant access to the encapsulated data since many situations
             and applications creates the data from sources other than files
             or uses the training data for testing and related functions
-
+         
+            If you only need a specfic output data then it is preferrable to
+            use the <GetTrainInput> method as this property has to duplicate
+            the entirity of the input data in the managed layer.
+          
+            If you need repeated access to all input data consider caching
+            the data returned by this property.
+         
             Returns:
                 A array of arrays of input training data
 
@@ -204,34 +224,41 @@ namespace FANNCSharp
         {
             get
             {
-                if (cachedInput == null)
+                int length = (int)InternalData.length_train_data();
+                float[][] input = new float[length][];
+                using (floatArrayArray allInput = floatArrayArray.frompointer(InternalData.get_input()))
                 {
-                    floatArrayArray input = floatArrayArray.frompointer(InternalData.get_input());
-                    int length = (int)InternalData.length_train_data();
                     int count = (int)InternalData.num_input_train_data();
-                    cachedInput = new float[length][];
+                    input = new float[length][];
                     for (int i = 0; i < length; i++)
                     {
-                        cachedInput[i] = new float[count];
-                        floatArray inputArray = floatArray.frompointer(input.getitem(i));
-                        for (int j = 0; j < count; j++)
+                        input[i] = new float[count];
+                        using (floatArray inputArray = floatArray.frompointer(allInput.getitem(i)))
                         {
-                            cachedInput[i][j] = inputArray.getitem(j);
+                            for (int j = 0; j < count; j++)
+                            {
+                                input[i][j] = inputArray.getitem(j);
+                            }
                         }
                     }
                 }
-                return cachedInput;
+                return input;
             }
         }
-
-        private float[][] cachedOutput = null;
 
         /* Property: Output
 
             Grant access to the encapsulated data since many situations
             and applications creates the data from sources other than files
             or uses the training data for testing and related functions
-
+          
+            If you only need a specfic output data then it is preferrable to
+            use the <GetTrainOutput> method as this property has to duplicate
+            the entirity of the output data in the managed layer.
+          
+            If you need repeated access to all output data consider caching
+            the data returned by this property.
+         
             Returns:
                 A arrray of arrays of output training data
 
@@ -244,23 +271,25 @@ namespace FANNCSharp
         {
             get
             {
-                if (cachedOutput == null)
+                int length = (int)InternalData.length_train_data();
+                float[][] output = new float[length][];
+                using (floatArrayArray allOutput = floatArrayArray.frompointer(InternalData.get_output()))
                 {
-                    floatArrayArray output = floatArrayArray.frompointer(InternalData.get_output());
-                    int length = (int)InternalData.length_train_data();
                     int count = (int)InternalData.num_output_train_data();
-                    cachedOutput = new float[length][];
+                    output = new float[length][];
                     for (int i = 0; i < length; i++)
                     {
-                        cachedOutput[i] = new float[count];
-                        floatArray inputArray = floatArray.frompointer(output.getitem(i));
-                        for (int j = 0; j < count; j++)
+                        output[i] = new float[count];
+                        using (floatArray inputArray = floatArray.frompointer(allOutput.getitem(i)))
                         {
-                            cachedOutput[i][j] = inputArray.getitem(j);
+                            for (int j = 0; j < count; j++)
+                            {
+                                output[i][j] = inputArray.getitem(j);
+                            }
                         }
                     }
                 }
-                return cachedOutput;
+                return output;
             }
         }
         /* Method: GetTrainInput
@@ -276,13 +305,15 @@ namespace FANNCSharp
         */
         public float[] GetTrainInput(uint position)
         {
-            floatArray output = floatArray.frompointer(InternalData.get_train_input(position));
-            float[] result = new float[InputCount];
-            for (int i = 0; i < InputCount; i++)
+            using (floatArray output = floatArray.frompointer(InternalData.get_train_input(position)))
             {
-                result[i] = output.getitem(i);
+                float[] result = new float[InputCount];
+                for (int i = 0; i < InputCount; i++)
+                {
+                    result[i] = output.getitem(i);
+                }
+                return result;
             }
-            return result;
         }
 
         /* Method: GetTrainOutput
@@ -298,13 +329,15 @@ namespace FANNCSharp
         */
         public float[] GetTrainOutput(uint position)
         {
-            floatArray output = floatArray.frompointer(InternalData.get_train_input(position));
-            float[] result = new float[OutputCount];
-            for (int i = 0; i < OutputCount; i++)
+            using (floatArray output = floatArray.frompointer(InternalData.get_train_input(position)))
             {
-                result[i] = output.getitem(i);
+                float[] result = new float[OutputCount];
+                for (int i = 0; i < OutputCount; i++)
+                {
+                    result[i] = output.getitem(i);
+                }
+                return result;
             }
-            return result;
         }
 
         /* Method: SetTrainData
@@ -323,29 +356,23 @@ namespace FANNCSharp
         */
         public void SetTrainData(float[][] input, float[][] output)
         {
-            int numData = input.Length;
-            int inputSize = input[0].Length;
-            int outputSize = output[0].Length;
-            using (floatArrayArray inputArray = new floatArrayArray(numData))
-            using (floatArrayArray outputArray = new floatArrayArray(numData))
+            int dataLength = input.Length;
+            int inputCount = input[0].Length;
+            int outputCount = output[0].Length;
+            float[] arrayInput = new float[dataLength * inputCount];
+            float[] arrayOutput = new float[dataLength * outputCount];
+            for (int i = 0; i < dataLength; i++)
             {
-                for (int i = 0; i < numData; i++)
+                for (int j = 0; j < inputCount; j++)
                 {
-                    floatArray inArray = new floatArray((int)inputSize);
-                    floatArray outArray = new floatArray((int)outputSize);
-                    inputArray.setitem(i, inArray.cast());
-                    outputArray.setitem(i, outArray.cast());
-                    for (int j = 0; j < inputSize; j++)
-                    {
-                        inArray.setitem(j, input[i][j]);
-                    }
-                    for (int j = 0; j < outputSize; j++)
-                    {
-                        outArray.setitem(j, output[i][j]);
-                    }
+                    arrayInput[i * inputCount + j] = input[i][j];
                 }
-                InternalData.set_train_data((uint)numData, (uint)inputSize, inputArray.cast(), (uint)outputSize, outputArray.cast());
+                for (int j = 0; j < outputCount; j++)
+                {
+                    arrayOutput[i * outputCount + j] = output[i][j];
+                }
             }
+            InternalData.set_train_data((uint)dataLength, (uint)inputCount, arrayInput, (uint)outputCount, arrayOutput);
         }
 
         /* Method: SetTrainData
@@ -367,20 +394,7 @@ namespace FANNCSharp
         {
             uint numInput = (uint)input.Length / dataLength;
             uint numOutput = (uint)output.Length / dataLength;
-            using (floatArray inputArray = new floatArray((int)(numInput * dataLength)))
-            using (floatArray outputArray = new floatArray((int)(numOutput * dataLength)))
-            {
-                for (int i = 0; i < numInput * dataLength; i++)
-                {
-                    inputArray.setitem(i, input[i]);
-                }
-                for (int i = 0; i < numOutput * dataLength; i++)
-                {
-                    outputArray.setitem(i, output[i]);
-                }
-
-                InternalData.set_train_data(dataLength, numInput, inputArray.cast(), numOutput, outputArray.cast());
-            }
+            InternalData.set_train_data(dataLength, numInput, input, numOutput, output);
         }
         /*********************************************************************/
 
@@ -404,7 +418,7 @@ namespace FANNCSharp
              output      - The set of desired outputs
 
            See also:
-             <ReadTrainFromFile>, <NeuralNet.TrainOnData>,
+             <ReadTrainFromFile>, <NeuralNetFloat::TrainOnData>,
              <fann_create_train_from_callback at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_create_train_from_callback>
 
             This function appears in FANN >= 2.1.0
@@ -483,7 +497,7 @@ namespace FANNCSharp
            It is not recommended to use this on subsets of data as the complete input range might not be
            available in that subset.
 
-           For more powerful scaling, please consider <NeuralNetFloat.ScaleTrain>
+           For more powerful scaling, please consider <NeuralNetFloat::ScaleTrain>
 
            See also:
    	        <ScaleOutputTrainData>, <ScaleTrainData>, <fann_scale_input_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_scale_input_train_data>
@@ -505,7 +519,7 @@ namespace FANNCSharp
            It is not recommended to use this on subsets of data as the complete input range might not be
            available in that subset.
 
-           For more powerful scaling, please consider <NeuralNetFloat.ScaleTrain>
+           For more powerful scaling, please consider <NeuralNetFloat::ScaleTrain>
 
            See also:
    	        <ScaleInputTrainData>, <ScaleTrainData>, <fann_scale_output_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_scale_output_train_data>
@@ -527,7 +541,7 @@ namespace FANNCSharp
            It is not recommended to use this on subsets of data as the complete input range might not be
            available in that subset.
 
-           For more powerful scaling, please consider <NeuralNetFloat.ScaleTrain>
+           For more powerful scaling, please consider <NeuralNetFloat::ScaleTrain>
 
            See also:
    	        <ScaleOutputTrainData>, <ScaleInputTrainData>, <fann_scale_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_scale_train_data>

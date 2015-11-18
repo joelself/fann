@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XorTest", "XorTest\XorTest.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XorSample", "XorSample\XorSample.csproj", "{5A4A883D-A785-4A1B-952A-490C1968A79A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MomentumsCallback", "MomentumsCallback\MomentumsCallback.csproj", "{69D51BCF-D181-48C7-BE53-129328644DAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -195,6 +197,14 @@ Global
 		{5A4A883D-A785-4A1B-952A-490C1968A79A}.Release|x64.Build.0 = Release|x64
 		{5A4A883D-A785-4A1B-952A-490C1968A79A}.Release|x86.ActiveCfg = Release|x86
 		{5A4A883D-A785-4A1B-952A-490C1968A79A}.Release|x86.Build.0 = Release|x86
+		{69D51BCF-D181-48C7-BE53-129328644DAE}.Debug|x64.ActiveCfg = Debug|x64
+		{69D51BCF-D181-48C7-BE53-129328644DAE}.Debug|x64.Build.0 = Debug|x64
+		{69D51BCF-D181-48C7-BE53-129328644DAE}.Debug|x86.ActiveCfg = Debug|x86
+		{69D51BCF-D181-48C7-BE53-129328644DAE}.Debug|x86.Build.0 = Debug|x86
+		{69D51BCF-D181-48C7-BE53-129328644DAE}.Release|x64.ActiveCfg = Release|x64
+		{69D51BCF-D181-48C7-BE53-129328644DAE}.Release|x64.Build.0 = Release|x64
+		{69D51BCF-D181-48C7-BE53-129328644DAE}.Release|x86.ActiveCfg = Release|x86
+		{69D51BCF-D181-48C7-BE53-129328644DAE}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

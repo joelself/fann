@@ -32,43 +32,39 @@ namespace XorTrain
 
             Console.WriteLine("Creating network.");
             using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
+            using (TrainingData data = new TrainingData("..\\..\\examples\\xor.data"))
             {
-                using (TrainingData data = new TrainingData())
+                net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
+                net.ActivationFunctionOutput = ActivationFunction.SIGMOID_SYMMETRIC;
+
+                net.TrainStopFunction = StopFunction.STOPFUNC_BIT;
+                net.BitFailLimit = 0.01F;
+
+                net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_RPROP;
+
+                net.InitWeights(data);
+
+                Console.WriteLine("Training network.");
+                net.TrainOnData(data, max_epochs, epochs_between_reports, desired_error);
+
+                Console.WriteLine("Testing network");
+
+                for (int i = 0; i < data.TrainDataLength; i++)
                 {
-                    data.ReadTrainFromFile("..\\..\\examples\\xor.data");
-
-                    net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
-                    net.ActivationFunctionOutput = ActivationFunction.SIGMOID_SYMMETRIC;
-
-                    net.TrainStopFunction = StopFunction.STOPFUNC_BIT;
-                    net.BitFailLimit = 0.01F;
-
-                    net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_RPROP;
-
-                    net.InitWeights(data);
-
-                    Console.WriteLine("Training network.");
-                    net.TrainOnData(data, max_epochs, epochs_between_reports, desired_error);
-
-                    Console.WriteLine("Testing network");
-
-                    for (int i = 0; i < data.TrainDataLength; i++)
-                    {
-                        calc_out = net.Run(data.Input[i]);
-                        Console.WriteLine("XOR test ({0},{1}) -> {2}, should be {3}, difference={4}",
-                                            data.Input[i][0], data.Input[i][1], calc_out[0], data.Output[i][0],
-                                            FannAbs(calc_out[0] - data.Output[i][0]));
-                    }
-
-                    Console.WriteLine("Saving network.\n");
-
-                    net.Save("..\\..\\examples\\xor_float.net");
-
-                    decimal_point = net.SaveToFixed("..\\..\\examples\\xor_fixed.net");
-                    data.SaveTrainToFixed("..\\..\\examples\\xor_fixed.data", (uint)decimal_point);
-
-                    Console.ReadKey();
+                    calc_out = net.Run(data.Input[i]);
+                    Console.WriteLine("XOR test ({0},{1}) -> {2}, should be {3}, difference={4}",
+                                        data.Input[i][0], data.Input[i][1], calc_out[0], data.Output[i][0],
+                                        FannAbs(calc_out[0] - data.Output[i][0]));
                 }
+
+                Console.WriteLine("Saving network.\n");
+
+                net.Save("..\\..\\examples\\xor_float.net");
+
+                decimal_point = net.SaveToFixed("..\\..\\examples\\xor_fixed.net");
+                data.SaveTrainToFixed("..\\..\\examples\\xor_fixed.data", (uint)decimal_point);
+
+                Console.ReadKey();
             }
         }
 

@@ -25,12 +25,10 @@ namespace Example
 
             Console.WriteLine("Creating network.");
 
-            using (TrainingData data = new TrainingData())
+            using (TrainingData data = new TrainingData("..\\..\\datasets\\robot.train"))
             using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, data.InputCount, num_neurons_hidden, data.OutputCount))
             using (TrainingData testData = new TrainingData())
             {
-                data.ReadTrainFromFile("..\\..\\datasets\\robot.train");
-
                 Console.WriteLine("Training network.");
 
                 net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_INCREMENTAL;
@@ -45,7 +43,7 @@ namespace Example
                     net.ResetMSE();
                     for (int i = 0; i < testData.TrainDataLength; i++)
                     {
-                        net.Test(testData.Input[i], testData.Output[i]);
+                        net.Test(testData.GetTrainInput((uint)i), testData.GetTrainOutput((uint)i));
                     }
                     Console.WriteLine("MSE error on test data: {0}", net.MSE);
 
