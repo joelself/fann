@@ -1,11 +1,12 @@
 using FannWrapperFloat;
 using System;
+using BaseConnection = FannWrapperFloat.Connection;
 /*
  * Title: FANN C# Connection float
  */
-namespace FANNCSharp
+namespace FANNCSharp.Float
 {
-    /* Class: ConnectionFloat
+    /* Class: Connection
 
         Describes a connection between two neurons and its weight
 
@@ -18,22 +19,22 @@ namespace FANNCSharp
 
        This structure appears in FANN >= 2.1.0
     */
-    public class ConnectionFloat : IDisposable
+    public class Connection : IDisposable
     {
-        internal ConnectionFloat(Connection other)
+        internal Connection(BaseConnection other)
         {
             connection = other;
         }
-        /* Constructor: ConnectionFloat
+        /* Constructor: Connection
             Creates a connection with the specified parameters
             Parameters:
                 fromNeuron - Unique number used to identify source neuron
                 toNeuron - Unique number used to identify destination neuron
                 weight - The numerical value of the weight
             Example:
-              >ConnectionFloat connection(2, 7, 0.5);
+              >Connection connection(2, 7, 0.5);
          */
-        public ConnectionFloat(uint fromNeuron, uint toNeuron, float weight)
+        public Connection(uint fromNeuron, uint toNeuron, float weight)
         {
             FromNeuron = fromNeuron;
             ToNeuron = toNeuron;
@@ -92,7 +93,7 @@ namespace FANNCSharp
             }
         }
 
-        internal Connection connection { get; set; }
+        internal BaseConnection connection { get; set; }
     }
 
 }

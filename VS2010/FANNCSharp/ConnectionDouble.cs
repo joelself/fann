@@ -1,5 +1,6 @@
 using FannWrapperDouble;
 using System;
+using BaseConnection = FannWrapperDouble.Connection;
 /*
  * Title: FANN C# Connection double
  */
@@ -20,7 +21,7 @@ namespace FANNCSharp
     */
     public class ConnectionDouble : IDisposable
     {
-        internal ConnectionDouble(Connection other)
+        internal ConnectionDouble(BaseConnection other)
         {
             connection = other;
         }
@@ -92,7 +93,7 @@ namespace FANNCSharp
             }
         }
 
-        internal Connection connection { get; set; }
+        internal BaseConnection connection { get; set; }
     }
 
 }

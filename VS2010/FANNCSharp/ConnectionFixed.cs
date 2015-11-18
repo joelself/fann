@@ -1,5 +1,6 @@
 using FannWrapperFixed;
 using System;
+using BaseConnection = FannWrapperFixed.Connection;
 /*
  * Title: FANN C# Connection int
  */
@@ -20,7 +21,7 @@ namespace FANNCSharp
     */
     public class ConnectionFixed : IDisposable
     {
-        internal ConnectionFixed(Connection other)
+        internal ConnectionFixed(BaseConnection other)
         {
             connection = other;
         }
@@ -92,7 +93,7 @@ namespace FANNCSharp
             }
         }
 
-        internal Connection connection { get; set; }
+        internal BaseConnection connection { get; set; }
     }
 
 }
