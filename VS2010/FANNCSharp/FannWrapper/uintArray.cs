@@ -7,8 +7,16 @@
 // Do not make changes to this file unless you know what you are doing--modify
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
-
+#if FANN_FIXED
+using FannWrapperFixed;
+using PINVOKE = FannWrapperFixed.fannfixedPINVOKE;
+#elif FANN_DOUBLE
+using FannWrapperDouble;
+using PINVOKE = FannWrapperDouble.fanndoublePINVOKE;
+#else
 using FannWrapperFloat;
+using PINVOKE = FannWrapperFloat.fannfloatPINVOKE;
+#endif
 namespace FANNCSharp
 {
 
@@ -34,7 +42,7 @@ internal class uintArray : global::System.IDisposable {
       if (swigCPtr.Handle != global::System.IntPtr.Zero) {
         if (swigCMemOwn) {
           swigCMemOwn = false;
-          fannfloatPINVOKE.delete_uintArray(swigCPtr);
+          PINVOKE.delete_uintArray(swigCPtr);
         }
         swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
       }
@@ -42,26 +50,26 @@ internal class uintArray : global::System.IDisposable {
     }
   }
 
-  public uintArray(int nelements) : this(fannfloatPINVOKE.new_uintArray(nelements), true) {
+  public uintArray(int nelements) : this(PINVOKE.new_uintArray(nelements), true) {
   }
 
   public uint getitem(int index) {
-    uint ret = fannfloatPINVOKE.uintArray_getitem(swigCPtr, index);
+    uint ret = PINVOKE.uintArray_getitem(swigCPtr, index);
     return ret;
   }
 
   public void setitem(int index, uint value) {
-    fannfloatPINVOKE.uintArray_setitem(swigCPtr, index, value);
+    PINVOKE.uintArray_setitem(swigCPtr, index, value);
   }
 
   public SWIGTYPE_p_unsigned_int cast() {
-    global::System.IntPtr cPtr = fannfloatPINVOKE.uintArray_cast(swigCPtr);
+    global::System.IntPtr cPtr = PINVOKE.uintArray_cast(swigCPtr);
     SWIGTYPE_p_unsigned_int ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_unsigned_int(cPtr, false);
     return ret;
   }
 
   public static uintArray frompointer(SWIGTYPE_p_unsigned_int t) {
-    global::System.IntPtr cPtr = fannfloatPINVOKE.uintArray_frompointer(SWIGTYPE_p_unsigned_int.getCPtr(t));
+    global::System.IntPtr cPtr = PINVOKE.uintArray_frompointer(SWIGTYPE_p_unsigned_int.getCPtr(t));
     uintArray ret = (cPtr == global::System.IntPtr.Zero) ? null : new uintArray(cPtr, false);
     return ret;
   }

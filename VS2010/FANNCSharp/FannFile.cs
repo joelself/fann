@@ -1,6 +1,13 @@
-﻿using FannWrapperFloat;
+﻿#if FANN_FIXED
 using FannWrapperFixed;
+using fannclass = FannWrapperFixed.fannfixed;
+#elif FANN_DOUBLE
 using FannWrapperDouble;
+using fannclass = FannWrapperDouble.fanndouble;
+#else
+using FannWrapperFloat;
+using fannclass = FannWrapperFloat.fannfloat;
+#endif
 using System;
 using System.IO;
 namespace FANNCSharp
@@ -27,7 +34,7 @@ namespace FANNCSharp
 
         public FannFile(string filename, string mode)
         {
-            InternalFile = fannfloat.fopen(filename, mode);
+            InternalFile = fannclass.fopen(filename, mode);
         }
 
         /* Method: Dispose
@@ -39,7 +46,7 @@ namespace FANNCSharp
         */
         public void Dispose()
         {
-            int code = fannfloat.fclose(InternalFile);
+            int code = fannclass.fclose(InternalFile);
             if (code != 0)
             {
                 throw new IOException("Error occurred when trying to close the file. Code: {0}", code);

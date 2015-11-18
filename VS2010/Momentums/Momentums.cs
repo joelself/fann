@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FANNCSharp;
+using System.IO;
 #if FANN_FIXED
 using NeuralNet = FANNCSharp.NeuralNetFixed;
 using TrainingData = FANNCSharp.TrainingDataFixed;
@@ -13,7 +14,6 @@ using DataType = System.Double;
 using NeuralNet = FANNCSharp.NeuralNetFloat;
 using TrainingData = FANNCSharp.TrainingDataFloat;
 using DataType = System.Single;
-using System.IO;
 #endif
 namespace Example
 {
