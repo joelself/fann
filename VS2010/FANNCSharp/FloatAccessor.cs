@@ -19,7 +19,7 @@ namespace FANNCSharp.Float
        
        Provides fast access to an array of floats
     */
-    public class DataAccessor : IReadOnlyList<float>,global::System.IDisposable
+    public class DataAccessor : IAccessor<float>, global::System.IDisposable
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
         protected bool swigCMemOwn;

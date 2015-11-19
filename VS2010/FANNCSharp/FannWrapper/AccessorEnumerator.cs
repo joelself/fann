@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
 namespace FANNCSharp
 {
     public class AccessorEnumerator<T> : IEnumerator<T>
     {
-        internal AccessorEnumerator(IReadOnlyList<T> accessor)
+        internal AccessorEnumerator(IAccessor<T> accessor)
         {
             CurrentIndex = 0;
         }
@@ -44,8 +41,7 @@ namespace FANNCSharp
         {
             CurrentIndex = 0;
         }
-
-        private IReadOnlyList<T> Accessor { get; set; }
+        private IAccessor<T> Accessor { get; set; }
         private int CurrentIndex { get; set; }
     }
 }

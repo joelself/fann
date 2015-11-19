@@ -20,7 +20,7 @@ namespace FANNCSharp.Fixed
        
        Provides fast access to an array of array of ints
     */
-    public class ArrayAccessor : IReadOnlyList<DataAccessor>, global::System.IDisposable
+    public class ArrayAccessor : IAccessor<DataAccessor>, global::System.IDisposable
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
         protected bool swigCMemOwn;

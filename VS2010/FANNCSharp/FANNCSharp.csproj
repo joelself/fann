@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FANNCSharp</RootNamespace>
     <AssemblyName>FANNCSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -41,7 +41,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>..\..\bin\x64\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;NET45</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -104,6 +104,7 @@
     <Compile Include="FannWrapperFixed\fannfixedPINVOKE.cs" />
     <Compile Include="FannWrapper\AccessorEnumerator.cs" />
     <Compile Include="FannWrapper\ActivationFunctionArray.cs" />
+    <Compile Include="FannWrapper\IAccessor.cs" />
     <Compile Include="IntAccessor.cs" />
     <Compile Include="FannWrapperFixed\intArray.cs" />
     <Compile Include="IntArrayAccessor.cs" />

@@ -19,7 +19,7 @@ namespace FANNCSharp.Double
        
        Provides fast access to an array of doubles
     */
-    public class DataAccessor : IReadOnlyList<double>, global::System.IDisposable
+    public class DataAccessor : IAccessor<double>, global::System.IDisposable
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
         protected bool swigCMemOwn;
