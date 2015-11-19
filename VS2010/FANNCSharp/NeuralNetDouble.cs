@@ -52,8 +52,6 @@ using System.Runtime.InteropServices;
  *       up in the Dispose methods
  *
  */
-/* Namespace: FANNCSharp
-    The FANNCSharp namespace groups the C# wrapper definitions */
 namespace FANNCSharp.Double
 {
     /* Class: NeuralNet

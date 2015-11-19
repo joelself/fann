@@ -15,7 +15,7 @@ namespace FANNCSharp.Fixed
         Weight - The numerical value of the weight
 
         See Also:
-            <NeuralNetFixed::Connections>, <NeuralNetFixed::Weights>
+            <NeuralNet::Connections>, <NeuralNet::Weights>
 
        This structure appears in FANN >= 2.1.0
     */

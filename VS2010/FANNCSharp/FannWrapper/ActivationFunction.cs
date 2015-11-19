@@ -13,13 +13,13 @@ namespace FANNCSharp
     /* Enum: ActivationFunction
 
 	    The activation functions used for the neurons during training. The activation functions
-	    can either be defined for a group of neurons by <NeuralNetFloat.SetActivationFunctionHidden>
-        and <NeuralNetFloat.SetActivationFunctionOutput> or it can be defined for a single neuron by
-        <NeuralNetFloat.SetActivationFunction>.
+	    can either be defined for a group of neurons by <FANNCSharp.Float::NeuralNet::SetActivationFunctionHidden>
+        and <FANNCSharp.Float::NeuralNet::SetActivationFunctionOutput> or it can be defined for a single neuron by
+        <FANNCSharp.Float::NeuralNet::SetActivationFunction>.
 
 	    The steepness of an activation function is defined in the same way by
-	    <NeuralNetFloat::SetActivationSteepnessHidden>, <NeuralNetFloat::SetActivationSteepnessOutput>
-        and <NeuralNetFloat::SetActivationSteepness>.
+	    <FANNCSharp.Float::NeuralNet::SetActivationSteepnessHidden>, <FANNCSharp.Float::NeuralNet::SetActivationSteepnessOutput>
+        and <FANNCSharp.Float::NeuralNet::SetActivationSteepness>.
 
        The functions are described with functions where:
        * x is the input to the activation function,
@@ -99,8 +99,8 @@ namespace FANNCSharp
          * d = s*-sin(x*s)
 
 	    See also:
-		    <NeuralNetFloat::SetActivationFunctionHidden>,
-		    <NeuralNetFloat::SetActivationFunctionOutput>
+		    <FANNCSharp.Float::NeuralNet::SetActivationFunctionHidden>,
+		    <FANNCSharp.Float::NeuralNet::SetActivationFunctionOutput>
     */
     public enum ActivationFunction
     {

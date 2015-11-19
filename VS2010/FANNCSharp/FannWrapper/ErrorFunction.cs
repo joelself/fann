@@ -20,7 +20,7 @@ namespace FANNCSharp
 		    This activation function is not recommended for cascade training and incremental training.
 
 	    See also:
-		    <NeuralNetFloat::TrainErrorFunction>
+		    <FANNCSharp.Float::NeuralNet::TrainErrorFunction>
     */
     public enum ErrorFunction
     {

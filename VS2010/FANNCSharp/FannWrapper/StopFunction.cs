@@ -16,12 +16,12 @@ namespace FANNCSharp
 	    STOPFUNC_MSE - Stop criteria is Mean Square Error (MSE) value.
 	    STOPFUNC_BIT - Stop criteria is number of bits that fail. The number of bits; means the
 		    number of output neurons which differ more than the bit fail limit
-		    (see <NeuralNetFloat::BitFailLimit>).
+		    (see <FANNCSharp.Float::NeuralNet::BitFailLimit>).
 		    The bits are counted in all of the training data, so this number can be higher than
 		    the number of training data.
 
 	    See also:
-		    <NeuralNetFloat::TrainStopFunction>, <neural_net::get_train_stop_function>
+		    <FANNCSharp.Float::NeuralNet::TrainStopFunction>
     */
     public enum StopFunction
     {

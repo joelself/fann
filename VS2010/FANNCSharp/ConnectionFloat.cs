@@ -15,7 +15,7 @@ namespace FANNCSharp.Float
         Weight - The numerical value of the weight
 
         See Also:
-            <NeuralNetFloat::Connections>, <NeuralNetFloat::Weights>
+            <NeuralNet::Connections>, <NeuralNet::Weights>
 
        This structure appears in FANN >= 2.1.0
     */

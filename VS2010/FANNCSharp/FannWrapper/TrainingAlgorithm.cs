@@ -11,8 +11,8 @@
 namespace FANNCSharp
 {
     /* Enum: TrainingAlgorithm
-	    The Training algorithms used when training on <TrainingDataFloat> with functions like
-	    <NeuralNetFloat::TrainOnData> or <NeuralNetFloat::TrainOnFile>. The incremental training
+	    The Training algorithms used when training on <FANNCSharp.Float::TrainingData> with functions like
+	    <FANNCSharp.Float::NeuralNet::TrainOnData> or <FANNCSharp.Float::NeuralNet::TrainOnFile>. The incremental training
         looks alters the weights after each time it is presented an input pattern, while batch
         only alters the weights once after it has been presented to all the patterns.
 
@@ -43,7 +43,7 @@ namespace FANNCSharp
 
 
 	    See also:
-		    <NeuralNetFloat::TrainingAlgorithm>
+		    <FANNCSharp.Float::NeuralNet::TrainingAlgorithm>
     */
     public enum TrainingAlgorithm
     {

@@ -15,7 +15,7 @@ namespace FANNCSharp
         Weight - The numerical value of the weight
 
         See Also:
-            <NeuralNetDouble::Connections>, <NeuralNetDouble::Weights>
+            <FANNCSharp.Double::NeuralNet::Connections>, <FANNCSharp.Double::NeuralNet::Weights>
 
        This structure appears in FANN >= 2.1.0
     */
