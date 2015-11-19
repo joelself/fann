@@ -9,7 +9,7 @@ using DataType = System.Single;
 #endif
 namespace Example
 {
-    class Robot
+    class CascadeTrain
     {
         static void Main()
         {   

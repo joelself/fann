@@ -12,7 +12,7 @@ using DataType = System.Single;
 #endif
 namespace Example
 {
-    class Robot
+    class ParallelTrain
     {
         static void Main(string[] argv)
         {

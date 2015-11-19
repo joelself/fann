@@ -13,7 +13,7 @@ using DataType = System.Single;
 #endif
 namespace Example
 {
-    class Robot
+    class MomentumsCallback
     {
         static void Main()
         {

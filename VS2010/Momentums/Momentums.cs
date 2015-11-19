@@ -14,7 +14,7 @@ using DataType = System.Single;
 #endif
 namespace Example
 {
-    class Robot
+    class Momentums
     {
         static void Main()
         {
