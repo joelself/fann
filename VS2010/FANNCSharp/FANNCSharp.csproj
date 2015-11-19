@@ -102,6 +102,7 @@
     <Compile Include="FannWrapperFixed\ConnectionArray.cs" />
     <Compile Include="FannWrapperFixed\fannfixed.cs" />
     <Compile Include="FannWrapperFixed\fannfixedPINVOKE.cs" />
+    <Compile Include="FannWrapper\AccessorEnumerator.cs" />
     <Compile Include="FannWrapper\ActivationFunctionArray.cs" />
     <Compile Include="IntAccessor.cs" />
     <Compile Include="FannWrapperFixed\intArray.cs" />

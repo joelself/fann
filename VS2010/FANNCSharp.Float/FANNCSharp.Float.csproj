@@ -117,6 +117,9 @@
     <Compile Include="..\FANNCSharp\FannWrapperFloat\training_data.cs">
       <Link>FannWrapperFloat\training_data.cs</Link>
     </Compile>
+    <Compile Include="..\FANNCSharp\FannWrapper\AccessorEnumerator.cs">
+      <Link>FannWrapper\AccessorEnumerator.cs</Link>
+    </Compile>
     <Compile Include="..\FANNCSharp\FannWrapper\ActivationFunction.cs">
       <Link>FannWrapper\ActivationFunction.cs</Link>
     </Compile>

@@ -11,13 +11,16 @@
  * Title: FANN C# ArrayAccessor
  */
 using FannWrapperFloat;
+using System.Collections.Generic;
+using FANNCSharp;
+using System.Collections;
 namespace FANNCSharp.Float
 {
     /* Class: ArrayAccessor
        
        Provides fast access to an array of array of floats
     */
-    public class ArrayAccessor : global::System.IDisposable
+    public class ArrayAccessor : IReadOnlyList<DataAccessor>, global::System.IDisposable
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
         protected bool swigCMemOwn;
@@ -31,6 +34,12 @@ namespace FANNCSharp.Float
         internal static global::System.Runtime.InteropServices.HandleRef getCPtr(ArrayAccessor obj)
         {
             return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+        }
+
+        internal void SetLengths(int count, int length)
+        {
+            ArrayCount = count;
+            ArrayLength = length;
         }
 
         ~ArrayAccessor()
@@ -50,26 +59,30 @@ namespace FANNCSharp.Float
                     if (swigCMemOwn)
                     {
                         swigCMemOwn = false;
-                        fannfloatPINVOKE.delete_FloatAccessor(swigCPtr);
+                        fannfloatPINVOKE.delete_FloatArrayAccessor(swigCPtr);
                     }
                     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
                 }
                 global::System.GC.SuppressFinalize(this);
             }
         }
-        /* Method: Get
+        /* Property: Item
            Parameters:
                       index - The index of the array to return
    
             Return:
-                 A <FloatAccessor> that provides fast access to an array
+                 A <DataAccessor> that provides fast access to an array
                  of floats
         */
-        public ArrayAccessor Get(int index)
+        public DataAccessor this[int index]
         {
-            global::System.IntPtr cPtr = fannfloatPINVOKE.FloatArrayAccessor_Get__SWIG_0(swigCPtr, index);
-            ArrayAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new ArrayAccessor(cPtr, false);
-            return ret;
+            get
+            {
+                global::System.IntPtr cPtr = fannfloatPINVOKE.FloatArrayAccessor_Get__SWIG_0(swigCPtr, index);
+                DataAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new DataAccessor(cPtr, false);
+                ret.SetLength(ArrayCount);
+                return ret;
+            }
         }
         /* Method: Get
            Parameters:
@@ -84,6 +97,17 @@ namespace FANNCSharp.Float
             float ret = fannfloatPINVOKE.FloatArrayAccessor_Get__SWIG_1(swigCPtr, x, y);
             return ret;
         }
+        /*  Method: GetEnumerator
+            Returns an enumerator that can enumerate over the collection of DataAccessors
+         */
+        public IEnumerator<DataAccessor> GetEnumerator()
+        {
+            return (IEnumerator<DataAccessor>)new AccessorEnumerator<DataAccessor>(this);
+        }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return new AccessorEnumerator<DataAccessor>(this);
+        }
 
         internal static ArrayAccessor FromPointer(SWIGTYPE_p_p_float t)
         {
@@ -91,5 +115,18 @@ namespace FANNCSharp.Float
             ArrayAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new ArrayAccessor(cPtr, false);
             return ret;
         }
+
+        /*  Property: Count
+            The number of DataAccessors (arrays of floats) this object holds 
+         */
+        public int Count
+        {
+            get
+            {
+                return ArrayCount;
+            }
+        }
+        internal int ArrayCount { get; set; }
+        internal int ArrayLength { get; set; }
     }
 }

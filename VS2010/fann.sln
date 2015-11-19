@@ -56,10 +56,21 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MomentumsCallback", "MomentumsCallback\MomentumsCallback.csproj", "{69D51BCF-D181-48C7-BE53-129328644DAE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FANNCSharp.Float", "FANNCSharp.Float\FANNCSharp.Float.csproj", "{3183ADC6-8759-4A5F-B103-C1A0B5C81802}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1B1EECB8-FEB0-418F-9EC1-316BC4ACB517} = {1B1EECB8-FEB0-418F-9EC1-316BC4ACB517}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FANNCSharp.Fixed", "FANNCSharp.Fixed\FANNCSharp.Fixed.csproj", "{18D1FB22-131D-4BA5-AE29-42265C01B2CB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1B1EECB8-FEB0-418F-9EC1-316BC4ACB517} = {1B1EECB8-FEB0-418F-9EC1-316BC4ACB517}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FANNCSharp.Double", "FANNCSharp.Double\FANNCSharp.Double.csproj", "{563760B1-DFA8-4151-9194-169EE43F196F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1B1EECB8-FEB0-418F-9EC1-316BC4ACB517} = {1B1EECB8-FEB0-418F-9EC1-316BC4ACB517}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MushroomSpeedTest", "MushroomSpeedTest\MushroomSpeedTest.csproj", "{AB903967-8B08-438C-9373-1D6698BFCFB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -237,6 +248,14 @@ Global
 		{563760B1-DFA8-4151-9194-169EE43F196F}.Release|x64.Build.0 = Release|x64
 		{563760B1-DFA8-4151-9194-169EE43F196F}.Release|x86.ActiveCfg = Release|x86
 		{563760B1-DFA8-4151-9194-169EE43F196F}.Release|x86.Build.0 = Release|x86
+		{AB903967-8B08-438C-9373-1D6698BFCFB9}.Debug|x64.ActiveCfg = Debug|x64
+		{AB903967-8B08-438C-9373-1D6698BFCFB9}.Debug|x64.Build.0 = Debug|x64
+		{AB903967-8B08-438C-9373-1D6698BFCFB9}.Debug|x86.ActiveCfg = Debug|x86
+		{AB903967-8B08-438C-9373-1D6698BFCFB9}.Debug|x86.Build.0 = Debug|x86
+		{AB903967-8B08-438C-9373-1D6698BFCFB9}.Release|x64.ActiveCfg = Release|x64
+		{AB903967-8B08-438C-9373-1D6698BFCFB9}.Release|x64.Build.0 = Release|x64
+		{AB903967-8B08-438C-9373-1D6698BFCFB9}.Release|x86.ActiveCfg = Release|x86
+		{AB903967-8B08-438C-9373-1D6698BFCFB9}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

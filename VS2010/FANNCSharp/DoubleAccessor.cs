@@ -11,13 +11,15 @@
  * Title: FANN C# DataAccessor
  */
 using FannWrapperDouble;
+using System.Collections.Generic;
+using FANNCSharp;
 namespace FANNCSharp.Double
 {
     /* Class: DataAccessor
        
        Provides fast access to an array of doubles
     */
-    public class DataAccessor : global::System.IDisposable
+    public class DataAccessor : IReadOnlyList<double>, global::System.IDisposable
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
         protected bool swigCMemOwn;
@@ -31,6 +33,10 @@ namespace FANNCSharp.Double
         internal static global::System.Runtime.InteropServices.HandleRef getCPtr(DataAccessor obj)
         {
             return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+        }
+        internal void SetLength(int length)
+        {
+            ArrayCount = length;
         }
 
         ~DataAccessor()
@@ -57,17 +63,32 @@ namespace FANNCSharp.Double
                 global::System.GC.SuppressFinalize(this);
             }
         }
-        /* Method: Get
+        /* Property: Item
            Parameters:
                       index - The index of the element to return
    
             Return:
                  A double at index
         */
-        public double Get(int index)
+        public double this[int index]
         {
-            double ret = fanndoublePINVOKE.DoubleAccessor_Get(swigCPtr, index);
-            return ret;
+            get
+            {
+                double ret = fanndoublePINVOKE.DoubleAccessor_Get(swigCPtr, index);
+                return ret;
+            }
+        }
+
+        /*  Method: GetEnumerator
+            Returns an enumerator that can enumerate over the collection of ints
+         */
+        public IEnumerator<double> GetEnumerator()
+        {
+            return (IEnumerator<double>)new AccessorEnumerator<double>(this);
+        }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return new AccessorEnumerator<double>(this);
         }
 
         internal static DataAccessor FromPointer(SWIGTYPE_p_double t)
@@ -76,5 +97,17 @@ namespace FANNCSharp.Double
             DataAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new DataAccessor(cPtr, false);
             return ret;
         }
+
+        /*  Property: Count
+            The number of doubles this object holds 
+         */
+        public int Count
+        {
+            get
+            {
+                return ArrayCount;
+            }
+        }
+        internal int ArrayCount { get; set; }
     }
 }

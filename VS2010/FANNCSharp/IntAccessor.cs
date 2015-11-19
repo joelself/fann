@@ -11,13 +11,15 @@
  * Title: FANN C# DataAccessor
  */
 using FannWrapperFixed;
+using System.Collections.Generic;
+using FANNCSharp;
 namespace FANNCSharp.Fixed
 {
     /* Class: DataAccessor
        
        Provides fast access to an array of ints
     */
-    public class DataAccessor : global::System.IDisposable
+    public class DataAccessor : IReadOnlyList<int>, global::System.IDisposable
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
         protected bool swigCMemOwn;
@@ -31,6 +33,10 @@ namespace FANNCSharp.Fixed
         internal static global::System.Runtime.InteropServices.HandleRef getCPtr(DataAccessor obj)
         {
             return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
+        }
+        internal void SetLength(int length)
+        {
+            ArrayCount = length;
         }
 
         ~DataAccessor()
@@ -57,17 +63,32 @@ namespace FANNCSharp.Fixed
                 global::System.GC.SuppressFinalize(this);
             }
         }
-        /* Method: Get
+        /* Property: Item
            Parameters:
                       index - The index of the element to return
    
             Return:
-                 An int at index
+                 A int at index
         */
-        public int Get(int index)
+        public int this[int index]
         {
-            int ret = fannfixedPINVOKE.IntAccessor_Get(swigCPtr, index);
-            return ret;
+            get
+            {
+                int ret = fannfixedPINVOKE.IntAccessor_Get(swigCPtr, index);
+                return ret;
+            }
+        }
+
+        /*  Method: GetEnumerator
+            Returns an enumerator that can enumerate over the collection of ints
+         */
+        public IEnumerator<int> GetEnumerator()
+        {
+            return (IEnumerator<int>)new AccessorEnumerator<int>(this);
+        }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return new AccessorEnumerator<int>(this);
         }
 
         internal static DataAccessor FromPointer(SWIGTYPE_p_int t)
@@ -76,5 +97,17 @@ namespace FANNCSharp.Fixed
             DataAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new DataAccessor(cPtr, false);
             return ret;
         }
+
+        /*  Property: Count
+            The number of ints this object holds 
+         */
+        public int Count
+        {
+            get
+            {
+                return ArrayCount;
+            }
+        }
+        internal int ArrayCount { get; set; }
     }
 }
