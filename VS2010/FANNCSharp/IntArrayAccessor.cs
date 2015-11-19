@@ -8,7 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 /*
- * Title: FANN C# ArrayAccessor
+ * Title: FANN C# ArrayAccessor int
  */
 using FannWrapperFixed;
 using System.Collections.Generic;

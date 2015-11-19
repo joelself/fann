@@ -8,7 +8,7 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 /*
- * Title: FANN C# DataAccessor
+ * Title: FANN C# DataAccessor float
  */
 using FannWrapperFloat;
 using System.Collections.Generic;
