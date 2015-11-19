@@ -28,8 +28,8 @@ using System.Runtime.InteropServices;
  *  Overview:
  *
  *  The Fann Wrapper for C# provides Six classes: <NeuralNetFloat>,
- *  <NeuralNetFloat>, <NeuralNetFixed>, <FANNCSharp::TrainingDataFloat>,
- *  <FANNCSharp::TrainingDataDouble>, <FANNCSharp::TrainingDataFixed>.
+ *  <NeuralNetFloat>, <NeuralNet>, <FANNCSharp::TrainingDataFloat>,
+ *  <FANNCSharp::TrainingDataDouble>, <FANNCSharp::TrainingData>.
  *  To use the wrapper add FANNCSharp.dll as a reference to your project.
  *
  *  To get started see XorSample project.
@@ -52,29 +52,29 @@ using System.Runtime.InteropServices;
  */
 /* Namespace: FANNCSharp
     The FANNCSharp namespace groups the C# wrapper definitions */
-namespace FANNCSharp
+namespace FANNCSharp.Fixed
 {
-    /* Class: NeuralNetFixed
-        <NeuralNetFixed> is the main neural network class used for both training and execution using ints
+    /* Class: NeuralNet
+        <NeuralNet> is the main neural network class used for both training and execution using ints
 
         Encapsulation of a int neural network <neural_net at http://libfann.github.io/fann/docs/files/fann_cpp-h.html#neural_net> and
         associated C++ API functions.
     */
-    public class NeuralNetFixed : IDisposable
+    public class NeuralNet : IDisposable
     {
         neural_net net = null;
 
-        /* Constructor: NeuralNetFixed
+        /* Constructor: NeuralNet
 
-            Creates a copy the other NeuralNetFixed.
+            Creates a copy the other NeuralNet.
         */
-        public NeuralNetFixed(NeuralNetFixed other)
+        public NeuralNet(NeuralNet other)
         {
             net = new neural_net(other.Net.to_fann());
             Outputs = other.Outputs;
         }
 
-        internal NeuralNetFixed(neural_net other)
+        internal NeuralNet(neural_net other)
         {
             net = other;
             Outputs = net.get_num_output();
@@ -88,7 +88,7 @@ namespace FANNCSharp
         {
             net.Dispose();
         }
-        /* Constructor: NeuralNetFixed
+        /* Constructor: NeuralNet
 
             Creates a neural network of the desired <NetworkType> net_type.
 
@@ -103,11 +103,11 @@ namespace FANNCSharp
                 >uint numHidden = 3;
                 >uint numOutput = 1;
                 >
-                >NeuralNetFixed net(numLayers, numInput, numHidden, numOutput);
+                >NeuralNet net(numLayers, numInput, numHidden, numOutput);
 
             This function appears in FANN >= 2.3.0.
         */
-        public NeuralNetFixed(NetworkType netType, uint numLayers, params uint[] args)
+        public NeuralNet(NetworkType netType, uint numLayers, params uint[] args)
         {
             using (uintArray newLayers = new uintArray((int)numLayers))
             {
@@ -120,7 +120,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Constructor: NeuralNetFixed
+        /* Constructor: NeuralNet
 
             Creates a neural network of the desired <NetworkType> netType, based on a collection of layers.
 
@@ -129,11 +129,11 @@ namespace FANNCSharp
                 layers - the collection of layer sizes
 
             Example:
-              >NeuralNetFixed net(NetworkType.LAYER, new uint[] {2, 3, 1});
+              >NeuralNet net(NetworkType.LAYER, new uint[] {2, 3, 1});
 
             This function appears in FANN >= 2.3.0.
          */
-        public NeuralNetFixed(NetworkType netType, ICollection<uint> layers)
+        public NeuralNet(NetworkType netType, ICollection<uint> layers)
         {
             using (uintArray newLayers = new uintArray(layers.Count))
             {
@@ -149,7 +149,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Constructor: NeuralNetFixed
+        /* Constructor: NeuralNet
 
             Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <NetworkType::LAYER>
 
@@ -164,7 +164,7 @@ namespace FANNCSharp
 
             This function appears in FANN >= 2.3.0.
         */
-        public NeuralNetFixed(float connectionRate, uint numLayers, params uint[] args)
+        public NeuralNet(float connectionRate, uint numLayers, params uint[] args)
         {
             using (uintArray newLayers = new uintArray((int)numLayers))
             {
@@ -177,7 +177,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Constructor: NeuralNetFixed
+        /* Constructor: NeuralNet
 
             Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <NetworkType::LAYER>
 
@@ -192,7 +192,7 @@ namespace FANNCSharp
 
             This function appears in FANN >= 2.3.0.
         */
-        public NeuralNetFixed(float connectionRate, ICollection<uint> layers)
+        public NeuralNet(float connectionRate, ICollection<uint> layers)
         {
             using (uintArray newLayers = new uintArray(layers.Count))
             {
@@ -208,7 +208,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Constructor: NeuralNetFixed
+        /* Constructor: NeuralNet
 
            Constructs a backpropagation neural network from a configuration file,
            which have been saved by <Save>.
@@ -218,7 +218,7 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.3.0.
          */
-        public NeuralNetFixed(string filename)
+        public NeuralNet(string filename)
         {
             net = new neural_net(filename);
             Outputs = net.get_num_output();
@@ -277,12 +277,12 @@ namespace FANNCSharp
             train the network.
 
             See also:
-                <RandomizeWeights>, <TrainingDataFixed::ReadTrainFromFile>,
+                <RandomizeWeights>, <TrainingData::ReadTrainFromFile>,
                 <fann_init_weights at http://libfann.github.io/fann/docs/files/fann-h.html#fann_init_weights>
 
             This function appears in FANN >= 1.1.0.
         */
-        public void InitWeights(TrainingDataFixed data)
+        public void InitWeights(TrainingData data)
         {
             net.init_weights(data.InternalData);
         }
@@ -323,7 +323,7 @@ namespace FANNCSharp
            Save the entire network to a configuration file.
            
            The configuration file contains all information about the neural network and enables 
-           <NeuralNetFixed(string filename)> to create an exact copy of the neural network and all of the
+           <NeuralNet(string filename)> to create an exact copy of the neural network and all of the
            parameters associated with the neural network.
            
            These two parameters (<SetCallback>, <ErrorLog>) are *NOT* saved 
@@ -334,7 +334,7 @@ namespace FANNCSharp
            The function returns true on success and false on failure.
            
            See also:
-            <NeuralNetFixed>, <SaveToFixed>, <fann_save at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save>
+            <NeuralNet>, <SaveToFixed>, <fann_save at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save>
 
            This function appears in FANN >= 1.0.0.
          */
@@ -371,7 +371,7 @@ namespace FANNCSharp
            point version is actually faster.
 
            See also:
-            <NeuralNetFixed>, <Save>, <fann_save_to_fixed at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save_to_fixed>
+            <NeuralNet>, <Save>, <fann_save_to_fixed at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save_to_fixed>
 
            This function appears in FANN >= 1.0.0.
         */
@@ -391,7 +391,7 @@ namespace FANNCSharp
 
 	        This function appears in FANN >= 1.2.0.
          */
-        public float TestData(TrainingDataFixed data)
+        public float TestData(TrainingData data)
         {
             return net.test_data(data.InternalData);
         }
@@ -1245,18 +1245,18 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.1.0
         */
-        public ConnectionFixed[] Connections
+        public Connection[] Connections
         {
             get
             {
                 uint count = net.get_total_connections();
-                ConnectionFixed[] connections = new ConnectionFixed[count];
+                Connection[] connections = new Connection[count];
                 using (ConnectionArray output = new ConnectionArray(connections.Length))
                 {
                     net.get_connection_array(output.cast());
                     for (uint i = 0; i < count; i++)
                     {
-                        connections[i] = new ConnectionFixed(output.getitem((int)i));
+                        connections[i] = new Connection(output.getitem((int)i));
                     }
                 }
                 return connections;
@@ -1275,7 +1275,7 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.1.0
         */
-        public ConnectionFixed[] Weights
+        public Connection[] Weights
         {
             set
             {
@@ -1420,9 +1420,9 @@ namespace FANNCSharp
            
            If the value is NULL, no errors will be printed.
            
-           If NeuralNetFixed is empty the default log will be set.
-           The default log is the log used when creating a NeuralNetFixed.
-           This default log will also be the default for all new NeuralNetFixed
+           If NeuralNet is empty the default log will be set.
+           The default log is the log used when creating a NeuralNet.
+           This default log will also be the default for all new NeuralNet
            that are created.
            
            The default behavior is to log them to Console.Error.
@@ -1541,8 +1541,8 @@ namespace FANNCSharp
 
         private int InternalCallback(global::System.IntPtr netPtr, global::System.IntPtr dataPtr, uint max_epochs, uint epochs_between_reports, float desired_error, uint epochs, global::System.IntPtr user_data)
         {
-            NeuralNetFixed callbackNet = new NeuralNetFixed(new neural_net(netPtr, false));
-            TrainingDataFixed callbackData = new TrainingDataFixed(new training_data(dataPtr, false));
+            NeuralNet callbackNet = new NeuralNet(new neural_net(netPtr, false));
+            TrainingData callbackData = new TrainingData(new training_data(dataPtr, false));
             GCHandle handle = (GCHandle)user_data;
             return Callback(callbackNet, callbackData, max_epochs, epochs_between_reports, desired_error, epochs, handle.Target as Object);
         }
@@ -1566,7 +1566,7 @@ namespace FANNCSharp
             will terminate.
 
             Example of a callback function that prints information to the Console:
-                >int PrintCallback(NeuralNetFixed net, TrainingDataFixed data,
+                >int PrintCallback(NeuralNet net, TrainingData data,
                 >    uint maxEpochs, uint epochsBetweenReports,
                 >    float desiredError, uint epochs, Object userData)
                 >{
@@ -1576,7 +1576,7 @@ namespace FANNCSharp
             See also:
                 <SetCallback>, <fann_callback_type at http://libfann.github.io/fann/docs/files/fann_data-h.html#fann_callback_type>
          */
-        public delegate int TrainingCallback(NeuralNetFixed net, TrainingDataFixed data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, Object userData);
+        public delegate int TrainingCallback(NeuralNet net, TrainingData data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, Object userData);
 
         #region Properties
         internal neural_net Net

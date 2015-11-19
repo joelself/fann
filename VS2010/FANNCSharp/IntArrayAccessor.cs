@@ -8,32 +8,32 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 /*
- * Title: FANN C# IntArrayAccessor
+ * Title: FANN C# ArrayAccessor
  */
 using FannWrapperFixed;
-namespace FANNCSharp
+namespace FANNCSharp.Fixed
 {
-    /* Class: IntArrayAccessor
+    /* Class: ArrayAccessor
        
        Provides fast access to an array of array of ints
     */
-    public class IntArrayAccessor : global::System.IDisposable
+    public class ArrayAccessor : global::System.IDisposable
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
         protected bool swigCMemOwn;
 
-        internal IntArrayAccessor(global::System.IntPtr cPtr, bool cMemoryOwn)
+        internal ArrayAccessor(global::System.IntPtr cPtr, bool cMemoryOwn)
         {
             swigCMemOwn = cMemoryOwn;
             swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
         }
 
-        internal static global::System.Runtime.InteropServices.HandleRef getCPtr(IntArrayAccessor obj)
+        internal static global::System.Runtime.InteropServices.HandleRef getCPtr(ArrayAccessor obj)
         {
             return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
         }
 
-        ~IntArrayAccessor()
+        ~ArrayAccessor()
         {
             Dispose();
         }
@@ -65,10 +65,10 @@ namespace FANNCSharp
                  A <IntAccessor> that provides fast access to an array
                  of ints
         */
-        public IntAccessor Get(int index)
+        public ArrayAccessor Get(int index)
         {
             global::System.IntPtr cPtr = fannfixedPINVOKE.IntArrayAccessor_Get__SWIG_0(swigCPtr, index);
-            IntAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new IntAccessor(cPtr, false);
+            ArrayAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new ArrayAccessor(cPtr, false);
             return ret;
         }
         /* Method: Get
@@ -85,10 +85,10 @@ namespace FANNCSharp
             return ret;
         }
 
-        internal static IntArrayAccessor FromPointer(SWIGTYPE_p_p_int t)
+        internal static ArrayAccessor FromPointer(SWIGTYPE_p_p_int t)
         {
             global::System.IntPtr cPtr = fannfixedPINVOKE.IntArrayAccessor_FromPointer(SWIGTYPE_p_p_int.getCPtr(t));
-            IntArrayAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new IntArrayAccessor(cPtr, false);
+            ArrayAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new ArrayAccessor(cPtr, false);
             return ret;
         }
     }

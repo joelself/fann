@@ -8,32 +8,32 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 /*
- * Title: FANN C# FloatArrayAccessor
+ * Title: FANN C# ArrayAccessor
  */
 using FannWrapperFloat;
-namespace FANNCSharp
+namespace FANNCSharp.Float
 {
-    /* Class: FloatArrayAccessor
+    /* Class: ArrayAccessor
        
        Provides fast access to an array of array of floats
     */
-    public class FloatArrayAccessor : global::System.IDisposable
+    public class ArrayAccessor : global::System.IDisposable
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
         protected bool swigCMemOwn;
 
-        internal FloatArrayAccessor(global::System.IntPtr cPtr, bool cMemoryOwn)
+        internal ArrayAccessor(global::System.IntPtr cPtr, bool cMemoryOwn)
         {
             swigCMemOwn = cMemoryOwn;
             swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
         }
 
-        internal static global::System.Runtime.InteropServices.HandleRef getCPtr(FloatArrayAccessor obj)
+        internal static global::System.Runtime.InteropServices.HandleRef getCPtr(ArrayAccessor obj)
         {
             return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
         }
 
-        ~FloatArrayAccessor()
+        ~ArrayAccessor()
         {
             Dispose();
         }
@@ -50,7 +50,7 @@ namespace FANNCSharp
                     if (swigCMemOwn)
                     {
                         swigCMemOwn = false;
-                        fannfloatPINVOKE.delete_FloatArrayAccessor(swigCPtr);
+                        fannfloatPINVOKE.delete_FloatAccessor(swigCPtr);
                     }
                     swigCPtr = new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero);
                 }
@@ -65,10 +65,10 @@ namespace FANNCSharp
                  A <FloatAccessor> that provides fast access to an array
                  of floats
         */
-        public FloatAccessor Get(int index)
+        public ArrayAccessor Get(int index)
         {
             global::System.IntPtr cPtr = fannfloatPINVOKE.FloatArrayAccessor_Get__SWIG_0(swigCPtr, index);
-            FloatAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new FloatAccessor(cPtr, false);
+            ArrayAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new ArrayAccessor(cPtr, false);
             return ret;
         }
         /* Method: Get
@@ -85,10 +85,10 @@ namespace FANNCSharp
             return ret;
         }
 
-        internal static FloatArrayAccessor FromPointer(SWIGTYPE_p_p_float t)
+        internal static ArrayAccessor FromPointer(SWIGTYPE_p_p_float t)
         {
             global::System.IntPtr cPtr = fannfloatPINVOKE.FloatArrayAccessor_FromPointer(SWIGTYPE_p_p_float.getCPtr(t));
-            FloatArrayAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new FloatArrayAccessor(cPtr, false);
+            ArrayAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new ArrayAccessor(cPtr, false);
             return ret;
         }
     }

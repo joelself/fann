@@ -4,9 +4,9 @@ using BaseConnection = FannWrapperFixed.Connection;
 /*
  * Title: FANN C# Connection int
  */
-namespace FANNCSharp
+namespace FANNCSharp.Fixed
 {
-    /* Class: ConnectionFixed
+    /* Class: Connection
 
         Describes a connection between two neurons and its weight
 
@@ -19,22 +19,22 @@ namespace FANNCSharp
 
        This structure appears in FANN >= 2.1.0
     */
-    public class ConnectionFixed : IDisposable
+    public class Connection : IDisposable
     {
-        internal ConnectionFixed(BaseConnection other)
+        internal Connection(BaseConnection other)
         {
             connection = other;
         }
-        /* Constructor: ConnectionFixed
+        /* Constructor: Connection
             Creates a connection with the specified parameters
             Parameters:
                 fromNeuron - Unique number used to identify source neuron
                 toNeuron - Unique number used to identify destination neuron
                 weight - The numerical value of the weight
             Example:
-              >ConnectionFixed connection(2, 7, 1);
+              >Connection connection(2, 7, 1);
          */
-        public ConnectionFixed(uint fromNeuron, uint toNeuron, int weight)
+        public Connection(uint fromNeuron, uint toNeuron, int weight)
         {
             FromNeuron = fromNeuron;
             ToNeuron = toNeuron;

@@ -29,7 +29,7 @@ using System.Runtime.InteropServices;
  *
  *  The Fann Wrapper for C# provides Six classes: <NeuralNetFloat>,
  *  <NeuralNetFloat>, <NeuralNetFixed>, <FANNCSharp::TrainingDataFloat>,
- *  <FANNCSharp::TrainingDataDouble>, <FANNCSharp::TrainingDataFixed>.
+ *  <FANNCSharp::TrainingData>, <FANNCSharp::TrainingDataFixed>.
  *  To use the wrapper add FANNCSharp.dll as a reference to your project.
  *
  *  To get started see XorSample project.
@@ -52,29 +52,29 @@ using System.Runtime.InteropServices;
  */
 /* Namespace: FANNCSharp
     The FANNCSharp namespace groups the C# wrapper definitions */
-namespace FANNCSharp
+namespace FANNCSharp.Double
 {
-    /* Class: NeuralNetDouble
-        <NeuralNetDouble> is the main neural network class used for both training and execution using doubles
+    /* Class: NeuralNet
+        <NeuralNet> is the main neural network class used for both training and execution using doubles
 
         Encapsulation of a double neural network <neural_net at http://libfann.github.io/fann/docs/files/fann_cpp-h.html#neural_net> and
         associated C++ API functions.
     */
-    public class NeuralNetDouble : IDisposable
+    public class NeuralNet : IDisposable
     {
         neural_net net = null;
 
-        /* Constructor: NeuralNetDouble
+        /* Constructor: NeuralNet
 
-            Creates a copy the other NeuralNetDouble.
+            Creates a copy the other NeuralNet.
         */
-        public NeuralNetDouble(NeuralNetDouble other)
+        public NeuralNet(NeuralNet other)
         {
             net = new neural_net(other.Net.to_fann());
             Outputs = other.Outputs;
         }
 
-        internal NeuralNetDouble(neural_net other)
+        internal NeuralNet(neural_net other)
         {
             net = other;
             Outputs = net.get_num_output();
@@ -88,7 +88,7 @@ namespace FANNCSharp
         {
             net.Dispose();
         }
-        /* Constructor: NeuralNetDouble
+        /* Constructor: NeuralNet
 
             Creates a neural network of the desired <NetworkType> net_type.
 
@@ -103,11 +103,11 @@ namespace FANNCSharp
                 >uint numHidden = 3;
                 >uint numOutput = 1;
                 >
-                >NeuralNetDouble net(numLayers, numInput, numHidden, numOutput);
+                >NeuralNet net(numLayers, numInput, numHidden, numOutput);
 
             This function appears in FANN >= 2.3.0.
         */
-        public NeuralNetDouble(NetworkType netType, uint numLayers, params uint[]args)
+        public NeuralNet(NetworkType netType, uint numLayers, params uint[]args)
         {
             using (uintArray newLayers = new uintArray((int)numLayers))
             {
@@ -120,7 +120,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Constructor: NeuralNetDouble
+        /* Constructor: NeuralNet
 
             Creates a neural network of the desired <NetworkType> netType, based on a collection of layers.
 
@@ -129,11 +129,11 @@ namespace FANNCSharp
                 layers - the collection of layer sizes
 
             Example:
-              >NeuralNetDouble net(NetworkType.LAYER, new uint[] {2, 3, 1});
+              >NeuralNet net(NetworkType.LAYER, new uint[] {2, 3, 1});
 
             This function appears in FANN >= 2.3.0.
          */
-        public NeuralNetDouble(NetworkType netType, ICollection<uint> layers)
+        public NeuralNet(NetworkType netType, ICollection<uint> layers)
         {
             using (uintArray newLayers = new uintArray(layers.Count))
             {
@@ -149,7 +149,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Constructor: NeuralNetDouble
+        /* Constructor: NeuralNet
 
             Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <NetworkType::LAYER>
 
@@ -164,7 +164,7 @@ namespace FANNCSharp
 
             This function appears in FANN >= 2.3.0.
         */
-        public NeuralNetDouble(float connectionRate, uint numLayers, params uint[] args)
+        public NeuralNet(float connectionRate, uint numLayers, params uint[] args)
         {
             using (uintArray newLayers = new uintArray((int)numLayers))
             {
@@ -177,7 +177,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Constructor: NeuralNetDouble
+        /* Constructor: NeuralNet
 
             Creates a standard backpropagation neural network, which is sparsely connected, this will default the <NetworkType> to <NetworkType::LAYER>
 
@@ -192,7 +192,7 @@ namespace FANNCSharp
 
             This function appears in FANN >= 2.3.0.
         */
-        public NeuralNetDouble(float connectionRate, ICollection<uint> layers)
+        public NeuralNet(float connectionRate, ICollection<uint> layers)
         {
             using (uintArray newLayers = new uintArray(layers.Count))
             {
@@ -208,7 +208,7 @@ namespace FANNCSharp
             }
         }
 
-        /* Constructor: NeuralNetDouble
+        /* Constructor: NeuralNet
 
            Constructs a backpropagation neural network from a configuration file,
            which have been saved by <Save>.
@@ -218,7 +218,7 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.3.0.
          */
-        public NeuralNetDouble(string filename)
+        public NeuralNet(string filename)
         {
             net = new neural_net(filename);
             Outputs = net.get_num_output();
@@ -277,12 +277,12 @@ namespace FANNCSharp
             train the network.
 
             See also:
-                <RandomizeWeights>, <TrainingDataDouble::ReadTrainFromFile>,
+                <RandomizeWeights>, <TrainingData::ReadTrainFromFile>,
                 <fann_init_weights at http://libfann.github.io/fann/docs/files/fann-h.html#fann_init_weights>
 
             This function appears in FANN >= 1.1.0.
         */
-        public void InitWeights(TrainingDataDouble data)
+        public void InitWeights(TrainingData data)
         {
            net.init_weights(data.InternalData);
         }
@@ -323,7 +323,7 @@ namespace FANNCSharp
            Save the entire network to a configuration file.
            
            The configuration file contains all information about the neural network and enables 
-           <NeuralNetDouble(string filename)> to create an exact copy of the neural network and all of the
+           <NeuralNet(string filename)> to create an exact copy of the neural network and all of the
            parameters associated with the neural network.
            
            These two parameters (<SetCallback>, <ErrorLog>) are *NOT* saved 
@@ -334,7 +334,7 @@ namespace FANNCSharp
            The function returns true on success and false on failure.
            
            See also:
-            <NeuralNetDouble>, <SaveToFixed>, <fann_save at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save>
+            <NeuralNet>, <SaveToFixed>, <fann_save at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save>
 
            This function appears in FANN >= 1.0.0.
          */
@@ -371,7 +371,7 @@ namespace FANNCSharp
            point version is actually faster.
 
            See also:
-            <NeuralNetDouble>, <Save>, <fann_save_to_fixed at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save_to_fixed>
+            <NeuralNet>, <Save>, <fann_save_to_fixed at http://libfann.github.io/fann/docs/files/fann_io-h.html#fann_save_to_fixed>
 
            This function appears in FANN >= 1.0.0.
         */
@@ -419,7 +419,7 @@ namespace FANNCSharp
         		
 	        This function appears in FANN >= 1.2.0.
          */
-        public float TrainEpoch(TrainingDataDouble data)
+        public float TrainEpoch(TrainingData data)
         {
             return net.train_epoch(data.InternalData);
         }
@@ -447,7 +447,7 @@ namespace FANNCSharp
 
 	        This function appears in FANN >= 1.0.0.
         */
-        public void TrainOnData(TrainingDataDouble data, uint maxEpochs, uint epochsBetweenReports, float desiredError)
+        public void TrainOnData(TrainingData data, uint maxEpochs, uint epochsBetweenReports, float desiredError)
         {
            net.train_on_data(data.InternalData, maxEpochs, epochsBetweenReports, desiredError);
         }
@@ -501,7 +501,7 @@ namespace FANNCSharp
 
 	        This function appears in FANN >= 1.2.0.
          */
-        public float TestData(TrainingDataDouble data)
+        public float TestData(TrainingData data)
         {
             return net.test_data(data.InternalData);
         }
@@ -1355,17 +1355,17 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.1.0
         */
-        public ConnectionDouble[] Connections
+        public Connection[] Connections
         {
             get {
                 uint count = net.get_total_connections();
-                ConnectionDouble[] connections = new ConnectionDouble[count];
+                Connection[] connections = new Connection[count];
                 using (ConnectionArray output = new ConnectionArray(connections.Length))
                 {
                    net.get_connection_array(output.cast());
                     for (uint i = 0; i < count; i++)
                     {
-                        connections[i] = new ConnectionDouble(output.getitem((int)i));
+                        connections[i] = new Connection(output.getitem((int)i));
                     }
                 }
                 return connections;
@@ -1384,7 +1384,7 @@ namespace FANNCSharp
 
            This function appears in FANN >= 2.1.0
         */
-        public ConnectionDouble[] Weights
+        public Connection[] Weights
         {
             set
             {
@@ -1528,8 +1528,8 @@ namespace FANNCSharp
            Trains on an entire dataset, for a period of time using the Cascade2 training algorithm.
            This algorithm adds neurons to the neural network while training, which means that it
            needs to start with an ANN without any hidden layers. The neural network should also use
-           shortcut connections, so NeuralNetDouble(NetworkType.SHORTCUT, ...) should be used to create the NeuralNetwork like this:
-           >NeuralNetDouble net(NetworkType.SHORTCUT, ...);
+           shortcut connections, so NeuralNet(NetworkType.SHORTCUT, ...) should be used to create the NeuralNetwork like this:
+           >NeuralNet net(NetworkType.SHORTCUT, ...);
            
            This training uses the parameters set using the Cascade..., but it also uses another
            training algorithm as it's internal training algorithm. This algorithm can be set to either
@@ -1552,7 +1552,7 @@ namespace FANNCSharp
 
 	        This function appears in FANN >= 2.0.0. 
         */
-        public void CascadetrainOnData(TrainingDataDouble data, uint maxNeurons, uint neuronsBetweenReports, float desiredError)
+        public void CascadetrainOnData(TrainingData data, uint maxNeurons, uint neuronsBetweenReports, float desiredError)
         {
            net.cascadetrain_on_data(data.InternalData, maxNeurons, neuronsBetweenReports, desiredError);
         }
@@ -1996,7 +1996,7 @@ namespace FANNCSharp
 
 	        This function appears in FANN >= 2.1.0.
          */
-        public void ScaleTrain(TrainingDataDouble data)
+        public void ScaleTrain(TrainingData data)
         {
            net.scale_train(data.InternalData);
         }
@@ -2010,7 +2010,7 @@ namespace FANNCSharp
 
 	        This function appears in FANN >= 2.1.0.
          */
-        public void DescaleTrain(TrainingDataDouble data)
+        public void DescaleTrain(TrainingData data)
         {
            net.descale_train(data.InternalData);
         }
@@ -2025,7 +2025,7 @@ namespace FANNCSharp
 
 	        This function appears in FANN >= 2.1.0.
          */
-        public bool SetInputScalingParams(TrainingDataDouble data, float newInputMin, float newInputMax)
+        public bool SetInputScalingParams(TrainingData data, float newInputMin, float newInputMax)
         {
             return net.set_input_scaling_params(data.InternalData, newInputMin, newInputMax);
         }
@@ -2040,7 +2040,7 @@ namespace FANNCSharp
 
 	        This function appears in FANN >= 2.1.0.
          */
-        public bool SetOutputScalingParams(TrainingDataDouble data, float newOutputMin, float newOutputMax)
+        public bool SetOutputScalingParams(TrainingData data, float newOutputMin, float newOutputMax)
         {
             return net.set_output_scaling_params(data.InternalData, newOutputMin, newOutputMax);
         }
@@ -2055,7 +2055,7 @@ namespace FANNCSharp
 
 	        This function appears in FANN >= 2.1.0.
          */
-        public bool SetScalingParams(TrainingDataDouble data, float newInputMin, float newInputMax, float newOutputMin, float newOutputMax)
+        public bool SetScalingParams(TrainingData data, float newInputMin, float newInputMax, float newOutputMin, float newOutputMax)
         {
             return net.set_scaling_params(data.InternalData, newInputMin, newInputMax, newOutputMin, newOutputMax);
         }
@@ -2143,9 +2143,9 @@ namespace FANNCSharp
            
            If the value is NULL, no errors will be printed.
            
-           If NeuralNetDouble is empty the default log will be set.
-           The default log is the log used when creating a NeuralNetDouble.
-           This default log will also be the default for all new NeuralNetDouble
+           If NeuralNet is empty the default log will be set.
+           The default log is the log used when creating a NeuralNet.
+           This default log will also be the default for all new NeuralNet
            that are created.
            
            The default behavior is to log them to Console.Error.
@@ -2269,7 +2269,7 @@ namespace FANNCSharp
                 threadNumb - the thread to do training on
            
         */
-        public float TrainEpochBatchParallel(TrainingDataDouble data, uint threadNumb)
+        public float TrainEpochBatchParallel(TrainingData data, uint threadNumb)
         {
             return fanndouble.train_epoch_batch_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb);
         }
@@ -2281,7 +2281,7 @@ namespace FANNCSharp
                 threadNumb - the thread to do training on
            
         */
-        public float TrainEpochIrpropmParallel(TrainingDataDouble data, uint threadNumb)
+        public float TrainEpochIrpropmParallel(TrainingData data, uint threadNumb)
         {
             return fanndouble.train_epoch_irpropm_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb);
         }
@@ -2293,7 +2293,7 @@ namespace FANNCSharp
                 threadNumb - the thread to do training on
            
         */
-        public float TrainEpochQuickpropParallel(TrainingDataDouble data, uint threadNumb)
+        public float TrainEpochQuickpropParallel(TrainingData data, uint threadNumb)
         {
             return fanndouble.train_epoch_quickprop_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb);
         }
@@ -2305,7 +2305,7 @@ namespace FANNCSharp
                 threadNumb - the thread to do training on
            
         */
-        public float TrainEpochSarpropParallel(TrainingDataDouble data, uint threadNumb)
+        public float TrainEpochSarpropParallel(TrainingData data, uint threadNumb)
         {
             return fanndouble.train_epoch_sarprop_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb);
         }
@@ -2316,7 +2316,7 @@ namespace FANNCSharp
                 data - the data to train on
            
         */
-        public float TrainEpochIncrementalMod(TrainingDataDouble data)
+        public float TrainEpochIncrementalMod(TrainingData data)
         {
             return fanndouble.train_epoch_incremental_mod(net.to_fann(), data.ToFannTrainData());
         }
@@ -2329,7 +2329,7 @@ namespace FANNCSharp
                 predictedOutputs - the predicted outputs
            
         */
-        public float TrainEpochBatchParallel(TrainingDataDouble data, uint threadNumb, List<List<double>> predictedOutputs)
+        public float TrainEpochBatchParallel(TrainingData data, uint threadNumb, List<List<double>> predictedOutputs)
         {
             using (doubleVectorVector predicted_out = new doubleVectorVector(predictedOutputs.Count))
             {
@@ -2362,7 +2362,7 @@ namespace FANNCSharp
                 predictedOutputs - the predicted outputs
            
         */
-        public float TrainEpochIrpropmParallel(TrainingDataDouble data, uint threadNumb, List<List<double>> predictedOutputs)
+        public float TrainEpochIrpropmParallel(TrainingData data, uint threadNumb, List<List<double>> predictedOutputs)
         {
             using (doubleVectorVector predicted_out = new doubleVectorVector(predictedOutputs.Count))
             {
@@ -2394,7 +2394,7 @@ namespace FANNCSharp
                 predictedOutputs - the predicted outputs
            
         */
-        public float TrainEpochQuickpropParallel(TrainingDataDouble data, uint threadNumb, List<List<double>> predictedOutputs)
+        public float TrainEpochQuickpropParallel(TrainingData data, uint threadNumb, List<List<double>> predictedOutputs)
         {
             using (doubleVectorVector predicted_out = new doubleVectorVector(predictedOutputs.Count))
             {
@@ -2426,7 +2426,7 @@ namespace FANNCSharp
                 predictedOutputs - the predicted outputs
            
         */
-        public float TrainEpochSarpropParallel(TrainingDataDouble data, uint threadNumb, List<List<double>> predictedOutputs)
+        public float TrainEpochSarpropParallel(TrainingData data, uint threadNumb, List<List<double>> predictedOutputs)
         {
             using (doubleVectorVector predicted_out = new doubleVectorVector(predictedOutputs.Count))
             {
@@ -2457,7 +2457,7 @@ namespace FANNCSharp
                 predictedOutputs - the predicted outputs
            
         */
-        public float TrainEpochIncrementalMod(TrainingDataDouble data, List<List<double>> predictedOutputs)
+        public float TrainEpochIncrementalMod(TrainingData data, List<List<double>> predictedOutputs)
         {
             using (doubleVectorVector predicted_out = new doubleVectorVector(predictedOutputs.Count))
             {
@@ -2488,7 +2488,7 @@ namespace FANNCSharp
                 threadNumb - the thread to do training on
            
         */
-        public float TestDataParallel(TrainingDataDouble data, uint threadNumb)
+        public float TestDataParallel(TrainingData data, uint threadNumb)
         {
             return fanndouble.test_data_parallel(net.to_fann(), data.ToFannTrainData(), threadNumb);
         }
@@ -2501,7 +2501,7 @@ namespace FANNCSharp
                 predictedOutputs - the predicted outputs
            
         */
-        public float TestDataParallel(TrainingDataDouble data, uint threadNumb, List<List<double>> predictedOutputs)
+        public float TestDataParallel(TrainingData data, uint threadNumb, List<List<double>> predictedOutputs)
         {
             using (doubleVectorVector predicted_out = new doubleVectorVector(predictedOutputs.Count))
             {
@@ -2527,8 +2527,8 @@ namespace FANNCSharp
 
         private int InternalCallback(global::System.IntPtr netPtr, global::System.IntPtr dataPtr, uint max_epochs, uint epochs_between_reports, float desired_error, uint epochs, global::System.IntPtr user_data)
         {
-            NeuralNetDouble callbackNet = new NeuralNetDouble(new neural_net(netPtr, false));
-            TrainingDataDouble callbackData = new TrainingDataDouble(new training_data(dataPtr, false));
+            NeuralNet callbackNet = new NeuralNet(new neural_net(netPtr, false));
+            TrainingData callbackData = new TrainingData(new training_data(dataPtr, false));
             GCHandle handle = (GCHandle)user_data;
             return Callback(callbackNet, callbackData, max_epochs, epochs_between_reports, desired_error, epochs, handle.Target as Object);
         }
@@ -2552,7 +2552,7 @@ namespace FANNCSharp
             will terminate.
 
             Example of a callback function that prints information to the Console:
-                >int PrintCallback(NeuralNetDouble net, TrainingDataDouble data,
+                >int PrintCallback(NeuralNet net, TrainingData data,
                 >    uint maxEpochs, uint epochsBetweenReports,
                 >    float desiredError, uint epochs, Object userData)
                 >{
@@ -2562,7 +2562,7 @@ namespace FANNCSharp
             See also:
                 <SetCallback>, <fann_callback_type at http://libfann.github.io/fann/docs/files/fann_data-h.html#fann_callback_type>
          */
-        public delegate int TrainingCallback(NeuralNetDouble net, TrainingDataDouble data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, Object userData);
+        public delegate int TrainingCallback(NeuralNet net, TrainingData data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, Object userData);
 
 #region Properties
         internal neural_net Net

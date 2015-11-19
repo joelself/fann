@@ -8,32 +8,32 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 /*
- * Title: FANN C# DoubleArrayAccessor
+ * Title: FANN C# ArrayAccessor
  */
 using FannWrapperDouble;
-namespace FANNCSharp
+namespace FANNCSharp.Double
 {
-    /* Class: DoubleArrayAccessor
+    /* Class: ArrayAccessor
        
        Provides fast access to an array of array of doubles
     */
-    public class DoubleArrayAccessor : global::System.IDisposable
+    public class ArrayAccessor : global::System.IDisposable
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
         protected bool swigCMemOwn;
 
-        internal DoubleArrayAccessor(global::System.IntPtr cPtr, bool cMemoryOwn)
+        internal ArrayAccessor(global::System.IntPtr cPtr, bool cMemoryOwn)
         {
             swigCMemOwn = cMemoryOwn;
             swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
         }
 
-        internal static global::System.Runtime.InteropServices.HandleRef getCPtr(DoubleArrayAccessor obj)
+        internal static global::System.Runtime.InteropServices.HandleRef getCPtr(ArrayAccessor obj)
         {
             return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
         }
 
-        ~DoubleArrayAccessor()
+        ~ArrayAccessor()
         {
             Dispose();
         }
@@ -62,13 +62,13 @@ namespace FANNCSharp
                       index - The index of the array to return
    
             Return:
-                 A <DoubleAccessor> that provides fast access to an array
+                 A <DataAccessor> that provides fast access to an array
                  of doubles
         */
-        public DoubleAccessor Get(int index)
+        public DataAccessor Get(int index)
         {
             global::System.IntPtr cPtr = fanndoublePINVOKE.DoubleArrayAccessor_Get__SWIG_0(swigCPtr, index);
-            DoubleAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new DoubleAccessor(cPtr, false);
+            DataAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new DataAccessor(cPtr, false);
             return ret;
         }
         /* Method: Get
@@ -85,10 +85,10 @@ namespace FANNCSharp
             return ret;
         }
 
-        internal static DoubleArrayAccessor FromPointer(SWIGTYPE_p_p_double t)
+        internal static ArrayAccessor FromPointer(SWIGTYPE_p_p_double t)
         {
             global::System.IntPtr cPtr = fanndoublePINVOKE.DoubleArrayAccessor_FromPointer(SWIGTYPE_p_p_double.getCPtr(t));
-            DoubleArrayAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new DoubleArrayAccessor(cPtr, false);
+            ArrayAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new ArrayAccessor(cPtr, false);
             return ret;
         }
     }

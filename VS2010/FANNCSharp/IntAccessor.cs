@@ -8,32 +8,32 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 /*
- * Title: FANN C# IntAccessor
+ * Title: FANN C# DataAccessor
  */
 using FannWrapperFixed;
-namespace FANNCSharp
+namespace FANNCSharp.Fixed
 {
-    /* Class: IntAccessor
+    /* Class: DataAccessor
        
        Provides fast access to an array of ints
     */
-    public class IntAccessor : global::System.IDisposable
+    public class DataAccessor : global::System.IDisposable
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
         protected bool swigCMemOwn;
 
-        internal IntAccessor(global::System.IntPtr cPtr, bool cMemoryOwn)
+        internal DataAccessor(global::System.IntPtr cPtr, bool cMemoryOwn)
         {
             swigCMemOwn = cMemoryOwn;
             swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
         }
 
-        internal static global::System.Runtime.InteropServices.HandleRef getCPtr(IntAccessor obj)
+        internal static global::System.Runtime.InteropServices.HandleRef getCPtr(DataAccessor obj)
         {
             return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
         }
 
-        ~IntAccessor()
+        ~DataAccessor()
         {
             Dispose();
         }
@@ -70,10 +70,10 @@ namespace FANNCSharp
             return ret;
         }
 
-        internal static IntAccessor FromPointer(SWIGTYPE_p_int t)
+        internal static DataAccessor FromPointer(SWIGTYPE_p_int t)
         {
             global::System.IntPtr cPtr = fannfixedPINVOKE.IntAccessor_FromPointer(SWIGTYPE_p_int.getCPtr(t));
-            IntAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new IntAccessor(cPtr, false);
+            DataAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new DataAccessor(cPtr, false);
             return ret;
         }
     }

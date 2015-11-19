@@ -8,32 +8,32 @@
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
 /*
- * Title: FANN C# DoubleAccessor
+ * Title: FANN C# DataAccessor
  */
 using FannWrapperDouble;
-namespace FANNCSharp
+namespace FANNCSharp.Double
 {
-    /* Class: DoubleAccessor
+    /* Class: DataAccessor
        
        Provides fast access to an array of doubles
     */
-    public class DoubleAccessor : global::System.IDisposable
+    public class DataAccessor : global::System.IDisposable
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
         protected bool swigCMemOwn;
 
-        internal DoubleAccessor(global::System.IntPtr cPtr, bool cMemoryOwn)
+        internal DataAccessor(global::System.IntPtr cPtr, bool cMemoryOwn)
         {
             swigCMemOwn = cMemoryOwn;
             swigCPtr = new global::System.Runtime.InteropServices.HandleRef(this, cPtr);
         }
 
-        internal static global::System.Runtime.InteropServices.HandleRef getCPtr(DoubleAccessor obj)
+        internal static global::System.Runtime.InteropServices.HandleRef getCPtr(DataAccessor obj)
         {
             return (obj == null) ? new global::System.Runtime.InteropServices.HandleRef(null, global::System.IntPtr.Zero) : obj.swigCPtr;
         }
 
-        ~DoubleAccessor()
+        ~DataAccessor()
         {
             Dispose();
         }
@@ -70,10 +70,10 @@ namespace FANNCSharp
             return ret;
         }
 
-        internal static DoubleAccessor FromPointer(SWIGTYPE_p_double t)
+        internal static DataAccessor FromPointer(SWIGTYPE_p_double t)
         {
             global::System.IntPtr cPtr = fanndoublePINVOKE.DoubleAccessor_FromPointer(SWIGTYPE_p_double.getCPtr(t));
-            DoubleAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new DoubleAccessor(cPtr, false);
+            DataAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new DataAccessor(cPtr, false);
             return ret;
         }
     }

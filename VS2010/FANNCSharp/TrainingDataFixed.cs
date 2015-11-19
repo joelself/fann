@@ -3,52 +3,52 @@ using FannWrapperFixed;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 
-namespace FANNCSharp
+namespace FANNCSharp.Fixed
 {
 
     /* Section: FANN C# Training Data Fixed
     */
 
-    /* Class: TrainingDataFixed
+    /* Class: TrainingData
 
-    <TrainingDataFixed> is used to create and manipulate training data used by the <NeuralNetFixed>
+    <TrainingData> is used to create and manipulate training data used by the <NeuralNet>
 
     Encapsulation of a training_data class <training_data at http://libfann.github.io/fann/docs/files/fann_training_data_cpp-h.html#training_data> and
     associated C++ API functions.
     */
-    public class TrainingDataFixed : IDisposable
+    public class TrainingData : IDisposable
     {
-        /* Constructor: TrainingDataFixed
+        /* Constructor: TrainingData
 
             Default constructor creates an empty training data.
             Use <ReadTrainFromFile>, <SetTrainData> or <CreateTrainFromCallback> to initialize.
         */
-        public TrainingDataFixed()
+        public TrainingData()
         {
             InternalData = new FannWrapperFixed.training_data();
         }
-        internal TrainingDataFixed(training_data other)
+        internal TrainingData(training_data other)
         {
             InternalData = other;
         }
 
 
-        /* Constructor: TrainingDataFixed
+        /* Constructor: TrainingData
 
             Copy constructor constructs a copy of the training data.
             Corresponds to the C API <fann_duplicate_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_duplicate_train_data> function.
         */
-        public TrainingDataFixed(TrainingDataFixed data)
+        public TrainingData(TrainingData data)
         {
             InternalData = new FannWrapperFixed.training_data(data.InternalData);
         }
-        /* Constructor: TrainingDataFixed
+        /* Constructor: TrainingData
            Reads a file that stores training data.
 
             See also:
                 <ReadTrainFromFile>, <SetTrainData> or <CreateTrainFromCallback>
         */
-        public TrainingDataFixed(string filename)
+        public TrainingData(string filename)
         {
             InternalData = new FannWrapperFixed.training_data();
             ReadTrainFromFile(filename);
@@ -82,7 +82,7 @@ namespace FANNCSharp
            >outputdata seperated by space
 
            See also:
-   	        <NeuralNetFixed::TrainOnData>, <SaveTrain>, <fann_read_train_from_file at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_read_train_from_file>
+   	        <NeuralNet::TrainOnData>, <SaveTrain>, <fann_read_train_from_file at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_read_train_from_file>
 
             This function appears in FANN >= 1.0.0
         */
@@ -141,18 +141,18 @@ namespace FANNCSharp
 
         /* Method: MergeTrainData
 
-           Merges the data into the data contained in the <TrainingDataFixed>.
+           Merges the data into the data contained in the <TrainingData>.
 
            This function appears in FANN >= 1.1.0.
          */
-        public void MergeTrainData(TrainingDataFixed data)
+        public void MergeTrainData(TrainingData data)
         {
             InternalData.merge_train_data(data.InternalData);
         }
 
         /* Property: TrainDataLength
 
-           Returns the number of training patterns in the <TrainingDataFixed>.
+           Returns the number of training patterns in the <TrainingData>.
 
            See also:
            <InputCount>, <OutputCount>, <fann_length_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_length_train_data>
@@ -169,7 +169,7 @@ namespace FANNCSharp
 
         /* Property: InputCount
 
-           Returns the number of inputs in each of the training patterns in the <TrainingDataFixed>.
+           Returns the number of inputs in each of the training patterns in the <TrainingData>.
 
            See also:
            <OutputCount>, <TrainDataLength>, <fann_num_input_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_num_input_train_data>
@@ -186,7 +186,7 @@ namespace FANNCSharp
 
         /* Property: OutputCount
 
-           Returns the number of outputs in each of the training patterns in the <TrainingDataFixed>.
+           Returns the number of outputs in each of the training patterns in the <TrainingData>.
 
            See also:
            <InputCount>, <TrainDataLength>, <fann_num_output_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_num_output_train_data>
@@ -252,16 +252,16 @@ namespace FANNCSharp
             grants access to to the input data with no copying.
 
             Returns:
-                A <IntArrayAccessor> that can access the input arrray
+                A <ArrayAccessor> that can access the input arrray
 
             See also:
                 <Input>, <SetTrainData>
         */
-        public IntArrayAccessor InputAccessor
+        public ArrayAccessor InputAccessor
         {
             get
             {
-                return IntArrayAccessor.FromPointer(InternalData.get_input());
+                return ArrayAccessor.FromPointer(InternalData.get_input());
             }
         }
 
@@ -316,16 +316,16 @@ namespace FANNCSharp
             grants access to to the input data with no copying.
 
             Returns:
-                A <IntArrayAccessor> that can access the output arrray
+                A <ArrayAccessor> that can access the output arrray
 
             See also:
                 <Output>, <SetTrainData>
         */
-        public IntArrayAccessor OutputAccessor
+        public ArrayAccessor OutputAccessor
         {
             get
             {
-                return IntArrayAccessor.FromPointer(InternalData.get_output());
+                return ArrayAccessor.FromPointer(InternalData.get_output());
             }
         }
         /* Method: GetTrainInput
@@ -454,7 +454,7 @@ namespace FANNCSharp
              output      - The set of desired outputs
 
            See also:
-             <ReadTrainFromFile>, <NeuralNetFixed::TrainOnData>,
+             <ReadTrainFromFile>, <NeuralNet::TrainOnData>,
              <fann_create_train_from_callback at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_create_train_from_callback>
 
             This function appears in FANN >= 2.1.0
@@ -477,7 +477,7 @@ namespace FANNCSharp
            It is not recommended to use this on subsets of data as the complete input range might not be
            available in that subset.
 
-           For more powerful scaling, please consider <NeuralNetFixed::ScaleTrain>
+           For more powerful scaling, please consider <NeuralNet::ScaleTrain>
 
            See also:
    	        <ScaleOutputTrainData>, <ScaleTrainData>, <fann_scale_input_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_scale_input_train_data>
@@ -499,7 +499,7 @@ namespace FANNCSharp
            It is not recommended to use this on subsets of data as the complete input range might not be
            available in that subset.
 
-           For more powerful scaling, please consider <NeuralNetFixed::ScaleTrain>
+           For more powerful scaling, please consider <NeuralNet::ScaleTrain>
 
            See also:
    	        <ScaleInputTrainData>, <ScaleTrainData>, <fann_scale_output_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_scale_output_train_data>
@@ -521,7 +521,7 @@ namespace FANNCSharp
            It is not recommended to use this on subsets of data as the complete input range might not be
            available in that subset.
 
-           For more powerful scaling, please consider <NeuralNetFixed::ScaleTrain>
+           For more powerful scaling, please consider <NeuralNet::ScaleTrain>
 
            See also:
    	        <ScaleOutputTrainData>, <ScaleInputTrainData>, <fann_scale_train_data at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_scale_train_data>
@@ -539,9 +539,9 @@ namespace FANNCSharp
            and *length* elements forward. Use the copy constructor to work
            on a new copy of the training data.
 
-            >TrainingDataFixed fullDataSet = new TrainingDataFixed();
+            >TrainingData fullDataSet = new TrainingData();
             >fullDataSet.ReadTrainFromFile("somefile.train");
-            >TrainingDataFixed smallDataSet = new TrainingDataFixed(fullDataSet);
+            >TrainingData smallDataSet = new TrainingData(fullDataSet);
             >smallDataSet->SubsetTrainData(0, 2); // Only use first two
             >// Use smallDataSet ...
             >small_data_set.Dispose();

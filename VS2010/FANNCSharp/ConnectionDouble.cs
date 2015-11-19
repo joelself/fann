@@ -6,7 +6,7 @@ using BaseConnection = FannWrapperDouble.Connection;
  */
 namespace FANNCSharp
 {
-    /* Class: ConnectionDouble
+    /* Class: Connection
 
         Describes a connection between two neurons and its weight
 
@@ -19,22 +19,22 @@ namespace FANNCSharp
 
        This structure appears in FANN >= 2.1.0
     */
-    public class ConnectionDouble : IDisposable
+    public class Connection : IDisposable
     {
-        internal ConnectionDouble(BaseConnection other)
+        internal Connection(BaseConnection other)
         {
             connection = other;
         }
-        /* Constructor: ConnectionDouble
+        /* Constructor: Connection
             Creates a connection with the specified parameters
             Parameters:
                 fromNeuron - Unique number used to identify source neuron
                 toNeuron - Unique number used to identify destination neuron
                 weight - The numerical value of the weight
             Example:
-              >ConnectionDouble connection(2, 7, 0.5);
+              >Connection connection(2, 7, 0.5);
          */
-        public ConnectionDouble(uint fromNeuron, uint toNeuron, double weight)
+        public Connection(uint fromNeuron, uint toNeuron, double weight)
         {
             FromNeuron = fromNeuron;
             ToNeuron = toNeuron;
