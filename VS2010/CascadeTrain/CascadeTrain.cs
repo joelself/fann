@@ -1,16 +1,10 @@
 ﻿using System;
 using FANNCSharp;
-#if FANN_FIXED
-using NeuralNet = FANNCSharp.NeuralNetFixed;
-using TrainingData = FANNCSharp.TrainingDataFixed;
-using DataType = System.Int32;
-#elif FANN_DOUBLE
-using NeuralNet = FANNCSharp.NeuralNetDouble;
-using TrainingData = FANNCSharp.TrainingDataDouble;
+#if FANN_DOUBLE
+using FANNCSharp.Double;
 using DataType = System.Double;
 #else
-using NeuralNet = FANNCSharp.NeuralNetFloat;
-using TrainingData = FANNCSharp.TrainingDataFloat;
+using FANNCSharp.Float;
 using DataType = System.Single;
 #endif
 namespace Example

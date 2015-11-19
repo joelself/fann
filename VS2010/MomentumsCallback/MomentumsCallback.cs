@@ -1,18 +1,15 @@
 ﻿using System;
 using FANNCSharp;
+using System.IO;
 #if FANN_FIXED
-using NeuralNet = FANNCSharp.NeuralNetFixed;
-using TrainingData = FANNCSharp.TrainingDataFixed;
+using FANNCSharp.Fixed;
 using DataType = System.Int32;
 #elif FANN_DOUBLE
-using NeuralNet = FANNCSharp.NeuralNetDouble;
-using TrainingData = FANNCSharp.TrainingDataDouble;
+using FANNCSharp.Double;
 using DataType = System.Double;
 #else
-using NeuralNet = FANNCSharp.NeuralNetFloat;
-using TrainingData = FANNCSharp.TrainingDataFloat;
+using FANNCSharp.Float;
 using DataType = System.Single;
-using System.IO;
 #endif
 namespace Example
 {
@@ -112,7 +109,7 @@ namespace Example
             }
         }
 
-        static int TrainingCallback(NeuralNetFloat net, TrainingDataFloat data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, object userData) {
+        static int TrainingCallback(NeuralNet net, TrainingData data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, object userData) {
             System.GC.Collect(); // Make sure nothing's getting garbage-collected prematurely
             GC.WaitForPendingFinalizers();
             Console.WriteLine("Callback: Last neuron weight: {0}, Last data input: {1}, Max epochs: {2}\nEpochs between reports: {3}, Desired error: {4}, Current epoch: {5}\nGreeting: \"{6}\"",
