@@ -28,9 +28,9 @@ namespace FANNCSharp.Float
        methods on <IReadOnlyList at https://msdn.microsoft.com/en-us/library/hh192385.aspx>.
     */
 #if NET45
-    public class DataAccessor : IReadOnlyList<DataAccessor>, global::System.IDisposable
+    public class ArrayAccessor : IReadOnlyList<DataAccessor>, global::System.IDisposable
 #else
-    public class DataAccessor : IAccessor<DataAccessor>, global::System.IDisposable
+    public class ArrayAccessor : IAccessor<DataAccessor>, global::System.IDisposable
 #endif
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
