@@ -50,7 +50,6 @@ using DataType = System.Single;
   - Then add FANN_FIXED, FANN_DOUBLE, or FANN_FLOAT to your conditional compilation symbols (Project -> Properties -> Build -> Conditional compilation symbols)
   - If you write your code using ```DataType``` in place of the ```float```, ```double``` or ```int``` keywords you would normally use then you can easily switch network types by changing the compilation symbol and recompiling (Note there are methods and properties that some network types support, but others don't, see the documentation for a full list of each type's supported functions).
 
-
 #### From Source
 
 First you'll want to clone the repository:
@@ -86,6 +85,10 @@ From here you have 4 options:
   - You will need FANNCSharp.dll as well as fannfloat.dll, fanndouble.dll and fannfixed.dll
   - In your project add a reference to FANNCSharp.dll and make sure fannfloat.dll, fanndouble.dll and fannfixed.dll are in the same directory or are findable through your $PATH
   - To easily switch between the different types of networks follow the directions above in the **From Binaries** section
+
+#### Using FANNCSharp
+
+The main types, NeuralNet and TrainingData, are in the FANNCSharp.Float, FANNCSharp.Double, and FANNCSharp.Fixed namespaces. The types common to all types of NeuralNets are in the FANNCSharp namespace. For more detail on each of the types [see the documentation](http://joelself.github.io/FannCSharp/).
 
 ## Documentation
 
