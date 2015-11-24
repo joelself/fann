@@ -1,17 +1,55 @@
-# Fann C#
+# `Fann C#`
 ## FANN
 
 **Fast Artificial Neural Network (FANN) Library** is a free open source neural network library, which implements multilayer artificial neural networks in C with support for both fully connected and sparsely connected networks.
 
 Cross-platform execution in both fixed and floating point are supported. It includes a framework for easy handling of training data sets. It is easy to use, versatile, well documented, and fast. 
 
-## Fann `C#`
-**`Fann C#`** is a wapper around FANN that lets you use the FANN libraries from C# on Windows. This is currently a work in progress as only a subset of the FANN functionality has been tested. As time goes on I plan to add more of the FANN functionality as well as make it much easier to use.
+## `Fann C#`
+**`Fann C#`** is a wapper around FANN that lets you use the FANN libraries from C# on Windows. Currently all methods of the neural_net and training_data classes have been implemented. Additionally the new FANN parallel methods have been added as part of the NeuralNet classes.
 
 ## Current Progress
-Most of the FANN neural_net and training_data C++ wrapper functionality is available along with the FANN parallel functions (for fannfloat and fanndouble).
+All of the FANN neural_net and training_data C++ wrapper functionality is available along with the FANN parallel functions (for fannfloat and fanndouble).
 
 ## To Install
+
+#### From Binaries
+
+You have 4 options:
+
+1. For a network that supports float neural networks:
+  - For x64 download [FANNCSharp.Float.dll](https://github.com/joelself/FannCSharp/blob/master/bin/x64/FANNCSharp.Float.dll?raw=true) and [fannfloat.dll](https://github.com/joelself/FannCSharp/blob/master/bin/x64/fannfloat.dll?raw=true)
+  - For x86 download [FANNCSharp.Float.dll](https://github.com/joelself/FannCSharp/blob/master/bin/x86/FANNCSharp.Float.dll?raw=true) and [fannfloat.dll](https://github.com/joelself/FannCSharp/blob/master/bin/x86/fannfloat.dll?raw=true)
+  - In your project add a reference to FANNCSharp.Float.dll and make sure fannfloat.dll is in the same directory or is findable through your $PATH
+2. For a network that supports double neural networks:
+  - For x64 download [FANNCSharp.Double.dll](https://github.com/joelself/FannCSharp/blob/master/bin/x64/FANNCSharp.Double.dll?raw=true) and [fannfloat.dll](https://github.com/joelself/FannCSharp/blob/master/bin/x64/fanndouble.dll?raw=true)
+  - For x86 download [FANNCSharp.Double.dll](https://github.com/joelself/FannCSharp/blob/master/bin/x86/FANNCSharp.Double.dll?raw=true) and [fanndouble.dll](https://github.com/joelself/FannCSharp/blob/master/bin/x86/fanndouble.dll?raw=true)
+  - In your project add a reference to FANNCSharp.Double.dll and make sure fanndouble.dll is in the same directory or is findable through your $PATH
+3. For a network that supports fixed neural networks:
+  - For x64 download [FANNCSharp.Fixed.dll](https://github.com/joelself/FannCSharp/blob/master/bin/x64/FANNCSharp.Fixed.dll?raw=true) and [fannfixed.dll](https://github.com/joelself/FannCSharp/blob/master/bin/x64/fannfixed.dll?raw=true)
+  - For x86 download [FANNCSharp.Fixed.dll](https://github.com/joelself/FannCSharp/blob/master/bin/x86/FANNCSharp.Fixed.dll?raw=true) and [fannfixed.dll](https://github.com/joelself/FannCSharp/blob/master/bin/x86/fannfixed.dll?raw=true)
+  - In your project add a reference to FANNCSharp.Fixed.dll and make sure fannfixed.dll is in the same directory or is findable through your $PATH
+4. For a dll that supports all 3 types of neural networks for easy switching:
+  - For x64 download [FANNCSharpx64.zip](https://github.com/joelself/FannCSharp/blob/master/bin/x64/FANNCSharpx64.zip?raw=true)
+  - For x86 download [FANNCSharpx86.zip](https://github.com/joelself/FannCSharp/blob/master/bin/x86/FANNCSharpx86.zip?raw=true)
+  - Extract the zip files in your project or wherever you want them to be
+  - In your project add a reference to FANNCSharp.dll and make sure fannfloat.dll, fanndouble.dll and fannfixed.dll are in the same directory or are findable through your $PATH
+  - To easily switch between the different types of networks do what the example projects do and add the following code to the top of your file:
+```
+#if FANN_FIXED
+using FANNCSharp.Fixed;
+using DataType = System.Int32;
+#elif FANN_DOUBLE
+using FANNCSharp.Double;
+using DataType = System.Double;
+#else
+using FANNCSharp.Float;
+using DataType = System.Single;
+#endif
+```
+  - Then add FANN_FIXED, FANN_DOUBLE, or FANN_FLOAT to your conditional compilation symbols (Project -> Properties -> Build -> Conditional compilation symbols)
+  - If you write your code using ```DataType``` in place of the ```float```, ```double``` or ```int``` keywords you would normally use then you can easily switch network types by changing the compilation symbol and recompiling (Note there are methods and properties that some network types support, but others don't, see the documentation for a full list of each type's supported functions).
+
 
 #### From Source
 
@@ -19,21 +57,39 @@ First you'll want to clone the repository:
 
 `git clone https://github.com/joelself/FannCSharp.git`
 
-Once that's finished, navigate to the VS2010 directory. In this case it would be .\VS2010:
+Once that's finished, navigate to the VS2010 directory. In this case it would be .\fann\VS2010:
 
 `cd VS2010`
 
 Open the solution fann.sln
 
-Build the solution. If you chose 'x64' as your platform the dlls will be built in .\fann\bin\x64\. If you chose x86 as your platform the dlls will be in .\fann\bin\x86\.
+From here you have 4 options:
 
-You will need the FANNCSharp.dll and at least one of fannfloat.dll, fanndouble.dll, or fannfixed.dll depending on which version of FANN you want to run. In your project add FANNCSharp.dll as a reference and make sure the fann[float|double|fixed] dll is in the same directory as FANNCSharp. You can now code against the C# version of the FANN C++ interface. The main classes you'll be using are NeuralNetwork[Float|Double|Fixed] and TrainingData[Float|Double|Fixed].
+1. Build a dll that supports float neural networks:
+  - To do this build the FANNCSharp.Float project
+  - The dlls will be in .\fann\bin\(Platform)\
+  - You will need FANNCSharp.Float.dll as well as fannfloat.dll
+  - In your project add a reference to FANNCSharp.Float.dll and make sure fannfloat.dll is in the same directory or is findable through your $PATH
+2. Build a dll that supports double neural networks:
+  - To do this build the FANNCSharp.Double project
+  - The dlls will be in .\fann\bin\(Platform)\
+  - You will need FANNCSharp.Double.dll as well as fanndouble.dll
+  - In your project add a reference to FANNCSharp.Double.dll and make sure fanndouble.dll is in the same directory or is findable through your $PATH
+3. Build a dll that supports fixed neural networks:
+  - To do this build the FANNCSharp.Fixed project
+  - The dlls will be in .\fann\bin\(Platform)\
+  - You will need FANNCSharp.Fixed.dll as well as fannfixed.dll
+  - In your project add a reference to FANNCSharp.Fixed.dll and make sure fannfixed.dll is in the same directory or is findable through your $PATH
+4. Build a dll that supports all 3 types of neural networks for easy switching:
+  - To do this build the FANNCSharp project
+  - The dlls will be in .\fann\bin\(Platform)\
+  - You will need FANNCSharp.dll as well as fannfloat.dll, fanndouble.dll and fannfixed.dll
+  - In your project add a reference to FANNCSharp.dll and make sure fannfloat.dll, fanndouble.dll and fannfixed.dll are in the same directory or are findable through your $PATH
+  - To easily switch between the different types of networks follow the directions above in the **From Binaries** section
 
-To easily switch between different versions of FANN, do what the examples do and put using statements at the top of your file and specify a compilation symbol in your project properties to select a specific NeuralNetwork and TrainingData type.
+## Documentation
 
-#### Note
-
-I'm currently making changes to both the NeuralNetworrk* and TrainingData* classes to be more C-Sharpey, so code written against them might break in the future. The fixes should be easy, e.g. a getter method changes to a Property, so don't worry too much.
+This wrapper's documentation can be found [here](http://joelself.github.io/FannCSharp/). While the documentation for FANN itself can be found [here](http://libfann.github.io/fann/docs/files/fann-h.html).
 
 ## To Learn More About FANN
 
