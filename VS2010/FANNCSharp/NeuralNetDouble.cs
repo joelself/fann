@@ -23,7 +23,7 @@ using System.Runtime.InteropServices;
  */
 
 /*
- *  Title: FANN C# neural_net Wrapper Double
+ *  Title: FANN C# NeuralNet Double
  *
  *  Overview:
  *

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace FANNCSharp.Fixed
 {
 
-    /* Section: FANN C# Training Data Fixed
+    /* Section: FANN C# TrainingData Fixed
     */
 
     /* Class: TrainingData
@@ -204,7 +204,7 @@ namespace FANNCSharp.Fixed
         /* Property: Input
             Grant access to the encapsulated data since many situations
             and applications creates the data from sources other than files
-            or uses the training data for testing and related functions
+            or uses the training data for testing and related functions.
          
             If you only need a specfic output data then it is preferrable to
             use the <GetTrainInput> method as this property has to duplicate
@@ -269,7 +269,7 @@ namespace FANNCSharp.Fixed
 
             Grant access to the encapsulated data since many situations
             and applications creates the data from sources other than files
-            or uses the training data for testing and related functions
+            or uses the training data for testing and related functions.
           
             If you only need a specfic output data then it is preferrable to
             use the <GetTrainOutput> method as this property has to duplicate

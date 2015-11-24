@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace FANNCSharp.Float
 {
 
-    /* Section: FANN C# Training Data Float
+    /* Section: FANN C# TrainingData Float
     */
 
     /* Class: TrainingData
@@ -203,7 +203,7 @@ namespace FANNCSharp.Float
         /* Property: Input
             Grant access to the encapsulated data since many situations
             and applications creates the data from sources other than files
-            or uses the training data for testing and related functions
+            or uses the training data for testing and related functions.
          
             If you only need a specfic output data then it is preferrable to
             use the <GetTrainInput> method as this property has to duplicate
@@ -268,7 +268,7 @@ namespace FANNCSharp.Float
 
             Grant access to the encapsulated data since many situations
             and applications creates the data from sources other than files
-            or uses the training data for testing and related functions
+            or uses the training data for testing and related functions.
           
             If you only need a specfic output data then it is preferrable to
             use the <GetTrainOutput> method as this property has to duplicate

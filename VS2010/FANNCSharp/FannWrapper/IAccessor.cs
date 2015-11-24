@@ -1,13 +1,24 @@
-﻿using System;
+﻿//------------------------------------------------------------------------------
+/*
+ * Title: FANN C# IAccessor<T> Interface
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace FANNCSharp
-{   /* Interface: IAccessor<T>
+{
+    /* Interface: IAccessor<T>
+      
          An enumerable interface that provides a count of
          elements in the accessor and random, read-only
          access to its elements.
+      
+         This takes the place of <IReadOnlyList at https://msdn.microsoft.com/en-us/library/hh192385.aspx>
+         if targeting a .NET Framework below 4.5 (the official
+         release targets 2.0 for maximum compatibility)
     */
     interface IAccessor<T> : IEnumerable<T>, IEnumerable
     {

@@ -19,8 +19,19 @@ namespace FANNCSharp.Fixed
     /* Class: ArrayAccessor
        
        Provides fast access to an array of array of ints
+             
+       Inherits from IAccessor when compiled with a target
+       below .NET 4.5 (which is the default for the most
+       compatibility). Inherits from <IReadOnlyList at https://msdn.microsoft.com/en-us/library/hh192385.aspx>
+       when compiled with at or above .NET 4.5 to allow the
+       user to take advantage of the multitude of extension
+       methods on <IReadOnlyList at https://msdn.microsoft.com/en-us/library/hh192385.aspx>.
     */
-    public class ArrayAccessor : IAccessor<DataAccessor>, global::System.IDisposable
+#if NET45
+    public class DataAccessor : IReadOnlyList<DataAccessor>, global::System.IDisposable
+#else
+    public class DataAccessor : IAccessor<DataAccessor>, global::System.IDisposable
+#endif
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
         protected bool swigCMemOwn;

@@ -18,8 +18,19 @@ namespace FANNCSharp.Float
     /* Class: DataAccessor
        
        Provides fast access to an array of floats
+             
+       Inherits from IAccessor when compiled with a target
+       below .NET 4.5 (which is the default for the most
+       compatibility). Inherits from <IReadOnlyList at https://msdn.microsoft.com/en-us/library/hh192385.aspx>
+       when compiled with at or above .NET 4.5 to allow the
+       user to take advantage of the multitude of extension
+       methods on <IReadOnlyList at https://msdn.microsoft.com/en-us/library/hh192385.aspx>.
     */
+#if NET45
+    public class DataAccessor : IReadOnlyList<float>, global::System.IDisposable
+#else
     public class DataAccessor : IAccessor<float>, global::System.IDisposable
+#endif
     {
         private global::System.Runtime.InteropServices.HandleRef swigCPtr;
         protected bool swigCMemOwn;

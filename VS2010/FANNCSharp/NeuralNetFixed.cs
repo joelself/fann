@@ -23,7 +23,7 @@ using System.Runtime.InteropServices;
  */
 
 /*
- *  Title: FANN C# neural_net Wrapper Fixed
+ *  Title: FANN C# NeuralNet Fixed
  *
  *  Overview:
  *

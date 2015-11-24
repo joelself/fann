@@ -1,4 +1,8 @@
-﻿#if FANN_FIXED
+﻿//------------------------------------------------------------------------------
+/*
+ * Title: FANN C# FannFile class
+ */
+#if FANN_FIXED
 using FannWrapperFixed;
 using fannclass = FannWrapperFixed.fannfixed;
 #elif FANN_DOUBLE
