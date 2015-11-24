@@ -14,7 +14,7 @@ namespace Example
         static void Main()
         {   
 	        const float desired_error = 0.0F;
-	        uint max_neurons = 300;
+	        uint max_neurons = 30;
 	        uint neurons_between_reports = 1;
 	        uint bit_fail_train, bit_fail_test;
 	        float mse_train, mse_test;
@@ -77,6 +77,7 @@ namespace Example
 
                     Console.WriteLine("\nTrain error: {0}, Train bit-fail: {1}, Test error: {2}, Test bit-fail: {3}\n",
                                       mse_train, bit_fail_train, mse_test, bit_fail_test);
+
                     for (int i = 0; i < trainData.TrainDataLength; i++)
                     {
                         output = net.Run(trainData.GetTrainInput((uint)i));

@@ -341,7 +341,7 @@ namespace FANNCSharp.Fixed
         */
         public int[] GetTrainInput(uint position)
         {
-            using (intArray output = intArray.frompointer(InternalData.get_train_input(position)))
+            using (intArray output = intArray.frompointer(InternalData.get_train_output(position)))
             {
                 int[] result = new int[InputCount];
                 for (int i = 0; i < InputCount; i++)

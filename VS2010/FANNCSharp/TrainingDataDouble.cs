@@ -342,7 +342,7 @@ namespace FANNCSharp.Double
         */
         public double[] GetTrainInput(uint position)
         {
-            using (doubleArray output = doubleArray.frompointer(InternalData.get_train_input(position)))
+            using (doubleArray output = doubleArray.frompointer(InternalData.get_train_output(position)))
             {
                 double[] result = new double[InputCount];
                 for (int i = 0; i < InputCount; i++)

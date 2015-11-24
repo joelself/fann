@@ -364,7 +364,7 @@ namespace FANNCSharp.Float
         */
         public float[] GetTrainOutput(uint position)
         {
-            using (floatArray output = floatArray.frompointer(InternalData.get_train_input(position)))
+            using (floatArray output = floatArray.frompointer(InternalData.get_train_output(position)))
             {
                 float[] result = new float[OutputCount];
                 for (int i = 0; i < OutputCount; i++)
