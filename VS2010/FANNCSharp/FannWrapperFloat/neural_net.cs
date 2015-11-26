@@ -605,20 +605,12 @@ internal class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public void scale_input(float[] input_vector) {
-    fannfloatPINVOKE.neural_net_scale_input(swigCPtr, input_vector);
+  public void scale_input(SWIGTYPE_p_float input_vector) {
+    fannfloatPINVOKE.neural_net_scale_input(swigCPtr, SWIGTYPE_p_float.getCPtr(input_vector));
   }
 
-  public void scale_output(float[] output_vector) {
-    fannfloatPINVOKE.neural_net_scale_output(swigCPtr, output_vector);
-  }
-
-  public void descale_input(float[] input_vector) {
-    fannfloatPINVOKE.neural_net_descale_input(swigCPtr, input_vector);
-  }
-
-  public void descale_output(float[] output_vector) {
-    fannfloatPINVOKE.neural_net_descale_output(swigCPtr, output_vector);
+  public void scale_output(SWIGTYPE_p_float output_vector) {
+    fannfloatPINVOKE.neural_net_scale_output(swigCPtr, SWIGTYPE_p_float.getCPtr(output_vector));
   }
 
   public void set_error_log(SWIGTYPE_p_FILE log_file) {
@@ -659,6 +651,14 @@ internal class neural_net : global::System.IDisposable {
     global::System.IntPtr cPtr = fannfloatPINVOKE.neural_net_to_fann(swigCPtr);
     SWIGTYPE_p_fann ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_fann(cPtr, false);
     return ret;
+  }
+
+  public void descale_output_(float[] descale_vector) {
+    fannfloatPINVOKE.neural_net_descale_output_(swigCPtr, descale_vector);
+  }
+
+  public void descale_input_(float[] descale_vector) {
+    fannfloatPINVOKE.neural_net_descale_input_(swigCPtr, descale_vector);
   }
 
 }

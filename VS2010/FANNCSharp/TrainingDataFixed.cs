@@ -261,7 +261,7 @@ namespace FANNCSharp.Fixed
         {
             get
             {
-                return ArrayAccessor.FromPointer(InternalData.get_input());
+                return ArrayAccessor.FromPointer(InternalData.get_input(), (int)TrainDataLength, (int)InputCount);
             }
         }
 
@@ -325,7 +325,7 @@ namespace FANNCSharp.Fixed
         {
             get
             {
-                return ArrayAccessor.FromPointer(InternalData.get_output());
+                return ArrayAccessor.FromPointer(InternalData.get_output(), (int)TrainDataLength, (int)OutputCount);
             }
         }
         /* Method: GetTrainInput
@@ -339,17 +339,10 @@ namespace FANNCSharp.Fixed
 
            This function appears in FANN >= 2.3.0.
         */
-        public int[] GetTrainInput(uint position)
+        public DataAccessor GetTrainInput(uint position)
         {
-            using (intArray output = intArray.frompointer(InternalData.get_train_output(position)))
-            {
-                int[] result = new int[InputCount];
-                for (int i = 0; i < InputCount; i++)
-                {
-                    result[i] = output.getitem(i);
-                }
-                return result;
-            }
+            DataAccessor data = DataAccessor.FromPointer(InternalData.get_train_input(position), (int)InputCount);
+            return data;
         }
 
         /* Method: GetTrainOutput
@@ -363,17 +356,9 @@ namespace FANNCSharp.Fixed
 
            This function appears in FANN >= 2.3.0.
         */
-        public int[] GetTrainOutput(uint position)
+        public DataAccessor GetTrainOutput(uint position)
         {
-            using (intArray output = intArray.frompointer(InternalData.get_train_input(position)))
-            {
-                int[] result = new int[OutputCount];
-                for (int i = 0; i < OutputCount; i++)
-                {
-                    result[i] = output.getitem(i);
-                }
-                return result;
-            }
+            return DataAccessor.FromPointer(InternalData.get_train_output(position), (int)OutputCount);
         }
 
         /* Method: SetTrainData

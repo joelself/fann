@@ -18,7 +18,10 @@ public:
     #endif
       newStruct->array = t;
       return newStruct;
-    } 
+    }
+    TYPE** Cast() {
+        return array;
+    }
 } NAME;
 
 %}
@@ -43,6 +46,9 @@ public:
     #endif
       newStruct->array = t;
       return newStruct;
+    }
+    TYPE* Cast() {
+        return array;
     }
 } NAME;
 

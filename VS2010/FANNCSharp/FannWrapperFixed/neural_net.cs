@@ -142,8 +142,8 @@ internal class neural_net : global::System.IDisposable {
     return ret;
   }
 
-  public SWIGTYPE_p_int test(int[] input, SWIGTYPE_p_int desired_output) {
-    global::System.IntPtr cPtr = fannfixedPINVOKE.neural_net_test(swigCPtr, input, SWIGTYPE_p_int.getCPtr(desired_output));
+  public SWIGTYPE_p_int test(int[] input, int[] desired_output) {
+    global::System.IntPtr cPtr = fannfixedPINVOKE.neural_net_test(swigCPtr, input, desired_output);
     SWIGTYPE_p_int ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_int(cPtr, false);
     return ret;
   }

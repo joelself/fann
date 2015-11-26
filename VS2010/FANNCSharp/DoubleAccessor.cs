@@ -102,10 +102,37 @@ namespace FANNCSharp.Double
             return new AccessorEnumerator<double>(this);
         }
 
-        internal static DataAccessor FromPointer(SWIGTYPE_p_double t)
+        /* Property: Array
+                Copies the Accessor's values to an array
+         
+            Return:
+                 An array with all of the accessor's values
+        */
+        public double[] Array
+        {
+            get
+            {
+                double[] result = new double[Count];
+                for (int i = 0; i < Count; i++)
+                {
+                    result[i] = this[i];
+                }
+                return result;
+            }
+        }
+
+        internal static DataAccessor FromPointer(SWIGTYPE_p_double t, int count)
         {
             global::System.IntPtr cPtr = fanndoublePINVOKE.DoubleAccessor_FromPointer(SWIGTYPE_p_double.getCPtr(t));
             DataAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new DataAccessor(cPtr, false);
+            ret.ArrayCount = count;
+            return ret;
+        }
+
+        internal SWIGTYPE_p_double Cast()
+        {
+            global::System.IntPtr cPtr = fanndoublePINVOKE.DoubleAccessor_Cast(swigCPtr);
+            SWIGTYPE_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_double(cPtr, false);
             return ret;
         }
 

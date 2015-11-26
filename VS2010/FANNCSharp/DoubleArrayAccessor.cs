@@ -122,10 +122,45 @@ namespace FANNCSharp.Double
             return new AccessorEnumerator<DataAccessor>(this);
         }
 
-        internal static ArrayAccessor FromPointer(SWIGTYPE_p_p_double t)
+        /* Property: Array
+                Copies the Accessor's array's values to arrays
+                and puts then in array
+          
+                This is expensive. Consider using <Get> or array accessors
+                <this>(e.g. accessor[i][j]) to get a specific value. To get a set
+                of values you can use the array accessor <this>(e.g. accessor[i])
+                which you can then convert to an array using the
+                <DataAccessor::Array> property.
+         
+            Return:
+                 An array with arrays of all of the accessor's values
+        */
+        public double[][] Array
+        {
+            get
+            {
+                double[][] result = new double[Count][];
+                for (int i = 0; i < Count; i++)
+                {
+                    result[i] = this[i].Array;
+                }
+                return result;
+            }
+        }
+
+        internal static ArrayAccessor FromPointer(SWIGTYPE_p_p_double t, int length, int count)
         {
             global::System.IntPtr cPtr = fanndoublePINVOKE.DoubleArrayAccessor_FromPointer(SWIGTYPE_p_p_double.getCPtr(t));
             ArrayAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new ArrayAccessor(cPtr, false);
+            ret.ArrayLength = length;
+            ret.ArrayCount = count;
+            return ret;
+        }
+
+        internal SWIGTYPE_p_p_double Cast()
+        {
+            global::System.IntPtr cPtr = fanndoublePINVOKE.DoubleArrayAccessor_Cast(swigCPtr);
+            SWIGTYPE_p_p_double ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_p_double(cPtr, false);
             return ret;
         }
 

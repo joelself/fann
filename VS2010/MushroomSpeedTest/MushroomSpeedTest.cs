@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*************************************************************************************************************/
+// Based off the Mushrooms project, but adds in a speed test comparing the speed of repeated
+// accesses to the Input and Output properties and repeated access to the Accessor properties
+
+using System;
 using FANNCSharp;
 #if FANN_FIXED
 using FANNCSharp.Fixed;
@@ -15,7 +19,8 @@ namespace Example
     class MushroomSpeedTest
     {
         static void Main()
-        { const uint num_layers = 3;
+        {
+            const uint num_layers = 3;
 	        const uint num_neurons_hidden = 32;
 	        const float desired_error = 0.0001F;
 	        const uint max_epochs = 300;
@@ -44,7 +49,8 @@ namespace Example
                     {
                         DataType[] input = new DataType[testData.InputCount];
                         DataType[] output = new DataType[testData.OutputCount];
-                        for(int j = 0; j < testData.InputCount; j++) {
+                        for(int j = 0; j < testData.InputCount; j++)
+                        {
                             input[j] = testData.InputAccessor[i][j];
                         }
                         for (int j = 0; j < testData.OutputCount; j++)

@@ -102,10 +102,37 @@ namespace FANNCSharp.Float
             return new AccessorEnumerator<float>(this);
         }
 
-        internal static DataAccessor FromPointer(SWIGTYPE_p_float t)
+        /* Property: Array
+                Copies the Accessor's values to an array
+         
+            Return:
+                 An array with all of the accessor's values
+        */
+        public float[] Array
+        {
+            get
+            {
+                float[] result = new float[Count];
+                for (int i = 0; i < Count; i++)
+                {
+                    result[i] = this[i];
+                }
+                return result;
+            }
+        }
+
+        internal static DataAccessor FromPointer(SWIGTYPE_p_float t, int count)
         {
             global::System.IntPtr cPtr = fannfloatPINVOKE.FloatAccessor_FromPointer(SWIGTYPE_p_float.getCPtr(t));
             DataAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new DataAccessor(cPtr, false);
+            ret.ArrayCount = count;
+            return ret;
+        }
+
+        internal SWIGTYPE_p_float Cast()
+        {
+            global::System.IntPtr cPtr = fannfloatPINVOKE.FloatAccessor_Cast(swigCPtr);
+            SWIGTYPE_p_float ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_float(cPtr, false);
             return ret;
         }
 

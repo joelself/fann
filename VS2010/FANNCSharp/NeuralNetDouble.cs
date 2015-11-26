@@ -228,6 +228,9 @@ namespace FANNCSharp.Double
 
             Will run input through the neural network, returning an array of outputs, the number of which being 
             equal to the number of neurons in the output layer.
+         
+           Parameters:
+                input - An array of inputs to run through the neural network
 
             See also:
                 <Test>, <fann_run at http://libfann.github.io/fann/docs/files/fann-h.html#fann_run>
@@ -237,6 +240,32 @@ namespace FANNCSharp.Double
         public double[] Run(double[] input)
         {
             using(doubleArray outputs = doubleArray.frompointer(net.run(input)))
+            {
+                double[] result = new double[Outputs];
+                for (int i = 0; i < Outputs; i++)
+                {
+                    result[i] = outputs.getitem(i);
+                }
+                return result;
+            }
+        }
+
+        /* Method: Run
+
+            Will run input through the neural network, returning an array of outputs, the number of which being 
+            equal to the number of neurons in the output layer.
+         
+           Parameters:
+                input - A DataAccessor that points to the inputs to run through the neural network
+
+            See also:
+                <Test>, <fann_run at http://libfann.github.io/fann/docs/files/fann-h.html#fann_run>
+
+            This function appears in FANN >= 1.0.0.
+        */
+        public double[] Run(DataAccessor input)
+        {
+            using (doubleArray outputs = doubleArray.frompointer(net.run(input.Array)))
             {
                 double[] result = new double[Outputs];
                 for (int i = 0; i < Outputs; i++)
@@ -2085,9 +2114,9 @@ namespace FANNCSharp.Double
 
 	        This function appears in FANN >= 2.1.0.
          */
-        public void ScaleInput(double[] input)
+        public void ScaleInput(DataAccessor input)
         {
-            net.scale_input(input);
+            net.scale_input(input.Cast());
         }
 
         /* Method: ScaleOutput
@@ -2100,9 +2129,9 @@ namespace FANNCSharp.Double
 
 	        This function appears in FANN >= 2.1.0.
          */
-        public void ScaleOutput(double[] output)
+        public void ScaleOutput(DataAccessor output)
         {
-            net.scale_output(output);
+            net.scale_output(output.Cast());
         }
 
         /* Method: DescaleInput
@@ -2117,7 +2146,7 @@ namespace FANNCSharp.Double
          */
         public void DeScaleInput(double[] input)
         {
-            net.descale_input(input);
+            net.descale_input_(input);
         }
 
         /* Method: DescaleOutput
@@ -2132,7 +2161,7 @@ namespace FANNCSharp.Double
          */
         public void DescaleOutput(double[] output)
         {
-            net.descale_output(output);
+            net.descale_output_(output);
         }
 
         /*********************************************************************/

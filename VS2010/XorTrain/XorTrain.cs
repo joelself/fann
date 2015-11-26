@@ -45,13 +45,18 @@ namespace XorTrain
                 net.TrainOnData(data, max_epochs, epochs_between_reports, desired_error);
 
                 Console.WriteLine("Testing network");
-
+                // Keep a copy of the inputs and outputs so that we don't call TrainingData.Input
+                // and TrainingData.Output multiple times causing a copy of all the data on each
+                // call. An alternative is to use the Input/OutputAccessors which are fast with 
+                // repeated calls to get data and can be cast to arrays with the Array property
+                DataType[][] input = data.Input;
+                DataType[][] output = data.Output;
                 for (int i = 0; i < data.TrainDataLength; i++)
                 {
-                    calc_out = net.Run(data.Input[i]);
+                    calc_out = net.Run(input[i]);
                     Console.WriteLine("XOR test ({0},{1}) -> {2}, should be {3}, difference={4}",
-                                        data.Input[i][0], data.Input[i][1], calc_out[0], data.Output[i][0],
-                                        FannAbs(calc_out[0] - data.Output[i][0]));
+                                        input[i][0], input[i][1], calc_out[0], output[i][0],
+                                        FannAbs(calc_out[0] - output[i][0]));
                 }
 
                 Console.WriteLine("Saving network.\n");

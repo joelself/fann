@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*************************************************************************************************************/
+// Same as the Momentums project, but uses callbacks for populating the training data and during
+// training to demonstrate how to use the callbacks. And adds a test for the Accessor classes
+
+using System;
 using FANNCSharp;
 using System.IO;
 #if FANN_FIXED
@@ -34,12 +38,12 @@ namespace Example
                     Console.Write("Input {0}: ", i);
                     for (int j = 0; j < trainData.InputCount; j++)
                     {
-                        Console.Write("{0}, ", trainData.InputAccessor.Get(i, j));
+                        Console.Write("{0}, ", trainData.InputAccessor[i][j]);
                     }
                     Console.Write("\nOutput {0}: ", i);
                     for (int j = 0; j < trainData.OutputCount; j++)
                     {
-                        Console.Write("{0}, ", trainData.OutputAccessor.Get(i).Get(j));
+                        Console.Write("{0}, ", trainData.OutputAccessor[i][j]);
                     }
                     Console.WriteLine("");
                 }

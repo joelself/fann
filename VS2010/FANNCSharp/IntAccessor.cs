@@ -102,10 +102,37 @@ namespace FANNCSharp.Fixed
             return new AccessorEnumerator<int>(this);
         }
 
-        internal static DataAccessor FromPointer(SWIGTYPE_p_int t)
+        /* Property: Array
+                Copies the Accessor's values to an array
+         
+            Return:
+                 An array with all of the accessor's values
+        */
+        public int[] Array
+        {
+            get
+            {
+                int[] result = new int[Count];
+                for (int i = 0; i < Count; i++)
+                {
+                    result[i] = this[i];
+                }
+                return result;
+            }
+        }
+
+        internal static DataAccessor FromPointer(SWIGTYPE_p_int t, int count)
         {
             global::System.IntPtr cPtr = fannfixedPINVOKE.IntAccessor_FromPointer(SWIGTYPE_p_int.getCPtr(t));
             DataAccessor ret = (cPtr == global::System.IntPtr.Zero) ? null : new DataAccessor(cPtr, false);
+            ret.ArrayCount = count;
+            return ret;
+        }
+
+        internal SWIGTYPE_p_int Cast()
+        {
+            global::System.IntPtr cPtr = fannfixedPINVOKE.IntAccessor_Cast(swigCPtr);
+            SWIGTYPE_p_int ret = (cPtr == global::System.IntPtr.Zero) ? null : new SWIGTYPE_p_int(cPtr, false);
             return ret;
         }
 

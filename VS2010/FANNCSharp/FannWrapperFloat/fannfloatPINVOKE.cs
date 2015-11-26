@@ -730,16 +730,10 @@ class fannfloatPINVOKE {
   public static extern bool neural_net_clear_scaling_params(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_scale_input")]
-  public static extern void neural_net_scale_input(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg2);
+  public static extern void neural_net_scale_input(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_scale_output")]
-  public static extern void neural_net_scale_output(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_descale_input")]
-  public static extern void neural_net_descale_input(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg2);
-
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_descale_output")]
-  public static extern void neural_net_descale_output(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg2);
+  public static extern void neural_net_scale_output(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_error_log")]
   public static extern void neural_net_set_error_log(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -767,6 +761,12 @@ class fannfloatPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_to_fann")]
   public static extern global::System.IntPtr neural_net_to_fann(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_descale_output_")]
+  public static extern void neural_net_descale_output_(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg2);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_descale_input_")]
+  public static extern void neural_net_descale_input_(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_train_epoch_batch_parallel__SWIG_0")]
   public static extern float train_epoch_batch_parallel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
@@ -990,6 +990,9 @@ class fannfloatPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatAccessor_FromPointer")]
   public static extern global::System.IntPtr FloatAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatAccessor_Cast")]
+  public static extern global::System.IntPtr FloatAccessor_Cast(global::System.Runtime.InteropServices.HandleRef jarg1);
+
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_FloatAccessor")]
   public static extern global::System.IntPtr new_FloatAccessor();
 
@@ -1004,6 +1007,9 @@ class fannfloatPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatArrayAccessor_FromPointer")]
   public static extern global::System.IntPtr FloatArrayAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatArrayAccessor_Cast")]
+  public static extern global::System.IntPtr FloatArrayAccessor_Cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_FloatArrayAccessor")]
   public static extern global::System.IntPtr new_FloatArrayAccessor();

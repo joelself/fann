@@ -385,6 +385,12 @@ SWIGINTERN ConnectionArray *ConnectionArray_frompointer(fann_connection *t){
 #include <algorithm>
 #include <stdexcept>
 
+SWIGINTERN void FANN_neural_net_descale_output_(FANN::neural_net *self,fann_type *descale_vector){
+        self->descale_output(descale_vector);
+    }
+SWIGINTERN void FANN_neural_net_descale_input_(FANN::neural_net *self,fann_type *descale_vector){
+        self->descale_input(descale_vector);
+    }
 SWIGINTERN std::vector< std::vector< float > > *new_std_vector_Sl_std_vector_Sl_float_Sg__Sg___SWIG_2(int capacity){
         std::vector< std::vector< float > >* pv = 0;
         if (capacity >= 0) {
@@ -657,6 +663,9 @@ public:
       newStruct->array = t;
       return newStruct;
     }
+    float* Cast() {
+        return array;
+    }
 } FloatAccessor;
 
 
@@ -679,7 +688,10 @@ public:
 #endif
       newStruct->array = t;
       return newStruct;
-    } 
+    }
+    float** Cast() {
+        return array;
+    }
 } FloatArrayAccessor;
 
 
@@ -2974,51 +2986,23 @@ SWIGEXPORT unsigned int SWIGSTDCALL CSharp_neural_net_clear_scaling_params(void 
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_scale_input(void * jarg1, float* jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_scale_input(void * jarg1, void * jarg2) {
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   fann_type *arg2 = (fann_type *) 0 ;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  arg2 = jarg2;
+  arg2 = (fann_type *)jarg2; 
   (arg1)->scale_input(arg2);
-  
-  
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_scale_output(void * jarg1, float* jarg2) {
+SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_scale_output(void * jarg1, void * jarg2) {
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   fann_type *arg2 = (fann_type *) 0 ;
   
   arg1 = (FANN::neural_net *)jarg1; 
-  arg2 = jarg2;
+  arg2 = (fann_type *)jarg2; 
   (arg1)->scale_output(arg2);
-  
-  
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_descale_input(void * jarg1, float* jarg2) {
-  FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
-  fann_type *arg2 = (fann_type *) 0 ;
-  
-  arg1 = (FANN::neural_net *)jarg1; 
-  arg2 = jarg2;
-  (arg1)->descale_input(arg2);
-  
-  
-}
-
-
-SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_descale_output(void * jarg1, float* jarg2) {
-  FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
-  fann_type *arg2 = (fann_type *) 0 ;
-  
-  arg1 = (FANN::neural_net *)jarg1; 
-  arg2 = jarg2;
-  (arg1)->descale_output(arg2);
-  
-  
 }
 
 
@@ -3105,6 +3089,30 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_neural_net_to_fann(void * jarg1) {
   result = (fann *)(arg1)->operator struct fann*();
   jresult = (void *)result; 
   return jresult;
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_descale_output_(void * jarg1, float* jarg2) {
+  FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
+  fann_type *arg2 = (fann_type *) 0 ;
+  
+  arg1 = (FANN::neural_net *)jarg1; 
+  arg2 = jarg2;
+  FANN_neural_net_descale_output_(arg1,arg2);
+  
+  
+}
+
+
+SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_descale_input_(void * jarg1, float* jarg2) {
+  FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
+  fann_type *arg2 = (fann_type *) 0 ;
+  
+  arg1 = (FANN::neural_net *)jarg1; 
+  arg2 = jarg2;
+  FANN_neural_net_descale_input_(arg1,arg2);
+  
+  
 }
 
 
@@ -4314,6 +4322,18 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_FloatAccessor_FromPointer(void * jarg1) {
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_FloatAccessor_Cast(void * jarg1) {
+  void * jresult ;
+  _FloatAccessor *arg1 = (_FloatAccessor *) 0 ;
+  float *result = 0 ;
+  
+  arg1 = (_FloatAccessor *)jarg1; 
+  result = (float *)(arg1)->Cast();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_FloatAccessor() {
   void * jresult ;
   _FloatAccessor *result = 0 ;
@@ -4369,6 +4389,18 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_FloatArrayAccessor_FromPointer(void * jarg1
   
   arg1 = (float **)jarg1; 
   result = (_FloatArrayAccessor *)_FloatArrayAccessor::FromPointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_FloatArrayAccessor_Cast(void * jarg1) {
+  void * jresult ;
+  _FloatArrayAccessor *arg1 = (_FloatArrayAccessor *) 0 ;
+  float **result = 0 ;
+  
+  arg1 = (_FloatArrayAccessor *)jarg1; 
+  result = (float **)(arg1)->Cast();
   jresult = (void *)result; 
   return jresult;
 }

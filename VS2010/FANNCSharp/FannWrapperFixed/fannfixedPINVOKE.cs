@@ -424,7 +424,7 @@ class fannfixedPINVOKE {
   public static extern int neural_net_save_to_fixed(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_test")]
-  public static extern global::System.IntPtr neural_net_test(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]int[] jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
+  public static extern global::System.IntPtr neural_net_test(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]int[] jarg2, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]int[] jarg3);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_neural_net_test_data")]
   public static extern float neural_net_test_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
@@ -687,6 +687,9 @@ class fannfixedPINVOKE {
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_IntAccessor_FromPointer")]
   public static extern global::System.IntPtr IntAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_IntAccessor_Cast")]
+  public static extern global::System.IntPtr IntAccessor_Cast(global::System.Runtime.InteropServices.HandleRef jarg1);
+
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_IntAccessor")]
   public static extern global::System.IntPtr new_IntAccessor();
 
@@ -701,6 +704,9 @@ class fannfixedPINVOKE {
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_IntArrayAccessor_FromPointer")]
   public static extern global::System.IntPtr IntArrayAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
+
+  [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_IntArrayAccessor_Cast")]
+  public static extern global::System.IntPtr IntArrayAccessor_Cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
   [global::System.Runtime.InteropServices.DllImport("fannfixed", EntryPoint="CSharp_new_IntArrayAccessor")]
   public static extern global::System.IntPtr new_IntArrayAccessor();

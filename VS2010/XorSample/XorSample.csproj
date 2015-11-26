@@ -7,8 +7,8 @@
     <ProjectGuid>{5A4A883D-A785-4A1B-952A-490C1968A79A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XorTrain</RootNamespace>
-    <AssemblyName>XorTrain</AssemblyName>
+    <RootNamespace>XorSample</RootNamespace>
+    <AssemblyName>XorSample</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -439,6 +439,9 @@ public:
       newStruct->array = t;
       return newStruct;
     }
+    int* Cast() {
+        return array;
+    }
 } IntAccessor;
 
 
@@ -461,7 +464,10 @@ public:
 #endif
       newStruct->array = t;
       return newStruct;
-    } 
+    }
+    int** Cast() {
+        return array;
+    }
 } IntArrayAccessor;
 
 
@@ -1490,7 +1496,7 @@ SWIGEXPORT int SWIGSTDCALL CSharp_neural_net_save_to_fixed(void * jarg1, char * 
 }
 
 
-SWIGEXPORT void * SWIGSTDCALL CSharp_neural_net_test(void * jarg1, int* jarg2, void * jarg3) {
+SWIGEXPORT void * SWIGSTDCALL CSharp_neural_net_test(void * jarg1, int* jarg2, int* jarg3) {
   void * jresult ;
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   fann_type *arg2 = (fann_type *) 0 ;
@@ -1499,9 +1505,11 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_neural_net_test(void * jarg1, int* jarg2, v
   
   arg1 = (FANN::neural_net *)jarg1; 
   arg2 = jarg2;
-  arg3 = (fann_type *)jarg3; 
+  arg3 = jarg3;
   result = (fann_type *)(arg1)->test(arg2,arg3);
   jresult = (void *)result; 
+  
+  
   
   
   return jresult;
@@ -2492,6 +2500,18 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_IntAccessor_FromPointer(void * jarg1) {
 }
 
 
+SWIGEXPORT void * SWIGSTDCALL CSharp_IntAccessor_Cast(void * jarg1) {
+  void * jresult ;
+  _IntAccessor *arg1 = (_IntAccessor *) 0 ;
+  int *result = 0 ;
+  
+  arg1 = (_IntAccessor *)jarg1; 
+  result = (int *)(arg1)->Cast();
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void * SWIGSTDCALL CSharp_new_IntAccessor() {
   void * jresult ;
   _IntAccessor *result = 0 ;
@@ -2547,6 +2567,18 @@ SWIGEXPORT void * SWIGSTDCALL CSharp_IntArrayAccessor_FromPointer(void * jarg1) 
   
   arg1 = (int **)jarg1; 
   result = (_IntArrayAccessor *)_IntArrayAccessor::FromPointer(arg1);
+  jresult = (void *)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void * SWIGSTDCALL CSharp_IntArrayAccessor_Cast(void * jarg1) {
+  void * jresult ;
+  _IntArrayAccessor *arg1 = (_IntArrayAccessor *) 0 ;
+  int **result = 0 ;
+  
+  arg1 = (_IntArrayAccessor *)jarg1; 
+  result = (int **)(arg1)->Cast();
   jresult = (void *)result; 
   return jresult;
 }

@@ -44,7 +44,7 @@ namespace Example
                     {
                         // The difference between calling GetTrain[Input|Output] and calling
                         // the Input and Output properties is huge in terms of speed
-                        net.Test(testData.GetTrainInput((uint)i), testData.GetTrainOutput((uint)i));
+                        net.Test(testData.GetTrainInput((uint)i).Array, testData.GetTrainOutput((uint)i).Array);
                     }
 
                     Console.WriteLine("MSE error on test data {0}", net.MSE);

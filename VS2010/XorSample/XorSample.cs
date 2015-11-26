@@ -17,7 +17,8 @@ namespace XorTrain
 
         static int PrintCallback(NeuralNet net, TrainingData train, uint max_epochs, uint epochs_between_reports, float desired_error, uint epochs, Object user_data)
         {
-            Console.WriteLine("Epochs     {0:8}. Current Error: {1:-8}", epochs, net.MSE);
+            Console.WriteLine(String.Format("Epochs     " + String.Format("{0:D}", epochs).PadLeft(8) + ". Current Error: " +
+                              String.Format("{0:F}", net.MSE).PadRight(8)));
             return 0;
         }
 
@@ -71,7 +72,7 @@ namespace XorTrain
                         // Initialize and train the network with the data
                         net.InitWeights(data);
 
-                        Console.WriteLine("Max Epochs {0:8}. Desired Error: {1:-8}", max_iterations, desired_error);
+                        Console.WriteLine("Max Epochs " + String.Format("{0:D}", max_iterations).PadLeft(8) + ". Desired Error: " + String.Format("{0:F}", desired_error).PadRight(8));
                         net.SetCallback(PrintCallback, null);
                         net.TrainOnData(data, max_iterations, iterations_between_reports, desired_error);
 
@@ -83,10 +84,10 @@ namespace XorTrain
                             DataType[] calc_out = net.Run(data.Input[i]);
 
                             Console.WriteLine("XOR test ({0}, {1}) -> {2}, should be {3}, difference = {4}",
-                                data.Input[i][0].ToString("+#;-#"),
-                                data.Input[i][1].ToString("+#;-#"),
-                                calc_out[0] == 0 ? 0.ToString() : calc_out[0].ToString("+#;-#"),
-                                data.Output[i][0].ToString("+#;-#"),
+                                data.InputAccessor[(int)i][0].ToString("+#;-#"),
+                                data.InputAccessor[(int)i][1].ToString("+#;-#"),
+                                calc_out[0] == 0 ? 0.ToString() : calc_out[0].ToString("+#.#####;-#.#####"),
+                                data.OutputAccessor[(int)i][0].ToString("+#;-#"),
                                 FannAbs(calc_out[0] - data.Output[i][0]));
                         }
 

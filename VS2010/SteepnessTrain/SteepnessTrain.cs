@@ -31,18 +31,18 @@ namespace Example
 
                 net.ActivationSteepnessHidden = steepness_start;
                 net.ActivationSteepnessOutput = steepness_start;
-                for (int i = 0; i <= max_epochs; i++)
+                for (int i = 1; i <= max_epochs; i++)
                 {
                     error = net.TrainEpoch(data);
 
-                    if(epochs_between_reports != 0 && i % epochs_between_reports == 0 || i == max_epochs || i == 1 || error < desired_error)
+                    if(epochs_between_reports != 0 && (i % epochs_between_reports == 0 || i == max_epochs || i == 1 || error < desired_error))
                     {
                         Console.WriteLine("Epochs     {0}. Current error: {1}", i.ToString("00000000"), error.ToString("0.0000000000"));
                     }
 
                     if(error < desired_error)
                     {
-                        steepness_start += steepness_end;
+                        steepness_start += steepness_step;
                         if(steepness_start <= steepness_end)
                         {
                             Console.WriteLine("Steepness: {0}", steepness_start);
@@ -63,7 +63,7 @@ namespace Example
             const uint num_output = 1;
             const uint num_layers = 3;
             const uint num_neurons_hidden = 3;
-            const float desired_error = 0.00001F;
+            const float desired_error = 0.001F;
             const uint max_epochs = 500000;
             const uint epochs_between_reports = 1000;
             DataType[] calc_out;
@@ -71,13 +71,6 @@ namespace Example
             using (TrainingData data = new TrainingData("..\\..\\examples\\xor.data"))
             using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
             {
-                NeuralNet.TrainingCallback callback = (callbackNet, callbackData, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, callbackUserData) =>
-                {
-                    Console.WriteLine("Layer count: {0}, Data length: {1}, Max epochs: {2}, Epochs between reports: {3}, Desired error: {4}, Epochs so far: {5}, Greeting: \"{6}\"",
-                        callbackNet.LayerCount, callbackData.TrainDataLength, callbackMaxEpochs, callbackEpochsBetweenReports, callbackDesiredError, callbackEpochs, (string)callbackUserData);
-                    return 1;
-                };
-                net.SetCallback(callback, "Hello!");
 
                 net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
                 net.ActivationFunctionOutput = ActivationFunction.SIGMOID_SYMMETRIC;
@@ -89,12 +82,12 @@ namespace Example
                 net.ActivationFunctionHidden = ActivationFunction.THRESHOLD_SYMMETRIC;
                 net.ActivationFunctionOutput = ActivationFunction.THRESHOLD_SYMMETRIC;
 
-                for(int i = 0; i < data.TrainDataLength; i++)
+                for(int i = 0; i != data.TrainDataLength; i++)
                 {
-                    calc_out = net.Run(data.Input[i]);
+                    calc_out = net.Run(data.GetTrainInput((uint)i));
                     Console.WriteLine("XOR test ({0}, {1}) -> {2}, should be {3}, difference={4}",
-                                        data.Input[i][0], data.Input[i][1], calc_out[0], data.Output[i][0],
-                                        FannAbs(calc_out[0] - data.Output[i][0]));
+                                        data.InputAccessor[i][0], data.InputAccessor[i][1], calc_out[0], data.OutputAccessor[i][0],
+                                        FannAbs(calc_out[0] - data.OutputAccessor[i][0]));
                 }
 
                 net.Save("..\\..\\examples\\xor_float.net");

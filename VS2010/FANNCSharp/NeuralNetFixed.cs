@@ -228,6 +228,9 @@ namespace FANNCSharp.Fixed
 
             Will run input through the neural network, returning an array of outputs, the number of which being 
             equal to the number of neurons in the output layer.
+         
+           Parameters:
+                input - An array of inputs to run through the neural network
 
             See also:
                 <Test>, <fann_run at http://libfann.github.io/fann/docs/files/fann-h.html#fann_run>
@@ -237,6 +240,32 @@ namespace FANNCSharp.Fixed
         public int[] Run(int[] input)
         {
             using (intArray outputs = intArray.frompointer(net.run(input)))
+            {
+                int[] result = new int[Outputs];
+                for (int i = 0; i < Outputs; i++)
+                {
+                    result[i] = outputs.getitem(i);
+                }
+                return result;
+            }
+        }
+
+        /* Method: Run
+
+            Will run input through the neural network, returning an array of outputs, the number of which being 
+            equal to the number of neurons in the output layer.
+         
+           Parameters:
+                input - A DataAccessor that points to the inputs to run through the neural network
+
+            See also:
+                <Test>, <fann_run at http://libfann.github.io/fann/docs/files/fann-h.html#fann_run>
+
+            This function appears in FANN >= 1.0.0.
+        */
+        public int[] Run(DataAccessor input)
+        {
+            using (intArray outputs = intArray.frompointer(net.run(input.Array)))
             {
                 int[] result = new int[Outputs];
                 for (int i = 0; i < Outputs; i++)
@@ -380,6 +409,29 @@ namespace FANNCSharp.Fixed
             return net.save_to_fixed(file);
         }
 
+        /* Method: Test
+
+           Test with a set of inputs, and a set of desired outputs.
+           This operation updates the mean square error, but does not
+           change the network in any way.
+           
+           See also:
+   		        <TestData>, <Train>, <fann_test at http://libfann.github.io/fann/docs/files/fann_train-h.html#fann_test>
+           
+           This function appears in FANN >= 1.0.0.
+        */
+        public int[] Test(int[] input, int[] desiredOutput)
+        {
+            using (intArray result = intArray.frompointer(net.test(input, desiredOutput)))
+            {
+                int[] arrayResult = new int[Outputs];
+                for (int i = 0; i < Outputs; i++)
+                {
+                    arrayResult[i] = result.getitem(i);
+                }
+                return arrayResult;
+            }
+        }
         /* Method: TestData
           
            Test a set of training data and calculates the MSE for the training data. 
@@ -1117,6 +1169,53 @@ namespace FANNCSharp.Fixed
             get
             {
                 return net.get_total_connections();
+            }
+        }
+        /* Property: DecimalPoint
+
+            Returns the position of the decimal point in the ann.
+
+            This function is only available when the ANN is in fixed point mode.
+
+            The decimal point is described in greater detail in the tutorial <Fixed Point Usage>.
+
+            See also:
+                <Fixed Point Usage at http://leenissen.dk/fann/html/files2/fixedpointusage-txt.html>, <Multiplier>, <SaveToFixed>,
+                <TrainingData::SaveTrainToFixed>, <fann_get_decimal_point at http://libfann.github.io/fann/docs/files/fann-h.html#fann_get_decimal_point>
+
+            This function appears in FANN >= 1.0.0.
+        */
+        public uint DecimalPoint
+        {
+            get
+            {
+                return net.get_decimal_point();
+            }
+        }
+
+        /* Property: Multiplier
+
+            Returns the multiplier that fix point data is multiplied with.
+
+            This function is only available when the ANN is in fixed point mode.
+
+            The multiplier is the used to convert between floating point and fixed point notation.
+            A floating point number is multiplied with the multiplier in order to get the fixed point
+            number and visa versa.
+
+            The multiplier is described in greater detail in the tutorial <Fixed Point Usage>.
+
+            See also:
+                <Fixed Point Usage at http://leenissen.dk/fann/html/files2/fixedpointusage-txt.html>, <GetDecimalPoint>, <SaveToFixed>,
+                <TrainingData::SaveTrainToFixed>, <fann_get_multiplier at http://libfann.github.io/fann/docs/files/fann-h.html#fann_get_multiplier>
+
+            This function appears in FANN >= 1.0.0.
+        */
+        public uint Multiplier
+        {
+            get
+            {
+                return net.get_multiplier();
             }
         }
 

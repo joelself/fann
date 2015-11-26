@@ -4,6 +4,7 @@
 %include "SwigFann.i"
 %apply int INPUT[]  { int* input }
 %apply int INPUT[]  { int* output }
+%apply int INPUT[]  { int* desired_output }
 %include "fann_data.h"
 %include "fann_training_data_cpp.h"
 %include "fann_data_cpp.h"
