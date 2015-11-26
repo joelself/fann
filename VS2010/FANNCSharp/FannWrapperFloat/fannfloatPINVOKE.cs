@@ -34,7 +34,7 @@ class fannfloatPINVOKE {
     static ExceptionArgumentDelegate argumentNullDelegate = new ExceptionArgumentDelegate(SetPendingArgumentNullException);
     static ExceptionArgumentDelegate argumentOutOfRangeDelegate = new ExceptionArgumentDelegate(SetPendingArgumentOutOfRangeException);
 
-    [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="SWIGRegisterExceptionCallbacks_fannfloat")]
+    [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="SWIGRegisterExceptionCallbacks_fannfloat")]
     public static extern void SWIGRegisterExceptionCallbacks_fannfloat(
                                 ExceptionDelegate applicationDelegate,
                                 ExceptionDelegate arithmeticDelegate,
@@ -48,7 +48,7 @@ class fannfloatPINVOKE {
                                 ExceptionDelegate overflowDelegate, 
                                 ExceptionDelegate systemExceptionDelegate);
 
-    [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="SWIGRegisterExceptionArgumentCallbacks_fannfloat")]
+    [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="SWIGRegisterExceptionArgumentCallbacks_fannfloat")]
     public static extern void SWIGRegisterExceptionCallbacksArgument_fannfloat(
                                 ExceptionArgumentDelegate argumentDelegate,
                                 ExceptionArgumentDelegate argumentNullDelegate,
@@ -170,7 +170,7 @@ class fannfloatPINVOKE {
     public delegate string SWIGStringDelegate(string message);
     static SWIGStringDelegate stringDelegate = new SWIGStringDelegate(CreateString);
 
-    [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="SWIGRegisterStringCallback_fannfloat")]
+    [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="SWIGRegisterStringCallback_fannfloat")]
     public static extern void SWIGRegisterStringCallback_fannfloat(SWIGStringDelegate stringDelegate);
 
     static string CreateString(string cString) {
@@ -189,832 +189,832 @@ class fannfloatPINVOKE {
   }
 
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_fopen")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_fopen")]
   public static extern global::System.IntPtr fopen(string jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_fclose")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_fclose")]
   public static extern int fclose(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_uintArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_uintArray")]
   public static extern global::System.IntPtr new_uintArray(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_uintArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_delete_uintArray")]
   public static extern void delete_uintArray(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_uintArray_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_uintArray_getitem")]
   public static extern uint uintArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_uintArray_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_uintArray_setitem")]
   public static extern void uintArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_uintArray_cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_uintArray_cast")]
   public static extern global::System.IntPtr uintArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_uintArray_frompointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_uintArray_frompointer")]
   public static extern global::System.IntPtr uintArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_ActivationFunctionArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_ActivationFunctionArray")]
   public static extern global::System.IntPtr new_ActivationFunctionArray(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_ActivationFunctionArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_delete_ActivationFunctionArray")]
   public static extern void delete_ActivationFunctionArray(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_ActivationFunctionArray_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_ActivationFunctionArray_getitem")]
   public static extern int ActivationFunctionArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_ActivationFunctionArray_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_ActivationFunctionArray_setitem")]
   public static extern void ActivationFunctionArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_ActivationFunctionArray_cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_ActivationFunctionArray_cast")]
   public static extern global::System.IntPtr ActivationFunctionArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_ActivationFunctionArray_frompointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_ActivationFunctionArray_frompointer")]
   public static extern global::System.IntPtr ActivationFunctionArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_ConnectionArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_ConnectionArray")]
   public static extern global::System.IntPtr new_ConnectionArray(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_ConnectionArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_delete_ConnectionArray")]
   public static extern void delete_ConnectionArray(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_ConnectionArray_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_ConnectionArray_getitem")]
   public static extern global::System.IntPtr ConnectionArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_ConnectionArray_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_ConnectionArray_setitem")]
   public static extern void ConnectionArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_ConnectionArray_cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_ConnectionArray_cast")]
   public static extern global::System.IntPtr ConnectionArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_ConnectionArray_frompointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_ConnectionArray_frompointer")]
   public static extern global::System.IntPtr ConnectionArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_Connection_from_neuron_set")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_Connection_from_neuron_set")]
   public static extern void Connection_from_neuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_Connection_from_neuron_get")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_Connection_from_neuron_get")]
   public static extern uint Connection_from_neuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_Connection_to_neuron_set")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_Connection_to_neuron_set")]
   public static extern void Connection_to_neuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_Connection_to_neuron_get")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_Connection_to_neuron_get")]
   public static extern uint Connection_to_neuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_Connection_weight_set")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_Connection_weight_set")]
   public static extern void Connection_weight_set(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_Connection_weight_get")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_Connection_weight_get")]
   public static extern float Connection_weight_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_Connection")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_Connection")]
   public static extern global::System.IntPtr new_Connection();
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_Connection")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_delete_Connection")]
   public static extern void delete_Connection(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_training_data__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_training_data__SWIG_0")]
   public static extern global::System.IntPtr new_training_data__SWIG_0();
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_training_data__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_training_data__SWIG_1")]
   public static extern global::System.IntPtr new_training_data__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_training_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_delete_training_data")]
   public static extern void delete_training_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_destroy_train")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_destroy_train")]
   public static extern void training_data_destroy_train(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_read_train_from_file")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_read_train_from_file")]
   public static extern bool training_data_read_train_from_file(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_save_train")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_save_train")]
   public static extern bool training_data_save_train(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_save_train_to_fixed")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_save_train_to_fixed")]
   public static extern bool training_data_save_train_to_fixed(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_shuffle_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_shuffle_train_data")]
   public static extern void training_data_shuffle_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_merge_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_merge_train_data")]
   public static extern void training_data_merge_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_length_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_length_train_data")]
   public static extern uint training_data_length_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_num_input_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_num_input_train_data")]
   public static extern uint training_data_num_input_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_num_output_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_num_output_train_data")]
   public static extern uint training_data_num_output_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_get_input")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_get_input")]
   public static extern global::System.IntPtr training_data_get_input(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_get_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_get_output")]
   public static extern global::System.IntPtr training_data_get_output(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_get_train_input")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_get_train_input")]
   public static extern global::System.IntPtr training_data_get_train_input(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_get_train_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_get_train_output")]
   public static extern global::System.IntPtr training_data_get_train_output(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_set_train_data__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_set_train_data__SWIG_0")]
   public static extern void training_data_set_train_data__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, uint jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_set_train_data__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_set_train_data__SWIG_1")]
   public static extern void training_data_set_train_data__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg4, uint jarg5, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg6);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_create_train_from_callback")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_create_train_from_callback")]
   public static extern void training_data_create_train_from_callback(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, uint jarg4, global::System.IntPtr jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_get_min_input")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_get_min_input")]
   public static extern float training_data_get_min_input(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_get_max_input")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_get_max_input")]
   public static extern float training_data_get_max_input(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_get_min_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_get_min_output")]
   public static extern float training_data_get_min_output(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_get_max_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_get_max_output")]
   public static extern float training_data_get_max_output(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_scale_input_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_scale_input_train_data")]
   public static extern void training_data_scale_input_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_scale_output_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_scale_output_train_data")]
   public static extern void training_data_scale_output_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_scale_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_scale_train_data")]
   public static extern void training_data_scale_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_subset_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_subset_train_data")]
   public static extern void training_data_subset_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_training_data_to_fann_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_training_data_to_fann_train_data")]
   public static extern global::System.IntPtr training_data_to_fann_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_neural_net__SWIG_0")]
   public static extern global::System.IntPtr new_neural_net__SWIG_0(int jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_2")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_neural_net__SWIG_2")]
   public static extern global::System.IntPtr new_neural_net__SWIG_2(int jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_3")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_neural_net__SWIG_3")]
   public static extern global::System.IntPtr new_neural_net__SWIG_3(float jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_4")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_neural_net__SWIG_4")]
   public static extern global::System.IntPtr new_neural_net__SWIG_4(float jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_5")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_neural_net__SWIG_5")]
   public static extern global::System.IntPtr new_neural_net__SWIG_5(string jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_6")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_neural_net__SWIG_6")]
   public static extern global::System.IntPtr new_neural_net__SWIG_6(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_7")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_neural_net__SWIG_7")]
   public static extern global::System.IntPtr new_neural_net__SWIG_7(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_neural_net__SWIG_8")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_neural_net__SWIG_8")]
   public static extern global::System.IntPtr new_neural_net__SWIG_8();
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_copy_from_struct_fann")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_copy_from_struct_fann")]
   public static extern void neural_net_copy_from_struct_fann(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_neural_net")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_delete_neural_net")]
   public static extern void delete_neural_net(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_destroy")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_destroy")]
   public static extern void neural_net_destroy(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_create_standard")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_create_standard")]
   public static extern bool neural_net_create_standard(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_create_standard_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_create_standard_array")]
   public static extern bool neural_net_create_standard_array(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_create_sparse")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_create_sparse")]
   public static extern bool neural_net_create_sparse(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_create_sparse_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_create_sparse_array")]
   public static extern bool neural_net_create_sparse_array(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_create_shortcut")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_create_shortcut")]
   public static extern bool neural_net_create_shortcut(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_create_shortcut_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_create_shortcut_array")]
   public static extern bool neural_net_create_shortcut_array(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_run")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_run")]
   public static extern global::System.IntPtr neural_net_run(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_randomize_weights")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_randomize_weights")]
   public static extern void neural_net_randomize_weights(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, float jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_init_weights")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_init_weights")]
   public static extern void neural_net_init_weights(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_print_connections")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_print_connections")]
   public static extern void neural_net_print_connections(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_create_from_file")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_create_from_file")]
   public static extern bool neural_net_create_from_file(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_save")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_save")]
   public static extern bool neural_net_save(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_save_to_fixed")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_save_to_fixed")]
   public static extern int neural_net_save_to_fixed(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_train")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_train")]
   public static extern void neural_net_train(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg2, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_train_epoch")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_train_epoch")]
   public static extern float neural_net_train_epoch(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_train_on_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_train_on_data")]
   public static extern void neural_net_train_on_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, uint jarg4, float jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_train_on_file")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_train_on_file")]
   public static extern void neural_net_train_on_file(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, uint jarg3, uint jarg4, float jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_test")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_test")]
   public static extern global::System.IntPtr neural_net_test(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg2, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_test_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_test_data")]
   public static extern float neural_net_test_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_MSE")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_MSE")]
   public static extern float neural_net_get_MSE(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_reset_MSE")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_reset_MSE")]
   public static extern void neural_net_reset_MSE(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_callback")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_callback")]
   public static extern void neural_net_set_callback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_print_parameters")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_print_parameters")]
   public static extern void neural_net_print_parameters(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_training_algorithm")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_training_algorithm")]
   public static extern int neural_net_get_training_algorithm(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_training_algorithm")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_training_algorithm")]
   public static extern void neural_net_set_training_algorithm(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_learning_rate")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_learning_rate")]
   public static extern float neural_net_get_learning_rate(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_learning_rate")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_learning_rate")]
   public static extern void neural_net_set_learning_rate(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_activation_function")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_activation_function")]
   public static extern int neural_net_get_activation_function(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_activation_function")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_activation_function")]
   public static extern void neural_net_set_activation_function(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3, int jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_activation_function_layer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_activation_function_layer")]
   public static extern void neural_net_set_activation_function_layer(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_activation_function_hidden")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_activation_function_hidden")]
   public static extern void neural_net_set_activation_function_hidden(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_activation_function_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_activation_function_output")]
   public static extern void neural_net_set_activation_function_output(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_activation_steepness")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_activation_steepness")]
   public static extern float neural_net_get_activation_steepness(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_activation_steepness")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_activation_steepness")]
   public static extern void neural_net_set_activation_steepness(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, int jarg3, int jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_activation_steepness_layer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_activation_steepness_layer")]
   public static extern void neural_net_set_activation_steepness_layer(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_activation_steepness_hidden")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_activation_steepness_hidden")]
   public static extern void neural_net_set_activation_steepness_hidden(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_activation_steepness_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_activation_steepness_output")]
   public static extern void neural_net_set_activation_steepness_output(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_train_error_function")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_train_error_function")]
   public static extern int neural_net_get_train_error_function(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_train_error_function")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_train_error_function")]
   public static extern void neural_net_set_train_error_function(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_quickprop_decay")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_quickprop_decay")]
   public static extern float neural_net_get_quickprop_decay(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_quickprop_decay")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_quickprop_decay")]
   public static extern void neural_net_set_quickprop_decay(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_quickprop_mu")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_quickprop_mu")]
   public static extern float neural_net_get_quickprop_mu(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_quickprop_mu")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_quickprop_mu")]
   public static extern void neural_net_set_quickprop_mu(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_rprop_increase_factor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_rprop_increase_factor")]
   public static extern float neural_net_get_rprop_increase_factor(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_rprop_increase_factor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_rprop_increase_factor")]
   public static extern void neural_net_set_rprop_increase_factor(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_rprop_decrease_factor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_rprop_decrease_factor")]
   public static extern float neural_net_get_rprop_decrease_factor(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_rprop_decrease_factor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_rprop_decrease_factor")]
   public static extern void neural_net_set_rprop_decrease_factor(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_rprop_delta_zero")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_rprop_delta_zero")]
   public static extern float neural_net_get_rprop_delta_zero(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_rprop_delta_zero")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_rprop_delta_zero")]
   public static extern void neural_net_set_rprop_delta_zero(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_rprop_delta_min")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_rprop_delta_min")]
   public static extern float neural_net_get_rprop_delta_min(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_rprop_delta_min")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_rprop_delta_min")]
   public static extern void neural_net_set_rprop_delta_min(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_rprop_delta_max")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_rprop_delta_max")]
   public static extern float neural_net_get_rprop_delta_max(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_rprop_delta_max")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_rprop_delta_max")]
   public static extern void neural_net_set_rprop_delta_max(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_sarprop_weight_decay_shift")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_sarprop_weight_decay_shift")]
   public static extern float neural_net_get_sarprop_weight_decay_shift(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_sarprop_weight_decay_shift")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_sarprop_weight_decay_shift")]
   public static extern void neural_net_set_sarprop_weight_decay_shift(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_sarprop_step_error_threshold_factor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_sarprop_step_error_threshold_factor")]
   public static extern float neural_net_get_sarprop_step_error_threshold_factor(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_sarprop_step_error_threshold_factor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_sarprop_step_error_threshold_factor")]
   public static extern void neural_net_set_sarprop_step_error_threshold_factor(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_sarprop_step_error_shift")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_sarprop_step_error_shift")]
   public static extern float neural_net_get_sarprop_step_error_shift(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_sarprop_step_error_shift")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_sarprop_step_error_shift")]
   public static extern void neural_net_set_sarprop_step_error_shift(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_sarprop_temperature")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_sarprop_temperature")]
   public static extern float neural_net_get_sarprop_temperature(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_sarprop_temperature")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_sarprop_temperature")]
   public static extern void neural_net_set_sarprop_temperature(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_num_input")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_num_input")]
   public static extern uint neural_net_get_num_input(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_num_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_num_output")]
   public static extern uint neural_net_get_num_output(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_total_neurons")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_total_neurons")]
   public static extern uint neural_net_get_total_neurons(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_total_connections")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_total_connections")]
   public static extern uint neural_net_get_total_connections(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_network_type")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_network_type")]
   public static extern int neural_net_get_network_type(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_connection_rate")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_connection_rate")]
   public static extern float neural_net_get_connection_rate(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_num_layers")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_num_layers")]
   public static extern uint neural_net_get_num_layers(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_layer_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_layer_array")]
   public static extern void neural_net_get_layer_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_bias_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_bias_array")]
   public static extern void neural_net_get_bias_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_connection_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_connection_array")]
   public static extern void neural_net_get_connection_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_weight_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_weight_array")]
   public static extern void neural_net_set_weight_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_weight")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_weight")]
   public static extern void neural_net_set_weight(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, float jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_learning_momentum")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_learning_momentum")]
   public static extern float neural_net_get_learning_momentum(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_learning_momentum")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_learning_momentum")]
   public static extern void neural_net_set_learning_momentum(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_train_stop_function")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_train_stop_function")]
   public static extern int neural_net_get_train_stop_function(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_train_stop_function")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_train_stop_function")]
   public static extern void neural_net_set_train_stop_function(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_bit_fail_limit")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_bit_fail_limit")]
   public static extern float neural_net_get_bit_fail_limit(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_bit_fail_limit")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_bit_fail_limit")]
   public static extern void neural_net_set_bit_fail_limit(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_bit_fail")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_bit_fail")]
   public static extern uint neural_net_get_bit_fail(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_cascadetrain_on_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_cascadetrain_on_data")]
   public static extern void neural_net_cascadetrain_on_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, uint jarg4, float jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_cascadetrain_on_file")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_cascadetrain_on_file")]
   public static extern void neural_net_cascadetrain_on_file(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, uint jarg3, uint jarg4, float jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_output_change_fraction")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_output_change_fraction")]
   public static extern float neural_net_get_cascade_output_change_fraction(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_cascade_output_change_fraction")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_cascade_output_change_fraction")]
   public static extern void neural_net_set_cascade_output_change_fraction(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_output_stagnation_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_output_stagnation_epochs")]
   public static extern uint neural_net_get_cascade_output_stagnation_epochs(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_cascade_output_stagnation_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_cascade_output_stagnation_epochs")]
   public static extern void neural_net_set_cascade_output_stagnation_epochs(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_candidate_change_fraction")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_candidate_change_fraction")]
   public static extern float neural_net_get_cascade_candidate_change_fraction(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_cascade_candidate_change_fraction")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_cascade_candidate_change_fraction")]
   public static extern void neural_net_set_cascade_candidate_change_fraction(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_candidate_stagnation_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_candidate_stagnation_epochs")]
   public static extern uint neural_net_get_cascade_candidate_stagnation_epochs(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_cascade_candidate_stagnation_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_cascade_candidate_stagnation_epochs")]
   public static extern void neural_net_set_cascade_candidate_stagnation_epochs(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_weight_multiplier")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_weight_multiplier")]
   public static extern float neural_net_get_cascade_weight_multiplier(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_cascade_weight_multiplier")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_cascade_weight_multiplier")]
   public static extern void neural_net_set_cascade_weight_multiplier(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_candidate_limit")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_candidate_limit")]
   public static extern float neural_net_get_cascade_candidate_limit(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_cascade_candidate_limit")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_cascade_candidate_limit")]
   public static extern void neural_net_set_cascade_candidate_limit(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_max_out_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_max_out_epochs")]
   public static extern uint neural_net_get_cascade_max_out_epochs(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_cascade_max_out_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_cascade_max_out_epochs")]
   public static extern void neural_net_set_cascade_max_out_epochs(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_max_cand_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_max_cand_epochs")]
   public static extern uint neural_net_get_cascade_max_cand_epochs(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_cascade_max_cand_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_cascade_max_cand_epochs")]
   public static extern void neural_net_set_cascade_max_cand_epochs(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_num_candidates")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_num_candidates")]
   public static extern uint neural_net_get_cascade_num_candidates(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_activation_functions_count")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_activation_functions_count")]
   public static extern uint neural_net_get_cascade_activation_functions_count(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_activation_functions")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_activation_functions")]
   public static extern global::System.IntPtr neural_net_get_cascade_activation_functions(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_cascade_activation_functions")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_cascade_activation_functions")]
   public static extern void neural_net_set_cascade_activation_functions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_activation_steepnesses_count")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_activation_steepnesses_count")]
   public static extern uint neural_net_get_cascade_activation_steepnesses_count(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_activation_steepnesses")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_activation_steepnesses")]
   public static extern global::System.IntPtr neural_net_get_cascade_activation_steepnesses(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_cascade_activation_steepnesses")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_cascade_activation_steepnesses")]
   public static extern void neural_net_set_cascade_activation_steepnesses(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_cascade_num_candidate_groups")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_cascade_num_candidate_groups")]
   public static extern uint neural_net_get_cascade_num_candidate_groups(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_cascade_num_candidate_groups")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_cascade_num_candidate_groups")]
   public static extern void neural_net_set_cascade_num_candidate_groups(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_scale_train")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_scale_train")]
   public static extern void neural_net_scale_train(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_descale_train")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_descale_train")]
   public static extern void neural_net_descale_train(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_input_scaling_params")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_input_scaling_params")]
   public static extern bool neural_net_set_input_scaling_params(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3, float jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_output_scaling_params")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_output_scaling_params")]
   public static extern bool neural_net_set_output_scaling_params(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3, float jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_scaling_params")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_scaling_params")]
   public static extern bool neural_net_set_scaling_params(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3, float jarg4, float jarg5, float jarg6);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_clear_scaling_params")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_clear_scaling_params")]
   public static extern bool neural_net_clear_scaling_params(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_scale_input")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_scale_input")]
   public static extern void neural_net_scale_input(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_scale_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_scale_output")]
   public static extern void neural_net_scale_output(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_set_error_log")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_set_error_log")]
   public static extern void neural_net_set_error_log(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_errno")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_errno")]
   public static extern uint neural_net_get_errno(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_reset_errno")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_reset_errno")]
   public static extern void neural_net_reset_errno(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_reset_errstr")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_reset_errstr")]
   public static extern void neural_net_reset_errstr(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_get_errstr")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_get_errstr")]
   public static extern string neural_net_get_errstr(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_print_error")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_print_error")]
   public static extern void neural_net_print_error(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_disable_seed_rand")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_disable_seed_rand")]
   public static extern void neural_net_disable_seed_rand(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_enable_seed_rand")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_enable_seed_rand")]
   public static extern void neural_net_enable_seed_rand(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_to_fann")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_to_fann")]
   public static extern global::System.IntPtr neural_net_to_fann(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_descale_output_")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_descale_output_")]
   public static extern void neural_net_descale_output_(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_neural_net_descale_input_")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_neural_net_descale_input_")]
   public static extern void neural_net_descale_input_(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]float[] jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_train_epoch_batch_parallel__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_train_epoch_batch_parallel__SWIG_0")]
   public static extern float train_epoch_batch_parallel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_train_epoch_irpropm_parallel__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_train_epoch_irpropm_parallel__SWIG_0")]
   public static extern float train_epoch_irpropm_parallel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_train_epoch_quickprop_parallel__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_train_epoch_quickprop_parallel__SWIG_0")]
   public static extern float train_epoch_quickprop_parallel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_train_epoch_sarprop_parallel__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_train_epoch_sarprop_parallel__SWIG_0")]
   public static extern float train_epoch_sarprop_parallel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_train_epoch_incremental_mod__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_train_epoch_incremental_mod__SWIG_0")]
   public static extern float train_epoch_incremental_mod__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_train_epoch_batch_parallel__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_train_epoch_batch_parallel__SWIG_1")]
   public static extern float train_epoch_batch_parallel__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_train_epoch_irpropm_parallel__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_train_epoch_irpropm_parallel__SWIG_1")]
   public static extern float train_epoch_irpropm_parallel__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_train_epoch_quickprop_parallel__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_train_epoch_quickprop_parallel__SWIG_1")]
   public static extern float train_epoch_quickprop_parallel__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_train_epoch_sarprop_parallel__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_train_epoch_sarprop_parallel__SWIG_1")]
   public static extern float train_epoch_sarprop_parallel__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_train_epoch_incremental_mod__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_train_epoch_incremental_mod__SWIG_1")]
   public static extern float train_epoch_incremental_mod__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_test_data_parallel__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_test_data_parallel__SWIG_0")]
   public static extern float test_data_parallel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_test_data_parallel__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_test_data_parallel__SWIG_1")]
   public static extern float test_data_parallel__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_Clear")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_Clear")]
   public static extern void floatVectorVector_Clear(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_Add")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_Add")]
   public static extern void floatVectorVector_Add(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_size")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_size")]
   public static extern uint floatVectorVector_size(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_capacity")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_capacity")]
   public static extern uint floatVectorVector_capacity(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_reserve")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_reserve")]
   public static extern void floatVectorVector_reserve(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_floatVectorVector__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_floatVectorVector__SWIG_0")]
   public static extern global::System.IntPtr new_floatVectorVector__SWIG_0();
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_floatVectorVector__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_floatVectorVector__SWIG_1")]
   public static extern global::System.IntPtr new_floatVectorVector__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_floatVectorVector__SWIG_2")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_floatVectorVector__SWIG_2")]
   public static extern global::System.IntPtr new_floatVectorVector__SWIG_2(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_getitemcopy")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_getitemcopy")]
   public static extern global::System.IntPtr floatVectorVector_getitemcopy(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_getitem")]
   public static extern global::System.IntPtr floatVectorVector_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_setitem")]
   public static extern void floatVectorVector_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_AddRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_AddRange")]
   public static extern void floatVectorVector_AddRange(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_GetRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_GetRange")]
   public static extern global::System.IntPtr floatVectorVector_GetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_Insert")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_Insert")]
   public static extern void floatVectorVector_Insert(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_InsertRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_InsertRange")]
   public static extern void floatVectorVector_InsertRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_RemoveAt")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_RemoveAt")]
   public static extern void floatVectorVector_RemoveAt(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_RemoveRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_RemoveRange")]
   public static extern void floatVectorVector_RemoveRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_Repeat")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_Repeat")]
   public static extern global::System.IntPtr floatVectorVector_Repeat(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_Reverse__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_Reverse__SWIG_0")]
   public static extern void floatVectorVector_Reverse__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_Reverse__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_Reverse__SWIG_1")]
   public static extern void floatVectorVector_Reverse__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVectorVector_SetRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVectorVector_SetRange")]
   public static extern void floatVectorVector_SetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_floatVectorVector")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_delete_floatVectorVector")]
   public static extern void delete_floatVectorVector(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_Clear")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_Clear")]
   public static extern void floatVector_Clear(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_Add")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_Add")]
   public static extern void floatVector_Add(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_size")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_size")]
   public static extern uint floatVector_size(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_capacity")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_capacity")]
   public static extern uint floatVector_capacity(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_reserve")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_reserve")]
   public static extern void floatVector_reserve(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_floatVector__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_floatVector__SWIG_0")]
   public static extern global::System.IntPtr new_floatVector__SWIG_0();
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_floatVector__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_floatVector__SWIG_1")]
   public static extern global::System.IntPtr new_floatVector__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_floatVector__SWIG_2")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_floatVector__SWIG_2")]
   public static extern global::System.IntPtr new_floatVector__SWIG_2(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_getitemcopy")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_getitemcopy")]
   public static extern float floatVector_getitemcopy(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_getitem")]
   public static extern float floatVector_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_setitem")]
   public static extern void floatVector_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, float jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_AddRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_AddRange")]
   public static extern void floatVector_AddRange(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_GetRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_GetRange")]
   public static extern global::System.IntPtr floatVector_GetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_Insert")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_Insert")]
   public static extern void floatVector_Insert(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, float jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_InsertRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_InsertRange")]
   public static extern void floatVector_InsertRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_RemoveAt")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_RemoveAt")]
   public static extern void floatVector_RemoveAt(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_RemoveRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_RemoveRange")]
   public static extern void floatVector_RemoveRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_Repeat")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_Repeat")]
   public static extern global::System.IntPtr floatVector_Repeat(float jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_Reverse__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_Reverse__SWIG_0")]
   public static extern void floatVector_Reverse__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_Reverse__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_Reverse__SWIG_1")]
   public static extern void floatVector_Reverse__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_SetRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_SetRange")]
   public static extern void floatVector_SetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_Contains")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_Contains")]
   public static extern bool floatVector_Contains(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_IndexOf")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_IndexOf")]
   public static extern int floatVector_IndexOf(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_LastIndexOf")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_LastIndexOf")]
   public static extern int floatVector_LastIndexOf(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatVector_Remove")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatVector_Remove")]
   public static extern bool floatVector_Remove(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_floatVector")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_delete_floatVector")]
   public static extern void delete_floatVector(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_floatArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_floatArray")]
   public static extern global::System.IntPtr new_floatArray(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_floatArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_delete_floatArray")]
   public static extern void delete_floatArray(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatArray_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatArray_getitem")]
   public static extern float floatArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatArray_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatArray_setitem")]
   public static extern void floatArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, float jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatArray_cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatArray_cast")]
   public static extern global::System.IntPtr floatArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatArray_frompointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatArray_frompointer")]
   public static extern global::System.IntPtr floatArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_floatArrayArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_floatArrayArray")]
   public static extern global::System.IntPtr new_floatArrayArray(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_floatArrayArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_delete_floatArrayArray")]
   public static extern void delete_floatArrayArray(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatArrayArray_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatArrayArray_getitem")]
   public static extern global::System.IntPtr floatArrayArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatArrayArray_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatArrayArray_setitem")]
   public static extern void floatArrayArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatArrayArray_cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatArrayArray_cast")]
   public static extern global::System.IntPtr floatArrayArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_floatArrayArray_frompointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_floatArrayArray_frompointer")]
   public static extern global::System.IntPtr floatArrayArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatAccessor_Get")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_FloatAccessor_Get")]
   public static extern float FloatAccessor_Get(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatAccessor_FromPointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_FloatAccessor_FromPointer")]
   public static extern global::System.IntPtr FloatAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatAccessor_Cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_FloatAccessor_Cast")]
   public static extern global::System.IntPtr FloatAccessor_Cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_FloatAccessor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_FloatAccessor")]
   public static extern global::System.IntPtr new_FloatAccessor();
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_FloatAccessor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_delete_FloatAccessor")]
   public static extern void delete_FloatAccessor(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatArrayAccessor_Get__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_FloatArrayAccessor_Get__SWIG_0")]
   public static extern global::System.IntPtr FloatArrayAccessor_Get__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatArrayAccessor_Get__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_FloatArrayAccessor_Get__SWIG_1")]
   public static extern float FloatArrayAccessor_Get__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatArrayAccessor_FromPointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_FloatArrayAccessor_FromPointer")]
   public static extern global::System.IntPtr FloatArrayAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_FloatArrayAccessor_Cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_FloatArrayAccessor_Cast")]
   public static extern global::System.IntPtr FloatArrayAccessor_Cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_new_FloatArrayAccessor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_new_FloatArrayAccessor")]
   public static extern global::System.IntPtr new_FloatArrayAccessor();
 
-  [global::System.Runtime.InteropServices.DllImport("fannfloat", EntryPoint="CSharp_delete_FloatArrayAccessor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.floatDLLName, EntryPoint="CSharp_delete_FloatArrayAccessor")]
   public static extern void delete_FloatArrayAccessor(global::System.Runtime.InteropServices.HandleRef jarg1);
 }
 

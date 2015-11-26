@@ -14,7 +14,6 @@ using FannWrapperDouble;
 using System.Collections.Generic;
 using FANNCSharp;
 using System.Collections;
-using FANNCSharp;
 namespace FANNCSharp.Double
 {
     /* Class: ArrayAccessor

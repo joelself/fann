@@ -29,7 +29,7 @@ namespace Example
 
 
             Console.WriteLine("Creating network.");
-            using (TrainingData data = new TrainingData("..\\..\\datasets\\mushroom.train"))
+            using (TrainingData data = new TrainingData("..\\..\\..\\datasets\\mushroom.train"))
             using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, data.InputCount, num_neurons_hidden, data.OutputCount))
             {
                 Console.WriteLine("Training network.");
@@ -43,7 +43,7 @@ namespace Example
 
                 using (TrainingData testData = new TrainingData())
                 {
-                    testData.ReadTrainFromFile("..\\..\\datasets\\mushroom.test");
+                    testData.ReadTrainFromFile("..\\..\\..\\datasets\\mushroom.test");
                     before = Environment.TickCount;
                     for (int i = 0; i < 5; i++)
                     {
@@ -82,7 +82,7 @@ namespace Example
 
                 Console.WriteLine("Saving network.");
 
-                net.Save("..\\..\\examples\\mushroom_float.net");
+                net.Save("..\\..\\..\\examples\\mushroom_float.net");
 
                 Console.ReadKey();
             }

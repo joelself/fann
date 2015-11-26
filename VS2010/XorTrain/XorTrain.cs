@@ -29,7 +29,7 @@ namespace XorTrain
 
             Console.WriteLine("Creating network.");
             using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
-            using (TrainingData data = new TrainingData("..\\..\\examples\\xor.data"))
+            using (TrainingData data = new TrainingData("..\\..\\..\\examples\\xor.data"))
             {
                 net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
                 net.ActivationFunctionOutput = ActivationFunction.SIGMOID_SYMMETRIC;
@@ -61,10 +61,10 @@ namespace XorTrain
 
                 Console.WriteLine("Saving network.\n");
 
-                net.Save("..\\..\\examples\\xor_float.net");
+                net.Save("..\\..\\..\\examples\\xor_float.net");
 
-                decimal_point = net.SaveToFixed("..\\..\\examples\\xor_fixed.net");
-                data.SaveTrainToFixed("..\\..\\examples\\xor_fixed.data", (uint)decimal_point);
+                decimal_point = net.SaveToFixed("..\\..\\..\\examples\\xor_fixed.net");
+                data.SaveTrainToFixed("..\\..\\..\\examples\\xor_fixed.data", (uint)decimal_point);
 
                 Console.ReadKey();
             }

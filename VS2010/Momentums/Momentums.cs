@@ -23,8 +23,8 @@ namespace Example
 	        const float desired_error = 0.001F;
 
 
-            using (TrainingData trainData = new TrainingData("..\\..\\datasets\\robot.train"))
-            using (TrainingData testData = new TrainingData("..\\..\\datasets\\robot.test"))
+            using (TrainingData trainData = new TrainingData("..\\..\\..\\datasets\\robot.train"))
+            using (TrainingData testData = new TrainingData("..\\..\\..\\datasets\\robot.test"))
             {
                 for (float momentum = 0.0F; momentum < 0.7F; momentum += 0.1F)
                 {

@@ -19,27 +19,13 @@ namespace Example
             DataType[] calc_out;
             Console.WriteLine("Creating network.");
 
-            using(NeuralNet net = new NeuralNet("..\\..\\..\\fannpure\\bin\\Win32\\scaling.net"))
+            using(NeuralNet net = new NeuralNet("..\\..\\..\\examples\\scaling.net"))
             {
                 net.PrintConnections();
                 net.PrintParameters();
                 Console.WriteLine("Testing network.");
-                using (TrainingData data = new TrainingData("..\\..\\datasets\\scaling.data"))
+                using (TrainingData data = new TrainingData("..\\..\\..\\datasets\\scaling.data"))
                 {
-                    //Console.WriteLine("-- {0} {1} {2}", data.TrainDataLength, data.InputCount, data.OutputCount);
-                    //for (int i = 0; i < data.TrainDataLength; i++)
-                    //{
-                    //    for (int j = 0; j < data.InputCount; j++)
-                    //    {
-                    //        Console.Write("{0} ", data.InputAccessor[i][j]);
-                    //    }
-                    //    Console.WriteLine("");
-                    //    for (int j = 0; j < data.OutputCount; j++)
-                    //    {
-                    //        Console.Write("{0} ", data.OutputAccessor[i][j]);
-                    //    }
-                    //    Console.WriteLine("");
-                    //}
                     for (int i = 0; i < data.TrainDataLength; i++)
                     {
                         net.ResetMSE();

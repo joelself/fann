@@ -19,9 +19,9 @@ namespace Example
         {
             int ret = 0;
 #if FANN_FIXED
-            using (NeuralNet net = new NeuralNet("..\\..\\examples\\xor_fixed.net"))
+            using (NeuralNet net = new NeuralNet("..\\..\\..\\examples\\xor_fixed.net"))
 #else
-            using (NeuralNet net = new NeuralNet("..\\..\\examples\\xor_float.net"))
+            using (NeuralNet net = new NeuralNet("..\\..\\..\\examples\\xor_float.net"))
 #endif
             {
                 net.PrintConnections();
@@ -32,9 +32,9 @@ namespace Example
                 using (TrainingData data = new TrainingData())
                 {
 #if FANN_FIXED      
-                    if (!data.ReadTrainFromFile("..\\..\\examples\\xor_fixed.data"))
+                    if (!data.ReadTrainFromFile("..\\..\\..\\examples\\xor_fixed.data"))
 #else
-                    if (!data.ReadTrainFromFile("..\\..\\examples\\xor.data"))
+                    if (!data.ReadTrainFromFile("..\\..\\..\\examples\\xor.data"))
 #endif
                     {
                         Console.WriteLine("Error reading training data --- ABORTING.\n");

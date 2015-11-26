@@ -34,7 +34,7 @@ class fanndoublePINVOKE {
     static ExceptionArgumentDelegate argumentNullDelegate = new ExceptionArgumentDelegate(SetPendingArgumentNullException);
     static ExceptionArgumentDelegate argumentOutOfRangeDelegate = new ExceptionArgumentDelegate(SetPendingArgumentOutOfRangeException);
 
-    [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="SWIGRegisterExceptionCallbacks_fanndouble")]
+    [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="SWIGRegisterExceptionCallbacks_fanndouble")]
     public static extern void SWIGRegisterExceptionCallbacks_fanndouble(
                                 ExceptionDelegate applicationDelegate,
                                 ExceptionDelegate arithmeticDelegate,
@@ -48,7 +48,7 @@ class fanndoublePINVOKE {
                                 ExceptionDelegate overflowDelegate, 
                                 ExceptionDelegate systemExceptionDelegate);
 
-    [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="SWIGRegisterExceptionArgumentCallbacks_fanndouble")]
+    [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="SWIGRegisterExceptionArgumentCallbacks_fanndouble")]
     public static extern void SWIGRegisterExceptionCallbacksArgument_fanndouble(
                                 ExceptionArgumentDelegate argumentDelegate,
                                 ExceptionArgumentDelegate argumentNullDelegate,
@@ -170,7 +170,7 @@ class fanndoublePINVOKE {
     public delegate string SWIGStringDelegate(string message);
     static SWIGStringDelegate stringDelegate = new SWIGStringDelegate(CreateString);
 
-    [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="SWIGRegisterStringCallback_fanndouble")]
+    [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="SWIGRegisterStringCallback_fanndouble")]
     public static extern void SWIGRegisterStringCallback_fanndouble(SWIGStringDelegate stringDelegate);
 
     static string CreateString(string cString) {
@@ -189,838 +189,838 @@ class fanndoublePINVOKE {
   }
 
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_FANNPRINTF_get")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_FANNPRINTF_get")]
   public static extern string FANNPRINTF_get();
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_FANNSCANF_get")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_FANNSCANF_get")]
   public static extern string FANNSCANF_get();
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fopen")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_fopen")]
   public static extern global::System.IntPtr fopen(string jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_fclose")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_fclose")]
   public static extern int fclose(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_uintArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_uintArray")]
   public static extern global::System.IntPtr new_uintArray(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_uintArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_delete_uintArray")]
   public static extern void delete_uintArray(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_uintArray_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_uintArray_getitem")]
   public static extern uint uintArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_uintArray_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_uintArray_setitem")]
   public static extern void uintArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_uintArray_cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_uintArray_cast")]
   public static extern global::System.IntPtr uintArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_uintArray_frompointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_uintArray_frompointer")]
   public static extern global::System.IntPtr uintArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_ActivationFunctionArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_ActivationFunctionArray")]
   public static extern global::System.IntPtr new_ActivationFunctionArray(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_ActivationFunctionArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_delete_ActivationFunctionArray")]
   public static extern void delete_ActivationFunctionArray(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ActivationFunctionArray_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_ActivationFunctionArray_getitem")]
   public static extern int ActivationFunctionArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ActivationFunctionArray_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_ActivationFunctionArray_setitem")]
   public static extern void ActivationFunctionArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ActivationFunctionArray_cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_ActivationFunctionArray_cast")]
   public static extern global::System.IntPtr ActivationFunctionArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ActivationFunctionArray_frompointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_ActivationFunctionArray_frompointer")]
   public static extern global::System.IntPtr ActivationFunctionArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_ConnectionArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_ConnectionArray")]
   public static extern global::System.IntPtr new_ConnectionArray(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_ConnectionArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_delete_ConnectionArray")]
   public static extern void delete_ConnectionArray(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionArray_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_ConnectionArray_getitem")]
   public static extern global::System.IntPtr ConnectionArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionArray_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_ConnectionArray_setitem")]
   public static extern void ConnectionArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionArray_cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_ConnectionArray_cast")]
   public static extern global::System.IntPtr ConnectionArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_ConnectionArray_frompointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_ConnectionArray_frompointer")]
   public static extern global::System.IntPtr ConnectionArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_train_epoch_batch_parallel__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_train_epoch_batch_parallel__SWIG_0")]
   public static extern float train_epoch_batch_parallel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_train_epoch_irpropm_parallel__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_train_epoch_irpropm_parallel__SWIG_0")]
   public static extern float train_epoch_irpropm_parallel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_train_epoch_quickprop_parallel__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_train_epoch_quickprop_parallel__SWIG_0")]
   public static extern float train_epoch_quickprop_parallel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_train_epoch_sarprop_parallel__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_train_epoch_sarprop_parallel__SWIG_0")]
   public static extern float train_epoch_sarprop_parallel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_train_epoch_incremental_mod__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_train_epoch_incremental_mod__SWIG_0")]
   public static extern float train_epoch_incremental_mod__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_train_epoch_batch_parallel__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_train_epoch_batch_parallel__SWIG_1")]
   public static extern float train_epoch_batch_parallel__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_train_epoch_irpropm_parallel__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_train_epoch_irpropm_parallel__SWIG_1")]
   public static extern float train_epoch_irpropm_parallel__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_train_epoch_quickprop_parallel__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_train_epoch_quickprop_parallel__SWIG_1")]
   public static extern float train_epoch_quickprop_parallel__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_train_epoch_sarprop_parallel__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_train_epoch_sarprop_parallel__SWIG_1")]
   public static extern float train_epoch_sarprop_parallel__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_train_epoch_incremental_mod__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_train_epoch_incremental_mod__SWIG_1")]
   public static extern float train_epoch_incremental_mod__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_test_data_parallel__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_test_data_parallel__SWIG_0")]
   public static extern float test_data_parallel__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_test_data_parallel__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_test_data_parallel__SWIG_1")]
   public static extern float test_data_parallel__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_from_neuron_set")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_Connection_from_neuron_set")]
   public static extern void Connection_from_neuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_from_neuron_get")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_Connection_from_neuron_get")]
   public static extern uint Connection_from_neuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_to_neuron_set")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_Connection_to_neuron_set")]
   public static extern void Connection_to_neuron_set(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_to_neuron_get")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_Connection_to_neuron_get")]
   public static extern uint Connection_to_neuron_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_weight_set")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_Connection_weight_set")]
   public static extern void Connection_weight_set(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_Connection_weight_get")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_Connection_weight_get")]
   public static extern double Connection_weight_get(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_Connection")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_Connection")]
   public static extern global::System.IntPtr new_Connection();
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_Connection")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_delete_Connection")]
   public static extern void delete_Connection(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_training_data__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_training_data__SWIG_0")]
   public static extern global::System.IntPtr new_training_data__SWIG_0();
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_training_data__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_training_data__SWIG_1")]
   public static extern global::System.IntPtr new_training_data__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_training_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_delete_training_data")]
   public static extern void delete_training_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_destroy_train")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_destroy_train")]
   public static extern void training_data_destroy_train(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_read_train_from_file")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_read_train_from_file")]
   public static extern bool training_data_read_train_from_file(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_save_train")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_save_train")]
   public static extern bool training_data_save_train(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_save_train_to_fixed")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_save_train_to_fixed")]
   public static extern bool training_data_save_train_to_fixed(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_shuffle_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_shuffle_train_data")]
   public static extern void training_data_shuffle_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_merge_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_merge_train_data")]
   public static extern void training_data_merge_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_length_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_length_train_data")]
   public static extern uint training_data_length_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_num_input_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_num_input_train_data")]
   public static extern uint training_data_num_input_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_num_output_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_num_output_train_data")]
   public static extern uint training_data_num_output_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_get_input")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_get_input")]
   public static extern global::System.IntPtr training_data_get_input(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_get_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_get_output")]
   public static extern global::System.IntPtr training_data_get_output(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_get_train_input")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_get_train_input")]
   public static extern global::System.IntPtr training_data_get_train_input(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_get_train_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_get_train_output")]
   public static extern global::System.IntPtr training_data_get_train_output(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_set_train_data__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_set_train_data__SWIG_0")]
   public static extern void training_data_set_train_data__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4, uint jarg5, global::System.Runtime.InteropServices.HandleRef jarg6);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_set_train_data__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_set_train_data__SWIG_1")]
   public static extern void training_data_set_train_data__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg4, uint jarg5, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg6);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_create_train_from_callback")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_create_train_from_callback")]
   public static extern void training_data_create_train_from_callback(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, uint jarg4, global::System.IntPtr jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_get_min_input")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_get_min_input")]
   public static extern double training_data_get_min_input(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_get_max_input")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_get_max_input")]
   public static extern double training_data_get_max_input(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_get_min_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_get_min_output")]
   public static extern double training_data_get_min_output(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_get_max_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_get_max_output")]
   public static extern double training_data_get_max_output(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_scale_input_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_scale_input_train_data")]
   public static extern void training_data_scale_input_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2, double jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_scale_output_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_scale_output_train_data")]
   public static extern void training_data_scale_output_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2, double jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_scale_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_scale_train_data")]
   public static extern void training_data_scale_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2, double jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_subset_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_subset_train_data")]
   public static extern void training_data_subset_train_data(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_training_data_to_fann_train_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_training_data_to_fann_train_data")]
   public static extern global::System.IntPtr training_data_to_fann_train_data(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_neural_net__SWIG_0")]
   public static extern global::System.IntPtr new_neural_net__SWIG_0(int jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_2")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_neural_net__SWIG_2")]
   public static extern global::System.IntPtr new_neural_net__SWIG_2(int jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_3")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_neural_net__SWIG_3")]
   public static extern global::System.IntPtr new_neural_net__SWIG_3(float jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_4")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_neural_net__SWIG_4")]
   public static extern global::System.IntPtr new_neural_net__SWIG_4(float jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_5")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_neural_net__SWIG_5")]
   public static extern global::System.IntPtr new_neural_net__SWIG_5(string jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_6")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_neural_net__SWIG_6")]
   public static extern global::System.IntPtr new_neural_net__SWIG_6(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_7")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_neural_net__SWIG_7")]
   public static extern global::System.IntPtr new_neural_net__SWIG_7(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_neural_net__SWIG_8")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_neural_net__SWIG_8")]
   public static extern global::System.IntPtr new_neural_net__SWIG_8();
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_copy_from_struct_fann")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_copy_from_struct_fann")]
   public static extern void neural_net_copy_from_struct_fann(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_neural_net")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_delete_neural_net")]
   public static extern void delete_neural_net(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_destroy")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_destroy")]
   public static extern void neural_net_destroy(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_create_standard")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_create_standard")]
   public static extern bool neural_net_create_standard(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_create_standard_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_create_standard_array")]
   public static extern bool neural_net_create_standard_array(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_create_sparse")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_create_sparse")]
   public static extern bool neural_net_create_sparse(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_create_sparse_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_create_sparse_array")]
   public static extern bool neural_net_create_sparse_array(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2, uint jarg3, global::System.Runtime.InteropServices.HandleRef jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_create_shortcut")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_create_shortcut")]
   public static extern bool neural_net_create_shortcut(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_create_shortcut_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_create_shortcut_array")]
   public static extern bool neural_net_create_shortcut_array(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_run")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_run")]
   public static extern global::System.IntPtr neural_net_run(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_randomize_weights")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_randomize_weights")]
   public static extern void neural_net_randomize_weights(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2, double jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_init_weights")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_init_weights")]
   public static extern void neural_net_init_weights(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_print_connections")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_print_connections")]
   public static extern void neural_net_print_connections(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_create_from_file")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_create_from_file")]
   public static extern bool neural_net_create_from_file(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_save")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_save")]
   public static extern bool neural_net_save(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_save_to_fixed")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_save_to_fixed")]
   public static extern int neural_net_save_to_fixed(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_train")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_train")]
   public static extern void neural_net_train(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_train_epoch")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_train_epoch")]
   public static extern float neural_net_train_epoch(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_train_on_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_train_on_data")]
   public static extern void neural_net_train_on_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, uint jarg4, float jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_train_on_file")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_train_on_file")]
   public static extern void neural_net_train_on_file(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, uint jarg3, uint jarg4, float jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_test")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_test")]
   public static extern global::System.IntPtr neural_net_test(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_test_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_test_data")]
   public static extern float neural_net_test_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_MSE")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_MSE")]
   public static extern float neural_net_get_MSE(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_reset_MSE")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_reset_MSE")]
   public static extern void neural_net_reset_MSE(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_callback")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_callback")]
   public static extern void neural_net_set_callback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_print_parameters")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_print_parameters")]
   public static extern void neural_net_print_parameters(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_training_algorithm")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_training_algorithm")]
   public static extern int neural_net_get_training_algorithm(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_training_algorithm")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_training_algorithm")]
   public static extern void neural_net_set_training_algorithm(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_learning_rate")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_learning_rate")]
   public static extern float neural_net_get_learning_rate(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_learning_rate")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_learning_rate")]
   public static extern void neural_net_set_learning_rate(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_activation_function")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_activation_function")]
   public static extern int neural_net_get_activation_function(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_activation_function")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_activation_function")]
   public static extern void neural_net_set_activation_function(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3, int jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_activation_function_layer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_activation_function_layer")]
   public static extern void neural_net_set_activation_function_layer(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_activation_function_hidden")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_activation_function_hidden")]
   public static extern void neural_net_set_activation_function_hidden(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_activation_function_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_activation_function_output")]
   public static extern void neural_net_set_activation_function_output(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_activation_steepness")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_activation_steepness")]
   public static extern double neural_net_get_activation_steepness(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_activation_steepness")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_activation_steepness")]
   public static extern void neural_net_set_activation_steepness(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2, int jarg3, int jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_activation_steepness_layer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_activation_steepness_layer")]
   public static extern void neural_net_set_activation_steepness_layer(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_activation_steepness_hidden")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_activation_steepness_hidden")]
   public static extern void neural_net_set_activation_steepness_hidden(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_activation_steepness_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_activation_steepness_output")]
   public static extern void neural_net_set_activation_steepness_output(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_train_error_function")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_train_error_function")]
   public static extern int neural_net_get_train_error_function(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_train_error_function")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_train_error_function")]
   public static extern void neural_net_set_train_error_function(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_quickprop_decay")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_quickprop_decay")]
   public static extern float neural_net_get_quickprop_decay(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_quickprop_decay")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_quickprop_decay")]
   public static extern void neural_net_set_quickprop_decay(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_quickprop_mu")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_quickprop_mu")]
   public static extern float neural_net_get_quickprop_mu(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_quickprop_mu")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_quickprop_mu")]
   public static extern void neural_net_set_quickprop_mu(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_rprop_increase_factor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_rprop_increase_factor")]
   public static extern float neural_net_get_rprop_increase_factor(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_rprop_increase_factor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_rprop_increase_factor")]
   public static extern void neural_net_set_rprop_increase_factor(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_rprop_decrease_factor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_rprop_decrease_factor")]
   public static extern float neural_net_get_rprop_decrease_factor(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_rprop_decrease_factor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_rprop_decrease_factor")]
   public static extern void neural_net_set_rprop_decrease_factor(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_rprop_delta_zero")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_rprop_delta_zero")]
   public static extern float neural_net_get_rprop_delta_zero(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_rprop_delta_zero")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_rprop_delta_zero")]
   public static extern void neural_net_set_rprop_delta_zero(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_rprop_delta_min")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_rprop_delta_min")]
   public static extern float neural_net_get_rprop_delta_min(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_rprop_delta_min")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_rprop_delta_min")]
   public static extern void neural_net_set_rprop_delta_min(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_rprop_delta_max")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_rprop_delta_max")]
   public static extern float neural_net_get_rprop_delta_max(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_rprop_delta_max")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_rprop_delta_max")]
   public static extern void neural_net_set_rprop_delta_max(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_sarprop_weight_decay_shift")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_sarprop_weight_decay_shift")]
   public static extern float neural_net_get_sarprop_weight_decay_shift(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_sarprop_weight_decay_shift")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_sarprop_weight_decay_shift")]
   public static extern void neural_net_set_sarprop_weight_decay_shift(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_sarprop_step_error_threshold_factor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_sarprop_step_error_threshold_factor")]
   public static extern float neural_net_get_sarprop_step_error_threshold_factor(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_sarprop_step_error_threshold_factor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_sarprop_step_error_threshold_factor")]
   public static extern void neural_net_set_sarprop_step_error_threshold_factor(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_sarprop_step_error_shift")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_sarprop_step_error_shift")]
   public static extern float neural_net_get_sarprop_step_error_shift(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_sarprop_step_error_shift")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_sarprop_step_error_shift")]
   public static extern void neural_net_set_sarprop_step_error_shift(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_sarprop_temperature")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_sarprop_temperature")]
   public static extern float neural_net_get_sarprop_temperature(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_sarprop_temperature")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_sarprop_temperature")]
   public static extern void neural_net_set_sarprop_temperature(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_num_input")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_num_input")]
   public static extern uint neural_net_get_num_input(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_num_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_num_output")]
   public static extern uint neural_net_get_num_output(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_total_neurons")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_total_neurons")]
   public static extern uint neural_net_get_total_neurons(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_total_connections")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_total_connections")]
   public static extern uint neural_net_get_total_connections(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_network_type")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_network_type")]
   public static extern int neural_net_get_network_type(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_connection_rate")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_connection_rate")]
   public static extern float neural_net_get_connection_rate(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_num_layers")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_num_layers")]
   public static extern uint neural_net_get_num_layers(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_layer_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_layer_array")]
   public static extern void neural_net_get_layer_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_bias_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_bias_array")]
   public static extern void neural_net_get_bias_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_connection_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_connection_array")]
   public static extern void neural_net_get_connection_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_weight_array")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_weight_array")]
   public static extern void neural_net_set_weight_array(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_weight")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_weight")]
   public static extern void neural_net_set_weight(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2, uint jarg3, double jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_learning_momentum")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_learning_momentum")]
   public static extern float neural_net_get_learning_momentum(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_learning_momentum")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_learning_momentum")]
   public static extern void neural_net_set_learning_momentum(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_train_stop_function")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_train_stop_function")]
   public static extern int neural_net_get_train_stop_function(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_train_stop_function")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_train_stop_function")]
   public static extern void neural_net_set_train_stop_function(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_bit_fail_limit")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_bit_fail_limit")]
   public static extern double neural_net_get_bit_fail_limit(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_bit_fail_limit")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_bit_fail_limit")]
   public static extern void neural_net_set_bit_fail_limit(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_bit_fail")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_bit_fail")]
   public static extern uint neural_net_get_bit_fail(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_cascadetrain_on_data")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_cascadetrain_on_data")]
   public static extern void neural_net_cascadetrain_on_data(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3, uint jarg4, float jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_cascadetrain_on_file")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_cascadetrain_on_file")]
   public static extern void neural_net_cascadetrain_on_file(global::System.Runtime.InteropServices.HandleRef jarg1, string jarg2, uint jarg3, uint jarg4, float jarg5);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_output_change_fraction")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_output_change_fraction")]
   public static extern float neural_net_get_cascade_output_change_fraction(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_cascade_output_change_fraction")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_cascade_output_change_fraction")]
   public static extern void neural_net_set_cascade_output_change_fraction(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_output_stagnation_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_output_stagnation_epochs")]
   public static extern uint neural_net_get_cascade_output_stagnation_epochs(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_cascade_output_stagnation_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_cascade_output_stagnation_epochs")]
   public static extern void neural_net_set_cascade_output_stagnation_epochs(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_candidate_change_fraction")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_candidate_change_fraction")]
   public static extern float neural_net_get_cascade_candidate_change_fraction(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_cascade_candidate_change_fraction")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_cascade_candidate_change_fraction")]
   public static extern void neural_net_set_cascade_candidate_change_fraction(global::System.Runtime.InteropServices.HandleRef jarg1, float jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_candidate_stagnation_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_candidate_stagnation_epochs")]
   public static extern uint neural_net_get_cascade_candidate_stagnation_epochs(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_cascade_candidate_stagnation_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_cascade_candidate_stagnation_epochs")]
   public static extern void neural_net_set_cascade_candidate_stagnation_epochs(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_weight_multiplier")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_weight_multiplier")]
   public static extern double neural_net_get_cascade_weight_multiplier(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_cascade_weight_multiplier")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_cascade_weight_multiplier")]
   public static extern void neural_net_set_cascade_weight_multiplier(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_candidate_limit")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_candidate_limit")]
   public static extern double neural_net_get_cascade_candidate_limit(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_cascade_candidate_limit")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_cascade_candidate_limit")]
   public static extern void neural_net_set_cascade_candidate_limit(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_max_out_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_max_out_epochs")]
   public static extern uint neural_net_get_cascade_max_out_epochs(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_cascade_max_out_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_cascade_max_out_epochs")]
   public static extern void neural_net_set_cascade_max_out_epochs(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_max_cand_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_max_cand_epochs")]
   public static extern uint neural_net_get_cascade_max_cand_epochs(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_cascade_max_cand_epochs")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_cascade_max_cand_epochs")]
   public static extern void neural_net_set_cascade_max_cand_epochs(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_num_candidates")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_num_candidates")]
   public static extern uint neural_net_get_cascade_num_candidates(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_activation_functions_count")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_activation_functions_count")]
   public static extern uint neural_net_get_cascade_activation_functions_count(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_activation_functions")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_activation_functions")]
   public static extern global::System.IntPtr neural_net_get_cascade_activation_functions(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_cascade_activation_functions")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_cascade_activation_functions")]
   public static extern void neural_net_set_cascade_activation_functions(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_activation_steepnesses_count")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_activation_steepnesses_count")]
   public static extern uint neural_net_get_cascade_activation_steepnesses_count(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_activation_steepnesses")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_activation_steepnesses")]
   public static extern global::System.IntPtr neural_net_get_cascade_activation_steepnesses(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_cascade_activation_steepnesses")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_cascade_activation_steepnesses")]
   public static extern void neural_net_set_cascade_activation_steepnesses(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2, uint jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_cascade_num_candidate_groups")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_cascade_num_candidate_groups")]
   public static extern uint neural_net_get_cascade_num_candidate_groups(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_cascade_num_candidate_groups")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_cascade_num_candidate_groups")]
   public static extern void neural_net_set_cascade_num_candidate_groups(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_scale_train")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_scale_train")]
   public static extern void neural_net_scale_train(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_descale_train")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_descale_train")]
   public static extern void neural_net_descale_train(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_input_scaling_params")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_input_scaling_params")]
   public static extern bool neural_net_set_input_scaling_params(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3, float jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_output_scaling_params")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_output_scaling_params")]
   public static extern bool neural_net_set_output_scaling_params(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3, float jarg4);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_scaling_params")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_scaling_params")]
   public static extern bool neural_net_set_scaling_params(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2, float jarg3, float jarg4, float jarg5, float jarg6);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_clear_scaling_params")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_clear_scaling_params")]
   public static extern bool neural_net_clear_scaling_params(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_scale_input")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_scale_input")]
   public static extern void neural_net_scale_input(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_scale_output")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_scale_output")]
   public static extern void neural_net_scale_output(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_set_error_log")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_set_error_log")]
   public static extern void neural_net_set_error_log(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_errno")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_errno")]
   public static extern uint neural_net_get_errno(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_reset_errno")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_reset_errno")]
   public static extern void neural_net_reset_errno(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_reset_errstr")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_reset_errstr")]
   public static extern void neural_net_reset_errstr(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_get_errstr")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_get_errstr")]
   public static extern string neural_net_get_errstr(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_print_error")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_print_error")]
   public static extern void neural_net_print_error(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_disable_seed_rand")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_disable_seed_rand")]
   public static extern void neural_net_disable_seed_rand(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_enable_seed_rand")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_enable_seed_rand")]
   public static extern void neural_net_enable_seed_rand(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_to_fann")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_to_fann")]
   public static extern global::System.IntPtr neural_net_to_fann(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_descale_output_")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_descale_output_")]
   public static extern void neural_net_descale_output_(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_neural_net_descale_input_")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_neural_net_descale_input_")]
   public static extern void neural_net_descale_input_(global::System.Runtime.InteropServices.HandleRef jarg1, [global::System.Runtime.InteropServices.In, global::System.Runtime.InteropServices.Out, global::System.Runtime.InteropServices.MarshalAs(global::System.Runtime.InteropServices.UnmanagedType.LPArray)]double[] jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_Clear")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_Clear")]
   public static extern void doubleVectorVector_Clear(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_Add")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_Add")]
   public static extern void doubleVectorVector_Add(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_size")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_size")]
   public static extern uint doubleVectorVector_size(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_capacity")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_capacity")]
   public static extern uint doubleVectorVector_capacity(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_reserve")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_reserve")]
   public static extern void doubleVectorVector_reserve(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleVectorVector__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_doubleVectorVector__SWIG_0")]
   public static extern global::System.IntPtr new_doubleVectorVector__SWIG_0();
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleVectorVector__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_doubleVectorVector__SWIG_1")]
   public static extern global::System.IntPtr new_doubleVectorVector__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleVectorVector__SWIG_2")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_doubleVectorVector__SWIG_2")]
   public static extern global::System.IntPtr new_doubleVectorVector__SWIG_2(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_getitemcopy")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_getitemcopy")]
   public static extern global::System.IntPtr doubleVectorVector_getitemcopy(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_getitem")]
   public static extern global::System.IntPtr doubleVectorVector_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_setitem")]
   public static extern void doubleVectorVector_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_AddRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_AddRange")]
   public static extern void doubleVectorVector_AddRange(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_GetRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_GetRange")]
   public static extern global::System.IntPtr doubleVectorVector_GetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_Insert")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_Insert")]
   public static extern void doubleVectorVector_Insert(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_InsertRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_InsertRange")]
   public static extern void doubleVectorVector_InsertRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_RemoveAt")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_RemoveAt")]
   public static extern void doubleVectorVector_RemoveAt(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_RemoveRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_RemoveRange")]
   public static extern void doubleVectorVector_RemoveRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_Repeat")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_Repeat")]
   public static extern global::System.IntPtr doubleVectorVector_Repeat(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_Reverse__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_Reverse__SWIG_0")]
   public static extern void doubleVectorVector_Reverse__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_Reverse__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_Reverse__SWIG_1")]
   public static extern void doubleVectorVector_Reverse__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVectorVector_SetRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVectorVector_SetRange")]
   public static extern void doubleVectorVector_SetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_doubleVectorVector")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_delete_doubleVectorVector")]
   public static extern void delete_doubleVectorVector(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Clear")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_Clear")]
   public static extern void doubleVector_Clear(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Add")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_Add")]
   public static extern void doubleVector_Add(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_size")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_size")]
   public static extern uint doubleVector_size(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_capacity")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_capacity")]
   public static extern uint doubleVector_capacity(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_reserve")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_reserve")]
   public static extern void doubleVector_reserve(global::System.Runtime.InteropServices.HandleRef jarg1, uint jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleVector__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_doubleVector__SWIG_0")]
   public static extern global::System.IntPtr new_doubleVector__SWIG_0();
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleVector__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_doubleVector__SWIG_1")]
   public static extern global::System.IntPtr new_doubleVector__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleVector__SWIG_2")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_doubleVector__SWIG_2")]
   public static extern global::System.IntPtr new_doubleVector__SWIG_2(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_getitemcopy")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_getitemcopy")]
   public static extern double doubleVector_getitemcopy(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_getitem")]
   public static extern double doubleVector_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_setitem")]
   public static extern void doubleVector_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, double jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_AddRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_AddRange")]
   public static extern void doubleVector_AddRange(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.Runtime.InteropServices.HandleRef jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_GetRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_GetRange")]
   public static extern global::System.IntPtr doubleVector_GetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Insert")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_Insert")]
   public static extern void doubleVector_Insert(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, double jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_InsertRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_InsertRange")]
   public static extern void doubleVector_InsertRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_RemoveAt")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_RemoveAt")]
   public static extern void doubleVector_RemoveAt(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_RemoveRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_RemoveRange")]
   public static extern void doubleVector_RemoveRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Repeat")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_Repeat")]
   public static extern global::System.IntPtr doubleVector_Repeat(double jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Reverse__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_Reverse__SWIG_0")]
   public static extern void doubleVector_Reverse__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Reverse__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_Reverse__SWIG_1")]
   public static extern void doubleVector_Reverse__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_SetRange")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_SetRange")]
   public static extern void doubleVector_SetRange(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Contains")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_Contains")]
   public static extern bool doubleVector_Contains(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_IndexOf")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_IndexOf")]
   public static extern int doubleVector_IndexOf(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_LastIndexOf")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_LastIndexOf")]
   public static extern int doubleVector_LastIndexOf(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleVector_Remove")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleVector_Remove")]
   public static extern bool doubleVector_Remove(global::System.Runtime.InteropServices.HandleRef jarg1, double jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_doubleVector")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_delete_doubleVector")]
   public static extern void delete_doubleVector(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_doubleArray")]
   public static extern global::System.IntPtr new_doubleArray(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_doubleArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_delete_doubleArray")]
   public static extern void delete_doubleArray(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArray_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleArray_getitem")]
   public static extern double doubleArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArray_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleArray_setitem")]
   public static extern void doubleArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, double jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArray_cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleArray_cast")]
   public static extern global::System.IntPtr doubleArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArray_frompointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleArray_frompointer")]
   public static extern global::System.IntPtr doubleArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_doubleArrayArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_doubleArrayArray")]
   public static extern global::System.IntPtr new_doubleArrayArray(int jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_doubleArrayArray")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_delete_doubleArrayArray")]
   public static extern void delete_doubleArrayArray(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArrayArray_getitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleArrayArray_getitem")]
   public static extern global::System.IntPtr doubleArrayArray_getitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArrayArray_setitem")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleArrayArray_setitem")]
   public static extern void doubleArrayArray_setitem(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, global::System.Runtime.InteropServices.HandleRef jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArrayArray_cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleArrayArray_cast")]
   public static extern global::System.IntPtr doubleArrayArray_cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_doubleArrayArray_frompointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_doubleArrayArray_frompointer")]
   public static extern global::System.IntPtr doubleArrayArray_frompointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleAccessor_Get")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_DoubleAccessor_Get")]
   public static extern double DoubleAccessor_Get(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleAccessor_FromPointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_DoubleAccessor_FromPointer")]
   public static extern global::System.IntPtr DoubleAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleAccessor_Cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_DoubleAccessor_Cast")]
   public static extern global::System.IntPtr DoubleAccessor_Cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_DoubleAccessor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_DoubleAccessor")]
   public static extern global::System.IntPtr new_DoubleAccessor();
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_DoubleAccessor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_delete_DoubleAccessor")]
   public static extern void delete_DoubleAccessor(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleArrayAccessor_Get__SWIG_0")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_DoubleArrayAccessor_Get__SWIG_0")]
   public static extern global::System.IntPtr DoubleArrayAccessor_Get__SWIG_0(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleArrayAccessor_Get__SWIG_1")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_DoubleArrayAccessor_Get__SWIG_1")]
   public static extern double DoubleArrayAccessor_Get__SWIG_1(global::System.Runtime.InteropServices.HandleRef jarg1, int jarg2, int jarg3);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleArrayAccessor_FromPointer")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_DoubleArrayAccessor_FromPointer")]
   public static extern global::System.IntPtr DoubleArrayAccessor_FromPointer(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_DoubleArrayAccessor_Cast")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_DoubleArrayAccessor_Cast")]
   public static extern global::System.IntPtr DoubleArrayAccessor_Cast(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_new_DoubleArrayAccessor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_new_DoubleArrayAccessor")]
   public static extern global::System.IntPtr new_DoubleArrayAccessor();
 
-  [global::System.Runtime.InteropServices.DllImport("fanndouble", EntryPoint="CSharp_delete_DoubleArrayAccessor")]
+  [global::System.Runtime.InteropServices.DllImport(dllnames.doubleDLLName, EntryPoint="CSharp_delete_DoubleArrayAccessor")]
   public static extern void delete_DoubleArrayAccessor(global::System.Runtime.InteropServices.HandleRef jarg1);
 }
 

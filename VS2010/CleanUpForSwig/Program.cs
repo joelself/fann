@@ -54,8 +54,54 @@ namespace CleanUpForSwig
                 addNamespaceFile(args[1], "Connection.cs") < 0 ||
                 addNamespaceFile(args[1], "ConnectionArray.cs") < 0))
                 return -1;
+            if(replaceDLLName(args[1]) < 0)
+                return -1;
             //if (addInheritance(args[1], args[3]) < 0)
             //    return -1;
+            return 0;
+        }
+
+        static int replaceDLLName(string folder)
+        {
+            DirectoryInfo info = new DirectoryInfo(folder);
+            FileInfo[] files = info.GetFiles("*PINVOKE.cs", SearchOption.TopDirectoryOnly);
+            if(files.Length != 1)
+                throw new ApplicationException(String.Format("Directory {0} contained {1} PINVOKE.cs files", folder, files.Length));
+            bool finished = false;
+            while (!finished)
+            {
+                try
+                {
+                    string fileText = File.ReadAllText(files[0].FullName);
+                    if (files[0].Name.Contains("float"))
+                    {
+                        fileText = fileText.Replace("\"fannfloat\"", "dllnames.floatDLLName");
+                        File.WriteAllText(files[0].FullName, fileText);
+                        finished = true;
+                    }
+                    else if (files[0].Name.Contains("double"))
+                    {
+                        fileText = fileText.Replace("\"fanndouble\"", "dllnames.doubleDLLName");
+                        File.WriteAllText(files[0].FullName, fileText);
+                        finished = true;
+                    }
+                    else if (files[0].Name.Contains("fixed"))
+                    {
+                        fileText = fileText.Replace("\"fannfixed\"", "dllnames.fixedDLLName");
+                        File.WriteAllText(files[0].FullName, fileText);
+                        finished = true;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Path {0} does not contain a valid PINVOKE file.", folder);
+                    }
+                }
+                catch (IOException)
+                {
+                    finished = false; // Try again in half a second
+                    Thread.Sleep(500);
+                }
+            }
             return 0;
         }
 

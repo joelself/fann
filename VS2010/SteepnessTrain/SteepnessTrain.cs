@@ -68,7 +68,7 @@ namespace Example
             const uint epochs_between_reports = 1000;
             DataType[] calc_out;
 
-            using (TrainingData data = new TrainingData("..\\..\\examples\\xor.data"))
+            using (TrainingData data = new TrainingData("..\\..\\..\\examples\\xor.data"))
             using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, num_input, num_neurons_hidden, num_output))
             {
 
@@ -77,7 +77,7 @@ namespace Example
 
                 net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_QUICKPROP;
 
-                TrainOnSteepnessFile(net, "..\\..\\examples\\xor.data", max_epochs, epochs_between_reports, desired_error, 1.0F, 0.1F, 20.0F);
+                TrainOnSteepnessFile(net, "..\\..\\..\\examples\\xor.data", max_epochs, epochs_between_reports, desired_error, 1.0F, 0.1F, 20.0F);
 
                 net.ActivationFunctionHidden = ActivationFunction.THRESHOLD_SYMMETRIC;
                 net.ActivationFunctionOutput = ActivationFunction.THRESHOLD_SYMMETRIC;
@@ -90,7 +90,7 @@ namespace Example
                                         FannAbs(calc_out[0] - data.OutputAccessor[i][0]));
                 }
 
-                net.Save("..\\..\\examples\\xor_float.net");
+                net.Save("..\\..\\..\\examples\\xor_float.net");
 
                 Console.ReadKey();
             }

@@ -28,13 +28,13 @@ namespace Example
                 net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
                 net.ActivationFunctionOutput = ActivationFunction.LINEAR;
                 net.TrainingAlgorithm = TrainingAlgorithm.TRAIN_RPROP;
-                using (TrainingData data = new TrainingData("..\\..\\datasets\\scaling.data"))
+                using (TrainingData data = new TrainingData("..\\..\\..\\datasets\\scaling.data"))
                 {
                     net.SetScalingParams(data, -1, 1, -1, 1);
                     net.ScaleTrain(data);
 
                     net.TrainOnData(data, max_epochs, epochs_between_reports, desired_error);
-                    net.Save("..\\..\\datasets\\scaling.net");
+                    net.Save("..\\..\\..\\datasets\\scaling.net");
 
                     Console.ReadKey();
                 }

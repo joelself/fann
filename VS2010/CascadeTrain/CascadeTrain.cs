@@ -26,8 +26,8 @@ namespace Example
 
             Console.WriteLine("Reading data.");
 
-            using (TrainingData trainData = new TrainingData("..\\..\\datasets\\parity8.train"))
-            using (TrainingData testData = new TrainingData("..\\..\\datasets\\parity8.test"))
+            using (TrainingData trainData = new TrainingData("..\\..\\..\\datasets\\parity8.train"))
+            using (TrainingData testData = new TrainingData("..\\..\\..\\datasets\\parity8.test"))
             {
                 trainData.ScaleTrainData(-1, 1);
                 testData.ScaleTrainData(-1, 1);
@@ -62,7 +62,7 @@ namespace Example
                     net.TrainStopFunction = StopFunction.STOPFUNC_BIT;
                     net.PrintParameters();
 
-                    net.Save("..\\..\\examples\\cascade_train2.net");
+                    net.Save("..\\..\\..\\examples\\cascade_train2.net");
 
                     Console.WriteLine("Training network.");
 
@@ -89,7 +89,7 @@ namespace Example
                     }
 
                     Console.WriteLine("Saving network.");
-                    net.Save("..\\..\\examples\\cascade_train.net");
+                    net.Save("..\\..\\..\\examples\\cascade_train.net");
 
                     Console.ReadKey();
                 }

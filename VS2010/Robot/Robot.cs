@@ -22,7 +22,7 @@ namespace Example
 
             Console.WriteLine("Creating network.");
 
-            using (TrainingData data = new TrainingData("..\\..\\datasets\\robot.train"))
+            using (TrainingData data = new TrainingData("..\\..\\..\\datasets\\robot.train"))
             using (NeuralNet net = new NeuralNet(NetworkType.LAYER, num_layers, data.InputCount, num_neurons_hidden, data.OutputCount))
             using (TrainingData testData = new TrainingData())
             {
@@ -34,7 +34,7 @@ namespace Example
                 net.TrainOnData(data, 3000, 10, desired_error);
 
                 Console.WriteLine("Testing network.");
-                testData.ReadTrainFromFile("..\\..\\datasets\\robot.test");
+                testData.ReadTrainFromFile("..\\..\\..\\datasets\\robot.test");
                 try
                 {
                     net.ResetMSE();
@@ -46,7 +46,7 @@ namespace Example
 
                     Console.WriteLine("Saving network.");
 
-                    net.Save("..\\..\\datasets\\robot_float.net");
+                    net.Save("..\\..\\..\\datasets\\robot_float.net");
                 }
                 catch (Exception e)
                 {

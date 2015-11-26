@@ -76,7 +76,7 @@ namespace Example
         {
             if (trainingFile == null)
             {
-                trainingFile = new StreamReader("..\\..\\datasets\\robot.train");
+                trainingFile = new StreamReader("..\\..\\..\\datasets\\robot.train");
                 trainingFile.ReadLine(); // The info on the first line is provided by the callee
             }
             if (number % 100 == 99)
@@ -92,7 +92,7 @@ namespace Example
         {
             if (testFile == null)
             {
-                testFile = new StreamReader("..\\..\\datasets\\robot.test");
+                testFile = new StreamReader("..\\..\\..\\datasets\\robot.test");
                 testFile.ReadLine(); // The info on the first line is provided by the callee
             }
             if (number % 100 == 99)

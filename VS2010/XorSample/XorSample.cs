@@ -67,7 +67,7 @@ namespace XorTrain
 
                 using (TrainingData data = new TrainingData())
                 {
-                    if (data.ReadTrainFromFile("..\\..\\examples\\xor.data"))
+                    if (data.ReadTrainFromFile("..\\..\\..\\examples\\xor.data"))
                     {
                         // Initialize and train the network with the data
                         net.InitWeights(data);
@@ -94,9 +94,9 @@ namespace XorTrain
                         Console.WriteLine("\nSaving network.");
 
                         // Save the network in floating point and fixed point
-                        net.Save("..\\..\\examples\\xor_float.net");
-                        uint decimal_point = (uint)net.SaveToFixed("..\\..\\examples\\xor_fixed.net");
-                        data.SaveTrainToFixed("..\\..\\examples\\xor_fixed.data", decimal_point);
+                        net.Save("..\\..\\..\\examples\\xor_float.net");
+                        uint decimal_point = (uint)net.SaveToFixed("..\\..\\..\\examples\\xor_fixed.net");
+                        data.SaveTrainToFixed("..\\..\\..\\examples\\xor_fixed.data", decimal_point);
 
                         Console.WriteLine("\nXOR test completed.");
                     }

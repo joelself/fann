@@ -70,26 +70,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.dll</TargetExt>
-    <TargetName>$(ProjectName)</TargetName>
-    <OutDir>$(SolutionDir)..\bin\$(Platform)\</OutDir>
+    <TargetName>$(ProjectName)d</TargetName>
+    <OutDir>$(SolutionDir)..\bin\$(Configuration)\$(Platform)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.dll</TargetExt>
-    <TargetName>$(ProjectName)</TargetName>
-    <OutDir>$(SolutionDir)..\bin\x86\</OutDir>
+    <TargetName>$(ProjectName)d</TargetName>
+    <OutDir>$(SolutionDir)..\bin\$(Configuration)\x86\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)..\bin\$(Platform)\</OutDir>
+    <OutDir>$(SolutionDir)..\bin\$(Configuration)\$(Platform)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)..\bin\x86\</OutDir>
+    <OutDir>$(SolutionDir)..\bin\$(Configuration)\x86\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

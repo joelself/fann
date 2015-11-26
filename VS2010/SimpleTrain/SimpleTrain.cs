@@ -29,9 +29,9 @@ namespace Example
                 net.ActivationFunctionHidden = ActivationFunction.SIGMOID_SYMMETRIC;
                 net.ActivationFunctionOutput = ActivationFunction.SIGMOID_SYMMETRIC;
 
-                net.TrainOnFile("..\\..\\examples\\xor.data", max_epochs, epochs_between_reports, desired_error);
+                net.TrainOnFile("..\\..\\..\\examples\\xor.data", max_epochs, epochs_between_reports, desired_error);
 
-                net.Save("..\\..\\examples\\xor_float.net");
+                net.Save("..\\..\\..\\examples\\xor_float.net");
 
                 Console.ReadKey();
             }
