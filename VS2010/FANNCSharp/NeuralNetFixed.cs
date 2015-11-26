@@ -489,6 +489,9 @@ namespace FANNCSharp.Fixed
            Sets the callback function for use during training. The user_data is passed to
            the callback. It can point to arbitrary data that the callback might require and
            can be NULL if it is not used.
+         
+           Fixed point NeuralNets don't do any training so I don't think setting a callback
+           has any effect.
          	
            See <FANN::callback_type at http://libfann.github.io/fann/docs/files/fann_data_cpp-h.html#callback_type> for more information about the callback function.
            
@@ -1206,7 +1209,7 @@ namespace FANNCSharp.Fixed
             The multiplier is described in greater detail in the tutorial <Fixed Point Usage>.
 
             See also:
-                <Fixed Point Usage at http://leenissen.dk/fann/html/files2/fixedpointusage-txt.html>, <GetDecimalPoint>, <SaveToFixed>,
+                <Fixed Point Usage at http://leenissen.dk/fann/html/files2/fixedpointusage-txt.html>, <DecimalPoint>, <SaveToFixed>,
                 <TrainingData::SaveTrainToFixed>, <fann_get_multiplier at http://libfann.github.io/fann/docs/files/fann-h.html#fann_get_multiplier>
 
             This function appears in FANN >= 1.0.0.
@@ -1652,25 +1655,8 @@ namespace FANNCSharp.Fixed
 
 
         /* Delegate: TrainingCallback
-           This callback function can be called during training when using <TrainOnData>,
-           <TrainOnFile> or <CascadetrainOnData>
-
-            The callback can be set by using <SetCallback> and is very useful for doing custom
-            things during training. It is recommended to use this function when implementing custom
-            training procedures, or when visualizing the training in a GUI etc. The parameters which the
-            callback function takes is the parameters given to the <TrainOnData>, plus an epochs
-            parameter which tells how many epochs the training have taken so far.
-
-            The callback function should return an integer, if the callback function returns -1, the training
-            will terminate.
-
-            Example of a callback function that prints information to the Console:
-                >int PrintCallback(NeuralNet net, TrainingData data,
-                >    uint maxEpochs, uint epochsBetweenReports,
-                >    float desiredError, uint epochs, Object userData)
-                >{
-                >    Console.WriteLine("Epochs     {0}. Current Error: {1}", epochs.ToString("00000000"), net.MSE.ToString().PadRight(8));
-                >}
+           This callback function can be called during training which you can't do with a fixed point neural network.
+           So honestly I don't know what setting the callback does for a fixed NeuralNet.
 
             See also:
                 <SetCallback>, <fann_callback_type at http://libfann.github.io/fann/docs/files/fann_data-h.html#fann_callback_type>
