@@ -184,6 +184,6 @@
     <Delete Files="$(OutDir)FANNCSharp.Fixed$(Configuration)$(Platform).zip" ContinueOnError="true" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>7z  a ..\$(OutDir)FANNCSharpFixed$(Configuration)$(Platform).zip ..\$(OutDir)fannfixed*.dll   ..\$(OutDir)FANNCSharp.Fixed.dll</PostBuildEvent>
+    <PostBuildEvent>7z  a ..\$(OutDir)FANNCSharp.Fixed$(Configuration)$(Platform).zip ..\$(OutDir)fannfixed*.dll   ..\$(OutDir)FANNCSharp.Fixed.dll</PostBuildEvent>
   </PropertyGroup>
 </Project>
