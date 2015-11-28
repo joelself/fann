@@ -31,7 +31,7 @@ You have 4 options:
   - In your project add a reference to FANNCSharp.Fixed.dll and make sure fannfixed.dll is in the same directory or is findable through your $PATH
 4. For a dll that supports all 3 types of neural networks for easy switching:
   - For x64 download [FANNCSharpx64.zip](/bin/Release/x64/FANNCSharpReleasex64.zip?raw=true)
-  - For x86 download [FANNCSharpx86.zip](/bin/Release/x86/FANNCSharpReleasex86.zip?raw=truee)
+  - For x86 download [FANNCSharpx86.zip](/bin/Release/x86/FANNCSharpReleasex86.zip?raw=true)
   - Extract the zip files in your project or wherever you want them to be
   - In your project add a reference to FANNCSharp.dll and make sure fannfloat.dll, fanndouble.dll and fannfixed.dll are in the same directory or are findable through your $PATH
   - To easily switch between the different types of networks do what the example projects do and add the following code to the top of your file:
