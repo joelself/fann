@@ -1554,18 +1554,6 @@ SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_reset_MSE(void * jarg1) {
 }
 
 
-SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_set_callback(void * jarg1, FANN::callback_type jarg2, void * jarg3) {
-  FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
-  FANN::callback_type arg2 = (FANN::callback_type) 0 ;
-  void *arg3 = (void *) 0 ;
-  
-  arg1 = (FANN::neural_net *)jarg1; 
-  arg2 = (FANN::callback_type)jarg2;
-  arg3 = (void*)jarg3;
-  (arg1)->set_callback(arg2,arg3);
-}
-
-
 SWIGEXPORT void SWIGSTDCALL CSharp_neural_net_print_parameters(void * jarg1) {
   FANN::neural_net *arg1 = (FANN::neural_net *) 0 ;
   

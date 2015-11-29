@@ -435,9 +435,6 @@ class fannfixedPINVOKE {
   [global::System.Runtime.InteropServices.DllImport(dllnames.fixedDLLName, EntryPoint="CSharp_neural_net_reset_MSE")]
   public static extern void neural_net_reset_MSE(global::System.Runtime.InteropServices.HandleRef jarg1);
 
-  [global::System.Runtime.InteropServices.DllImport(dllnames.fixedDLLName, EntryPoint="CSharp_neural_net_set_callback")]
-  public static extern void neural_net_set_callback(global::System.Runtime.InteropServices.HandleRef jarg1, global::System.IntPtr jarg2, global::System.IntPtr jarg3);
-
   [global::System.Runtime.InteropServices.DllImport(dllnames.fixedDLLName, EntryPoint="CSharp_neural_net_print_parameters")]
   public static extern void neural_net_print_parameters(global::System.Runtime.InteropServices.HandleRef jarg1);
 

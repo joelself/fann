@@ -484,30 +484,6 @@ namespace FANNCSharp.Fixed
             net.reset_MSE();
         }
 
-        /* Method: SetCallback
-           
-           Sets the callback function for use during training. The user_data is passed to
-           the callback. It can point to arbitrary data that the callback might require and
-           can be NULL if it is not used.
-         
-           Fixed point NeuralNets don't do any training so I don't think setting a callback
-           has any effect.
-         	
-           See <FANN::callback_type at http://libfann.github.io/fann/docs/files/fann_data_cpp-h.html#callback_type> for more information about the callback function.
-           
-           The default callback function simply prints out some status information.
-
-           This function appears in FANN >= 2.0.0.
-         */
-        public void SetCallback(TrainingCallback callback, Object userData)
-        {
-            Callback = callback;
-            UserData = userData;
-            GCHandle handle = GCHandle.Alloc(userData);
-            UnmanagedCallback = new training_callback(InternalCallback);
-            fannfixedPINVOKE.neural_net_set_callback(neural_net.getCPtr(this.net), Marshal.GetFunctionPointerForDelegate(UnmanagedCallback), (IntPtr)handle);
-        }
-
         /* Method: PrintParameters
 
   	        Prints all of the parameters and options of the neural network
