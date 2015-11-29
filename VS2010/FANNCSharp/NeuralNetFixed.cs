@@ -1617,28 +1617,6 @@ namespace FANNCSharp.Fixed
             net.enable_seed_rand();
         }
 
-        private int InternalCallback(global::System.IntPtr netPtr, global::System.IntPtr dataPtr, uint max_epochs, uint epochs_between_reports, float desired_error, uint epochs, global::System.IntPtr user_data)
-        {
-            NeuralNet callbackNet = new NeuralNet(new neural_net(netPtr, false));
-            TrainingData callbackData = new TrainingData(new training_data(dataPtr, false));
-            GCHandle handle = (GCHandle)user_data;
-            return Callback(callbackNet, callbackData, max_epochs, epochs_between_reports, desired_error, epochs, handle.Target as Object);
-        }
-
-
-        [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-        internal delegate int training_callback(global::System.IntPtr net, global::System.IntPtr data, uint max_epochs, uint epochs_between_reports, float desired_error, uint epochs, global::System.IntPtr user_data);
-
-
-        /* Delegate: TrainingCallback
-           This callback function can be called during training which you can't do with a fixed point neural network.
-           So honestly I don't know what setting the callback does for a fixed NeuralNet.
-
-            See also:
-                <SetCallback>, <fann_callback_type at http://libfann.github.io/fann/docs/files/fann_data-h.html#fann_callback_type>
-         */
-        public delegate int TrainingCallback(NeuralNet net, TrainingData data, uint maxEpochs, uint epochsBetweenReports, float desiredError, uint epochs, Object userData);
-
         #region Properties
         internal neural_net Net
         {
@@ -1647,8 +1625,6 @@ namespace FANNCSharp.Fixed
                 return net;
             }
         }
-        private TrainingCallback Callback { get; set; }
-        private training_callback UnmanagedCallback { get; set; }
         private Object UserData { get; set; }
 
         private uint Outputs { get; set; }
