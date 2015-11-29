@@ -163,10 +163,6 @@ internal class neural_net : global::System.IDisposable {
     fannfixedPINVOKE.neural_net_reset_MSE(swigCPtr);
   }
 
-  public void set_callback(global::System.IntPtr callback, global::System.IntPtr user_data) {
-    fannfixedPINVOKE.neural_net_set_callback(swigCPtr, callback, user_data);
-  }
-
   public void print_parameters() {
     fannfixedPINVOKE.neural_net_print_parameters(swigCPtr);
   }
