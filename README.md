@@ -1,5 +1,7 @@
 # `Fann C#`
-## FANN
+## FANN	
+
+*Check out the current (as of 30 Dec. 2015) [tagged release](https://github.com/joelself/FannCSharp/tree/v0.1.2) that now has debug binaries.* Or check out the [releases page](https://github.com/joelself/FannCSharp/releases/) which always has the latest release.
 
 **Fast Artificial Neural Network (FANN) Library** is a free open source neural network library, which implements multilayer artificial neural networks in C with support for both fully connected and sparsely connected networks.
 
