@@ -5,7 +5,7 @@
 
 **Fast Artificial Neural Network (FANN) Library** is a free open source neural network library, which implements multilayer artificial neural networks in C with support for both fully connected and sparsely connected networks.
 
-Cross-platform execution in both fixed and floating point are supported. It includes a framework for easy handling of training data sets. It is easy to use, versatile, well documented, and fast. 
+Cross-platform execution in both fixed and floating point are supported. It includes a framework for easy handling of training data sets. It is easy to use, versatile, well documented, and fast.
 
 ## `Fann C#`
 **`Fann C#`** is a wapper around FANN that lets you use the FANN libraries from C# on Windows. Currently all methods of the neural_net and training_data classes have been implemented. Additionally the new FANN parallel methods have been added as part of the NeuralNet classes.
@@ -17,23 +17,23 @@ All of the FANN neural_net and training_data C++ wrapper functionality is availa
 
 #### From Binaries
 
-You have 4 options:
+You have 4 options (note that debug FANN dlls are named fannfloatd.dll, fanndoubled.dll, and fannfixedd.dll):
 
 1. For a network that supports float neural networks:
-  - For x64 download [FANNCSharp.Float.dll and fannfloat.dll](bin/Release/x64/FANNCSharp.FloatReleasex64.zip?raw=true)
-  - For x86 download [FANNCSharp.Float.dll and fannfloat.dll](bin/Release/x86/FANNCSharp.FloatReleasex86.zip?raw=true)
+  - For x64 download [FANNCSharp.Float.dll and fannfloat.dll](bin/Release/x64/FANNCSharp.FloatReleasex64.zip?raw=true) ([debug binaries](https://github.com/joelself/FannCSharp/blob/version.2/bin/Debug/x64/FANNCSharp.FloatDebugx64.zip?raw=true))
+  - For x86 download [FANNCSharp.Float.dll and fannfloat.dll](bin/Release/x86/FANNCSharp.FloatReleasex86.zip?raw=true) ([debug binaries](https://github.com/joelself/FannCSharp/blob/version.2/bin/Debug/x86/FANNCSharp.FloatDebugx86.zip?raw=true))
   - In your project add a reference to FANNCSharp.Float.dll and make sure fannfloat.dll is in the same directory or is findable through your $PATH
 2. For a network that supports double neural networks:
-  - For x64 download [FANNCSharp.Double.dll and fanndouble.dll](bin/Release/x64/FANNCSharp.DoubleReleasex64.zip?raw=true)
-  - For x86 download [FANNCSharp.Double.dll and fanndouble.dll](bin/Release/x86/FANNCSharp.DoubleReleasex86.zip?raw=true)
+  - For x64 download [FANNCSharp.Double.dll and fanndouble.dll](bin/Release/x64/FANNCSharp.DoubleReleasex64.zip?raw=true) ([debug binaries](https://github.com/joelself/FannCSharp/blob/version.2/bin/Debug/x64/FANNCSharp.DoubleDebugx64.zip?raw=true))
+  - For x86 download [FANNCSharp.Double.dll and fanndouble.dll](bin/Release/x86/FANNCSharp.DoubleReleasex86.zip?raw=true) ([debug binaries](https://github.com/joelself/FannCSharp/blob/version.2/bin/Debug/x86/FANNCSharp.DoubleDebugx86.zip?raw=true))
   - In your project add a reference to FANNCSharp.Double.dll and make sure fanndouble.dll is in the same directory or is findable through your $PATH
 3. For a network that supports fixed neural networks:
-  - For x64 download [FANNCSharp.Fixed.dll and fannfixed.dll](bin/Release/x64/FANNCSharp.FixedReleasex64.zip?raw=true)
-  - For x86 download [FANNCSharp.Fixed.dll and fannfixed.dll](bin/Release/x86/FANNCSharp.FixedReleasex86.zip?raw=true)
+  - For x64 download [FANNCSharp.Fixed.dll and fannfixed.dll](bin/Release/x64/FANNCSharp.FixedReleasex64.zip?raw=true) ([debug binaries](https://github.com/joelself/FannCSharp/blob/version.2/bin/Debug/x64/FANNCSharp.FixedDebugx64.zip?raw=true))
+  - For x86 download [FANNCSharp.Fixed.dll and fannfixed.dll](bin/Release/x86/FANNCSharp.FixedReleasex86.zip?raw=true) ([debug binaries](https://github.com/joelself/FannCSharp/blob/version.2/bin/Debug/x86/FANNCSharp.FixedDebugx86.zip?raw=true))
   - In your project add a reference to FANNCSharp.Fixed.dll and make sure fannfixed.dll is in the same directory or is findable through your $PATH
 4. For a dll that supports all 3 types of neural networks for easy switching:
-  - For x64 download [FANNCSharpx64.zip](/bin/Release/x64/FANNCSharpReleasex64.zip?raw=true)
-  - For x86 download [FANNCSharpx86.zip](/bin/Release/x86/FANNCSharpReleasex86.zip?raw=true)
+  - For x64 download [FANNCSharpx64.zip](/bin/Release/x64/FANNCSharpReleasex64.zip?raw=true) ([debug binaries](https://github.com/joelself/FannCSharp/blob/master/bin/Debug/x64/FANNCSharpDebugx64.zip?raw=true))
+  - For x86 download [FANNCSharpx86.zip](/bin/Release/x86/FANNCSharpReleasex86.zip?raw=true) ([debug binaries](https://github.com/joelself/FannCSharp/blob/master/bin/Debug/x86/FANNCSharpDebugx86.zip?raw=true))
   - Extract the zip files in your project or wherever you want them to be
   - In your project add a reference to FANNCSharp.dll and make sure fannfloat.dll, fanndouble.dll and fannfixed.dll are in the same directory or are findable through your $PATH
   - To easily switch between the different types of networks do what the example projects do and add the following code to the top of your file:
@@ -64,26 +64,26 @@ Once that's finished, navigate to the VS2010 directory. In this case it would be
 
 Open the solution fann.sln
 
-From here you have 4 options:
+From here you have 4 options (remember debug FANN dlls are named fannfloatd.dll, fanndoubled.dll, and fannfixedd.dll):
 
 1. Build a dll that supports float neural networks:
   - To do this build the FANNCSharp.Float project
-  - The dlls will be in .\fann\bin\(Platform)\
+  - The dlls will be in .\fann\bin\\(Configuration)\\(Platform)\
   - You will need FANNCSharp.Float.dll as well as fannfloat.dll
   - In your project add a reference to FANNCSharp.Float.dll and make sure fannfloat.dll is in the same directory or is findable through your $PATH
 2. Build a dll that supports double neural networks:
   - To do this build the FANNCSharp.Double project
-  - The dlls will be in .\fann\bin\(Platform)\
+  - The dlls will be in .\fann\bin\\(Configuration)\\(Platform)\
   - You will need FANNCSharp.Double.dll as well as fanndouble.dll
   - In your project add a reference to FANNCSharp.Double.dll and make sure fanndouble.dll is in the same directory or is findable through your $PATH
 3. Build a dll that supports fixed neural networks:
   - To do this build the FANNCSharp.Fixed project
-  - The dlls will be in .\fann\bin\(Platform)\
+  - The dlls will be in .\fann\bin\\(Configuration)\\(Platform)\
   - You will need FANNCSharp.Fixed.dll as well as fannfixed.dll
   - In your project add a reference to FANNCSharp.Fixed.dll and make sure fannfixed.dll is in the same directory or is findable through your $PATH
 4. Build a dll that supports all 3 types of neural networks for easy switching:
   - To do this build the FANNCSharp project
-  - The dlls will be in .\fann\bin\(Platform)\
+  - The dlls will be in .\fann\bin\\(Configuration)\\(Platform)\
   - You will need FANNCSharp.dll as well as fannfloat.dll, fanndouble.dll and fannfixed.dll
   - In your project add a reference to FANNCSharp.dll and make sure fannfloat.dll, fanndouble.dll and fannfixed.dll are in the same directory or are findable through your $PATH
   - To easily switch between the different types of networks follow the directions above in the **From Binaries** section
