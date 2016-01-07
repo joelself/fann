@@ -17,3 +17,11 @@ build:
   project: VS2010/fann.sln
   parallel: true
   verbosity: normal
+deploy:
+- provider: GitHub
+  tag: v$(appveyor_build_version)
+  auth_token:
+    secure: t4op+hczdzx21XBX38EICV7c+ujqu7XsxFBaXAu9XbZDCCljj2v3kpD/pZksOgSy
+  prerelease: true
+  on:
+    branch: master
