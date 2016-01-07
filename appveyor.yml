@@ -1,7 +1,8 @@
-version: 0.1.{build}
+version: 1.0.{build}
 branches:
   only:
   - master
+  - version.2
 os: Visual Studio 2013
 configuration:
 - Debug
@@ -15,102 +16,103 @@ install:
   - cinst 7zip.commandline
 build:
   project: VS2010/fann.sln
-  parallel: true
   verbosity: normal
 artifacts:
-- path: bin/Release/x86/FANNCSharp.Double.dll
-  name: Releasex86DoubleDll
-- path: bin/Release/x86/FANNCSharp.DoubleReleasex86.zip
-  name: Releasex86DoubleZip
-- path: bin/Release/x86/FANNCSharp.Fixed.dll
-  name: Releasex86FixedDll
-- path: bin/Release/x86/FANNCSharp.Float.dll
-  name: Releasex86FloatDll
-- path: bin/Release/x86/FANNCSharp.dll
-  name: Releasex86Dll
-- path: bin/Release/x86/FANNCSharp.FloatReleasex86.zip
-  name: Releasex86FloatZip
-- path: bin/Release/x86/FANNCSharp.FixedReleasex86.zip
-  name: Releasex86FixedZip
-- path: bin/Release/x86/FANNCSharpReleasex86.zip
-  name: Releasex86Zip
-- path: bin/Release/x86/fanndouble.dll
-  name: Releasex86fanndoubleDll
-- path: bin/Release/x86/fannfixed.dll
-  name: Releasex86fannfixedDll
-- path: bin/Release/x86/fannfloat.dll
-  name: Releasex86fannfloatDll
-- path: bin/Release/x64/FANNCSharp.Double.dll
-  name: Releasex64DoubleDll
-- path: bin/Release/x64/FANNCSharp.DoubleReleasex64.zip
-  name: Releasex64DoubleZip
-- path: bin/Release/x64/FANNCSharp.Fixed.dll
-  name: Releasex64FixedDll
-- path: bin/Release/x64/FANNCSharp.Float.dll
-  name: Releasex64FloatDll
-- path: bin/Release/x64/FANNCSharp.dll
-  name: Releasex64Dll
-- path: bin/Release/x64/FANNCSharp.FloatReleasex64.zip
-  name: Releasex64FloatZip
-- path: bin/Release/x64/FANNCSharp.FixedReleasex64.zip
-  name: Releasex64FixedZip
-- path: bin/Release/x64/FANNCSharpReleasex64.zip
-  name: Releasex64Zip
-- path: bin/Release/x64/fanndouble.dll
-  name: Releasex64fanndoubleDll
-- path: bin/Release/x64/fannfixed.dll
-  name: Releasex64fannfixedDll
-- path: bin/Release/x64/fannfloat.dll
-  name: Releasex64fannfloat.dll
-- path: bin/Debug/x86/FANNCSharp.Double.dll
-  name: Debugx86DoubleDll
-- path: bin/Debug/x86/FANNCSharp.DoubleDebugx86.zip
-  name: Debugx86DoubleZip
-- path: bin/Debug/x86/FANNCSharp.Fixed.dll
-  name: Debugx86FixedDll
-- path: bin/Debug/x86/FANNCSharp.Float.dll
-  name: Debugx86FloatDll
-- path: bin/Debug/x86/FANNCSharp.dll
-  name: Debugx86Dll
-- path: bin/Debug/x86/FANNCSharp.FloatDebugx86.zip
-  name: Debugx86FloatZip
-- path: bin/Debug/x86/FANNCSharp.FixedDebugx86.zip
-  name: Debugx86FixedZip
-- path: bin/Debug/x86/FANNCSharpDebugx86.zip
-  name: Debugx86Zip
-- path: bin/Debug/x86/fanndouble.dll
-  name: Debugx86fanndoubleDll
-- path: bin/Debug/x86/fannfixed.dll
-  name: Debugx86fannfixedDll
-- path: bin/Debug/x86/fannfloat.dll
-  name: Debugx86fannfloatDll
 - path: bin/Debug/x64/FANNCSharp.Double.dll
-  name: Debugx64DoubleDll
+  name: Debug x64 Double dll
 - path: bin/Debug/x64/FANNCSharp.DoubleDebugx64.zip
-  name: Debugx64DoubleZip
+  name: Debug x64 Double zip
 - path: bin/Debug/x64/FANNCSharp.Fixed.dll
-  name: Debugx64FixedDll
+  name: Debug x64 Fixed dll
 - path: bin/Debug/x64/FANNCSharp.Float.dll
-  name: Debugx64FloatDll
+  name: Debug x64 Float dll
 - path: bin/Debug/x64/FANNCSharp.dll
-  name: Debugx64Dll
+  name: Debug x64 dll
 - path: bin/Debug/x64/FANNCSharp.FloatDebugx64.zip
-  name: Debugx64FloatZip
+  name: Debug x64 Float zip
 - path: bin/Debug/x64/FANNCSharp.FixedDebugx64.zip
-  name: Debugx64FixedZip
+  name: Debug x64 Fixed zip
 - path: bin/Debug/x64/FANNCSharpDebugx64.zip
-  name: Debugx64Zip
+  name: Debug x64 zip
 - path: bin/Debug/x64/fanndouble.dll
-  name: Debugx64fanndoubleDll
+  name: Debug x64 fanndouble dll
 - path: bin/Debug/x64/fannfixed.dll
-  name: Debugx64fannfixedDll
+  name: Debug x64 fannfixed dll
 - path: bin/Debug/x64/fannfloat.dll
-  name: Debugx64fannfloatDll
+  name: Debug x64 fannfloat dll
+- path: bin/Release/x64/FANNCSharp.Double.dll
+  name: Release x64 Double dll
+- path: bin/Release/x64/FANNCSharp.DoubleReleasex64.zip
+  name: Release x64 Double zip
+- path: bin/Release/x64/FANNCSharp.Fixed.dll
+  name: Release x64 Fixed dll
+- path: bin/Release/x64/FANNCSharp.Float.dll
+  name: Release x64 Float dll
+- path: bin/Release/x64/FANNCSharp.dll
+  name: Release x64 dll
+- path: bin/Release/x64/FANNCSharp.FloatReleasex64.zip
+  name: Release x64 Float zip
+- path: bin/Release/x64/FANNCSharp.FixedReleasex64.zip
+  name: Release x64 Fixed zip
+- path: bin/Release/x64/FANNCSharpReleasex64.zip
+  name: Release x64 zip
+- path: bin/Release/x64/fanndouble.dll
+  name: Release x64 fanndouble dll
+- path: bin/Release/x64/fannfixed.dll
+  name: Release x64 fannfixed dll
+- path: bin/Release/x64/fannfloat.dll
+  name: Release x64 fannfloat dll
+- path: bin/Release/x86/FANNCSharp.Double.dll
+  name: Release x86 Double dll
+- path: bin/Release/x86/FANNCSharp.DoubleReleasex86.zip
+  name: Release x86 Double zip
+- path: bin/Release/x86/FANNCSharp.Fixed.dll
+  name: Release x86 Fixed dll
+- path: bin/Release/x86/FANNCSharp.Float.dll
+  name: Release x86 Float dll
+- path: bin/Release/x86/FANNCSharp.dll
+  name: Release x86 dll
+- path: bin/Release/x86/FANNCSharp.FloatReleasex86.zip
+  name: Release x86 Float zip
+- path: bin/Release/x86/FANNCSharp.FixedReleasex86.zip
+  name: Release x86 Fixed zip
+- path: bin/Release/x86/FANNCSharpReleasex86.zip
+  name: Release x86 zip
+- path: bin/Release/x86/fanndouble.dll
+  name: Release x86 fanndouble dll
+- path: bin/Release/x86/fannfixed.dll
+  name: Release x86 fannfixed dll
+- path: bin/Release/x86/fannfloat.dll
+  name: Release x86 fannfloat dll
+- path: bin/Debug/x86/FANNCSharp.Double.dll
+  name: Debug x86 Double dll
+- path: bin/Debug/x86/FANNCSharp.DoubleDebugx86.zip
+  name: Debug x86 Double zip
+- path: bin/Debug/x86/FANNCSharp.Fixed.dll
+  name: Debug x86 Fixed dll
+- path: bin/Debug/x86/FANNCSharp.Float.dll
+  name: Debug x86 Float dll
+- path: bin/Debug/x86/FANNCSharp.dll
+  name: Debug x86 dll
+- path: bin/Debug/x86/FANNCSharp.FloatDebugx86.zip
+  name: Debug x86 Float zip
+- path: bin/Debug/x86/FANNCSharp.FixedDebugx86.zip
+  name: Debug x86 Fixed zip
+- path: bin/Debug/x86/FANNCSharpDebugx86.zip
+  name: Debug x86 zip
+- path: bin/Debug/x86/fanndouble.dll
+  name: Debug x86 fanndouble dll
+- path: bin/Debug/x86/fannfixed.dll
+  name: Debug x86 fannfixed dll
+- path: bin/Debug/x86/fannfloat.dll
+  name: Debug x86 fannfloat dll
 deploy:
 - provider: GitHub
   tag: v$(appveyor_build_version)
+  description: Pre-release of FANNCSharp
   auth_token:
-    secure: t4op+hczdzx21XBX38EICV7c+ujqu7XsxFBaXAu9XbZDCCljj2v3kpD/pZksOgSy
+    secure: JhdGiQoSYPGjjs8QjmwYnUoqzFkbCFc/xdeoAYD3Rdzr+yJIrpsR9kekfpGYDRB+
+  artifact: Debug x64 Double zip, Debug x64 Float zip, Debug x64 Fixed zip, Debug x64 zip, Release x64 Double zip, Release x64 Float zip, Release x64 Fixed zip, Release x64 zip, Debug x86 Double zip, Debug x86 Float zip, Debug x86 Fixed zip, Debug x86 zip, Release x86 Double zip, Release x86 Float zip, Release x86 Fixed zip, Release x86 zip
   prerelease: true
   on:
     branch: master
