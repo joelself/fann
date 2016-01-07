@@ -1,6 +1,5 @@
 # `Fann C#`
 
-[![FannCSharp](https://ghit.me/badge.svg?repo=joelself/FannCSharp)](https://ghit.me/repo/joelself/FannCSharp)
 ## FANN
 
 **Fast Artificial Neural Network (FANN) Library** is a free open source neural network library, which implements multilayer artificial neural networks in C with support for both fully connected and sparsely connected networks.
@@ -10,6 +9,9 @@ Cross-platform execution in both fixed and floating point are supported. It incl
 ## `Fann C#`
 **`Fann C#`** is a wapper around FANN that lets you use the FANN libraries from C# on Windows. Currently all methods of the neural_net and training_data classes have been implemented. Additionally the new FANN parallel methods have been added as part of the NeuralNet classes.
 
+[![Build status](https://ci.appveyor.com/api/projects/status/3dciresihh30envw/branch/master?svg=true)](https://ci.appveyor.com/project/joelself/fanncsharp/branch/master)
+ [![FannCSharp](https://ghit.me/badge.svg?repo=joelself/FannCSharp)](https://ghit.me/repo/joelself/FannCSharp)
+ 
 ## Current Progress
 All of the FANN neural_net and training_data C++ wrapper functionality is available along with the FANN parallel functions (for fannfloat and fanndouble).
 
