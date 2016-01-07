@@ -127,4 +127,4 @@ deploy:
   on:
     branch: master
 skip_commits:
-  message: /.*(README)|(appveyor).*/
+  message: /.*README.*/
