@@ -16,6 +16,7 @@ install:
   - cinst 7zip.commandline
 build:
   project: VS2010/fann.sln
+  parallel: true
   verbosity: normal
 artifacts:
 - path: bin/Debug/x64/FANNCSharp.Double.dll
