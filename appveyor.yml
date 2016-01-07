@@ -1,0 +1,16 @@
+version: 0.1.{build}
+branches:
+  only:
+  - master
+os: Visual Studio 2013
+configuration:
+- Debug
+- Release
+platform:
+- x86
+- x64
+shallow_clone: true
+build:
+  project: VS2010/fann.sln
+  parallel: true
+  verbosity: normal
