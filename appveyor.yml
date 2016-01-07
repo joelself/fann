@@ -12,12 +12,23 @@ platform:
 - x64
 shallow_clone: true
 install:
-  - cinst swig
-  - cinst 7zip.commandline
+- cmd: >-
+    - cinst swig
+
+    - cinst 7zip.commandline
 build:
   project: VS2010/fann.sln
   parallel: true
   verbosity: normal
+after_build:
+- cmd: >-
+    git config --global push.default matching
+
+    git add bin/Debug/x64/* bin/Debug/x86/* bin/Release/x64/* bin/Release/x86/*
+
+    git commit -m "Updating binaries and zip files with the latest Appveyor release build."
+
+    git push origin
 artifacts:
 - path: bin/Debug/x64/FANNCSharp.Double.dll
   name: FANNCSharpDebugx64Double.dll
