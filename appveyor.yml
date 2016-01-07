@@ -115,3 +115,5 @@ deploy:
   prerelease: true
   on:
     branch: master
+skip_commits:
+  message: /.*(README)|(appveyor).*/
