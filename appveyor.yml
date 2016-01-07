@@ -19,100 +19,100 @@ build:
   verbosity: normal
 artifacts:
 - path: bin/Debug/x64/FANNCSharp.Double.dll
-  name: Debug x64 Double dll
+  name: FANNCSharpDebugx64Double.dll
 - path: bin/Debug/x64/FANNCSharp.DoubleDebugx64.zip
-  name: Debug x64 Double zip
+  name: FANNCSharpDebugx64Double.zip
 - path: bin/Debug/x64/FANNCSharp.Fixed.dll
-  name: Debug x64 Fixed dll
+  name: FANNCSharpDebugx64Fixed.dll
 - path: bin/Debug/x64/FANNCSharp.Float.dll
-  name: Debug x64 Float dll
+  name: FANNCSharpDebugx64Float.dll
 - path: bin/Debug/x64/FANNCSharp.dll
-  name: Debug x64 dll
+  name: FANNCSharpDebugx64.dll
 - path: bin/Debug/x64/FANNCSharp.FloatDebugx64.zip
-  name: Debug x64 Float zip
+  name: FANNCSharpDebugx64Float.zip
 - path: bin/Debug/x64/FANNCSharp.FixedDebugx64.zip
-  name: Debug x64 Fixed zip
+  name: FANNCSharpDebugx64Fixed.zip
 - path: bin/Debug/x64/FANNCSharpDebugx64.zip
-  name: Debug x64 zip
+  name: FANNCSharpDebugx64.zip
 - path: bin/Debug/x64/fanndouble.dll
-  name: Debug x64 fanndouble dll
+  name: FANNCSharpDebugx64fanndouble.dll
 - path: bin/Debug/x64/fannfixed.dll
-  name: Debug x64 fannfixed dll
+  name: FANNCSharpDebugx64fannfixed.dll
 - path: bin/Debug/x64/fannfloat.dll
-  name: Debug x64 fannfloat dll
+  name: FANNCSharpDebugx64fannfloat.dll
 - path: bin/Release/x64/FANNCSharp.Double.dll
-  name: Release x64 Double dll
+  name: FANNCSharpReleasex64Double.dll
 - path: bin/Release/x64/FANNCSharp.DoubleReleasex64.zip
-  name: Release x64 Double zip
+  name: FANNCSharpReleasex64Double.zip
 - path: bin/Release/x64/FANNCSharp.Fixed.dll
-  name: Release x64 Fixed dll
+  name: FANNCSharpReleasex64Fixed.dll
 - path: bin/Release/x64/FANNCSharp.Float.dll
-  name: Release x64 Float dll
+  name: FANNCSharpReleasex64Float.dll
 - path: bin/Release/x64/FANNCSharp.dll
-  name: Release x64 dll
+  name: FANNCSharpReleasex64.dll
 - path: bin/Release/x64/FANNCSharp.FloatReleasex64.zip
-  name: Release x64 Float zip
+  name: FANNCSharpReleasex64Float.zip
 - path: bin/Release/x64/FANNCSharp.FixedReleasex64.zip
-  name: Release x64 Fixed zip
+  name: FANNCSharpReleasex64Fixed.zip
 - path: bin/Release/x64/FANNCSharpReleasex64.zip
-  name: Release x64 zip
+  name: FANNCSharpReleasex64.zip
 - path: bin/Release/x64/fanndouble.dll
-  name: Release x64 fanndouble dll
+  name: FANNCSharpReleasex64fanndouble dll
 - path: bin/Release/x64/fannfixed.dll
-  name: Release x64 fannfixed dll
+  name: FANNCSharpReleasex64fannfixeddll
 - path: bin/Release/x64/fannfloat.dll
-  name: Release x64 fannfloat dll
+  name: FANNCSharpReleasex64fannfloatdll
 - path: bin/Release/x86/FANNCSharp.Double.dll
-  name: Release x86 Double dll
+  name: FANNCSharpReleasex86Doubledll
 - path: bin/Release/x86/FANNCSharp.DoubleReleasex86.zip
-  name: Release x86 Double zip
+  name: FANNCSharpReleasex86Doublezip
 - path: bin/Release/x86/FANNCSharp.Fixed.dll
-  name: Release x86 Fixed dll
+  name: FANNCSharpReleasex86Fixed.dll
 - path: bin/Release/x86/FANNCSharp.Float.dll
-  name: Release x86 Float dll
+  name: FANNCSharpReleasex86Float.dll
 - path: bin/Release/x86/FANNCSharp.dll
-  name: Release x86 dll
+  name: FANNCSharpReleasex86.dll
 - path: bin/Release/x86/FANNCSharp.FloatReleasex86.zip
-  name: Release x86 Float zip
+  name: FANNCSharpReleasex86Float.zip
 - path: bin/Release/x86/FANNCSharp.FixedReleasex86.zip
-  name: Release x86 Fixed zip
+  name: FANNCSharpReleasex86Fixed.zip
 - path: bin/Release/x86/FANNCSharpReleasex86.zip
-  name: Release x86 zip
+  name: FANNCSharpReleasex86.zip
 - path: bin/Release/x86/fanndouble.dll
-  name: Release x86 fanndouble dll
+  name: FANNCSharpReleasex86fanndouble.dll
 - path: bin/Release/x86/fannfixed.dll
-  name: Release x86 fannfixed dll
+  name: FANNCSharpReleasex86fannfixed.dll
 - path: bin/Release/x86/fannfloat.dll
-  name: Release x86 fannfloat dll
+  name: FANNCSharpReleasex86fannfloat.dll
 - path: bin/Debug/x86/FANNCSharp.Double.dll
-  name: Debug x86 Double dll
+  name: FANNCSharpDebugx86Double.dll
 - path: bin/Debug/x86/FANNCSharp.DoubleDebugx86.zip
-  name: Debug x86 Double zip
+  name: FANNCSharpDebugx86Double.zip
 - path: bin/Debug/x86/FANNCSharp.Fixed.dll
-  name: Debug x86 Fixed dll
+  name: FANNCSharpDebugx86Fixed.dll
 - path: bin/Debug/x86/FANNCSharp.Float.dll
-  name: Debug x86 Float dll
+  name: FANNCSharpDebugx86Float.dll
 - path: bin/Debug/x86/FANNCSharp.dll
-  name: Debug x86 dll
+  name: FANNCSharpDebugx86.dll
 - path: bin/Debug/x86/FANNCSharp.FloatDebugx86.zip
-  name: Debug x86 Float zip
+  name: FANNCSharpDebugx86Float.zip
 - path: bin/Debug/x86/FANNCSharp.FixedDebugx86.zip
-  name: Debug x86 Fixed zip
+  name: FANNCSharpDebugx86Fixed.zip
 - path: bin/Debug/x86/FANNCSharpDebugx86.zip
-  name: Debug x86 zip
+  name: FANNCSharpDebugx86.zip
 - path: bin/Debug/x86/fanndouble.dll
-  name: Debug x86 fanndouble dll
+  name: FANNCSharpDebugx86fanndouble.dll
 - path: bin/Debug/x86/fannfixed.dll
-  name: Debug x86 fannfixed dll
+  name: FANNCSharpDebugx86fannfixed.dll
 - path: bin/Debug/x86/fannfloat.dll
-  name: Debug x86 fannfloat dll
+  name: FANNCSharpDebugx86fannfloat.dll
 deploy:
 - provider: GitHub
   tag: v$(appveyor_build_version)
   description: Pre-release of FANNCSharp
   auth_token:
     secure: JhdGiQoSYPGjjs8QjmwYnUoqzFkbCFc/xdeoAYD3Rdzr+yJIrpsR9kekfpGYDRB+
-  artifact: Debug x64 Double zip, Debug x64 Float zip, Debug x64 Fixed zip, Debug x64 zip, Release x64 Double zip, Release x64 Float zip, Release x64 Fixed zip, Release x64 zip, Debug x86 Double zip, Debug x86 Float zip, Debug x86 Fixed zip, Debug x86 zip, Release x86 Double zip, Release x86 Float zip, Release x86 Fixed zip, Release x86 zip
+  artifact: FANNCSharpDebugx64Double.zip, FANNCSharpDebugx64Float.zip, FANNCSharpDebugx64Fixed.zip, FANNCSharpDebugx64.zip, FANNCSharpReleasex64Double.zip, FANNCSharpReleasex64Float.zip, FANNCSharpReleasex64Fixed.zip, FANNCSharpReleasex64.zip, FANNCSharpDebugx86Double.zip, FANNCSharpDebugx86Float.zip, FANNCSharpDebugx86Fixed.zip, FANNCSharpDebugx86.zip, FANNCSharpReleasex86Double.zip, FANNCSharpReleasex86Float.zip, FANNCSharpReleasex86Fixed.zip, FANNCSharpReleasex86.zip
   prerelease: true
   on:
     branch: master
