@@ -2,7 +2,6 @@ version: 0.1.{build}
 branches:
   only:
   - master
-skip_non_tags: true
 os: Visual Studio 2013
 configuration:
 - Debug
