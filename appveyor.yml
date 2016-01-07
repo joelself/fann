@@ -10,6 +10,9 @@ platform:
 - x86
 - x64
 shallow_clone: true
+install:
+  - cinst swig
+  - cinst 7zip.commandline
 build:
   project: VS2010/fann.sln
   parallel: true
