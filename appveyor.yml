@@ -21,7 +21,7 @@ artifacts:
 - path: bin/Debug/x64/FANNCSharp.Double.dll
   name: FANNCSharpDebugx64Double.dll
 - path: bin/Debug/x64/FANNCSharp.DoubleDebugx64.zip
-  name: FANNCSharpDebugx64Double.zip
+  name: FANNCSharp.DoubleDebugx64.zip
 - path: bin/Debug/x64/FANNCSharp.Fixed.dll
   name: FANNCSharpDebugx64Fixed.dll
 - path: bin/Debug/x64/FANNCSharp.Float.dll
@@ -29,9 +29,9 @@ artifacts:
 - path: bin/Debug/x64/FANNCSharp.dll
   name: FANNCSharpDebugx64.dll
 - path: bin/Debug/x64/FANNCSharp.FloatDebugx64.zip
-  name: FANNCSharpDebugx64Float.zip
+  name: FANNCSharp.FloatDebugx64.zip
 - path: bin/Debug/x64/FANNCSharp.FixedDebugx64.zip
-  name: FANNCSharpDebugx64Fixed.zip
+  name: FANNCSharp.FixedDebugx64.zip
 - path: bin/Debug/x64/FANNCSharpDebugx64.zip
   name: FANNCSharpDebugx64.zip
 - path: bin/Debug/x64/fanndouble.dll
@@ -43,7 +43,7 @@ artifacts:
 - path: bin/Release/x64/FANNCSharp.Double.dll
   name: FANNCSharpReleasex64Double.dll
 - path: bin/Release/x64/FANNCSharp.DoubleReleasex64.zip
-  name: FANNCSharpReleasex64Double.zip
+  name: FANNCSharpDoubleReleasex64.zip
 - path: bin/Release/x64/FANNCSharp.Fixed.dll
   name: FANNCSharpReleasex64Fixed.dll
 - path: bin/Release/x64/FANNCSharp.Float.dll
@@ -51,9 +51,9 @@ artifacts:
 - path: bin/Release/x64/FANNCSharp.dll
   name: FANNCSharpReleasex64.dll
 - path: bin/Release/x64/FANNCSharp.FloatReleasex64.zip
-  name: FANNCSharpReleasex64Float.zip
+  name: FANNCSharp.FloatReleasex64.zip
 - path: bin/Release/x64/FANNCSharp.FixedReleasex64.zip
-  name: FANNCSharpReleasex64Fixed.zip
+  name: FANNCSharp.FixedReleasex64.zip
 - path: bin/Release/x64/FANNCSharpReleasex64.zip
   name: FANNCSharpReleasex64.zip
 - path: bin/Release/x64/fanndouble.dll
@@ -65,7 +65,7 @@ artifacts:
 - path: bin/Release/x86/FANNCSharp.Double.dll
   name: FANNCSharpReleasex86Doubledll
 - path: bin/Release/x86/FANNCSharp.DoubleReleasex86.zip
-  name: FANNCSharpReleasex86Doublezip
+  name: FANNCSharp.DoubleReleasex86.zip
 - path: bin/Release/x86/FANNCSharp.Fixed.dll
   name: FANNCSharpReleasex86Fixed.dll
 - path: bin/Release/x86/FANNCSharp.Float.dll
@@ -73,9 +73,9 @@ artifacts:
 - path: bin/Release/x86/FANNCSharp.dll
   name: FANNCSharpReleasex86.dll
 - path: bin/Release/x86/FANNCSharp.FloatReleasex86.zip
-  name: FANNCSharpReleasex86Float.zip
+  name: FANNCSharpFloatReleasex86.zip
 - path: bin/Release/x86/FANNCSharp.FixedReleasex86.zip
-  name: FANNCSharpReleasex86Fixed.zip
+  name: FANNCSharpFixedReleasex86.zip
 - path: bin/Release/x86/FANNCSharpReleasex86.zip
   name: FANNCSharpReleasex86.zip
 - path: bin/Release/x86/fanndouble.dll
@@ -87,7 +87,7 @@ artifacts:
 - path: bin/Debug/x86/FANNCSharp.Double.dll
   name: FANNCSharpDebugx86Double.dll
 - path: bin/Debug/x86/FANNCSharp.DoubleDebugx86.zip
-  name: FANNCSharpDebugx86Double.zip
+  name: FANNCSharpDoubleDebugx86.zip
 - path: bin/Debug/x86/FANNCSharp.Fixed.dll
   name: FANNCSharpDebugx86Fixed.dll
 - path: bin/Debug/x86/FANNCSharp.Float.dll
@@ -95,9 +95,9 @@ artifacts:
 - path: bin/Debug/x86/FANNCSharp.dll
   name: FANNCSharpDebugx86.dll
 - path: bin/Debug/x86/FANNCSharp.FloatDebugx86.zip
-  name: FANNCSharpDebugx86Float.zip
+  name: FANNCSharp.FloatDebugx86.zip
 - path: bin/Debug/x86/FANNCSharp.FixedDebugx86.zip
-  name: FANNCSharpDebugx86Fixed.zip
+  name: FANNCSharp.FixedDebugx86.zip
 - path: bin/Debug/x86/FANNCSharpDebugx86.zip
   name: FANNCSharpDebugx86.zip
 - path: bin/Debug/x86/fanndouble.dll
@@ -112,7 +112,7 @@ deploy:
   description: Pre-release of FANNCSharp
   auth_token:
     secure: JhdGiQoSYPGjjs8QjmwYnUoqzFkbCFc/xdeoAYD3Rdzr+yJIrpsR9kekfpGYDRB+
-  artifact: FANNCSharpDebugx64Double.zip, FANNCSharpDebugx64Float.zip, FANNCSharpDebugx64Fixed.zip, FANNCSharpDebugx64.zip, FANNCSharpReleasex64Double.zip, FANNCSharpReleasex64Float.zip, FANNCSharpReleasex64Fixed.zip, FANNCSharpReleasex64.zip, FANNCSharpDebugx86Double.zip, FANNCSharpDebugx86Float.zip, FANNCSharpDebugx86Fixed.zip, FANNCSharpDebugx86.zip, FANNCSharpReleasex86Double.zip, FANNCSharpReleasex86Float.zip, FANNCSharpReleasex86Fixed.zip, FANNCSharpReleasex86.zip
+  artifact: /.*\.zip/
   prerelease: true
   on:
     branch: master
