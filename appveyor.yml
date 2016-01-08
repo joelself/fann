@@ -129,4 +129,4 @@ on_success:
   - git commit -m "Adding newly built binaries for release"
   - git push origin
 skip_commits:
-  message: /.*README.*/
+  message: /.*(README)|(Adding newly built binaries for release).*/
