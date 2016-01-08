@@ -117,7 +117,7 @@ deploy:
   on:
     branch: master
 environment:
-  my_variable:
+  access_token:
     secure: ht1OPd4hfE9Ze6nU2lwivAKa+BxV3sqWrLvBielKz6bGmjb9n/r5SVRXVKcFbJX2
 on_success:
   - git config --global credential.helper store
