@@ -18,15 +18,6 @@ build:
   project: VS2010/fann.sln
   parallel: true
   verbosity: normal
-after_build:
-- cmd: >-
-    git config --global push.default matching
-
-    git add bin/Debug/x64/* bin/Debug/x86/* bin/Release/x64/* bin/Release/x86/*
-
-    git commit -m "Updating binaries and zip files with the latest Appveyor release build."
-
-    git push origin
 artifacts:
 - path: bin/Debug/x64/FANNCSharp.Double.dll
   name: FANNCSharpDebugx64Double.dll
@@ -119,12 +110,25 @@ artifacts:
 deploy:
 - provider: GitHub
   tag: v$(appveyor_build_version)
-  description: Pre-release of FANNCSharp
+  description: Pre-release of FANNCSharp. See [the README.md](https://github.com/joelself/FannCSharp/blob/master/README.md) to see what goes where and how to use the library.
   auth_token:
     secure: JhdGiQoSYPGjjs8QjmwYnUoqzFkbCFc/xdeoAYD3Rdzr+yJIrpsR9kekfpGYDRB+
   artifact: /.*\.zip/
   prerelease: true
   on:
     branch: master
+after_deploy:
+- cmd: >-
+    git clone https://github.com/joelself/FannCSharp.git
+
+    cd FannCSharp
+
+    git config --global push.default matching
+
+    git add bin/Debug/x64/* bin/Debug/x86/* bin/Release/x64/* bin/Release/x86/*
+
+    git commit -m "Updating binaries and zip files with the latest Appveyor release build."
+
+    git push origin
 skip_commits:
   message: /.*README.*/
