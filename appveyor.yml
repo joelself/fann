@@ -126,7 +126,7 @@ on_success:
   - git config --global user.email "joelself@gmail.com"
   - git config --global user.name "Joel Self"
   - git add -A *.zip *.dll
-  - git commit -m "Adding newly built binaries for release"
+  - git commit -m "Adding newly built binaries for release[ci skip]"
   - git push origin
 skip_commits:
-  message: /.*(README)|(Adding newly built binaries for release).*/
+  message: /.*(README)|(Adding newly built binaries for release)|(\[ci skip\]).*/
