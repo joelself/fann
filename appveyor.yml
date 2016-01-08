@@ -7,7 +7,7 @@ skip_tags: true
 os: Visual Studio 2013
 configuration:
 - Debug
-- Relase
+- Release
 platform:
 - x86
 - x64
