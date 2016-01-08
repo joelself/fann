@@ -116,17 +116,5 @@ deploy:
   prerelease: true
   on:
     branch: master
-environment:
-  access_token:
-    secure: ht1OPd4hfE9Ze6nU2lwivAKa+BxV3sqWrLvBielKz6bGmjb9n/r5SVRXVKcFbJX2
-on_success:
-  - git config --global credential.helper store
-  - git config --global push.default matching
-  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
-  - git config --global user.email "joelself@gmail.com"
-  - git config --global user.name "Joel Self"
-  - git add -A *.zip *.dll
-  - git commit -m "Adding newly built binaries for release[ci skip]"
-  - git push origin
 skip_commits:
   message: /.*(README)|(Adding newly built binaries for release)|(\[ci skip\]).*/
