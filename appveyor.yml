@@ -117,26 +117,15 @@ deploy:
   prerelease: true
   on:
     branch: master
-after_deploy:
-- cmd: >-
-    git clone https://github.com/joelself/FannCSharp.git
-
-    cd FannCSharp
-
-    git config --global push.default matching
-
-    copy ..\bin\Debug\x64\*.* bin\Debug\x64\ /Y
-
-    copy ..\bin\Debug\x86\*.* bin\Debug\x86\ /Y
-
-    copy ..\bin\Release\x64\*.* bin\Release\x64\ /Y
-
-    copy ..\bin\Release\x86\*.* bin\Release\x86\ /Y
-
-    git add bin\Debug\x64\* bin\Debug\x86\* bin\Release\x64\* bin\Release\x86\*
-
-    git commit -m "Updating binaries and zip files with the latest Appveyor release build."
-
-    git push origin
+environment:
+  my_variable:
+    secure: ht1OPd4hfE9Ze6nU2lwivAKa+BxV3sqWrLvBielKz6bGmjb9n/r5SVRXVKcFbJX2
+on_success:
+  - git config --global credential.helper store
+  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+  - git config --global user.email "joelself@gmail.com"
+  - git config --global user.name "Joel Self"
+  - git commit ...
+  - git push ...
 skip_commits:
   message: /.*README.*/
