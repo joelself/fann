@@ -11,10 +11,8 @@ platform:
 - x86
 - x64
 install:
-- cmd: >-
-    - cinst swig
-
-    - cinst 7zip.commandline
+  - cinst swig
+  - cinst 7zip.commandline
 build:
   project: VS2010/fann.sln
   parallel: true
