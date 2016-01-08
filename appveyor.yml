@@ -6,16 +6,16 @@ branches:
 os: Visual Studio 2013
 configuration:
 - Debug
-- Release
+- Relase
 platform:
 - x86
 - x64
+clone_depth: 1
 install:
   - cinst swig
   - cinst 7zip.commandline
 build:
   project: VS2010/fann.sln
-  parallel: true
   verbosity: normal
 artifacts:
 - path: bin/Debug/x64/FANNCSharp.Double.dll
@@ -111,7 +111,7 @@ deploy:
   tag: v$(appveyor_build_version)
   description: Pre-release of FANNCSharp. See [the README.md](https://github.com/joelself/FannCSharp/blob/master/README.md) to see what goes where and how to use the library.
   auth_token:
-    secure: JhdGiQoSYPGjjs8QjmwYnUoqzFkbCFc/xdeoAYD3Rdzr+yJIrpsR9kekfpGYDRB+
+    secure: iFF+4Fqi7c/H4giU9hWD8tmnl019whE+5gmHOHuTqZ21XC6UpAFbxHuL1aeHan+R
   artifact: /.*\.zip/
   prerelease: true
   on:
