@@ -14,7 +14,7 @@ Cross-platform execution in both fixed and floating point are supported. It incl
 
  
 ## Current Progress
-All of the FANN neural_net and training_data C++ wrapper functionality is available along with the FANN parallel functions (for fannfloat and fanndouble).
+All of the FANN `neural_net` and `training_data` C++ wrapper functionality is available along with the FANN parallel functions (for `fannfloat` and `fanndouble`).
 ### [LATEST RELEASE](https://github.com/joelself/FannCSharp/releases/latest)
 
 ## To Install
@@ -133,22 +133,22 @@ using DataType = System.Single;
 
   1. Build a dll that supports float neural networks:
     1. To do this build the `FANNCSharp.Float` project
-    2. The dlls will be in `.\fann\bin\\(Configuration)\\(Platform)\`
+    2. The dlls will be in `.\fann\bin\(Configuration)\(Platform)\`
     3. You will need `FANNCSharp.Float.dll` as well as `fannfloat[d].dll`
     4. In your project add a reference to `FANNCSharp.Float.dll` and make sure `fannfloat[d].dll` is in the same directory or is findable through your `$PATH`
   2. Build a dll that supports double neural networks:
     1. To do this build the `FANNCSharp.Double` project
-    2. The dlls will be in `.\fann\bin\\(Configuration)\\(Platform)\`
+    2. The dlls will be in `.\fann\bin\(Configuration)\(Platform)\`
     3. You will need `FANNCSharp.Double.dll` as well as `fanndouble[d].dll`
     4. In your project add a reference to `FANNCSharp.Double.dll` and make sure `fanndouble[d].dll` is in the same directory or is findable through your `$PATH`
  3. Build a dll that supports fixed neural networks:
     1. To do this build the `FANNCSharp.Fixed` project
-    2. The dlls will be in `.\fann\bin\\(Configuration)\\(Platform)\`
+    2. The dlls will be in `.\fann\bin\(Configuration)\(Platform)\`
     3. You will need `FANNCSharp.Fixed.dll` as well as `fannfixed[d].dll`
     4. In your project add a reference to `FANNCSharp.Fixed.dll` and make sure `fannfixed[d].dll` is in the same directory or is findable through your `$PATH`
  4. Build a dll that supports all 3 types of neural networks for easy switching:
     1. To do this build the `FANNCSharp` project
-    2. The dlls will be in `.\fann\bin\\(Configuration)\\(Platform)\`
+    2. The dlls will be in `.\fann\bin\(Configuration)\(Platform)\`
     3. You will need `FANNCSharp.dll` as well as `fannfloat[d].dll`, `fanndouble[d].dll` and `fannfixed[d].dll`
     4. In your project add a reference to `FANNCSharp.dll` and make sure `fannfloat[d].dll`, `fanndouble[d].dll` and fannfixed[d].dll are in the same directory or are findable through your `$PATH`
     5. To easily switch between the different types of networks follow the directions above in the **From Binaries** section
