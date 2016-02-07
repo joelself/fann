@@ -53,9 +53,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FANNCSharp.Double, Version=0.2.0.0, Culture=neutral, processorArchitecture=AMD64">
+    <Reference Include="FANNCSharp, Version=0.2.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\Release\x64\FANNCSharp.Double.dll</HintPath>
+      <HintPath>..\..\bin\Release\x64\FANNCSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
