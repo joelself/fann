@@ -137,13 +137,12 @@ namespace FANNCSharp.Double
         {
             using (uintArray newLayers = new uintArray(layers.Count))
             {
-                IEnumerator<uint> enumerator = layers.GetEnumerator();
                 int i = 0;
-                do
+                foreach(uint count in layers)
                 {
-                    newLayers.setitem(i, enumerator.Current);
+                    newLayers.setitem(i, count);
                     i++;
-                } while (enumerator.MoveNext());
+                }
                 Outputs = newLayers.getitem(layers.Count - 1);
                 net = new neural_net(netType, (uint)layers.Count, newLayers.cast());
             }
@@ -196,13 +195,12 @@ namespace FANNCSharp.Double
         {
             using (uintArray newLayers = new uintArray(layers.Count))
             {
-                IEnumerator<uint> enumerator = layers.GetEnumerator();
                 int i = 0;
-                do
+                foreach(uint count in layers)
                 {
-                    newLayers.setitem(i, enumerator.Current);
+                    newLayers.setitem(i, count);
                     i++;
-                } while (enumerator.MoveNext());
+                }
                 Outputs = newLayers.getitem(layers.Count - 1);
                 net = new neural_net(connectionRate, (uint)layers.Count, newLayers.cast());
             }
