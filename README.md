@@ -1,5 +1,5 @@
 # `FANN C#`
-#### *`FANN C#` v0.1.3 [x86](https://www.nuget.org/packages/FANNCSharp-x86) and [x64](https://www.nuget.org/packages/FANNCSharp-x64) are now on [nuget.org](http://nuget.org)*!
+#### *`FANN C#` v0.1.7 [x86](https://www.nuget.org/packages/FANNCSharp-x86) and [x64](https://www.nuget.org/packages/FANNCSharp-x64) are now on [nuget.org](http://nuget.org)*!
 ## FANN
 
 **Fast Artificial Neural Network (FANN) Library** is a free open source neural network library, which implements multilayer artificial neural networks in C with support for both fully connected and sparsely connected networks.
