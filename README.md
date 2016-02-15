@@ -1,4 +1,5 @@
 # `FANN C#`
+#### Interested in FANN C# for .NET Core? Show your support in [this issue](https://github.com/joelself/FannCSharp/issues/3).
 #### *`FANN C#` v0.1.7 [x86](https://www.nuget.org/packages/FANNCSharp-x86) and [x64](https://www.nuget.org/packages/FANNCSharp-x64) are now on [nuget.org](http://nuget.org)*!
 ## FANN
 
