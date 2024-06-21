@@ -8,7 +8,7 @@
 Cross-platform execution in both fixed and floating point are supported. It includes a framework for easy handling of training data sets. It is easy to use, versatile, well documented, and fast.
 
 ## `FANN C#`
-**FANN C#** is a wapper around FANN that lets you use the FANN libraries from C# on Windows.
+**FANN C#** is a wrapper around FANN that lets you use the FANN libraries from C# on Windows.
 
 [![AppVeyor branch](https://img.shields.io/appveyor/ci/gruntjs/grunt/master.svg)](https://ci.appveyor.com/project/joelself/fanncsharp/branch/master)
  [![FannCSharp](https://ghit.me/badge.svg?repo=joelself/FannCSharp)](https://ghit.me/repo/joelself/FannCSharp) [![GitHub release](https://img.shields.io/github/release/joelself/FannCSharp.svg)](https://github.com/joelself/FannCSharp/releases/latest) [![NuGet](https://img.shields.io/nuget/dt/FANNCSharp-x64.svg)](https://www.nuget.org/packages/FANNCSharp-x64) [![NuGet](https://img.shields.io/nuget/dt/FANNCSharp-x86.svg)](https://www.nuget.org/packages/FANNCSharp-x86)
